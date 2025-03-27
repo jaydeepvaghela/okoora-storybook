@@ -198,7 +198,7 @@
                         line-height: 24px;
                         margin: 0;
 
-                        span {
+                        span.every {
                             color: #003EFF;
                             text-decoration: underline;
                             font-weight: 700;
@@ -494,6 +494,15 @@
             .risk-estimate-info-wrapper{
                 min-height: 520px;
                 height: 100%;
+                .lose-info{
+                    .lose-desc{
+                        p{
+                            .desc{
+                                display:block;
+                            }
+                        }
+                    }
+                }
                 .lose-wrapper {
                     padding:35px 0;
                     .min-expected-lose{
