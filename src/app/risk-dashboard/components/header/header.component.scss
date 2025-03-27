@@ -1,0 +1,328 @@
+@import "../../../../assets/scss/variable";
+
+::ng-deep {
+    .cdk-overlay-pane {
+        .language-wrapper {
+            .mat-mdc-menu-content {
+                ul {
+                    padding: 0;
+                    list-style-type: none;
+
+                    li {
+                        button {
+                            background-color: transparent;
+                            border: none;
+                            padding: 5px 10px;
+                            width: 100%;
+                            cursor: pointer;
+
+                            &:hover,
+                            &.active {
+                                background-color: #e9ecef;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .custom-menu-item {
+            min-height: auto;
+            cursor: pointer;
+            background-color:#EFF6FF;
+            border-radius: 5px;
+            padding: 10px 15px;
+            min-height: 43px;
+            .mat-mdc-menu-item-text{
+                font-size: 12px !important;
+                font-weight: 500 !important;
+                color: #000;
+                font-family: Inter, Rubik, sans-serif !important;
+            }
+        }
+        .header-menu-panel .mat-mdc-menu-content {
+            padding: 5px 4px !important;
+        }
+    }
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+    left: 0;
+
+    .topheder-business-users {
+        background-color: #EEF3FC;
+
+        .header-inner {
+            .navbar-toggler {
+                display: none;
+            }
+        }
+
+        .main-nav {
+            padding: 0 45px 0 240px;
+            background-color: #EEF3FC;
+
+            .nav-inner {
+                display: flex;
+                justify-content: space-between;
+                padding: 38px 0;
+                border-bottom: 1px dashed #A4A4A4;
+                align-items: center;
+                margin: 0 0 0 45px;
+                width: 100%;
+
+                .nav-left {
+                    .wallet-list-business {
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        padding: 0 0 0 3px;
+                        gap: 10px;
+
+                        .flag {
+                            width: 31px;
+                            height: 31px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                        .currency-wrapper {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+
+                            .wallet-ammount {
+                                color: #111827;
+                                font-family: $he_heebo;
+                                font-size: 35px;
+                                font-weight: 500;
+                                line-height: 1;
+                                margin: 0 20px 0 0;
+
+                                .sub-part {
+                                    font-size: 24px;
+                                    color: #D1D5DB;
+                                    font-weight: 300;
+                                    line-height: 1;
+                                }
+                            }
+
+                            .wallet-list-button {
+                                width: 26px;
+                                height: 26px;
+                                padding: 13px 10px 10px 10px;
+                                border-radius: 40px;
+                                border: 1px solid #D1D5DB;
+                                background-color: transparent;
+                                background-image: url(../../../../assets/images/wallet-list-dropdown.svg);
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .nav-option-right {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 16px;
+
+                    .lang-wrapper {
+                        .lang-btn {
+                            background-color: transparent;
+                            border: none;
+                            padding: 0 4px;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .header-btn {
+                        padding: 6px 20px;
+                        border-radius: 40px;
+                        background-color: #fff;
+                        border: 1px solid #ffffff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        column-gap: 9px;
+                        cursor: pointer;
+                        color: #374151;
+                        font-size: 12px;
+                        line-height: 26px;
+                        font-weight: 600;
+                        font-family: $he_heebo;
+
+                        &.download-app {
+                            padding: 6px 20px 6px 42px;
+                            background-image: url(../../../../assets/images/download-app-mob.svg);
+                            background-repeat: no-repeat;
+                            background-position: left 20px center;
+                            background-size: auto;
+                            transition: none;
+
+                            &:hover {
+                                background-image: url(../../../../assets/images/download-app-hover.svg), url(../../../../assets/images/download-animation.gif);
+                                background-repeat: no-repeat, no-repeat;
+                                background-position: left 20px center, left 22px center;
+                                background-size: auto, 10px;
+                            }
+                        }
+
+                        &:hover {
+                            background-color: #EEF3FC;
+                            border-color: #1D4ED8;
+                            color: #1D4ED8;
+
+                            svg {
+                                path {
+                                    fill: #1D4ED8;
+                                }
+                            }
+                        }
+                    }
+
+                    .add-money {
+                        height: 40px;
+                        padding: 12px 24px;
+                        border-radius: 100px;
+                        background-color: #1E40AF;
+                        font-size: 12px;
+                        line-height: 15px;
+                        font-weight: 500;
+                        color: #fff;
+                        font-family: Inter, Rubik, sans-serif;
+                        border: none;
+                        cursor: pointer;
+
+                        &:hover {
+                            opacity: 0.9;
+                        }
+                    }
+
+                    .user-profile {
+                        .profile-btn {
+                            background-color: transparent;
+                            border: none;
+                            padding: 10px;
+                            margin: 0 12px 0 0;
+                        }
+
+                        .user-option {
+                            background-color: transparent;
+                            border: none;
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:1440px) {
+            .main-nav {
+                padding: 0 30px 0 124px;
+                .nav-inner {
+                    padding: 24px 0;
+
+                    .nav-left {
+                        .wallet-list-business {
+                            .currency-wrapper {
+                                .wallet-ammount {
+                                    font-size: 24px;
+                                    margin: 0 16px 0 0;
+
+                                    .sub-part {
+                                        font-size: 18px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:1024px) {
+            .main-nav {
+                padding: 0 30px 0 200px;
+
+                .nav-inner {
+                    padding: 21px 0;
+                    flex-wrap: wrap;
+                    margin: 0 0 0 17px;
+
+                    .nav-option-right {
+                        margin-left: auto;
+                        gap: 11px;
+
+                        .header-btn {
+                            &.download-app {
+                                padding: 6px 14px 6px 35px;
+                                background-position: left 15px center;
+                            }
+
+                            padding: 6px 14px;
+                        }
+
+                        .add-money {
+                            padding: 12px 14px;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:767px) {
+            .header-inner {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 12px;
+
+                .navbar-toggler {
+                    display: block;
+                    z-index: 2;
+                    background-color: transparent;
+                    border: none;
+                    width: 20px;
+                    height: 20px;
+                    padding: 0;
+                }
+            }
+
+            .main-nav {
+                padding: 0 17px;
+
+                .nav-inner {
+                    padding:0 0 15px;
+                    margin: 0;
+                    .nav-left {
+                        .wallet-list-business {
+                            .currency-wrapper {
+                                .wallet-ammount {
+                                    font-size: 18px;
+                                    margin: 0 14px 0 0;
+
+                                    .sub-part {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .nav-option-right {
+                        .header-btn {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

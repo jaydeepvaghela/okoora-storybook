@@ -1,0 +1,369 @@
+::ng-deep {
+    .risk-header {
+        .risk-nav {
+            display: inline-block;
+            color: #475467;
+            font-family: 'Heebo';
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 18px;
+            top: 6px;
+            position: absolute;
+        }
+
+        .risk-header-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin: 26px 0 27px;
+
+            .left-sec {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                .cash-flow-wrap {
+                    display: flex;
+                    min-width: 209px;
+                    width: auto;
+                    height: 54px;
+                    padding: 0px 10px 0px 14px;
+                    align-items: center;
+                    gap: 19px;
+                    border-radius: 50px;
+                    border: 1px solid #fff;
+                    background: rgba(255, 255, 255, 0.60);
+                    cursor: pointer;
+
+                    &.no-cashflow {
+                        pointer-events: none;
+                    }
+
+                    .currency-pair {
+                        display: flex;
+                        padding: 1.65px;
+                        justify-content: center;
+                        align-items: center;
+                        position: relative;
+
+                        img.from-currency {
+                            width: 33px;
+
+                            &.no-data {
+                                filter: grayscale(1);
+                                opacity: .6;
+                            }
+                        }
+
+                        .base-currency-wrap {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            position: absolute;
+                            bottom: -7px;
+                            right: -3px;
+                            background-color: #fff;
+                            padding: 3px;
+                            border-radius: 50%;
+
+                            img {
+                                width: 15px;
+                                height: auto;
+
+                                &.no-data {
+                                    filter: grayscale(1);
+                                    opacity: .6;
+                                }
+                            }
+                        }
+                    }
+
+                    .cashflow-details {
+                        text-align: left;
+
+                        .name {
+                            color: #344054;
+                            font-family: 'Heebo';
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 20px;
+                            margin: 0;
+                            text-align: left;
+                            text-transform: uppercase;
+                        }
+
+                        .month-range-text {
+                            color: #98A2B3;
+                            font-family: 'Heebo';
+                            font-size: 12px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 18px;
+                            margin: 0;
+                        }
+                    }
+
+                    .selection-icons {
+                        width: 10px;
+                        position: relative;
+                        height: 18px;
+
+                        &:before {
+                            background-image: url(../../../../../../assets/images/risk-up-arrow.svg);
+                            width: 100%;
+                            height: 5px;
+                            content: "";
+                            display: inline-block;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                        }
+
+                        &:after {
+                            background-image: url(../../../../../../assets/images/risk-up-arrow.svg);
+                            width: 100%;
+                            height: 5px;
+                            content: "";
+                            transform: rotate(180deg);
+                            display: inline-block;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                        }
+                    }
+                }
+
+                .add-flow {
+                    display: flex;
+                    width: 38px;
+                    height: 35px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    color: #FFF;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 900;
+                    line-height: 1;
+                    border-radius: 60px;
+                    background:#1D2939;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+
+            .right-buttons {
+                display: flex;
+                align-items: center;
+
+                .report-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    flex-shrink: 0;
+                    border-radius: 40px;
+                    border: 1px solid #fff;
+                    background: rgba(255, 255, 255, 0.40);
+                    color: #344054;
+                    font-family: 'Heebo';
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 20px;
+                    padding: 11px 18px;
+                    position: relative;
+                    min-height: 44px;
+                    transition: all 0.5s ease;
+                    cursor: pointer;
+
+                    img {
+                        width: 13px;
+                        height: auto;
+                    }
+
+                    &:hover {
+                        background-color: #2947F2;
+                        box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.10), 0px 8px 8px -4px rgba(16, 24, 40, 0.04);
+                        color: #fff;
+                        border-color: #2947F2;
+
+                        img {
+                            filter: brightness(5);
+                        }
+                    }
+                }
+
+                .policy-btn {
+                    display: inline-flex;
+                    padding: 9px 20px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    font-family: 'Heebo';
+                    flex-shrink: 0;
+                    margin: 0 0 0 16px;
+                    border-radius: 40px;
+                    font-size: 14px;
+                    border: 1px solid #fff;
+                    background: rgba(255, 255, 255, 0.40);
+                    position: relative;
+                    min-height: 44px;
+                    transition: all 0.5s ease;
+                    cursor: pointer;
+
+                    img {
+                        width: 15px;
+                        height: auto;
+                    }
+
+                    &.completed-policy-btn {
+                        img {
+                            margin-top: 3px;
+                        }
+                    }
+
+                    .notify-tag {
+                        position: absolute;
+                        top: -2px;
+                        width: 11px;
+                        height: 11px;
+                        border-radius: 50%;
+                        background-color: #D92D20;
+                        content: "";
+                        display: inline-block;
+                        right: 6px;
+                    }
+
+                    &:hover {
+                        background-color: #2947F2;
+                        box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.10), 0px 8px 8px -4px rgba(16, 24, 40, 0.04);
+                        color: #fff;
+                        border-color: #2947F2;
+
+                        img {
+                            filter: brightness(5);
+                        }
+                    }
+                }
+
+                .hedge-btn {
+                    display: inline-block;
+                    color: #fff;
+                    padding: 12px 27px;
+                    font-family: 'Heebo';
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 20px;
+                    margin: 0 0 0 17px;
+                    position: relative;
+                    background-color: #2947F2;
+                    border-radius: 40px;
+                    box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.10), 0px 8px 8px -4px rgba(16, 24, 40, 0.04);
+                    transition: all 0.5s ease;
+
+                    &:hover {
+                        opacity: 0.9;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width:1024px) {
+        .risk-header{
+            .risk-header-bottom {
+                margin: 10px 0 20px;
+            }
+        }
+    }
+    @media screen and (max-width:991px) {
+        .risk-header{
+            .risk-nav {
+                position: relative;
+                top:6px;
+            }
+            .risk-header-bottom {
+                // display: block;
+                .right-buttons{
+                    margin: 10px 0 0;
+                    justify-content: flex-end;
+                    .report-btn{
+                        min-height: 40px;
+                        padding: 9px 15px;
+                        font-size: 12px;
+                        gap: 5px;
+                    }
+                    .policy-btn,.hedge-btn{
+                        margin: 0 0 0 5px;
+                        min-height: 40px;
+                        padding: 9px 15px;
+                        font-size: 12px;
+                        gap: 5px;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width:767px) {
+        .risk-header{
+            .risk-header-bottom {
+                // display: block;
+                margin: 20px 0;
+                flex-wrap: wrap;
+                .left-sec {
+                    .cash-flow-wrap {
+                        min-width: max-content;
+                        height: 54px;
+                        gap: 10px;
+                        .currency-pair {
+                            img.from-currency {
+                                width:28px;
+                            }
+                        }
+                    }
+                }
+                .right-buttons{
+                    margin:20px 0 0;
+                    justify-content: flex-end;
+                    .report-btn{
+                        min-height:38px;
+                        padding: 9px 8px;
+                    }
+                    .policy-btn,.hedge-btn{
+                        margin: 0 0 0 5px;
+                        min-height:38px;
+                        padding: 9px 8px;
+                        .notify-tag{
+                            width: 8px;
+                            height: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width:420px) {
+        .risk-header{
+            .risk-header-bottom {
+                .right-buttons{
+                    display: block;
+                    .report-btn{
+                        margin: 0 0 5px 5px;
+                        display: inline-block;
+                        padding: 4px 10px;
+                        min-height: 30px;
+                    }
+                    .policy-btn,.hedge-btn{
+                        margin: 0 0 5px 5px;
+                        display: inline-block;
+                        padding: 4px 10px;
+                        min-height: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

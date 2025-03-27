@@ -1,0 +1,35 @@
+<div class="risk-header">
+    <div class="risk-nav">
+        Dashboard / hedging / <b>risk analysis</b>
+    </div>
+    <div class="risk-header-bottom">
+        <div class="left-sec">
+            <button class="cash-flow-wrap" tooltip="S.L ROBOTICS" placement="auto" tooltipClass="risk-dash-tooltip--rm1" container="body">
+                <div class="currency-pair">
+                    <img [src]="fromCurrency" class="from-currency">
+                    <div class="base-currency-wrap">
+                        <img [src]="baseCurrency" class="base-currency">
+                    </div>
+                </div>
+                <div class="cashflow-details">
+                    <!-- Static content -->
+                    <h3 class="name">{{cashFlowName}}</h3>
+                    <h5 class="month-range-text">
+                        {{monthRange}}
+                    </h5>
+                </div>
+                <div class="selection-icons">
+                    <!-- Add icons or leave it empty -->
+                </div>
+            </button>
+            <button class="add-flow"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="right-buttons">
+            <!-- Static content for buttons -->
+            <button class="policy-btn">
+                <img src="images/plus-icon-round.svg"> Advanced Policy
+                <span class="notify-tag"></span>
+            </button>
+        </div>
+    </div>
+</div>

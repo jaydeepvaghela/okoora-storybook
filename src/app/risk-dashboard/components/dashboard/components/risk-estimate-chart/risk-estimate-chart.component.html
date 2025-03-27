@@ -1,0 +1,122 @@
+<div class="loader-wrapper">
+    <div class="risk-estimate-wrapper">
+        <div class="estimate-head">
+            <h3 class="head-title">What is my risk estimate?</h3>
+            <p class="head-sub">You are at risk when the <span class="risk-up">USD goes up </span> <img src="images/cross-arrow-icon.svg"
+                    alt="Arrow"></p>
+        </div>
+        <ng-template #graphtool>
+            Benchmark
+        </ng-template>
+        <ng-template #minlose>
+            Minimal expected loss under extreme conditions
+        </ng-template>
+        <ng-template #avglose>
+            Average expected loss under extreme conditions
+        </ng-template>
+
+        <div class="risk-esti-chart-wrapper">
+            <div class="chart-inner">
+                <img src="images/risk-estimate-circle.svg" alt="Risk Estimate Circle">
+                <div class="benchmark-circle" [style.transform]="'rotate(' + 65 + 'deg)'">
+                    <div class="benchmark-pointer"
+                        [ngbTooltip]="graphtool"
+                        [autoClose]="false"
+                        #graphtooltip="ngbTooltip"
+                        placement="top"
+                        tooltipClass="risk-dash-tooltip-benchmark"
+                        container="body">
+                      <svg width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4238 0.703854L14.4981 24.824L11.8892 24.6157L13.815 0.495527L16.4238 0.703854ZM9.89539 0.287289L9.25246 24.4758L6.636 24.4062L7.27907 0.217773L9.89539 0.287289ZM3.94499 24.4062L1.32867 24.4758L0.685593 0.287289L3.30206 0.217773L3.94499 24.4062Z"
+                          fill="#344054" />
+                      </svg>
+                    </div>
+                  </div>
+                <div class="chart-circle" style="transform: rotate(128deh)">
+                    <svg class="circle-pointer" width="41" height="74" viewBox="0 0 41 74" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M37.9327 28.5146L31.4657 37.682L26.7599 27.4977L37.9327 28.5146Z" fill="#FF6B6B" />
+                        <path d="M36.7194 71.1411C36.7194 42.6422 23.2795 17.4227 2.66016 2.0228" stroke="#FF6B6B"
+                            stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" />
+                    </svg>
+                </div>
+
+                <div class="chart-info">
+                    <div class="desc">
+                        <h4 class="risk-level-text">Total Risk Level</h4>
+                        <h3 class="risk-label" style="color: #d92d20;">HIGH</h3>
+                        <p class="info">and <span style="color: #d92d20;">above</span> the benchmark</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="risk-estimate-info-wrapper">
+            <div class="lose-info">
+                <h4 class="info-title"> <img src="images/risk-warn-icon.svg" alt="Warning">How much can I lose?</h4>
+                <div class="lose-desc">
+                    <p>Under extreme conditions, <span>once every </span>
+                        <mat-select class="year-selector" [(value)]="selectedYear" panelClass="risk-estimate-chart-ddl">
+                            <mat-option value="Y5">5 years</mat-option>
+                            <mat-option value="Y10" selected>10 years</mat-option>
+                            <mat-option value="Y20">20 years</mat-option>
+                        </mat-select>,
+                    </p>
+                    <p class="annual-lose">your annual loss will exceed <span>₪4,476,001.2</span></p>
+                </div>
+            </div>
+
+            <!-- <div class="lose-wrapper">
+                <div class="min-expected-lose">
+                    <h4 class="item-title">Minimum expected lost <img src="images/annual-title-help-icon.svg"
+                            alt="Help" [ngbTooltip]="minlose" placement="top" tooltipClass="risk-dash-tooltip--rm"></h4>
+
+                    <div class="lose-item">
+                        <h5 class="exceed-title">Initial loss level</h5>
+                        <div class="initial lose-bar" style="width: 100%" 
+                        ngbTooltip="$4,476" placement="top"
+                        tooltipClass="risk-dash-tooltip--rm">₪4,476,001.2</div>
+                    </div>
+
+                    <div class="lose-item">
+                        <h5 class="exceed-title">Benchmark loss level</h5>
+                        <div class="benchmark lose-bar" style="width: 80%"
+                        ngbTooltip="$4,476" placement="top"
+                        tooltipClass="risk-dash-tooltip--rm">₪2,685,001.2</div>
+                    </div>
+
+                    <div class="lose-item">
+                        <h5 class="exceed-title">My loss level</h5>
+                        <div class="my lose-bar" style="width: 100%"
+                        ngbTooltip="$4,476" placement="top"
+                        tooltipClass="risk-dash-tooltip--rm">₪4,476,001.2</div>
+                    </div>
+                </div>
+                
+                <div class="average-expected-lose">
+                    <h4 class="item-title">Average expected lost <img src="images/annual-title-help-icon.svg"
+                        alt="Help" [ngbTooltip]="avglose" placement="auto" tooltipClass="risk-dash-tooltip--rm"></h4>
+
+                    <div class="lose-item">
+                        <div class="initial lose-bar" style="width: 100%"
+                        ngbTooltip="$4,476" placement="top"
+                        tooltipClass="risk-dash-tooltip--rm">₪5,220,001.2</div>
+                    </div>
+
+                    <div class="lose-item">
+                        <div class="benchmark lose-bar" style="width: 80%"
+                        ngbTooltip="$4,476" placement="top"
+                        tooltipClass="risk-dash-tooltip--rm">₪3,170,001.2</div>
+                    </div>
+
+                    <div class="lose-item">
+                        <div class="my lose-bar" style="width: 95%"
+                        ngbTooltip="$4,476" placement="top"
+                        tooltipClass="risk-dash-tooltip--rm">₪5,220,001.2</div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

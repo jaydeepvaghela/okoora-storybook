@@ -1,0 +1,184 @@
+.annual-exposer-details{
+    padding: 26px 30px 31px 33px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 0 0 10px;
+    .info-title {
+        display: flex;
+        align-items: center;
+        color: #344054;
+        font-family: 'Heebo';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+        margin: 0 0 22px;
+        img{
+            width: 25px;
+            height: auto;
+            margin: 0 13px 0 0;
+        }
+    }
+    .annual-wrap{
+        display: flex;
+        align-items: center;
+        margin: 0 0 0 24px;
+        .annual-item{
+            border-right:1px dashed #D0D5DD;
+            padding: 9px 20px 18px 0;
+            margin: 0 54px 0 0;
+            min-width:168px;
+            .item-title{
+                display: flex;
+                align-items: center;
+                color:#667085;
+                font-family: 'Heebo';
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                margin: 0 0 4px;
+                img{
+                    margin: 0 0 0 5px;
+                    display: inline-block;
+                    cursor: pointer;
+                }
+            }
+            .price-sec{
+                color: #111827;
+                font-family: 'Heebo';
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 32px;
+                span{
+                    font-size: 16px;
+                    line-height: 24px;
+                    font-weight: 300;
+                    vertical-align: middle;
+                    &.sign{
+                        font-weight: 700;
+                    }
+                    &.percent-tag{
+                        border-radius: 30px;
+                        color: #067647;
+                        font-family: 'Heebo';
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 12px;
+                        background-color: #DCFAE6;
+                        padding: 7px 10px;
+                        margin: 0 0 0 10px;
+                        display: inline-block;
+                        text-align: center;
+                    }
+                }
+            }
+            &:last-child{
+                border:none;
+                margin:0;
+                padding-right: 0;
+            }
+            &.hedge-item{
+                min-width:265px;
+                margin: 0 46px 0 0;
+            }
+            &.current-hedge-item{
+                margin: 0 37px 0 0;
+                min-width: 214px;
+            }
+        }
+    }
+    @media screen and (max-width:1800px) {
+        .annual-wrap{
+            .annual-item{
+                margin: 0 20px 0 0;
+                min-width:max-content;
+                &.hedge-item{
+                    min-width:max-content;
+                    margin: 0 20px 0 0;
+                }
+                &.current-hedge-item{
+                    margin: 0 20px 0 0;
+                    min-width:max-content;
+                }
+            }
+        }
+    }
+    @media screen and (max-width:1440px) {
+        .annual-wrap{
+            .annual-item{
+                margin: 0 20px 0 0;
+            }
+        }
+    }
+    @media screen and (max-width:1366px) {
+        .annual-wrap{
+            margin: 0;
+            .annual-item{
+                .price-sec{
+                    font-size:16px;
+                    span{
+                        font-size: 14px;
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width:1199px) {
+        padding:20px;
+        .info-title{
+            margin: 0 0 10px;
+        }
+        .annual-wrap{
+            display: block;
+            .annual-item{
+                margin:0 0 15px;
+                padding: 0 15px;
+                display: inline-block;
+                width: 20%;
+                &.hedge-item,&.current-hedge-item{
+                    margin:0 0 15px;
+                }
+                .item-title{
+                    font-size: 12px;
+                }
+                .price-sec{
+                    font-size:16px;
+                    line-height: 1;
+                    span{
+                        font-size: 12px;
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width:1024px) {
+        .annual-wrap{
+            .annual-item{
+                padding:0 10px;
+            }
+        }
+    }
+    @media screen and (max-width:991px) {
+        .annual-wrap{
+            display: block;
+            .annual-item{
+                padding:5px 10px;
+                margin:0 0 10px;
+                display: inline-block;
+                width: 49%;
+                border:none;
+                &.hedge-item{
+                    margin:0 0 10px;
+                }
+                &.current-hedge-item{
+                    margin:0 0 10px;
+                }
+            }
+        }
+    }
+}

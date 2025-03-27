@@ -1,0 +1,18 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "bootstrap/scss/bootstrap";
+@import "assets/scss/variable";
+@import "assets/scss/fonts";
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; font-family: $he_heebo;touch-action: manipulation;}
+body,p,h1,h2,h3,h4,h5,ul { margin: 0; font-family: $he_heebo; letter-spacing: 0;}
+a{text-decoration: none;}
+button{
+  background-color: transparent;
+  border: none;
+}
+.sb-show-main.sb-main-padded{
+    padding: 0;
+}
+mat-icon {
+  font-family: 'Material Icons' !important;
+}

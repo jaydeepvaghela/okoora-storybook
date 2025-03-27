@@ -1,0 +1,36 @@
+<div class="currency-dropdown-container">
+    <mat-select [(value)]="selectedValue" [disabled]="disabled" panelClass="currency-dropdown-panel" class="form-control currency-dropdown" placeholder="Select">
+      <mat-select-trigger>
+          <div *ngIf="selectedValue" class="to-currency-section">
+            <div class="image-wrap">
+              <img class="currency-image" [src]="getSelectedOption()?.flag" alt="currency_flag" />
+              <img src="tick-icon.svg" alt="arrow" class="tick-icn" />
+            </div>
+            <div class="currency-info">
+              <span class="currency-code">{{ getSelectedOption()?.label }}</span>
+              <span class="currency-name">{{ getSelectedOption()?.description }}</span>
+            </div>
+          </div>
+      </mat-select-trigger>
+      <div class="search-input-wrapper">
+        <div class="input-inner">
+          <input #searchBeneficiaryCountryInput [(ngModel)]="searchQuery" class="filter-input"
+            [ngClass]="filteredOptions.length == 0 ? 'error-input' : ''" type="text"
+            placeholder="Search" id="search-input">
+        </div>
+        <div class="error-wrap" *ngIf="filteredOptions?.length == 0">
+          <h3 class="error-title">No currency were found</h3>
+          <p class="desc">Try again with different keywords, <button (click)="clearSearch()" class="clear-search">Reset search</button></p>
+        </div>
+      </div>
+      <div class="currency-option-list">
+        <mat-option *ngFor="let option of filteredOptions" [value]="option.value">
+          <img class="currency-image" [src]="option.flag" alt="currency_flag" />
+          <div class="currency-info">
+            <span class="currency-code">{{ option.label }}</span>
+            <span class="currency-name">{{ option.description }}</span>
+          </div>
+        </mat-option>
+      </div>
+    </mat-select>
+</div>

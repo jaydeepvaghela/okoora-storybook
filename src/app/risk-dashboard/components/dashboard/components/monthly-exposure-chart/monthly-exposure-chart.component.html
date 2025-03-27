@@ -1,0 +1,26 @@
+<div class="exposer-chart">
+    <!-- Tooltip Container -->
+    <div id="custom-tooltip" class="monthly-exposer-tooltip" style="display: none;"></div>
+    <div class="legends-rm-exposure">
+      <label class="title"> <div class="legends-exposure"></div> Exposure</label>
+      <label class="title"> <div class="recommended-hedging"></div>Recommended hedging</label>
+      <label class="title"> <div class="actual-hedging"></div> Actual hedging</label>
+    </div>
+    <!-- ApexCharts Component -->
+    <div class="chart-wrapper">
+      <apx-chart
+       *ngIf="chartSeries?.length"
+        [series]="chartSeries"
+        [chart]="chartOptions"
+        [xaxis]="xAxisOptions"
+        [yaxis]="yAxisOptions"
+        [stroke]="strokeOptions"
+        [dataLabels]="dataLabelsOptions"
+        [legend]="legendOptions"
+        [tooltip]="tooltipOptions"
+        [plotOptions]="plotOptions"
+        [fill]="fillOptions">
+      </apx-chart>
+    </div>
+  </div>
+  

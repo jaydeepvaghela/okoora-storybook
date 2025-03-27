@@ -1,0 +1,191 @@
+@import '../../../../../../assets/scss/variable';
+::ng-deep {
+    .monthly-analysis-charts{
+        background-color: $white;
+        border-radius: 10px;
+        margin: 0 0 10px;
+        padding:21px 0 12px;
+        position: relative;
+        .chart-head{
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+            position: relative;
+            z-index: 1;
+            padding:0 17px 0 33px;
+            .info-title{
+                img{
+                    width: 25px;
+                    height: auto;
+                    margin: 0 13px 0 0;
+                }
+                color:#344054;
+                font-family:$he_heebo;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 24px;
+                margin: 0;
+            }
+            .btn-right{
+                display: flex;
+                gap: 13px;
+                .edit-btn{
+                    border-radius: 57px;
+                    background:#344054;
+                    color: $white;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 20px;
+                    padding:9px 31px;
+                }
+                .hedge-btn{
+                    display: inline-block;
+                    color:$white;
+                    padding:12px 27px;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 20px;
+                    position: relative;
+                    background-color: #2947F2;
+                    border-radius: 40px;
+                    box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.10), 0px 8px 8px -4px rgba(16, 24, 40, 0.04);
+                    transition: all 0.5s ease;
+                    &:hover{
+                        opacity: 0.9;
+                    }
+                }
+            }
+        }
+        .tab-wrap{
+            margin:0;
+            .chart-tabs-group{
+                .mat-mdc-tab-labels{
+                    column-gap: 19px;
+                    max-width:321px;
+                    padding: 10px;
+                    background-color: #EEF4FB;
+                    border-radius: 10px;
+                    margin:0 auto 10px;
+                    .mat-mdc-tab{
+                        &.mdc-tab{
+                            height:auto !important;
+                            padding:0;
+                            border-radius: 10px;
+                            letter-spacing: 0;
+                            .mdc-tab-indicator,.mdc-tab__ripple,.mat-ripple{
+                                display: none;
+                            }
+                            .mdc-tab__text-label{
+                                color:#344054;
+                                font-family: $he_heebo;
+                                font-size: 14px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 20px;
+                                padding: 8px 16px;
+                            }
+                            &.mdc-tab--active{
+                                background-color: $white;
+                                .mdc-tab__text-label{
+                                    font-weight: 700;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1700px) {
+            .chart-head{
+                margin: 0 0 10px;
+            }
+        }
+        @media screen and (max-width:1440px) {
+            .chart-head{
+                .btn-right{
+                    .edit-btn{
+                        padding: 7px 25px;
+                    }
+                    .hedge-btn{
+                        min-height: 40px;
+                        padding: 9px 15px;
+                        font-size: 12px;
+                        gap: 5px;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1199px) {
+            .tab-wrap{
+                margin:10px 0 0;
+            }
+        }
+        @media screen and (max-width:1024px) {
+            padding: 15px 0;
+            .chart-head{
+                padding: 0 20px;
+                .btn-right{
+                    .edit-btn{
+                        padding: 5px 20px;
+                    }
+                    .hedge-btn{
+                        min-height:30px;
+                        padding: 7px 10px;
+                        font-size: 12px;
+                        gap: 5px;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:420px) {
+            .chart-head{
+                padding: 0 10px;
+                .info-title{
+                    img{
+                        margin: 0 5px 0 0;
+                    }
+                }
+                .btn-right{
+                    gap: 5px;
+                    .hedge-btn{
+                        padding: 7px 10px;
+                    }
+                }
+            }
+            .tab-wrap{
+                .chart-tabs-group{
+                    .mat-mdc-tab-labels{
+                        column-gap:8px;
+                        max-width:321px;
+                        padding:6px;
+                        .mat-mdc-tab{
+                            &.mdc-tab{
+                                .mdc-tab__text-label{
+                                    padding:6px 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:380px) {
+            .chart-head{
+                .btn-right{
+                    .edit-btn{
+                        padding: 5px 14px;
+                    }
+                    .hedge-btn{
+                        padding:5px 10px;
+                        min-height: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

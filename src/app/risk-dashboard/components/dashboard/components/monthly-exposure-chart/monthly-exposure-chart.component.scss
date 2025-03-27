@@ -1,0 +1,339 @@
+@import '../../../../../../assets/scss/variable';
+
+::ng-deep {
+  .exposer-chart{
+    position: relative;
+    .apexcharts-canvas{
+      .apexcharts-gridline {
+        stroke: #F2F4F7;
+      }
+      .apexcharts-series{
+        path{
+          cursor: pointer;
+        }
+      }
+    }
+    .legends-rm-exposure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 0 0 50px 0;
+      
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(0, 0, 0, 0.70);
+        font-family: 'Inter';
+        font-size: 12px;
+        font-weight: 400;
+        line-height: normal;
+        gap: 5px;
+
+        .legends-exposure {
+          width: 8px;
+          height: 8px;
+          background-color: #E0EEFE;   
+        }
+
+        .recommended-hedging {
+          width: 8px;
+          height: 8px;
+          background-color: #546CF5;   
+        }
+
+        .actual-hedging {
+          width: 8px;
+          height: 8px;
+          background-color: #2947F2;
+        }
+      }
+      @media screen and (max-width:1280px) {
+        margin: 0 0 30px 0;
+      }
+      @media screen and (max-width:420px) {
+        margin:10px 0;
+      }
+    }
+    .apexcharts-legend{
+      display: none;
+    }
+    .apexcharts-xaxis-label {
+      color: #98A2B3;
+      text-align: center;
+      font-family: 'Inter' !important;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: normal;
+      opacity: 0.6;
+    }
+
+    .apexcharts-yaxis-label {
+      color: rgba(0, 0, 0, 0.70);
+      font-family: 'Heebo' !important;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: normal;
+    }
+    .chart-wrapper{
+      padding: 0 30px;
+      position: relative;
+      .pagination-wrap{
+        .mat-mdc-paginator-container{
+          min-height: max-content;
+          padding: 0;
+        }
+        .mat-mdc-paginator-page-size{
+          display: none;
+        }
+        .mat-mdc-paginator-range-label{
+          color:#98A2B3;
+          font-family: $he_heebo;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 18px;
+          margin: 0;
+        }
+        .mat-mdc-icon-button
+        {
+          &.mat-mdc-button-base{
+            width: 30px;
+            padding: 5px 0;
+            height: 40px;
+            background-color: #E0EAFF;
+            border-radius: 0;
+            .mat-mdc-button-touch-target,.mat-mdc-button-persistent-ripple,.mat-ripple{
+              display: none;
+            }
+          }
+          &.mat-mdc-paginator-navigation-next{
+            position: absolute;
+            top:50%;
+            right: 0;
+          }
+          &.mat-mdc-paginator-navigation-previous{
+            position: absolute;
+            top:50%;
+            left: 0;
+          }
+        }
+      }
+      @media screen and (max-width:1199px) {
+        padding: 0 25px;
+        .pagination-wrap{
+          .mat-mdc-icon-button
+          {
+            &.mat-mdc-button-base{
+              width: 25px;
+              height: 35px;
+              padding: 2px 0;
+              svg{
+                width: 20px;
+                height: 20px;
+              }
+            }
+          }
+        }
+      }
+      @media screen and (max-width:580px) {
+        min-width: 600px;
+        overflow-y: auto;
+      }
+    }
+  }
+  .monthly-exposer-tooltip{
+    position: fixed;
+    background:$white;
+    border-radius: 5px;
+    padding:0;
+    box-shadow: 0px 28px 24px 0px rgba(0, 0, 0, 0.10);
+    pointer-events: auto;
+    z-index: 9999;
+    width: 100%;
+    max-width: 286px;
+    .inner-wrap{
+      padding: 21px 17px 15px 24px;
+        .head-title{
+          color:#344054;
+          font-family:$he_heebo;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 24px;
+          margin: 0 0 9px;
+        }
+        .item-wrap{
+          .tooltip-item{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding:22px 0 25px;
+            border-top: 1px dashed #D8D8D8;
+            gap: 20px;
+            .info-sec{
+              padding-left: 14px;
+              border-left:4px solid #A3B0FA;
+              .title{
+                color: #667085;
+                font-family: $he_heebo;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1;
+                margin: 0 0 5px;
+              }
+              .amount{
+                color:#344054;
+                font-family: $he_heebo;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 700;
+                line-height:1;
+                .negative-value{
+                  color:#D92D20;
+                }
+              }
+              .neg-text{
+                color:#D92D20;
+                font-family: $he_heebo;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1;
+              }
+              &.item-month{
+                border-color:#E6EAFD;
+              }
+              &.item-hedge{
+                border-color: #A3B0FA;
+              }
+              &.item-fund{
+                border-color:#003EFF;
+                .amount{
+                  color:#003EFF
+                }
+              }
+            }
+
+
+            .hedge-button {
+              border-radius: 5px;
+              background-color:#003EFF;
+              color:$white;
+              font-family:$he_heebo;
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 18px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 67px;
+              height: 32px;
+              
+              &:hover{
+                border: 1px solid #E4E7EC;
+                background: $white;
+                color:#475467;
+              }
+            }
+
+            .edit-button{
+              border-radius: 5px;
+              border: 1px solid #E4E7EC;
+              background: $white;
+              color:#475467;
+              font-family:$he_heebo;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 18px;
+              display: flex;
+              width: 67px;
+              height: 32px;
+              justify-content: center;
+              align-items: center;
+              &:hover{
+                background-color:#003EFF;
+                color:$white;
+              }
+            }
+          }
+        }
+    }
+    @media screen and (max-width:1366px) {
+      max-width: max-content;
+      .inner-wrap{
+        padding: 15px;
+        .item-wrap{
+          .tooltip-item{
+            padding: 14px 0;
+            .info-sec{
+              padding-left: 10px;
+              .amount{
+                font-size: 14px;
+              }
+              .neg-text{
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+    @media screen and (max-width:1024px) {
+      .inner-wrap{
+        padding: 12px;
+        .head-title{
+          font-size: 14px;
+          line-height: 20px;
+        }
+        .item-wrap{
+          .tooltip-item{
+            padding:10px 0;
+            .info-sec{
+              padding-left:5px;
+              border-left-width: 2px;
+              .amount{
+                font-size: 14px;
+              }
+            }
+            .edit-button{
+              width:45px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
+    @media screen and (max-width:767px) {
+      .inner-wrap{
+        padding: 10px;
+        .item-wrap{
+          .tooltip-item{
+            padding:6px 0;
+            .info-sec{
+              padding-left:5px;
+              border-left-width: 2px;
+              .title{
+                font-size: 12px;
+              }
+              .amount{
+                font-size: 12px;
+              }
+              .neg-text{
+                font-size: 10px;
+              }
+            }
+            .edit-button{
+              width:30px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+}

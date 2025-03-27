@@ -1,0 +1,137 @@
+@import "../../../../assets/scss/variable";
+
+.risk-dashboard {
+  margin: 0;
+
+  @media screen and (max-width:1440px) {
+    padding: 0 0 0 10px;
+  }
+
+  @media screen and (max-width:1024px) {
+    padding: 0;
+  }
+
+  .dashboard-sections {
+    display: flex;
+    align-items: flex-start;
+
+    .left-sec {
+      width: 70%;
+      display: inline-block;
+      max-width: 1031px;
+
+      @media screen and (max-width:1366px) {
+        max-width: 780px;
+      }
+
+      @media screen and (max-width:1024px) {
+        width: 100%;
+      }
+
+      .left-two-part {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+
+        .left-haft-part {
+          width: 50%;
+
+          &:first-child {
+            max-width: 506px;
+          }
+        }
+
+        @media screen and (max-width:640px) {
+          flex-direction: column;
+
+          .left-haft-part {
+            width: 100%;
+
+            &:first-child {
+              max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .right-sec {
+      width: 100%;
+      display: inline-block;
+      max-width: 552px;
+      padding: 0 0 0 10px;
+      vertical-align: bottom;
+
+      @media screen and (max-width:1280px) {
+        width: 30%;
+      }
+    }
+
+    @media screen and (max-width:1024px) {
+      flex-direction: column;
+
+      .right-sec {
+        padding: 12px 0 0;
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .risk-step3-tooltip--rm {
+    margin-left: -15px !important;
+    --bs-tooltip-opacity: 1;
+    --bs-tooltip-max-width: 307px;
+
+    .tooltip-inner {
+      background-color: #1D4ED8;
+      color: $white;
+      padding: 19px 25px 19px 29px;
+      box-shadow: 0px 14px 34px 0px rgba(0, 0, 0, 0.15);
+      font-size: 14px;
+      text-align: left;
+      font-family: $he_heebo;
+      font-weight: 400;
+      line-height: 20px;
+      border-radius: 10px;
+      transform: translateY(-10px);
+      min-width: 307px;
+    }
+
+    .tooltip-arrow {
+      bottom: calc(1* var(--bs-tooltip-arrow-height));
+
+      &::before {
+        border-top-width: 14px;
+        border-left-width: 7px;
+        border-right-width: 7px;
+        border-top-color: #1D4ED8;
+        left: 15px;
+        right: auto;
+      }
+    }
+
+    &.bs-tooltip-top-end {
+      margin-right: -15px !important;
+
+      .tooltip-arrow {
+        &::before {
+          right: 15px;
+          left: auto;
+        }
+      }
+    }
+
+    @media screen and (max-width:767px) {
+      --bs-tooltip-max-width: 250px;
+
+      .tooltip-inner {
+        padding: 10px 15px;
+        min-width: 250px;
+      }
+    }
+  }
+}

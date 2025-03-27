@@ -1,0 +1,33 @@
+<div class="card" [ngClass]="{'full-width': fullWidth}" [ngStyle]="{'background-color': hover ? hoverColor : backgroundColor}" (mouseover)="hover = true"
+(mouseleave)="hover = false">
+<div class="counter-badge" *ngIf="counter >= 0">
+    {{ counter }}
+  </div>
+    <div class="card-header">
+      <img [src]="imageSrc" alt="Logo" class="card-logo" />
+      <div class="card-title">
+        <h3 [ngStyle]="{'color': titleColor}">{{ title }}</h3>
+        <p [ngStyle]="{'color': subtitleColor}">By {{ subtitle }}</p>
+      </div>
+    </div>
+    <p class="card-description" [ngStyle]="{'color': descColor}">{{ description }}</p>
+    <div class="tabs">
+        <button [class.active]="activeTab === 'description'" (click)="selectTab('description')">Description</button>
+        <button [class.active]="activeTab === 'materials'" (click)="selectTab('materials')">Materials</button>
+      </div>
+      <div class="tab-content">
+        <div *ngIf="activeTab === 'description'">
+          <p>{{ description }}</p>
+        </div>
+        <div *ngIf="activeTab === 'materials'">
+          <p>Materials info will go here.</p>
+        </div>
+      </div>
+    <div class="card-footer">
+        <button (click)="toggleLike(); $event.stopPropagation()">{{ isLiked ? '❤️ Liked' : '♡ Like' }}</button>
+        <button (click)="toggleSave(); $event.stopPropagation()">{{ isSaved ? '📌 Saved' : '📍 Save' }}</button>
+        <button (click)="pay(); $event.stopPropagation()">💳 Pay</button>
+      </div>
+  </div>
+  
+  

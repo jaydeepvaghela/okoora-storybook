@@ -1,0 +1,8 @@
+<div class="layout">
+    <app-sidebar></app-sidebar>
+    <app-header (openSidebar)="openSidebar()"></app-header>
+    <div class="content-wrapper risk-manager">
+        <router-outlet />
+        <app-dashboard></app-dashboard>
+    </div>
+</div>

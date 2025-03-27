@@ -1,0 +1,19 @@
+<div class="monthly-analysis-charts">
+    <div class="chart-head">
+        <h4 class="info-title"><img src="images/exposure-virtual.svg" alt="exposure" />Monthly
+            analysis</h4>
+            <div class="btn-right">
+                <button class="edit-btn" id="editexposureBtn__rmdb">Edit</button>
+                <button class="hedge-btn" id="quickHedge__rmdb">Quick Hedge</button>
+            </div>
+    </div>
+    <div class="tab-wrap">
+        <mat-tab-group mat-stretch-tabs="false" class="chart-tabs-group" mat-align-tabs="center" (selectedTabChange)="onTabChange($event)">
+            <mat-tab label="Monthly exposure" class="chart-tab">
+                <app-monthly-exposure-chart *ngIf="loadMonthChart"></app-monthly-exposure-chart>
+            </mat-tab>
+            <mat-tab label="Exposure & rates" class="chart-tab">
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

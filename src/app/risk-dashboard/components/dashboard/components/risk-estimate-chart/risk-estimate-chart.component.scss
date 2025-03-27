@@ -1,0 +1,693 @@
+@import '../../../../../../assets/scss/variable';
+
+
+::ng-deep {
+    .risk-estimate-wrapper {
+        background-color: #ECEEFE;
+        border-radius: 10px;
+        margin: 0 0 10px;
+
+        .estimate-head {
+            padding: 24px 0 15px;
+            text-align: center;
+
+            .head-title {
+                color: #344054;
+                font-family: $he_heebo;
+                font-size: 18px;
+
+                font-weight: 700;
+                line-height: 28px;
+                margin: 0;
+            }
+
+            .head-sub {
+                color: #344054;
+                font-family: $he_heebo;
+                font-size: 14px;
+
+                font-weight: 400;
+                line-height: 20px;
+                margin: 0;
+
+                span {
+                    color: #D92D20;
+                     .risk-down {
+                      transform: rotate(90deg);
+                    }
+                }
+            }
+
+        }
+
+        .risk-esti-chart-wrapper {
+            text-align: center;
+            position: relative;
+
+            &:before {
+                width: 124px;
+                height: 71px;
+                content: "";
+                background-image: url(../../../../../../assets/images/circle-curve-shape.svg);
+
+                background-repeat: no-repeat;
+                position: absolute;
+                bottom: -10px;
+                left: 5px;
+            }
+
+            &:after {
+                width: 124px;
+                height: 71px;
+                content: "";
+                background-image: url(../../../../../../assets/images/circle-curve-shape.svg);
+                background-repeat: no-repeat;
+                position: absolute;
+                bottom: -10px;
+                right: 5px;
+                transform: rotateY(-180deg);
+            }
+
+            .chart-inner {
+                max-width: 323px;
+                margin: auto;
+                position: relative;
+
+                &::before {
+                    width: 323px;
+                    height: 323px;
+                    background-color: $white;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    content: "";
+                }
+
+                img {
+                    width: auto;
+                    height: auto;
+                    position: relative;
+                    z-index: 2;
+                    margin:32px auto 0;
+                    padding: 10px 0;
+                }
+                .chart-circle,.benchmark-circle {
+                    position: absolute;
+                    top: 82px;
+                    width: 162px;
+                    height: 162px;
+                    margin: auto;
+                    left: 0;
+                    right: 0;
+                    border-radius: 50%;
+                    transform: rotate(130deg);
+                    z-index: 2;
+                    .benchmark-pointer{
+                        position: absolute;
+                        top:19px;
+                        z-index: 999;
+                        transform: rotate(-65deg);
+                        left: -24px;
+                        right: auto;
+                        width: 17px;
+                        height: 25px;
+                    }
+                    .circle-pointer{
+                        position: absolute;
+                        top:12px;
+                        left:-6px;
+                        width: auto;
+                        height: auto;
+                        content: "";
+                        transform: rotate(-130deg);
+                    }
+                }
+                .chart-info {
+                    position: absolute;
+                    z-index: 2;
+                    margin: auto;
+                    left: 0;
+                    right: 0;
+                    top: 50%;
+                    padding:23px 5px;
+                    max-width:162px;
+                    .desc{
+                        text-align: center;
+                        .risk-level-text{
+                            color:#344054;
+                            font-family:$he_heebo;
+                            font-size: 13px;
+                            font-weight: 500;
+                            line-height: 20.6px;
+                            margin: 0 0 5px;
+                        }
+                        .risk-label{
+                            color:#D92D20;
+                            font-family:$he_heebo;
+                            font-size: 30px;
+                            font-weight: 800;
+                            line-height: 20.6px;
+                            margin: 0 0 4px;
+                        }
+                        .info{
+                            color:#98A2B3;
+                            font-family:$he_heebo;
+                            font-size: 11px;
+                            font-weight: 500;
+                            line-height: 20.6px;
+                            span{
+                                color:#D92D20;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .risk-estimate-info-wrapper {
+            background-color: $white;
+            position: relative;
+            border-radius: 10px;
+            padding: 37px;
+
+            .lose-info {
+                .info-title {
+                    color: #344054;
+                    font-family: $he_heebo;
+                    font-size: 18px;
+
+                    font-weight: 700;
+                    line-height: 28px;
+                    margin: 0;
+
+                    img {
+                        margin: 0 8px 0 0;
+                        width: 12px;
+                    }
+                }
+
+                .lose-desc {
+                    padding: 0 0 0 20px;
+
+                    p {
+                        color: #344054;
+                        font-family: $he_heebo;
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 24px;
+                        margin: 0;
+
+                        span {
+                            color: #003EFF;
+                            text-decoration: underline;
+                            font-weight: 700;
+                            cursor: pointer;
+                        }
+                        &.annual-lose {
+                            span {
+                                color: #F32314;
+                                text-decoration: none;
+                            }
+                        }
+                        .year-selector {
+                            width: auto;
+                            .mat-mdc-select-placeholder,
+                            .mat-mdc-select-value {
+                                color: #003EFF;
+                                font-family: $he_heebo;
+                                font-size: 16px;
+                                font-weight: 700;
+                                line-height: 24px;
+                                text-decoration: underline;
+                            }
+
+                            .mat-mdc-select-arrow-wrapper {
+                                height: auto;
+                                margin: 0 0 0 2px;
+
+                                .mat-mdc-select-arrow {
+                                    width:11px;
+                                    height:7px;
+                                    background: url(../../../../../../assets/images/risk-arrow-down-blue.svg) center no-repeat;
+                                    background-size: contain;
+
+                                    svg {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                        &.disabled{
+                            pointer-events: none;
+                            span{
+                                color: #98A2B3;
+                            }
+                            .year-selector {
+                                .mat-mdc-select-placeholder,
+                                .mat-mdc-select-value {
+                                    color: #98A2B3;
+                                }
+                                .mat-mdc-select-arrow-wrapper {
+                                    .mat-mdc-select-arrow {
+                                        filter: grayscale(1);
+                                        opacity: 0.5;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .lose-wrapper {
+                padding: 50px 15px 15px 20px;
+                display: flex;
+                width: 100%;
+                .min-expected-lose {
+                    border-right: 1px dashed #98A2B3;
+                    width: 100%;
+                    max-width: 205px;
+                    .item-title{
+                        color:#344054;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 700;
+                        line-height: 20px;
+                        margin: 0 15px 16px 0;
+                        img{
+                            margin:0;
+                            display: inline-block;
+                            padding:5px;
+                            cursor: pointer;
+                        }
+                    }
+                    .lose-item{
+                        margin: 0 0 31px;
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap-reverse;
+                        .exceed-title{
+                            color:#475467;
+                            font-family:$he_heebo;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 20px;
+                            margin: 0 0 2px;
+                        }
+                        .lose-bar{
+                            width: 100%;
+                            padding:4px 15px;
+                            border-top-left-radius:40px;
+                            border-bottom-left-radius:40px;
+                            background-color: #F97066;
+                            color:$white;
+                            font-family: $he_heebo;
+                            font-size: 14px;
+                            font-weight: 700;
+                            line-height: 20px;
+                            min-width:max-content;
+                            &.initial{
+                                background-color: #F97066;
+                            }
+                            &.benchmark{
+                                // width: auto;
+                                // max-width:166px;
+                                // border-radius: 40px;
+                                background-color: #344054;
+                            }
+                        }
+                        &:last-child{
+                            margin: 0;
+                        }
+                    }
+                }
+                .average-expected-lose {
+                    width: 100%;
+                    .item-title{
+                        color:#344054;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 700;
+                        line-height: 20px;
+                        margin: 0 0 39px 16px;
+                        img{
+                            margin:0;
+                            display: inline-block;
+                            padding:5px;
+                            cursor: pointer;
+                        }
+                    }
+                    .lose-item{
+                        margin: 0 0 52px;
+                        .lose-bar{
+                            width: 100%;
+                            padding:4px 15px;
+                            border-top-right-radius:40px;
+                            border-bottom-right-radius:40px;
+                            background-color: #F8D1CE;
+                            color:#D92D20;
+                            font-family: $he_heebo;
+                            font-size: 14px;
+                            font-weight: 700;
+                            line-height: 20px;
+                            min-width:max-content;
+                            &.initial{
+                                background-color: #F8D1CE;
+                            }
+                            &.benchmark{
+                                // width: auto;
+                                // max-width:195px;
+                                background-color: rgba(52, 64, 84, 0.20);
+                                color:#344054;
+                            }
+                        }
+                        &:last-child{
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1800px) {
+            .risk-estimate-info-wrapper{
+                padding: 37px 15px;
+                .lose-info{
+                    .info-title{
+                        font-size: 16px;
+                    }
+                    .lose-desc{
+                        p{
+                            font-size: 14px;
+                            .year-selector {
+                                width: auto;
+                                .mat-mdc-select-placeholder,
+                                .mat-mdc-select-value {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .lose-wrapper {
+                    padding: 50px 15px 15px;
+                }
+            }
+        }
+        @media screen and (max-width:1700px) {
+            .risk-estimate-info-wrapper{
+                .lose-wrapper {
+                    padding:50px 15px 25px;
+                }
+            }
+        }
+
+        @media screen and (max-width:1440px) {
+            .risk-esti-chart-wrapper {
+                transform: scale(0.85);
+                margin: -10px -40px;
+            }
+            .risk-estimate-info-wrapper{
+                padding: 37px 15px;
+                .lose-info{
+                    .info-title{
+                        font-size: 16px;
+                    }
+                    .lose-desc{
+                        p{
+                            font-size: 14px;
+                            .year-selector {
+                                width: auto;
+                                .mat-mdc-select-placeholder,
+                                .mat-mdc-select-value {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .lose-wrapper {
+                    padding: 50px 15px 45px;
+                    .min-expected-lose{
+                        .item-title{
+                            font-size: 12px;
+                        }
+                        .lose-item{
+                            .exceed-title{
+                                font-size: 12px;
+                            }
+                            .lose-bar{
+                                font-size: 12px;
+                                // &.benchmark{
+                                //     max-width: 80%;
+                                // }
+                            }
+                        }
+                    }
+                    .average-expected-lose{
+                        .item-title{
+                            font-size: 12px;
+                        }
+                        .lose-item{
+                            .exceed-title{
+                                font-size: 12px;
+                            }
+                            .lose-bar{
+                                font-size: 12px;
+                                // &.benchmark{
+                                //     max-width: 90%;
+                                // }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1366px) {
+            .risk-esti-chart-wrapper {
+                transform: scale(0.8);
+                margin: -18px -35px;
+            }
+            .risk-estimate-info-wrapper{
+                .lose-wrapper {
+                    padding: 55px 0;
+                    .min-expected-lose{
+                        .item-title{
+                            margin: 0 5px 16px 0;
+                            white-space: nowrap;
+                        }
+                    }
+                    .average-expected-lose{
+                        .item-title{
+                            margin: 0 0 39px 5px;
+                            white-space: nowrap;
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1280px) {
+            .risk-esti-chart-wrapper {
+                transform: scale(0.65);
+                margin: -30px -80px;
+            }
+            .risk-estimate-info-wrapper{
+                min-height: 520px;
+                height: 100%;
+                .lose-wrapper {
+                    padding:35px 0;
+                    .min-expected-lose{
+                        width: 50%;
+                        .item-title{
+                            margin: 0 5px 16px 0;
+                            white-space: normal;
+                        }
+                    }
+                    .average-expected-lose{
+                        width: 50%;
+                        .item-title{
+                            margin: 0 0 39px 5px;
+                            white-space: normal;
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1199px) {
+            .risk-esti-chart-wrapper {
+                transform: scale(0.6);
+                margin: -35px -85px;
+            }
+            .risk-estimate-info-wrapper{
+                padding: 37px 5px;
+                min-height: auto;
+                .lose-wrapper {
+                    padding: 35px 0 0;
+                    .min-expected-lose{
+                        .lose-item{
+                            .lose-bar{
+                                padding: 6px 10px;
+                                font-size:10px;
+                            }
+                        }
+                    }
+                    .average-expected-lose{
+                        .lose-item{
+                            .lose-bar{
+                                padding: 6px 10px;
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1024px) {
+            .risk-esti-chart-wrapper {
+                transform: scale(1);
+                margin:0 auto;
+                max-width: 542px;
+            }
+            .risk-estimate-info-wrapper{
+                min-height: fit-content;
+                padding:20px 15px;
+                .lose-wrapper {
+                    padding:20px 15px 0;
+                    .min-expected-lose{
+                        max-width: 45%;
+                        .item-title{
+                            margin: 0 5px 10px 0;
+                        }
+                        .lose-item{
+                            margin:0 0 20px;
+                            .lose-bar{
+                                font-size:12px;
+                            }
+                        }
+                    }
+                    .average-expected-lose{
+                        .item-title{
+                            margin: 0 0 32px 5px;
+                        }
+                        .lose-item{
+                            margin:0 0 42px;
+                            .lose-bar{
+                                font-size:12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:420px) {
+            .risk-esti-chart-wrapper {
+                transform: scale(0.7);
+                margin:-25px -70px;
+                max-width: 542px;
+            }
+            .risk-estimate-info-wrapper{
+                .lose-wrapper {
+                    .min-expected-lose{
+                        max-width: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    .mdc-menu-surface.mat-mdc-select-panel.risk-estimate-chart-ddl {
+        border-radius: 5px;
+        padding: 8px !important;
+        box-shadow: 0px 5px 64px -12px rgba(16, 24, 40, 0.20);
+        background-color: $white;
+        min-width: 142px;
+        top:0;
+        right: 100%;
+
+        .mat-mdc-option {
+            min-height:40px;
+            padding: 10px 10px 10px 14px;
+            color: #1D2939;
+            font-family: $he_heebo;
+            font-size: 14px;
+
+            font-weight: 400;
+            line-height: 20px;
+            border-radius: 0;
+            margin:2px 0;
+
+            .mat-pseudo-checkbox {
+                display: none;
+            }
+            .mdc-list-item__primary-text{
+                color: #1D2939;
+            }
+            &.mdc-list-item--selected,
+            &.mat-mdc-option-active {
+                background-color: #E5F4FF !important;
+                .mdc-list-item__primary-text{
+                    color: #3538CD;
+                    font-weight: 700;
+                }
+            }
+
+            &:hover {
+                background-color: #EFF8FF;
+                .mdc-list-item__primary-text{
+                    color: #3538CD;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        @media screen and (max-width:420px) {
+            min-width: max-content;
+        }
+    }
+    .risk-dash-tooltip--rm {
+        --bs-tooltip-opacity: 1;
+        --bs-tooltip-max-width: 332px;
+        .tooltip-inner {
+            color: $white;
+            padding:12px;
+            font-size: 14px;
+            font-family: $he_heebo;
+            font-weight: 700;
+            line-height: 20px;
+            border-radius:8px;
+        }
+        @media screen and (max-width:767px) {
+            --bs-tooltip-max-width: 250px;
+            .tooltip-inner{
+                padding: 10px;
+            }
+        }
+    }
+    .risk-dash-tooltip-benchmark{
+        --bs-tooltip-zindex:1;
+        .tooltip-inner {
+            color: $white;
+            padding:12px;
+            font-size: 14px;
+            font-family: $he_heebo;
+            font-weight: 700;
+            line-height: 20px;
+            border-radius:8px;
+        }
+        &.bs-tooltip-start{
+            margin:0 8px 0 0 !important;
+        }
+        &.bs-tooltip-end{
+            margin:0 0 0 8px !important;
+        }
+        &.bs-tooltip-top{
+            margin:0 0 8px 0 !important;
+        }
+        @media screen and (max-width:1440px) {
+            .tooltip-inner{
+                padding:5px 8px;
+                font-size: 10px;
+            }
+        }
+    }
+}

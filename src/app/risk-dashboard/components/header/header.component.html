@@ -1,0 +1,69 @@
+<header>
+    <div class="topheder-business-users">
+        <div class="header-inner">
+            <button class="navbar-toggler" type="button" (click)="openMenu()" id="db-header-8">
+                <img src="images/side-menu.svg">
+            </button>
+        </div>
+        <nav class="navbar main-nav">
+            <div class="nav-inner">
+                <div class="nav-left">
+                    <div class="wallet-list-business">
+                        <div class="flag">
+                            <img src="images/ils-flag.svg" alt="flag">
+                        </div>
+                        <div class="currency-wrapper">
+                            <div class="wallet-ammount">
+                                3,200,000<span class="sub-part">.00</span>
+                            </div>
+                            <button class="wallet-list-button" mat-icon-button></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-option-right">
+                    <div class="lang-wrapper">
+                        <button type="button" class="drop-down-btn lang-btn" [matMenuTriggerFor]="langMenu"
+                            id="dropdownForm2">
+                            <img height="20px" width="20px" src="images/gloabe-icn.svg" alt="language icon">
+                        </button>
+                        <mat-menu #langMenu="matMenu"
+                            class="header-menu-panel side-nav-wrapper language-wrapper animated fadeIn py-2 px-2">
+                            <ul>
+                                <li>
+                                    <button class="drop-down-btn" id="lang-list-1">English</button>
+                                </li>
+                                <li>
+                                    <button class="drop-down-btn" id="lang-list-2">עברית</button>
+                                </li>
+                            </ul>
+                        </mat-menu>
+                    </div>
+                    <button class="header-btn download-app">
+                        Download App
+                    </button>
+                    <a class="header-btn market-place">
+                        <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path id="Vector"
+                                d="M21.9483 6.58348C21.9248 6.53253 21.8963 6.48416 21.8632 6.43913C21.8382 6.31428 21.8046 6.19137 21.7628 6.0713C21.7577 6.05739 21.7526 6.04348 21.7458 6.02956L19.4031 0.521739C19.3369 0.366601 19.2277 0.234598 19.0891 0.141919C18.9505 0.049241 18.7884 -8.19612e-05 18.6228 1.02236e-07H3.30575C3.14011 -8.19612e-05 2.97804 0.049241 2.83943 0.141919C2.70082 0.234598 2.59169 0.366601 2.52543 0.521739L0.168309 6.07043C-0.056103 6.65243 -0.056103 7.29975 0.168309 7.88174C0.385115 8.3882 0.699203 8.84504 1.09196 9.22518C1.48472 9.60532 1.94815 9.90103 2.4548 10.0948V19.1304C2.4548 19.3611 2.54446 19.5822 2.70404 19.7453C2.86362 19.9084 3.08007 20 3.30575 20H18.6228C18.8485 20 19.0649 19.9084 19.2245 19.7453C19.3841 19.5822 19.4737 19.3611 19.4737 19.1304V10.0948C19.9803 9.90127 20.4436 9.60585 20.8364 9.22601C21.2291 8.84617 21.5433 8.38965 21.7602 7.88348C21.8304 7.70055 21.877 7.5091 21.8989 7.31391C21.9557 7.20211 21.9894 7.07959 21.9979 6.95393C22.0064 6.82828 21.9895 6.70219 21.9483 6.58348ZM8.41143 18.2609V13.0435H10.1133V18.2609H8.41143ZM11.8152 18.2609V13.0435H13.5171V18.2609H11.8152ZM17.7718 18.2609H15.219V12.1739C15.219 11.9433 15.1294 11.7221 14.9698 11.559C14.8102 11.396 14.5937 11.3043 14.3681 11.3043H7.56048C7.3348 11.3043 7.11836 11.396 6.95877 11.559C6.79919 11.7221 6.70954 11.9433 6.70954 12.1739V18.2609H4.1567V10.4348C4.80138 10.443 5.44005 10.3072 6.028 10.0369C6.61595 9.7665 7.13898 9.36811 7.56048 8.86957C7.9868 9.36234 8.51071 9.75693 9.09752 10.0272C9.68432 10.2974 10.3206 10.4372 10.9643 10.4372C11.6079 10.4372 12.2442 10.2974 12.831 10.0272C13.4178 9.75693 13.9417 9.36234 14.3681 8.86957C14.7896 9.36811 15.3126 9.7665 15.9005 10.0369C16.4885 10.3072 17.1272 10.443 17.7718 10.4348V18.2609ZM20.186 7.21739C19.9683 7.67738 19.6239 8.06235 19.195 8.32498C18.7661 8.5876 18.2714 8.71644 17.7718 8.69565C17.1525 8.74712 16.5381 8.54822 16.0608 8.14172C15.5834 7.73521 15.2812 7.15354 15.219 6.52174C15.219 6.29112 15.1294 6.06994 14.9698 5.90686C14.8102 5.74379 14.5937 5.65217 14.3681 5.65217C14.1424 5.65217 13.9259 5.74379 13.7663 5.90686C13.6068 6.06994 13.5171 6.29112 13.5171 6.52174C13.455 7.15354 13.1527 7.73521 12.6754 8.14172C12.198 8.54822 11.5836 8.74712 10.9643 8.69565C10.3449 8.74712 9.73054 8.54822 9.25318 8.14172C8.77581 7.73521 8.47358 7.15354 8.41143 6.52174C8.41143 6.29112 8.32178 6.06994 8.1622 5.90686C8.00261 5.74379 7.78617 5.65217 7.56048 5.65217C7.3348 5.65217 7.11836 5.74379 6.95877 5.90686C6.79919 6.06994 6.70954 6.29112 6.70954 6.52174C6.64739 7.15354 6.34516 7.73521 5.86779 8.14172C5.39043 8.54822 4.77604 8.74712 4.1567 8.69565C3.65699 8.7165 3.1622 8.5877 2.73316 8.32507C2.30412 8.06245 1.95952 7.67745 1.74171 7.21739C1.68468 7.05701 1.68468 6.88125 1.74171 6.72087L3.86397 1.73913H18.0646L20.1724 6.69565C20.2382 6.86222 20.2431 7.04747 20.186 7.21739Z"
+                                fill="black" />
+                        </svg>
+                        Marketplace
+                    </a>
+                    <button class="add-money" mat-button id="db-header-10">+ Add Money</button>
+                    <div class="user-profile">
+                        <button class="profile-btn" [matMenuTriggerFor]="accountsMenu" id="db-header-11">T</button>
+                        <button class="user-option" mat-icon-button [matMenuTriggerFor]="profileMenu" id="db-header-12">
+                            <img src="images/menu-down-arrow.svg">
+                        </button>
+                        <mat-menu #profileMenu="matMenu" class="header-menu-panel">
+                            <button mat-menu-item class="custom-menu-item" id="db-header-13">Logout</button>
+                        </mat-menu>
+                        <mat-menu #accountsMenu="matMenu" class="header-menu-panel">
+                            <button mat-menu-item class="custom-menu-item" id="dbheader-company">Tamir</button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,35 @@
+@import "../assets/scss/variable";
+.layout {
+    padding: 117px 0 0 240px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    .content-wrapper {
+        position: relative;
+        padding: 42px 4.31% 42px 2.8%;
+        background-color: #f5f7fa;
+        width: 100%;
+        min-height: calc(100vh - 74px);
+        z-index: 1;
+        &.risk-manager{
+            background-color: #eef3fc;
+            padding-right: 2.8%;
+        }
+        @media screen and (max-width:1440px) {
+            padding: 28px 2.8% 80px;
+            min-height: calc(100vh - 58px);
+        }
+    }
+    @media screen and (max-width:1440px) {
+        padding:93px 0 0 124px;
+    }
+    @media screen and (max-width:1024px) {
+        padding:87px 0 0 200px;
+    }
+    @media screen and (max-width:930px) {
+        padding:118px 0 0 200px;
+    }
+    @media screen and (max-width:767px) {
+        padding:100px 0 0 0;
+    }
+}
