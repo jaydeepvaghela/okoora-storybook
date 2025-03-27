@@ -18,7 +18,7 @@
         <div class="risk-esti-chart-wrapper">
             <div class="chart-inner">
                 <img src="images/risk-estimate-circle.svg" alt="Risk Estimate Circle">
-                <div class="benchmark-circle" [style.transform]="'rotate(' + 65 + 'deg)'">
+                <div class="benchmark-circle" [style.transform]="'rotate(' + benchmarkRotate + 'deg)'">
                     <div class="benchmark-pointer"
                         [ngbTooltip]="graphtool"
                         [autoClose]="false"
@@ -33,11 +33,11 @@
                       </svg>
                     </div>
                   </div>
-                <div class="chart-circle" style="transform: rotate(128deh)">
+                <div class="chart-circle" [style.transform]="'rotate(' + riskangle + 'deg)'">
                     <svg class="circle-pointer" width="41" height="74" viewBox="0 0 41 74" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M37.9327 28.5146L31.4657 37.682L26.7599 27.4977L37.9327 28.5146Z" fill="#FF6B6B" />
-                        <path d="M36.7194 71.1411C36.7194 42.6422 23.2795 17.4227 2.66016 2.0228" stroke="#FF6B6B"
+                        <path d="M37.9327 28.5146L31.4657 37.682L26.7599 27.4977L37.9327 28.5146Z" [style.fill]="riskColor" />
+                        <path d="M36.7194 71.1411C36.7194 42.6422 23.2795 17.4227 2.66016 2.0228" [style.stroke]="riskColor"
                             stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" />
                     </svg>
                 </div>
@@ -45,8 +45,8 @@
                 <div class="chart-info">
                     <div class="desc">
                         <h4 class="risk-level-text">Total Risk Level</h4>
-                        <h3 class="risk-label" style="color: #d92d20;">HIGH</h3>
-                        <p class="info">and <span style="color: #d92d20;">above</span> the benchmark</p>
+                        <h3 class="risk-label" [style.color]="riskColor">{{totalRiskLevel}}</h3>
+                        <p class="info">and <span [style.color]="riskColor">{{benchmark}}</span> the benchmark</p>
                     </div>
                 </div>
             </div>
@@ -63,11 +63,11 @@
                             <mat-option value="Y20">20 years</mat-option>
                         </mat-select>,
                     </p>
-                    <p class="annual-lose">your annual loss will exceed <span>₪4,476,001.2</span></p>
+                    <p class="annual-lose">your annual loss will exceed <span>{{annualLoss}}</span></p>
                 </div>
             </div>
 
-            <!-- <div class="lose-wrapper">
+            <div class="lose-wrapper">
                 <div class="min-expected-lose">
                     <h4 class="item-title">Minimum expected lost <img src="images/annual-title-help-icon.svg"
                             alt="Help" [ngbTooltip]="minlose" placement="top" tooltipClass="risk-dash-tooltip--rm"></h4>
@@ -76,21 +76,21 @@
                         <h5 class="exceed-title">Initial loss level</h5>
                         <div class="initial lose-bar" style="width: 100%" 
                         ngbTooltip="$4,476" placement="top"
-                        tooltipClass="risk-dash-tooltip--rm">₪4,476,001.2</div>
+                        tooltipClass="risk-dash-tooltip--rm">{{initialloss}}</div>
                     </div>
 
                     <div class="lose-item">
                         <h5 class="exceed-title">Benchmark loss level</h5>
                         <div class="benchmark lose-bar" style="width: 80%"
-                        ngbTooltip="$4,476" placement="top"
-                        tooltipClass="risk-dash-tooltip--rm">₪2,685,001.2</div>
+                        ngbTooltip="$3,476" placement="top"
+                        tooltipClass="risk-dash-tooltip--rm">{{benchmarkloss}}</div>
                     </div>
 
                     <div class="lose-item">
                         <h5 class="exceed-title">My loss level</h5>
                         <div class="my lose-bar" style="width: 100%"
                         ngbTooltip="$4,476" placement="top"
-                        tooltipClass="risk-dash-tooltip--rm">₪4,476,001.2</div>
+                        tooltipClass="risk-dash-tooltip--rm">{{myloss}}</div>
                     </div>
                 </div>
                 
@@ -101,22 +101,22 @@
                     <div class="lose-item">
                         <div class="initial lose-bar" style="width: 100%"
                         ngbTooltip="$4,476" placement="top"
-                        tooltipClass="risk-dash-tooltip--rm">₪5,220,001.2</div>
+                        tooltipClass="risk-dash-tooltip--rm">{{avginitialloss}}</div>
                     </div>
 
                     <div class="lose-item">
                         <div class="benchmark lose-bar" style="width: 80%"
                         ngbTooltip="$4,476" placement="top"
-                        tooltipClass="risk-dash-tooltip--rm">₪3,170,001.2</div>
+                        tooltipClass="risk-dash-tooltip--rm">{{avgbenchmarkloss}}</div>
                     </div>
 
                     <div class="lose-item">
                         <div class="my lose-bar" style="width: 95%"
                         ngbTooltip="$4,476" placement="top"
-                        tooltipClass="risk-dash-tooltip--rm">₪5,220,001.2</div>
+                        tooltipClass="risk-dash-tooltip--rm">{{avgmyloss}}</div>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>

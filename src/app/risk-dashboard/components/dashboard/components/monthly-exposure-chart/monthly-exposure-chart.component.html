@@ -9,8 +9,8 @@
     <!-- ApexCharts Component -->
     <div class="chart-wrapper">
       <apx-chart
-       *ngIf="chartSeries?.length"
-        [series]="chartSeries"
+       *ngIf="paginatedSeries?.length"
+        [series]="paginatedSeries"
         [chart]="chartOptions"
         [xaxis]="xAxisOptions"
         [yaxis]="yAxisOptions"
@@ -21,6 +21,9 @@
         [plotOptions]="plotOptions"
         [fill]="fillOptions">
       </apx-chart>
+      <div class="pagination-wrap" *ngIf="chartSeries[1].data.length > 12">
+        <mat-paginator id="paginationMonthlyExposureChart" [pageSize]="12" [length]="chartSeries[1].data.length" (page)="onPageChange($event)" aria-label="Select page of users"></mat-paginator>
+      </div>
     </div>
   </div>
   

@@ -560,6 +560,15 @@
             .risk-estimate-info-wrapper{
                 min-height: fit-content;
                 padding:20px 15px;
+                .lose-info{
+                    .lose-desc{
+                        p{
+                            .desc{
+                                display:inline-block;
+                            }
+                        }
+                    }
+                }
                 .lose-wrapper {
                     padding:20px 15px 0;
                     .min-expected-lose{
@@ -598,6 +607,19 @@
                 .lose-wrapper {
                     .min-expected-lose{
                         max-width: 50%;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:380px) {
+            .risk-estimate-info-wrapper{
+                .lose-info{
+                    .lose-desc{
+                        p{
+                            .desc{
+                                display:block;
+                            }
+                        }
                     }
                 }
             }

@@ -1,86 +1,112 @@
 @import "../../../../assets/scss/variable";
 
-.risk-dashboard {
-  margin: 0;
+::ng-deep {
+  .risk-dashboard {
+    margin: 0;
 
-  @media screen and (max-width:1440px) {
-    padding: 0 0 0 10px;
-  }
+    @media screen and (max-width:1440px) {
+      padding: 0 0 0 10px;
+    }
 
-  @media screen and (max-width:1024px) {
-    padding: 0;
-  }
+    @media screen and (max-width:1024px) {
+      padding: 0;
+    }
 
-  .dashboard-sections {
-    display: flex;
-    align-items: flex-start;
+    .dashboard-sections {
+      display: flex;
+      align-items: flex-start;
 
-    .left-sec {
-      width: 70%;
-      display: inline-block;
-      max-width: 1031px;
+      .left-sec {
+        width: 70%;
+        display: inline-block;
+        max-width: 1031px;
 
-      @media screen and (max-width:1366px) {
-        max-width: 780px;
-      }
-
-      @media screen and (max-width:1024px) {
-        width: 100%;
-      }
-
-      .left-two-part {
-        width: 100%;
-        display: flex;
-        gap: 10px;
-        justify-content: space-between;
-
-        .left-haft-part {
-          width: 50%;
-
-          &:first-child {
-            max-width: 506px;
-          }
+        @media screen and (max-width:1366px) {
+          max-width: 780px;
         }
 
-        @media screen and (max-width:640px) {
-          flex-direction: column;
+        @media screen and (max-width:1024px) {
+          width: 100%;
+        }
+
+        .left-two-part {
+          width: 100%;
+          display: flex;
+          gap: 10px;
+          justify-content: space-between;
 
           .left-haft-part {
-            width: 100%;
+            width: 50%;
 
             &:first-child {
-              max-width: 100%;
+              max-width: 506px;
+            }
+          }
+
+          @media screen and (max-width:640px) {
+            flex-direction: column;
+
+            .left-haft-part {
+              width: 100%;
+
+              &:first-child {
+                max-width: 100%;
+              }
             }
           }
         }
       }
-    }
 
-    .right-sec {
-      width: 100%;
-      display: inline-block;
-      max-width: 552px;
-      padding: 0 0 0 10px;
-      vertical-align: bottom;
+      .right-sec {
+        width: 100%;
+        display: inline-block;
+        max-width: 552px;
+        padding: 0 0 0 10px;
+        vertical-align: bottom;
 
-      @media screen and (max-width:1280px) {
-        width: 30%;
+        @media screen and (max-width:1280px) {
+          width: 30%;
+        }
+      }
+
+      @media screen and (max-width:1024px) {
+        flex-direction: column;
+
+        .right-sec {
+          padding: 12px 0 0;
+          max-width: 100%;
+          width: 100%;
+        }
       }
     }
 
-    @media screen and (max-width:1024px) {
-      flex-direction: column;
+    &:has(.pagination-wrap) {
+      .risk-estimate-info-wrapper {
+        min-height: 493px;
+        height: 100%;
 
-      .right-sec {
-        padding: 12px 0 0;
-        max-width: 100%;
-        width: 100%;
+        @media screen and (max-width: 1700px) {
+          min-height: 505px;
+        }
+
+        @media screen and (max-width: 1440px) {
+          min-height: 524px;
+        }
+
+        @media screen and (max-width: 1366px) {
+          min-height: 535px;
+        }
+
+        @media screen and (max-width: 1199px) {
+          min-height: 509px;
+        }
+
+        @media screen and (max-width:1024px) {
+          min-height: auto;
+        }
       }
     }
   }
-}
-
-::ng-deep {
   .risk-step3-tooltip--rm {
     margin-left: -15px !important;
     --bs-tooltip-opacity: 1;
