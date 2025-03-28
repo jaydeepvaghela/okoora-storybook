@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, ViewChild, AfterViewInit, OnInit } from "@angular/core";
+import { Component, ViewChild, AfterViewInit, OnInit, Input } from "@angular/core";
 import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
 import {
   ApexNonAxisChartSeries,
@@ -31,22 +31,19 @@ export class MomentumIndicatorChartComponent implements OnInit, AfterViewInit {
   @ViewChild("chart") chart!: ChartComponent;
 
   public chartOptions!: ChartOptions;
-  chartValue: number = 75; // Static value
-  currencyPair: string = 'USD/EUR'; // Static value
-  riskdirection: number = 1; // Static value
-  momentumRankScore: number = 2; // Static value
-  momentumIndicatorRes = {
-    momentumRank: 'Rise Significantly' // Default value
-  };
+  chartValue: number = 0;
+  @Input() currencyPair: string = 'USD/EUR';
+  @Input() riskdirection: number = 1;
+  @Input() momentumRankScore: number = 2;
+  momentumRank: string = ''
 
   constructor() {
     this.getChartOptions();
   }
 
   getChartOptions() {
-    // this.momentumIndicatorRes.momentumRank = 'Rise Moderately';
     this.chartOptions = {
-      series: [75], // Static value
+      series: [100], // Static value
       chart: {
         height: 350,
         type: "radialBar",
@@ -89,10 +86,33 @@ export class MomentumIndicatorChartComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.updateSeries([this.chartValue]);
+    const momentumRankScoreMap: { [key: number]: number } = {
+      0: 100,
+      1: 75,
+      2: 35,
+      3: 20
+    };
+    this.momentumRank = this.getMomentumRank();
+    const updateChart = (momentumRankScore: any) => {
+      this.chartOptions.series = [0];
+      this.chartValue = momentumRankScoreMap[momentumRankScore] ?? 0;
+      this.updateSeries([this.chartValue]);
+    };
+    if (this.riskdirection === 1 || this.riskdirection === 2) {
+      switch (this.momentumRankScore) {
+        case 3:
+        case 2:
+        case 1:
+        case 0:
+          updateChart(this.momentumRankScore);
+          break;
+        default:
+          console.error("Invalid momentumRankScore");
+      }
+    }
   }
 
-  getMomentumRank(): string {
+  getMomentumRank(){
     if (this.riskdirection == 2) {
       switch (this.momentumRankScore) {
         case 0: return "Decline Significantly";
@@ -132,41 +152,62 @@ export class MomentumIndicatorChartComponent implements OnInit, AfterViewInit {
     this.chartOptions.series = series;
     this.chart?.updateSeries(series);
 
-    const fillColor = (this.momentumRankScore === 3 || this.momentumRankScore === 2) ? "#11AF1C" : "#EE0B0B";
-    const strokeColor = fillColor;
+    const updateIndicatorArrow = (fillColor: any, strokeColor: any) => {
+      const indicatorArrow = document.getElementById("m-indicator-arrow");
+      if (indicatorArrow) {
+        const path = indicatorArrow.querySelector("path");
+        if (path) {
+          path.style.stroke = strokeColor;
+          path.style.fill = fillColor;
+        }
+      } else {
+        console.error("Element with ID 'm-indicator-arrow' not found.");
+      }
+    };
+    const updateChartOptions = (color: any) => {
+      this.chartOptions.fill = {
+        type: "gradient",
+        gradient: {
+          shade: "dark",
+          shadeIntensity: 0.15,
+          inverseColors: false,
+          opacityFrom: 1,
+          opacityTo: 1,
+          gradientToColors: [color],
+          stops: [0, 50, 65, 91]
+        },
+        colors: [color, "#12B01C"]
+      };
+    };
+    const handleRiskDirection = (riskDirection: any, momentumRankScore: any) => {
+      let fillColor, strokeColor;
 
-    this.updateIndicatorArrow(fillColor, strokeColor);
-    this.updateChartOptions(fillColor);
+      if (riskDirection === 1) {
+        fillColor = strokeColor = (momentumRankScore === 3 || momentumRankScore === 2) ? "#11AF1C" : "#EE0B0B";
+      } else if (riskDirection === 2) {
+        fillColor = strokeColor = (momentumRankScore === 3 || momentumRankScore === 2) ? "#EE0B0B" : "#11AF1C";
+      } else {
+        console.error("Invalid riskDirection");
+        return;
+      }
 
+      updateIndicatorArrow(fillColor, strokeColor);
+      updateChartOptions(fillColor);
+    };
+    if (this.riskdirection === 2 || this.riskdirection === 1) {
+      switch (this.momentumRankScore) {
+        case 3:
+        case 2:
+        case 1:
+        case 0:
+          handleRiskDirection(this.riskdirection, this.momentumRankScore);
+          break;
+        default:
+          console.error("Invalid momentumRankScore");
+      }
+    }
     if (this.chartValue > 20) {
       this.updateArrowRotation();
     }
-  }
-
-  updateIndicatorArrow(fillColor: string, strokeColor: string) {
-    const indicatorArrow = document.getElementById("m-indicator-arrow");
-    if (indicatorArrow) {
-      const path = indicatorArrow.querySelector("path");
-      if (path) {
-        path.style.stroke = strokeColor;
-        path.style.fill = fillColor;
-      }
-    }
-  }
-
-  updateChartOptions(color: string) {
-    this.chartOptions.fill = {
-      type: "gradient",
-      gradient: {
-        shade: "dark",
-        shadeIntensity: 0.15,
-        inverseColors: false,
-        opacityFrom: 1,
-        opacityTo: 1,
-        gradientToColors: [color],
-        stops: [0, 50, 65, 91]
-      },
-      colors: [color, "#12B01C"]
-    };
   }
 }

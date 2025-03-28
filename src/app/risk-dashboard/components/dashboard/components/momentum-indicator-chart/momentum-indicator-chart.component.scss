@@ -1,6 +1,5 @@
 @import '../../../../../../assets/scss/variable';
 
-
 ::ng-deep {
   .moment-chart-wrapper {
     background-color: $white;
@@ -114,7 +113,7 @@
           transition: transform 0.5s ease-in-out;
           .blue-arrow {
             position: absolute;
-            top: calc(50% - 54px);
+            top: calc(50% - 44px);
             left: 0;
             right: 0;
             margin: 0 auto;
@@ -137,9 +136,9 @@
         }
       }
       .moment-chart {
-        top:-30px;
+        top:-20px;
         right:0;
-        transform: scale(0.8);
+        transform: scale(0.9);
       }
     }
     @media screen and (max-width:1440px) {
@@ -165,7 +164,7 @@
         }
       }
       .moment-chart {
-        transform: scale(0.65);
+        transform: scale(0.85);
         transform-origin:top right;
         top:0;
         right:0;
@@ -175,20 +174,20 @@
       .chart-desc {
         .desc {
           margin: 10px 0 63px;
-          max-width:188px;
+          max-width:180px;
         }
       }
       .moment-chart {
         top:0;
         right:0;
-        transform: scale(0.7);
+        transform: scale(0.85);
       }
     }
     @media screen and (max-width:1280px) {
       .moment-chart {
-        transform: scale(0.6);
+        transform: scale(0.8);
         top:20px;
-        right:0;
+        right:-30px;
       }
     }
     @media screen and (max-width:1199px) {
@@ -204,9 +203,9 @@
       }
       .moment-chart {
         margin:auto;
-        transform: scale(0.5);
+        transform: scale(0.75);
         top:20px;
-        right:0;
+        right:-20px;
       }
     }
     @media screen and (max-width:1024px) {
@@ -218,7 +217,7 @@
       .moment-chart {
         margin:auto;
         transform: scale(0.8);
-        top:-20px;
+        top:0;
         right:0;
       }
     }
@@ -250,7 +249,7 @@
       }
       .moment-chart {
         margin:auto;
-        transform: scale(0.7);
+        transform: scale(0.8);
         top:0;
         right:0;
       }

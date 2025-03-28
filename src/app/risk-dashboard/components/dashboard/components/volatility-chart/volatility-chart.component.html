@@ -17,7 +17,9 @@
       </div>
       <div class="desc">
         <p>In the next few months the market is expected to be 
-          <span style="color: #DAA61F">Moderate</span>
+          <span [ngStyle]="{'color': volatilityRank.toLowerCase() === 'volatile' ? '#EE0C0C' : (volatilityRank.toLowerCase() === 'moderate' ? '#DAA61F' : '#079455')}">
+            {{volatilityRank}}
+          </span>
         </p>
       </div>
     </div>
@@ -27,14 +29,14 @@
         <img class="chart-round" src="images/volatility-chart-img.svg" alt="volatility_chart" />
         
         <!-- Needle pointer with fixed rotation -->
-        <div class="indicator-wrap" style="transform: rotate(45deg)">
+        <div class="indicator-wrap" [style.transform]="'rotate(' + currentDegree + 'deg)'">
           <div class="pointer-wrap">
             <img class="pointer" src="images/volatility-pointer.svg" alt="volatility_chart" />
           </div>
          
           <div class="indicator-value">
-            <p style="transform: rotate(-45deg)"> 
-              Current <span class="value">25.50<span>%</span></span>
+            <p [style.transform]="'rotate(' + '-' + currentDegree + 'deg)'"> 
+              Current <span class="value">{{currentIndicatorValue}}<span>%</span></span>
             </p>
           </div>
         </div>
@@ -44,12 +46,12 @@
         <div class="info">
           <p class="year-text">2 Years</p>
           <p class="year-text"><b>MIN</b> volatility</p>
-          <p class="per-text">12.34<span>%</span></p>
+          <p class="per-text">{{minVolatility == 0 ? 0 : minVolatility.toFixed(2) }}<span>%</span></p>
         </div>
         <div class="info right">
           <p class="year-text">2 Years</p>
           <p class="year-text"><b>MAX</b> volatility</p>
-          <p class="per-text">45.67<span>%</span></p>
+          <p class="per-text">{{minVolatility == 0 ? 0 : maxVolatility.toFixed(2) }}<span>%</span></p>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Renderer2, RendererFactory2 } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, Renderer2, RendererFactory2 } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
@@ -12,10 +12,11 @@ export class TradeViewChartComponent {
   tradingSource: any = {
     USDILS: "SAXO:USDILS",
   };
-  firstCurrency: string = "USD";
-  baseCurrency: string = "ILS";
-  currencyPair: string = "USDILS";
-  selectedPeriod: string = '1M';
+  @Input() tradeRate: any = 3.4324;
+  @Input() firstCurrency: string = "USD";
+  @Input() baseCurrency: string = "ILS";
+  currencyPair: string = this.firstCurrency + this.baseCurrency;
+  @Input() selectedPeriod: string = '1M';
   tradeViewChartRate: any;
   cashFlowExposureData: any;
 

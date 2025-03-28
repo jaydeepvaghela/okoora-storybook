@@ -16,18 +16,18 @@ import {
 } from 'ng-apexcharts';
 @Component({
   selector: 'app-monthly-exposure-chart',
-  imports: [NgApexchartsModule,CommonModule,MatPaginatorModule],
+  imports: [NgApexchartsModule, CommonModule, MatPaginatorModule],
   templateUrl: './monthly-exposure-chart.component.html',
   styleUrl: './monthly-exposure-chart.component.scss'
 })
-export class MonthlyExposureChartComponent implements OnInit,OnDestroy, AfterViewInit {
+export class MonthlyExposureChartComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatPaginator, { read: ElementRef }) paginatorElementRef!: ElementRef;
   chart: any;
   tooltipIndex: number | null = null;
   monthChartXAxisData: any = [];
   constructor(private cdr: ChangeDetectorRef,
-    private renderer: Renderer2,private el: ElementRef) { }
+    private renderer: Renderer2, private el: ElementRef) { }
   public chartSeries!: ApexAxisChartSeries;
   public chartOptions!: ApexChart;
   public xAxisOptions!: ApexXAxis;
@@ -49,25 +49,25 @@ export class MonthlyExposureChartComponent implements OnInit,OnDestroy, AfterVie
         name: "Exposure-negative",
         type: "bar",
         group: "exposer",
-        data: [0,0,50000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        data: [0, 0, 50000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       },
       {
         name: "Exposure",
         type: "bar",
         group: "exposer",
-        data: [95000,95000,45000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000,95000]
+        data: [95000, 95000, 45000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000]
       },
       {
         name: "Recommended hedging",
         type: "bar",
         group: "rechedge",
-        data: [60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000,60000]
+        data: [60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000]
       },
       {
         name: "Actual hedging",
         type: "bar",
         group: "acthedge",
-        data: [1000,1000,1000,20000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000]
+        data: [1000, 1000, 1000, 20000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
       }
     ];
   }
@@ -87,7 +87,7 @@ export class MonthlyExposureChartComponent implements OnInit,OnDestroy, AfterVie
         const paginatorElement = this.paginatorElementRef.nativeElement;
         const previousButton = paginatorElement.querySelector('.mat-mdc-paginator-navigation-previous');
         const nextButton = paginatorElement.querySelector('.mat-mdc-paginator-navigation-next');
-  
+
         if (previousButton && nextButton) {
           // Set the IDs for the buttons
           previousButton.setAttribute('id', 'previousButton');
@@ -96,7 +96,7 @@ export class MonthlyExposureChartComponent implements OnInit,OnDestroy, AfterVie
         }
       }
     };
-  
+
     // Poll every 100ms until the paginator is available
     const interval = setInterval(checkPaginator, 100);
   }
@@ -128,10 +128,10 @@ export class MonthlyExposureChartComponent implements OnInit,OnDestroy, AfterVie
           setTimeout(() => this.hideCustomTooltip(), 1500000000);
         }
       }
-    } as ApexChart;
-  
+    };
+
     this.xAxisOptions = {
-      categories: ['Jan 24','Feb 24','Mar 24','Apr 24','May 24','Jun 24','Jul 24','Aug 24','Sep 24','Oct 24','Nov 24','Dec 24','Jan 25','Feb 25','Mar 25','Apr 25','May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25'],
+      categories: ['Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24', 'Jan 25', 'Feb 25', 'Mar 25', 'Apr 25', 'May 25', 'Jun 25', 'Jul 25', 'Aug 25', 'Sep 25', 'Oct 25', 'Nov 25', 'Dec 25'],
       labels: {
         style: {
           colors: '#98A2B3',
@@ -143,13 +143,13 @@ export class MonthlyExposureChartComponent implements OnInit,OnDestroy, AfterVie
       },
     };
     this.monthChartXAxisData = this.xAxisOptions.categories;
-  
+
     this.yAxisOptions = {
       min: 0,
       max: 100000, // Round off the value
       tickAmount: 5,
       labels: {
-        formatter: function(val) {
+        formatter: function (val) {
           return "$" + val;
         },
         style: {
@@ -159,17 +159,17 @@ export class MonthlyExposureChartComponent implements OnInit,OnDestroy, AfterVie
         }
       }
     };
-  
-  
+
+
     this.strokeOptions = {
       width: 0,
       curve: "smooth"
     };
-  
+
     this.dataLabelsOptions = {
       enabled: false
     };
-  
+
     this.legendOptions = {
       show: true,
       position: "top",
@@ -184,18 +184,18 @@ export class MonthlyExposureChartComponent implements OnInit,OnDestroy, AfterVie
         vertical: 0
       }
     };
-  
+
     this.tooltipOptions = {
       enabled: false, // Disable default tooltips
     };
-  
+
     this.plotOptions = {
       bar: {
         horizontal: false,
         columnWidth: '35px',
       }
     };
-  
+
     this.fillOptions = {
       colors: ["#D92D20", "#DCEAF7", "#A2B0FB", "#2947F2"],
     };
@@ -211,7 +211,7 @@ export class MonthlyExposureChartComponent implements OnInit,OnDestroy, AfterVie
       }));
 
       // Paginate the categories as well
-      this.xAxisOptions  = {
+      this.xAxisOptions = {
         categories: this.monthChartXAxisData?.slice(startIndex, endIndex),
       };
     }
