@@ -1,0 +1,259 @@
+@import '../../../../../../assets/scss/variable';
+
+
+::ng-deep {
+  .moment-chart-wrapper {
+    background-color: $white;
+    padding: 30px 30px 15px 45px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    .chart-desc {
+      .chart-head {
+        .info-title {
+          color: #344054;
+          font-family: $he_heebo;
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 28px;
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          margin: 0;
+          position: relative;
+          .title-tooltip{
+            cursor: pointer;
+            z-index: 1;
+          }
+        }
+      }
+      .desc {
+        margin: 20px 0 105px;
+        max-width: 237px;
+        min-height: 84px;
+
+        @media screen and (max-width: 1440px) {
+          min-height: 72px;
+        }
+        p {
+          margin: 0;
+          color: #344054;
+          font-family: $he_heebo;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 28px;
+          span {
+            color: #175CD3;
+            &.direction-2 {
+              &.declining-significantly {
+                color: #11AF1C;
+              }
+
+              &.declining-moderately {
+                color: #11AF1C;
+              }
+
+              &.rising-moderately {
+                color: #EE0B0B;
+              }
+
+              &.rising-significantly {
+                color: #EE0B0B;
+              }
+            }
+            &.direction-1 {
+              &.declining-significantly {
+                color: #EE0B0B;
+              }
+
+              &.declining-moderately {
+                color: #EE0B0B;
+              }
+
+              &.rising-moderately {
+                color: #11AF1C;
+              }
+
+              &.rising-significantly {
+                color: #11AF1C;
+              }
+            }
+            &.no-data {
+              color: #344054;
+            }
+          }
+        }
+      }
+    }
+    .moment-chart {
+      width: auto;
+      height: 100%;
+      margin:auto;
+      position: absolute;
+      top:-10px;
+      right:20px;
+      .apexcharts-radialbar-hollow {
+        stroke: #A28888;
+        clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+        stroke-width: 0.25;
+      }
+      .chart-inner {
+        position: relative;
+        overflow: hidden;
+        .arrow-wrap {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          margin: auto;
+          content: "";
+          left: 0;
+          right: 0;
+          transition: transform 0.5s ease-in-out;
+          .blue-arrow {
+            position: absolute;
+            top: calc(50% - 54px);
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 27px;
+            height: 54px;
+            transition: transform 0.5s ease-in-out;
+          }
+        }
+      }
+    }
+    @media screen and (max-width:1800px) {
+      padding: 30px 20px;
+      .chart-desc {
+        .desc {
+          margin: 10px 0 55px;
+          p {
+            font-size: 16px;
+            line-height: 26px;
+          }
+        }
+      }
+      .moment-chart {
+        top:-30px;
+        right:0;
+        transform: scale(0.8);
+      }
+    }
+    @media screen and (max-width:1440px) {
+      padding: 20px;
+      .chart-desc {
+        .chart-head {
+          .info-title {
+            font-size: 16px;
+            line-height: 26px;
+            gap: 5px;
+            .title-img {
+              width: 24px;
+            }
+          }
+        }
+        .desc {
+          margin: 10px 0 62px;
+          max-width:230px;
+          p {
+            font-size: 14px;
+            line-height: 24px;
+          }
+        }
+      }
+      .moment-chart {
+        transform: scale(0.65);
+        transform-origin:top right;
+        top:0;
+        right:0;
+      }
+    }
+    @media screen and (max-width:1366px) {
+      .chart-desc {
+        .desc {
+          margin: 10px 0 63px;
+          max-width:188px;
+        }
+      }
+      .moment-chart {
+        top:0;
+        right:0;
+        transform: scale(0.7);
+      }
+    }
+    @media screen and (max-width:1280px) {
+      .moment-chart {
+        transform: scale(0.6);
+        top:20px;
+        right:0;
+      }
+    }
+    @media screen and (max-width:1199px) {
+      .chart-desc {
+        .desc {
+          max-width: 60%;
+          margin: 10px 0 30px;
+          p {
+            font-size: 14px;
+            line-height: 20px;
+          }
+        }
+      }
+      .moment-chart {
+        margin:auto;
+        transform: scale(0.5);
+        top:20px;
+        right:0;
+      }
+    }
+    @media screen and (max-width:1024px) {
+      .chart-desc {
+        .desc {
+          margin: 10px 0 95px;
+        }
+      }
+      .moment-chart {
+        margin:auto;
+        transform: scale(0.8);
+        top:-20px;
+        right:0;
+      }
+    }
+    @media screen and (max-width:767px) {
+      .chart-desc {
+        .desc {
+          p {
+            font-size: 12px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+    @media screen and (max-width:640px) {
+      .chart-desc {
+        .desc {
+          p {
+            font-size: 14px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+    @media screen and (max-width:420px) {
+      .chart-desc {
+        .desc {
+          margin: 10px 0 75px;
+        }
+      }
+      .moment-chart {
+        margin:auto;
+        transform: scale(0.7);
+        top:0;
+        right:0;
+      }
+    }
+  }
+}

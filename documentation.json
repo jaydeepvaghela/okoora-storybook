@@ -1074,7 +1074,7 @@
         },
         {
             "name": "DashboardComponent",
-            "id": "component-DashboardComponent-f8ee988e2b5b2b2feb5614e3fcb7e836fb62cce60c1e0d1a1b72c0d4bccac2f0a7db550bc3b9a09d0fa6ab16b9060c3ebe87295fe8401eda60a8bb3bb1a2844f",
+            "id": "component-DashboardComponent-fb53426dc5fc02e1cede8089f67e7658dc0af8eab7a11f96174a75a480f40b642c1642be1d1a77ced96dbefc5e8defd5cc1cbfb7985856202503464923bf952a",
             "file": "src/app/risk-dashboard/components/dashboard/dashboard.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1114,18 +1114,30 @@
                 {
                     "name": "RiskEstimateChartComponent",
                     "type": "component"
+                },
+                {
+                    "name": "TradeViewChartComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "VolatilityChartComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MomentumIndicatorChartComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { AnnualExposureDetailsComponent } from \"./components/annual-exposure-details/annual-exposure-details.component\";\r\nimport { BreadcrumbWalletComponent } from './components/breadcrumb-wallet/breadcrumb-wallet.component';\r\nimport { ChartsTabsComponent } from \"./components/charts-tabs/charts-tabs.component\";\r\nimport { RiskEstimateChartComponent } from \"./components/risk-estimate-chart/risk-estimate-chart.component\";\r\n\r\n@Component({\r\n  selector: 'app-dashboard',\r\n  imports: [AnnualExposureDetailsComponent, BreadcrumbWalletComponent, ChartsTabsComponent, RiskEstimateChartComponent],\r\n  templateUrl: './dashboard.component.html',\r\n  styleUrl: './dashboard.component.scss'\r\n})\r\nexport class DashboardComponent {\r\n\r\n}",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { AnnualExposureDetailsComponent } from \"./components/annual-exposure-details/annual-exposure-details.component\";\r\nimport { BreadcrumbWalletComponent } from './components/breadcrumb-wallet/breadcrumb-wallet.component';\r\nimport { ChartsTabsComponent } from \"./components/charts-tabs/charts-tabs.component\";\r\nimport { RiskEstimateChartComponent } from \"./components/risk-estimate-chart/risk-estimate-chart.component\";\r\nimport { TradeViewChartComponent } from \"./components/trade-view-chart/trade-view-chart.component\";\r\nimport { VolatilityChartComponent } from \"./components/volatility-chart/volatility-chart.component\";\r\nimport { MomentumIndicatorChartComponent } from \"./components/momentum-indicator-chart/momentum-indicator-chart.component\";\r\n\r\n@Component({\r\n  selector: 'app-dashboard',\r\n  imports: [AnnualExposureDetailsComponent, BreadcrumbWalletComponent, ChartsTabsComponent, RiskEstimateChartComponent, TradeViewChartComponent, VolatilityChartComponent, MomentumIndicatorChartComponent],\r\n  templateUrl: './dashboard.component.html',\r\n  styleUrl: './dashboard.component.scss'\r\n})\r\nexport class DashboardComponent {\r\n\r\n}",
             "styleUrl": "./dashboard.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"risk-dashboard\">\r\n    <app-breadcrumb-wallet></app-breadcrumb-wallet>\r\n    <div class=\"dashboard-sections\">\r\n        <div class=\"left-sec\">\r\n            <app-annual-exposure-details></app-annual-exposure-details>\r\n            <app-charts-tabs></app-charts-tabs>\r\n        </div>\r\n        <div class=\"right-sec\">\r\n            <app-risk-estimate-chart></app-risk-estimate-chart>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+            "templateData": "<div class=\"risk-dashboard\">\r\n    <app-breadcrumb-wallet></app-breadcrumb-wallet>\r\n    <div class=\"dashboard-sections\">\r\n        <div class=\"left-sec\">\r\n            <app-annual-exposure-details></app-annual-exposure-details>\r\n            <app-charts-tabs></app-charts-tabs>\r\n\r\n            <div class=\"left-two-part\">\r\n                <div class=\"left-haft-part\">\r\n                    <app-trade-view-chart></app-trade-view-chart>\r\n                </div>\r\n                <div class=\"left-haft-part\">\r\n                    <app-volatility-chart></app-volatility-chart>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"right-sec\">\r\n            <app-risk-estimate-chart></app-risk-estimate-chart>\r\n            <app-momentum-indicator-chart></app-momentum-indicator-chart>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
         },
         {
             "name": "DropdownComponent",
@@ -1419,6 +1431,313 @@
             "duplicateId": 1,
             "duplicateName": "HeaderComponent-1",
             "templateData": "<header>\r\n    <div class=\"topheder-business-users\">\r\n        <div class=\"header-inner\">\r\n            <button class=\"navbar-toggler\" type=\"button\" (click)=\"openMenu()\" id=\"db-header-8\">\r\n                <img src=\"images/side-menu.svg\">\r\n            </button>\r\n        </div>\r\n        <nav class=\"navbar main-nav\">\r\n            <div class=\"nav-inner\">\r\n                <div class=\"nav-left\">\r\n                    <div class=\"wallet-list-business\">\r\n                        <div class=\"flag\">\r\n                            <img src=\"images/ils-flag.svg\" alt=\"flag\">\r\n                        </div>\r\n                        <div class=\"currency-wrapper\">\r\n                            <div class=\"wallet-ammount\">\r\n                                3,200,000<span class=\"sub-part\">.00</span>\r\n                            </div>\r\n                            <button class=\"wallet-list-button\" mat-icon-button></button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"nav-option-right\">\r\n                    <div class=\"lang-wrapper\">\r\n                        <button type=\"button\" class=\"drop-down-btn lang-btn\" [matMenuTriggerFor]=\"langMenu\"\r\n                            id=\"dropdownForm2\">\r\n                            <img height=\"20px\" width=\"20px\" src=\"images/gloabe-icn.svg\" alt=\"language icon\">\r\n                        </button>\r\n                        <mat-menu #langMenu=\"matMenu\"\r\n                            class=\"header-menu-panel side-nav-wrapper language-wrapper animated fadeIn py-2 px-2\">\r\n                            <ul>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-1\">English</button>\r\n                                </li>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-2\">עברית</button>\r\n                                </li>\r\n                            </ul>\r\n                        </mat-menu>\r\n                    </div>\r\n                    <button class=\"header-btn download-app\">\r\n                        Download App\r\n                    </button>\r\n                    <a class=\"header-btn market-place\">\r\n                        <svg width=\"22\" height=\"20\" viewBox=\"0 0 22 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                            <path id=\"Vector\"\r\n                                d=\"M21.9483 6.58348C21.9248 6.53253 21.8963 6.48416 21.8632 6.43913C21.8382 6.31428 21.8046 6.19137 21.7628 6.0713C21.7577 6.05739 21.7526 6.04348 21.7458 6.02956L19.4031 0.521739C19.3369 0.366601 19.2277 0.234598 19.0891 0.141919C18.9505 0.049241 18.7884 -8.19612e-05 18.6228 1.02236e-07H3.30575C3.14011 -8.19612e-05 2.97804 0.049241 2.83943 0.141919C2.70082 0.234598 2.59169 0.366601 2.52543 0.521739L0.168309 6.07043C-0.056103 6.65243 -0.056103 7.29975 0.168309 7.88174C0.385115 8.3882 0.699203 8.84504 1.09196 9.22518C1.48472 9.60532 1.94815 9.90103 2.4548 10.0948V19.1304C2.4548 19.3611 2.54446 19.5822 2.70404 19.7453C2.86362 19.9084 3.08007 20 3.30575 20H18.6228C18.8485 20 19.0649 19.9084 19.2245 19.7453C19.3841 19.5822 19.4737 19.3611 19.4737 19.1304V10.0948C19.9803 9.90127 20.4436 9.60585 20.8364 9.22601C21.2291 8.84617 21.5433 8.38965 21.7602 7.88348C21.8304 7.70055 21.877 7.5091 21.8989 7.31391C21.9557 7.20211 21.9894 7.07959 21.9979 6.95393C22.0064 6.82828 21.9895 6.70219 21.9483 6.58348ZM8.41143 18.2609V13.0435H10.1133V18.2609H8.41143ZM11.8152 18.2609V13.0435H13.5171V18.2609H11.8152ZM17.7718 18.2609H15.219V12.1739C15.219 11.9433 15.1294 11.7221 14.9698 11.559C14.8102 11.396 14.5937 11.3043 14.3681 11.3043H7.56048C7.3348 11.3043 7.11836 11.396 6.95877 11.559C6.79919 11.7221 6.70954 11.9433 6.70954 12.1739V18.2609H4.1567V10.4348C4.80138 10.443 5.44005 10.3072 6.028 10.0369C6.61595 9.7665 7.13898 9.36811 7.56048 8.86957C7.9868 9.36234 8.51071 9.75693 9.09752 10.0272C9.68432 10.2974 10.3206 10.4372 10.9643 10.4372C11.6079 10.4372 12.2442 10.2974 12.831 10.0272C13.4178 9.75693 13.9417 9.36234 14.3681 8.86957C14.7896 9.36811 15.3126 9.7665 15.9005 10.0369C16.4885 10.3072 17.1272 10.443 17.7718 10.4348V18.2609ZM20.186 7.21739C19.9683 7.67738 19.6239 8.06235 19.195 8.32498C18.7661 8.5876 18.2714 8.71644 17.7718 8.69565C17.1525 8.74712 16.5381 8.54822 16.0608 8.14172C15.5834 7.73521 15.2812 7.15354 15.219 6.52174C15.219 6.29112 15.1294 6.06994 14.9698 5.90686C14.8102 5.74379 14.5937 5.65217 14.3681 5.65217C14.1424 5.65217 13.9259 5.74379 13.7663 5.90686C13.6068 6.06994 13.5171 6.29112 13.5171 6.52174C13.455 7.15354 13.1527 7.73521 12.6754 8.14172C12.198 8.54822 11.5836 8.74712 10.9643 8.69565C10.3449 8.74712 9.73054 8.54822 9.25318 8.14172C8.77581 7.73521 8.47358 7.15354 8.41143 6.52174C8.41143 6.29112 8.32178 6.06994 8.1622 5.90686C8.00261 5.74379 7.78617 5.65217 7.56048 5.65217C7.3348 5.65217 7.11836 5.74379 6.95877 5.90686C6.79919 6.06994 6.70954 6.29112 6.70954 6.52174C6.64739 7.15354 6.34516 7.73521 5.86779 8.14172C5.39043 8.54822 4.77604 8.74712 4.1567 8.69565C3.65699 8.7165 3.1622 8.5877 2.73316 8.32507C2.30412 8.06245 1.95952 7.67745 1.74171 7.21739C1.68468 7.05701 1.68468 6.88125 1.74171 6.72087L3.86397 1.73913H18.0646L20.1724 6.69565C20.2382 6.86222 20.2431 7.04747 20.186 7.21739Z\"\r\n                                fill=\"black\" />\r\n                        </svg>\r\n                        Marketplace\r\n                    </a>\r\n                    <button class=\"add-money\" mat-button id=\"db-header-10\">+ Add Money</button>\r\n                    <div class=\"user-profile\">\r\n                        <button class=\"profile-btn\" [matMenuTriggerFor]=\"accountsMenu\" id=\"db-header-11\">T</button>\r\n                        <button class=\"user-option\" mat-icon-button [matMenuTriggerFor]=\"profileMenu\" id=\"db-header-12\">\r\n                            <img src=\"images/menu-down-arrow.svg\">\r\n                        </button>\r\n                        <mat-menu #profileMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"db-header-13\">Logout</button>\r\n                        </mat-menu>\r\n                        <mat-menu #accountsMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"dbheader-company\">Tamir</button>\r\n                        </mat-menu>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nav>\r\n    </div>\r\n</header>"
+        },
+        {
+            "name": "MomentumIndicatorChartComponent",
+            "id": "component-MomentumIndicatorChartComponent-753c89efff5105a0c5f168ca483495413ad61272c65ebd2f89f30749205439897367df12f8db768b6da4f9e7dc5bdebaeaadd6228813317b7078a2ad0c114cb3",
+            "file": "src/app/risk-dashboard/components/dashboard/components/momentum-indicator-chart/momentum-indicator-chart.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-momentum-indicator-chart",
+            "styleUrls": [
+                "./momentum-indicator-chart.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./momentum-indicator-chart.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "chart",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ChartComponent",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'chart'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "chartOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ChartOptions",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "chartValue",
+                    "defaultValue": "75",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "currencyPair",
+                    "defaultValue": "'USD/EUR'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "momentumIndicatorRes",
+                    "defaultValue": "{\r\n    momentumRank: 'Rise Significantly' // Default value\r\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38
+                },
+                {
+                    "name": "momentumRankScore",
+                    "defaultValue": "2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "riskdirection",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getChartOptions",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getMomentumRank",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 95,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 114,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 91,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateArrowRotation",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 120,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateChartOptions",
+                    "args": [
+                        {
+                            "name": "color",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 157,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "color",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "updateIndicatorArrow",
+                    "args": [
+                        {
+                            "name": "fillColor",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "strokeColor",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 146,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fillColor",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "strokeColor",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "updateSeries",
+                    "args": [
+                        {
+                            "name": "series",
+                            "type": "ApexNonAxisChartSeries",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 131,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "series",
+                            "type": "ApexNonAxisChartSeries",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgbTooltipModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NgApexchartsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from \"@angular/common\";\r\nimport { Component, ViewChild, AfterViewInit, OnInit } from \"@angular/core\";\r\nimport { NgbTooltipModule } from \"@ng-bootstrap/ng-bootstrap\";\r\nimport {\r\n  ApexNonAxisChartSeries,\r\n  ApexPlotOptions,\r\n  ApexChart,\r\n  ApexFill,\r\n  ApexStroke,\r\n  ChartComponent,\r\n  NgApexchartsModule\r\n} from \"ng-apexcharts\";\r\n\r\nexport type ChartOptions = {\r\n  series: ApexNonAxisChartSeries;\r\n  chart: ApexChart;\r\n  labels: string[];\r\n  plotOptions: ApexPlotOptions;\r\n  fill: ApexFill;\r\n  stroke: ApexStroke;\r\n};\r\n\r\n@Component({\r\n  selector: 'app-momentum-indicator-chart',\r\n   imports: [NgbTooltipModule, NgApexchartsModule, CommonModule],\r\n   standalone: true,\r\n  templateUrl: './momentum-indicator-chart.component.html',\r\n  styleUrls: ['./momentum-indicator-chart.component.scss']\r\n})\r\nexport class MomentumIndicatorChartComponent implements OnInit, AfterViewInit {\r\n  @ViewChild(\"chart\") chart!: ChartComponent;\r\n\r\n  public chartOptions!: ChartOptions;\r\n  chartValue: number = 75; // Static value\r\n  currencyPair: string = 'USD/EUR'; // Static value\r\n  riskdirection: number = 1; // Static value\r\n  momentumRankScore: number = 2; // Static value\r\n  momentumIndicatorRes = {\r\n    momentumRank: 'Rise Significantly' // Default value\r\n  };\r\n\r\n  constructor() {\r\n    this.getChartOptions();\r\n  }\r\n\r\n  getChartOptions() {\r\n    // this.momentumIndicatorRes.momentumRank = 'Rise Moderately';\r\n    this.chartOptions = {\r\n      series: [75], // Static value\r\n      chart: {\r\n        height: 350,\r\n        type: \"radialBar\",\r\n        offsetY: 0\r\n      },\r\n      plotOptions: {\r\n        radialBar: {\r\n          startAngle: 0,\r\n          endAngle: 180,\r\n          dataLabels: {\r\n            name: {\r\n              show: false\r\n            },\r\n            value: {\r\n              show: false\r\n            }\r\n          }\r\n        }\r\n      },\r\n      fill: {\r\n        type: \"gradient\",\r\n        gradient: {\r\n          shade: \"dark\",\r\n          shadeIntensity: 0.15,\r\n          inverseColors: false,\r\n          opacityFrom: 1,\r\n          opacityTo: 1,\r\n          gradientToColors: [\"#E4E7EC\"],\r\n          stops: [0, 100]\r\n        },\r\n        colors: [\"#F9FAFB\", \"#E4E7EC\"]\r\n      },\r\n      stroke: {\r\n        dashArray: 4,\r\n        width: 3,\r\n        colors: [\"#f9f9f9\"]\r\n      },\r\n      labels: []\r\n    };\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.updateSeries([this.chartValue]);\r\n  }\r\n\r\n  getMomentumRank(): string {\r\n    if (this.riskdirection == 2) {\r\n      switch (this.momentumRankScore) {\r\n        case 0: return \"Decline Significantly\";\r\n        case 1: return \"Decline Moderately\";\r\n        case 2: return \"Rise Moderately\";\r\n        case 3: return \"Rise Significantly\";\r\n      }\r\n    } else if (this.riskdirection == 1) {\r\n      switch (this.momentumRankScore) {\r\n        case 0: return \"Decline Significantly\";\r\n        case 1: return \"Decline Moderately\";\r\n        case 2: return \"Rise Moderately\";\r\n        case 3: return \"Rise Significantly\";\r\n      }\r\n    }\r\n    return \"Not Found\";\r\n  }\r\n\r\n  ngAfterViewInit() {\r\n    if (this.chartValue > 10) {\r\n      this.updateArrowRotation();\r\n    }\r\n  }\r\n\r\n  updateArrowRotation() {\r\n    const value = this.chartValue;\r\n    const maxValue = 100;\r\n    const rotation = (value / maxValue) * 180;\r\n\r\n    const arrowElement = document.querySelector('.arrow-wrap') as HTMLElement;\r\n    if (arrowElement) {\r\n      arrowElement.style.transform = `rotate(${rotation}deg)`;\r\n    }\r\n  }\r\n\r\n  updateSeries(series: ApexNonAxisChartSeries) {\r\n    this.chartOptions.series = series;\r\n    this.chart?.updateSeries(series);\r\n\r\n    const fillColor = (this.momentumRankScore === 3 || this.momentumRankScore === 2) ? \"#11AF1C\" : \"#EE0B0B\";\r\n    const strokeColor = fillColor;\r\n\r\n    this.updateIndicatorArrow(fillColor, strokeColor);\r\n    this.updateChartOptions(fillColor);\r\n\r\n    if (this.chartValue > 20) {\r\n      this.updateArrowRotation();\r\n    }\r\n  }\r\n\r\n  updateIndicatorArrow(fillColor: string, strokeColor: string) {\r\n    const indicatorArrow = document.getElementById(\"m-indicator-arrow\");\r\n    if (indicatorArrow) {\r\n      const path = indicatorArrow.querySelector(\"path\");\r\n      if (path) {\r\n        path.style.stroke = strokeColor;\r\n        path.style.fill = fillColor;\r\n      }\r\n    }\r\n  }\r\n\r\n  updateChartOptions(color: string) {\r\n    this.chartOptions.fill = {\r\n      type: \"gradient\",\r\n      gradient: {\r\n        shade: \"dark\",\r\n        shadeIntensity: 0.15,\r\n        inverseColors: false,\r\n        opacityFrom: 1,\r\n        opacityTo: 1,\r\n        gradientToColors: [color],\r\n        stops: [0, 50, 65, 91]\r\n      },\r\n      colors: [color, \"#12B01C\"]\r\n    };\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import '../../../../../../assets/scss/variable';\r\n\r\n\r\n::ng-deep {\r\n  .moment-chart-wrapper {\r\n    background-color: $white;\r\n    padding: 30px 30px 15px 45px;\r\n    border-radius: 10px;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    position: relative;\r\n    .chart-desc {\r\n      .chart-head {\r\n        .info-title {\r\n          color: #344054;\r\n          font-family: $he_heebo;\r\n          font-size: 18px;\r\n          font-weight: 700;\r\n          line-height: 28px;\r\n          display: flex;\r\n          gap: 10px;\r\n          align-items: center;\r\n          margin: 0;\r\n          position: relative;\r\n          .title-tooltip{\r\n            cursor: pointer;\r\n            z-index: 1;\r\n          }\r\n        }\r\n      }\r\n      .desc {\r\n        margin: 20px 0 105px;\r\n        max-width: 237px;\r\n        min-height: 84px;\r\n\r\n        @media screen and (max-width: 1440px) {\r\n          min-height: 72px;\r\n        }\r\n        p {\r\n          margin: 0;\r\n          color: #344054;\r\n          font-family: $he_heebo;\r\n          font-size: 18px;\r\n          font-weight: 400;\r\n          line-height: 28px;\r\n          span {\r\n            color: #175CD3;\r\n            &.direction-2 {\r\n              &.declining-significantly {\r\n                color: #11AF1C;\r\n              }\r\n\r\n              &.declining-moderately {\r\n                color: #11AF1C;\r\n              }\r\n\r\n              &.rising-moderately {\r\n                color: #EE0B0B;\r\n              }\r\n\r\n              &.rising-significantly {\r\n                color: #EE0B0B;\r\n              }\r\n            }\r\n            &.direction-1 {\r\n              &.declining-significantly {\r\n                color: #EE0B0B;\r\n              }\r\n\r\n              &.declining-moderately {\r\n                color: #EE0B0B;\r\n              }\r\n\r\n              &.rising-moderately {\r\n                color: #11AF1C;\r\n              }\r\n\r\n              &.rising-significantly {\r\n                color: #11AF1C;\r\n              }\r\n            }\r\n            &.no-data {\r\n              color: #344054;\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n    .moment-chart {\r\n      width: auto;\r\n      height: 100%;\r\n      margin:auto;\r\n      position: absolute;\r\n      top:-10px;\r\n      right:20px;\r\n      .apexcharts-radialbar-hollow {\r\n        stroke: #A28888;\r\n        clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);\r\n        stroke-width: 0.25;\r\n      }\r\n      .chart-inner {\r\n        position: relative;\r\n        overflow: hidden;\r\n        .arrow-wrap {\r\n          position: absolute;\r\n          top: 0;\r\n          bottom: 0;\r\n          width: 100%;\r\n          height: 100%;\r\n          margin: auto;\r\n          content: \"\";\r\n          left: 0;\r\n          right: 0;\r\n          transition: transform 0.5s ease-in-out;\r\n          .blue-arrow {\r\n            position: absolute;\r\n            top: calc(50% - 54px);\r\n            left: 0;\r\n            right: 0;\r\n            margin: 0 auto;\r\n            width: 27px;\r\n            height: 54px;\r\n            transition: transform 0.5s ease-in-out;\r\n          }\r\n        }\r\n      }\r\n    }\r\n    @media screen and (max-width:1800px) {\r\n      padding: 30px 20px;\r\n      .chart-desc {\r\n        .desc {\r\n          margin: 10px 0 55px;\r\n          p {\r\n            font-size: 16px;\r\n            line-height: 26px;\r\n          }\r\n        }\r\n      }\r\n      .moment-chart {\r\n        top:-30px;\r\n        right:0;\r\n        transform: scale(0.8);\r\n      }\r\n    }\r\n    @media screen and (max-width:1440px) {\r\n      padding: 20px;\r\n      .chart-desc {\r\n        .chart-head {\r\n          .info-title {\r\n            font-size: 16px;\r\n            line-height: 26px;\r\n            gap: 5px;\r\n            .title-img {\r\n              width: 24px;\r\n            }\r\n          }\r\n        }\r\n        .desc {\r\n          margin: 10px 0 62px;\r\n          max-width:230px;\r\n          p {\r\n            font-size: 14px;\r\n            line-height: 24px;\r\n          }\r\n        }\r\n      }\r\n      .moment-chart {\r\n        transform: scale(0.65);\r\n        transform-origin:top right;\r\n        top:0;\r\n        right:0;\r\n      }\r\n    }\r\n    @media screen and (max-width:1366px) {\r\n      .chart-desc {\r\n        .desc {\r\n          margin: 10px 0 63px;\r\n          max-width:188px;\r\n        }\r\n      }\r\n      .moment-chart {\r\n        top:0;\r\n        right:0;\r\n        transform: scale(0.7);\r\n      }\r\n    }\r\n    @media screen and (max-width:1280px) {\r\n      .moment-chart {\r\n        transform: scale(0.6);\r\n        top:20px;\r\n        right:0;\r\n      }\r\n    }\r\n    @media screen and (max-width:1199px) {\r\n      .chart-desc {\r\n        .desc {\r\n          max-width: 60%;\r\n          margin: 10px 0 30px;\r\n          p {\r\n            font-size: 14px;\r\n            line-height: 20px;\r\n          }\r\n        }\r\n      }\r\n      .moment-chart {\r\n        margin:auto;\r\n        transform: scale(0.5);\r\n        top:20px;\r\n        right:0;\r\n      }\r\n    }\r\n    @media screen and (max-width:1024px) {\r\n      .chart-desc {\r\n        .desc {\r\n          margin: 10px 0 95px;\r\n        }\r\n      }\r\n      .moment-chart {\r\n        margin:auto;\r\n        transform: scale(0.8);\r\n        top:-20px;\r\n        right:0;\r\n      }\r\n    }\r\n    @media screen and (max-width:767px) {\r\n      .chart-desc {\r\n        .desc {\r\n          p {\r\n            font-size: 12px;\r\n            line-height: 20px;\r\n          }\r\n        }\r\n      }\r\n    }\r\n    @media screen and (max-width:640px) {\r\n      .chart-desc {\r\n        .desc {\r\n          p {\r\n            font-size: 14px;\r\n            line-height: 22px;\r\n          }\r\n        }\r\n      }\r\n    }\r\n    @media screen and (max-width:420px) {\r\n      .chart-desc {\r\n        .desc {\r\n          margin: 10px 0 75px;\r\n        }\r\n      }\r\n      .moment-chart {\r\n        margin:auto;\r\n        transform: scale(0.7);\r\n        top:0;\r\n        right:0;\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+                    "styleUrl": "./momentum-indicator-chart.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 40
+            },
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "AfterViewInit"
+            ],
+            "templateData": "<div class=\"moment-chart-wrapper\">\r\n    <div class=\"chart-desc\">\r\n      <div class=\"chart-head\">\r\n        <h5 class=\"info-title\">\r\n          <img class=\"title-img\" src=\"images/trending_down.svg\" alt=\"Momentum Indicator\" />Momentum\r\n          Indicator<img src=\"images/annual-title-help-icon.svg\" [ngbTooltip]=\"momentTool\" placement=\"top-right\"\r\n            tooltipClass=\"risk-step3-tooltip--rm\" class=\"title-tooltip\" />\r\n        </h5>\r\n      </div>\r\n      <ng-template #momentTool> Measures the speed and strength of a trend, indicating the rate of price change over a\r\n        specific period.</ng-template>\r\n      <div class=\"desc\">\r\n        <p>The <span>{{ currencyPair }}</span> pair is\r\n          expected to <span [ngClass]=\"{\r\n            'declining-significantly': momentumIndicatorRes.momentumRank === 'Decline Significantly',\r\n            'declining-moderately': momentumIndicatorRes.momentumRank === 'Decline Moderately',\r\n            'rising-moderately': momentumIndicatorRes.momentumRank === 'Rise Moderately',\r\n            'rising-significantly': momentumIndicatorRes.momentumRank === 'Rise Significantly',\r\n            'direction-1': riskdirection === 1,\r\n            'direction-2': riskdirection === 2,\r\n            'not-found': momentumIndicatorRes.momentumRank === 'Not Found'\r\n        }\">\r\n            {{ momentumIndicatorRes.momentumRank }}\r\n          </span>\r\n          in the coming months</p>\r\n      </div>\r\n    </div>\r\n    <div class=\"moment-chart\">\r\n      <div class=\"chart-inner\">\r\n        <apx-chart #chart [series]=\"chartOptions.series\" [chart]=\"chartOptions.chart\"\r\n          [plotOptions]=\"chartOptions.plotOptions\" [fill]=\"chartOptions.fill\" [stroke]=\"chartOptions.stroke\"\r\n          [labels]=\"chartOptions.labels\"></apx-chart>\r\n        <div class=\"arrow-wrap\">\r\n          <svg class=\"blue-arrow\" id=\"m-indicator-arrow\" alt=\"blue arrow\" xmlns=\"http://www.w3.org/2000/svg\" width=\"31\"\r\n            height=\"60\" viewBox=\"0 0 31 60\" fill=\"none\">\r\n            <path\r\n              d=\"M13.2891 57.3745C13.2891 58.4791 14.1845 59.3745 15.2891 59.3745C16.3936 59.3745 17.2891 58.4791 17.2891 57.3745L13.2891 57.3745ZM16.7033 1.04947C15.9222 0.268421 14.6559 0.268421 13.8748 1.04947L1.14692 13.7774C0.365876 14.5584 0.365876 15.8248 1.14693 16.6058C1.92797 17.3869 3.1943 17.3869 3.97535 16.6058L15.2891 5.29211L26.6028 16.6058C27.3838 17.3869 28.6501 17.3869 29.4312 16.6058C30.2122 15.8248 30.2122 14.5584 29.4312 13.7774L16.7033 1.04947ZM17.2891 57.3745L17.2891 2.46368L13.2891 2.46368L13.2891 57.3745L17.2891 57.3745Z\"\r\n              fill=\"#175CD3\" />\r\n          </svg>\r\n          <!-- <img class=\"blue-arrow\" src=\"assets/icons/momentum-indicator-chart-line.svg\" /> -->\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  "
         },
         {
             "name": "MonthlyExposureChartComponent",
@@ -2548,6 +2867,314 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<div class=\"tag-container\">\r\n    <button class=\"tag\" [ngClass]=\"[size, state]\" (click)=\"onClick()\">\r\n        {{ label }}\r\n        <span *ngIf=\"removable\" class=\"close-btn\" (click)=\"removeTag($event)\"></span>\r\n    </button>\r\n</div>"
+        },
+        {
+            "name": "TradeViewChartComponent",
+            "id": "component-TradeViewChartComponent-20b6fcf1481eed9673f09c89097bd285b228fca3f6d2abe3d52a13edf14a09a5bf3d65c01b17434d0832e98a0107da980e6e2fbd48479c3230b4be1e557409d9",
+            "file": "src/app/risk-dashboard/components/dashboard/components/trade-view-chart/trade-view-chart.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-trade-view-chart",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./trade-view-chart.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_renderer2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Renderer2",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "baseCurrency",
+                    "defaultValue": "\"ILS\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "cashFlowExposureData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "currencyPair",
+                    "defaultValue": "\"USDILS\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "firstCurrency",
+                    "defaultValue": "\"USD\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "selectedPeriod",
+                    "defaultValue": "'1M'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "tradeViewChartRate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "tradingSource",
+                    "defaultValue": "{\r\n    USDILS: \"SAXO:USDILS\",\r\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getExposureDetails",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "loadTradingViewScripts",
+                    "args": [
+                        {
+                            "name": "currencyPair",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "period",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "currencyPair",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "period",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onPeriodChange",
+                    "args": [
+                        {
+                            "name": "period",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "period",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "MatSelectModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectorRef, Component, Renderer2, RendererFactory2 } from '@angular/core';\r\nimport { MatSelectModule } from '@angular/material/select';\r\n\r\n@Component({\r\n  selector: 'app-trade-view-chart',\r\n  imports: [MatSelectModule],\r\n  templateUrl: './trade-view-chart.component.html',\r\n  styleUrl: './trade-view-chart.component.scss'\r\n})\r\nexport class TradeViewChartComponent {\r\n  private _renderer2: Renderer2;\r\n  tradingSource: any = {\r\n    USDILS: \"SAXO:USDILS\",\r\n  };\r\n  firstCurrency: string = \"USD\";\r\n  baseCurrency: string = \"ILS\";\r\n  currencyPair: string = \"USDILS\";\r\n  selectedPeriod: string = '1M';\r\n  tradeViewChartRate: any;\r\n  cashFlowExposureData: any;\r\n\r\n  constructor(private cd: ChangeDetectorRef, rendererFactory: RendererFactory2) {\r\n    this._renderer2 = rendererFactory.createRenderer(null, null);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.getExposureDetails();\r\n  }\r\n\r\n  getExposureDetails() {\r\n    this.tradingSource = this.tradingSource;\r\n    this.loadTradingViewScripts(this.currencyPair, this.selectedPeriod);\r\n  }\r\n\r\n\r\n  onPeriodChange(period: string) {\r\n    this.selectedPeriod = period;\r\n    this.loadTradingViewScripts(this.currencyPair, period);\r\n  }\r\n\r\n  loadTradingViewScripts(currencyPair: string, period: string) {\r\n    const existingScript = document.getElementById(\"tradingViewScript\");\r\n    if (existingScript) {\r\n      existingScript.remove();\r\n    }\r\n\r\n    const script = this._renderer2.createElement(\"script\");\r\n    script.id = \"tradingViewScript\";\r\n    script.src = \"https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js\";\r\n    script.type = \"text/javascript\";\r\n    script.async = true;\r\n    script.text = `\r\n        {\r\n          \"symbols\": [\r\n            [\r\n              \"${this.tradingSource[currencyPair]}|${period}\"\r\n            ]\r\n          ],\r\n          \"chartOnly\": true,\r\n          \"locale\": \"en\",\r\n          \"colorTheme\": \"light\",\r\n          \"autosize\": true,\r\n          \"showVolume\": false,\r\n          \"hideMA\": true,\r\n          \"hideDateRanges\": true,\r\n          \"hideMarketStatus\": true,\r\n          \"hideSymbolLogo\": false,\r\n          \"scalePosition\": \"right\",\r\n          \"scaleMode\": \"Normal\",\r\n          \"fontFamily\": \"-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif\",\r\n          \"fontSize\": \"10\",\r\n          \"noTimeScale\": false,\r\n          \"valuesTracking\": \"1\",\r\n          \"changeMode\": \"price-and-percent\",\r\n          \"chartType\": \"area\",\r\n          \"maLineColor\": \"#089981\",\r\n          \"maLineWidth\": 1,\r\n          \"maLength\": 9,\r\n          \"lineWidth\": 1,\r\n          \"lineType\": 0,\r\n          \"lineColor\": \"#089981\",\r\n          \"topColor\": \"rgba(8,153,129, 0)\",\r\n          \"bottomColor\": \"rgba(8,153,129, 0)\",\r\n          \"isTransparent\": true\r\n        }`;\r\n\r\n    const chartContainer = document.getElementById(\"tradeViewChart\");\r\n    this._renderer2.appendChild(chartContainer, script);\r\n    this.cd.detectChanges();\r\n  }\r\n}\r\n",
+            "styleUrl": "./trade-view-chart.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "cd",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "rendererFactory",
+                        "type": "RendererFactory2",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 20,
+                "jsdoctags": [
+                    {
+                        "name": "cd",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "rendererFactory",
+                        "type": "RendererFactory2",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div class=\"trading-view-chart-container\">\r\n    <div class=\"tradeview-details\">\r\n      <div class=\"pair-container\">\r\n        <h3>{{ firstCurrency }}/{{ baseCurrency }}</h3>\r\n        <mat-select class=\"month-selector\" value=\"1M\" panelClass=\"trading-view-chart-ddl\" placeholder=\"Select month\" (selectionChange)=\"onPeriodChange($event.value)\">\r\n          <mat-option value=\"1D\">1 Day</mat-option>\r\n          <mat-option value=\"1M\">1 Month</mat-option>\r\n          <mat-option value=\"3M\">3 Months</mat-option>\r\n          <mat-option value=\"1Y\">1 Year</mat-option>\r\n          <mat-option value=\"60M\">5 Years</mat-option>\r\n          <mat-option value=\"all\">All</mat-option>\r\n        </mat-select>\r\n      </div>\r\n      <h2>3.4324 <span>{{ baseCurrency }}</span></h2>\r\n    </div>\r\n    <div id=\"tradeViewChart\">\r\n    </div>\r\n  </div>"
+        },
+        {
+            "name": "VolatilityChartComponent",
+            "id": "component-VolatilityChartComponent-1679d853b58df0b7e212f28c615bf9b8b5e2908000ff2780b401e422c4f5e1e8e6c66b0ce4bb8cbbeb264f4d44d7347111a55acbcfb82746b8c345f82ab22e4c",
+            "file": "src/app/risk-dashboard/components/dashboard/components/volatility-chart/volatility-chart.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-volatility-chart",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./volatility-chart.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "NgbTooltipModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n@Component({\r\n  selector: 'app-volatility-chart',\r\n  imports: [NgbTooltipModule],\r\n  templateUrl: './volatility-chart.component.html',\r\n  styleUrl: './volatility-chart.component.scss'\r\n})\r\nexport class VolatilityChartComponent {\r\n\r\n}\r\n",
+            "styleUrl": "./volatility-chart.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"vola-chart-wrapper\">\r\n    <div class=\"chart-desc\">\r\n      <div class=\"chart-head\">\r\n        <h5 class=\"info-title\">\r\n          <img class=\"title-img\" src=\"images/trending_down.svg\" alt=\"Volatility\" />\r\n          Volatility\r\n          <img src=\"images/annual-title-help-icon.svg\" \r\n               [ngbTooltip]=\"volatilityTool\"\r\n               placement=\"top-left\"\r\n               tooltipClass=\"risk-step3-tooltip--rm\" \r\n               class=\"title-tooltip\" />\r\n\r\n            <ng-template #volatilityTool>\r\n                Implied volatility measures the degree<br> of price fluctuations over time,<br> indicating the level of risk or uncertainty in the market\r\n            </ng-template>\r\n        </h5>\r\n      </div>\r\n      <div class=\"desc\">\r\n        <p>In the next few months the market is expected to be \r\n          <span style=\"color: #DAA61F\">Moderate</span>\r\n        </p>\r\n      </div>\r\n    </div>\r\n  \r\n    <div class=\"vola-chart\">\r\n      <div class=\"chart-inner\">\r\n        <img class=\"chart-round\" src=\"images/volatility-chart-img.svg\" alt=\"volatility_chart\" />\r\n        \r\n        <!-- Needle pointer with fixed rotation -->\r\n        <div class=\"indicator-wrap\" style=\"transform: rotate(45deg)\">\r\n          <div class=\"pointer-wrap\">\r\n            <img class=\"pointer\" src=\"images/volatility-pointer.svg\" alt=\"volatility_chart\" />\r\n          </div>\r\n         \r\n          <div class=\"indicator-value\">\r\n            <p style=\"transform: rotate(-45deg)\"> \r\n              Current <span class=\"value\">25.50<span>%</span></span>\r\n            </p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n      <div class=\"chart-info\">\r\n        <div class=\"info\">\r\n          <p class=\"year-text\">2 Years</p>\r\n          <p class=\"year-text\"><b>MIN</b> volatility</p>\r\n          <p class=\"per-text\">12.34<span>%</span></p>\r\n        </div>\r\n        <div class=\"info right\">\r\n          <p class=\"year-text\">2 Years</p>\r\n          <p class=\"year-text\"><b>MAX</b> volatility</p>\r\n          <p class=\"per-text\">45.67<span>%</span></p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  "
         }
     ],
     "modules": [],
@@ -2565,7 +3192,19 @@
             }
         ],
         "functions": [],
-        "typealiases": [],
+        "typealiases": [
+            {
+                "name": "ChartOptions",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/risk-dashboard/components/dashboard/components/momentum-indicator-chart/momentum-indicator-chart.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            }
+        ],
         "enumerations": [],
         "groupedVariables": {
             "src/app/app.config.ts": [
@@ -2583,11 +3222,25 @@
         },
         "groupedFunctions": {},
         "groupedEnumerations": {},
-        "groupedTypeAliases": {}
+        "groupedTypeAliases": {
+            "src/app/risk-dashboard/components/dashboard/components/momentum-indicator-chart/momentum-indicator-chart.component.ts": [
+                {
+                    "name": "ChartOptions",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/risk-dashboard/components/dashboard/components/momentum-indicator-chart/momentum-indicator-chart.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ]
+        }
     },
     "routes": [],
     "coverage": {
-        "count": 7,
+        "count": 6,
         "status": "low",
         "files": [
             {
@@ -2673,6 +3326,25 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/risk-dashboard/components/dashboard/components/momentum-indicator-chart/momentum-indicator-chart.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MomentumIndicatorChartComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/risk-dashboard/components/dashboard/components/momentum-indicator-chart/momentum-indicator-chart.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ChartOptions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/risk-dashboard/components/dashboard/components/monthly-exposure-chart/monthly-exposure-chart.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -2688,6 +3360,24 @@
                 "name": "RiskEstimateChartComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/risk-dashboard/components/dashboard/components/trade-view-chart/trade-view-chart.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TradeViewChartComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/14",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/risk-dashboard/components/dashboard/components/volatility-chart/volatility-chart.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "VolatilityChartComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

@@ -1,0 +1,19 @@
+<svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="8" height="5" fill=""/>
+<g id="Main frame" clip-path="url(#clip0_5271_74171)">
+<rect width="1920" height="1432" transform="translate(-487 -266)" fill=""/>
+<rect id="Rectangle 7537" x="-186" y="-48" width="1502" height="245" rx="8" fill=""/>
+<g id="Frame 240864">
+<rect x="-60.5" y="-14.5" width="86" height="34" rx="17" fill=""/>
+<rect x="-60.5" y="-14.5" width="86" height="34" rx="17" stroke=""/>
+<g id="Group 240509">
+<path id="arrow" fill-rule="evenodd" clip-rule="evenodd" d="M3.9994 3.49087L7.02315 0.183665C7.24724 -0.0611178 7.60865 -0.0611178 7.83274 0.183665C7.93979 0.300302 8 0.459395 8 0.62533C8 0.791266 7.93979 0.950359 7.83274 1.067L4.40479 4.81587C4.18095 5.06143 3.81904 5.06143 3.59521 4.81587L0.167261 1.06715C0.0602125 0.950359 0 0.791266 0 0.62533C0 0.459395 0.0602125 0.300302 0.167261 0.183509C0.391381 -0.0611179 0.752797 -0.0611179 0.976847 0.18382L3.9994 3.49087Z" fill="#111827"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_5271_74171">
+<rect width="1920" height="1432" fill="" transform="translate(-487 -266)"/>
+</clipPath>
+</defs>
+</svg>
