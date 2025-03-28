@@ -2,6 +2,41 @@
 @import "bootstrap/scss/bootstrap";
 @import "assets/scss/variable";
 @import "assets/scss/fonts";
+
+// slim-scroll-scss
+::-webkit-scrollbar {
+  @media screen and (min-width: 1440px) {
+    width: 10px;
+    height: 5px;
+  }
+  @media screen and (min-width: 1025px) {
+    width: 8px;
+    height: 5px;
+  }
+}
+
+::-webkit-scrollbar-track {
+  @media screen and (min-width: 1025px) {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  @media screen and (min-width: 1025px) {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  @media screen and (min-width: 1025px) {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; font-family: $he_heebo;touch-action: manipulation;}
 body,p,h1,h2,h3,h4,h5,ul { margin: 0; font-family: $he_heebo; letter-spacing: 0;}
