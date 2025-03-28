@@ -1,0 +1,18 @@
+<div class="trading-view-chart-container">
+    <div class="tradeview-details">
+      <div class="pair-container">
+        <h3>{{ firstCurrency }}/{{ baseCurrency }}</h3>
+        <mat-select class="month-selector" value="1M" panelClass="trading-view-chart-ddl" placeholder="Select month" (selectionChange)="onPeriodChange($event.value)">
+          <mat-option value="1D">1 Day</mat-option>
+          <mat-option value="1M">1 Month</mat-option>
+          <mat-option value="3M">3 Months</mat-option>
+          <mat-option value="1Y">1 Year</mat-option>
+          <mat-option value="60M">5 Years</mat-option>
+          <mat-option value="all">All</mat-option>
+        </mat-select>
+      </div>
+      <h2>3.4324 <span>{{ baseCurrency }}</span></h2>
+    </div>
+    <div id="tradeViewChart">
+    </div>
+  </div>

@@ -1,0 +1,305 @@
+@import '../../../../../../assets/scss/variable';
+
+::ng-deep {
+    .vola-chart-wrapper{
+        background-color: $white;
+        padding: 30px 35px 42px 27px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        gap: 26px;
+        .chart-desc{
+            max-width: 195px;
+            .chart-head{
+                .info-title{
+                    color:#344054;
+                    font-family:$he_heebo;
+                    font-size: 18px;
+                    font-weight: 700;
+                    line-height: 28px;
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    margin: 0;
+                    .title-tooltip{
+                        cursor: pointer;
+                    }
+                }
+            }
+            .desc{
+                margin: 20px 0 0;
+                p{
+                    margin: 0;
+                    color:#344054;
+                    font-family:$he_heebo;
+                    font-size: 18px;
+                    font-weight: 400;
+                    line-height: 28px;
+                    span{
+                        color:#079455;
+                        text-transform: lowercase;
+                    }
+                }
+            }
+        }
+        .vola-chart{
+            width: 240px;
+            margin: 30px 0 0;
+            .chart-inner{
+                display: flex;
+                justify-content: center;
+                width: 224px;
+                position: relative;
+                margin: auto;
+                .chart-round{
+                    width: 100%;
+                    height: auto;
+                }
+                .indicator-wrap{
+                    width: 100%;
+                    height: 224px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .pointer-wrap{
+                        width: 36px;
+                        height: 68px;
+                        transform: rotate(-114deg);
+                        position: absolute;
+                        left:0;
+                        margin: auto;
+                        top:0;
+                        right: 60px;
+                        bottom: 0;
+                        img{
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                    .indicator-value{
+                        position: absolute;
+                        top:calc(50% - 38px);
+                        left:-38px;
+                        display: flex;
+                        width:80px;
+                        height:80px;
+                        justify-content: center;
+                        padding:10px;
+                        flex-direction: column;
+                        align-items: center;
+                        border-radius: 40px;
+                        background:rgba(255,255,255,0.5);
+                        box-shadow:24px 0px 48px 5px rgba(16, 24, 40, 0.25);
+                        &:before{
+                            width:calc(100% - 5px);
+                            height:calc(100% - 5px);
+                            background-color: $white;
+                            border-radius: 40px;
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            right: 0;
+                            margin: auto;
+                            top:0;
+                            bottom: 0;
+                            z-index: 1;
+                        }
+                        p{
+                            color:#98A2B3;
+                            font-family:$he_heebo;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 18px;
+                            margin: 0;
+                            position: relative;
+                            z-index: 2;
+                            text-align: center;
+                            .value{
+                                display: block;
+                                color:#475467;
+                                text-align: center;
+                                font-family:$he_heebo;
+                                font-size: 18px;
+                                font-weight: 400;
+                                line-height: 28px;
+                                span{
+                                    font-size: 14px;
+                                    line-height: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .chart-info{
+                display: flex;
+                justify-content: space-between;
+                margin: 5px 0 0;
+                .info{
+                    .year-text{
+                        color:#98A2B3;
+                        font-family: $he_heebo;
+                        font-size: 12px;
+                        font-weight: 500;
+                        line-height: 15.22px;
+                        margin: 0;
+                    }
+                    .per-text{
+                        color:#475467;
+                        font-family:$he_heebo;
+                        font-size: 24px;
+                        font-weight: 400;
+                        line-height: 32px;
+                        margin: 0;
+                        span{
+                            font-size: 14px;
+                            line-height: 1;
+                        }
+                    }
+                    &.right{
+                        text-align: right;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1800px) {
+            padding: 30px 20px;
+            gap: 15px;
+            .chart-desc{
+                .desc{
+                    margin: 10px 0 0;
+                    p{
+                        font-size: 16px;
+                        line-height: 26px;
+                    }
+                }
+            }
+            .vola-chart{
+                width: auto;
+                transform: scale(0.75);
+                margin: 20px -22px -30px;
+                transform-origin: top center;
+            }
+        }
+        @media screen and (max-width:1440px) {
+            padding:20px;
+            gap: 15px;
+            .chart-desc{
+                .chart-head {
+                    .info-title {
+                      font-size: 16px;
+                      line-height: 26px;
+                      gap: 5px;
+          
+                      .title-img {
+                        width: 24px;
+                      }
+                    }
+                  }
+                .desc{
+                    margin: 10px 0 0;
+                    p{
+                        font-size: 14px;
+                        line-height: 24px;
+                    }
+                }
+            }
+            .vola-chart{
+                width: auto;
+                transform: scale(0.65);
+                margin: 20px 0 -30px;
+                transform-origin:0 0;
+            }
+        }
+        @media screen and (max-width:1366px) {
+            .vola-chart{
+                transform: scale(0.65);
+                margin: 20px -35px -30px;
+                transform-origin:top;
+            }
+        }
+        @media screen and (max-width:1280px) {
+            .vola-chart{
+                transform: scale(0.7);
+                margin: 20px 0 -30px;
+                transform-origin:0 0;
+            }
+        }
+        @media screen and (max-width:1199px) {
+            .chart-desc{
+                .desc{
+                    p{
+                        font-size: 14px;
+                        line-height:20px;
+                    }
+                }
+            }
+            .vola-chart{
+                transform: scale(0.6);
+                margin: 20px 0 -55px;
+                transform-origin:0 0;
+            }
+        }
+        @media screen and (max-width:1024px) {
+            .vola-chart{
+                transform: scale(0.8);
+                margin: 20px 0 -30px;
+                transform-origin:0 0;
+            }
+        }
+        @media screen and (max-width:991px) {
+            .vola-chart{
+                transform: scale(0.6);
+                margin: 20px 0 -50px;
+                transform-origin:0 0;
+            }
+        }
+        @media screen and (max-width:850px) {
+            .vola-chart{
+                transform: scale(0.5);
+                margin: 20px 0 -50px;
+                transform-origin:0 0;
+            }
+        }
+        @media screen and (max-width:767px) {
+            .chart-desc{
+                .desc{
+                    p{
+                        font-size: 12px;
+                        line-height:20px;
+                    }
+                }
+            }
+            .vola-chart{
+                transform: scale(0.6);
+                margin: 20px 0 -50px;
+                transform-origin:0 0;
+            }
+        }
+        @media screen and (max-width:640px) {
+            .chart-desc{
+                .desc{
+                    p{
+                        font-size: 14px;
+                        line-height:22px;
+                    }
+                }
+            }
+            .vola-chart{
+                transform: scale(0.9);
+                margin: 20px 0 -20px;
+                transform-origin:0 0;
+            }
+        }
+        @media screen and (max-width:420px) {
+            .vola-chart{
+                transform: scale(0.7);
+                margin: 20px 0 -50px;
+                transform-origin:0 0;
+            }
+        }
+    }
+}

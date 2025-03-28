@@ -1,0 +1,45 @@
+<div class="moment-chart-wrapper">
+    <div class="chart-desc">
+      <div class="chart-head">
+        <h5 class="info-title">
+          <img class="title-img" src="images/trending_down.svg" alt="Momentum Indicator" />Momentum
+          Indicator<img src="images/annual-title-help-icon.svg" [ngbTooltip]="momentTool" placement="top-right"
+            tooltipClass="risk-step3-tooltip--rm" class="title-tooltip" />
+        </h5>
+      </div>
+      <ng-template #momentTool> Measures the speed and strength of a trend, indicating the rate of price change over a
+        specific period.</ng-template>
+      <div class="desc">
+        <p>The <span>{{ currencyPair }}</span> pair is
+          expected to <span [ngClass]="{
+            'declining-significantly': momentumIndicatorRes.momentumRank === 'Decline Significantly',
+            'declining-moderately': momentumIndicatorRes.momentumRank === 'Decline Moderately',
+            'rising-moderately': momentumIndicatorRes.momentumRank === 'Rise Moderately',
+            'rising-significantly': momentumIndicatorRes.momentumRank === 'Rise Significantly',
+            'direction-1': riskdirection === 1,
+            'direction-2': riskdirection === 2,
+            'not-found': momentumIndicatorRes.momentumRank === 'Not Found'
+        }">
+            {{ momentumIndicatorRes.momentumRank }}
+          </span>
+          in the coming months</p>
+      </div>
+    </div>
+    <div class="moment-chart">
+      <div class="chart-inner">
+        <apx-chart #chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+          [plotOptions]="chartOptions.plotOptions" [fill]="chartOptions.fill" [stroke]="chartOptions.stroke"
+          [labels]="chartOptions.labels"></apx-chart>
+        <div class="arrow-wrap">
+          <svg class="blue-arrow" id="m-indicator-arrow" alt="blue arrow" xmlns="http://www.w3.org/2000/svg" width="31"
+            height="60" viewBox="0 0 31 60" fill="none">
+            <path
+              d="M13.2891 57.3745C13.2891 58.4791 14.1845 59.3745 15.2891 59.3745C16.3936 59.3745 17.2891 58.4791 17.2891 57.3745L13.2891 57.3745ZM16.7033 1.04947C15.9222 0.268421 14.6559 0.268421 13.8748 1.04947L1.14692 13.7774C0.365876 14.5584 0.365876 15.8248 1.14693 16.6058C1.92797 17.3869 3.1943 17.3869 3.97535 16.6058L15.2891 5.29211L26.6028 16.6058C27.3838 17.3869 28.6501 17.3869 29.4312 16.6058C30.2122 15.8248 30.2122 14.5584 29.4312 13.7774L16.7033 1.04947ZM17.2891 57.3745L17.2891 2.46368L13.2891 2.46368L13.2891 57.3745L17.2891 57.3745Z"
+              fill="#175CD3" />
+          </svg>
+          <!-- <img class="blue-arrow" src="assets/icons/momentum-indicator-chart-line.svg" /> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
