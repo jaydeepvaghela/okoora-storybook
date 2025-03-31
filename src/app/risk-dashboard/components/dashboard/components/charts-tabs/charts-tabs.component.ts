@@ -2,9 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatTabsModule,MatTabChangeEvent } from '@angular/material/tabs';
 import { MonthlyExposureChartComponent } from "../monthly-exposure-chart/monthly-exposure-chart.component";
+import { ExposureRateChartComponent } from "../exposure-rate-chart/exposure-rate-chart.component";
 @Component({
   selector: 'app-charts-tabs',
-  imports: [MatTabsModule, CommonModule, MonthlyExposureChartComponent],
+  imports: [MatTabsModule, CommonModule, MonthlyExposureChartComponent, ExposureRateChartComponent],
   templateUrl: './charts-tabs.component.html',
   styleUrl: './charts-tabs.component.scss'
 })

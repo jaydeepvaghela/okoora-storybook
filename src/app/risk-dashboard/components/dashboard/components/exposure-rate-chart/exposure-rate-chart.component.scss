@@ -1,0 +1,305 @@
+@import '../../../../../../assets/scss/variable';
+
+::ng-deep {
+    .rm-exposure-rate-chart {
+        overflow-y: hidden;
+
+        .apexcharts-bar-area {
+            stroke-width: 0;
+        }
+
+        .apexcharts-grid {
+            .apexcharts-gridlines-horizontal {
+                .apexcharts-gridline {
+                    stroke-width: 0;
+                }
+            }
+        }
+
+        .apexcharts-grid-borders {
+            .apexcharts-gridline {
+                stroke-width: 0;
+            }
+        }
+
+        .apexcharts-xaxis-label {
+            color: #98A2B3;
+            text-align: center;
+            font-family: 'Inter' !important;
+            font-size: 12px;
+            opacity: .8;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .apexcharts-yaxis-label {
+            color: rgba(0, 0, 0, 0.70);
+            font-family: $he_heebo !important;
+            font-size: 12px !important;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .filter-exposure-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .select-rate-exp {
+                display: flex;
+                align-items: center;
+                padding: 0 5px 0 15px;
+                max-width: 210px;
+                height: 35px;
+                border-radius: 50px;
+                border: 1px solid #D0D5DD;
+                color: #344054;
+                font-family: 'Heebo';
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 15px;
+            }
+
+            .filter-chart-chip-exp {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                .mat-mdc-chip {
+                    width: 100%;
+                    min-width: 98px;
+                    max-width: 98px;
+                    gap: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .mdc-evolution-chip__cell {
+                        width: fit-content;
+                        flex: auto;
+                    }
+
+                    .close-chip {
+                        width: 10px !important;
+                        padding-right: 0;
+                    }
+
+                    .mdc-evolution-chip__text-label {
+                        font-family: $he_heebo;
+                        font-size: 12px;
+                    }
+                }
+
+                .chip-hedged {
+                    border-radius: 30px;
+                    background: #CDFEFE;
+                    color: #344054;
+                    font-family: $he_heebo;
+                    font-size: 12px;
+                    font-weight: 500;
+                    padding: 6px 11px;
+
+                    .mat-mdc-chip-action {
+                        padding-left: 0;
+                    }
+                }
+
+                .chip-liability {
+                    border-radius: 30px;
+                    background: #CED6FD;
+                    color: #344054;
+                    font-family: $he_heebo;
+                    font-size: 12px;
+                    font-weight: 500;
+                    padding: 6px 11px;
+
+                    .mat-mdc-chip-action {
+                        padding-left: 0;
+                    }
+                }
+
+                .chip-spot {
+                    border-radius: 30px;
+                    background: #FDE5CE;
+                    color: #344054;
+                    font-family: 'Heebo';
+                    font-size: 12px;
+                    font-weight: 500;
+                    padding: 6px 11px;
+
+                    .mat-mdc-chip-action {
+                        padding-left: 0;
+                    }
+                }
+
+                .chip-budget {
+                    border-radius: 30px;
+                    background: #8BDDF4;
+                    color: #344054;
+                    font-family: 'Heebo';
+                    font-size: 12px;
+                    font-weight: 500;
+                    padding: 6px 11px;
+
+                    .mat-mdc-chip-action {
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+
+        .legends-rm-exposure {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 4px 0 23px 0;
+
+            .title {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: rgba(0, 0, 0, 0.70);
+                font-family: 'Inter';
+                font-size: 12px;
+                font-weight: 400;
+                line-height: normal;
+                gap: 5px;
+
+                .legends-exposure {
+                    width: 8px;
+                    height: 8px;
+                    background-color: #E0EEFE;
+                }
+
+                .recommended-hedging {
+                    width: 8px;
+                    height: 8px;
+                    background-color: #798CF6;
+                }
+
+                .actual-hedging {
+                    width: 8px;
+                    height: 8px;
+                    background-color: #2947F2;
+                }
+            }
+        }
+
+        .chart-wrappper {
+            padding: 0 30px;
+            position: relative;
+
+            .pagination-wrap {
+                .mat-mdc-paginator-container {
+                    min-height: max-content;
+                    padding: 0;
+                }
+
+                .mat-mdc-paginator-page-size {
+                    display: none;
+                }
+
+                .mat-mdc-paginator-range-label {
+                    color: #98A2B3;
+                    font-family: $he_heebo;
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 18px;
+                    margin: 0;
+                }
+
+                .mat-mdc-icon-button {
+                    &.mat-mdc-button-base {
+                        width: 30px;
+                        padding: 5px 0;
+                        height: 40px;
+                        background-color: #E0EAFF;
+                        border-radius: 0;
+
+                        .mat-mdc-button-touch-target,
+                        .mat-mdc-button-persistent-ripple,
+                        .mat-ripple {
+                            display: none;
+                        }
+                    }
+
+                    &.mat-mdc-paginator-navigation-next {
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                    }
+
+                    &.mat-mdc-paginator-navigation-previous {
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                    }
+                }
+            }
+
+            @media screen and (max-width:1199px) {
+                padding: 0 25px;
+
+                .pagination-wrap {
+                    .mat-mdc-icon-button {
+                        &.mat-mdc-button-base {
+                            width: 25px;
+                            height: 35px;
+                            padding: 2px 0;
+
+                            svg {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media screen and (max-width:580px) {
+                min-width: 600px;
+                overflow-y: auto;
+            }
+        }
+    }
+
+    .select-rate-exposure {
+        padding: 22px 17px 22px 22px !important;
+
+        .mat-mdc-option {
+            color: #1D2939;
+            font-family: 'Heebo';
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+
+            &.mat-mdc-option-active {
+                border-radius: 5px;
+                background: #E5F4FF;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .select-rate-exp {
+        .mat-mdc-select-trigger {
+            .mat-mdc-select-arrow-wrapper {
+                background-image: url(../../../../../../assets/images/arrow-down-black.svg);
+                width: 20px;
+                height: 20px;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 12px;
+
+                .mat-mdc-select-arrow {
+                    display: none;
+                }
+            }
+        }
+    }
+
+}
