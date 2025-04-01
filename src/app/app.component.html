@@ -3,6 +3,6 @@
     <app-sidebar></app-sidebar>
     <div class="content-wrapper risk-manager">
         <router-outlet />
-        <app-dashboard></app-dashboard>
+        <app-dashboard *ngIf="ShowDashboard"></app-dashboard>
     </div>
 </div>

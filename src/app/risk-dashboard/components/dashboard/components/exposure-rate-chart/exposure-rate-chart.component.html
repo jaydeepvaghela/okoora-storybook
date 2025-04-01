@@ -1,44 +1,44 @@
-<div id="chart" class="rm-exposure-rate-chart">
-    <div class="legends-rm-exposure">
-        <label class="title">
-            <div class="legends-exposure"></div> Exposure
-        </label>
-        <label class="title">
-            <div class="recommended-hedging"></div>Recommended hedging
-        </label>
-        <label class="title">
-            <div class="actual-hedging"></div> Actual hedging
-        </label>
-    </div>
-    <div class="chart-wrappper">
-        <div class="filter-exposure-wrapper">
-            <mat-select class="select-rate-exp" panelClass="select-rate-exposure" placeholder="Select rate"
-                id="selectRateExposure__rates"
-                [value]="selectedRates.length ? selectedRates[selectedRates.length - 1] : null"
-                (selectionChange)="onRateChange($event)">
-                <mat-option value="Hedged">Hedged rate</mat-option>
-                <mat-option value="Liability">Liability rate</mat-option>
-                <mat-option value="Spot">Spot rate</mat-option>
-                <mat-option value="Budget" *ngIf="completedAdvancePolicy">Budget rate</mat-option>
-            </mat-select>
+    <div id="chart" class="rm-exposure-rate-chart">
+        <div class="legends-rm-exposure">
+            <label class="title">
+                <div class="legends-exposure"></div> Exposure
+            </label>
+            <label class="title">
+                <div class="recommended-hedging"></div>Recommended hedging
+            </label>
+            <label class="title">
+                <div class="actual-hedging"></div> Actual hedging
+            </label>
+        </div>
+        <div class="chart-wrappper">
+            <div class="filter-exposure-wrapper">
+                <mat-select class="select-rate-exp" panelClass="select-rate-exposure" placeholder="Select rate"
+                    id="selectRateExposure__rates"
+                    [value]="selectedRates.length ? selectedRates[selectedRates.length - 1] : null"
+                    (selectionChange)="onRateChange($event)">
+                    <mat-option value="Hedged">Hedged rate</mat-option>
+                    <mat-option value="Liability">Liability rate</mat-option>
+                    <mat-option value="Spot">Spot rate</mat-option>
+                    <mat-option value="Budget" *ngIf="completedAdvancePolicy">Budget rate</mat-option>
+                </mat-select>
 
-            <mat-chip-set class="filter-chart-chip-exp">
-                <ng-container *ngFor="let series of selectedRates">
-                    <mat-chip id="chip-{{series.toLowerCase()}}" class="chip-{{series.toLowerCase()}}"
-                        [removable]="true" (removed)="onChipRemove(series)">
-                        {{ series }} rate
-                        <img class="close-chip" src="images/close-chip-exposure.svg" matChipRemove>
-                    </mat-chip>
-                </ng-container>
-            </mat-chip-set>
-        </div>
-        <apx-chart #chart [series]="paginatedSeries" [chart]="chartOptions" [xaxis]="xAxisOptions"
-            [yaxis]="yAxisOptions" [stroke]="strokeOptions" [dataLabels]="dataLabelsOptions" [legend]="legendOptions"
-            [tooltip]="tooltipOptions" [plotOptions]="plotOptions" [markers]="markersOptions" [fill]="fillOptions"
-            [annotations]="annotations"></apx-chart>
-        <div class="pagination-wrap" *ngIf="monthChartXAxixData.length > 12">
-            <mat-paginator id="paginationExposureRateChart" [pageSize]="12" [length]="monthChartXAxixData.length"
-                (page)="onPageChange($event)" aria-label="Select page of users"></mat-paginator>
+                <mat-chip-set class="filter-chart-chip-exp">
+                    <ng-container *ngFor="let series of selectedRates">
+                        <mat-chip id="chip-{{series.toLowerCase()}}" class="chip-{{series.toLowerCase()}}"
+                            [removable]="true" (removed)="onChipRemove(series)">
+                            {{ series }} rate
+                            <img class="close-chip" src="images/close-chip-exposure.svg" matChipRemove>
+                        </mat-chip>
+                    </ng-container>
+                </mat-chip-set>
+            </div>
+            <apx-chart [series]="paginatedSeries" [chart]="chartOptions" [xaxis]="xAxisOptions" [yaxis]="yAxisOptions"
+                [stroke]="strokeOptions" [dataLabels]="dataLabelsOptions" [legend]="legendOptions"
+                [tooltip]="tooltipOptions" [plotOptions]="plotOptions" [markers]="markersOptions" [fill]="fillOptions"
+                [annotations]="annotations"></apx-chart>
+            <div class="pagination-wrap" *ngIf="monthChartXAxixData.length > 12">
+                <mat-paginator id="paginationExposureRateChart" [pageSize]="12" [length]="monthChartXAxixData.length"
+                    (page)="onPageChange($event)" aria-label="Select page of users"></mat-paginator>
+            </div>
         </div>
     </div>
-</div>

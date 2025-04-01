@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatTabsModule,MatTabChangeEvent } from '@angular/material/tabs';
+import { MatTabsModule, MatTabChangeEvent } from '@angular/material/tabs';
 import { MonthlyExposureChartComponent } from "../monthly-exposure-chart/monthly-exposure-chart.component";
 import { ExposureRateChartComponent } from "../exposure-rate-chart/exposure-rate-chart.component";
 @Component({

@@ -24,9 +24,9 @@ import { MatChipsModule } from '@angular/material/chips';
   selector: 'app-exposure-rate-chart',
   imports: [CommonModule, NgApexchartsModule, MatPaginatorModule, MatSelectModule, MatChipsModule],
   templateUrl: './exposure-rate-chart.component.html',
-  styleUrl: './exposure-rate-chart.component.scss'
+  styleUrl: './exposure-rate-chart.component.scss',
 })
-export class ExposureRateChartComponent implements OnInit{
+export class ExposureRateChartComponent implements OnInit, AfterViewInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   public chartSeries!: ApexAxisChartSeries;
   public originalSeries!: ApexAxisChartSeries;
@@ -45,13 +45,13 @@ export class ExposureRateChartComponent implements OnInit{
   monthChartXAxixData: any;
   cashFlowTableData: any;
   resizeSubscription: Subscription | undefined;
-  monthlyExposure: any = [25,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-  ourRecommendedHedge: any = [10.50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-  liabilityRate: any = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-  spotRate: any = [4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110];
-  hedgeRate: any = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-  currentHedge: any = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-  budgetRate: any = [4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712];
+  monthlyExposure: any = [25,10,15,18,20,16,14,12,8,17,13,10];
+  ourRecommendedHedge: any = [10.50,8.5,6.3,5.5,2.5,8.3,4.6,3.8,4.9,7.5,3.6,2.3];
+  liabilityRate: any = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+  spotRate: any = [4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110];
+  hedgeRate: any = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+  currentHedge: any = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+  budgetRate: any = [4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712];
   constructor(
     private cdr: ChangeDetectorRef,
   ) { }
@@ -60,16 +60,18 @@ export class ExposureRateChartComponent implements OnInit{
   currentPage = 0;
   completedAdvancePolicy: boolean = true;
   ngOnInit() {
-    this.initializeChart();
-    this.setupResizeListener();
-    this.updatePaginatedSeries();
+    setTimeout(() => {
+      this.initializeChart();
+      this.setupResizeListener();
+      this.updatePaginatedSeries();
+    }, 100);
   }
   updatePaginatedSeries() {
     const startIndex = this.currentPage * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.paginatedSeries = this.chartSeries.map(series => ({
       ...series,
-      data: series.data.slice(startIndex, endIndex)
+      data: series?.data?.slice(startIndex, endIndex)
     }));
     this.xAxisOptions = {
       categories: this.monthChartXAxixData?.slice(startIndex, endIndex),
@@ -135,7 +137,7 @@ export class ExposureRateChartComponent implements OnInit{
   }
 
   initializeChart() {
-    this.monthChartXAxixData = ['Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24', 'Jan 25', 'Feb 25', 'Mar 25', 'Apr 25', 'May 25', 'Jun 25', 'Jul 25', 'Aug 25', 'Sep 25', 'Oct 25', 'Nov 25', 'Dec 25'];
+    this.monthChartXAxixData = ['Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24'];
 
     this.originalSeries = this.generateSeriesData(this.monthChartXAxixData.length);
     const spotRateLine = this.spotRate;
@@ -145,6 +147,9 @@ export class ExposureRateChartComponent implements OnInit{
     this.chartOptions = {
       type: "line",
       height: 302,
+      zoom: {
+        enabled: false,
+      },
       toolbar: {
         show: false,
         tools: {

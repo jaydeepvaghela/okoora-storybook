@@ -78,7 +78,6 @@ export class MonthlyExposureChartComponent implements OnInit, OnDestroy, AfterVi
     }, 100);
     if (this.paginator) {
       this.paginator?.page.subscribe((event: PageEvent) => this.onPageChange(event));
-      this.paginator.page.subscribe((event: PageEvent) => this.onPageChange(event));
     }
   }
   ngAfterContentInit() {

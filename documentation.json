@@ -960,7 +960,7 @@
         },
         {
             "name": "ChartsTabsComponent",
-            "id": "component-ChartsTabsComponent-e43512f8153146809f5bce434032ced19e395641aa100bb5954f10fd45c180f33c19ddb3688b4b708f65461d3b54236471673012fddf294ccf9f8b94b067b7ad",
+            "id": "component-ChartsTabsComponent-0cc94dfddc5dba683ea5c9f41f03bc1ed53dcff3c995a472421b090598e86565332d479994660b2e25b43d7351a302892a2652045c24400ce514ff559423059b",
             "file": "src/app/risk-dashboard/components/dashboard/components/charts-tabs/charts-tabs.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -987,7 +987,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 15
                 },
                 {
                     "name": "loadExposureChart",
@@ -998,7 +998,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 14
                 },
                 {
                     "name": "loadMonthChart",
@@ -1009,7 +1009,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 13
                 }
             ],
             "methodsClass": [
@@ -1026,7 +1026,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 16,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1059,18 +1059,22 @@
                 {
                     "name": "MonthlyExposureChartComponent",
                     "type": "component"
+                },
+                {
+                    "name": "ExposureRateChartComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { MatTabsModule,MatTabChangeEvent } from '@angular/material/tabs';\r\nimport { MonthlyExposureChartComponent } from \"../monthly-exposure-chart/monthly-exposure-chart.component\";\r\n@Component({\r\n  selector: 'app-charts-tabs',\r\n  imports: [MatTabsModule, CommonModule, MonthlyExposureChartComponent],\r\n  templateUrl: './charts-tabs.component.html',\r\n  styleUrl: './charts-tabs.component.scss'\r\n})\r\nexport class ChartsTabsComponent {\r\n  loadMonthChart: boolean = true;\r\n  loadExposureChart: boolean = false;\r\n  activeIndex: number = 0;\r\n  onTabChange(event: MatTabChangeEvent) {\r\n    const index = event.index;\r\n    this.activeIndex = index;\r\n    switch (index) {\r\n      case 0:\r\n        this.loadMonthChart = true;\r\n        this.loadExposureChart = false;\r\n        break;\r\n      case 1:\r\n        this.loadExposureChart = true;\r\n        this.loadMonthChart = false;\r\n        break;\r\n      default:\r\n        break;\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { MatTabsModule, MatTabChangeEvent } from '@angular/material/tabs';\r\nimport { MonthlyExposureChartComponent } from \"../monthly-exposure-chart/monthly-exposure-chart.component\";\r\nimport { ExposureRateChartComponent } from \"../exposure-rate-chart/exposure-rate-chart.component\";\r\n@Component({\r\n  selector: 'app-charts-tabs',\r\n  imports: [MatTabsModule, CommonModule, MonthlyExposureChartComponent, ExposureRateChartComponent],\r\n  templateUrl: './charts-tabs.component.html',\r\n  styleUrl: './charts-tabs.component.scss'\r\n})\r\nexport class ChartsTabsComponent {\r\n  loadMonthChart: boolean = true;\r\n  loadExposureChart: boolean = false;\r\n  activeIndex: number = 0;\r\n  onTabChange(event: MatTabChangeEvent) {\r\n    const index = event.index;\r\n    this.activeIndex = index;\r\n    switch (index) {\r\n      case 0:\r\n        this.loadMonthChart = true;\r\n        this.loadExposureChart = false;\r\n        break;\r\n      case 1:\r\n        this.loadExposureChart = true;\r\n        this.loadMonthChart = false;\r\n        break;\r\n      default:\r\n        break;\r\n    }\r\n  }\r\n}\r\n",
             "styleUrl": "./charts-tabs.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"monthly-analysis-charts\">\r\n    <div class=\"chart-head\">\r\n        <h4 class=\"info-title\"><img src=\"images/exposure-virtual.svg\" alt=\"exposure\" />Monthly\r\n            analysis</h4>\r\n            <div class=\"btn-right\">\r\n                <button class=\"edit-btn\" id=\"editexposureBtn__rmdb\">Edit</button>\r\n                <button class=\"hedge-btn\" id=\"quickHedge__rmdb\">Quick Hedge</button>\r\n            </div>\r\n    </div>\r\n    <div class=\"tab-wrap\">\r\n        <mat-tab-group mat-stretch-tabs=\"false\" class=\"chart-tabs-group\" mat-align-tabs=\"center\" (selectedTabChange)=\"onTabChange($event)\">\r\n            <mat-tab label=\"Monthly exposure\" class=\"chart-tab\">\r\n                <app-monthly-exposure-chart *ngIf=\"loadMonthChart\"></app-monthly-exposure-chart>\r\n            </mat-tab>\r\n            <mat-tab label=\"Exposure & rates\" class=\"chart-tab\">\r\n            </mat-tab>\r\n        </mat-tab-group>\r\n    </div>\r\n</div>"
+            "templateData": "<div class=\"monthly-analysis-charts\">\r\n    <div class=\"chart-head\">\r\n        <h4 class=\"info-title\"><img src=\"images/exposure-virtual.svg\" alt=\"exposure\" />Monthly\r\n            analysis</h4>\r\n            <div class=\"btn-right\">\r\n                <button class=\"edit-btn\" id=\"editexposureBtn__rmdb\">Edit</button>\r\n                <button class=\"hedge-btn\" id=\"quickHedge__rmdb\">Quick Hedge</button>\r\n            </div>\r\n    </div>\r\n    <div class=\"tab-wrap\">\r\n        <mat-tab-group mat-stretch-tabs=\"false\" class=\"chart-tabs-group\" mat-align-tabs=\"center\" (selectedTabChange)=\"onTabChange($event)\">\r\n            <mat-tab label=\"Monthly exposure\" class=\"chart-tab\">\r\n                <app-monthly-exposure-chart *ngIf=\"loadMonthChart\"></app-monthly-exposure-chart>\r\n            </mat-tab>\r\n            <mat-tab label=\"Exposure & rates\" class=\"chart-tab\">\r\n                <app-exposure-rate-chart *ngIf=\"loadExposureChart\"></app-exposure-rate-chart>\r\n            </mat-tab>\r\n        </mat-tab-group>\r\n    </div>\r\n</div>"
         },
         {
             "name": "DashboardComponent",
@@ -1275,6 +1279,743 @@
                 }
             },
             "templateData": "<div class=\"currency-dropdown-container\">\r\n    <mat-select [(value)]=\"selectedValue\" [disabled]=\"disabled\" panelClass=\"currency-dropdown-panel\" class=\"form-control currency-dropdown\" placeholder=\"Select\">\r\n      <mat-select-trigger>\r\n          <div *ngIf=\"selectedValue\" class=\"to-currency-section\">\r\n            <div class=\"image-wrap\">\r\n              <img class=\"currency-image\" [src]=\"getSelectedOption()?.flag\" alt=\"currency_flag\" />\r\n              <img src=\"tick-icon.svg\" alt=\"arrow\" class=\"tick-icn\" />\r\n            </div>\r\n            <div class=\"currency-info\">\r\n              <span class=\"currency-code\">{{ getSelectedOption()?.label }}</span>\r\n              <span class=\"currency-name\">{{ getSelectedOption()?.description }}</span>\r\n            </div>\r\n          </div>\r\n      </mat-select-trigger>\r\n      <div class=\"search-input-wrapper\">\r\n        <div class=\"input-inner\">\r\n          <input #searchBeneficiaryCountryInput [(ngModel)]=\"searchQuery\" class=\"filter-input\"\r\n            [ngClass]=\"filteredOptions.length == 0 ? 'error-input' : ''\" type=\"text\"\r\n            placeholder=\"Search\" id=\"search-input\">\r\n        </div>\r\n        <div class=\"error-wrap\" *ngIf=\"filteredOptions?.length == 0\">\r\n          <h3 class=\"error-title\">No currency were found</h3>\r\n          <p class=\"desc\">Try again with different keywords, <button (click)=\"clearSearch()\" class=\"clear-search\">Reset search</button></p>\r\n        </div>\r\n      </div>\r\n      <div class=\"currency-option-list\">\r\n        <mat-option *ngFor=\"let option of filteredOptions\" [value]=\"option.value\">\r\n          <img class=\"currency-image\" [src]=\"option.flag\" alt=\"currency_flag\" />\r\n          <div class=\"currency-info\">\r\n            <span class=\"currency-code\">{{ option.label }}</span>\r\n            <span class=\"currency-name\">{{ option.description }}</span>\r\n          </div>\r\n        </mat-option>\r\n      </div>\r\n    </mat-select>\r\n</div>"
+        },
+        {
+            "name": "ExposureRateChartComponent",
+            "id": "component-ExposureRateChartComponent-07080923def2874d1172287e6392c2ea96947d8490b540b179571a5857ba683bdf8a2f3f9f08d233c1ee9d131c1bd28b830d9b9bad5e4825630ca5156f4b4bcc",
+            "file": "src/app/risk-dashboard/components/dashboard/components/exposure-rate-chart/exposure-rate-chart.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-exposure-rate-chart",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./exposure-rate-chart.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "annotations",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexAnnotations",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 44,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "budgetRate",
+                    "defaultValue": "[4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 54
+                },
+                {
+                    "name": "cashFlowTableData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46
+                },
+                {
+                    "name": "chartOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexChart",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "chartSeries",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexAxisChartSeries",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "completedAdvancePolicy",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 61
+                },
+                {
+                    "name": "currentHedge",
+                    "defaultValue": "[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53
+                },
+                {
+                    "name": "currentPage",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 60
+                },
+                {
+                    "name": "dataLabelsOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexDataLabels",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "fillOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexFill",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 43,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "hedgeRate",
+                    "defaultValue": "[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 52
+                },
+                {
+                    "name": "legendOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexLegend",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "liabilityRate",
+                    "defaultValue": "[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 50
+                },
+                {
+                    "name": "markersOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexMarkers",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 42,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "monthChartXAxixData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 45
+                },
+                {
+                    "name": "monthlyExposure",
+                    "defaultValue": "[25,10,15,18,20,16,14,12,8,17,13,10]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 48
+                },
+                {
+                    "name": "originalSeries",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexAxisChartSeries",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "ourRecommendedHedge",
+                    "defaultValue": "[10.50,8.5,6.3,5.5,2.5,8.3,4.6,3.8,4.9,7.5,3.6,2.3]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 49
+                },
+                {
+                    "name": "pageSize",
+                    "defaultValue": "12",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 59
+                },
+                {
+                    "name": "paginatedSeries",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 58
+                },
+                {
+                    "name": "paginator",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatPaginator",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "MatPaginator"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "plotOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexPlotOptions",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "resizeSubscription",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Subscription | undefined",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 47
+                },
+                {
+                    "name": "selectedRates",
+                    "defaultValue": "['Spot']",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "spotRate",
+                    "defaultValue": "[4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 51
+                },
+                {
+                    "name": "strokeOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexStroke",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "tooltipOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexTooltip",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "xAxisOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexXAxis",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "yAxisOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApexYAxis",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "generateSeriesData",
+                    "args": [
+                        {
+                            "name": "monthsCount",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ApexAxisChartSeries",
+                    "typeParameters": [],
+                    "line": 197,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "monthsCount",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getLineColors",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string[]",
+                    "typeParameters": [],
+                    "line": 320,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getRandomValue",
+                    "args": [
+                        {
+                            "name": "min",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "max",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 248,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "min",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "max",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleWindowResize",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 98,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "initializeChart",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 139,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 386,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 62,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onChipRemove",
+                    "args": [
+                        {
+                            "name": "chipLabel",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 272,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "chipLabel",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onPageChange",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 85,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onRateChange",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 263,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setAtLeastTwoZeroes",
+                    "args": [
+                        {
+                            "name": "dataArray",
+                            "type": "number[]",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 252,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "dataArray",
+                            "type": "number[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setMarkerStrokeColors",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 104,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "setupResizeListener",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 92,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateAnnotations",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 331,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateChart",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 281,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updatePaginatedSeries",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 69,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NgApexchartsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatPaginatorModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatSelectModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatChipsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectorRef, Component, OnInit, AfterViewInit, ViewChild, Input, SimpleChanges } from '@angular/core';\r\nimport {\r\n  ApexAxisChartSeries,\r\n  ApexChart,\r\n  ApexXAxis,\r\n  ApexDataLabels,\r\n  ApexStroke,\r\n  ApexMarkers,\r\n  ApexYAxis,\r\n  ApexLegend,\r\n  ApexTooltip,\r\n  ApexFill,\r\n  ApexPlotOptions,\r\n  ApexAnnotations,\r\n  NgApexchartsModule\r\n} from \"ng-apexcharts\";\r\nimport { debounceTime, fromEvent, Subscription } from 'rxjs';\r\nimport { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatSelectModule } from '@angular/material/select';\r\nimport { MatChipsModule } from '@angular/material/chips';\r\n\r\n@Component({\r\n  selector: 'app-exposure-rate-chart',\r\n  imports: [CommonModule, NgApexchartsModule, MatPaginatorModule, MatSelectModule, MatChipsModule],\r\n  templateUrl: './exposure-rate-chart.component.html',\r\n  styleUrl: './exposure-rate-chart.component.scss',\r\n})\r\nexport class ExposureRateChartComponent implements OnInit, AfterViewInit{\r\n  @ViewChild(MatPaginator) paginator!: MatPaginator;\r\n  public chartSeries!: ApexAxisChartSeries;\r\n  public originalSeries!: ApexAxisChartSeries;\r\n  public selectedRates: string[] = ['Spot'];\r\n  public chartOptions!: ApexChart;\r\n  public xAxisOptions!: ApexXAxis;\r\n  public yAxisOptions!: ApexYAxis;\r\n  public strokeOptions!: ApexStroke;\r\n  public dataLabelsOptions!: ApexDataLabels;\r\n  public legendOptions!: ApexLegend;\r\n  public tooltipOptions!: ApexTooltip;\r\n  public plotOptions!: ApexPlotOptions;\r\n  public markersOptions!: ApexMarkers;\r\n  public fillOptions!: ApexFill;\r\n  public annotations!: ApexAnnotations;\r\n  monthChartXAxixData: any;\r\n  cashFlowTableData: any;\r\n  resizeSubscription: Subscription | undefined;\r\n  monthlyExposure: any = [25,10,15,18,20,16,14,12,8,17,13,10];\r\n  ourRecommendedHedge: any = [10.50,8.5,6.3,5.5,2.5,8.3,4.6,3.8,4.9,7.5,3.6,2.3];\r\n  liabilityRate: any = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];\r\n  spotRate: any = [4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110,4.2110];\r\n  hedgeRate: any = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];\r\n  currentHedge: any = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];\r\n  budgetRate: any = [4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712,4.0712];\r\n  constructor(\r\n    private cdr: ChangeDetectorRef,\r\n  ) { }\r\n  paginatedSeries: any = [];\r\n  pageSize = 12;\r\n  currentPage = 0;\r\n  completedAdvancePolicy: boolean = true;\r\n  ngOnInit() {\r\n    setTimeout(() => {\r\n      this.initializeChart();\r\n      this.setupResizeListener();\r\n      this.updatePaginatedSeries();\r\n    }, 100);\r\n  }\r\n  updatePaginatedSeries() {\r\n    const startIndex = this.currentPage * this.pageSize;\r\n    const endIndex = startIndex + this.pageSize;\r\n    this.paginatedSeries = this.chartSeries.map(series => ({\r\n      ...series,\r\n      data: series?.data?.slice(startIndex, endIndex)\r\n    }));\r\n    this.xAxisOptions = {\r\n      categories: this.monthChartXAxixData?.slice(startIndex, endIndex),\r\n    };\r\n  }\r\n  ngAfterViewInit() {\r\n    this.initializeChart();\r\n    this.paginator?.page?.subscribe((event: PageEvent) => this.onPageChange(event));\r\n    this.updatePaginatedSeries();\r\n  }\r\n  onPageChange(event: PageEvent) {\r\n    this.pageSize = event.pageSize;\r\n    this.currentPage = event.pageIndex;\r\n    this.updatePaginatedSeries();\r\n    this.handleWindowResize();\r\n  }\r\n\r\n  setupResizeListener() {\r\n    this.resizeSubscription = fromEvent(window, 'resize')\r\n      .pipe(debounceTime(200))\r\n      .subscribe(() => this.handleWindowResize());\r\n  }\r\n\r\n  handleWindowResize() {\r\n    setTimeout(() => {\r\n      this.setMarkerStrokeColors();\r\n    }, 0);\r\n  }\r\n\r\n  setMarkerStrokeColors() {\r\n    const colors: { [key: string]: string } = {\r\n      'Hedged': '#05F2F2',\r\n      'Liability': '#2C4CF5',\r\n      'Spot': '#F9AE67',\r\n      'Budget': '#8BDDF4'\r\n    };\r\n\r\n    document.querySelectorAll('.apexcharts-series').forEach(seriesElement => {\r\n      const seriesName = seriesElement.getAttribute('seriesName');\r\n      if (seriesName && colors[seriesName]) {\r\n        const strokeColor = colors[seriesName];\r\n\r\n        // Set marker stroke colors\r\n        const markersWrap = seriesElement.querySelector('.apexcharts-series-markers-wrap');\r\n        if (markersWrap) {\r\n          const markers = markersWrap.querySelectorAll('.apexcharts-marker');\r\n          markers.forEach(marker => {\r\n            marker.setAttribute('stroke', strokeColor);\r\n          });\r\n        }\r\n\r\n        // Set line stroke colors\r\n        const lineElement = seriesElement.querySelector('.apexcharts-line');\r\n        if (lineElement) {\r\n          lineElement.setAttribute('stroke', strokeColor);\r\n\r\n          if (seriesName === 'Spot') {\r\n            lineElement.setAttribute('stroke-dasharray', '6');\r\n          }\r\n        }\r\n      }\r\n    });\r\n  }\r\n\r\n  initializeChart() {\r\n    this.monthChartXAxixData = ['Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24'];\r\n\r\n    this.originalSeries = this.generateSeriesData(this.monthChartXAxixData.length);\r\n    const spotRateLine = this.spotRate;\r\n    const currentSpotRate = spotRateLine[spotRateLine.length - 1];\r\n    const yAxisMax = currentSpotRate * 1.60;\r\n\r\n    this.chartOptions = {\r\n      type: \"line\",\r\n      height: 302,\r\n      zoom: {\r\n        enabled: false,\r\n      },\r\n      toolbar: {\r\n        show: false,\r\n        tools: {\r\n          zoom: false,\r\n          zoomin: false,\r\n          zoomout: false,\r\n          pan: false\r\n        }\r\n      }\r\n    };\r\n\r\n    this.xAxisOptions = {\r\n      categories: this.monthChartXAxixData,\r\n      labels: {\r\n        style: {\r\n          cssClass: 'apexcharts-xaxis-label'\r\n        }\r\n      }\r\n    };\r\n\r\n    const lineColors = this.getLineColors();\r\n    this.yAxisOptions = {\r\n      min: 0,\r\n      max: yAxisMax,\r\n      tickAmount: 6,\r\n      labels: {\r\n        formatter: function (value: number) {\r\n          return value.toFixed(2);\r\n        }\r\n      }\r\n    };\r\n\r\n    this.strokeOptions = { width: [3, 3, 3], colors: lineColors, curve: \"straight\", dashArray: [0, 0, 5] };\r\n    this.dataLabelsOptions = { enabled: false };\r\n    this.legendOptions = { show: false, position: \"top\" };\r\n    this.tooltipOptions = { enabled: true };\r\n    this.plotOptions = { bar: { horizontal: false, borderRadius: 0, rangeBarOverlap: false } };\r\n    this.markersOptions = { size: 4, colors: [\"#fff\"], strokeColors: lineColors, strokeWidth: 2, strokeOpacity: 1 };\r\n    this.fillOptions = { colors: [\"#D8E9FD\", \"#A9B5F9\", \"#2947F2\"], opacity: [0.2, 0.2, 0.2] };\r\n\r\n    this.updateChart();\r\n  }\r\n\r\n\r\n  generateSeriesData(monthsCount: number): ApexAxisChartSeries {\r\n    // Destructure Liability, spot, and hedgeRate for each month\r\n    const liabilityLine = this.liabilityRate;\r\n    const spotRateLine = this.spotRate;\r\n    const hedgeRateLine = this.hedgeRate;\r\n    const budgetRateLine = this.budgetRate;\r\n\r\n    const exposureBar = this.monthlyExposure;\r\n    const recommendedHedgeBar = this.ourRecommendedHedge;\r\n    const currentHedgeBar = this.currentHedge;\r\n    const chartData = [\r\n      {\r\n        name: \"Hedged\",\r\n        type: \"line\",\r\n        data: hedgeRateLine\r\n      },\r\n      {\r\n        name: \"Liability\",\r\n        type: \"line\",\r\n        data: liabilityLine\r\n      },\r\n      {\r\n        name: \"Spot\",\r\n        type: \"line\",\r\n        data: spotRateLine\r\n      },\r\n      {\r\n        name: \"Budget\",\r\n        type: \"line\",\r\n        data: budgetRateLine\r\n      },\r\n      {\r\n        name: \"Exposure\",\r\n        type: \"bar\",\r\n        data: exposureBar\r\n      },\r\n      {\r\n        name: \"Recommended hedging\",\r\n        type: \"bar\",\r\n        data: recommendedHedgeBar\r\n      },\r\n      {\r\n        name: \"Actual hedging\",\r\n        type: \"bar\",\r\n        data: currentHedgeBar\r\n      }\r\n    ];\r\n\r\n    return chartData;\r\n  }\r\n\r\n  getRandomValue(min: number, max: number): number {\r\n    return +(Math.random() * (max - min) + min).toFixed(2);\r\n  }\r\n\r\n  setAtLeastTwoZeroes(dataArray: number[]): void {\r\n    const zeroIndices: number[] = [];\r\n    while (zeroIndices.length < 2) {\r\n      const index = Math.floor(Math.random() * dataArray.length);\r\n      if (!zeroIndices.includes(index)) {\r\n        zeroIndices.push(index);\r\n      }\r\n    }\r\n    zeroIndices.forEach(index => dataArray[index] = 0);\r\n  }\r\n\r\n  onRateChange(event: any) {\r\n    const selectedRate = event.value;\r\n    if (!this.selectedRates.includes(selectedRate)) {\r\n      this.selectedRates.push(selectedRate);\r\n    }\r\n    this.updateChart();\r\n    this.updatePaginatedSeries();\r\n  }\r\n\r\n  onChipRemove(chipLabel: string) {\r\n    this.selectedRates = this.selectedRates.filter(rate => rate !== chipLabel);\r\n    if (this.selectedRates.length === 0) {\r\n      this.selectedRates = [];\r\n    }\r\n    this.updateChart();\r\n    this.updatePaginatedSeries();\r\n  }\r\n\r\n  updateChart() {\r\n    const barSeries = this.originalSeries.filter(series => series.type === 'bar');\r\n    const lineSeries = this.originalSeries.filter(series =>\r\n      series.type === 'line' && (series.name && this.selectedRates.includes(series.name))\r\n    );\r\n\r\n    this.plotOptions = {\r\n      bar: {\r\n        horizontal: false,\r\n        borderRadius: 0,\r\n        distributed: false,\r\n      }\r\n    };\r\n    this.chartSeries = [...barSeries, ...lineSeries];\r\n\r\n    const lineColors = this.getLineColors();\r\n\r\n    this.strokeOptions = {\r\n      width: lineSeries.map(() => 4),\r\n      colors: lineColors,\r\n      curve: \"straight\",\r\n      dashArray: [0, 0, 5]\r\n    };\r\n\r\n    this.markersOptions = {\r\n      size: 4,\r\n      colors: [\"#fff\"], // Marker fill color\r\n      strokeColors: lineColors, // Marker border color\r\n      strokeWidth: 2,\r\n      strokeOpacity: 1\r\n    };\r\n    this.updateAnnotations();\r\n    this.cdr.detectChanges();\r\n\r\n    setTimeout(() => {\r\n      this.setMarkerStrokeColors();\r\n    }, 0);\r\n  }\r\n\r\n  getLineColors(): string[] {\r\n    const colors: { [key: string]: string } = {\r\n      'Hedged': '#05F2F2',\r\n      'Liability': '#2C4CF5',\r\n      'Spot': '#F9AE67',\r\n      'Budget': '#8BDDF4'\r\n    };\r\n\r\n    return this.selectedRates.map(rate => colors[rate] || '#000');\r\n  }\r\n\r\n  updateAnnotations() {\r\n    const visibleLineSeries = this.chartSeries.filter(series => series.type === 'line');\r\n\r\n    const isSmallScreen = window.innerWidth <= 1440;\r\n    const fontSize = isSmallScreen ? '12px' : '14px';\r\n    const padding = isSmallScreen ? { top: 5, bottom: 5, left: 5, right: 5 } : { top: 10, bottom: 10, left: 10, right: 10 };\r\n\r\n    this.annotations = {\r\n      points: visibleLineSeries.map(series => {\r\n        const lastDataPointIndex = series.data.length - 1;\r\n        const lastDataPoint = Number(series.data[lastDataPointIndex]).toFixed(4);;\r\n        const seriesName = series.name;\r\n        let strokeColor = '';\r\n        let labelBackground = '';\r\n        let labelColor = '';\r\n\r\n        if (seriesName === 'Hedged') {\r\n          strokeColor = '#05F2F2';\r\n          labelBackground = '#05F2F2';\r\n          labelColor = '#2947F2';\r\n        } else if (seriesName === 'Liability') {\r\n          strokeColor = '#2C4CF5';\r\n          labelBackground = '#2C4CF5';\r\n          labelColor = '#FFFFFF';\r\n        } else if (seriesName === 'Spot') {\r\n          strokeColor = '#F9AE67';\r\n          labelBackground = '#FDE5CE';\r\n          labelColor = '#C46408';\r\n        } else if (seriesName === 'Budget') {\r\n          strokeColor = '#8BDDF4';\r\n          labelBackground = '#8BDDF4';\r\n          labelColor = '#2C2C2C';\r\n        }\r\n\r\n        return {\r\n          x: this.monthChartXAxixData[lastDataPointIndex],\r\n          y: Number(lastDataPoint),\r\n          marker: { size: 4, fillColor: '#fff', strokeColor: strokeColor, radius: 2 },\r\n          label: {\r\n            text: `${lastDataPoint}`,\r\n            borderColor: strokeColor,\r\n            offsetY: -10,\r\n            style: {\r\n              background: labelBackground,\r\n              color: labelColor,\r\n              fontSize: fontSize,\r\n              padding: padding,\r\n              fontFamily: 'Heebo'\r\n            },\r\n          }\r\n        };\r\n      })\r\n    };\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    if (this.resizeSubscription) {\r\n      this.resizeSubscription.unsubscribe();\r\n    }\r\n  }\r\n}\r\n",
+            "styleUrl": "./exposure-rate-chart.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 54,
+                "jsdoctags": [
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "AfterViewInit"
+            ],
+            "templateData": "    <div id=\"chart\" class=\"rm-exposure-rate-chart\">\r\n        <div class=\"legends-rm-exposure\">\r\n            <label class=\"title\">\r\n                <div class=\"legends-exposure\"></div> Exposure\r\n            </label>\r\n            <label class=\"title\">\r\n                <div class=\"recommended-hedging\"></div>Recommended hedging\r\n            </label>\r\n            <label class=\"title\">\r\n                <div class=\"actual-hedging\"></div> Actual hedging\r\n            </label>\r\n        </div>\r\n        <div class=\"chart-wrappper\">\r\n            <div class=\"filter-exposure-wrapper\">\r\n                <mat-select class=\"select-rate-exp\" panelClass=\"select-rate-exposure\" placeholder=\"Select rate\"\r\n                    id=\"selectRateExposure__rates\"\r\n                    [value]=\"selectedRates.length ? selectedRates[selectedRates.length - 1] : null\"\r\n                    (selectionChange)=\"onRateChange($event)\">\r\n                    <mat-option value=\"Hedged\">Hedged rate</mat-option>\r\n                    <mat-option value=\"Liability\">Liability rate</mat-option>\r\n                    <mat-option value=\"Spot\">Spot rate</mat-option>\r\n                    <mat-option value=\"Budget\" *ngIf=\"completedAdvancePolicy\">Budget rate</mat-option>\r\n                </mat-select>\r\n\r\n                <mat-chip-set class=\"filter-chart-chip-exp\">\r\n                    <ng-container *ngFor=\"let series of selectedRates\">\r\n                        <mat-chip id=\"chip-{{series.toLowerCase()}}\" class=\"chip-{{series.toLowerCase()}}\"\r\n                            [removable]=\"true\" (removed)=\"onChipRemove(series)\">\r\n                            {{ series }} rate\r\n                            <img class=\"close-chip\" src=\"images/close-chip-exposure.svg\" matChipRemove>\r\n                        </mat-chip>\r\n                    </ng-container>\r\n                </mat-chip-set>\r\n            </div>\r\n            <apx-chart [series]=\"paginatedSeries\" [chart]=\"chartOptions\" [xaxis]=\"xAxisOptions\" [yaxis]=\"yAxisOptions\"\r\n                [stroke]=\"strokeOptions\" [dataLabels]=\"dataLabelsOptions\" [legend]=\"legendOptions\"\r\n                [tooltip]=\"tooltipOptions\" [plotOptions]=\"plotOptions\" [markers]=\"markersOptions\" [fill]=\"fillOptions\"\r\n                [annotations]=\"annotations\"></apx-chart>\r\n            <div class=\"pagination-wrap\" *ngIf=\"monthChartXAxixData.length > 12\">\r\n                <mat-paginator id=\"paginationExposureRateChart\" [pageSize]=\"12\" [length]=\"monthChartXAxixData.length\"\r\n                    (page)=\"onPageChange($event)\" aria-label=\"Select page of users\"></mat-paginator>\r\n            </div>\r\n        </div>\r\n    </div>"
         },
         {
             "name": "HeaderComponent",
@@ -1665,7 +2406,7 @@
         },
         {
             "name": "MonthlyExposureChartComponent",
-            "id": "component-MonthlyExposureChartComponent-c11ec9d1552a035955c3f4d16e14ec5be9dde4c8bc9591556c372b602ec0942761a55bfae73f719aae3f906763efca2baed23a988ea596e0286f981bd354dc65",
+            "id": "component-MonthlyExposureChartComponent-a0085cafe077c659cfc660f1f610a5fac2ac9ecb72a54000e31c34c1ac790840d26a0e21b897aed14a1ebd9571e4c6d9fbe317c3e01aae94686cbb57bc48305d",
             "file": "src/app/risk-dashboard/components/dashboard/components/monthly-exposure-chart/monthly-exposure-chart.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1935,7 +2676,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 113,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1945,7 +2686,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 279,
+                    "line": 278,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1955,7 +2696,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 84,
+                    "line": 83,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1975,7 +2716,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 108,
+                    "line": 107,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2002,7 +2743,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 286,
+                    "line": 285,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -2039,7 +2780,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 293,
+                    "line": 292,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -2076,7 +2817,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 102,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2110,7 +2851,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 219,
+                    "line": 218,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2140,7 +2881,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 203,
+                    "line": 202,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2164,7 +2905,7 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 286
+                    "line": 285
                 },
                 {
                     "name": "document:scroll",
@@ -2181,7 +2922,7 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 293
+                    "line": 292
                 }
             ],
             "standalone": false,
@@ -2202,7 +2943,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';\r\nimport { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';\r\nimport { NgApexchartsModule } from \"ng-apexcharts\";\r\nimport {\r\n  ApexAxisChartSeries,\r\n  ApexChart,\r\n  ApexXAxis,\r\n  ApexYAxis,\r\n  ApexStroke,\r\n  ApexDataLabels,\r\n  ApexLegend,\r\n  ApexTooltip,\r\n  ApexPlotOptions,\r\n  ApexFill\r\n} from 'ng-apexcharts';\r\n@Component({\r\n  selector: 'app-monthly-exposure-chart',\r\n  imports: [NgApexchartsModule, CommonModule, MatPaginatorModule],\r\n  templateUrl: './monthly-exposure-chart.component.html',\r\n  styleUrl: './monthly-exposure-chart.component.scss'\r\n})\r\nexport class MonthlyExposureChartComponent implements OnInit, OnDestroy, AfterViewInit {\r\n  @ViewChild(MatPaginator) paginator!: MatPaginator;\r\n  @ViewChild(MatPaginator, { read: ElementRef }) paginatorElementRef!: ElementRef;\r\n  chart: any;\r\n  tooltipIndex: number | null = null;\r\n  monthChartXAxisData: any = [];\r\n  constructor(private cdr: ChangeDetectorRef,\r\n    private renderer: Renderer2, private el: ElementRef) { }\r\n  public chartSeries!: ApexAxisChartSeries;\r\n  public chartOptions!: ApexChart;\r\n  public xAxisOptions!: ApexXAxis;\r\n  public yAxisOptions!: ApexYAxis;\r\n  public strokeOptions!: ApexStroke;\r\n  public dataLabelsOptions!: ApexDataLabels;\r\n  public legendOptions!: ApexLegend;\r\n  public tooltipOptions!: ApexTooltip;\r\n  public plotOptions!: ApexPlotOptions;\r\n  public fillOptions!: ApexFill;\r\n\r\n  columnIndex: any = [];\r\n  paginatedSeries: any = [];\r\n  pageSize = 12;\r\n  currentPage = 0;\r\n  ngOnInit() {\r\n    this.chartSeries = [\r\n      {\r\n        name: \"Exposure-negative\",\r\n        type: \"bar\",\r\n        group: \"exposer\",\r\n        data: [0, 0, 50000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\r\n      },\r\n      {\r\n        name: \"Exposure\",\r\n        type: \"bar\",\r\n        group: \"exposer\",\r\n        data: [95000, 95000, 45000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000]\r\n      },\r\n      {\r\n        name: \"Recommended hedging\",\r\n        type: \"bar\",\r\n        group: \"rechedge\",\r\n        data: [60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000]\r\n      },\r\n      {\r\n        name: \"Actual hedging\",\r\n        type: \"bar\",\r\n        group: \"acthedge\",\r\n        data: [1000, 1000, 1000, 20000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]\r\n      }\r\n    ];\r\n  }\r\n  ngAfterViewInit() {\r\n    setTimeout(() => {\r\n      this.getChartOptions();\r\n      this.updatePaginatedSeries();\r\n    }, 100);\r\n    if (this.paginator) {\r\n      this.paginator?.page.subscribe((event: PageEvent) => this.onPageChange(event));\r\n      this.paginator.page.subscribe((event: PageEvent) => this.onPageChange(event));\r\n    }\r\n  }\r\n  ngAfterContentInit() {\r\n    const checkPaginator = () => {\r\n      if (this.paginatorElementRef) {\r\n        const paginatorElement = this.paginatorElementRef.nativeElement;\r\n        const previousButton = paginatorElement.querySelector('.mat-mdc-paginator-navigation-previous');\r\n        const nextButton = paginatorElement.querySelector('.mat-mdc-paginator-navigation-next');\r\n\r\n        if (previousButton && nextButton) {\r\n          // Set the IDs for the buttons\r\n          previousButton.setAttribute('id', 'previousButton');\r\n          nextButton.setAttribute('id', 'nextButton');\r\n          clearInterval(interval); // Stop the polling once IDs are set\r\n        }\r\n      }\r\n    };\r\n\r\n    // Poll every 100ms until the paginator is available\r\n    const interval = setInterval(checkPaginator, 100);\r\n  }\r\n  onPageChange(event: PageEvent) {\r\n    this.pageSize = event.pageSize;\r\n    this.currentPage = event.pageIndex;\r\n    this.updatePaginatedSeries();\r\n  }\r\n  ngOnDestroy() {\r\n    // Destroy the chart to prevent memory leaks\r\n    if (this.chart) {\r\n      this.chart.destroy();\r\n    }\r\n  }\r\n  getChartOptions() {\r\n    this.chartOptions = {\r\n      type: \"bar\",\r\n      height: 319,\r\n      stacked: true,\r\n      toolbar: {\r\n        show: false\r\n      },\r\n      events: {\r\n        dataPointMouseEnter: (event, chartContext, config) => {\r\n          this.tooltipIndex = config.dataPointIndex;\r\n          this.showCustomTooltip(event, config);\r\n        },\r\n        dataPointMouseLeave: () => {\r\n          setTimeout(() => this.hideCustomTooltip(), 1500000000);\r\n        }\r\n      }\r\n    };\r\n\r\n    this.xAxisOptions = {\r\n      categories: ['Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24', 'Jan 25', 'Feb 25', 'Mar 25', 'Apr 25', 'May 25', 'Jun 25', 'Jul 25', 'Aug 25', 'Sep 25', 'Oct 25', 'Nov 25', 'Dec 25'],\r\n      labels: {\r\n        style: {\r\n          colors: '#98A2B3',\r\n          fontSize: '12px',\r\n          fontFamily: 'Inter'\r\n        },\r\n        rotate: -45,\r\n        hideOverlappingLabels: false,\r\n      },\r\n    };\r\n    this.monthChartXAxisData = this.xAxisOptions.categories;\r\n\r\n    this.yAxisOptions = {\r\n      min: 0,\r\n      max: 100000, // Round off the value\r\n      tickAmount: 5,\r\n      labels: {\r\n        formatter: function (val) {\r\n          return \"$\" + val;\r\n        },\r\n        style: {\r\n          colors: 'rgba(0, 0, 0, 0.70)',\r\n          fontSize: '12px',\r\n          fontFamily: 'Inter'\r\n        }\r\n      }\r\n    };\r\n\r\n\r\n    this.strokeOptions = {\r\n      width: 0,\r\n      curve: \"smooth\"\r\n    };\r\n\r\n    this.dataLabelsOptions = {\r\n      enabled: false\r\n    };\r\n\r\n    this.legendOptions = {\r\n      show: true,\r\n      position: \"top\",\r\n      markers: {\r\n        offsetX: 0,\r\n        offsetY: 0,\r\n        fillColors: [\"#D92D20\", \"#DCEAF7\", \"#A2B0FB\", \"#2947F2\"],\r\n        strokeWidth: 2\r\n      },\r\n      itemMargin: {\r\n        horizontal: 10,\r\n        vertical: 0\r\n      }\r\n    };\r\n\r\n    this.tooltipOptions = {\r\n      enabled: false, // Disable default tooltips\r\n    };\r\n\r\n    this.plotOptions = {\r\n      bar: {\r\n        horizontal: false,\r\n        columnWidth: '35px',\r\n      }\r\n    };\r\n\r\n    this.fillOptions = {\r\n      colors: [\"#D92D20\", \"#DCEAF7\", \"#A2B0FB\", \"#2947F2\"],\r\n    };\r\n  }\r\n  updatePaginatedSeries() {\r\n    const startIndex = this.currentPage * this.pageSize;\r\n    const endIndex = startIndex + this.pageSize;\r\n\r\n    if (this.chartSeries) {\r\n      this.paginatedSeries = this.chartSeries.map(series => ({\r\n        ...series,\r\n        data: series?.data?.slice(startIndex, endIndex)\r\n      }));\r\n\r\n      // Paginate the categories as well\r\n      this.xAxisOptions = {\r\n        categories: this.monthChartXAxisData?.slice(startIndex, endIndex),\r\n      };\r\n    }\r\n  }\r\n  showCustomTooltip(event: MouseEvent, config: any) {\r\n    let tooltip = document.getElementById('custom-tooltip');\r\n\r\n    if (tooltip) {\r\n      // const { seriesIndex, dataPointIndex } = config;\r\n      // const actualIndex = this.currentPage * this.pageSize + dataPointIndex;\r\n      // const data = this.chartSeries[seriesIndex].data[actualIndex];\r\n      // Adjust the tooltip content\r\n      this.renderer.setProperty(tooltip, 'innerHTML', `\r\n      <div class=\"inner-wrap\">\r\n        <div class=\"head-title\">January 2024</div>\r\n        <div class=\"item-wrap\">\r\n          <div class=\"tooltip-item\">\r\n            <div class=\"info-sec item-month\">\r\n              <h4 class=\"title\">Monthly exposure</h4>\r\n              <div class=\"amount\"><span class=\"negative-value\">-$10,000</span> / $100,000</div>\r\n              <div class=\"neg-text\">Reverse exposure</div>\r\n            </div>\r\n            <button class=\"edit-button\">Edit</button>\r\n          </div>\r\n          <div class=\"tooltip-item\">\r\n            <div class=\"info-sec item-hedge\">\r\n              <h4 class=\"title\">Recommended hedge</h4>\r\n              <div class=\"amount\">$60,000</div>\r\n            </div>\r\n          </div>\r\n          <div class=\"tooltip-item\">\r\n            <div class=\"info-sec item-fund\">\r\n              <h4 class=\"title\">Hedged funds</h4>\r\n              <div class=\"amount\">$0</div>\r\n            </div>\r\n            <button class=\"hedge-button\">Hedge</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    `);\r\n\r\n\r\n      if (!document.body.contains(tooltip)) {\r\n        this.renderer.appendChild(document.body, tooltip);\r\n      }\r\n      tooltip.style.left = `${event.pageX}px`;\r\n      tooltip.style.top = `${event.pageY / 2.5}px`;\r\n      tooltip.style.display = 'block';\r\n\r\n      this.cdr.detectChanges();\r\n\r\n      // tooltip.addEventListener('click', (e: Event) => {\r\n      //   const target = e.target as HTMLElement;\r\n      //   if (target.classList.contains('edit-button')) {\r\n      //     const index = target.getAttribute('data-index');\r\n      //     if (index !== null) {\r\n      //       this.editValue(parseInt(index, 10));\r\n      //     }\r\n      //   } else if (target.classList.contains('hedge-button')) {\r\n      //     this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + 'risk-manager/hedging-proposal' : '/risk-manager/hedging-proposal']);\r\n      //   }\r\n      // });\r\n    }\r\n  }\r\n  hideCustomTooltip() {\r\n    const tooltip = document.getElementById('custom-tooltip');\r\n    if (tooltip) {\r\n      tooltip.style.display = 'none';\r\n    }\r\n  }\r\n  @HostListener('document:mousemove', ['$event'])\r\n  onDocumentClick(event: MouseEvent): void {\r\n    const clickedInside = this.el.nativeElement.contains(event.target);\r\n    if (!clickedInside) {\r\n      this.hideCustomTooltip();\r\n    }\r\n  }\r\n  @HostListener('document:scroll', ['$event'])\r\n  onDocumentScroll(event: Event): void {\r\n    this.hideCustomTooltip();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';\r\nimport { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';\r\nimport { NgApexchartsModule } from \"ng-apexcharts\";\r\nimport {\r\n  ApexAxisChartSeries,\r\n  ApexChart,\r\n  ApexXAxis,\r\n  ApexYAxis,\r\n  ApexStroke,\r\n  ApexDataLabels,\r\n  ApexLegend,\r\n  ApexTooltip,\r\n  ApexPlotOptions,\r\n  ApexFill\r\n} from 'ng-apexcharts';\r\n@Component({\r\n  selector: 'app-monthly-exposure-chart',\r\n  imports: [NgApexchartsModule, CommonModule, MatPaginatorModule],\r\n  templateUrl: './monthly-exposure-chart.component.html',\r\n  styleUrl: './monthly-exposure-chart.component.scss'\r\n})\r\nexport class MonthlyExposureChartComponent implements OnInit, OnDestroy, AfterViewInit {\r\n  @ViewChild(MatPaginator) paginator!: MatPaginator;\r\n  @ViewChild(MatPaginator, { read: ElementRef }) paginatorElementRef!: ElementRef;\r\n  chart: any;\r\n  tooltipIndex: number | null = null;\r\n  monthChartXAxisData: any = [];\r\n  constructor(private cdr: ChangeDetectorRef,\r\n    private renderer: Renderer2, private el: ElementRef) { }\r\n  public chartSeries!: ApexAxisChartSeries;\r\n  public chartOptions!: ApexChart;\r\n  public xAxisOptions!: ApexXAxis;\r\n  public yAxisOptions!: ApexYAxis;\r\n  public strokeOptions!: ApexStroke;\r\n  public dataLabelsOptions!: ApexDataLabels;\r\n  public legendOptions!: ApexLegend;\r\n  public tooltipOptions!: ApexTooltip;\r\n  public plotOptions!: ApexPlotOptions;\r\n  public fillOptions!: ApexFill;\r\n\r\n  columnIndex: any = [];\r\n  paginatedSeries: any = [];\r\n  pageSize = 12;\r\n  currentPage = 0;\r\n  ngOnInit() {\r\n    this.chartSeries = [\r\n      {\r\n        name: \"Exposure-negative\",\r\n        type: \"bar\",\r\n        group: \"exposer\",\r\n        data: [0, 0, 50000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\r\n      },\r\n      {\r\n        name: \"Exposure\",\r\n        type: \"bar\",\r\n        group: \"exposer\",\r\n        data: [95000, 95000, 45000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000, 95000]\r\n      },\r\n      {\r\n        name: \"Recommended hedging\",\r\n        type: \"bar\",\r\n        group: \"rechedge\",\r\n        data: [60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000]\r\n      },\r\n      {\r\n        name: \"Actual hedging\",\r\n        type: \"bar\",\r\n        group: \"acthedge\",\r\n        data: [1000, 1000, 1000, 20000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]\r\n      }\r\n    ];\r\n  }\r\n  ngAfterViewInit() {\r\n    setTimeout(() => {\r\n      this.getChartOptions();\r\n      this.updatePaginatedSeries();\r\n    }, 100);\r\n    if (this.paginator) {\r\n      this.paginator?.page.subscribe((event: PageEvent) => this.onPageChange(event));\r\n    }\r\n  }\r\n  ngAfterContentInit() {\r\n    const checkPaginator = () => {\r\n      if (this.paginatorElementRef) {\r\n        const paginatorElement = this.paginatorElementRef.nativeElement;\r\n        const previousButton = paginatorElement.querySelector('.mat-mdc-paginator-navigation-previous');\r\n        const nextButton = paginatorElement.querySelector('.mat-mdc-paginator-navigation-next');\r\n\r\n        if (previousButton && nextButton) {\r\n          // Set the IDs for the buttons\r\n          previousButton.setAttribute('id', 'previousButton');\r\n          nextButton.setAttribute('id', 'nextButton');\r\n          clearInterval(interval); // Stop the polling once IDs are set\r\n        }\r\n      }\r\n    };\r\n\r\n    // Poll every 100ms until the paginator is available\r\n    const interval = setInterval(checkPaginator, 100);\r\n  }\r\n  onPageChange(event: PageEvent) {\r\n    this.pageSize = event.pageSize;\r\n    this.currentPage = event.pageIndex;\r\n    this.updatePaginatedSeries();\r\n  }\r\n  ngOnDestroy() {\r\n    // Destroy the chart to prevent memory leaks\r\n    if (this.chart) {\r\n      this.chart.destroy();\r\n    }\r\n  }\r\n  getChartOptions() {\r\n    this.chartOptions = {\r\n      type: \"bar\",\r\n      height: 319,\r\n      stacked: true,\r\n      toolbar: {\r\n        show: false\r\n      },\r\n      events: {\r\n        dataPointMouseEnter: (event, chartContext, config) => {\r\n          this.tooltipIndex = config.dataPointIndex;\r\n          this.showCustomTooltip(event, config);\r\n        },\r\n        dataPointMouseLeave: () => {\r\n          setTimeout(() => this.hideCustomTooltip(), 1500000000);\r\n        }\r\n      }\r\n    };\r\n\r\n    this.xAxisOptions = {\r\n      categories: ['Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24', 'Jan 25', 'Feb 25', 'Mar 25', 'Apr 25', 'May 25', 'Jun 25', 'Jul 25', 'Aug 25', 'Sep 25', 'Oct 25', 'Nov 25', 'Dec 25'],\r\n      labels: {\r\n        style: {\r\n          colors: '#98A2B3',\r\n          fontSize: '12px',\r\n          fontFamily: 'Inter'\r\n        },\r\n        rotate: -45,\r\n        hideOverlappingLabels: false,\r\n      },\r\n    };\r\n    this.monthChartXAxisData = this.xAxisOptions.categories;\r\n\r\n    this.yAxisOptions = {\r\n      min: 0,\r\n      max: 100000, // Round off the value\r\n      tickAmount: 5,\r\n      labels: {\r\n        formatter: function (val) {\r\n          return \"$\" + val;\r\n        },\r\n        style: {\r\n          colors: 'rgba(0, 0, 0, 0.70)',\r\n          fontSize: '12px',\r\n          fontFamily: 'Inter'\r\n        }\r\n      }\r\n    };\r\n\r\n\r\n    this.strokeOptions = {\r\n      width: 0,\r\n      curve: \"smooth\"\r\n    };\r\n\r\n    this.dataLabelsOptions = {\r\n      enabled: false\r\n    };\r\n\r\n    this.legendOptions = {\r\n      show: true,\r\n      position: \"top\",\r\n      markers: {\r\n        offsetX: 0,\r\n        offsetY: 0,\r\n        fillColors: [\"#D92D20\", \"#DCEAF7\", \"#A2B0FB\", \"#2947F2\"],\r\n        strokeWidth: 2\r\n      },\r\n      itemMargin: {\r\n        horizontal: 10,\r\n        vertical: 0\r\n      }\r\n    };\r\n\r\n    this.tooltipOptions = {\r\n      enabled: false, // Disable default tooltips\r\n    };\r\n\r\n    this.plotOptions = {\r\n      bar: {\r\n        horizontal: false,\r\n        columnWidth: '35px',\r\n      }\r\n    };\r\n\r\n    this.fillOptions = {\r\n      colors: [\"#D92D20\", \"#DCEAF7\", \"#A2B0FB\", \"#2947F2\"],\r\n    };\r\n  }\r\n  updatePaginatedSeries() {\r\n    const startIndex = this.currentPage * this.pageSize;\r\n    const endIndex = startIndex + this.pageSize;\r\n\r\n    if (this.chartSeries) {\r\n      this.paginatedSeries = this.chartSeries.map(series => ({\r\n        ...series,\r\n        data: series?.data?.slice(startIndex, endIndex)\r\n      }));\r\n\r\n      // Paginate the categories as well\r\n      this.xAxisOptions = {\r\n        categories: this.monthChartXAxisData?.slice(startIndex, endIndex),\r\n      };\r\n    }\r\n  }\r\n  showCustomTooltip(event: MouseEvent, config: any) {\r\n    let tooltip = document.getElementById('custom-tooltip');\r\n\r\n    if (tooltip) {\r\n      // const { seriesIndex, dataPointIndex } = config;\r\n      // const actualIndex = this.currentPage * this.pageSize + dataPointIndex;\r\n      // const data = this.chartSeries[seriesIndex].data[actualIndex];\r\n      // Adjust the tooltip content\r\n      this.renderer.setProperty(tooltip, 'innerHTML', `\r\n      <div class=\"inner-wrap\">\r\n        <div class=\"head-title\">January 2024</div>\r\n        <div class=\"item-wrap\">\r\n          <div class=\"tooltip-item\">\r\n            <div class=\"info-sec item-month\">\r\n              <h4 class=\"title\">Monthly exposure</h4>\r\n              <div class=\"amount\"><span class=\"negative-value\">-$10,000</span> / $100,000</div>\r\n              <div class=\"neg-text\">Reverse exposure</div>\r\n            </div>\r\n            <button class=\"edit-button\">Edit</button>\r\n          </div>\r\n          <div class=\"tooltip-item\">\r\n            <div class=\"info-sec item-hedge\">\r\n              <h4 class=\"title\">Recommended hedge</h4>\r\n              <div class=\"amount\">$60,000</div>\r\n            </div>\r\n          </div>\r\n          <div class=\"tooltip-item\">\r\n            <div class=\"info-sec item-fund\">\r\n              <h4 class=\"title\">Hedged funds</h4>\r\n              <div class=\"amount\">$0</div>\r\n            </div>\r\n            <button class=\"hedge-button\">Hedge</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    `);\r\n\r\n\r\n      if (!document.body.contains(tooltip)) {\r\n        this.renderer.appendChild(document.body, tooltip);\r\n      }\r\n      tooltip.style.left = `${event.pageX}px`;\r\n      tooltip.style.top = `${event.pageY / 2.5}px`;\r\n      tooltip.style.display = 'block';\r\n\r\n      this.cdr.detectChanges();\r\n\r\n      // tooltip.addEventListener('click', (e: Event) => {\r\n      //   const target = e.target as HTMLElement;\r\n      //   if (target.classList.contains('edit-button')) {\r\n      //     const index = target.getAttribute('data-index');\r\n      //     if (index !== null) {\r\n      //       this.editValue(parseInt(index, 10));\r\n      //     }\r\n      //   } else if (target.classList.contains('hedge-button')) {\r\n      //     this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + 'risk-manager/hedging-proposal' : '/risk-manager/hedging-proposal']);\r\n      //   }\r\n      // });\r\n    }\r\n  }\r\n  hideCustomTooltip() {\r\n    const tooltip = document.getElementById('custom-tooltip');\r\n    if (tooltip) {\r\n      tooltip.style.display = 'none';\r\n    }\r\n  }\r\n  @HostListener('document:mousemove', ['$event'])\r\n  onDocumentClick(event: MouseEvent): void {\r\n    const clickedInside = this.el.nativeElement.contains(event.target);\r\n    if (!clickedInside) {\r\n      this.hideCustomTooltip();\r\n    }\r\n  }\r\n  @HostListener('document:scroll', ['$event'])\r\n  onDocumentScroll(event: Event): void {\r\n    this.hideCustomTooltip();\r\n  }\r\n}\r\n",
             "styleUrl": "./monthly-exposure-chart.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3284,7 +4025,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 6,
+        "count": 5,
         "status": "low",
         "files": [
             {
@@ -3367,6 +4108,15 @@
                 "name": "ChartsTabsComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/risk-dashboard/components/dashboard/components/exposure-rate-chart/exposure-rate-chart.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ExposureRateChartComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/48",
                 "status": "low"
             },
             {
