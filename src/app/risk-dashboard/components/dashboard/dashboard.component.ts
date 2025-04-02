@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AnnualExposureDetailsComponent } from "./components/annual-exposure-details/annual-exposure-details.component";
 import { BreadcrumbWalletComponent } from './components/breadcrumb-wallet/breadcrumb-wallet.component';
 import { ChartsTabsComponent } from "./components/charts-tabs/charts-tabs.component";
@@ -14,5 +14,9 @@ import { MomentumIndicatorChartComponent } from "./components/momentum-indicator
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  @Output() toggleView = new EventEmitter<boolean>();
 
+  onToggleView(showHedging: boolean) {
+    this.toggleView.emit(showHedging); // Pass event up to AppComponent
+  }
 }

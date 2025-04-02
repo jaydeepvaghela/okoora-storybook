@@ -1,0 +1,254 @@
+<div class="hedge-proposal-container loader-wrapper">
+  <div class="hedge-header">
+    <h3 class="hedge-heading">Hedging proposal</h3>
+  </div>
+  <div class="hedge-details">
+    <div class="hedge-type-section">
+      <label class="hedge-label">Hedge type</label>
+      <mat-select class="hedge-select" panelClass="risk-proposal-hedge-sel" [(value)]="selectedHedgeType" (selectionChange)="changeSelectedHedgeType($event)">
+        <mat-option *ngFor="let type of hedgeTypes" [value]="type">{{ HedgingTypeDisplayNames[type] }}</mat-option>
+      </mat-select>
+    </div>
+
+    <div class="hedge-details-inner">
+      <div class="hedge-total-section values-wrapper">
+        <label class="hedge-label">Total hedge amount</label>
+        <div class="currency-info">
+          <div class="amount-wrapper">
+            <span class="hedge-currency">{{ hedgedCurrencySign }}</span>
+            <span class="hedge-total-amount">{{ commaseparate(hedgeDetails?.totalHedgeAmount,2) || 0 }}</span>
+            <span class="hedge-percentage">{{ selection.hasValue() ? commaseparate(hedgeDetails?.totalHedgePercent,2) : 0 }}%</span>
+          </div>
+          <span class="hedge-period">{{ getHedgeMonthsCount() }} months</span>
+        </div>
+      </div>
+
+      <div class="hedge-rate-section values-wrapper">
+        <label class="hedge-label">Avg hedge rate</label>
+        <div class="currency-info">
+          <span class="hedge-rate">{{ commaseparate(hedgeDetails?.avgHedgeRate,4) || 0 }}</span>
+        </div>
+      </div>
+
+      <div class="hedge-collateral-section values-wrapper">
+        <label class="hedge-label">Required collateral</label>
+        <div class="currency-info">
+          <span class="hedge-currency">{{ hedgeDetails?.collateralAndPriceCur?.sign }}</span>
+          <span class="hedge-collateral">{{ commaseparate(hedgeDetails?.requiredCollateral, 2) || 0 }}</span>
+          <p 
+            class="hedge-deposit-link" 
+            *ngIf="(selectedHedgeType !== 2) && (hedgeDetails?.requiredCollateral > wallet_Amount)" 
+            (click)="onMakeDeposit()">Make deposit</p>
+        </div>
+      </div>
+
+      <div class="hedge-price-section values-wrapper">
+        <label class="hedge-label">Price</label>
+        <div class="currency-info">
+          <span class="hedge-currency">{{ hedgeDetails?.collateralAndPriceCur?.sign }}</span>
+          <span class="hedge-price">{{ commaseparate(hedgeDetails?.price, 2) || 0 }}</span>
+          <p 
+            class="hedge-deposit-link" 
+            *ngIf="(selectedHedgeType !== 1) && (hedgeDetails?.price > wallet_Amount)" 
+            (click)="onMakeDeposit()">Make deposit</p>
+        </div>
+      </div>
+
+      <div class="hedge-actions">
+        <button class="hedge-all-button" [disabled]="hedgeDetails?.totalHedgeAmount == 0" mat-raised-button color="primary" 
+          (click)="hedgeAllProposals()">Hedge All</button>
+        <p class="hedge-proposal-refresh" *ngIf="showHedgeProposalMessage && selection.hasValue()">Click “Hedge All” for an updated proposal</p>
+        <span class="error-month" *ngIf="!selection.hasValue() && !showLoader">Please select months to hedge</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hedge-table-section mt-5">
+    <table mat-table [dataSource]="hedgedMonthsfromAPI" class="hedge-table mat-elevation-z8">
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox class="filter-checkbox select-all"
+            (change)="$event ? toggleAllRows() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+            [aria-label]="checkboxLabel()"
+          ></mat-checkbox>
+        </th>
+
+        <td mat-cell *matCellDef="let row; let i = index" >
+          <mat-checkbox class="filter-checkbox"
+           (click)="$event.stopPropagation()"
+            (change)="toggleRow(row)"
+            [checked]="selection.isSelected(row)"
+            [aria-label]="checkboxLabel(row)"
+            [ngClass]="{'disabled-cell': hedgedMonthsfromAPI[i]?.status?.type == 3 || hedgedMonthsfromAPI[i]?.status?.type == 5}"
+          ></mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expiryDate" class="exposer-month">
+        <th mat-header-cell *matHeaderCellDef>Expiry Date</th>
+        <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'disabled-cell': hedgedMonthsfromAPI[i]?.status?.type == 3}" style="position: relative;">
+          <span class="date-expand" (click)="openExpiryDateCalendar(element, i)">
+            <span [ngClass]="{'err-status-two': hedgedMonthsfromAPI[i]?.status?.type == 2}">{{element?.expiryDate}}</span>
+            <mat-icon>expand_more</mat-icon>
+            <mat-form-field class="monthly-date">
+              <input matInput [matDatepicker]="datepicker" [(ngModel)]="element.date" />
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker panelClass="cashflow-date-calendar-cd" (dateChange)="applyDate(i, element)">
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel class="cancel-cdc">Cancel</button>
+                  <button mat-raised-button matDatepickerApply class="set-cdc" (click)="applyDate(i, element)">Set</button>
+                  <button mat-button matDatepickerCancel class="close-cdc">
+                    <img src="images/close-btn-cashflow.svg" />
+                  </button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Hedge rate Column -->
+      <ng-container matColumnDef="hedgeRate">
+        <th mat-header-cell *matHeaderCellDef>Hedge rate</th>
+        <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'disabled-cell': hedgedMonthsfromAPI[i]?.status?.type == 3}"><span [ngClass]="{'err-status-two': hedgedMonthsfromAPI[i]?.status?.type == 2}">{{ element.hedgeRate }}</span></td>
+      </ng-container>
+
+      <!-- Set hedge amount Column -->
+      <ng-container matColumnDef="setHedgeAmount">
+        <th mat-header-cell *matHeaderCellDef>Set Hedge Amount</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <div class="amount-hedge-slider">
+            <div class="sliders-inner" [ngClass]="{ 'reset-applied': element.protectAmount == element.recommendedHedgeAmount }">
+              <mat-slider
+                #slider
+                class="amount-hedge-slider-inner"
+                (input)="onSliderInput($event, element)"
+                min="0"
+                max="{{element?.maxHedge_amount}}"
+                [ngClass]="{'slider-input-disabled': element?.openEditForSelling || hedgedMonthsfromAPI[i]?.status?.type == 3}"
+                [disabled]="element?.openEditForSelling"
+              >
+              <input matSliderThumb [value]="element.protectAmount" />
+              </mat-slider>
+              <img class="z-1 tool-tip-cs" src="images/circle-help.svg" [ngbTooltip]="setHedge" container="body" placement="top" [tooltipClass]="'hedging-amount-ttp'" />
+              <a [ngClass]="{'invisible': element.protectAmount == element.recommendedHedgeAmount}" class="reset-link" href="javascript:void(0)" (click)="resetToCollateral(element, i)">Reset</a>
+            </div>
+            <img
+              [ngbTooltip]="shieldSet"
+              [tooltipClass]="'recommended-amount-ttp'"
+              [ngClass]="{'invisible': element.protectAmount == element.recommendedHedgeAmount}"
+              src="images/slider-custom.svg"
+              alt="Slider Marker"
+              class="recommended-slider-marker"
+              [style.left.px]="calculateImagePosition(element.recommendedHedgeAmount, i)"
+              [style.left.px]="calculateImagePosition(element.recommendedHedgeAmount, i)"
+            />
+            <ng-template #setHedge>
+              <div class="amount-hedgetp-wrapper">
+                <div class="values">
+                  <span class="parent">Total exposure is</span>
+                  <span class="subtext">{{hedgedCurrencySign}}{{ commaseprate(element?.totalExposureAmount,2)}}</span>
+                </div>
+                <div class="values">
+                  <span class="parent">Already hedged</span>
+                  <span class="subtext">{{hedgedCurrencySign}}{{ commaseprate(hedgeDetails?.monthlyHedge?.[i]?.alreadyHedge,2)}}</span>
+                </div>
+                <div class="values max-hedge">
+                  <span class="parent">Maximum hedge amount</span>
+                  <span class="subtext">{{hedgedCurrencySign}}{{  commaseprate(element?.maxHedge_amount,2) }}</span>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template #shieldSet>
+              <div class="recommended-shield-ttp">Additional recommended hedge <span class="amount">{{hedgedCurrencySign}}{{commaseparate(element?.collateral,0)}}</span> </div>
+           </ng-template>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hedgeAmount" class="exposer-amount">
+        <th mat-header-cell *matHeaderCellDef> Hedge amount </th>
+        <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'disabled-cell': hedgedMonthsfromAPI[i]?.status?.type == 3}">
+          <div class="buying-price">
+            <label class="amount-text" [ngClass]="{'err-status-two': hedgedMonthsfromAPI[i]?.status?.type == 2}"><span [ngClass]="{'err-status-two weight': hedgedMonthsfromAPI[i]?.status?.type == 2}">{{hedgedCurrencySign}}{{ commaseparate(element?.protectAmount,2) }}</span></label>
+            <button class="edit-exposer">
+              <img src="images/edit-exposure-hedge.svg">
+            </button>
+          </div>
+          <div class="edit-exposer-wrap" [ngClass]="{'with-error': errorMessage}" *ngIf="element?.openEditForSelling && openEditSellingIndex === i">
+            <div class="edit-inner">
+              <div class="input-wrap">
+                <span>{{hedgedCurrencySign}}</span>
+                  <input
+                    type="text"
+                    [(ngModel)]="hedgeAmountForEdit"
+                    class="edit-price"
+                    (input)="checkMaximumValue(element,$event)"
+                    appOnlyNumbers
+                    [maxLength]="14">
+                <button class="clear-input" (click)="clearInput(i)">
+                  <img src="images/clear_input.svg">
+                </button>
+              </div>
+              <div class="edit-e-option">
+                <button class="cancel-btn" (click)="cancelEditSelling(element, i)">Cancel</button>
+                <button class="save-btn" (click)="saveEditSelling(element, i)" [class.disabled]="saveButtonDisable" [disabled]="saveButtonDisable">Save</button>
+              </div>
+            </div>
+            <span class="error-message" *ngIf="errorMessage">Please enter equal to max hedge amount</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Hedged Column -->
+      <ng-container matColumnDef="hedged">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <!-- <pre>{{hedgedMonthsfromAPI[i] | json}}</pre> -->
+          <!-- try removing question mark that is before [i] -->
+          <button [ngClass]="{'save-activated': element?.saveActivate}" class="save-row-btn">Save</button>
+          <ng-container *ngIf="hedgedMonthsfromAPI[i]?.status?.type == 1 || hedgedMonthsfromAPI[i]?.status?.type == 5">
+            <button mat-raised-button color="primary" class="hedge-btn" [disabled]="element.protectAmount == 0" (click)="openQuickHedgeDrawer(element)">Hedge</button>
+          </ng-container>
+          <ng-container *ngIf="hedgedMonthsfromAPI[i]?.status?.type == 3">
+            <div class="d-inline cursor-pointer"> <!-- (click)="openQuickHedgeDrawer(element)" -->
+              <picture>
+                <img width="52px" height="52px" src="images/mass-payment/success.gif" alt="success">
+              </picture>
+              <label class="row-hedged">Hedged</label>
+            </div>
+          </ng-container>
+          <div class="transaction-unavailable-wrapper" *ngIf="shouldShowError(i)">
+            <img src="images/error-outline.svg" alt="error">
+            <p class="transaction-unavailable-err">
+              This transaction is currently unavailable. You can continue with other transactions or
+              <a (click)="refreshPageInError(element)">refresh</a> the page
+              <span>(unsaved changes will be lost)</span>
+            </p>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; let i =index; columns: displayedColumns" 
+        [ngClass]="{ 'disabled-row': hedgedMonthsfromAPI[i]?.status?.type == 3, 
+        'padding-for-error': (hedgeDetails?.monthlyHedge?.[i]?.status?.type == 2 && updateAfterGetting) }" 
+        [hidden]="hedgedMonthsfromAPI[i]?.status?.type == 4 || (hedgedMonthsfromAPI[i]?.status?.type == 2)">
+      </tr>
+
+       <!-- [hidden]="hedgedMonthsfromAPI[i]?.status?.type == 2" -->
+    </table>
+    <!-- <div class="transaction-unavailable-wrapper">
+      <img src="assets/images/error-outline.svg" alt="error">
+      <p class="transaction-unavailable-err">This transaction is currently unavailable. You can continue with other transactions or <a href="">refresh</a> the page <span>(unsaved changes will be lost)</span> </p>
+    </div> -->
+    <div class="hedge-actions">
+      <button class="hedge-all-button" mat-raised-button color="primary" [disabled]="hedgeDetails?.totalHedgeAmount == 0" (click)="hedgeAllProposals()">Hedge All</button>
+      <p class="hedge-proposal-refresh" *ngIf="showHedgeProposalMessage">Click “Hedge All” for an updated proposal</p>
+    </div>
+
+  </div>
+</div>

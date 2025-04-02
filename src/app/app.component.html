@@ -3,6 +3,7 @@
     <app-sidebar></app-sidebar>
     <div class="content-wrapper risk-manager">
         <router-outlet />
-        <app-dashboard *ngIf="ShowDashboard"></app-dashboard>
+        <app-dashboard *ngIf="ShowDashboard" (toggleView)="onToggleView($event)"></app-dashboard>
+        <app-hedging-proposal *ngIf="Showhedging"></app-hedging-proposal>
     </div>
 </div>
