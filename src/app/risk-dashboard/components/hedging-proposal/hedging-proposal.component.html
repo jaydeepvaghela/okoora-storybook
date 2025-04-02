@@ -174,7 +174,7 @@
         <td mat-cell *matCellDef="let element; let i = index" [ngClass]="{'disabled-cell': hedgedMonthsfromAPI[i]?.status?.type == 3}">
           <div class="buying-price">
             <label class="amount-text" [ngClass]="{'err-status-two': hedgedMonthsfromAPI[i]?.status?.type == 2}"><span [ngClass]="{'err-status-two weight': hedgedMonthsfromAPI[i]?.status?.type == 2}">{{hedgedCurrencySign}}{{ commaseparate(element?.protectAmount,2) }}</span></label>
-            <button class="edit-exposer">
+            <button class="edit-exposer" (click)="editSelling(element, i)">
               <img src="images/edit-exposure-hedge.svg">
             </button>
           </div>
@@ -235,7 +235,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; let i =index; columns: displayedColumns" 
         [ngClass]="{ 'disabled-row': hedgedMonthsfromAPI[i]?.status?.type == 3, 
-        'padding-for-error': (hedgeDetails?.monthlyHedge?.[i]?.status?.type == 2 && updateAfterGetting) }" 
+        'padding-for-error': (this.hedgeDetails?.monthlyHedge?.[i]?.hedgeError == true) }" 
         [hidden]="hedgedMonthsfromAPI[i]?.status?.type == 4 || (hedgedMonthsfromAPI[i]?.status?.type == 2)">
       </tr>
 
