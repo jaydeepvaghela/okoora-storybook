@@ -37,7 +37,7 @@ export interface PeriodicElement {
 }
 @Component({
   selector: 'app-hedging-proposal',
-  imports: [CommonModule, MatInputModule, MatSelectModule, MatCheckboxModule, MatIconModule, MatTableModule, FormsModule],
+  imports: [CommonModule, MatInputModule,MatDatepickerModule,MatMomentDateModule,MatSliderModule, MatSelectModule, MatCheckboxModule, MatIconModule, MatTableModule, FormsModule],
   templateUrl: './hedging-proposal.component.html',
   styleUrl: './hedging-proposal.component.scss'
 })
@@ -45,14 +45,7 @@ export class HedgingProposalComponent implements AfterViewInit {
   @ViewChildren(MatDatepicker) datepickers!: QueryList<MatDatepicker<any>>;
   @ViewChild('drawer') drawer!: MatDrawer;
   @ViewChild('slider') slider!: ElementRef;
-  showFiller = false;
   selectedHedgeData!: PeriodicElement;
-  staticMonthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  totalHedgeAmount = 0;
-  totalHedgePercentage = '60%';
-  avgHedgeRate = 3.2548;
-  requiredCollateral = 1001;
-  priceAmount = 0;
   displayedColumns: string[] = ['select', 'expiryDate', 'hedgeRate', 'setHedgeAmount', 'hedgeAmount', 'hedged'];
   dataSource = new MatTableDataSource<PeriodicElement>([]);
   selection = new SelectionModel<PeriodicElement>(true, this.dataSource.data);
@@ -83,6 +76,19 @@ export class HedgingProposalComponent implements AfterViewInit {
     "monthlyHedge": [
       {
         "status": {
+          "type": 3,
+          "descriprion": "Don't need to create hedge for zero reccomended hedge"
+        },
+        "maxHedgeAmount": 5.00,
+        "recomendedHedgeAmount": 0.00,
+        "hedge": null,
+        "totalExposure": 5.00,
+        "alreadyHedge": 0.0,
+        "date": "15/06/2025",
+        "hedgeError":false
+      },
+      {
+        "status": {
           "type": 1,
           "descriprion": "Created"
         },
@@ -106,23 +112,12 @@ export class HedgingProposalComponent implements AfterViewInit {
         },
         "totalExposure": 25.00,
         "alreadyHedge": 0.0,
-        "date": "17/11/2025"
+        "date": "17/11/2025",
+        "hedgeError":true
       },
       {
         "status": {
           "type": 5,
-          "descriprion": "Don't need to create hedge for zero reccomended hedge"
-        },
-        "maxHedgeAmount": 5.00,
-        "recomendedHedgeAmount": 0.00,
-        "hedge": null,
-        "totalExposure": 5.00,
-        "alreadyHedge": 0.0,
-        "date": "15/06/2025"
-      },
-      {
-        "status": {
-          "type": 3,
           "descriprion": "Already purchased the entire protection deal for the month"
         },
         "maxHedgeAmount": 0.0,
@@ -130,7 +125,8 @@ export class HedgingProposalComponent implements AfterViewInit {
         "hedge": null,
         "totalExposure": 0.0,
         "alreadyHedge": 0.0,
-        "date": "15/07/2025"
+        "date": "15/07/2025",
+        "hedgeError":false
       },
       {
         "status": {
@@ -157,7 +153,8 @@ export class HedgingProposalComponent implements AfterViewInit {
         },
         "totalExposure": 50.00,
         "alreadyHedge": 0.0,
-        "date": "15/08/2025"
+        "date": "15/08/2025",
+        "hedgeError":false
       },
       {
         "status": {
@@ -184,7 +181,8 @@ export class HedgingProposalComponent implements AfterViewInit {
         },
         "totalExposure": 25.00,
         "alreadyHedge": 0.0,
-        "date": "15/09/2025"
+        "date": "15/09/2025",
+        "hedgeError":false
       },
       {
         "status": {
@@ -211,7 +209,8 @@ export class HedgingProposalComponent implements AfterViewInit {
         },
         "totalExposure": 25.00,
         "alreadyHedge": 0.0,
-        "date": "15/10/2025"
+        "date": "15/10/2025",
+        "hedgeError":false
       },
       {
         "status": {
@@ -238,7 +237,8 @@ export class HedgingProposalComponent implements AfterViewInit {
         },
         "totalExposure": 25.00,
         "alreadyHedge": 0.0,
-        "date": "16/02/2026"
+        "date": "16/02/2026",
+        "hedgeError":false
       },
       {
         "status": {
@@ -265,7 +265,8 @@ export class HedgingProposalComponent implements AfterViewInit {
         },
         "totalExposure": 25.00,
         "alreadyHedge": 0.0,
-        "date": "15/01/2026"
+        "date": "15/01/2026",
+        "hedgeError":false
       },
       {
         "status": {
@@ -292,7 +293,8 @@ export class HedgingProposalComponent implements AfterViewInit {
         },
         "totalExposure": 25.00,
         "alreadyHedge": 0.0,
-        "date": "16/03/2026"
+        "date": "16/03/2026",
+        "hedgeError":false
       },
       {
         "status": {
@@ -319,7 +321,8 @@ export class HedgingProposalComponent implements AfterViewInit {
         },
         "totalExposure": 25.00,
         "alreadyHedge": 0.0,
-        "date": "15/04/2026"
+        "date": "15/04/2026",
+        "hedgeError":false
       },
       {
         "status": {
@@ -346,7 +349,8 @@ export class HedgingProposalComponent implements AfterViewInit {
         },
         "totalExposure": 25.00,
         "alreadyHedge": 0.0,
-        "date": "15/05/2026"
+        "date": "15/05/2026",
+        "hedgeError":false
       },
       {
         "status": {
@@ -373,89 +377,9 @@ export class HedgingProposalComponent implements AfterViewInit {
         },
         "totalExposure": 25.00,
         "alreadyHedge": 0.0,
-        "date": "15/06/2026"
+        "date": "15/06/2026",
+        "hedgeError":false
       },
-      {
-        "status": {
-          "type": 1,
-          "descriprion": "Created"
-        },
-        "maxHedgeAmount": 25.00,
-        "recomendedHedgeAmount": 6.75,
-        "hedge": {
-          "strategyId": 132568,
-          "hedgeRate": 4.3728,
-          "expiryDate": "15/07/2026",
-          "price": 0.0,
-          "collateral": 2.834,
-          "productName": "LOCK & UP",
-          "productType": 1,
-          "notionalCurrency": "CHF",
-          "notionalCurrencySign": "CHF",
-          "secondCurrency": "ILS",
-          "secondCurrencySign": "₪",
-          "collateralCurrency": "ILS",
-          "liabilityRate": 4.3728,
-          "protectAmount": 6.75
-        },
-        "totalExposure": 25.00,
-        "alreadyHedge": 0.0,
-        "date": "15/07/2026"
-      },
-      {
-        "status": {
-          "type": 1,
-          "descriprion": "Created"
-        },
-        "maxHedgeAmount": 25.00,
-        "recomendedHedgeAmount": 6.75,
-        "hedge": {
-          "strategyId": 132582,
-          "hedgeRate": 4.4438,
-          "expiryDate": "15/02/2027",
-          "price": 0.0,
-          "collateral": 2.834,
-          "productName": "LOCK & UP",
-          "productType": 1,
-          "notionalCurrency": "CHF",
-          "notionalCurrencySign": "CHF",
-          "secondCurrency": "ILS",
-          "secondCurrencySign": "₪",
-          "collateralCurrency": "ILS",
-          "liabilityRate": 4.4438,
-          "protectAmount": 6.75
-        },
-        "totalExposure": 25.00,
-        "alreadyHedge": 0.0,
-        "date": "15/02/2027"
-      },
-      {
-        "status": {
-          "type": 1,
-          "descriprion": "Created"
-        },
-        "maxHedgeAmount": 25.00,
-        "recomendedHedgeAmount": 6.75,
-        "hedge": {
-          "strategyId": 132580,
-          "hedgeRate": 4.4438,
-          "expiryDate": "15/03/2027",
-          "price": 0.0,
-          "collateral": 2.834,
-          "productName": "LOCK & UP",
-          "productType": 1,
-          "notionalCurrency": "CHF",
-          "notionalCurrencySign": "CHF",
-          "secondCurrency": "ILS",
-          "secondCurrencySign": "₪",
-          "collateralCurrency": "ILS",
-          "liabilityRate": 4.4438,
-          "protectAmount": 6.75
-        },
-        "totalExposure": 25.00,
-        "alreadyHedge": 0.0,
-        "date": "15/03/2027"
-      }
     ]
   };
   hedgedMonthsfromAPI: any;
@@ -733,7 +657,7 @@ export class HedgingProposalComponent implements AfterViewInit {
 
 
   shouldShowError(i: number): boolean {
-    return (this.updateAfterGetting) && (this.hedgeDetails?.monthlyHedge?.[i]?.status?.type == 2);
+    return this.hedgeDetails?.monthlyHedge?.[i]?.hedgeError == true;
   }
 
   refreshPageInError(element: any) {
@@ -793,7 +717,7 @@ export class HedgingProposalComponent implements AfterViewInit {
 
 
     //     this.riskManagerService.setUpdatedId(this.updatedId);
-    //     this.updateAfterGetting = true;
+        this.updateAfterGetting = true;
 
     //     const extractedData = {
     //       price: this.hedgeDetails.price,

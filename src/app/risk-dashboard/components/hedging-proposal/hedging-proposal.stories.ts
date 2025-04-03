@@ -43,7 +43,8 @@ const meta: Meta<HedgingProposalComponent> = {
                         },
                         totalExposure: 25.0,
                         alreadyHedge: 0.0,
-                        date: '17/11/2025'
+                        date: '17/11/2025',
+                        hedgeError:false
                     },
                 ]
             }
@@ -69,6 +70,19 @@ export const Default: Story = {
             hedgingType: 1,
             monthlyHedge: [
                 {
+                    status: {
+                        type: 3,
+                        descriprion: "Don't need to create hedge for zero reccomended hedge"
+                    },
+                    maxHedgeAmount: 5.00,
+                    recomendedHedgeAmount: 0.00,
+                    hedge: null,
+                    totalExposure: 5.00,
+                    alreadyHedge: 0.0,
+                    date: "15/06/2025",
+                    hedgeError:false
+                },
+                {
                     status: { type: 1, descriprion: 'Created' },
                     maxHedgeAmount: 25.0,
                     recomendedHedgeAmount: 10.5,
@@ -90,23 +104,12 @@ export const Default: Story = {
                     },
                     totalExposure: 25.0,
                     alreadyHedge: 0.0,
-                    date: '17/11/2025'
+                    date: '17/11/2025',
+                    hedgeError:true
                 },
                 {
                     status: {
                         type: 5,
-                        descriprion: "Don't need to create hedge for zero reccomended hedge"
-                    },
-                    maxHedgeAmount: 5.00,
-                    recomendedHedgeAmount: 0.00,
-                    hedge: null,
-                    totalExposure: 5.00,
-                    alreadyHedge: 0.0,
-                    date: "15/06/2025"
-                },
-                {
-                    status: {
-                        type: 3,
                         descriprion: "Already purchased the entire protection deal for the month"
                     },
                     maxHedgeAmount: 0.0,
@@ -114,7 +117,8 @@ export const Default: Story = {
                     hedge: null,
                     totalExposure: 0.0,
                     alreadyHedge: 0.0,
-                    date: "15/07/2025"
+                    date: "15/07/2025",
+                    hedgeError:false
                 },
                 {
                     status: {
@@ -141,7 +145,8 @@ export const Default: Story = {
                     },
                     totalExposure: 50.00,
                     alreadyHedge: 0.0,
-                    date: "15/08/2025"
+                    date: "15/08/2025",
+                    hedgeError:false
                 },
                 {
                     status: {
@@ -168,7 +173,8 @@ export const Default: Story = {
                     },
                     totalExposure: 25.00,
                     alreadyHedge: 0.0,
-                    date: "15/07/2026"
+                    date: "15/07/2026",
+                    hedgeError:false
                 },
                 {
                     status: {
@@ -195,7 +201,8 @@ export const Default: Story = {
                     },
                     totalExposure: 25.00,
                     alreadyHedge: 0.0,
-                    date: "15/02/2027"
+                    date: "15/02/2027",
+                    hedgeError:false
                 }
             ]
         }

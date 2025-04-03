@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { Router } from '@angular/router';
 export interface MenuItem {
   icon: string;
   label: string;
@@ -15,6 +16,9 @@ export interface MenuItem {
 })
 export class SidebarComponent {
   @ViewChild('sidebar') sidebar!: ElementRef;
+  constructor(private router:Router){
+
+  }
   openSidebar() {
     this.sidebar.nativeElement.classList.add('active');
     document.body.classList.add('overflow-hidden');
