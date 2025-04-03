@@ -2442,7 +2442,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-b1c539bbfab39667b474102707b2e96e836ec7fd277786cf082e7bac2d96e8ab1bb97577320d7380aaebd31724ae92b488f730a033025f5a03a03f66230138b4-1",
+            "id": "component-HeaderComponent-9fecc72f646a06d0de8e783fcf98f941a0ed67059c4bd173cc50868b5619fdf75ed0e2a904447042977407595faaec0ca24db7cf7f171e13c6349e5b9bee09e2-1",
             "file": "src/app/risk-dashboard/components/header/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2464,11 +2464,23 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 16,
                     "type": "EventEmitter"
                 }
             ],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "showDlg",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
             "methodsClass": [
                 {
                     "name": "openMenu",
@@ -2476,7 +2488,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 14,
+                    "line": 19,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2494,12 +2506,23 @@
                 {
                     "name": "MatMenuModule",
                     "type": "module"
+                },
+                {
+                    "name": "QuickHedgeDrawerComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MatDrawer"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\n\r\n@Component({\r\n  selector: 'app-header',\r\n  standalone: true,\r\n  imports: [MatIconModule,MatMenuModule],\r\n  templateUrl: './header.component.html',\r\n  styleUrl: './header.component.scss'\r\n})\r\nexport class HeaderComponent {\r\n  @Output() openSidebar = new EventEmitter();\r\n  openMenu() {\r\n    this.openSidebar.emit();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport { QuickHedgeDrawerComponent } from '../dashboard/components/quick-hedge-drawer/quick-hedge-drawer.component';\r\nimport { MatDrawer } from '@angular/material/sidenav';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-header',\r\n  standalone: true,\r\n  imports: [MatIconModule,MatMenuModule, QuickHedgeDrawerComponent, MatDrawer, CommonModule],\r\n  templateUrl: './header.component.html',\r\n  styleUrl: './header.component.scss'\r\n})\r\nexport class HeaderComponent {\r\n  @Output() openSidebar = new EventEmitter();\r\n  showDlg: boolean = false;\r\n  \r\n  openMenu() {\r\n    this.openSidebar.emit();\r\n  }\r\n}\r\n",
             "styleUrl": "./header.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2508,7 +2531,7 @@
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "HeaderComponent-1",
-            "templateData": "<header>\r\n    <div class=\"topheder-business-users\">\r\n        <div class=\"header-inner\">\r\n            <button class=\"navbar-toggler\" type=\"button\" (click)=\"openMenu()\" id=\"db-header-8\">\r\n                <img src=\"images/side-menu.svg\">\r\n            </button>\r\n        </div>\r\n        <nav class=\"navbar main-nav\">\r\n            <div class=\"nav-inner\">\r\n                <div class=\"nav-left\">\r\n                    <div class=\"wallet-list-business\">\r\n                        <div class=\"flag\">\r\n                            <img src=\"images/ils-flag.svg\" alt=\"flag\">\r\n                        </div>\r\n                        <div class=\"currency-wrapper\">\r\n                            <div class=\"wallet-ammount\">\r\n                                3,200,000<span class=\"sub-part\">.00</span>\r\n                            </div>\r\n                            <button class=\"wallet-list-button\" mat-icon-button></button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"nav-option-right\">\r\n                    <div class=\"lang-wrapper\">\r\n                        <button type=\"button\" class=\"drop-down-btn lang-btn\" [matMenuTriggerFor]=\"langMenu\"\r\n                            id=\"dropdownForm2\">\r\n                            <img height=\"20px\" width=\"20px\" src=\"images/gloabe-icn.svg\" alt=\"language icon\">\r\n                        </button>\r\n                        <mat-menu #langMenu=\"matMenu\"\r\n                            class=\"header-menu-panel side-nav-wrapper language-wrapper animated fadeIn py-2 px-2\">\r\n                            <ul>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-1\">English</button>\r\n                                </li>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-2\">עברית</button>\r\n                                </li>\r\n                            </ul>\r\n                        </mat-menu>\r\n                    </div>\r\n                    <button class=\"header-btn download-app\">\r\n                        Download App\r\n                    </button>\r\n                    <a class=\"header-btn market-place\">\r\n                        <svg width=\"22\" height=\"20\" viewBox=\"0 0 22 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                            <path id=\"Vector\"\r\n                                d=\"M21.9483 6.58348C21.9248 6.53253 21.8963 6.48416 21.8632 6.43913C21.8382 6.31428 21.8046 6.19137 21.7628 6.0713C21.7577 6.05739 21.7526 6.04348 21.7458 6.02956L19.4031 0.521739C19.3369 0.366601 19.2277 0.234598 19.0891 0.141919C18.9505 0.049241 18.7884 -8.19612e-05 18.6228 1.02236e-07H3.30575C3.14011 -8.19612e-05 2.97804 0.049241 2.83943 0.141919C2.70082 0.234598 2.59169 0.366601 2.52543 0.521739L0.168309 6.07043C-0.056103 6.65243 -0.056103 7.29975 0.168309 7.88174C0.385115 8.3882 0.699203 8.84504 1.09196 9.22518C1.48472 9.60532 1.94815 9.90103 2.4548 10.0948V19.1304C2.4548 19.3611 2.54446 19.5822 2.70404 19.7453C2.86362 19.9084 3.08007 20 3.30575 20H18.6228C18.8485 20 19.0649 19.9084 19.2245 19.7453C19.3841 19.5822 19.4737 19.3611 19.4737 19.1304V10.0948C19.9803 9.90127 20.4436 9.60585 20.8364 9.22601C21.2291 8.84617 21.5433 8.38965 21.7602 7.88348C21.8304 7.70055 21.877 7.5091 21.8989 7.31391C21.9557 7.20211 21.9894 7.07959 21.9979 6.95393C22.0064 6.82828 21.9895 6.70219 21.9483 6.58348ZM8.41143 18.2609V13.0435H10.1133V18.2609H8.41143ZM11.8152 18.2609V13.0435H13.5171V18.2609H11.8152ZM17.7718 18.2609H15.219V12.1739C15.219 11.9433 15.1294 11.7221 14.9698 11.559C14.8102 11.396 14.5937 11.3043 14.3681 11.3043H7.56048C7.3348 11.3043 7.11836 11.396 6.95877 11.559C6.79919 11.7221 6.70954 11.9433 6.70954 12.1739V18.2609H4.1567V10.4348C4.80138 10.443 5.44005 10.3072 6.028 10.0369C6.61595 9.7665 7.13898 9.36811 7.56048 8.86957C7.9868 9.36234 8.51071 9.75693 9.09752 10.0272C9.68432 10.2974 10.3206 10.4372 10.9643 10.4372C11.6079 10.4372 12.2442 10.2974 12.831 10.0272C13.4178 9.75693 13.9417 9.36234 14.3681 8.86957C14.7896 9.36811 15.3126 9.7665 15.9005 10.0369C16.4885 10.3072 17.1272 10.443 17.7718 10.4348V18.2609ZM20.186 7.21739C19.9683 7.67738 19.6239 8.06235 19.195 8.32498C18.7661 8.5876 18.2714 8.71644 17.7718 8.69565C17.1525 8.74712 16.5381 8.54822 16.0608 8.14172C15.5834 7.73521 15.2812 7.15354 15.219 6.52174C15.219 6.29112 15.1294 6.06994 14.9698 5.90686C14.8102 5.74379 14.5937 5.65217 14.3681 5.65217C14.1424 5.65217 13.9259 5.74379 13.7663 5.90686C13.6068 6.06994 13.5171 6.29112 13.5171 6.52174C13.455 7.15354 13.1527 7.73521 12.6754 8.14172C12.198 8.54822 11.5836 8.74712 10.9643 8.69565C10.3449 8.74712 9.73054 8.54822 9.25318 8.14172C8.77581 7.73521 8.47358 7.15354 8.41143 6.52174C8.41143 6.29112 8.32178 6.06994 8.1622 5.90686C8.00261 5.74379 7.78617 5.65217 7.56048 5.65217C7.3348 5.65217 7.11836 5.74379 6.95877 5.90686C6.79919 6.06994 6.70954 6.29112 6.70954 6.52174C6.64739 7.15354 6.34516 7.73521 5.86779 8.14172C5.39043 8.54822 4.77604 8.74712 4.1567 8.69565C3.65699 8.7165 3.1622 8.5877 2.73316 8.32507C2.30412 8.06245 1.95952 7.67745 1.74171 7.21739C1.68468 7.05701 1.68468 6.88125 1.74171 6.72087L3.86397 1.73913H18.0646L20.1724 6.69565C20.2382 6.86222 20.2431 7.04747 20.186 7.21739Z\"\r\n                                fill=\"black\" />\r\n                        </svg>\r\n                        Marketplace\r\n                    </a>\r\n                    <button class=\"add-money\" mat-button id=\"db-header-10\">+ Add Money</button>\r\n                    <div class=\"user-profile\">\r\n                        <button class=\"profile-btn\" [matMenuTriggerFor]=\"accountsMenu\" id=\"db-header-11\">T</button>\r\n                        <button class=\"user-option\" mat-icon-button [matMenuTriggerFor]=\"profileMenu\" id=\"db-header-12\">\r\n                            <img src=\"images/menu-down-arrow.svg\">\r\n                        </button>\r\n                        <mat-menu #profileMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"db-header-13\">Logout</button>\r\n                        </mat-menu>\r\n                        <mat-menu #accountsMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"dbheader-company\">Tamir</button>\r\n                        </mat-menu>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nav>\r\n    </div>\r\n</header>"
+            "templateData": "<header>\r\n    <div class=\"topheder-business-users\">\r\n        <div class=\"header-inner\">\r\n            <button class=\"navbar-toggler\" type=\"button\" (click)=\"openMenu()\" id=\"db-header-8\">\r\n                <img src=\"images/side-menu.svg\">\r\n            </button>\r\n        </div>\r\n        <nav class=\"navbar main-nav\">\r\n            <div class=\"nav-inner\">\r\n                <div class=\"nav-left\">\r\n                    <div class=\"wallet-list-business\">\r\n                        <div class=\"flag\">\r\n                            <img src=\"images/ils-flag.svg\" alt=\"flag\">\r\n                        </div>\r\n                        <div class=\"currency-wrapper\">\r\n                            <div class=\"wallet-ammount\">\r\n                                3,200,000<span class=\"sub-part\">.00</span>\r\n                            </div>\r\n                            <button class=\"wallet-list-button\" mat-icon-button></button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"nav-option-right\">\r\n                    <div class=\"lang-wrapper\">\r\n                        <button type=\"button\" class=\"drop-down-btn lang-btn\" [matMenuTriggerFor]=\"langMenu\"\r\n                            id=\"dropdownForm2\">\r\n                            <img height=\"20px\" width=\"20px\" src=\"images/gloabe-icn.svg\" alt=\"language icon\">\r\n                        </button>\r\n                        <mat-menu #langMenu=\"matMenu\"\r\n                            class=\"header-menu-panel side-nav-wrapper language-wrapper animated fadeIn py-2 px-2\">\r\n                            <ul>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-1\">English</button>\r\n                                </li>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-2\">עברית</button>\r\n                                </li>\r\n                            </ul>\r\n                        </mat-menu>\r\n                    </div>\r\n                    <button class=\"header-btn download-app\">\r\n                        Download App\r\n                    </button>\r\n                    <a class=\"header-btn market-place\">\r\n                        <svg width=\"22\" height=\"20\" viewBox=\"0 0 22 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                            <path id=\"Vector\"\r\n                                d=\"M21.9483 6.58348C21.9248 6.53253 21.8963 6.48416 21.8632 6.43913C21.8382 6.31428 21.8046 6.19137 21.7628 6.0713C21.7577 6.05739 21.7526 6.04348 21.7458 6.02956L19.4031 0.521739C19.3369 0.366601 19.2277 0.234598 19.0891 0.141919C18.9505 0.049241 18.7884 -8.19612e-05 18.6228 1.02236e-07H3.30575C3.14011 -8.19612e-05 2.97804 0.049241 2.83943 0.141919C2.70082 0.234598 2.59169 0.366601 2.52543 0.521739L0.168309 6.07043C-0.056103 6.65243 -0.056103 7.29975 0.168309 7.88174C0.385115 8.3882 0.699203 8.84504 1.09196 9.22518C1.48472 9.60532 1.94815 9.90103 2.4548 10.0948V19.1304C2.4548 19.3611 2.54446 19.5822 2.70404 19.7453C2.86362 19.9084 3.08007 20 3.30575 20H18.6228C18.8485 20 19.0649 19.9084 19.2245 19.7453C19.3841 19.5822 19.4737 19.3611 19.4737 19.1304V10.0948C19.9803 9.90127 20.4436 9.60585 20.8364 9.22601C21.2291 8.84617 21.5433 8.38965 21.7602 7.88348C21.8304 7.70055 21.877 7.5091 21.8989 7.31391C21.9557 7.20211 21.9894 7.07959 21.9979 6.95393C22.0064 6.82828 21.9895 6.70219 21.9483 6.58348ZM8.41143 18.2609V13.0435H10.1133V18.2609H8.41143ZM11.8152 18.2609V13.0435H13.5171V18.2609H11.8152ZM17.7718 18.2609H15.219V12.1739C15.219 11.9433 15.1294 11.7221 14.9698 11.559C14.8102 11.396 14.5937 11.3043 14.3681 11.3043H7.56048C7.3348 11.3043 7.11836 11.396 6.95877 11.559C6.79919 11.7221 6.70954 11.9433 6.70954 12.1739V18.2609H4.1567V10.4348C4.80138 10.443 5.44005 10.3072 6.028 10.0369C6.61595 9.7665 7.13898 9.36811 7.56048 8.86957C7.9868 9.36234 8.51071 9.75693 9.09752 10.0272C9.68432 10.2974 10.3206 10.4372 10.9643 10.4372C11.6079 10.4372 12.2442 10.2974 12.831 10.0272C13.4178 9.75693 13.9417 9.36234 14.3681 8.86957C14.7896 9.36811 15.3126 9.7665 15.9005 10.0369C16.4885 10.3072 17.1272 10.443 17.7718 10.4348V18.2609ZM20.186 7.21739C19.9683 7.67738 19.6239 8.06235 19.195 8.32498C18.7661 8.5876 18.2714 8.71644 17.7718 8.69565C17.1525 8.74712 16.5381 8.54822 16.0608 8.14172C15.5834 7.73521 15.2812 7.15354 15.219 6.52174C15.219 6.29112 15.1294 6.06994 14.9698 5.90686C14.8102 5.74379 14.5937 5.65217 14.3681 5.65217C14.1424 5.65217 13.9259 5.74379 13.7663 5.90686C13.6068 6.06994 13.5171 6.29112 13.5171 6.52174C13.455 7.15354 13.1527 7.73521 12.6754 8.14172C12.198 8.54822 11.5836 8.74712 10.9643 8.69565C10.3449 8.74712 9.73054 8.54822 9.25318 8.14172C8.77581 7.73521 8.47358 7.15354 8.41143 6.52174C8.41143 6.29112 8.32178 6.06994 8.1622 5.90686C8.00261 5.74379 7.78617 5.65217 7.56048 5.65217C7.3348 5.65217 7.11836 5.74379 6.95877 5.90686C6.79919 6.06994 6.70954 6.29112 6.70954 6.52174C6.64739 7.15354 6.34516 7.73521 5.86779 8.14172C5.39043 8.54822 4.77604 8.74712 4.1567 8.69565C3.65699 8.7165 3.1622 8.5877 2.73316 8.32507C2.30412 8.06245 1.95952 7.67745 1.74171 7.21739C1.68468 7.05701 1.68468 6.88125 1.74171 6.72087L3.86397 1.73913H18.0646L20.1724 6.69565C20.2382 6.86222 20.2431 7.04747 20.186 7.21739Z\"\r\n                                fill=\"black\" />\r\n                        </svg>\r\n                        Marketplace\r\n                    </a>\r\n                    <button class=\"add-money\" mat-button id=\"db-header-10\">+ Add Money</button>\r\n                    <div class=\"user-profile\">\r\n                        <button class=\"profile-btn\" [matMenuTriggerFor]=\"accountsMenu\" id=\"db-header-11\">T</button>\r\n                        <button class=\"user-option\" mat-icon-button [matMenuTriggerFor]=\"profileMenu\" id=\"db-header-12\">\r\n                            <img src=\"images/menu-down-arrow.svg\">\r\n                        </button>\r\n                        <mat-menu #profileMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"db-header-13\">Logout</button>\r\n                        </mat-menu>\r\n                        <mat-menu #accountsMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"dbheader-company\">Tamir</button>\r\n                        </mat-menu>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nav>\r\n    </div>\r\n</header>\r\n\r\n<mat-drawer #quickHedgeDrawer mode=\"side\" position=\"end\" class=\"drawer-hedge-quick\">\r\n    <app-quick-hedge-drawer [ngStyle]=\"{'display': showDlg ? 'none' : 'block'}\"></app-quick-hedge-drawer>\r\n</mat-drawer>"
         },
         {
             "name": "HedgingProposalComponent",
@@ -4706,6 +4729,49 @@
             "extends": []
         },
         {
+            "name": "QuickHedgeDrawerComponent",
+            "id": "component-QuickHedgeDrawerComponent-3a44171db97ec3b8ccbe508c04590c41f0fb25725653a600e76acef0f807cbdae620aa8200c2d9d365b0265e3bb998a7b87010600f7607c433108c68cbb2d65d",
+            "file": "src/app/risk-dashboard/components/dashboard/components/quick-hedge-drawer/quick-hedge-drawer.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-quick-hedge-drawer",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./quick-hedge-drawer.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "MatCheckboxModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\n\r\n@Component({\r\n  selector: 'app-quick-hedge-drawer',\r\n  imports: [MatCheckboxModule],\r\n  templateUrl: './quick-hedge-drawer.component.html',\r\n  styleUrl: './quick-hedge-drawer.component.scss'\r\n})\r\nexport class QuickHedgeDrawerComponent {\r\n\r\n}\r\n",
+            "styleUrl": "./quick-hedge-drawer.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<aside class=\"hedge-sidebar-container loader-wrapper\">\r\n    <!-- Close Button -->\r\n    <button class=\"close-btn\" aria-label=\"Close\">\r\n      <img src=\"images/close-btn-cashflow.svg\" alt=\"Close\" />\r\n    </button>\r\n  \r\n    <!-- Title -->\r\n    <header class=\"hedge-header\">\r\n      <h2 class=\"hedge-title\">\r\n        Quick hedge\r\n      </h2>\r\n    </header>\r\n    <div class=\"bg-white section-loader\"></div>\r\n    <!-- Hedge Information -->\r\n    <section class=\"hedge-info\">\r\n      <div class=\"hedge-amount\">\r\n        <label for=\"hedge-amount-value\">Amount to hedge</label>\r\n        <span id=\"hedge-amount-value\">\r\n          $150,000.00\r\n        </span>\r\n      </div>\r\n      <button class=\"forward-btn\">Forward</button>\r\n    </section>\r\n  \r\n    <!-- Conditional Sections -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\">\r\n          <label>Expiry date</label>\r\n          <span class=\"content\">\r\n            31 Jul 2025\r\n          </span>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Currencies</label>\r\n          <span class=\"content\">USD/EUR</span>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  \r\n    <!-- Rates Information -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\">\r\n          <label>Hedge rate</label>\r\n          <div class=\"rate-content\">\r\n            <span class=\"content primary-value\">1.0924</span>\r\n          </div>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Liability rate</label>\r\n          <span class=\"content primary-value\">1.0850</span>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  \r\n    <!-- Collateral and Price Information -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\">\r\n          <label>Required collateral <img class=\"z-1 tool-tip-cs\" src=\"images/circle-help.svg\" container=\"body\" placement=\"top\" />\r\n            <a class=\"hedge-deposit-link\">Make a deposit</a> \r\n          </label>\r\n          <span class=\"content\">€7,500.00</span>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Price <a class=\"hedge-deposit-link\">Make a deposit</a></label> \r\n          <span class=\"content\">€2,250.00</span>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  \r\n    <!-- Multiple Hedges View -->\r\n    <div class=\"hedging-allmonth-wrapper\" style=\"display: none;\">\r\n      <span class=\"dashed-line\"></span>\r\n      <button class=\"back-to-hedge\">Back</button>\r\n      <div class=\"heading-row\">\r\n        <span class=\"col-title\">Expiry dates</span>\r\n        <span class=\"col-title\">Hedge amounts</span>\r\n      </div>\r\n      <div class=\"expirydate-hedge-container\">\r\n        <div class=\"date-and-amount-wrapper\">\r\n          <label class=\"month-value\">31 Jul 2025\r\n            <span class=\"action-link\">View details</span>\r\n          </label>\r\n          <div class=\"bookmark-amount-section\">\r\n            <label class=\"hedge-amount\">$150,000.00</label>\r\n            <button class=\"bookmark-btn\"><img src=\"assets/icons/arrow.svg\" alt=\"arrow\" /></button>\r\n          </div>\r\n        </div>\r\n        <div class=\"date-and-amount-wrapper\">\r\n          <label class=\"month-value\">31 Aug 2025\r\n            <span class=\"action-link\">View details</span>\r\n          </label>\r\n          <div class=\"bookmark-amount-section\">\r\n            <label class=\"hedge-amount\">$125,000.00</label>\r\n            <button class=\"bookmark-btn\"><img src=\"assets/icons/arrow.svg\" alt=\"arrow\" /></button>\r\n          </div>\r\n        </div>\r\n        <div class=\"date-and-amount-wrapper disabled\">\r\n          <label class=\"month-value\">30 Sep 2025\r\n            <span class=\"action-link\">View details</span>\r\n            <span class=\"action\">(Disable month)</span>\r\n          </label>\r\n          <div class=\"bookmark-amount-section\">\r\n            <label class=\"hedge-amount\">$175,000.00</label>\r\n            <button class=\"bookmark-btn\"><img src=\"assets/icons/arrow.svg\" alt=\"arrow\" /></button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  \r\n    <!-- Specific Month View -->\r\n    <div class=\"specific-month-wrapper\" style=\"display: none;\">\r\n      <span class=\"dashed-line\"></span>\r\n      <button class=\"back-to-hedge\">Back</button>\r\n      <div class=\"month-title\">\r\n        <h4>31 Jul 2025</h4>\r\n      </div>\r\n      <div class=\"month-info-wrapper\">\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Monthly hedge amount </label>\r\n          <label class=\"row-amount\">\r\n            $150,000.00\r\n          </label>\r\n        </div>\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Hedge rate </label>\r\n          <label class=\"row-amount primary-value\">1.0924</label>\r\n        </div>\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Liability rate </label>\r\n          <label class=\"row-amount primary-value\">1.0850</label>\r\n        </div>\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Required collateral <a class=\"hedge-deposit-link\">Make a deposit</a></label>\r\n          <div class=\"collateral-content\">\r\n            <label class=\"collateral-amount\">€7,500.00</label>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Price\r\n            <a class=\"hedge-deposit-link\">Make a deposit</a>\r\n          </label>\r\n          <div class=\"collateral-content\">\r\n            <label class=\"collateral-amount\">€2,250.00</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  \r\n    <!-- Conditions Acknowledgement -->\r\n    <section class=\"conditions-section\">\r\n      <p class=\"read-conditions\">\r\n        I am aware that during the transaction term, additional collateral requirements may be determined in accordance with market fluctuations and the company's requirements. If these requirements are not met promptly, the company may, at its discretion, take actions including but not limited to closing the transaction and forfeiting the collateral amount.\r\n      </p>\r\n    </section>\r\n  \r\n    <!-- Footer Actions -->\r\n    <footer class=\"action-footer\">\r\n      <mat-checkbox\r\n        class=\"tick-condition\"\r\n      >\r\n        I confirm the general <button>conditions and disclosure</button> about the risk.\r\n      </mat-checkbox>\r\n      <button\r\n        class=\"hedge-now single-hedge\">\r\n        Hedge now\r\n      </button>\r\n      <p class=\"refresh-in\" style=\"display: none;\">\r\n        <span>Insufficient funds in wallet. <a class=\"hedge-deposit-link\">Make a deposit</a></span>\r\n      </p>\r\n      <div class=\"transaction-unavailable-wrapper\" style=\"display: none;\">\r\n        <img src=\"images/error-outline.svg\" alt=\"error\">\r\n        <p class=\"transaction-unavailable-err\">Some transactions are unavailable and won't be included in the Hedge All action. You can continue with available transactions or <a>refresh</a> the page <span>(unsaved changes will be lost).</span> </p>\r\n      </div>\r\n    </footer>\r\n  </aside>"
+        },
+        {
             "name": "RiskEstimateChartComponent",
             "id": "component-RiskEstimateChartComponent-98bdb5d2716dabeb08ca5fefa8f46ad2dbfba89024e7ebb5dff3212146c01c41b1d95a0ead7e0826554708ccdfac9223899170d86be1edb59ea14175a43fca0c",
             "file": "src/app/risk-dashboard/components/dashboard/components/risk-estimate-chart/risk-estimate-chart.component.ts",
@@ -5894,6 +5960,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/risk-dashboard/components/dashboard/components/quick-hedge-drawer/quick-hedge-drawer.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "QuickHedgeDrawerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/risk-dashboard/components/dashboard/components/risk-estimate-chart/risk-estimate-chart.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -5945,7 +6020,7 @@
                 "linktype": "component",
                 "name": "HeaderComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {

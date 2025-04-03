@@ -2,13 +2,15 @@ $white: #ffffff;
 $black: #000000;
 $he_heebo: 'Heebo', sans-serif;
 
+$font-14: 14px;
+
 // Primary theme colors conditional (non-max)
 :root {
     --dark-blue-primary: #1E40AF; //done
     --light-blue-bg: #EEF3FC; //done
     --primary-blue: #1D4ED8; //done
     --brand-primary-color: #2947f2; //done
-    --active-tab-border-color: #2947f2; //done
+    --active-tab-border-color: #e7e7e7; //done
     --account-detail-header-bg-color: #2947f2; //done
     --light-blue: #2947F2; //done
     --cal-ev-blue: #2947F2; //done
