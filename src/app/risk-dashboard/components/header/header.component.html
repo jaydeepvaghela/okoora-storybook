@@ -67,7 +67,11 @@
         </nav>
     </div>
 </header>
-
-<mat-drawer #quickHedgeDrawer mode="side" position="end" class="drawer-hedge-quick">
-    <app-quick-hedge-drawer [ngStyle]="{'display': showDlg ? 'none' : 'block'}"></app-quick-hedge-drawer>
+<!-- <mat-drawer #quickHedgeDrawer mode="side" position="end" class="drawer-hedge-quick" [opened]="false"> 
+    <app-quick-hedge-drawer (closeDrawer)="closeQuickHedgeDrawer()"></app-quick-hedge-drawer>
+</mat-drawer> -->
+  
+<mat-drawer #hedgeAllDrawer mode="side" position="end" class="drawer-hedge-all" [opened]="false">
+    <app-hedge-all-drawer (closeDrawer)="closeHedgeAllDrawer()"></app-hedge-all-drawer>
 </mat-drawer>
+  

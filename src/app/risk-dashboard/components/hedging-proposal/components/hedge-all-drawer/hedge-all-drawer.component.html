@@ -1,0 +1,178 @@
+<aside class="hedge-sidebar-container loader-wrapper">
+    <!-- Close Button -->
+    <button class="close-btn" aria-label="Close" (click)="closeHedgeDrawer()">
+      <img src="images/close-btn-cashflow.svg" alt="Close" />
+    </button>
+  
+    <!-- Title -->
+    <header class="hedge-header">
+      <h2 class="hedge-title">
+        Hedge all
+      </h2>
+    </header>
+    <div class="bg-white section-loader"></div>
+    <!-- Hedge Information -->
+    <section class="hedge-info">
+      <div class="hedge-amount">
+        <label for="hedge-amount-value">Amount to hedge</label>
+        <span id="hedge-amount-value">
+          {{multipleHedgeData[0].hedge.notionalCurrencySign}}{{initialHedgeInfo.totalHedgeAmount}}
+        </span>
+      </div>
+      <button class="forward-btn">Forward</button>
+    </section>
+  
+    <!-- Conditional Sections -->
+    <ng-container *ngIf="showHedgeAllDetails == false && showCompleteHedgeDetails == false">
+        <section class="info-section">
+            <div class="info-wrapper">
+              <div class="sub-info">
+                <label>Time period</label>
+                <span class="content">
+                  {{ formattedDateRange }}
+                </span>
+              </div>
+              <div class="sub-info">
+                <label>Currencies</label>
+                <span class="content">{{multipleHedgeData[0].hedge.notionalCurrency}}/{{multipleHedgeData[0].hedge.secondCurrency}}</span>
+              </div>
+            </div>
+        </section>
+        
+          <!-- Rates Information -->
+          <section class="info-section">
+            <div class="info-wrapper">
+              <div class="sub-info">
+                <label>Hedge rate</label>
+                <div class="rate-content">
+                  <span class="content primary-value">{{initialHedgeInfo.avgHedgeRate}}</span>
+                </div>
+              </div>
+              <div class="sub-info">
+                <label>Liability rate</label>
+                <span class="content primary-value">{{initialHedgeInfo.liabilityRate}}</span>
+              </div>
+            </div>
+          </section>
+        
+          <!-- Collateral and Price Information -->
+          <section class="info-section">
+            <div class="info-wrapper">
+              <div class="sub-info">
+                <label>Required collateral <img class="z-1 tool-tip-cs" src="images/circle-help.svg" container="body" placement="top" />
+                  <a class="hedge-deposit-link">Make a deposit</a> 
+                </label>
+                <span class="content">{{multipleHedgeData[0].hedge.secondCurrencySign}}{{initialHedgeInfo.requiredCollateral}}</span>
+              </div>
+              <div class="sub-info">
+                <label>Price <a class="hedge-deposit-link">Make a deposit</a></label> 
+                <span class="content">{{multipleHedgeData[0].hedge.secondCurrencySign}}{{initialHedgeInfo.price}}</span>
+              </div>
+            </div>
+          </section>
+          
+          <!-- Hedge All Details Button -->
+          <section class="info-section">
+            <div class="info-wrapper view-detail">
+                <button class="hedge-all-details" (click)="showHedgeAllDetails = true">View details</button>
+            </div>
+          </section>
+    </ng-container>
+  
+    <!-- Multiple Hedges View -->
+    <div class="hedging-allmonth-wrapper" *ngIf="showHedgeAllDetails == true && showCompleteHedgeDetails == false">
+      <span class="dashed-line"></span>
+      <button class="back-to-hedge" (click)="showHedgeAllDetails = false">Back</button>
+      <div class="heading-row">
+        <span class="col-title">Expiry dates</span>
+        <span class="col-title">Hedge amounts</span>
+      </div>
+      <div class="expirydate-hedge-container">
+        <div
+          class="date-and-amount-wrapper"
+          *ngFor="let row of multipleHedgeData"
+          (click)="onRowClick(row);showCompleteHedgeDetails = true; showHedgeAllDetails = false;"
+        >
+          <label class="month-value">
+            {{ formatDate(row.expiryDate) }}
+          </label>
+
+          <div class="bookmark-amount-section">
+            <label class="hedge-amount">{{ formatAmount(row.protectAmount) }}</label>
+            <button class="bookmark-btn">
+              <img src="images/arrow.svg" alt="arrow" />
+            </button>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+  
+    <!-- Specific Month View -->
+    <div class="specific-month-wrapper" *ngIf="showCompleteHedgeDetails == true && showHedgeAllDetails == false">
+      <span class="dashed-line"></span>
+      <button class="back-to-hedge" (click)="showCompleteHedgeDetails = false; showHedgeAllDetails = true">Back</button>
+      <div class="month-title">
+        <h4>{{ formatMonthYear(specificSelectedRow.expiryDate) }}</h4>
+      </div>
+      <div class="month-info-wrapper">
+        <div class="month-info">
+          <label class="row-title">Monthly hedge amount </label>
+          <label class="row-amount">
+            {{specificSelectedRow.hedge.secondCurrencySign}}{{specificSelectedRow.hedge.protectAmount}}
+          </label>
+        </div>
+        <div class="month-info">
+          <label class="row-title">Hedge rate </label>
+          <label class="row-amount primary-value">{{specificSelectedRow.hedge.hedgeRate}}</label>
+        </div>
+        <div class="month-info">
+          <label class="row-title">Liability rate </label>
+          <label class="row-amount primary-value">{{specificSelectedRow.hedge.liabilityRate}}</label>
+        </div>
+        <div class="month-info">
+          <label class="row-title">Required collateral <a class="hedge-deposit-link">Make a deposit</a></label>
+          <div class="collateral-content">
+            <label class="collateral-amount">{{specificSelectedRow.hedge.secondCurrencySign}}{{specificSelectedRow.hedge.collateral}}</label>
+          </div>
+        </div>
+  
+        <div class="month-info">
+          <label class="row-title">Price
+            <a class="hedge-deposit-link">Make a deposit</a>
+          </label>
+          <div class="collateral-content">
+            <label class="collateral-amount">{{specificSelectedRow.hedge.secondCurrencySign}}{{specificSelectedRow.hedge.price}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Conditions Acknowledgement -->
+    <section class="conditions-section">
+      <p class="read-conditions">
+        I am aware that during the transaction term, additional collateral requirements may be determined in accordance with market fluctuations and the company's requirements. If these requirements are not met promptly, the company may, at its discretion, take actions including but not limited to closing the transaction and forfeiting the collateral amount.
+      </p>
+    </section>
+  
+    <!-- Footer Actions -->
+    <footer class="action-footer">
+      <mat-checkbox
+        class="tick-condition"
+      >
+        I confirm the general <button (click)="openConditionsDisclosure()">conditions and disclosure</button> about the risk.
+      </mat-checkbox>
+      <button
+        class="hedge-now single-hedge">
+        Hedge now
+      </button>
+      <p class="refresh-in" style="display: none;">
+        <span>Insufficient funds in wallet. <a class="hedge-deposit-link">Make a deposit</a></span>
+      </p>
+      <div class="transaction-unavailable-wrapper" style="display: none;">
+        <img src="images/error-outline.svg" alt="error">
+        <p class="transaction-unavailable-err">Some transactions are unavailable and won't be included in the Hedge All action. You can continue with available transactions or <a>refresh</a> the page <span>(unsaved changes will be lost).</span> </p>
+      </div>
+    </footer>
+  </aside>

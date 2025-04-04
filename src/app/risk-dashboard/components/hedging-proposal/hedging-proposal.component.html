@@ -16,8 +16,8 @@
         <div class="currency-info">
           <div class="amount-wrapper">
             <span class="hedge-currency">{{ hedgedCurrencySign }}</span>
-            <span class="hedge-total-amount">{{ commaseparate(hedgeDetails?.totalHedgeAmount,2) || 0 }}</span>
-            <span class="hedge-percentage">{{ selection.hasValue() ? commaseparate(hedgeDetails?.totalHedgePercent,2) : 0 }}%</span>
+            <span class="hedge-total-amount">{{ commaseparate(hedgeDetails.totalHedgeAmount,2) || 0 }}</span>
+            <span class="hedge-percentage">{{ selection.hasValue() ? commaseparate(hedgeDetails.totalHedgePercent,2) : 0 }}%</span>
           </div>
           <span class="hedge-period">{{ getHedgeMonthsCount() }} months</span>
         </div>
@@ -26,18 +26,18 @@
       <div class="hedge-rate-section values-wrapper">
         <label class="hedge-label">Avg hedge rate</label>
         <div class="currency-info">
-          <span class="hedge-rate">{{ commaseparate(hedgeDetails?.avgHedgeRate,4) || 0 }}</span>
+          <span class="hedge-rate">{{ commaseparate(hedgeDetails.avgHedgeRate,4) || 0 }}</span>
         </div>
       </div>
 
       <div class="hedge-collateral-section values-wrapper">
         <label class="hedge-label">Required collateral</label>
         <div class="currency-info">
-          <span class="hedge-currency">{{ hedgeDetails?.collateralAndPriceCur?.sign }}</span>
-          <span class="hedge-collateral">{{ commaseparate(hedgeDetails?.requiredCollateral, 2) || 0 }}</span>
+          <span class="hedge-currency">{{ hedgeDetails.collateralAndPriceCur.sign }}</span>
+          <span class="hedge-collateral">{{ commaseparate(hedgeDetails.requiredCollateral, 2) || 0 }}</span>
           <p 
             class="hedge-deposit-link" 
-            *ngIf="(selectedHedgeType !== 2) && (hedgeDetails?.requiredCollateral > wallet_Amount)" 
+            *ngIf="(selectedHedgeType !== 2) && (hedgeDetails.requiredCollateral > wallet_Amount)" 
             (click)="onMakeDeposit()">Make deposit</p>
         </div>
       </div>
@@ -45,17 +45,17 @@
       <div class="hedge-price-section values-wrapper">
         <label class="hedge-label">Price</label>
         <div class="currency-info">
-          <span class="hedge-currency">{{ hedgeDetails?.collateralAndPriceCur?.sign }}</span>
-          <span class="hedge-price">{{ commaseparate(hedgeDetails?.price, 2) || 0 }}</span>
+          <span class="hedge-currency">{{ hedgeDetails.collateralAndPriceCur.sign }}</span>
+          <span class="hedge-price">{{ commaseparate(hedgeDetails.price, 2) || 0 }}</span>
           <p 
             class="hedge-deposit-link" 
-            *ngIf="(selectedHedgeType !== 1) && (hedgeDetails?.price > wallet_Amount)" 
+            *ngIf="(selectedHedgeType !== 1) && (hedgeDetails.price > wallet_Amount)" 
             (click)="onMakeDeposit()">Make deposit</p>
         </div>
       </div>
 
       <div class="hedge-actions">
-        <button class="hedge-all-button" [disabled]="hedgeDetails?.totalHedgeAmount == 0" mat-raised-button color="primary" 
+        <button class="hedge-all-button" [disabled]="hedgeDetails.totalHedgeAmount == 0" mat-raised-button color="primary" 
           (click)="hedgeAllProposals()">Hedge All</button>
         <p class="hedge-proposal-refresh" *ngIf="showHedgeProposalMessage && selection.hasValue()">Click “Hedge All” for an updated proposal</p>
         <span class="error-month" *ngIf="!selection.hasValue() && !showLoader">Please select months to hedge</span>
@@ -154,7 +154,7 @@
                 </div>
                 <div class="values">
                   <span class="parent">Already hedged</span>
-                  <span class="subtext">{{hedgedCurrencySign}}{{ commaseprate(hedgeDetails?.monthlyHedge?.[i]?.alreadyHedge,2)}}</span>
+                  <span class="subtext">{{hedgedCurrencySign}}{{ commaseprate(hedgeDetails.monthlyHedge[i].alreadyHedge,2)}}</span>
                 </div>
                 <div class="values max-hedge">
                   <span class="parent">Maximum hedge amount</span>
@@ -235,7 +235,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; let i =index; columns: displayedColumns" 
         [ngClass]="{ 'disabled-row': hedgedMonthsfromAPI[i]?.status?.type == 3, 
-        'padding-for-error': (this.hedgeDetails?.monthlyHedge?.[i]?.hedgeError == true) }" 
+        'padding-for-error': (this.hedgeDetails.monthlyHedge[i].hedgeError == true) }" 
         [hidden]="hedgedMonthsfromAPI[i]?.status?.type == 4 || (hedgedMonthsfromAPI[i]?.status?.type == 2)">
       </tr>
 
@@ -246,7 +246,7 @@
       <p class="transaction-unavailable-err">This transaction is currently unavailable. You can continue with other transactions or <a href="">refresh</a> the page <span>(unsaved changes will be lost)</span> </p>
     </div> -->
     <div class="hedge-actions">
-      <button class="hedge-all-button" mat-raised-button color="primary" [disabled]="hedgeDetails?.totalHedgeAmount == 0" (click)="hedgeAllProposals()">Hedge All</button>
+      <button class="hedge-all-button" mat-raised-button color="primary" [disabled]="hedgeDetails.totalHedgeAmount == 0" (click)="hedgeAllProposals()">Hedge All</button>
       <p class="hedge-proposal-refresh" *ngIf="showHedgeProposalMessage">Click “Hedge All” for an updated proposal</p>
     </div>
 
