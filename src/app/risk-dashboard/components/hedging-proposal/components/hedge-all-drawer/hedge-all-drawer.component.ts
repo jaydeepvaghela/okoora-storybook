@@ -5,10 +5,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-details.component';
 import { hedgeAllRows } from '../../hedging-static-data';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-hedge-all-drawer',
-  imports: [MatCheckboxModule, CommonModule],
+  imports: [MatCheckboxModule, CommonModule, NgbTooltipModule],
   templateUrl: './hedge-all-drawer.component.html',
   styleUrl: './hedge-all-drawer.component.scss'
 })

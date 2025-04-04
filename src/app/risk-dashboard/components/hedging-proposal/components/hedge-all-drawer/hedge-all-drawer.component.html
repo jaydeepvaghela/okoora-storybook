@@ -59,16 +59,21 @@
           <section class="info-section">
             <div class="info-wrapper">
               <div class="sub-info">
-                <label>Required collateral <img class="z-1 tool-tip-cs" src="images/circle-help.svg" container="body" placement="top" />
-                  <a class="hedge-deposit-link">Make a deposit</a> 
+                <label>Required collateral <img class="z-1 tool-tip-cs" [tooltipClass]="'collateral-amount-ttp'" [ngbTooltip]="requiredCollateralttp" src="images/circle-help.svg" container="body" placement="top" />
+                  <!-- <a class="hedge-deposit-link">Make a deposit</a>  -->
                 </label>
                 <span class="content">{{multipleHedgeData[0].hedge.secondCurrencySign}}{{initialHedgeInfo.requiredCollateral}}</span>
               </div>
               <div class="sub-info">
-                <label>Price <a class="hedge-deposit-link">Make a deposit</a></label> 
+                <label>Price 
+                  <!-- <a class="hedge-deposit-link">Make a deposit</a> -->
+                </label> 
                 <span class="content">{{multipleHedgeData[0].hedge.secondCurrencySign}}{{initialHedgeInfo.price}}</span>
               </div>
             </div>
+            <ng-template #requiredCollateralttp>
+              <div class="recommended-shield-ttp">Assets pledged to cover hedging losses, based on risk.</div>
+           </ng-template>
           </section>
           
           <!-- Hedge All Details Button -->
@@ -132,7 +137,9 @@
           <label class="row-amount primary-value">{{specificSelectedRow.hedge.liabilityRate}}</label>
         </div>
         <div class="month-info">
-          <label class="row-title">Required collateral <a class="hedge-deposit-link">Make a deposit</a></label>
+          <label class="row-title">Required collateral 
+            <!-- <a class="hedge-deposit-link">Make a deposit</a> -->
+          </label>
           <div class="collateral-content">
             <label class="collateral-amount">{{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.collateral}}</label>
           </div>
@@ -140,7 +147,7 @@
   
         <div class="month-info">
           <label class="row-title">Price
-            <a class="hedge-deposit-link">Make a deposit</a>
+            <!-- <a class="hedge-deposit-link">Make a deposit</a> -->
           </label>
           <div class="collateral-content">
             <label class="collateral-amount">{{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.price}}</label>

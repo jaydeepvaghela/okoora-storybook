@@ -1,10 +1,13 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HedgingDataService } from '../../hedging-data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-details.component';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-quick-hedge-drawer',
-  imports: [MatCheckboxModule],
+  imports: [MatCheckboxModule, NgbTooltipModule],
   templateUrl: './quick-hedge-drawer.component.html',
   styleUrl: './quick-hedge-drawer.component.scss'
 })
@@ -48,12 +51,25 @@ export class QuickHedgeDrawerComponent {
       "saveActivate": false
     }
 
-  constructor(private hedgeService: HedgingDataService) { }
+  constructor(private hedgeService: HedgingDataService, private dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
   closeHedgeDrawer() {
     this.hedgeService?.closeQuickHedgeDrawer();
+  }
+
+  openConditionsDisclosure() {
+      const dialogRef = this.dialog.open(HedgeTandcDetailsComponent, {
+        width: '627px',
+        disableClose: true,
+        panelClass: 'terms-disclosure-hedging',
+        data: { someData: 'pass any data if needed' }
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialog closed', result);
+      });
   }
 }
