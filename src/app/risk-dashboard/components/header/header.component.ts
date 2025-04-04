@@ -37,7 +37,15 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
       .subscribe((state) => {
         console.log('HedgeAllDrawer State:', state);
         if (this.hedgeAllDrawer) {
-          state ? this.hedgeAllDrawer.open() : this.hedgeAllDrawer.close();
+          if (state) {
+            this.hedgeAllDrawer.open();
+            document.querySelector('body')!.style.overflowY = 'hidden';
+            document.querySelector('.drawer-hedge-all')?.insertAdjacentHTML("afterend", "<div class='drawer-backdrop'></div>");
+          } else {
+            this.hedgeAllDrawer.close();
+            document.querySelector('body')!.style.overflowY = 'auto';
+            document.querySelector('.drawer-backdrop')?.remove();
+          }
         }
       });
   }
@@ -48,7 +56,15 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
       .subscribe((state) => {
         console.log('QuickHedgeDrawer State:', state);
         if (this.quickHedgeDrawer) {
-          state ? this.quickHedgeDrawer.open() : this.quickHedgeDrawer.close();
+          if (state) {
+            this.quickHedgeDrawer.open();
+            document.querySelector('body')!.style.overflowY = 'hidden';
+            document.querySelector('.drawer-hedge-quick')?.insertAdjacentHTML("afterend", "<div class='drawer-backdrop'></div>");
+          } else {
+            this.quickHedgeDrawer.close();
+            document.querySelector('body')!.style.overflowY = 'auto';
+            document.querySelector('.drawer-backdrop')?.remove();
+          }
         }
       });
   }

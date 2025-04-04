@@ -24,6 +24,7 @@
             }
 
             .disclosure-title {
+                margin-bottom: 6px;
                 color: #1D2939;
                 font-family: $he_heebo;
                 font-size: 18px;
@@ -42,6 +43,7 @@
                     font-size: 12px;
                     font-weight: 500;
                     line-height: 18px;
+                    margin-bottom: 16px;
 
                     a {
                         color: #475467;
@@ -63,7 +65,7 @@
                         font-size: 12px;
                         font-weight: 700;
                         line-height: 18px;
-                        margin-bottom: 12px;
+                        margin: 12px 0;
                     }
                 }
             }  
