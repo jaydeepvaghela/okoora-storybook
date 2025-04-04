@@ -40,7 +40,7 @@ export interface PeriodicElement {
 }
 @Component({
   selector: 'app-hedging-proposal',
-  imports: [CommonModule, MatInputModule,MatDatepickerModule,MatMomentDateModule,MatSliderModule, MatSelectModule, MatCheckboxModule, MatIconModule, MatTableModule, FormsModule, NgbTooltipModule],
+  imports: [CommonModule, MatInputModule,MatDatepickerModule,NgbTooltipModule,MatMomentDateModule,MatSliderModule, MatSelectModule, MatCheckboxModule, MatIconModule, MatTableModule, FormsModule],
   templateUrl: './hedging-proposal.component.html',
   styleUrl: './hedging-proposal.component.scss'
 })

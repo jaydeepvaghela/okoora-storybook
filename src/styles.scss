@@ -41,6 +41,12 @@
 html, body { height: 100%; font-family: $he_heebo;touch-action: manipulation;}
 body,p,h1,h2,h3,h4,h5,ul { margin: 0; font-family: $he_heebo; letter-spacing: 0;}
 a{text-decoration: none;}
+input:focus-visible{
+  outline: none;
+}
+.mat-mdc-option .mat-pseudo-checkbox-minimal{
+  display: none;
+}
 button{
   background-color: transparent;
   border: none;

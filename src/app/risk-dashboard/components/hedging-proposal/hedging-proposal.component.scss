@@ -4,6 +4,7 @@
   .hedging-amount-ttp {
     cursor: pointer;
     --bs-tooltip-opacity: 1;
+
     .tooltip-inner {
       width: 100%;
       display: flex;
@@ -29,6 +30,7 @@
         justify-content: space-between;
         align-items: center;
         gap: 10px;
+
         &:not(.max-hedge) {
           .parent {
             color: $white;
@@ -37,18 +39,20 @@
             font-weight: 400;
             line-height: 20px;
           }
-  
+
           .subtext {
             color: $white;
             font-family: $he_heebo;
             font-size: 14px;
             font-weight: 700;
-            line-height: 20px; 
+            line-height: 20px;
           }
-        } 
+        }
 
         &.max-hedge {
-          .parent, .subtext {
+
+          .parent,
+          .subtext {
             color: #F97066;
             font-family: $he_heebo;
             font-size: 14px;
@@ -83,9 +87,41 @@
       }
     }
   }
-  
+
+  .saveToolWrap {
+    .tooltip-inner {
+      width: 100%;
+      display: flex;
+      max-width: max-content;
+      min-width: 187px;
+      height: 100%;
+      border-radius: 8px;
+      background: $white;
+      box-shadow: 0px 8px 16px -2px rgba(27, 33, 44, 0.12);
+      opacity: 1;
+      padding: 12px !important;
+      color:#1D2939;
+      text-align: center;
+      font-family:$he_heebo;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 18px;
+      align-items: center;
+      gap: 5px;
+    }
+    .tooltip-arrow {
+      &::before {
+        border-top-color: $white;
+        border-top-width: 11px;
+        border-right-width: 8px;
+        border-left-width: 8px;
+      }
+    }
+  }
+
   .recommended-amount-ttp {
     bottom: 7px !important;
+
     .tooltip-arrow {
       &::before {
         border-top-color: rgba(29, 41, 57, 0.90);
@@ -94,6 +130,7 @@
         border-left-width: 8px;
       }
     }
+
     .tooltip-inner {
       border-radius: 7px;
       background: rgba(29, 41, 57, 0.90);
@@ -117,8 +154,13 @@
   }
 
   .hedge-proposal-container {
-    max-width: max-content;
+    max-width: 1193px;
     margin: auto;
+
+    @media screen and (max-width:1440px) {
+      max-width: max-content;
+    }
+
     .hedge-header {
       .hedge-heading {
         color: #175cd3;
@@ -126,9 +168,11 @@
         font-size: 30px;
         font-weight: 700;
         line-height: 38px;
+        margin: 0 0 26px;
 
         @media screen and (max-width: 1440px) {
           font-size: 25px;
+          margin: 0 0 15px;
         }
       }
     }
@@ -218,7 +262,7 @@
         // gap: 112px; 
         background-color: $white;
         border-radius: 10px;
-        padding: 37px 53px 36px 58px;
+        padding: 41px 44px 36px 48px;
         border: 1px solid #fff;
         box-shadow: 0px 20px 24px -4px rgba(41, 71, 242, 0.1);
 
@@ -256,6 +300,7 @@
 
 
         .values-wrapper {
+
           &.hedge-total-section,
           &.hedge-rate-section,
           &.hedge-collateral-section {
@@ -269,7 +314,7 @@
 
             @media screen and (max-width: 1024px) {
               padding-right: 20px;
-            } 
+            }
 
             // &::after {
             //   content: "";
@@ -395,7 +440,7 @@
               }
             }
           }
-          
+
           .hedge-deposit-link {
             color: #175cd3;
             font-family: $he_heebo;
@@ -417,6 +462,7 @@
 
 
             }
+
             .hedge-price {
               color: #111827;
               font-family: $he_heebo;
@@ -431,6 +477,7 @@
                 font-size: 18px;
               }
             }
+
             .hedge-currency {
               color: #111827;
               font-family: $he_heebo;
@@ -445,6 +492,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+
           .hedge-all-button {
             border-radius: 50px;
             background: #175cd3;
@@ -500,10 +548,17 @@
       width: 100%;
       max-width: 1193px;
       overflow-y: auto;
+      margin: 63px 0 0;
 
       @media screen and (max-width: 1440px) {
         max-width: 1080px;
+        margin: 50px 0 0;
       }
+
+      @media screen and (max-width:1024px) {
+        margin: 40px 0 0;
+      }
+
       .hedge-table {
         box-shadow: none;
         background: transparent !important;
@@ -519,7 +574,7 @@
             font-weight: 800;
           }
         }
-        
+
         .mat-mdc-header-row {
           background-color: #EEF3FC;
           white-space: nowrap;
@@ -556,6 +611,7 @@
               border-bottom-left-radius: 10px;
               padding-left: 43px;
             }
+
             .mat-mdc-cell:last-child {
               border-top-right-radius: 10px;
               border-bottom-right-radius: 10px;
@@ -563,12 +619,14 @@
 
             &.padding-for-error {
               .mdc-data-table__cell {
-                padding: 20px 10px 60px 16px;
-
+                padding: 20px 16px 60px 16px;
+                &.mat-column-expiryDate{
+                  padding: 20px 16px 60px 24px;
+                }
                 &:first-child {
                   padding: 20px 10px 60px 43px;
                 }
-              
+
                 // &:last-child {
                 //   padding: 20px 16px 60px 16px;
                 // }
@@ -581,26 +639,29 @@
           color: #344054;
           font-family: $he_heebo;
           padding: 9px 24px;
-      
+
           .date-expand {
             color: #344054;
             font-family: $he_heebo;
             font-size: 15px;
             font-weight: 500;
             line-height: 20px;
-              &.inactive-month {
-                  color: #F04438
-              }
-              mat-icon{
-                  vertical-align: bottom;
-              }
+
+            &.inactive-month {
+              color: #F04438
+            }
+
+            mat-icon {
+              vertical-align: bottom;
+            }
           }
-          .monthly-date{
-              visibility: hidden !important;
-              position: absolute;
+
+          .monthly-date {
+            visibility: hidden !important;
+            position: absolute;
           }
         }
-      
+
         .mat-column-hedgeRate {
           color: #111827;
           font-family: $he_heebo;
@@ -610,201 +671,206 @@
         }
 
         .mdc-data-table__cell {
-            overflow: visible;
-            white-space: nowrap;
+          overflow: visible;
+          white-space: nowrap;
 
-            .hedge-btn {
-              color: $white;
-              font-family: $he_heebo;
-              font-size: 14px;
-              font-weight: 600;
-              line-height: 20px;
-              border-radius: 50px;
-              background: #175CD3;
-              width: 112px;
-              height: 37px;
+          .hedge-btn {
+            color: $white;
+            font-family: $he_heebo;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            border-radius: 50px;
+            background: #175CD3;
+            width: 112px;
+            height: 37px;
+          }
+
+          .save-row-btn {
+            color: #1D4ED8;
+            font-family: $he_heebo;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 20px;
+            padding: 8px 42px;
+            border-radius: 9999px;
+            border: 1px solid #D1D5DB;
+            background-color: transparent;
+            margin-right: 24px;
+            visibility: hidden;
+
+            &.save-activated {
+              visibility: visible;
             }
+          }
 
-            .save-row-btn {
-              color: #1D4ED8;
-              font-family: $he_heebo;
-              font-size: 13px;
-              font-weight: 400;
-              line-height: 20px;
-              padding: 8px 42px;
-              border-radius: 9999px;
-              border: 1px solid #D1D5DB;
-              background-color: transparent;
-              margin-right: 24px;
-              visibility: hidden;
+          .row-hedged {
+            color: #175CD3;
+            font-family: $he_heebo;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            text-align: center;
+          }
 
-              &.save-activated {
-                visibility: visible;
-              }
-            }
-            .row-hedged {
+          .bookmark-btn {
+            background: transparent;
+          }
+
+          .buying-price {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            .amount-text {
               color: #175CD3;
               font-family: $he_heebo;
-              font-size: 14px;  
-              font-weight: 600;
-              line-height: 20px; 
-              text-align: center; 
+              font-size: 16px;
+              font-weight: 800;
+              line-height: 20px;
             }
 
-            .bookmark-btn {
+            .edit-exposer {
               background: transparent;
-            }
-
-            .buying-price {
+              border-radius: 34px;
+              border: 1px dashed var(--Gray-300, #D0D5DD);
               display: flex;
               align-items: center;
-              gap: 5px;
-              .amount-text {
-                color: #175CD3;
-                font-family: $he_heebo;
-                font-size: 16px;
-                font-weight: 800;
-                line-height: 20px;
-              }
+              justify-content: center;
+              width: 28px;
+              height: 28px;
+            }
+          }
 
-              .edit-exposer {
-                background: transparent;
-                border-radius: 34px;
-                border: 1px dashed var(--Gray-300, #D0D5DD);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 28px;
-                height: 28px;
+          .edit-exposer-wrap {
+            position: absolute;
+            right: 0;
+            background: #fff;
+            top: 80px;
+            z-index: 9;
+            box-shadow: 0px 5px 64px -12px rgba(16, 24, 40, 0.20);
+            height: auto;
+            min-width: 414px;
+            border-left: 3px solid #1570EF;
+            padding: 16px 18px;
+
+            &.with-error {
+              padding: 16px 18px 6px 18px;
+
+              .edit-inner {
+                .input-wrap {
+                  border-color: #D92D20;
+                }
               }
             }
 
-            .edit-exposer-wrap {
-              position: absolute;
-              right: 0;
-              background: #fff;
-              top: 80px;
-              z-index: 9;
-              box-shadow: 0px 5px 64px -12px rgba(16, 24, 40, 0.20);
-              height: auto;
-              min-width: 414px;
-              border-left: 3px solid #1570EF;
-              padding: 16px 18px;
+            .edit-inner {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
 
-              &.with-error {
-                padding: 16px 18px 6px 18px;
-                .edit-inner {
-                  .input-wrap {
-                    border-color: #D92D20;
+              @media screen and (max-width: 540px) {
+                gap: 15px;
+              }
+
+              .input-wrap {
+                position: relative;
+                border-radius: 6px;
+                border: 1px solid #175CD3;
+
+                .edit-price {
+                  border: none;
+                  background: transparent;
+                  height: 52px;
+                  padding: 16px 8px 16px 18px;
+                  color: #475467;
+                  font-family: $he_heebo;
+                  font-size: 14px;
+                  font-weight: 700;
+                  line-height: 20px;
+                  width: 169px;
+
+                  @media screen and (max-width: 1440px) {
+                    height: 45px;
+                  }
+                }
+
+                span {
+                  position: relative;
+                  left: 15px;
+
+                  @media screen and (max-width: 1440px) {
+                    font-size: 14px;
+                  }
+                }
+
+                .clear-input {
+                  position: relative; // it was absolute
+                  right: 0;
+                  top: 0;
+                  bottom: 0;
+                  background: transparent;
+                  z-index: 2;
+                }
+              }
+
+              .edit-e-option {
+                .cancel-btn {
+                  color: #475467;
+                  font-family: $he_heebo;
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 20px;
+                  background-color: transparent;
+                }
+
+                .save-btn {
+                  border-radius: 40px;
+                  background: #1D2939;
+                  color: $white;
+                  font-family: $he_heebo;
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 20px;
+                  padding: 4px 15px;
+                  margin: 0 0 0 5px;
+                }
+              }
+            }
+
+            &.error-input {
+              padding: 16px 18px 7px 18px;
+
+              .edit-inner {
+                .input-wrap {
+                  position: relative;
+                  border-color: #D92D20;
+
+                  .edit-price {
+                    // border-color: #D92D20;
+                  }
+
+                  span {
+                    position: relative;
+                    left: 15px;
                   }
                 }
               }
-    
-              .edit-inner {
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-    
-                  @media screen and (max-width: 540px) {
-                      gap: 15px;
-                  }
-    
-                  .input-wrap {
-                      position: relative;
-                      border-radius: 6px;
-                      border: 1px solid #175CD3;
-                      .edit-price {
-                          border: none;
-                          background: transparent;
-                          height: 52px;
-                          padding: 16px 8px 16px 18px;
-                          color:#475467;
-                          font-family: $he_heebo;
-                          font-size: 14px;
-                          font-weight: 700;
-                          line-height: 20px;
-                          width: 169px;
-    
-                          @media screen and (max-width: 1440px) {
-                              height: 45px;
-                          }
-                      }
-    
-                      span {
-                          position: relative;
-                          left: 15px;
-    
-                          @media screen and (max-width: 1440px) {
-                              font-size: 14px;
-                          }
-                      }
-    
-                      .clear-input {
-                          position: relative; // it was absolute
-                          right: 0;
-                          top: 0;
-                          bottom: 0;
-                          background: transparent;
-                          z-index: 2;
-                      }
-                  }
-    
-                  .edit-e-option {
-                      .cancel-btn {
-                          color: #475467;
-                          font-family: $he_heebo;
-                          font-size: 14px;
-                          font-style: normal;
-                          font-weight: 400;
-                          line-height: 20px;
-                          background-color: transparent;
-                      }
-    
-                      .save-btn {
-                          border-radius: 40px;
-                          background: #1D2939;
-                          color: $white;
-                          font-family: $he_heebo;
-                          font-size: 14px;
-                          font-style: normal;
-                          font-weight: 400;
-                          line-height: 20px;
-                          padding: 4px 15px;
-                          margin: 0 0 0 5px;
-                      }
-                  }
-              }
-    
-              &.error-input {
-                  padding: 16px 18px 7px 18px;
-    
-                  .edit-inner {
-                      .input-wrap {
-                          position: relative;
-                          border-color: #D92D20;
-    
-                          .edit-price {
-                              // border-color: #D92D20;
-                          }
-                          span {
-                              position: relative;
-                              left: 15px;
-                          }
-                      }
-                  }
-              }
-    
-              .warning-error {
-                  margin: 0;
-                  padding: 5px 0 0;
-                  color: #D92D20;
-                  font-family: $he_heebo;
-                  font-size: 12px;
-                  font-style: normal;
-                  font-weight: 400;
-                  line-height: 18px;
-              }
             }
+
+            .warning-error {
+              margin: 0;
+              padding: 5px 0 0;
+              color: #D92D20;
+              font-family: $he_heebo;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 18px;
+            }
+          }
         }
 
         .filter-checkbox {
@@ -813,7 +879,7 @@
           }
 
           &.mat-mdc-checkbox-disabled {
-            &.mat-mdc-checkbox { 
+            &.mat-mdc-checkbox {
               .mdc-checkbox {
                 .mdc-checkbox__background {
                   border: 1px solid #9B9B9D !important;
@@ -821,27 +887,33 @@
               }
             }
           }
+
           &.mat-mdc-checkbox {
             .mdc-checkbox {
               padding: 0 !important;
+
               .mdc-checkbox__native-control {
                 width: 20px !important;
                 height: 20px !important;
               }
-              .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
-              .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background,
-              .mdc-checkbox__native-control[data-indeterminate="true"]:enabled ~ .mdc-checkbox__background {
+
+              .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+              .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,
+              .mdc-checkbox__native-control[data-indeterminate="true"]:enabled~.mdc-checkbox__background {
                 border-color: var(--brand-primary-color) !important;
                 background-color: var(--brand-primary-color) !important;
                 border-radius: 6px !important;
               }
-              .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background .mdc-checkbox__checkmark {
+
+              .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark {
                 color: #fff !important;
               }
-              .mdc-checkbox__native-control:indeterminate ~ .mdc-checkbox__background .mdc-checkbox__mixedmark,
-              .mdc-checkbox__native-control[data-indeterminate="true"] ~ .mdc-checkbox__background .mdc-checkbox__mixedmark {
+
+              .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background .mdc-checkbox__mixedmark,
+              .mdc-checkbox__native-control[data-indeterminate="true"]~.mdc-checkbox__background .mdc-checkbox__mixedmark {
                 transform: scaleX(0.7) rotate(0deg);
               }
+
               .mdc-checkbox__background {
                 width: 20px !important;
                 height: 20px !important;
@@ -849,35 +921,39 @@
                 left: 0 !important;
                 top: 0 !important;
                 border-radius: 6px !important;
-    
+
                 .mdc-checkbox__checkmark {
                   width: 12px !important;
                   margin: auto !important;
                 }
-    
+
                 .mdc-checkbox__checkmark-path {
                   stroke-width: 4px !important;
                 }
               }
             }
+
             &.mat-accent {
-              .mdc-checkbox--selected ~ .mdc-checkbox__ripple {
+              .mdc-checkbox--selected~.mdc-checkbox__ripple {
                 background: var(--brand-primary-color) !important;
               }
             }
+
             .mat-mdc-focus-indicator,
             .mat-mdc-checkbox-touch-target,
             .mat-mdc-checkbox-ripple,
             .mdc-checkbox__ripple {
               display: none !important;
             }
-            .mdc-form-field > label {
+
+            .mdc-form-field>label {
               font-family: $he_heebo;
               font-size: 14px;
               line-height: 20px;
               font-weight: 400;
               color: #000;
               padding-left: 9px !important;
+
               .msg {
                 color: #808080;
                 font-family: $he_heebo;
@@ -885,17 +961,19 @@
                 font-weight: 400;
                 line-height: 20px;
                 padding-left: 10px;
+
                 @media screen and (max-width: 1440px) {
                   padding-left: 4px;
                 }
               }
             }
-    
+
             .mdc-form-field {
               align-items: flex-start !important;
             }
           }
         }
+
         .disabled-cell {
           filter: grayscale(1);
           opacity: 0.6;
@@ -903,7 +981,7 @@
         }
 
         .disabled-row {
-          background: rgba(255, 255, 255, 0.60);  
+          background: rgba(255, 255, 255, 0.60);
 
           .mat-column-select {
             filter: grayscale(1);
@@ -912,6 +990,7 @@
           }
         }
       }
+
       .recommended-slider-marker {
         position: absolute;
         height: auto;
@@ -926,8 +1005,8 @@
         .sliders-inner {
           display: flex;
           align-items: center;
-          
-          .tool-tip-cs{
+
+          .tool-tip-cs {
             margin-left: 10px;
             padding: 7px 0;
             cursor: pointer;
@@ -936,17 +1015,20 @@
 
           &.reset-applied {
             .amount-hedge-slider-inner {
-              width: 200px; // it was 262px
+              width: 262px; // it was 262px
 
-              
+              @media screen and (max-width:1440px) {
+                width: 200px;
+              }
+
               &.mdc-slider--disabled {
                 cursor: pointer;
               }
-  
+
               &.mat-primary {
                 --mdc-slider-active-track-color: #2E90FA;
               }
-  
+
               .mat-mdc-slider-visual-thumb {
                 .mdc-slider__thumb-knob {
                   border-color: $white;
@@ -954,7 +1036,9 @@
                   height: 30px;
                   background-color: $white;
                   border-width: 8px;
-                  outline: 3px solid rgba(245, 245, 245, .8);;
+                  outline: 3px solid rgba(245, 245, 245, .8);
+                  box-shadow: 0px 4px 45px rgba(16, 24, 40, 0.30);
+
                   &::after {
                     position: absolute;
                     content: "";
@@ -972,9 +1056,14 @@
           }
 
           .amount-hedge-slider-inner {
-            width: 200px; // it was 262px
+            width: 262px; // it was 262px
+
+            @media screen and (max-width:1440px) {
+              width: 200px;
+            }
 
             &.mat-primary {
+              --mdc-slider-inactive-track-color: #99B2FF;
               --mdc-slider-active-track-color: #2E90FA;
               --mat-mdc-slider-focus-ripple-color: none;
               --mat-mdc-slider-hover-ripple-color: none;
@@ -984,10 +1073,11 @@
               filter: grayscale(1);
               opacity: 0.6;
               pointer-events: none;
+
               &.mdc-slider--disabled {
                 opacity: 1;
               }
-              
+
               &.mdc-slider--disabled .mdc-slider__track--active_fill {
                 border-color: #2E90FA;
               }
@@ -996,6 +1086,7 @@
                 cursor: auto;
               }
             }
+
             .mat-mdc-slider-visual-thumb {
               .mdc-slider__thumb-knob {
                 border-color: #175CD3;
@@ -1004,6 +1095,7 @@
                 background-color: #175cd3;
                 border-width: 8px;
                 outline: 6px solid rgba(217, 220, 241, .6);
+
                 &::after {
                   position: absolute;
                   content: "";
@@ -1019,7 +1111,7 @@
             }
           }
 
-          .reset-link {     
+          .reset-link {
             color: #175CD3;
             font-family: $he_heebo;
             font-size: 12px;
@@ -1030,24 +1122,28 @@
           }
         }
       }
-      
+
       .transaction-unavailable-wrapper {
         display: flex;
         align-items: center;
         width: 100%;
         gap: 10px;
-        padding: 10px 30px 13px 30px;
+        padding: 10px 30px;
         border-radius: 10px;
         border: 1px solid #FECDCA;
         background: #FEE4E2;
         position: absolute;
-        bottom:5px;
-        width:calc(100% - 20px);
+        bottom: 5px;
+        width: calc(100% - 50px);
         left: 0;
         right: 0;
         margin: auto;
         content: "";
         z-index: 1;
+        @media screen and (max-width:1440px) {
+          width: calc(100% - 35px);
+        }
+
         .transaction-unavailable-err {
           color: #D92D20;
           font-family: $he_heebo;
@@ -1077,7 +1173,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 41px;
+        margin-top: 23px;
+
         .hedge-all-button {
           border-radius: 50px;
           background: #175cd3;
@@ -1108,7 +1205,7 @@
           font-weight: 400;
           line-height: 20px;
           margin-bottom: 0;
-          margin-top: 6px;
+          margin-top: 7px;
 
           .refresh-timer {
             color: #d92d20;
@@ -1127,13 +1224,16 @@
         margin-top: 26px;
         margin-bottom: 0;
       }
+
       .total-transaction-text {
         font-weight: 700;
       }
+
       .page-item {
         margin-right: 5px;
 
-        &:first-child, &:last-child {
+        &:first-child,
+        &:last-child {
           display: none;
         }
 
@@ -1186,6 +1286,7 @@
             box-shadow: none;
           }
         }
+
         &.active {
           .page-link {
             border-radius: 8px;
@@ -1207,7 +1308,8 @@
           }
         }
       }
-    }  
+    }
+
     .error-message {
       display: flex;
       align-items: center;
@@ -1224,183 +1326,193 @@
 
   .cashflow-date-calendar-cd {
     position: relative;
+
     &.mat-calendar {
-        width: 100% !important;
-        max-width: 324px;
-        min-width: 324px;
-        height: 100% !important;
+      width: 100% !important;
+      max-width: 324px;
+      min-width: 324px;
+      height: 100% !important;
 
-        .mat-calendar-header {
-            pointer-events: none;
-            padding: 18px 27px 0 10px;
-            .mat-calendar-controls {
-                margin: 0;
-                .mat-calendar-previous-button, .mat-calendar-next-button {
-                    display: none;
-                }
-            }
-        }
+      .mat-calendar-header {
+        pointer-events: none;
+        padding: 18px 27px 0 10px;
 
-        .mat-calendar-header {
-            .mat-calendar-period-button {
-                text-transform: lowercase;
-                font-weight: 600;
-                color: #344054;
-                font-family: $he_heebo;
-                line-height: 24px;
+        .mat-calendar-controls {
+          margin: 0;
 
-                .mdc-button__label {
-                    span:first-letter {
-                        text-transform: uppercase;
-                    }
-                }
-
-                .mat-calendar-arrow {
-                    display: none;
-                }
-            }
-        }
-
-        .mat-calendar-header button.mat-calendar-period-button span:first-letter {
-          text-transform: uppercase;
-        }
-
-        .mat-calendar-header button.mat-calendar-period-button .mat-calendar-arrow {
+          .mat-calendar-previous-button,
+          .mat-calendar-next-button {
             display: none;
+          }
         }
+      }
 
-        .mat-calendar-content {
-            padding: 0 17px 13px 17px;
-            .mat-calendar-table {
-                .mat-calendar-table-header {
-                    color: #344054;
-                    font-family: $he_heebo;
-                    font-size: 12px;
-                    line-height: 18px;
-                    th {
-                        padding: 10px;
-                        font-weight: 400 !important;
-                    }
+      .mat-calendar-header {
+        .mat-calendar-period-button {
+          text-transform: lowercase;
+          font-weight: 600;
+          color: #344054;
+          font-family: $he_heebo;
+          line-height: 24px;
 
-                    .mat-calendar-table-header-divider {
-                        padding: 0;
-                        &::after {
-                            left: 0;
-                            right: 0;
-                        }
-                    }
-                }
+          .mdc-button__label {
+            span:first-letter {
+              text-transform: uppercase;
+            }
+          }
+
+          .mat-calendar-arrow {
+            display: none;
+          }
+        }
+      }
+
+      .mat-calendar-header button.mat-calendar-period-button span:first-letter {
+        text-transform: uppercase;
+      }
+
+      .mat-calendar-header button.mat-calendar-period-button .mat-calendar-arrow {
+        display: none;
+      }
+
+      .mat-calendar-content {
+        padding: 0 17px 13px 17px;
+
+        .mat-calendar-table {
+          .mat-calendar-table-header {
+            color: #344054;
+            font-family: $he_heebo;
+            font-size: 12px;
+            line-height: 18px;
+
+            th {
+              padding: 10px;
+              font-weight: 400 !important;
             }
 
-            .mat-calendar-body {
-                .mat-calendar-body-label {
-                    padding-top: 0 !important;
-                    padding-bottom: 0 !important;
-                    visibility: hidden;
-                }
+            .mat-calendar-table-header-divider {
+              padding: 0;
 
-                .mat-calendar-body-cell-container {
-                    width: 40px !important;
-                    height: 40px !important;
-                    .mat-calendar-body-cell {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 10px;
-                        color: #344054;
-                        font-family: $he_heebo;
-                        font-size: 12px;
-                        font-weight: 400;
-                        line-height: 18px;
-
-                        &:hover {
-                            .mat-calendar-body-cell-content {
-                                border-radius: 5px;
-                            }
-                        }
-
-                        .mat-calendar-body-selected {
-                            border-radius: 5px;
-                            box-shadow: none;
-                            background-color: #003EFF !important;
-                        }
-                        &.mat-calendar-body-active{
-                            .mat-calendar-body-cell-content{
-                                background-color: #003EFF !important;
-                                color:$white !important;
-                            }
-                        }
-
-                        .mat-calendar-body-cell-content {
-                            border-width: 0;
-                            width: 100%;
-                            height: 100%;
-                            border-style: none;
-                            border-radius: 5px;
-                        }
-
-                        .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
-                            border-radius: 5px;
-                        }
-                    }
-                }
+              &::after {
+                left: 0;
+                right: 0;
+              }
             }
+          }
         }
+
+        .mat-calendar-body {
+          .mat-calendar-body-label {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            visibility: hidden;
+          }
+
+          .mat-calendar-body-cell-container {
+            width: 40px !important;
+            height: 40px !important;
+
+            .mat-calendar-body-cell {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              padding: 10px;
+              color: #344054;
+              font-family: $he_heebo;
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 18px;
+
+              &:hover {
+                .mat-calendar-body-cell-content {
+                  border-radius: 5px;
+                }
+              }
+
+              .mat-calendar-body-selected {
+                border-radius: 5px;
+                box-shadow: none;
+                background-color: #003EFF !important;
+              }
+
+              &.mat-calendar-body-active {
+                .mat-calendar-body-cell-content {
+                  background-color: #003EFF !important;
+                  color: $white !important;
+                }
+              }
+
+              .mat-calendar-body-cell-content {
+                border-width: 0;
+                width: 100%;
+                height: 100%;
+                border-style: none;
+                border-radius: 5px;
+              }
+
+              .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+                border-radius: 5px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 
-  .cashflow-date-calendar-cd + .mat-datepicker-actions {
+  .cashflow-date-calendar-cd+.mat-datepicker-actions {
     padding: 0 27px 26px 15px !important;
     justify-content: flex-end !important;
+
     .cancel-cdc {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #374151 !important;
-        border: none !important;
-        width: 72px !important;
-        height: 35px;
-        padding: 10px 20px;
-        gap: 10px;
-        font-family: $he_heebo !important;
-        font-size: 12px !important;
-        font-weight: 700 !important;
-        line-height: 22px !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #374151 !important;
+      border: none !important;
+      width: 72px !important;
+      height: 35px;
+      padding: 10px 20px;
+      gap: 10px;
+      font-family: $he_heebo !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      line-height: 22px !important;
     }
 
     .set-cdc {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #003EFF !important;
-        color: #FFF !important;
-        width: 72px !important;
-        height: 35px;
-        padding: 10px 20px;
-        gap: 10px;
-        border-radius: 40px;
-        box-shadow: 0px 9px 24px 0px rgba(0, 62, 255, 0.40);
-        font-family: $he_heebo;
-        font-size: 12px !important;
-        font-weight: 700 !important;
-        line-height: 22px !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #003EFF !important;
+      color: #FFF !important;
+      width: 72px !important;
+      height: 35px;
+      padding: 10px 20px;
+      gap: 10px;
+      border-radius: 40px;
+      box-shadow: 0px 9px 24px 0px rgba(0, 62, 255, 0.40);
+      font-family: $he_heebo;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      line-height: 22px !important;
     }
 
     .close-cdc {
-        position: absolute;
-        top: 5px;
-        right: 0;
-        border: none !important;
-        width: 100% !important;
-        padding: 0 !important;
-        max-width: 40px;
+      position: absolute;
+      top: 5px;
+      right: 0;
+      border: none !important;
+      width: 100% !important;
+      padding: 0 !important;
+      max-width: 40px;
     }
   }
- 
+
   .risk-proposal-hedge-sel {
     .mat-mdc-option {
-      min-height:40px;
+      min-height: 40px;
       padding: 10px 10px 10px 14px;
       color: #1D2939;
       font-family: $he_heebo;
@@ -1409,25 +1521,29 @@
       font-weight: 400;
       line-height: 20px;
       border-radius: 0;
-      margin:2px 0;
-      .mdc-list-item__primary-text{
-          color: #1D2939;
+      margin: 2px 0;
+
+      .mdc-list-item__primary-text {
+        color: #1D2939;
       }
+
       &.mdc-list-item--selected,
       &.mat-mdc-option-active {
-          background-color: #E5F4FF !important;
-          .mdc-list-item__primary-text{
-              color: #175CD3;
-              font-weight: 700;
-          }
+        background-color: #E5F4FF !important;
+
+        .mdc-list-item__primary-text {
+          color: #175CD3;
+          font-weight: 700;
+        }
       }
 
       &:hover {
-          background-color: #EFF8FF;
-          .mdc-list-item__primary-text{
-              color: #175CD3;
-              font-weight: 700;
-          }
+        background-color: #EFF8FF;
+
+        .mdc-list-item__primary-text {
+          color: #175CD3;
+          font-weight: 700;
+        }
       }
     }
   }
