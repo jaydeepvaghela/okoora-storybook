@@ -9,8 +9,8 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrl: './hedge-tandc-details.component.scss'
 })
 export class HedgeTandcDetailsComponent {
-  isScrolledToEnd: any;
-  showErrorMsg: any;
+  isScrolledToEnd: boolean = false;
+  showErrorMsg: boolean = false;
 
   constructor(
     private dialogRef: MatDialogRef<HedgeTandcDetailsComponent>
@@ -103,12 +103,20 @@ export class HedgeTandcDetailsComponent {
           </p>
         </div>
       </ol>`
+
+  ngOnInit(): void {
+    this.isScrolledToEnd = false;
+  }
   cancelConfirmation() {
-    this.dialogRef.close(); // <-- Close on cancel
+    this.dialogRef.close(); 
   }
 
   takeConfirmAction() {
-    this.dialogRef.close('confirmed'); // <-- Optionally pass a value
+    if (!this.isScrolledToEnd) {
+      this.showErrorMsg = true;
+      return;
+    }
+    this.dialogRef.close('confirmed');
   }
 
   onScroll(event: any): void {

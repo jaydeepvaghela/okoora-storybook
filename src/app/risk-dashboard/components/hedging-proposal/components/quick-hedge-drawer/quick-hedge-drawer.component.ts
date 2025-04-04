@@ -13,6 +13,7 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class QuickHedgeDrawerComponent {
   @Output() closeDrawer = new EventEmitter<void>();
+  tandcConfirmed: boolean = false;
   selectedQuickHedgeData =
     {
       "expiryDate": "17/11/2025",
@@ -61,15 +62,17 @@ export class QuickHedgeDrawerComponent {
   }
 
   openConditionsDisclosure() {
-      const dialogRef = this.dialog.open(HedgeTandcDetailsComponent, {
-        width: '627px',
-        disableClose: true,
-        panelClass: 'terms-disclosure-hedging',
-        data: { someData: 'pass any data if needed' }
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('Dialog closed', result);
-      });
+    const dialogRef = this.dialog.open(HedgeTandcDetailsComponent, {
+      width: '627px',
+      disableClose: true,
+      panelClass: 'terms-disclosure-hedging',
+      data: { someData: 'pass any data if needed' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'confirmed') {
+        this.tandcConfirmed = true; // Set the confirmation flag to true
+      }
+    });
   }
 }
