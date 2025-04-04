@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-details.component';
 import { hedgeAllRows } from '../../hedging-static-data';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ActiveProtectionTraderoomComponent } from '../traderoom-components/active-protection-traderoom/active-protection-traderoom.component';
 
 @Component({
   selector: 'app-hedge-all-drawer',
@@ -98,6 +99,20 @@ export class HedgeAllDrawerComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed', result);
     });
+  }
+
+  onHedgeAllBtnClick() {
+    // const dialogRef = this.dialog.open(ActiveProtectionTraderoomComponent, {
+    //   width: '100vw',
+    //   maxWidth: '100vw',
+    //   disableClose: true,
+    //   panelClass: 'hedging-active-protection',  
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('Dialog closed', result);
+    // });
+
   }
 
   closeHedgeDrawer() {
