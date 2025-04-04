@@ -120,7 +120,7 @@
         <div class="month-info">
           <label class="row-title">Monthly hedge amount </label>
           <label class="row-amount">
-            {{specificSelectedRow.hedge.secondCurrencySign}}{{specificSelectedRow.hedge.protectAmount}}
+            {{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.protectAmount}}
           </label>
         </div>
         <div class="month-info">
@@ -134,7 +134,7 @@
         <div class="month-info">
           <label class="row-title">Required collateral <a class="hedge-deposit-link">Make a deposit</a></label>
           <div class="collateral-content">
-            <label class="collateral-amount">{{specificSelectedRow.hedge.secondCurrencySign}}{{specificSelectedRow.hedge.collateral}}</label>
+            <label class="collateral-amount">{{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.collateral}}</label>
           </div>
         </div>
   
@@ -143,7 +143,7 @@
             <a class="hedge-deposit-link">Make a deposit</a>
           </label>
           <div class="collateral-content">
-            <label class="collateral-amount">{{specificSelectedRow.hedge.secondCurrencySign}}{{specificSelectedRow.hedge.price}}</label>
+            <label class="collateral-amount">{{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.price}}</label>
           </div>
         </div>
       </div>
