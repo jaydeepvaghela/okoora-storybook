@@ -23,7 +23,7 @@ export class HedgeAllDrawerComponent {
   initialHedgeInfo = {
     "price": 0,
     "requiredCollateral": 48.832,
-    "totalHedgeAmount": 113.1,
+    "totalHedgeAmount": 100.35,
     "totalHedgePercent": 23.5625,
     "avgHedgeRate": 4.4971,
     "liabilityRate": 4.4971

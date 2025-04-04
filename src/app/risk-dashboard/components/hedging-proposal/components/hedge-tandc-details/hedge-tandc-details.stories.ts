@@ -1,26 +1,42 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Meta, moduleMetadata, StoryObj } from "@storybook/angular";
+import { HedgeTandcDetailsComponent } from "./hedge-tandc-details.component";
+import { CommonModule } from "@angular/common";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-@Component({
-  selector: 'app-hedge-tandc-details',
-  imports: [CommonModule],
-  templateUrl: './hedge-tandc-details.component.html',
-  styleUrl: './hedge-tandc-details.component.scss'
-})
-export class HedgeTandcDetailsComponent {
-  isScrolledToEnd: any;
-  showErrorMsg: any;
+const meta: Meta<HedgeTandcDetailsComponent> = {
+    title: 'Components/Risk-Manager/hedge-tandc-details',
+    component: HedgeTandcDetailsComponent,
+    argTypes: {
+        disclosureContent: {
+            control: 'object',
+        },
+    },
+    decorators: [
+      moduleMetadata({
+        imports: [
+          CommonModule,
+          MatDialogModule,
+          BrowserAnimationsModule // Important for MatDialog animation + overlay behavior
+        ],
+        providers: [
+          { provide: MatDialogRef, useValue: {} },
+          { provide: MAT_DIALOG_DATA, useValue: {} },
+        ],
+      }),
+    ],
+};
+export default meta;
+type Story = StoryObj<HedgeTandcDetailsComponent>;
 
-  constructor(
-    private dialogRef: MatDialogRef<HedgeTandcDetailsComponent>
-  ) {}
-  @Input() disclosureContent = `<p class="paragraph">
+export const Default: Story = {
+    args: {
+        disclosureContent: `<p class="paragraph">
         The provisions of this Risk Disclosure apply to Okoora and its Operating Companies, as defined in the Framework Agreement. This disclosure is intended to outline, in a non-exhaustive manner, the risks associated with transactions in foreign exchange, financial assets, and the use of technological platforms for such transactions. By engaging in these transactions, the Client confirms their acknowledgment and acceptance of these risks and their consent to the investment marketing services provided.
       </p>
       <ol class="disclosure-list">
         <div>
-          <li> Acknowledgment of Risks</li>
+          <li>1. Acknowledgment of Risks</li>
           <p class="paragraph">
             The Client explicitly confirms that they have read, understood, and accept all risks detailed in this disclosure and in the Transactions Terms, which form an integral part of this agreement. The Client acknowledges that they are solely responsible for assessing whether each transaction aligns with their financial goals, experience, and capabilities, taking into account their financial situation.
           </p>
@@ -33,7 +49,7 @@ export class HedgeTandcDetailsComponent {
         </div>
   
         <div>
-          <li> Irreversibility and Modification of Transactions</li>
+          <li>2. Irreversibility and Modification of Transactions</li>
           <p class="paragraph">
             Once a transaction is confirmed, the Client cannot cancel or modify it. Additional collateral requirements may be imposed during the transaction period based on changes in market conditions and at the company's discretion. If the Client fails to provide the required collateral promptly, the company may, but is not obligated to, take actions such as closing the transaction and forfeiting the collateral amount at its sole discretion and subject to applicable fees.
           </p>
@@ -41,14 +57,14 @@ export class HedgeTandcDetailsComponent {
         </div>
   
         <div>
-          <li> Market Risks and Fluctuations</li>
+          <li>3. Market Risks and Fluctuations</li>
           <p class="paragraph">
             Transactions in financial markets involving financial instruments carry special risks, and execution may result in significant losses, including the potential loss of the entire investment. The financial markets, particularly foreign exchange and interest rate markets, are subject to unpredictable influences and fluctuations beyond the service provider's control. These changes may result in significant discrepancies between projected future prices and actual settlement prices, possibly leading to a total loss of funds deposited by the Client.
           </p>
         </div>
   
         <div>
-          <li> Collateral Requirements and Potential Losses</li>
+          <li>4. Collateral Requirements and Potential Losses</li>
           <p class="paragraph">
             The Client understands that they may be required to deposit additional substantial collateral if market conditions shift against their position. Failure to do so may result in the forced closure of positions, which could lead to immediate losses and/or prevent future profits if market trends change.
           </p>
@@ -58,7 +74,7 @@ export class HedgeTandcDetailsComponent {
         </div>
   
         <div>
-          <li> Leverage, Options, and Structured Products</li>
+          <li>5. Leverage, Options, and Structured Products</li>
           <p class="paragraph">
             The Client understands that financial leverage due to low collateral requirements can amplify both potential gains and losses. High leverage may result in substantial losses, just as it may result in profits.
           </p>
@@ -68,7 +84,7 @@ export class HedgeTandcDetailsComponent {
         </div>
   
         <div>
-          <li> System, Network, and Execution Risks</li>
+          <li>6. System, Network, and Execution Risks</li>
           <p class="paragraph">
             Trading services are conducted through computer systems, networks, and the Internet. The Client acknowledges that trading may be subject to unforeseen interruptions or delays without prior notice. These interruptions may affect the Client’s ability to execute or cancel orders.
           </p>
@@ -102,22 +118,6 @@ export class HedgeTandcDetailsComponent {
             The Client acknowledges the risks outlined herein and affirms that they have, and will continue to have throughout the term of this agreement, the full capacity to bear any consequences, losses, or payments that may arise from their transactions. The Client’s decisions are made at their sole discretion and responsibility, and the Client releases the service provider from any liability for losses or damages incurred as a result of transactions conducted according to the Client’s instructions.
           </p>
         </div>
-      </ol>`
-  cancelConfirmation() {
-    this.dialogRef.close(); // <-- Close on cancel
-  }
-
-  takeConfirmAction() {
-    this.dialogRef.close('confirmed'); // <-- Optionally pass a value
-  }
-
-  onScroll(event: any): void {
-    const element = event.target;
-    const atBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
-    this.isScrolledToEnd = atBottom;
-    
-    if(this.isScrolledToEnd) {
-      this.showErrorMsg = false;
+      </ol>`,
     }
-  }
-}
+};
