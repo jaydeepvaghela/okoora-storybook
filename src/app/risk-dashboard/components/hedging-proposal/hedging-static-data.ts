@@ -1,5 +1,5 @@
 export const hedgeData = {
-  "totalHedgeAmount": 161.10,
+  "totalHedgeAmount": 100.35,
   "hedgeCurrency": {
     "code": "CHF",
     "sign": "CHF",

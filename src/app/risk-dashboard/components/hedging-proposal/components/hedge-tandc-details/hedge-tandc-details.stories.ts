@@ -1,12 +1,37 @@
-<div class="risk-disclosure-container">
-    <button class="close-btn" aria-label="Close" (click)="cancelConfirmation()">
-      <img src="images/close-btn-cashflow.svg" alt="Close" />
-    </button>
-  
-    <h3 class="disclosure-title">Disclosure of Risks in the Execution of Foreign Exchange, Financial Asset Transactions, and Protection Terms</h3>
-    <div class="disclosure-content-wrapper" (scroll)="onScroll($event)">
-      <div class="disclosure-body" [innerHTML]="disclosureContent"></div> 
-      <!-- <p class="paragraph">
+import { Meta, moduleMetadata, StoryObj } from "@storybook/angular";
+import { HedgeTandcDetailsComponent } from "./hedge-tandc-details.component";
+import { CommonModule } from "@angular/common";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+const meta: Meta<HedgeTandcDetailsComponent> = {
+    title: 'Components/Risk-Manager/hedge-tandc-details',
+    component: HedgeTandcDetailsComponent,
+    argTypes: {
+        disclosureContent: {
+            control: 'object',
+        },
+    },
+    decorators: [
+      moduleMetadata({
+        imports: [
+          CommonModule,
+          MatDialogModule,
+          BrowserAnimationsModule // Important for MatDialog animation + overlay behavior
+        ],
+        providers: [
+          { provide: MatDialogRef, useValue: {} },
+          { provide: MAT_DIALOG_DATA, useValue: {} },
+        ],
+      }),
+    ],
+};
+export default meta;
+type Story = StoryObj<HedgeTandcDetailsComponent>;
+
+export const Default: Story = {
+    args: {
+        disclosureContent: `<p class="paragraph">
         The provisions of this Risk Disclosure apply to Okoora and its Operating Companies, as defined in the Framework Agreement. This disclosure is intended to outline, in a non-exhaustive manner, the risks associated with transactions in foreign exchange, financial assets, and the use of technological platforms for such transactions. By engaging in these transactions, the Client confirms their acknowledgment and acceptance of these risks and their consent to the investment marketing services provided.
       </p>
       <ol class="disclosure-list">
@@ -93,14 +118,6 @@
             The Client acknowledges the risks outlined herein and affirms that they have, and will continue to have throughout the term of this agreement, the full capacity to bear any consequences, losses, or payments that may arise from their transactions. The Client’s decisions are made at their sole discretion and responsibility, and the Client releases the service provider from any liability for losses or damages incurred as a result of transactions conducted according to the Client’s instructions.
           </p>
         </div>
-      </ol> -->
-    </div>
-    <div class="popup-footer">
-      <p class="error-msg"><span *ngIf="showErrorMsg">Please review all details before confirming</span></p>
-      <div class="actions-wrapper">
-        <button class="cancel-action" (click)="cancelConfirmation()">Cancel</button>
-        <button class="confirm-action" [ngClass]="{'scrolled-to-end': isScrolledToEnd}" (click)="takeConfirmAction()">I confirm</button>
-      </div>
-    </div>
-  </div>
-  
+      </ol>`,
+    }
+};
