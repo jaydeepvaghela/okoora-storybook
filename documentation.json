@@ -3008,7 +3008,7 @@
         },
         {
             "name": "HedgeAllDrawerComponent",
-            "id": "component-HedgeAllDrawerComponent-0bae861fdb173a59d233424073cb6f09ff456d1f6adf0825ef8add43933dd9db4b4e9b22957adaeb691edb76689b4c7b8d44ce1f9eef868ea46d4ebd229770f7",
+            "id": "component-HedgeAllDrawerComponent-39983765a9f460ae9d615f149f6910cdf99773da01ce71aa57da95e49b4988996ea425112fb73bcdf626b0db7805aefa7eda0dc735194639197499cccc7fef8b",
             "file": "src/app/risk-dashboard/components/hedging-proposal/components/hedge-all-drawer/hedge-all-drawer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3045,6 +3045,17 @@
                     "optional": false,
                     "description": "",
                     "line": 32
+                },
+                {
+                    "name": "hedgeAllbtnClicked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
                 },
                 {
                     "name": "initialHedgeInfo",
@@ -3099,6 +3110,17 @@
                     "optional": false,
                     "description": "",
                     "line": 33
+                },
+                {
+                    "name": "tandcConfirmed",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
                 }
             ],
             "methodsClass": [
@@ -3108,7 +3130,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 118,
+                    "line": 132,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3125,7 +3147,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 53,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3153,7 +3175,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3181,7 +3203,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 84,
+                    "line": 86,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3202,9 +3224,37 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 39,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "onCheckboxChange",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 123,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "onHedgeAllBtnClick",
@@ -3212,7 +3262,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 104,
+                    "line": 108,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3229,7 +3279,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 79,
+                    "line": 81,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3250,7 +3300,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 91,
+                    "line": 93,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3260,7 +3310,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 58,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -3287,7 +3337,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { HedgingDataService } from '../../hedging-data.service';\r\nimport { MatDialog } from '@angular/material/dialog';\r\nimport { CommonModule } from '@angular/common';\r\nimport { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-details.component';\r\nimport { hedgeAllRows } from '../../hedging-static-data';\r\nimport { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';\r\nimport { ActiveProtectionTraderoomComponent } from '../traderoom-components/active-protection-traderoom/active-protection-traderoom.component';\r\n\r\n@Component({\r\n  selector: 'app-hedge-all-drawer',\r\n  imports: [MatCheckboxModule, CommonModule, NgbTooltipModule],\r\n  templateUrl: './hedge-all-drawer.component.html',\r\n  styleUrl: './hedge-all-drawer.component.scss'\r\n})\r\nexport class HedgeAllDrawerComponent {\r\n  @Output() closeDrawer = new EventEmitter<void>();\r\n\r\n  showHedgeAllDetails: boolean = false;\r\n  showCompleteHedgeDetails: boolean = false;\r\n  multipleHedgeData = hedgeAllRows;\r\n\r\n  initialHedgeInfo = {\r\n    \"price\": 0,\r\n    \"requiredCollateral\": 48.832,\r\n    \"totalHedgeAmount\": 100.35,\r\n    \"totalHedgePercent\": 23.5625,\r\n    \"avgHedgeRate\": 4.4971,\r\n    \"liabilityRate\": 4.4971\r\n  }\r\n  formattedDateRange: string = '';\r\n  specificSelectedRow: any;\r\n\r\n  constructor(private hedgeService: HedgingDataService, private dialog: MatDialog) { }\r\n\r\n  ngOnInit() {\r\n    this.setFormattedDateRange()\r\n    console.log('(this.multipleHedgeData)', this.multipleHedgeData);\r\n  }\r\n\r\n  formatDate(dateStr: string): string {\r\n    const [day, month, year] = dateStr.split('/');\r\n    const date = new Date(`${year}-${month}-${day}`);\r\n    return date.toLocaleDateString('en-GB', {\r\n      month: 'long', // full month name like January\r\n      year: 'numeric'\r\n    });\r\n  }\r\n\r\n  formatAmount(amount: number): string {\r\n    return new Intl.NumberFormat('en-US', {\r\n      style: 'currency',\r\n      currency: 'CHF'\r\n    }).format(amount);\r\n  }\r\n\r\n  setFormattedDateRange(): void {\r\n    if (!this.multipleHedgeData.length) return;\r\n\r\n    const parseDate = (dateStr: string): Date => {\r\n      const [day, month, year] = dateStr.split('/').map(Number);\r\n      return new Date(year, month - 1, day);\r\n    };\r\n\r\n    const formatDate = (date: Date): string =>\r\n      `${date.getDate().toString().padStart(2, '0')} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`;\r\n\r\n    const sortedDates = this.multipleHedgeData\r\n      .map(item => parseDate(item.expiryDate))\r\n      .sort((a, b) => a.getTime() - b.getTime());\r\n\r\n    const startDate = formatDate(sortedDates[0]);\r\n    const endDate = formatDate(sortedDates[sortedDates.length - 1]);\r\n\r\n    this.formattedDateRange = `${startDate} - ${endDate}`;\r\n  }\r\n\r\n  onRowClick(row: any) {\r\n    console.log('row',row)\r\n    this.specificSelectedRow = row;\r\n  }\r\n\r\n  formatMonthYear(dateStr: string): string {\r\n    const [day, month, year] = dateStr.split('/');\r\n    const date = new Date(+year, +month - 1, +day); // month is 0-indexed\r\n    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });\r\n  }\r\n  \r\n\r\n  openConditionsDisclosure() {\r\n    const dialogRef = this.dialog.open(HedgeTandcDetailsComponent, {\r\n      width: '627px',\r\n      disableClose: true,\r\n      panelClass: 'terms-disclosure-hedging',\r\n      data: { someData: 'pass any data if needed' }\r\n    });\r\n\r\n    dialogRef.afterClosed().subscribe(result => {\r\n      console.log('Dialog closed', result);\r\n    });\r\n  }\r\n\r\n  onHedgeAllBtnClick() {\r\n    // const dialogRef = this.dialog.open(ActiveProtectionTraderoomComponent, {\r\n    //   width: '100vw',\r\n    //   maxWidth: '100vw',\r\n    //   disableClose: true,\r\n    //   panelClass: 'hedging-active-protection',  \r\n    // });\r\n\r\n    // dialogRef.afterClosed().subscribe(result => {\r\n    //   console.log('Dialog closed', result);\r\n    // });\r\n\r\n  }\r\n\r\n  closeHedgeDrawer() {\r\n    this.hedgeService.closeHedgeAllDrawer();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { HedgingDataService } from '../../hedging-data.service';\r\nimport { MatDialog } from '@angular/material/dialog';\r\nimport { CommonModule } from '@angular/common';\r\nimport { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-details.component';\r\nimport { hedgeAllRows } from '../../hedging-static-data';\r\nimport { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';\r\nimport { ActiveProtectionTraderoomComponent } from '../traderoom-components/active-protection-traderoom/active-protection-traderoom.component';\r\n\r\n@Component({\r\n  selector: 'app-hedge-all-drawer',\r\n  imports: [MatCheckboxModule, CommonModule, NgbTooltipModule],\r\n  templateUrl: './hedge-all-drawer.component.html',\r\n  styleUrl: './hedge-all-drawer.component.scss'\r\n})\r\nexport class HedgeAllDrawerComponent {\r\n  @Output() closeDrawer = new EventEmitter<void>();\r\n\r\n  showHedgeAllDetails: boolean = false;\r\n  showCompleteHedgeDetails: boolean = false;\r\n  multipleHedgeData = hedgeAllRows;\r\n\r\n  initialHedgeInfo = {\r\n    \"price\": 0,\r\n    \"requiredCollateral\": 48.832,\r\n    \"totalHedgeAmount\": 100.35,\r\n    \"totalHedgePercent\": 23.5625,\r\n    \"avgHedgeRate\": 4.4971,\r\n    \"liabilityRate\": 4.4971\r\n  }\r\n  formattedDateRange: string = '';\r\n  specificSelectedRow: any;\r\n  hedgeAllbtnClicked: boolean = false;\r\n  tandcConfirmed: boolean = false;\r\n\r\n  constructor(private hedgeService: HedgingDataService, private dialog: MatDialog) { }\r\n\r\n  ngOnInit() {\r\n    this.setFormattedDateRange()\r\n    console.log('(this.multipleHedgeData)', this.multipleHedgeData);\r\n  }\r\n\r\n  formatDate(dateStr: string): string {\r\n    const [day, month, year] = dateStr.split('/');\r\n    const date = new Date(`${year}-${month}-${day}`);\r\n    return date.toLocaleDateString('en-GB', {\r\n      month: 'long', // full month name like January\r\n      year: 'numeric'\r\n    });\r\n  }\r\n\r\n  formatAmount(amount: number): string {\r\n    return new Intl.NumberFormat('en-US', {\r\n      style: 'currency',\r\n      currency: 'CHF'\r\n    }).format(amount);\r\n  }\r\n\r\n  setFormattedDateRange(): void {\r\n    if (!this.multipleHedgeData.length) return;\r\n\r\n    const parseDate = (dateStr: string): Date => {\r\n      const [day, month, year] = dateStr.split('/').map(Number);\r\n      return new Date(year, month - 1, day);\r\n    };\r\n\r\n    const formatDate = (date: Date): string =>\r\n      `${date.getDate().toString().padStart(2, '0')} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`;\r\n\r\n    const sortedDates = this.multipleHedgeData\r\n      .map(item => parseDate(item.expiryDate))\r\n      .sort((a, b) => a.getTime() - b.getTime());\r\n\r\n    const startDate = formatDate(sortedDates[0]);\r\n    const endDate = formatDate(sortedDates[sortedDates.length - 1]);\r\n\r\n    this.formattedDateRange = `${startDate} - ${endDate}`;\r\n  }\r\n\r\n  onRowClick(row: any) {\r\n    console.log('row',row)\r\n    this.specificSelectedRow = row;\r\n  }\r\n\r\n  formatMonthYear(dateStr: string): string {\r\n    const [day, month, year] = dateStr.split('/');\r\n    const date = new Date(+year, +month - 1, +day); // month is 0-indexed\r\n    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });\r\n  }\r\n  \r\n\r\n  openConditionsDisclosure() {\r\n    const dialogRef = this.dialog.open(HedgeTandcDetailsComponent, {\r\n      width: '627px',\r\n      disableClose: true,\r\n      panelClass: 'terms-disclosure-hedging',\r\n      data: { someData: 'pass any data if needed' }\r\n    });\r\n\r\n    dialogRef.afterClosed().subscribe(result => {\r\n      if (result === 'confirmed') {\r\n        this.tandcConfirmed = true; // Set the confirmation flag to true\r\n      }\r\n    });\r\n  }\r\n\r\n  onHedgeAllBtnClick() {\r\n    this.hedgeAllbtnClicked = true;\r\n    // const dialogRef = this.dialog.open(ActiveProtectionTraderoomComponent, {\r\n    //   width: '100vw',\r\n    //   maxWidth: '100vw',\r\n    //   disableClose: true,\r\n    //   panelClass: 'hedging-active-protection',  \r\n    // });\r\n\r\n    // dialogRef.afterClosed().subscribe(result => {\r\n    //   console.log('Dialog closed', result);\r\n    // });\r\n\r\n  }\r\n\r\n  onCheckboxChange(event:any) {\r\n    this.hedgeAllbtnClicked = false\r\n    if (!event.checked) {\r\n      this.tandcConfirmed = false;\r\n    } else {\r\n      this.tandcConfirmed = true;\r\n    }\r\n  }\r\n\r\n  closeHedgeDrawer() {\r\n    this.tandcConfirmed  = false;\r\n    this.hedgeAllbtnClicked = false;\r\n    this.hedgeService.closeHedgeAllDrawer();\r\n  }\r\n}\r\n",
             "styleUrl": "./hedge-all-drawer.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3311,7 +3361,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 33,
+                "line": 35,
                 "jsdoctags": [
                     {
                         "name": "hedgeService",
@@ -3334,7 +3384,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<aside class=\"hedge-sidebar-container loader-wrapper\">\r\n    <!-- Close Button -->\r\n    <button class=\"close-btn\" aria-label=\"Close\" (click)=\"closeHedgeDrawer()\">\r\n      <img src=\"images/close-btn-cashflow.svg\" alt=\"Close\" />\r\n    </button>\r\n  \r\n    <!-- Title -->\r\n    <header class=\"hedge-header\">\r\n      <h2 class=\"hedge-title\">\r\n        Hedge all\r\n      </h2>\r\n    </header>\r\n    <div class=\"bg-white section-loader\"></div>\r\n    <!-- Hedge Information -->\r\n    <section class=\"hedge-info\">\r\n      <div class=\"hedge-amount\">\r\n        <label for=\"hedge-amount-value\">Amount to hedge</label>\r\n        <span id=\"hedge-amount-value\">\r\n          {{multipleHedgeData[0].hedge.notionalCurrencySign}}{{initialHedgeInfo.totalHedgeAmount}}\r\n        </span>\r\n      </div>\r\n      <button class=\"forward-btn\">Forward</button>\r\n    </section>\r\n  \r\n    <!-- Conditional Sections -->\r\n    <ng-container *ngIf=\"showHedgeAllDetails == false && showCompleteHedgeDetails == false\">\r\n        <section class=\"info-section\">\r\n            <div class=\"info-wrapper\">\r\n              <div class=\"sub-info\">\r\n                <label>Time period</label>\r\n                <span class=\"content\">\r\n                  {{ formattedDateRange }}\r\n                </span>\r\n              </div>\r\n              <div class=\"sub-info\">\r\n                <label>Currencies</label>\r\n                <span class=\"content\">{{multipleHedgeData[0].hedge.notionalCurrency}}/{{multipleHedgeData[0].hedge.secondCurrency}}</span>\r\n              </div>\r\n            </div>\r\n        </section>\r\n        \r\n          <!-- Rates Information -->\r\n          <section class=\"info-section\">\r\n            <div class=\"info-wrapper\">\r\n              <div class=\"sub-info\">\r\n                <label>Hedge rate</label>\r\n                <div class=\"rate-content\">\r\n                  <span class=\"content primary-value\">{{initialHedgeInfo.avgHedgeRate}}</span>\r\n                </div>\r\n              </div>\r\n              <div class=\"sub-info\">\r\n                <label>Liability rate</label>\r\n                <span class=\"content primary-value\">{{initialHedgeInfo.liabilityRate}}</span>\r\n              </div>\r\n            </div>\r\n          </section>\r\n        \r\n          <!-- Collateral and Price Information -->\r\n          <section class=\"info-section\">\r\n            <div class=\"info-wrapper\">\r\n              <div class=\"sub-info\">\r\n                <label>Required collateral <img class=\"z-1 tool-tip-cs\" [tooltipClass]=\"'collateral-amount-ttp'\" [ngbTooltip]=\"requiredCollateralttp\" src=\"images/circle-help.svg\" container=\"body\" placement=\"top\" />\r\n                  <!-- <a class=\"hedge-deposit-link\">Make a deposit</a>  -->\r\n                </label>\r\n                <span class=\"content\">{{multipleHedgeData[0].hedge.secondCurrencySign}}{{initialHedgeInfo.requiredCollateral}}</span>\r\n              </div>\r\n              <div class=\"sub-info\">\r\n                <label>Price \r\n                  <!-- <a class=\"hedge-deposit-link\">Make a deposit</a> -->\r\n                </label> \r\n                <span class=\"content\">{{multipleHedgeData[0].hedge.secondCurrencySign}}{{initialHedgeInfo.price}}</span>\r\n              </div>\r\n            </div>\r\n            <ng-template #requiredCollateralttp>\r\n              <div class=\"recommended-shield-ttp\">Assets pledged to cover hedging losses, based on risk.</div>\r\n           </ng-template>\r\n          </section>\r\n          \r\n          <!-- Hedge All Details Button -->\r\n          <section class=\"info-section\">\r\n            <div class=\"info-wrapper view-detail\">\r\n                <button class=\"hedge-all-details\" (click)=\"showHedgeAllDetails = true\">View details</button>\r\n            </div>\r\n          </section>\r\n    </ng-container>\r\n  \r\n    <!-- Multiple Hedges View -->\r\n    <div class=\"hedging-allmonth-wrapper\" *ngIf=\"showHedgeAllDetails == true && showCompleteHedgeDetails == false\">\r\n      <span class=\"dashed-line\"></span>\r\n      <button class=\"back-to-hedge\" (click)=\"showHedgeAllDetails = false\">Back</button>\r\n      <div class=\"heading-row\">\r\n        <span class=\"col-title\">Expiry dates</span>\r\n        <span class=\"col-title\">Hedge amounts</span>\r\n      </div>\r\n      <div class=\"expirydate-hedge-container\">\r\n        <div\r\n          class=\"date-and-amount-wrapper\"\r\n          *ngFor=\"let row of multipleHedgeData\"\r\n          (click)=\"onRowClick(row);showCompleteHedgeDetails = true; showHedgeAllDetails = false;\"\r\n        >\r\n          <label class=\"month-value\">\r\n            {{ formatDate(row.expiryDate) }}\r\n          </label>\r\n\r\n          <div class=\"bookmark-amount-section\">\r\n            <label class=\"hedge-amount\">{{ formatAmount(row.protectAmount) }}</label>\r\n            <button class=\"bookmark-btn\">\r\n              <img src=\"images/arrow.svg\" alt=\"arrow\" />\r\n            </button>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n      \r\n    </div>\r\n  \r\n    <!-- Specific Month View -->\r\n    <div class=\"specific-month-wrapper\" *ngIf=\"showCompleteHedgeDetails == true && showHedgeAllDetails == false\">\r\n      <span class=\"dashed-line\"></span>\r\n      <button class=\"back-to-hedge\" (click)=\"showCompleteHedgeDetails = false; showHedgeAllDetails = true\">Back</button>\r\n      <div class=\"month-title\">\r\n        <h4>{{ formatMonthYear(specificSelectedRow.expiryDate) }}</h4>\r\n      </div>\r\n      <div class=\"month-info-wrapper\">\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Monthly hedge amount </label>\r\n          <label class=\"row-amount\">\r\n            {{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.protectAmount}}\r\n          </label>\r\n        </div>\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Hedge rate </label>\r\n          <label class=\"row-amount primary-value\">{{specificSelectedRow.hedge.hedgeRate}}</label>\r\n        </div>\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Liability rate </label>\r\n          <label class=\"row-amount primary-value\">{{specificSelectedRow.hedge.liabilityRate}}</label>\r\n        </div>\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Required collateral \r\n            <!-- <a class=\"hedge-deposit-link\">Make a deposit</a> -->\r\n          </label>\r\n          <div class=\"collateral-content\">\r\n            <label class=\"collateral-amount\">{{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.collateral}}</label>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Price\r\n            <!-- <a class=\"hedge-deposit-link\">Make a deposit</a> -->\r\n          </label>\r\n          <div class=\"collateral-content\">\r\n            <label class=\"collateral-amount\">{{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.price}}</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  \r\n    <!-- Conditions Acknowledgement -->\r\n    <section class=\"conditions-section\">\r\n      <p class=\"read-conditions\">\r\n        I am aware that during the transaction term, additional collateral requirements may be determined in accordance with market fluctuations and the company's requirements. If these requirements are not met promptly, the company may, at its discretion, take actions including but not limited to closing the transaction and forfeiting the collateral amount.\r\n      </p>\r\n    </section>\r\n  \r\n    <!-- Footer Actions -->\r\n    <footer class=\"action-footer\">\r\n      <mat-checkbox\r\n        class=\"tick-condition\"\r\n      >\r\n        I confirm the general <button (click)=\"openConditionsDisclosure()\">conditions and disclosure</button> about the risk.\r\n      </mat-checkbox>\r\n      <button\r\n        class=\"hedge-now single-hedge\"\r\n        (click)=\"onHedgeAllBtnClick()\">\r\n        Hedge now\r\n      </button>\r\n      <p class=\"refresh-in\" style=\"display: none;\">\r\n        <span>Insufficient funds in wallet. <a class=\"hedge-deposit-link\">Make a deposit</a></span>\r\n      </p>\r\n      <div class=\"transaction-unavailable-wrapper\" style=\"display: none;\">\r\n        <img src=\"images/error-outline.svg\" alt=\"error\">\r\n        <p class=\"transaction-unavailable-err\">Some transactions are unavailable and won't be included in the Hedge All action. You can continue with available transactions or <a>refresh</a> the page <span>(unsaved changes will be lost).</span> </p>\r\n      </div>\r\n    </footer>\r\n  </aside>"
+            "templateData": "<aside class=\"hedge-sidebar-container loader-wrapper\">\r\n    <!-- Close Button -->\r\n    <button class=\"close-btn\" aria-label=\"Close\" (click)=\"closeHedgeDrawer()\">\r\n      <img src=\"images/close-btn-cashflow.svg\" alt=\"Close\" />\r\n    </button>\r\n  \r\n    <!-- Title -->\r\n    <header class=\"hedge-header\">\r\n      <h2 class=\"hedge-title\">\r\n        Hedge all\r\n      </h2>\r\n    </header>\r\n    <div class=\"bg-white section-loader\"></div>\r\n    <!-- Hedge Information -->\r\n    <section class=\"hedge-info\">\r\n      <div class=\"hedge-amount\">\r\n        <label for=\"hedge-amount-value\">Amount to hedge</label>\r\n        <span id=\"hedge-amount-value\">\r\n          {{multipleHedgeData[0].hedge.notionalCurrencySign}}{{initialHedgeInfo.totalHedgeAmount}}\r\n        </span>\r\n      </div>\r\n      <button class=\"forward-btn\">Forward</button>\r\n    </section>\r\n  \r\n    <!-- Conditional Sections -->\r\n    <ng-container *ngIf=\"showHedgeAllDetails == false && showCompleteHedgeDetails == false\">\r\n        <section class=\"info-section\">\r\n            <div class=\"info-wrapper\">\r\n              <div class=\"sub-info\">\r\n                <label>Time period</label>\r\n                <span class=\"content\">\r\n                  {{ formattedDateRange }}\r\n                </span>\r\n              </div>\r\n              <div class=\"sub-info\">\r\n                <label>Currencies</label>\r\n                <span class=\"content\">{{multipleHedgeData[0].hedge.notionalCurrency}}/{{multipleHedgeData[0].hedge.secondCurrency}}</span>\r\n              </div>\r\n            </div>\r\n        </section>\r\n        \r\n          <!-- Rates Information -->\r\n          <section class=\"info-section\">\r\n            <div class=\"info-wrapper\">\r\n              <div class=\"sub-info\">\r\n                <label>Hedge rate</label>\r\n                <div class=\"rate-content\">\r\n                  <span class=\"content primary-value\">{{initialHedgeInfo.avgHedgeRate}}</span>\r\n                </div>\r\n              </div>\r\n              <div class=\"sub-info\">\r\n                <label>Liability rate</label>\r\n                <span class=\"content primary-value\">{{initialHedgeInfo.liabilityRate}}</span>\r\n              </div>\r\n            </div>\r\n          </section>\r\n        \r\n          <!-- Collateral and Price Information -->\r\n          <section class=\"info-section\">\r\n            <div class=\"info-wrapper\">\r\n              <div class=\"sub-info\">\r\n                <label>Required collateral <img class=\"z-1 tool-tip-cs\" [tooltipClass]=\"'collateral-amount-ttp'\" [ngbTooltip]=\"requiredCollateralttp\" src=\"images/circle-help.svg\" container=\"body\" placement=\"top\" />\r\n                  <!-- <a class=\"hedge-deposit-link\">Make a deposit</a>  -->\r\n                </label>\r\n                <span class=\"content\">{{multipleHedgeData[0].hedge.secondCurrencySign}}{{initialHedgeInfo.requiredCollateral}}</span>\r\n              </div>\r\n              <div class=\"sub-info\">\r\n                <label>Price \r\n                  <!-- <a class=\"hedge-deposit-link\">Make a deposit</a> -->\r\n                </label> \r\n                <span class=\"content\">{{multipleHedgeData[0].hedge.secondCurrencySign}}{{initialHedgeInfo.price}}</span>\r\n              </div>\r\n            </div>\r\n            <ng-template #requiredCollateralttp>\r\n              <div class=\"recommended-shield-ttp\">Assets pledged to cover hedging losses, based on risk.</div>\r\n           </ng-template>\r\n          </section>\r\n          \r\n          <!-- Hedge All Details Button -->\r\n          <section class=\"info-section\">\r\n            <div class=\"info-wrapper view-detail\">\r\n                <button class=\"hedge-all-details\" (click)=\"showHedgeAllDetails = true\">View details</button>\r\n            </div>\r\n          </section>\r\n    </ng-container>\r\n  \r\n    <!-- Multiple Hedges View -->\r\n    <div class=\"hedging-allmonth-wrapper\" *ngIf=\"showHedgeAllDetails == true && showCompleteHedgeDetails == false\">\r\n      <span class=\"dashed-line\"></span>\r\n      <button class=\"back-to-hedge\" (click)=\"showHedgeAllDetails = false\">Back</button>\r\n      <div class=\"heading-row\">\r\n        <span class=\"col-title\">Expiry dates</span>\r\n        <span class=\"col-title\">Hedge amounts</span>\r\n      </div>\r\n      <div class=\"expirydate-hedge-container\">\r\n        <div\r\n          class=\"date-and-amount-wrapper\"\r\n          *ngFor=\"let row of multipleHedgeData\"\r\n          (click)=\"onRowClick(row);showCompleteHedgeDetails = true; showHedgeAllDetails = false;\"\r\n        >\r\n          <label class=\"month-value\">\r\n            {{ formatDate(row.expiryDate) }}\r\n          </label>\r\n\r\n          <div class=\"bookmark-amount-section\">\r\n            <label class=\"hedge-amount\">{{ formatAmount(row.protectAmount) }}</label>\r\n            <button class=\"bookmark-btn\">\r\n              <img src=\"images/arrow.svg\" alt=\"arrow\" />\r\n            </button>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n      \r\n    </div>\r\n  \r\n    <!-- Specific Month View -->\r\n    <div class=\"specific-month-wrapper\" *ngIf=\"showCompleteHedgeDetails == true && showHedgeAllDetails == false\">\r\n      <span class=\"dashed-line\"></span>\r\n      <button class=\"back-to-hedge\" (click)=\"showCompleteHedgeDetails = false; showHedgeAllDetails = true\">Back</button>\r\n      <div class=\"month-title\">\r\n        <h4>{{ formatMonthYear(specificSelectedRow.expiryDate) }}</h4>\r\n      </div>\r\n      <div class=\"month-info-wrapper\">\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Monthly hedge amount </label>\r\n          <label class=\"row-amount\">\r\n            {{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.protectAmount}}\r\n          </label>\r\n        </div>\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Hedge rate </label>\r\n          <label class=\"row-amount primary-value\">{{specificSelectedRow.hedge.hedgeRate}}</label>\r\n        </div>\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Liability rate </label>\r\n          <label class=\"row-amount primary-value\">{{specificSelectedRow.hedge.liabilityRate}}</label>\r\n        </div>\r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Required collateral \r\n            <!-- <a class=\"hedge-deposit-link\">Make a deposit</a> -->\r\n          </label>\r\n          <div class=\"collateral-content\">\r\n            <label class=\"collateral-amount\">{{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.collateral}}</label>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"month-info\">\r\n          <label class=\"row-title\">Price\r\n            <!-- <a class=\"hedge-deposit-link\">Make a deposit</a> -->\r\n          </label>\r\n          <div class=\"collateral-content\">\r\n            <label class=\"collateral-amount\">{{specificSelectedRow.hedge.notionalCurrencySign}}{{specificSelectedRow.hedge.price}}</label>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  \r\n    <!-- Conditions Acknowledgement -->\r\n    <section class=\"conditions-section\">\r\n      <p class=\"read-conditions\">\r\n        I am aware that during the transaction term, additional collateral requirements may be determined in accordance with market fluctuations and the company's requirements. If these requirements are not met promptly, the company may, at its discretion, take actions including but not limited to closing the transaction and forfeiting the collateral amount.\r\n      </p>\r\n    </section>\r\n  \r\n    <!-- Footer Actions -->\r\n    <footer class=\"action-footer\">\r\n      <mat-checkbox\r\n        (change)=\"onCheckboxChange($event)\"\r\n        [checked]=\"tandcConfirmed\"\r\n        class=\"tick-condition\"\r\n        [ngClass]=\"{'not-confirmed': !tandcConfirmed && hedgeAllbtnClicked}\"\r\n      >\r\n        I confirm the general <button (click)=\"openConditionsDisclosure()\">conditions and disclosure</button> about the risk.\r\n      </mat-checkbox>\r\n      <button\r\n        class=\"hedge-now single-hedge\"\r\n        (click)=\"onHedgeAllBtnClick()\">\r\n        Hedge now\r\n      </button>\r\n      <p class=\"refresh-in\" style=\"display: none;\">\r\n        <span>Insufficient funds in wallet. <a class=\"hedge-deposit-link\">Make a deposit</a></span>\r\n      </p>\r\n      <div class=\"transaction-unavailable-wrapper\" style=\"display: none;\">\r\n        <img src=\"images/error-outline.svg\" alt=\"error\">\r\n        <p class=\"transaction-unavailable-err\">Some transactions are unavailable and won't be included in the Hedge All action. You can continue with available transactions or <a>refresh</a> the page <span>(unsaved changes will be lost).</span> </p>\r\n      </div>\r\n    </footer>\r\n  </aside>"
         },
         {
             "name": "HedgeTandcDetailsComponent",
@@ -5713,7 +5763,7 @@
         },
         {
             "name": "QuickHedgeDrawerComponent",
-            "id": "component-QuickHedgeDrawerComponent-316ef8bed05c6fc0b252eac9e144cdcd3cc219de8dd4a87cfca29c3b6a5b85855c3909e8e62e774f95adffe780f5667c9fea1c7fc454c1ab68d2dc8d465fb21c",
+            "id": "component-QuickHedgeDrawerComponent-268a5835bd3fd36d4709e0d7c3da38c3c24c97edbeace38312f95a2ff3e6bc66683b5764d092f095f214df0a58c50f6fb55c0d13698651106cdfd9508187a431",
             "file": "src/app/risk-dashboard/components/hedging-proposal/components/quick-hedge-drawer/quick-hedge-drawer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5735,11 +5785,22 @@
                     "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 16,
                     "type": "EventEmitter"
                 }
             ],
             "propertiesClass": [
+                {
+                    "name": "onHedgeNowClicked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
                 {
                     "name": "selectedQuickHedgeData",
                     "defaultValue": "{\r\n      \"expiryDate\": \"17/11/2025\",\r\n      \"hedgeRate\": 4.4532,\r\n      \"protectAmount\": 84345.43,\r\n      \"recommendedHedgeAmount\": 8,\r\n      \"maxHedge_amount\": 25,\r\n      \"collateral\": 3.472,\r\n      \"totalExposureAmount\": 25,\r\n      \"openEditForSelling\": false,\r\n      \"status\": {\r\n        \"type\": 1,\r\n        \"descriprion\": \"Created\"\r\n      },\r\n      \"maxHedgeAmount\": 25,\r\n      \"recomendedHedgeAmount\": 8,\r\n      \"hedge\": {\r\n        \"strategyId\": 132772,\r\n        \"hedgeRate\": 4.4532,\r\n        \"expiryDate\": \"17/11/2025\",\r\n        \"price\": 0,\r\n        \"collateral\": 3.472,\r\n        \"productName\": \"LOCK & UP\",\r\n        \"productType\": 1,\r\n        \"notionalCurrency\": \"CHF\",\r\n        \"notionalCurrencySign\": \"CHF\",\r\n        \"secondCurrency\": \"ILS\",\r\n        \"secondCurrencySign\": \"₪\",\r\n        \"collateralCurrency\": \"ILS\",\r\n        \"liabilityRate\": 4.4532,\r\n        \"protectAmount\": 8\r\n      },\r\n      \"totalExposure\": 25,\r\n      \"alreadyHedge\": 0,\r\n      \"date\": \"17/11/2025\",\r\n      \"saveActivate\": false\r\n    }",
@@ -5749,7 +5810,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 19
                 },
                 {
                     "name": "tandcConfirmed",
@@ -5760,7 +5821,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 17
                 }
             ],
             "methodsClass": [
@@ -5770,7 +5831,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5780,7 +5841,45 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 59,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onCheckboxChange",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 85,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onHedgeNowBtnClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 94,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -5790,7 +5889,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 64,
+                    "line": 70,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -5808,12 +5907,16 @@
                 {
                     "name": "NgbTooltipModule",
                     "type": "module"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { HedgingDataService } from '../../hedging-data.service';\r\nimport { MatDialog } from '@angular/material/dialog';\r\nimport { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-details.component';\r\nimport { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';\r\n\r\n@Component({\r\n  selector: 'app-quick-hedge-drawer',\r\n  imports: [MatCheckboxModule, NgbTooltipModule],\r\n  templateUrl: './quick-hedge-drawer.component.html',\r\n  styleUrl: './quick-hedge-drawer.component.scss'\r\n})\r\nexport class QuickHedgeDrawerComponent {\r\n  @Output() closeDrawer = new EventEmitter<void>();\r\n  tandcConfirmed: boolean = false;\r\n  selectedQuickHedgeData =\r\n    {\r\n      \"expiryDate\": \"17/11/2025\",\r\n      \"hedgeRate\": 4.4532,\r\n      \"protectAmount\": 84345.43,\r\n      \"recommendedHedgeAmount\": 8,\r\n      \"maxHedge_amount\": 25,\r\n      \"collateral\": 3.472,\r\n      \"totalExposureAmount\": 25,\r\n      \"openEditForSelling\": false,\r\n      \"status\": {\r\n        \"type\": 1,\r\n        \"descriprion\": \"Created\"\r\n      },\r\n      \"maxHedgeAmount\": 25,\r\n      \"recomendedHedgeAmount\": 8,\r\n      \"hedge\": {\r\n        \"strategyId\": 132772,\r\n        \"hedgeRate\": 4.4532,\r\n        \"expiryDate\": \"17/11/2025\",\r\n        \"price\": 0,\r\n        \"collateral\": 3.472,\r\n        \"productName\": \"LOCK & UP\",\r\n        \"productType\": 1,\r\n        \"notionalCurrency\": \"CHF\",\r\n        \"notionalCurrencySign\": \"CHF\",\r\n        \"secondCurrency\": \"ILS\",\r\n        \"secondCurrencySign\": \"₪\",\r\n        \"collateralCurrency\": \"ILS\",\r\n        \"liabilityRate\": 4.4532,\r\n        \"protectAmount\": 8\r\n      },\r\n      \"totalExposure\": 25,\r\n      \"alreadyHedge\": 0,\r\n      \"date\": \"17/11/2025\",\r\n      \"saveActivate\": false\r\n    }\r\n\r\n  constructor(private hedgeService: HedgingDataService, private dialog: MatDialog) { }\r\n\r\n  ngOnInit() {\r\n  }\r\n\r\n  closeHedgeDrawer() {\r\n    this.hedgeService?.closeQuickHedgeDrawer();\r\n  }\r\n\r\n  openConditionsDisclosure() {\r\n    const dialogRef = this.dialog.open(HedgeTandcDetailsComponent, {\r\n      width: '627px',\r\n      disableClose: true,\r\n      panelClass: 'terms-disclosure-hedging',\r\n      data: { someData: 'pass any data if needed' }\r\n    });\r\n\r\n    dialogRef.afterClosed().subscribe(result => {\r\n      if (result === 'confirmed') {\r\n        this.tandcConfirmed = true; // Set the confirmation flag to true\r\n      }\r\n    });\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { HedgingDataService } from '../../hedging-data.service';\r\nimport { MatDialog } from '@angular/material/dialog';\r\nimport { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-details.component';\r\nimport { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-quick-hedge-drawer',\r\n  imports: [MatCheckboxModule, NgbTooltipModule, CommonModule],\r\n  templateUrl: './quick-hedge-drawer.component.html',\r\n  styleUrl: './quick-hedge-drawer.component.scss'\r\n})\r\nexport class QuickHedgeDrawerComponent {\r\n  @Output() closeDrawer = new EventEmitter<void>();\r\n  tandcConfirmed: boolean = false;\r\n  onHedgeNowClicked: boolean = false;\r\n  selectedQuickHedgeData =\r\n    {\r\n      \"expiryDate\": \"17/11/2025\",\r\n      \"hedgeRate\": 4.4532,\r\n      \"protectAmount\": 84345.43,\r\n      \"recommendedHedgeAmount\": 8,\r\n      \"maxHedge_amount\": 25,\r\n      \"collateral\": 3.472,\r\n      \"totalExposureAmount\": 25,\r\n      \"openEditForSelling\": false,\r\n      \"status\": {\r\n        \"type\": 1,\r\n        \"descriprion\": \"Created\"\r\n      },\r\n      \"maxHedgeAmount\": 25,\r\n      \"recomendedHedgeAmount\": 8,\r\n      \"hedge\": {\r\n        \"strategyId\": 132772,\r\n        \"hedgeRate\": 4.4532,\r\n        \"expiryDate\": \"17/11/2025\",\r\n        \"price\": 0,\r\n        \"collateral\": 3.472,\r\n        \"productName\": \"LOCK & UP\",\r\n        \"productType\": 1,\r\n        \"notionalCurrency\": \"CHF\",\r\n        \"notionalCurrencySign\": \"CHF\",\r\n        \"secondCurrency\": \"ILS\",\r\n        \"secondCurrencySign\": \"₪\",\r\n        \"collateralCurrency\": \"ILS\",\r\n        \"liabilityRate\": 4.4532,\r\n        \"protectAmount\": 8\r\n      },\r\n      \"totalExposure\": 25,\r\n      \"alreadyHedge\": 0,\r\n      \"date\": \"17/11/2025\",\r\n      \"saveActivate\": false\r\n    }\r\n\r\n  constructor(private hedgeService: HedgingDataService, private dialog: MatDialog) { }\r\n\r\n  ngOnInit() {\r\n    this.tandcConfirmed  = false;\r\n    this.onHedgeNowClicked = false;\r\n  }\r\n\r\n  closeHedgeDrawer() {\r\n    this.tandcConfirmed  = false;\r\n    this.onHedgeNowClicked = false;\r\n    this.hedgeService?.closeQuickHedgeDrawer();\r\n  }\r\n\r\n  openConditionsDisclosure() {\r\n    const dialogRef = this.dialog.open(HedgeTandcDetailsComponent, {\r\n      width: '627px',\r\n      disableClose: true,\r\n      panelClass: 'terms-disclosure-hedging',\r\n      data: { someData: 'pass any data if needed' }\r\n    });\r\n\r\n    dialogRef.afterClosed().subscribe(result => {\r\n      if (result === 'confirmed') {\r\n        this.tandcConfirmed = true; // Set the confirmation flag to true\r\n      }\r\n    });\r\n  }\r\n\r\n  onCheckboxChange(event:any) {\r\n    this.onHedgeNowClicked = false\r\n    if (!event.checked) {\r\n      this.tandcConfirmed = false;\r\n    } else {\r\n      this.tandcConfirmed = true;\r\n    }\r\n  }\r\n\r\n  onHedgeNowBtnClick() {\r\n    this.onHedgeNowClicked = true;\r\n  }\r\n}\r\n",
             "styleUrl": "./quick-hedge-drawer.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -5837,7 +5940,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 53,
+                "line": 55,
                 "jsdoctags": [
                     {
                         "name": "hedgeService",
@@ -5860,7 +5963,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<aside class=\"hedge-sidebar-container loader-wrapper\">\r\n    <!-- Close Button -->\r\n    <button class=\"close-btn\" aria-label=\"Close\" (click)=\"closeHedgeDrawer()\">\r\n      <img src=\"images/close-btn-cashflow.svg\" alt=\"Close\" />\r\n    </button>\r\n  \r\n    <!-- Title -->\r\n    <header class=\"hedge-header\">\r\n      <h2 class=\"hedge-title\">\r\n        Quick hedge\r\n      </h2>\r\n    </header>\r\n    <div class=\"bg-white section-loader\"></div>\r\n    <!-- Hedge Information -->\r\n    <section class=\"hedge-info\">\r\n      <div class=\"hedge-amount\">\r\n        <label for=\"hedge-amount-value\">Amount to hedge</label>\r\n        <span id=\"hedge-amount-value\">\r\n          {{selectedQuickHedgeData.hedge.notionalCurrencySign}}{{selectedQuickHedgeData.hedge.protectAmount}}\r\n        </span>\r\n      </div>\r\n      <button class=\"forward-btn\">Forward</button>\r\n    </section>\r\n  \r\n    <!-- Conditional Sections -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\">\r\n          <label>Expiry date</label>\r\n          <span class=\"content\">\r\n            {{selectedQuickHedgeData.expiryDate}}\r\n          </span>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Currencies</label>\r\n          <span class=\"content\">{{selectedQuickHedgeData.hedge.notionalCurrency}}/{{selectedQuickHedgeData.hedge.secondCurrency}}</span>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  \r\n    <!-- Rates Information -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\">\r\n          <label>Hedge rate</label>\r\n          <div class=\"rate-content\">\r\n            <span class=\"content primary-value\">{{selectedQuickHedgeData.hedge.hedgeRate}}</span>\r\n          </div>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Liability rate</label>\r\n          <span class=\"content primary-value\">{{selectedQuickHedgeData.hedge.liabilityRate}}</span>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  \r\n    <!-- Collateral and Price Information -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\"> \r\n          <label>Required collateral <img class=\"z-1 tool-tip-cs\" [tooltipClass]=\"'collateral-amount-ttp'\" [ngbTooltip]=\"requiredCollateralttp\" src=\"images/circle-help.svg\" container=\"body\" placement=\"top\" />\r\n            <!-- <a class=\"hedge-deposit-link\">Make a deposit</a>  -->\r\n          </label>\r\n          <span class=\"content\">{{selectedQuickHedgeData.hedge.secondCurrencySign}}{{selectedQuickHedgeData.hedge.collateral}}</span>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Price \r\n            <!-- <a class=\"hedge-deposit-link\">Make a deposit</a> -->\r\n          </label> \r\n          <span class=\"content\">{{selectedQuickHedgeData.hedge.secondCurrencySign}}{{selectedQuickHedgeData.hedge.price}}</span>\r\n        </div>\r\n      </div>\r\n      <ng-template #requiredCollateralttp>\r\n        <div class=\"recommended-shield-ttp\">Assets pledged to cover hedging losses, based on risk.</div>\r\n     </ng-template>\r\n    </section>\r\n  \r\n    <!-- Conditions Acknowledgement -->\r\n    <section class=\"conditions-section\">\r\n      <p class=\"read-conditions\">\r\n        I am aware that during the transaction term, additional collateral requirements may be determined in accordance with market fluctuations and the company's requirements. If these requirements are not met promptly, the company may, at its discretion, take actions including but not limited to closing the transaction and forfeiting the collateral amount.\r\n      </p>\r\n    </section>\r\n  \r\n    <!-- Footer Actions -->\r\n    <footer class=\"action-footer\">\r\n      <mat-checkbox [checked]=\"tandcConfirmed\"\r\n        class=\"tick-condition\"\r\n      >\r\n        I confirm the general <button (click)=\"openConditionsDisclosure()\">conditions and disclosure</button> about the risk.\r\n      </mat-checkbox>\r\n      <button\r\n        class=\"hedge-now single-hedge\">\r\n        Hedge now\r\n      </button>\r\n      <p class=\"refresh-in\" style=\"display: none;\">\r\n        <span>Insufficient funds in wallet. <a class=\"hedge-deposit-link\">Make a deposit</a></span>\r\n      </p>\r\n      <div class=\"transaction-unavailable-wrapper\" style=\"display: none;\">\r\n        <img src=\"images/error-outline.svg\" alt=\"error\">\r\n        <p class=\"transaction-unavailable-err\">Some transactions are unavailable and won't be included in the Hedge All action. You can continue with available transactions or <a>refresh</a> the page <span>(unsaved changes will be lost).</span> </p>\r\n      </div>\r\n    </footer>\r\n  </aside>"
+            "templateData": "<aside class=\"hedge-sidebar-container loader-wrapper\">\r\n    <!-- Close Button -->\r\n    <button class=\"close-btn\" aria-label=\"Close\" (click)=\"closeHedgeDrawer()\">\r\n      <img src=\"images/close-btn-cashflow.svg\" alt=\"Close\" />\r\n    </button>\r\n  \r\n    <!-- Title -->\r\n    <header class=\"hedge-header\">\r\n      <h2 class=\"hedge-title\">\r\n        Quick hedge\r\n      </h2>\r\n    </header>\r\n    <div class=\"bg-white section-loader\"></div>\r\n    <!-- Hedge Information -->\r\n    <section class=\"hedge-info\">\r\n      <div class=\"hedge-amount\">\r\n        <label for=\"hedge-amount-value\">Amount to hedge</label>\r\n        <span id=\"hedge-amount-value\">\r\n          {{selectedQuickHedgeData.hedge.notionalCurrencySign}}{{selectedQuickHedgeData.hedge.protectAmount}}\r\n        </span>\r\n      </div>\r\n      <button class=\"forward-btn\">Forward</button>\r\n    </section>\r\n  \r\n    <!-- Conditional Sections -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\">\r\n          <label>Expiry date</label>\r\n          <span class=\"content\">\r\n            {{selectedQuickHedgeData.expiryDate}}\r\n          </span>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Currencies</label>\r\n          <span class=\"content\">{{selectedQuickHedgeData.hedge.notionalCurrency}}/{{selectedQuickHedgeData.hedge.secondCurrency}}</span>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  \r\n    <!-- Rates Information -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\">\r\n          <label>Hedge rate</label>\r\n          <div class=\"rate-content\">\r\n            <span class=\"content primary-value\">{{selectedQuickHedgeData.hedge.hedgeRate}}</span>\r\n          </div>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Liability rate</label>\r\n          <span class=\"content primary-value\">{{selectedQuickHedgeData.hedge.liabilityRate}}</span>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  \r\n    <!-- Collateral and Price Information -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\"> \r\n          <label>Required collateral <img class=\"z-1 tool-tip-cs\" [tooltipClass]=\"'collateral-amount-ttp'\" [ngbTooltip]=\"requiredCollateralttp\" src=\"images/circle-help.svg\" container=\"body\" placement=\"top\" />\r\n            <!-- <a class=\"hedge-deposit-link\">Make a deposit</a>  -->\r\n          </label>\r\n          <span class=\"content\">{{selectedQuickHedgeData.hedge.secondCurrencySign}}{{selectedQuickHedgeData.hedge.collateral}}</span>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Price \r\n            <!-- <a class=\"hedge-deposit-link\">Make a deposit</a> -->\r\n          </label> \r\n          <span class=\"content\">{{selectedQuickHedgeData.hedge.secondCurrencySign}}{{selectedQuickHedgeData.hedge.price}}</span>\r\n        </div>\r\n      </div>\r\n      <ng-template #requiredCollateralttp>\r\n        <div class=\"recommended-shield-ttp\">Assets pledged to cover hedging losses, based on risk.</div>\r\n     </ng-template>\r\n    </section>\r\n  \r\n    <!-- Conditions Acknowledgement -->\r\n    <section class=\"conditions-section\">\r\n      <p class=\"read-conditions\">\r\n        I am aware that during the transaction term, additional collateral requirements may be determined in accordance with market fluctuations and the company's requirements. If these requirements are not met promptly, the company may, at its discretion, take actions including but not limited to closing the transaction and forfeiting the collateral amount.\r\n      </p>\r\n    </section>\r\n  \r\n    <!-- Footer Actions -->\r\n    <footer class=\"action-footer\">\r\n      <mat-checkbox [checked]=\"tandcConfirmed\" [ngClass]=\"{'not-confirmed': !tandcConfirmed && onHedgeNowClicked}\" (change)=\"onCheckboxChange($event)\"\r\n        class=\"tick-condition\">\r\n        I confirm the general <button (click)=\"openConditionsDisclosure()\">conditions and disclosure</button> about the risk.\r\n      </mat-checkbox>\r\n      <button (click)=\"onHedgeNowBtnClick()\"\r\n        class=\"hedge-now single-hedge\">\r\n        Hedge now\r\n      </button>\r\n      <p class=\"refresh-in\" style=\"display: none;\">\r\n        <span>Insufficient funds in wallet. <a class=\"hedge-deposit-link\">Make a deposit</a></span>\r\n      </p>\r\n      <div class=\"transaction-unavailable-wrapper\" style=\"display: none;\">\r\n        <img src=\"images/error-outline.svg\" alt=\"error\">\r\n        <p class=\"transaction-unavailable-err\">Some transactions are unavailable and won't be included in the Hedge All action. You can continue with available transactions or <a>refresh</a> the page <span>(unsaved changes will be lost).</span> </p>\r\n      </div>\r\n    </footer>\r\n  </aside>"
         },
         {
             "name": "RiskEstimateChartComponent",
@@ -7153,7 +7256,7 @@
                 "linktype": "component",
                 "name": "HedgeAllDrawerComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/18",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
@@ -7171,7 +7274,7 @@
                 "linktype": "component",
                 "name": "QuickHedgeDrawerComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {

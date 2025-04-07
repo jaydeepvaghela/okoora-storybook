@@ -4,16 +4,22 @@ import { HedgingDataService } from '../../hedging-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-details.component';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule, formatDate } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-quick-hedge-drawer',
-  imports: [MatCheckboxModule, NgbTooltipModule],
+  imports: [MatCheckboxModule, NgbTooltipModule, CommonModule, MatProgressSpinnerModule ],
   templateUrl: './quick-hedge-drawer.component.html',
   styleUrl: './quick-hedge-drawer.component.scss'
 })
 export class QuickHedgeDrawerComponent {
   @Output() closeDrawer = new EventEmitter<void>();
   tandcConfirmed: boolean = false;
+  onHedgeNowClicked: boolean = false;
+  showProgressbar = false;
+  mode = 'indeterminate'; // or 'determinate'
+  intervalId: any;
   selectedQuickHedgeData =
     {
       "expiryDate": "17/11/2025",
@@ -54,10 +60,24 @@ export class QuickHedgeDrawerComponent {
 
   constructor(private hedgeService: HedgingDataService, private dialog: MatDialog) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.intervalId = setInterval(() => {
+      this.showProgressbar = true;
+      setTimeout(() => {
+        this.showProgressbar = false;
+      }, 3000)
+    }, 30000);
+  }
+
+  getFormattedDate(dateStr: string): string {
+    const [day, month, year] = dateStr.split('/').map(Number);
+    const dateObj = new Date(year, month - 1, day);
+    return formatDate(dateObj, 'dd MMM yyyy', 'en-US');
   }
 
   closeHedgeDrawer() {
+    this.tandcConfirmed  = false;
+    this.onHedgeNowClicked = false;
     this.hedgeService?.closeQuickHedgeDrawer();
   }
 
@@ -74,5 +94,24 @@ export class QuickHedgeDrawerComponent {
         this.tandcConfirmed = true; // Set the confirmation flag to true
       }
     });
+  }
+
+  onCheckboxChange(event:any) {
+    this.onHedgeNowClicked = false
+    if (!event.checked) {
+      this.tandcConfirmed = false;
+    } else {
+      this.tandcConfirmed = true;
+    }
+  }
+
+  onHedgeNowBtnClick() {
+    this.onHedgeNowClicked = true;
+  }
+
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 }

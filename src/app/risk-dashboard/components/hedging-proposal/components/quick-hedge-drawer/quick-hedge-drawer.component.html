@@ -28,8 +28,8 @@
         <div class="sub-info">
           <label>Expiry date</label>
           <span class="content">
-            {{selectedQuickHedgeData.expiryDate}}
-          </span>
+            {{ getFormattedDate(selectedQuickHedgeData.expiryDate) }}
+          </span>          
         </div>
         <div class="sub-info">
           <label>Currencies</label>
@@ -44,6 +44,7 @@
         <div class="sub-info">
           <label>Hedge rate</label>
           <div class="rate-content">
+            <mat-progress-spinner *ngIf="showProgressbar" [diameter]="50" mode="indeterminate" class="rate-update-spinner"> </mat-progress-spinner>
             <span class="content primary-value">{{selectedQuickHedgeData.hedge.hedgeRate}}</span>
           </div>
         </div>
@@ -84,12 +85,11 @@
   
     <!-- Footer Actions -->
     <footer class="action-footer">
-      <mat-checkbox [checked]="tandcConfirmed"
-        class="tick-condition"
-      >
+      <mat-checkbox [checked]="tandcConfirmed" [ngClass]="{'not-confirmed': !tandcConfirmed && onHedgeNowClicked}" (change)="onCheckboxChange($event)"
+        class="tick-condition">
         I confirm the general <button (click)="openConditionsDisclosure()">conditions and disclosure</button> about the risk.
       </mat-checkbox>
-      <button
+      <button (click)="onHedgeNowBtnClick()"
         class="hedge-now single-hedge">
         Hedge now
       </button>
