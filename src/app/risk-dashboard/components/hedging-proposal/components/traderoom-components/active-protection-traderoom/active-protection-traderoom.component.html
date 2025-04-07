@@ -73,19 +73,35 @@
             </div>
         </div>
 
-        <div class="lock-rate-modal-right-inner" [ngClass]="{'success': hedgeStatus === 6 }" *ngIf="hedgeStatus !== 7">
-
-            <div class="lock-rate-modal-purchase" *ngIf="hedgeStatus=== 6">
+        <!-- <div class="lock-rate-modal-right-inner" [ngClass]="{'success': hedgeStatus === 6 }" *ngIf="hedgeStatus !== 7">
+            <picture *ngIf="hedgeStatus !== 6">
+                <img src="/images/group-hedge-modal.svg" alt="group" />
+            </picture>
+            <div class="lock-rate-modal-purchase">
                 <div class="img-wrapper">
-                    <picture>
-                        <img src="/images/group-hedge-modal.svg" alt="group" />
-                    </picture>
-                    <div class="img-modal">
+                    
+                    <div class="img-modal" *ngIf="hedgeStatus===6">
                         <img src="/images/clock-guard.svg" alt="clock" height="60px" />
                         <p class="traderoom-connect-title">Protection <br>is Active</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
+        <div class="lock-rate-modal-right-inner" [ngClass]="{'success': hedgeStatus ===6 }" *ngIf="hedgeStatus !== 7 ">
+            <img *ngIf="hedgeStatus!==6" src="images/hedge-modal.svg" alt="close" />
+            <div class="lock-rate-modal-purchase" *ngIf="hedgeStatus===6">
+              <div class="img-wrapper">
+                <picture>
+                    <img src="images/group-hedge-modal.svg" alt="group" />
+                  </picture>
+                  <div class="img-modal">
+                    <img src="/images/clock-guard.svg" alt="clock" height="60px" />
+                    <p class="traderoom-connect-title">Protection <br>is Active</p>
+                  </div>
+              </div>
+              
+            </div>
+          </div>
     </div>
 </div>

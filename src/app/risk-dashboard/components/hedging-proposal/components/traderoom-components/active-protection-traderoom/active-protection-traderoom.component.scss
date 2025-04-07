@@ -84,6 +84,11 @@
           font-weight: 700;
           line-height: 40px;  // temporary set it as 40, it was 44px
           letter-spacing: 0.78px;
+
+          @media screen and (max-width: 1440px) {
+           font-size: 18px;
+           line-height: 34px;
+          }
         }
 
         // Style the container
@@ -100,6 +105,11 @@
           &.active-protection-container {
             width: 100%;  
             padding: 75px 72px 18px 70px;
+
+            @media screen and (max-width: 1440px) {
+              padding: 35px 32px 0px 30px;
+              
+            }
             
             .traderoom-connect-title {
               color: #2947F2;
@@ -107,6 +117,10 @@
               font-size: 14px;
               font-weight: 400;
               line-height: 10px;
+
+              @media screen and (max-width: 1440px) {
+                font-size: 13px;                
+              }
             }
 
             .content {
@@ -139,7 +153,7 @@
 
       @media only screen and (max-width: 1440px) {
         width: 700px !important;
-        height: 450px;
+        height: 416px;
       }
 
       @media only screen and (max-width: 600px) {
@@ -278,6 +292,10 @@
       .img-wrapper {
         display: flex;
         gap: 26px;
+
+        @media screen and (max-width: 1440px) {
+          gap: 18px;            
+        }
       }
       .img-modal {
         display: flex;
@@ -287,6 +305,12 @@
         img {
           width: 82px;
           height: 82px;
+
+          @media screen and (max-width: 1440px) {
+            font-size: 60px !important;
+            line-height: 60px !important;
+            
+          }
         }
 
         .traderoom-connect-title {
@@ -297,6 +321,12 @@
           line-height: 44px !important;
           letter-spacing: 1.14px;
           margin-top: 14px;
+
+          @media screen and (max-width: 1440px) {
+            font-size: 30px !important;
+            line-height: 40px !important;
+            
+          }
         }
       }
 
@@ -314,7 +344,7 @@
       display: flex;
       // flex-direction: row;
       background: #2947f2;
-      // justify-content: flex-end;
+      justify-content: flex-end;
       width: 45%;
       img {
         width: 81%;
