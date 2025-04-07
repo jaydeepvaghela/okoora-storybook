@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ConnectingTraderoomComponent } from "../connecting-traderoom/connecting-traderoom.component";
 import { ConnectedTraderoomComponent } from '../connected-traderoom/connected-traderoom.component';
 import { CancelledTraderoomComponent } from "../cancelled-traderoom/cancelled-traderoom.component";
@@ -12,7 +12,7 @@ import { AgentsBusyTraderoomComponent } from '../agents-busy-traderoom/agents-bu
   styleUrl: './active-protection-traderoom.component.scss'
 })
 export class ActiveProtectionTraderoomComponent {
-  hedgeStatus: number = 6; 
+  @Input() hedgeStatus: number = 6; 
   // 2: Connecting, 
   // 3: Connected, 
   // 4: Cancelled, 
