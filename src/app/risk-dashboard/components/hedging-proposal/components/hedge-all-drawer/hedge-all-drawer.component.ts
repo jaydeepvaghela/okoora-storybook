@@ -7,19 +7,22 @@ import { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-d
 import { hedgeAllRows } from '../../hedging-static-data';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActiveProtectionTraderoomComponent } from '../traderoom-components/active-protection-traderoom/active-protection-traderoom.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-hedge-all-drawer',
-  imports: [MatCheckboxModule, CommonModule, NgbTooltipModule],
+  imports: [MatCheckboxModule, CommonModule, NgbTooltipModule, MatProgressSpinnerModule],
   templateUrl: './hedge-all-drawer.component.html',
   styleUrl: './hedge-all-drawer.component.scss'
 })
 export class HedgeAllDrawerComponent {
   @Output() closeDrawer = new EventEmitter<void>();
-
   showHedgeAllDetails: boolean = false;
   showCompleteHedgeDetails: boolean = false;
   multipleHedgeData = hedgeAllRows;
+  showProgressbar = false;
+  mode = 'indeterminate'; // or 'determinate'
+  intervalId: any;
 
   initialHedgeInfo = {
     "price": 0,
@@ -31,12 +34,20 @@ export class HedgeAllDrawerComponent {
   }
   formattedDateRange: string = '';
   specificSelectedRow: any;
+  hedgeAllbtnClicked: boolean = false;
+  tandcConfirmed: boolean = false;
 
   constructor(private hedgeService: HedgingDataService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.setFormattedDateRange()
     console.log('(this.multipleHedgeData)', this.multipleHedgeData);
+    this.intervalId = setInterval(() => {
+      this.showProgressbar = true;
+      setTimeout(() => {
+        this.showProgressbar = false;
+      }, 3000)
+    }, 30000);
   }
 
   formatDate(dateStr: string): string {
@@ -97,11 +108,14 @@ export class HedgeAllDrawerComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog closed', result);
+      if (result === 'confirmed') {
+        this.tandcConfirmed = true; // Set the confirmation flag to true
+      }
     });
   }
 
   onHedgeAllBtnClick() {
+    this.hedgeAllbtnClicked = true;
     // const dialogRef = this.dialog.open(ActiveProtectionTraderoomComponent, {
     //   width: '100vw',
     //   maxWidth: '100vw',
@@ -115,7 +129,18 @@ export class HedgeAllDrawerComponent {
 
   }
 
+  onCheckboxChange(event:any) {
+    this.hedgeAllbtnClicked = false
+    if (!event.checked) {
+      this.tandcConfirmed = false;
+    } else {
+      this.tandcConfirmed = true;
+    }
+  }
+
   closeHedgeDrawer() {
+    this.tandcConfirmed  = false;
+    this.hedgeAllbtnClicked = false;
     this.hedgeService.closeHedgeAllDrawer();
   }
 }

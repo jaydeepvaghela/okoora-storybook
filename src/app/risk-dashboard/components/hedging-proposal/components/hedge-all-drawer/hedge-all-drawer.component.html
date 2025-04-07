@@ -45,6 +45,7 @@
               <div class="sub-info">
                 <label>Hedge rate</label>
                 <div class="rate-content">
+                  <mat-progress-spinner *ngIf="showProgressbar" [diameter]="50" mode="indeterminate" class="rate-update-spinner"> </mat-progress-spinner>
                   <span class="content primary-value">{{initialHedgeInfo.avgHedgeRate}}</span>
                 </div>
               </div>
@@ -166,7 +167,10 @@
     <!-- Footer Actions -->
     <footer class="action-footer">
       <mat-checkbox
+        (change)="onCheckboxChange($event)"
+        [checked]="tandcConfirmed"
         class="tick-condition"
+        [ngClass]="{'not-confirmed': !tandcConfirmed && hedgeAllbtnClicked}"
       >
         I confirm the general <button (click)="openConditionsDisclosure()">conditions and disclosure</button> about the risk.
       </mat-checkbox>
@@ -178,7 +182,7 @@
       <p class="refresh-in" style="display: none;">
         <span>Insufficient funds in wallet. <a class="hedge-deposit-link">Make a deposit</a></span>
       </p>
-      <div class="transaction-unavailable-wrapper" style="display: none;">
+      <div class="transaction-unavailable-wrapper" *ngIf="!tandcConfirmed && hedgeAllbtnClicked">
         <img src="images/error-outline.svg" alt="error">
         <p class="transaction-unavailable-err">Some transactions are unavailable and won't be included in the Hedge All action. You can continue with available transactions or <a>refresh</a> the page <span>(unsaved changes will be lost).</span> </p>
       </div>
