@@ -30,7 +30,6 @@
 
         // Define column styles
         $column-width: 100%;
-        $column-padding:10px;
 
         // Define title and value styles
         $title-font-size: 12px;
@@ -50,7 +49,7 @@
         // Style the columns
         .column {
           //   width: $column-width;
-          padding: $column-padding;
+          padding: 10px 10px 0 10px;
           display: inline-block;
           vertical-align: top;
 
@@ -62,7 +61,11 @@
         }
         .price::first-letter {
           color: #909199;
-          font-size: 10px;
+          font-family: 'Manrope';
+          font-size: 12px;
+          font-weight: 700;
+          // line-height: 44px;
+          letter-spacing: 0.36px;
         }
 
         // Style the titles and values
@@ -75,8 +78,12 @@
         }
 
         .value {
-          font-weight: $title-font-weight;
-          font-size: $value-font-size;
+          color: #5B5B66;
+          font-family: 'Manrope';
+          font-size: 26px;
+          font-weight: 700;
+          line-height: 40px;  // temporary set it as 40, it was 44px
+          letter-spacing: 0.78px;
         }
 
         // Style the container
@@ -99,7 +106,17 @@
               font-family: 'Manrope';
               font-size: 14px;
               font-weight: 400;
-              line-height: 44px;
+              line-height: 10px;
+            }
+
+            .content {
+              display: flex; 
+              justify-content: space-between;
+
+              img {
+                width: 32px;
+                height: 32px;
+              }
             }
 
           }
@@ -315,7 +332,7 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: row;
-      margin-bottom: 36px;
+      // margin-bottom: 28px;
       display: flex;
       align-items: flex-end;
       gap: 13px;
