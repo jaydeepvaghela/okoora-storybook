@@ -11,46 +11,21 @@
         <div class="lock-rate-modal-left-inner" [ngClass]="{'centered': hedgeStatus === 6}">
             <div class="lock-rate-new-body" [ngSwitch]="hedgeStatus">
                 <div *ngSwitchCase="2">
-                    <div style="margin-bottom: 30px;">
-                        <img src="images/okoora-logo.svg" alt="Logo" />
-                    </div>
-                    <p class="title">Connecting to trade room<br> Please hold on</p>
+                    <app-connecting-traderoom></app-connecting-traderoom>
                 </div>
 
                 <div *ngSwitchCase="3">
-                    <div>
-                        <img src="/images/icon-phone.svg" alt="phone" />
-                    </div>
-                    <p class="title">Connected!</p>
-                    <p class="subtext">Conversation with trading room is active</p>
-                    <div *ngIf="!wantToPurchaseDeal" class="purchasing-in-progress">
-                        <p class="font-2 content">
-                            In order to purchase the hedge, you must confirm the purchase with the customer service,
-                            after approval, the hedge purchase will be made automatically.
-                        </p>
-                    </div>
-                </div>
-
-                <div *ngSwitchCase="7">
-                    <div style="margin-bottom: 30px;">
-                        <img height="80px" src="/images/logo-icon-white.svg" alt="phone" />
-                    </div>
-                    <p class="title">Oh no!</p>
-                    <p class="title">All agents are currently busy.<br /> Please try again in a few minutes</p>
+                    <app-connected-traderoom></app-connected-traderoom>
                 </div>
 
                 <div *ngSwitchCase="4">
-                    <div>
-                        <img src="/images/icon-canceled-call.svg" alt="phone" />
-                    </div>
-                    <p class="title">Canceled</p>
-                    <p class="subtext">Call was canceled by agent</p>
+                    <app-cancelled-traderoom></app-cancelled-traderoom>
                 </div>
 
-                <div style="height: 100%;" *ngSwitchCase="6">
-                    <div class="container">
+                <div *ngSwitchCase="6">
+                    <div class="container active-protection-container">
                         <div class="column">
-                            <p class="title">Protection Amount</p>
+                            <p class="title traderoom-connect-title">Protection Amount</p>
                             <div style="display: flex; justify-content: space-between;">
                                 <p class="value price">$10,000.00</p>
                                 <span><img height="25" src="/flags/usd-flag.svg" alt="notional" /></span>
@@ -59,7 +34,7 @@
                         </div>
 
                         <div class="column">
-                            <p class="title">Collateral</p>
+                            <p class="title traderoom-connect-title">Collateral</p>
                             <div style="display: flex; justify-content: space-between;">
                                 <p class="value price">₪1,200.00</p>
                                 <img height="25" src="/flags/ils-flag.svg" alt="collateral" />
@@ -68,7 +43,7 @@
                         </div>
 
                         <div class="column">
-                            <p class="title">Price</p>
+                            <p class="title traderoom-connect-title">Price</p>
                             <div style="display: flex; justify-content: space-between;">
                                 <p class="value price">₪300</p>
                                 <span><img height="25" src="/flags/ils-flag.svg" alt="currency" /></span>
@@ -77,7 +52,7 @@
                         </div>
 
                         <div class="column">
-                            <p class="title">Expiry Date</p>
+                            <p class="title traderoom-connect-title">Expiry Date</p>
                             <div style="display: flex; justify-content: space-between;">
                                 <p class="value">Jan 15, 2025</p>
                                 <img height="25" src="/images/calendar.svg" alt="calendar" />
@@ -91,19 +66,24 @@
                         </div>
                     </div>
                 </div>
+
+                <div *ngSwitchCase="7">
+                    <app-agents-busy-traderoom></app-agents-busy-traderoom>
+                </div>                
             </div>
         </div>
 
         <div class="lock-rate-modal-right-inner" [ngClass]="{'success': hedgeStatus === 6 }" *ngIf="hedgeStatus !== 7">
-            <img *ngIf="hedgeStatus !== 6" src="/images/hedge-modal.svg" alt="hedge modal" />
 
             <div class="lock-rate-modal-purchase" *ngIf="hedgeStatus=== 6">
-                <div>
-                    <img src="/images/group-hedge-modal.svg" alt="group" />
-                </div>
-                <div style="display: flex;flex-direction: column;align-items: flex-start;margin-left: 20px;">
-                    <img style="width:auto" src="/images/clock-guard.svg" alt="clock" height="60px" />
-                    <p>Protection is Active</p>
+                <div class="img-wrapper">
+                    <picture>
+                        <img src="/images/group-hedge-modal.svg" alt="group" />
+                    </picture>
+                    <div class="img-modal">
+                        <img src="/images/clock-guard.svg" alt="clock" height="60px" />
+                        <p class="traderoom-connect-title">Protection <br>is Active</p>
+                    </div>
                 </div>
             </div>
         </div>

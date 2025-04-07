@@ -10,6 +10,7 @@
     }
     margin: auto;
   }
+
   .lock-rate-modal-container {
     &.success-model {
       flex-direction: row-reverse !important;
@@ -86,9 +87,23 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-
+        
         @media screen and (max-width: 1440px) {
           max-width: 350px;
+        }
+
+        &.active-protection-container {
+          width: 100%;  
+          padding: 75px 72px 18px 70px;
+          
+          .traderoom-connect-title {
+            color: #2947F2;
+            font-family: 'Manrope';
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 44px;
+          }
+
         }
 
         .approval-close-btn {
@@ -105,7 +120,7 @@
 
   .lock-rate-modal {
     position: relative;
-    height: 500px;
+    height: 489px;
 
     @media only screen and (max-width: 1440px) {
       width: 700px !important;
@@ -168,9 +183,15 @@
   .bg-blue {
     background-color: #2947f2;
     .lock-rate-modal-left-inner {
+      padding: 0px !important;
+      width: 60% !important;
+    }
+    .lock-rate-modal-right-inner {
+      width: 50% !important;
+    }
+    .lock-rate-new-body {
       width: 100% !important;
-      padding: 10px;
-      text-align: center;
+      height: 100% !important;
     }
   }
   .bg-blue p {
@@ -185,7 +206,36 @@
     height: 100%;
     width: 55%;
     justify-content: center;
-    padding: 50px;
+    
+    &:has(.connecting-traderoom-wrapper) {
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-left: 88px;
+      padding-right: 36px;
+      padding-top: 93px;
+    }
+
+    &:has(.connected-traderoom-wrapper) {
+      padding-left: 88px;
+      padding-right: 36px;
+      padding-top: 218px;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    &:has(.cancelled-traderoom-wrapper) {
+      padding-left: 91px;
+      padding-right: 33px;
+      padding-top: 112px;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    &:has(.agents-busy-wrapper) {
+      padding-top: 78px;
+      align-items: flex-start;    
+    }
+
     .title {
       font-weight: 600;
       color: #2947f2;
@@ -213,8 +263,34 @@
   .lock-rate-modal-purchase {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+
+    .img-wrapper {
+      display: flex;
+      gap: 26px;
+    }
+    .img-modal {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      img {
+        width: 82px;
+        height: 82px;
+      }
+
+      .traderoom-connect-title {
+        font-family: 'Epilogue';
+        color: #FFF !important;
+        font-size: 38px !important;
+        font-weight: 800;
+        line-height: 44px !important;
+        letter-spacing: 1.14px;
+        margin-top: 14px;
+      }
+    }
+
     // padding: 0px 49px;
     p {
       font-style: normal;
@@ -227,9 +303,9 @@
   }
   .lock-rate-modal-right-inner {
     display: flex;
-    flex-direction: row;
+    // flex-direction: row;
     background: #2947f2;
-    justify-content: flex-end;
+    // justify-content: flex-end;
     width: 45%;
     img {
       width: 81%;
@@ -277,37 +353,43 @@
         color: $white;
       }
     }
-    .continue-hedging {
-      display: flex;
-      height: 35px;
-      padding: 0px 16px;
-      flex-direction: column;
-      border-radius: 48px;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-shrink: 0;
-      border: 1px solid #2947f2;
-      background: #2947f2;
-      color: $white;
-      font-family: "Manrope";
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 35px;
-      letter-spacing: 0.36px;
-      &:hover {
-        border: 1px solid #c9d1f9;
-        background: #f5f7fa;
-        color: #2947f2;
-      }
+    .price::first-letter {
+      color: #909199;
+      font-size: 10px;
     }
-    @media only screen and (max-width: 1440px) {
-      margin-bottom: 15px;
-      .back-to-dashboard,
-      .continue-hedging {
-        height: 30px;
-        padding: 0 10px;
-        line-height: 1.2;
+
+    // Style the titles and values
+    .title {
+      font-size: $title-font-size;
+      color: $color;
+      text-align: left;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .value {
+      font-weight: $title-font-weight;
+      font-size: $value-font-size;
+    }
+
+    // Style the container
+    .container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @media screen and (max-width: 1440px) {
+        max-width: 350px;
+      }
+
+      .approval-close-btn {
+        @media screen and (min-width: 1441px) {
+          margin-top: -18px;
+        }
+        .close-wallet-btn {
+          width: 22px;
+        }
       }
     }
   }

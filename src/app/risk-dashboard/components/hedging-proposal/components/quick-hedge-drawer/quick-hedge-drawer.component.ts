@@ -6,6 +6,7 @@ import { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-d
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule, formatDate } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ActiveProtectionTraderoomComponent } from '../traderoom-components/active-protection-traderoom/active-protection-traderoom.component';
 
 @Component({
   selector: 'app-quick-hedge-drawer',
@@ -107,6 +108,18 @@ export class QuickHedgeDrawerComponent {
 
   onHedgeNowBtnClick() {
     this.onHedgeNowClicked = true;
+    if (this.tandcConfirmed) { 
+      const dialogRef = this.dialog.open(ActiveProtectionTraderoomComponent, {
+        width: '100vw',
+        maxWidth: '100vw',
+        disableClose: true,
+        panelClass: 'hedging-active-protection',
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialog closed', result);
+      });
+    }
   }
 
   ngOnDestroy(): void {

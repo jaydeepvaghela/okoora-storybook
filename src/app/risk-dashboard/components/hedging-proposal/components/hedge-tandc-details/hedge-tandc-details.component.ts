@@ -20,12 +20,12 @@ export class HedgeTandcDetailsComponent {
       </p>
       <ol class="disclosure-list">
         <div>
-          <li> Acknowledgment of Risks</li>
+          <li>1. Acknowledgment of Risks</li>
           <p class="paragraph">
             The Client explicitly confirms that they have read, understood, and accept all risks detailed in this disclosure and in the Transactions Terms, which form an integral part of this agreement. The Client acknowledges that they are solely responsible for assessing whether each transaction aligns with their financial goals, experience, and capabilities, taking into account their financial situation.
           </p>
           <p class="paragraph">
-            The Client acknowledges that this Risk Disclosure should be read in conjunction with the <a href="https://okoora.com/terms_of_services/transaction-terms-and-conditions/">Transactions Terms and Conditions</a>, which detail specific procedures, conditions, and requirements for executing and settling transactions. By proceeding with any transactions, the Client confirms their acceptance of both the Risk Disclosure and the Transactions Terms, assuming full responsibility for any risks, obligations, or losses associated with their trading activities.
+            The Client acknowledges that this Risk Disclosure should be read in conjunction with the <a target="_blank" href="https://okoora.com/terms_of_services/transaction-terms-and-conditions/">Transactions Terms and Conditions</a>, which detail specific procedures, conditions, and requirements for executing and settling transactions. By proceeding with any transactions, the Client confirms their acceptance of both the Risk Disclosure and the Transactions Terms, assuming full responsibility for any risks, obligations, or losses associated with their trading activities.
           </p>
           <p class="paragraph">
             The Client is strongly encouraged to seek independent financial and legal advice to fully understand the risks and implications of hedging transactions and high-risk financial instruments before proceeding.
@@ -33,7 +33,7 @@ export class HedgeTandcDetailsComponent {
         </div>
   
         <div>
-          <li> Irreversibility and Modification of Transactions</li>
+          <li>2. Irreversibility and Modification of Transactions</li>
           <p class="paragraph">
             Once a transaction is confirmed, the Client cannot cancel or modify it. Additional collateral requirements may be imposed during the transaction period based on changes in market conditions and at the company's discretion. If the Client fails to provide the required collateral promptly, the company may, but is not obligated to, take actions such as closing the transaction and forfeiting the collateral amount at its sole discretion and subject to applicable fees.
           </p>
@@ -41,14 +41,14 @@ export class HedgeTandcDetailsComponent {
         </div>
   
         <div>
-          <li> Market Risks and Fluctuations</li>
+          <li>3. Market Risks and Fluctuations</li>
           <p class="paragraph">
             Transactions in financial markets involving financial instruments carry special risks, and execution may result in significant losses, including the potential loss of the entire investment. The financial markets, particularly foreign exchange and interest rate markets, are subject to unpredictable influences and fluctuations beyond the service provider's control. These changes may result in significant discrepancies between projected future prices and actual settlement prices, possibly leading to a total loss of funds deposited by the Client.
           </p>
         </div>
   
         <div>
-          <li> Collateral Requirements and Potential Losses</li>
+          <li>4. Collateral Requirements and Potential Losses</li>
           <p class="paragraph">
             The Client understands that they may be required to deposit additional substantial collateral if market conditions shift against their position. Failure to do so may result in the forced closure of positions, which could lead to immediate losses and/or prevent future profits if market trends change.
           </p>
@@ -58,7 +58,7 @@ export class HedgeTandcDetailsComponent {
         </div>
   
         <div>
-          <li> Leverage, Options, and Structured Products</li>
+          <li>5. Leverage, Options, and Structured Products</li>
           <p class="paragraph">
             The Client understands that financial leverage due to low collateral requirements can amplify both potential gains and losses. High leverage may result in substantial losses, just as it may result in profits.
           </p>
@@ -68,7 +68,7 @@ export class HedgeTandcDetailsComponent {
         </div>
   
         <div>
-          <li> System, Network, and Execution Risks</li>
+          <li>6. System, Network, and Execution Risks</li>
           <p class="paragraph">
             Trading services are conducted through computer systems, networks, and the Internet. The Client acknowledges that trading may be subject to unforeseen interruptions or delays without prior notice. These interruptions may affect the Client’s ability to execute or cancel orders.
           </p>
