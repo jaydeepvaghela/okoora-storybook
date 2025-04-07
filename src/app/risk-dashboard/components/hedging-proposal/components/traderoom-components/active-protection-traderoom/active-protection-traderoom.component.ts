@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-active-protection-traderoom',
@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './active-protection-traderoom.component.scss'
 })
 export class ActiveProtectionTraderoomComponent {
-  hedgeStatus: number = 6;
+  @Input() hedgeStatus: number = 6;
   wantToPurchaseDeal: any;
 }
