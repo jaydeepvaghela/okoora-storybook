@@ -1088,6 +1088,7 @@
             }
 
             .mat-mdc-slider-visual-thumb {
+              z-index: 1;
               .mdc-slider__thumb-knob {
                 border-color: #175CD3;
                 width: 30px;

@@ -51,7 +51,7 @@ export const Default: Story = {
         collateralAmount: 1200.00,
         price: 300,
         expiryDate: "Jan 15, 2026",
-        hedgeStatus: 3,
+        hedgeStatus: 6,
     },
 };
 
