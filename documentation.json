@@ -400,7 +400,7 @@
     "components": [
         {
             "name": "ActiveProtectionTraderoomComponent",
-            "id": "component-ActiveProtectionTraderoomComponent-b6e9262299ca7be5c5da9ebd3c0cab4ad8c3e468ac71deda1135c6ff0dde3af4e080e2d66f24e8ba287fb2490805af17b8a40f4e7808cc19c0b4cf014e953ae2",
+            "id": "component-ActiveProtectionTraderoomComponent-9af19da14ee43a5cef2580c10228c2e7e502ae3315ba430e863a76539f09a0ce4e11a8ff5550d80d633e83fe0f556c314dac3b20e31bc7bcc9e06cff7a9fc782",
             "file": "src/app/risk-dashboard/components/hedging-proposal/components/traderoom-components/active-protection-traderoom/active-protection-traderoom.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -417,12 +417,84 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "collateralAmount",
+                    "defaultValue": "1200.00",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "expiryDate",
+                    "defaultValue": "'Jan 15, 2025'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
                     "name": "hedgeStatus",
                     "defaultValue": "6",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 15,
                     "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "price",
+                    "defaultValue": "300",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "primaryCurrency",
+                    "defaultValue": "'₪'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "primaryFlag",
+                    "defaultValue": "'/flags/ils-flag.svg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "protectedAmount",
+                    "defaultValue": "10000.00",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "secondaryCurrency",
+                    "defaultValue": "'$'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "secondaryFlag",
+                    "defaultValue": "'/flags/usd-flag.svg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string",
                     "decorators": []
                 }
             ],
@@ -436,10 +508,39 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 29
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "formatValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -470,13 +571,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\nimport { ConnectingTraderoomComponent } from \"../connecting-traderoom/connecting-traderoom.component\";\r\nimport { ConnectedTraderoomComponent } from '../connected-traderoom/connected-traderoom.component';\r\nimport { CancelledTraderoomComponent } from \"../cancelled-traderoom/cancelled-traderoom.component\";\r\nimport { AgentsBusyTraderoomComponent } from '../agents-busy-traderoom/agents-busy-traderoom.component';\r\n\r\n@Component({\r\n  selector: 'app-active-protection-traderoom',\r\n  imports: [CommonModule, ConnectingTraderoomComponent, ConnectedTraderoomComponent, CancelledTraderoomComponent, AgentsBusyTraderoomComponent],\r\n  templateUrl: './active-protection-traderoom.component.html',\r\n  styleUrl: './active-protection-traderoom.component.scss'\r\n})\r\nexport class ActiveProtectionTraderoomComponent {\r\n  @Input() hedgeStatus: number = 6; \r\n  // 2: Connecting, \r\n  // 3: Connected, \r\n  // 4: Cancelled, \r\n  // 6: Active Protection, \r\n  // 7: Agents Busy\r\n  wantToPurchaseDeal: any;\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\nimport { ConnectingTraderoomComponent } from \"../connecting-traderoom/connecting-traderoom.component\";\r\nimport { ConnectedTraderoomComponent } from '../connected-traderoom/connected-traderoom.component';\r\nimport { CancelledTraderoomComponent } from \"../cancelled-traderoom/cancelled-traderoom.component\";\r\nimport { AgentsBusyTraderoomComponent } from '../agents-busy-traderoom/agents-busy-traderoom.component';\r\n\r\n@Component({\r\n  selector: 'app-active-protection-traderoom',\r\n  imports: [CommonModule, ConnectingTraderoomComponent, ConnectedTraderoomComponent, CancelledTraderoomComponent, AgentsBusyTraderoomComponent],\r\n  templateUrl: './active-protection-traderoom.component.html',\r\n  styleUrl: './active-protection-traderoom.component.scss'\r\n})\r\nexport class ActiveProtectionTraderoomComponent {\r\n  @Input() hedgeStatus: number = 6;\r\n  @Input() protectedAmount: number = 10000.00;\r\n  @Input() primaryFlag: string = '/flags/ils-flag.svg';\r\n  @Input() secondaryFlag: string = '/flags/usd-flag.svg';\r\n  @Input() primaryCurrency: string = '₪';\r\n  @Input() secondaryCurrency: string = '$';\r\n  @Input() collateralAmount: number = 1200.00;\r\n  @Input() price: number = 300;\r\n  @Input() expiryDate: string = 'Jan 15, 2025'; \r\n  // 2: Connecting, \r\n  // 3: Connected, \r\n  // 4: Cancelled, \r\n  // 6: Active Protection, \r\n  // 7: Agents Busy\r\n  wantToPurchaseDeal: any;\r\n  formatValue(value:any) {\r\n    // Convert to float and fix to two decimal places\r\n    const num = parseFloat(value).toFixed(2);\r\n  \r\n    // Split integer and decimal parts\r\n    const [integerPart, decimalPart] = num.split(\".\");\r\n  \r\n    // Add comma after every two digits from the right (Indian style)\r\n    let lastThree = integerPart.slice(-3);\r\n    let otherNumbers = integerPart.slice(0, -3);\r\n    if (otherNumbers !== '') {\r\n      lastThree = ',' + lastThree;\r\n    }\r\n    const formattedInt = otherNumbers.replace(/\\B(?=(\\d{2})+(?!\\d))/g, \",\") + lastThree;\r\n  \r\n    return formattedInt + \".\" + decimalPart;\r\n  }\r\n}\r\n",
             "styleUrl": "./active-protection-traderoom.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"lock-rate-modal\">\r\n    <div class=\"lock-rate-close-btn\">\r\n        <button mat-dialog-close class=\"close-btn\">\r\n            <img src=\"images/white-close.svg\" *ngIf=\"hedgeStatus !== 6\" alt=\"Close\">\r\n            <img src=\"images/grey-close-icon.svg\" *ngIf=\"hedgeStatus === 6\" alt=\"Close\">\r\n        </button>\r\n    </div>\r\n\r\n    <div class=\"lock-rate-modal-container\" \r\n    [ngClass]=\"{'bg-blue': hedgeStatus === 7,'success-model': hedgeStatus === 6 }\">\r\n        <div class=\"lock-rate-modal-left-inner\" [ngClass]=\"{'centered': hedgeStatus === 6}\">\r\n            <div class=\"lock-rate-new-body\" [ngSwitch]=\"hedgeStatus\">\r\n                <div *ngSwitchCase=\"2\">\r\n                    <app-connecting-traderoom></app-connecting-traderoom>\r\n                </div>\r\n\r\n                <div *ngSwitchCase=\"3\">\r\n                    <app-connected-traderoom></app-connected-traderoom>\r\n                </div>\r\n\r\n                <div *ngSwitchCase=\"4\">\r\n                    <app-cancelled-traderoom></app-cancelled-traderoom>\r\n                </div>\r\n\r\n                <div *ngSwitchCase=\"6\">\r\n                    <div class=\"container active-protection-container\">\r\n                        <div class=\"column\">\r\n                            <p class=\"title traderoom-connect-title\">Protection Amount</p>\r\n                            <div class=\"content\">\r\n                                <p class=\"value price\">$10,000.00</p>\r\n                                <span><img height=\"25\" src=\"/flags/usd-flag.svg\" alt=\"notional\" /></span>\r\n                            </div>\r\n                            <div class=\"divider\"></div>\r\n                        </div>\r\n\r\n                        <div class=\"column\">\r\n                            <p class=\"title traderoom-connect-title\">Collateral</p>\r\n                            <div class=\"content\">\r\n                                <p class=\"value price\">₪1,200.00</p>\r\n                                <img height=\"25\" src=\"/flags/ils-flag.svg\" alt=\"collateral\" />\r\n                            </div>\r\n                            <div class=\"divider\"></div>\r\n                        </div>\r\n\r\n                        <div class=\"column\">\r\n                            <p class=\"title traderoom-connect-title\">Price</p>\r\n                            <div class=\"content\">\r\n                                <p class=\"value price\">₪300</p>\r\n                                <span><img height=\"25\" src=\"/flags/ils-flag.svg\" alt=\"currency\" /></span>\r\n                            </div>\r\n                            <div class=\"divider\"></div>\r\n                        </div>\r\n\r\n                        <div class=\"column\">\r\n                            <p class=\"title traderoom-connect-title\">Expiry Date</p>\r\n                            <div class=\"content\">\r\n                                <p class=\"value\">Jan 15, 2025</p>\r\n                                <img height=\"25\" src=\"/images/calendar.svg\" alt=\"calendar\" />\r\n                            </div>\r\n                            <div class=\"divider\"></div>\r\n                        </div>\r\n\r\n                        <div class=\"contacts-header\">\r\n                            <button class=\"back-to-dashboard\">Back to dashboard</button>\r\n                            <button class=\"continue-hedging\">Continue hedging</button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n                <div *ngSwitchCase=\"7\">\r\n                    <app-agents-busy-traderoom></app-agents-busy-traderoom>\r\n                </div>                \r\n            </div>\r\n        </div>\r\n\r\n        <!-- <div class=\"lock-rate-modal-right-inner\" [ngClass]=\"{'success': hedgeStatus === 6 }\" *ngIf=\"hedgeStatus !== 7\">\r\n            <picture *ngIf=\"hedgeStatus !== 6\">\r\n                <img src=\"/images/group-hedge-modal.svg\" alt=\"group\" />\r\n            </picture>\r\n            <div class=\"lock-rate-modal-purchase\">\r\n                <div class=\"img-wrapper\">\r\n                    \r\n                    <div class=\"img-modal\" *ngIf=\"hedgeStatus===6\">\r\n                        <img src=\"/images/clock-guard.svg\" alt=\"clock\" height=\"60px\" />\r\n                        <p class=\"traderoom-connect-title\">Protection <br>is Active</p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div> -->\r\n\r\n        <div class=\"lock-rate-modal-right-inner\" [ngClass]=\"{'success': hedgeStatus ===6 }\" *ngIf=\"hedgeStatus !== 7 \">\r\n            <img *ngIf=\"hedgeStatus!==6\" src=\"images/hedge-modal.svg\" alt=\"close\" />\r\n            <div class=\"lock-rate-modal-purchase\" *ngIf=\"hedgeStatus===6\">\r\n              <div class=\"img-wrapper\">\r\n                <picture>\r\n                    <img src=\"images/group-hedge-modal.svg\" alt=\"group\" />\r\n                  </picture>\r\n                  <div class=\"img-modal\">\r\n                    <img src=\"/images/clock-guard.svg\" alt=\"clock\" height=\"60px\" />\r\n                    <p class=\"traderoom-connect-title\">Protection <br>is Active</p>\r\n                  </div>\r\n              </div>\r\n              \r\n            </div>\r\n          </div>\r\n    </div>\r\n</div>"
+            "templateData": "<div class=\"lock-rate-modal\">\r\n    <div class=\"lock-rate-close-btn\">\r\n        <button mat-dialog-close class=\"close-btn\">\r\n            <img src=\"images/white-close.svg\" *ngIf=\"hedgeStatus !== 6\" alt=\"Close\">\r\n            <img src=\"images/grey-close-icon.svg\" *ngIf=\"hedgeStatus === 6\" alt=\"Close\">\r\n        </button>\r\n    </div>\r\n\r\n    <div class=\"lock-rate-modal-container\" \r\n    [ngClass]=\"{'bg-blue': hedgeStatus === 7,'success-model': hedgeStatus === 6 }\">\r\n        <div class=\"lock-rate-modal-left-inner\" [ngClass]=\"{'centered': hedgeStatus === 6}\">\r\n            <div class=\"lock-rate-new-body\" [ngSwitch]=\"hedgeStatus\">\r\n                <div *ngSwitchCase=\"2\">\r\n                    <app-connecting-traderoom></app-connecting-traderoom>\r\n                </div>\r\n\r\n                <div *ngSwitchCase=\"3\">\r\n                    <app-connected-traderoom></app-connected-traderoom>\r\n                </div>\r\n\r\n                <div *ngSwitchCase=\"4\">\r\n                    <app-cancelled-traderoom></app-cancelled-traderoom>\r\n                </div>\r\n\r\n                <div *ngSwitchCase=\"6\">\r\n                    <div class=\"container active-protection-container\">\r\n                        <div class=\"column\">\r\n                            <p class=\"title traderoom-connect-title\">Protection Amount</p>\r\n                            <div class=\"content\">\r\n                                <p class=\"value price\">{{secondaryCurrency}}{{formatValue(protectedAmount)}}</p>\r\n                                <span><img height=\"25\" [src]=\"secondaryFlag\" alt=\"notional\" /></span>\r\n                            </div>\r\n                            <div class=\"divider\"></div>\r\n                        </div>\r\n\r\n                        <div class=\"column\">\r\n                            <p class=\"title traderoom-connect-title\">Collateral</p>\r\n                            <div class=\"content\">\r\n                                <p class=\"value price\">{{primaryCurrency}}{{formatValue(collateralAmount)}}</p>\r\n                                <img height=\"25\" [src]=\"primaryFlag\" alt=\"collateral\" />\r\n                            </div>\r\n                            <div class=\"divider\"></div>\r\n                        </div>\r\n\r\n                        <div class=\"column\">\r\n                            <p class=\"title traderoom-connect-title\">Price</p>\r\n                            <div class=\"content\">\r\n                                <p class=\"value price\">{{primaryCurrency}}{{formatValue(price)}}</p>\r\n                                <span><img height=\"25\" [src]=\"primaryFlag\" alt=\"currency\" /></span>\r\n                            </div>\r\n                            <div class=\"divider\"></div>\r\n                        </div>\r\n\r\n                        <div class=\"column\">\r\n                            <p class=\"title traderoom-connect-title\">Expiry Date</p>\r\n                            <div class=\"content\">\r\n                                <p class=\"value\">{{expiryDate}}</p>\r\n                                <img height=\"25\" src=\"/images/calendar.svg\" alt=\"calendar\" />\r\n                            </div>\r\n                            <div class=\"divider\"></div>\r\n                        </div>\r\n\r\n                        <div class=\"contacts-header\">\r\n                            <button class=\"back-to-dashboard\">Back to dashboard</button>\r\n                            <button class=\"continue-hedging\">Continue hedging</button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n                <div *ngSwitchCase=\"7\">\r\n                    <app-agents-busy-traderoom></app-agents-busy-traderoom>\r\n                </div>                \r\n            </div>\r\n        </div>\r\n\r\n        <!-- <div class=\"lock-rate-modal-right-inner\" [ngClass]=\"{'success': hedgeStatus === 6 }\" *ngIf=\"hedgeStatus !== 7\">\r\n            <picture *ngIf=\"hedgeStatus !== 6\">\r\n                <img src=\"/images/group-hedge-modal.svg\" alt=\"group\" />\r\n            </picture>\r\n            <div class=\"lock-rate-modal-purchase\">\r\n                <div class=\"img-wrapper\">\r\n                    \r\n                    <div class=\"img-modal\" *ngIf=\"hedgeStatus===6\">\r\n                        <img src=\"/images/clock-guard.svg\" alt=\"clock\" height=\"60px\" />\r\n                        <p class=\"traderoom-connect-title\">Protection <br>is Active</p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div> -->\r\n\r\n        <div class=\"lock-rate-modal-right-inner\" [ngClass]=\"{'success': hedgeStatus ===6 }\" *ngIf=\"hedgeStatus !== 7 \">\r\n            <img *ngIf=\"hedgeStatus!==6\" src=\"images/hedge-modal.svg\" alt=\"close\" />\r\n            <div class=\"lock-rate-modal-purchase\" *ngIf=\"hedgeStatus===6\">\r\n              <div class=\"img-wrapper\">\r\n                <picture>\r\n                    <img src=\"images/group-hedge-modal.svg\" alt=\"group\" />\r\n                  </picture>\r\n                  <div class=\"img-modal\">\r\n                    <img src=\"/images/clock-guard.svg\" alt=\"clock\" height=\"60px\" />\r\n                    <p class=\"traderoom-connect-title\">Protection <br>is Active</p>\r\n                  </div>\r\n              </div>\r\n              \r\n            </div>\r\n          </div>\r\n    </div>\r\n</div>"
         },
         {
             "name": "AgentsBusyTraderoomComponent",
@@ -3023,7 +3124,7 @@
         },
         {
             "name": "HedgeAllDrawerComponent",
-            "id": "component-HedgeAllDrawerComponent-35107704aaf5ec02357ef833b65e8777e877a3602770ca40e4aae2f044846fd39f19710722a85544b31d785d2aea445d56f961569a4f75232a4d3b18f318515b",
+            "id": "component-HedgeAllDrawerComponent-6c731bcd49524a20fd18a96308cd304044e959121a7e402eeee055bc0c360619a8a06156a4f29b6b47889518a2dc572758baf90b3f1ca8f680729b91ffe630d8",
             "file": "src/app/risk-dashboard/components/hedging-proposal/components/hedge-all-drawer/hedge-all-drawer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3388,7 +3489,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { HedgingDataService } from '../../hedging-data.service';\r\nimport { MatDialog } from '@angular/material/dialog';\r\nimport { CommonModule } from '@angular/common';\r\nimport { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-details.component';\r\nimport { hedgeAllRows } from '../../hedging-static-data';\r\nimport { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';\r\nimport { ActiveProtectionTraderoomComponent } from '../traderoom-components/active-protection-traderoom/active-protection-traderoom.component';\r\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';\r\n\r\n@Component({\r\n  selector: 'app-hedge-all-drawer',\r\n  imports: [MatCheckboxModule, CommonModule, NgbTooltipModule, MatProgressSpinnerModule],\r\n  templateUrl: './hedge-all-drawer.component.html',\r\n  styleUrl: './hedge-all-drawer.component.scss'\r\n})\r\nexport class HedgeAllDrawerComponent {\r\n  @Output() closeDrawer = new EventEmitter<void>();\r\n  showHedgeAllDetails: boolean = false;\r\n  showCompleteHedgeDetails: boolean = false;\r\n  multipleHedgeData = hedgeAllRows;\r\n  showProgressbar = false;\r\n  mode = 'indeterminate'; // or 'determinate'\r\n  intervalId: any;\r\n\r\n  initialHedgeInfo = {\r\n    \"price\": 0,\r\n    \"requiredCollateral\": 48.832,\r\n    \"totalHedgeAmount\": 100.35,\r\n    \"totalHedgePercent\": 23.5625,\r\n    \"avgHedgeRate\": 4.4971,\r\n    \"liabilityRate\": 4.4971\r\n  }\r\n  formattedDateRange: string = '';\r\n  specificSelectedRow: any;\r\n  hedgeAllbtnClicked: boolean = false;\r\n  tandcConfirmed: boolean = false;\r\n\r\n  constructor(private hedgeService: HedgingDataService, private dialog: MatDialog) { }\r\n\r\n  ngOnInit() {\r\n    this.setFormattedDateRange()\r\n    console.log('(this.multipleHedgeData)', this.multipleHedgeData);\r\n    this.intervalId = setInterval(() => {\r\n      this.showProgressbar = true;\r\n      setTimeout(() => {\r\n        this.showProgressbar = false;\r\n      }, 3000)\r\n    }, 30000);\r\n  }\r\n\r\n  formatDate(dateStr: string): string {\r\n    const [day, month, year] = dateStr.split('/');\r\n    const date = new Date(`${year}-${month}-${day}`);\r\n    return date.toLocaleDateString('en-GB', {\r\n      month: 'long', // full month name like January\r\n      year: 'numeric'\r\n    });\r\n  }\r\n\r\n  formatAmount(amount: number): string {\r\n    return new Intl.NumberFormat('en-US', {\r\n      style: 'currency',\r\n      currency: 'CHF'\r\n    }).format(amount);\r\n  }\r\n\r\n  setFormattedDateRange(): void {\r\n    if (!this.multipleHedgeData.length) return;\r\n\r\n    const parseDate = (dateStr: string): Date => {\r\n      const [day, month, year] = dateStr.split('/').map(Number);\r\n      return new Date(year, month - 1, day);\r\n    };\r\n\r\n    const formatDate = (date: Date): string =>\r\n      `${date.getDate().toString().padStart(2, '0')} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`;\r\n\r\n    const sortedDates = this.multipleHedgeData\r\n      .map(item => parseDate(item.expiryDate))\r\n      .sort((a, b) => a.getTime() - b.getTime());\r\n\r\n    const startDate = formatDate(sortedDates[0]);\r\n    const endDate = formatDate(sortedDates[sortedDates.length - 1]);\r\n\r\n    this.formattedDateRange = `${startDate} - ${endDate}`;\r\n  }\r\n\r\n  onRowClick(row: any) {\r\n    console.log('row',row)\r\n    this.specificSelectedRow = row;\r\n  }\r\n\r\n  formatMonthYear(dateStr: string): string {\r\n    const [day, month, year] = dateStr.split('/');\r\n    const date = new Date(+year, +month - 1, +day); // month is 0-indexed\r\n    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });\r\n  }\r\n  \r\n\r\n  openConditionsDisclosure() {\r\n    const dialogRef = this.dialog.open(HedgeTandcDetailsComponent, {\r\n      width: '627px',\r\n      disableClose: true,\r\n      panelClass: 'terms-disclosure-hedging',\r\n      data: { someData: 'pass any data if needed' }\r\n    });\r\n\r\n    dialogRef.afterClosed().subscribe(result => {\r\n      if (result === 'confirmed') {\r\n        this.tandcConfirmed = true; // Set the confirmation flag to true\r\n      }\r\n    });\r\n  }\r\n\r\n  onHedgeAllBtnClick() {\r\n    this.hedgeAllbtnClicked = true;\r\n    // if (this.tandcConfirmed) {\r\n    //   const dialogRef = this.dialog.open(ActiveProtectionTraderoomComponent, {\r\n    //     width: '100vw',\r\n    //     maxWidth: '100vw',\r\n    //     disableClose: true,\r\n    //     panelClass: 'hedging-active-protection',  \r\n    //   });\r\n  \r\n    //   dialogRef.afterClosed().subscribe(result => {\r\n    //     console.log('Dialog closed', result);\r\n    //   });\r\n    // }\r\n    \r\n  }\r\n\r\n  onCheckboxChange(event:any) {\r\n    this.hedgeAllbtnClicked = false\r\n    if (!event.checked) {\r\n      this.tandcConfirmed = false;\r\n    } else {\r\n      this.tandcConfirmed = true;\r\n    }\r\n  }\r\n\r\n  closeHedgeDrawer() {\r\n    this.tandcConfirmed  = false;\r\n    this.hedgeAllbtnClicked = false;\r\n    this.hedgeService.closeHedgeAllDrawer();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { HedgingDataService } from '../../hedging-data.service';\r\nimport { MatDialog } from '@angular/material/dialog';\r\nimport { CommonModule } from '@angular/common';\r\nimport { HedgeTandcDetailsComponent } from '../hedge-tandc-details/hedge-tandc-details.component';\r\nimport { hedgeAllRows } from '../../hedging-static-data';\r\nimport { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';\r\nimport { ActiveProtectionTraderoomComponent } from '../traderoom-components/active-protection-traderoom/active-protection-traderoom.component';\r\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';\r\n\r\n@Component({\r\n  selector: 'app-hedge-all-drawer',\r\n  imports: [MatCheckboxModule, CommonModule, NgbTooltipModule, MatProgressSpinnerModule],\r\n  templateUrl: './hedge-all-drawer.component.html',\r\n  styleUrl: './hedge-all-drawer.component.scss'\r\n})\r\nexport class HedgeAllDrawerComponent {\r\n  @Output() closeDrawer = new EventEmitter<void>();\r\n  showHedgeAllDetails: boolean = false;\r\n  showCompleteHedgeDetails: boolean = false;\r\n  multipleHedgeData = hedgeAllRows;\r\n  showProgressbar = false;\r\n  mode = 'indeterminate'; // or 'determinate'\r\n  intervalId: any;\r\n\r\n  initialHedgeInfo = {\r\n    \"price\": 0,\r\n    \"requiredCollateral\": 48.832,\r\n    \"totalHedgeAmount\": 100.35,\r\n    \"totalHedgePercent\": 23.5625,\r\n    \"avgHedgeRate\": 4.4971,\r\n    \"liabilityRate\": 4.4971\r\n  }\r\n  formattedDateRange: string = '';\r\n  specificSelectedRow: any;\r\n  hedgeAllbtnClicked: boolean = false;\r\n  tandcConfirmed: boolean = false;\r\n\r\n  constructor(private hedgeService: HedgingDataService, private dialog: MatDialog) { }\r\n\r\n  ngOnInit() {\r\n    this.setFormattedDateRange()\r\n    console.log('(this.multipleHedgeData)', this.multipleHedgeData);\r\n    this.intervalId = setInterval(() => {\r\n      this.showProgressbar = true;\r\n      setTimeout(() => {\r\n        this.showProgressbar = false;\r\n      }, 3000)\r\n    }, 30000);\r\n  }\r\n\r\n  formatDate(dateStr: string): string {\r\n    const [day, month, year] = dateStr.split('/');\r\n    const date = new Date(`${year}-${month}-${day}`);\r\n    return date.toLocaleDateString('en-GB', {\r\n      month: 'long', // full month name like January\r\n      year: 'numeric'\r\n    });\r\n  }\r\n\r\n  formatAmount(amount: number): string {\r\n    return new Intl.NumberFormat('en-US', {\r\n      style: 'currency',\r\n      currency: 'CHF'\r\n    }).format(amount);\r\n  }\r\n\r\n  setFormattedDateRange(): void {\r\n    if (!this.multipleHedgeData.length) return;\r\n\r\n    const parseDate = (dateStr: string): Date => {\r\n      const [day, month, year] = dateStr.split('/').map(Number);\r\n      return new Date(year, month - 1, day);\r\n    };\r\n\r\n    const formatDate = (date: Date): string =>\r\n      `${date.getDate().toString().padStart(2, '0')} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`;\r\n\r\n    const sortedDates = this.multipleHedgeData\r\n      .map(item => parseDate(item.expiryDate))\r\n      .sort((a, b) => a.getTime() - b.getTime());\r\n\r\n    const startDate = formatDate(sortedDates[0]);\r\n    const endDate = formatDate(sortedDates[sortedDates.length - 1]);\r\n\r\n    this.formattedDateRange = `${startDate} - ${endDate}`;\r\n  }\r\n\r\n  onRowClick(row: any) {\r\n    console.log('row',row)\r\n    this.specificSelectedRow = row;\r\n  }\r\n\r\n  formatMonthYear(dateStr: string): string {\r\n    const [day, month, year] = dateStr.split('/');\r\n    const date = new Date(+year, +month - 1, +day); // month is 0-indexed\r\n    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });\r\n  }\r\n  \r\n\r\n  openConditionsDisclosure() {\r\n    const dialogRef = this.dialog.open(HedgeTandcDetailsComponent, {\r\n      width: '627px',\r\n      disableClose: true,\r\n      panelClass: 'terms-disclosure-hedging',\r\n      data: { someData: 'pass any data if needed' }\r\n    });\r\n\r\n    dialogRef.afterClosed().subscribe(result => {\r\n      if (result === 'confirmed') {\r\n        this.tandcConfirmed = true; // Set the confirmation flag to true\r\n      }\r\n    });\r\n  }\r\n\r\n  onHedgeAllBtnClick() {\r\n    this.hedgeAllbtnClicked = true;\r\n    if (this.tandcConfirmed) {\r\n      const dialogRef = this.dialog.open(ActiveProtectionTraderoomComponent, {\r\n        width: '100vw',\r\n        maxWidth: '100vw',\r\n        disableClose: true,\r\n        panelClass: 'hedging-active-protection',  \r\n      });\r\n  \r\n      dialogRef.afterClosed().subscribe(result => {\r\n        console.log('Dialog closed', result);\r\n      });\r\n    }\r\n    \r\n  }\r\n\r\n  onCheckboxChange(event:any) {\r\n    this.hedgeAllbtnClicked = false\r\n    if (!event.checked) {\r\n      this.tandcConfirmed = false;\r\n    } else {\r\n      this.tandcConfirmed = true;\r\n    }\r\n  }\r\n\r\n  closeHedgeDrawer() {\r\n    this.tandcConfirmed  = false;\r\n    this.hedgeAllbtnClicked = false;\r\n    this.hedgeService.closeHedgeAllDrawer();\r\n  }\r\n}\r\n",
             "styleUrl": "./hedge-all-drawer.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -7408,7 +7509,7 @@
                 "linktype": "component",
                 "name": "ActiveProtectionTraderoomComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {

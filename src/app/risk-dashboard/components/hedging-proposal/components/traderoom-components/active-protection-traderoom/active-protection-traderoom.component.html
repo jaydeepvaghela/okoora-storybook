@@ -27,8 +27,8 @@
                         <div class="column">
                             <p class="title traderoom-connect-title">Protection Amount</p>
                             <div class="content">
-                                <p class="value price">$10,000.00</p>
-                                <span><img height="25" src="/flags/usd-flag.svg" alt="notional" /></span>
+                                <p class="value price">{{secondaryCurrencySign}}{{formatValue(protectedAmount)}}</p>
+                                <span><img height="25" [src]="secondaryFlag" alt="notional" /></span>
                             </div>
                             <div class="divider"></div>
                         </div>
@@ -36,8 +36,8 @@
                         <div class="column">
                             <p class="title traderoom-connect-title">Collateral</p>
                             <div class="content">
-                                <p class="value price">₪1,200.00</p>
-                                <img height="25" src="/flags/ils-flag.svg" alt="collateral" />
+                                <p class="value price">{{primaryCurrencySign}}{{formatValue(collateralAmount)}}</p>
+                                <img height="25" [src]="primaryFlag" alt="collateral" />
                             </div>
                             <div class="divider"></div>
                         </div>
@@ -45,8 +45,8 @@
                         <div class="column">
                             <p class="title traderoom-connect-title">Price</p>
                             <div class="content">
-                                <p class="value price">₪300</p>
-                                <span><img height="25" src="/flags/ils-flag.svg" alt="currency" /></span>
+                                <p class="value price">{{primaryCurrencySign}}{{formatValue(price)}}</p>
+                                <span><img height="25" [src]="primaryFlag" alt="currency" /></span>
                             </div>
                             <div class="divider"></div>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="column">
                             <p class="title traderoom-connect-title">Expiry Date</p>
                             <div class="content">
-                                <p class="value">Jan 15, 2025</p>
+                                <p class="value">{{expiryDate}}</p>
                                 <img height="25" src="/images/calendar.svg" alt="calendar" />
                             </div>
                             <div class="divider"></div>
