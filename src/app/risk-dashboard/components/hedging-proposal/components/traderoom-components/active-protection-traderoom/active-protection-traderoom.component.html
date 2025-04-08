@@ -1,6 +1,6 @@
 <div class="lock-rate-modal">
     <div class="lock-rate-close-btn">
-        <button mat-dialog-close class="close-btn">
+        <button mat-dialog-close class="close-btn" (click)="closeDialog()">
             <img src="images/white-close.svg" *ngIf="hedgeStatus !== 6" alt="Close">
             <img src="images/grey-close-icon.svg" *ngIf="hedgeStatus === 6" alt="Close">
         </button>
@@ -43,9 +43,9 @@
                         </div>
 
                         <div class="column">
-                            <p class="title traderoom-connect-title">Price</p>
+                            <p class="title traderoom-connect-title">Fee</p>
                             <div class="content">
-                                <p class="value price">₪300</p>
+                                <p class="value price">₪0</p>
                                 <span><img height="25" src="/flags/ils-flag.svg" alt="currency" /></span>
                             </div>
                             <div class="divider"></div>
@@ -54,15 +54,15 @@
                         <div class="column">
                             <p class="title traderoom-connect-title">Expiry Date</p>
                             <div class="content">
-                                <p class="value">Jan 15, 2025</p>
+                                <p class="value">27/08/2023</p>
                                 <img height="25" src="/images/calendar.svg" alt="calendar" />
                             </div>
                             <div class="divider"></div>
                         </div>
 
                         <div class="contacts-header">
-                            <button class="back-to-dashboard">Back to dashboard</button>
-                            <button class="continue-hedging">Continue hedging</button>
+                            <button class="back-to-dashboard" (click)="backToDashboard()">Back to dashboard</button>
+                            <button class="continue-hedging" (click)="continueHedging()">Continue hedging</button>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
         </div> -->
 
         <div class="lock-rate-modal-right-inner" [ngClass]="{'success': hedgeStatus ===6 }" *ngIf="hedgeStatus !== 7 ">
-            <img *ngIf="hedgeStatus!==6" src="images/hedge-modal.svg" alt="close" />
+            <img class="img-hedge" *ngIf="hedgeStatus!==6" src="images/hedge-modal.svg" alt="close" />
             <div class="lock-rate-modal-purchase" *ngIf="hedgeStatus===6">
               <div class="img-wrapper">
                 <picture>
@@ -100,7 +100,6 @@
                     <p class="traderoom-connect-title">Protection <br>is Active</p>
                   </div>
               </div>
-              
             </div>
           </div>
     </div>
