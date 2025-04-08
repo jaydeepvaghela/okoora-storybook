@@ -143,6 +143,8 @@ export class HedgeAllDrawerComponent {
   closeHedgeDrawer() {
     this.tandcConfirmed  = false;
     this.hedgeAllbtnClicked = false;
+    this.showHedgeAllDetails = false;
+    this.showCompleteHedgeDetails = false;
     this.hedgeService.closeHedgeAllDrawer();
   }
 }

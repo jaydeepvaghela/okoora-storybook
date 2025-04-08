@@ -1,9 +1,22 @@
 import { ActiveProtectionTraderoomComponent } from "./active-protection-traderoom.component";
-import { Meta,StoryObj } from "@storybook/angular";
+import { Meta,StoryObj,moduleMetadata  } from "@storybook/angular";
+import { MatDialogRef } from "@angular/material/dialog";
 
 const meta: Meta<ActiveProtectionTraderoomComponent> = {
     title: "Components/Risk-Manager/Active Protection Traderoom",
     component: ActiveProtectionTraderoomComponent,
+    decorators: [
+        moduleMetadata({
+          providers: [
+            {
+              provide: MatDialogRef,
+              useValue: {
+                close: () => {} // mock implementation
+              }
+            }
+          ]
+        })
+      ],
     argTypes: {
         protectedAmount:{control:'number'},
         primaryFlag:{control:'file'},
@@ -38,7 +51,7 @@ export const Default: Story = {
         collateralAmount: 1200.00,
         price: 300,
         expiryDate: "Jan 15, 2026",
-        hedgeStatus: 6,
+        hedgeStatus: 3,
     },
 };
 

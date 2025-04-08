@@ -16,8 +16,8 @@ import { HedgingDataService } from '../../../hedging-data.service';
 export class ActiveProtectionTraderoomComponent {
   @Input() hedgeStatus: number = 6;
   @Input() protectedAmount: number = 10000.00;
-  @Input() primaryFlag: string = '/flags/ils-flag.svg';
-  @Input() secondaryFlag: string = '/flags/usd-flag.svg';
+  @Input() primaryFlag: string | string[] = '/flags/ils-flag.svg';
+  @Input() secondaryFlag: string | string[] = '/flags/usd-flag.svg';
   @Input() primaryCurrencySign: string = '₪';
   @Input() secondaryCurrencySign: string = '$';
   @Input() collateralAmount: number = 1200.00;

@@ -1,6 +1,10 @@
 @import '../../../../../../../assets/scss/variable';
 
 ::ng-deep {
+  .cdk-global-scrollblock:has(.hedging-active-protection) {
+    top: 0 !important;
+    overflow: hidden;
+  }
   .hedging-active-protection .mat-mdc-dialog-container {
     width: 100%;
     max-width: 882px;
@@ -17,7 +21,7 @@
     @media screen and (max-width: 480px) {
       max-width: 350px !important;
     }
-
+  }
     .mat-mdc-dialog-surface {
       border-radius: 20px !important;
     }
@@ -72,7 +76,7 @@
         .column {
 
           &:not(:first-child) {
-            padding: 10px 0px 0 0px;
+            padding:6px 0px 0 0px;
 
             @media screen and (max-width: 540px) {
               padding: 5px 5px 0 5px;
@@ -121,22 +125,19 @@
           font-family: 'Manrope';
           font-size: 26px;
           font-weight: 700;
-          line-height: 40px;  // temporary set it as 40, it was 44px
+          line-height:1;  // temporary set it as 40, it was 44px
           letter-spacing: 0.78px;
 
           @media screen and (max-width: 1440px) {
             font-size: 18px;
-            line-height: 32px;
           }
 
           @media screen and (max-width: 540px) {
             font-size: 14px;
-            line-height: 24px;
           }
 
           @media screen and (max-width: 480px) {
             font-size: 12px;
-            line-height: 24px;
           }
         }
 
@@ -153,7 +154,7 @@
 
           &.active-protection-container {
             width: 100%;  
-            padding: 75px 72px 28px 70px;
+            padding: 75px 67px 28px 67px;
 
             @media screen and (max-width: 1440px) {
               padding: 40px 32px 0 30px;
@@ -186,7 +187,8 @@
             .content {
               display: flex; 
               justify-content: space-between;
-
+              align-items: center;
+              margin:6px 0 18px;
               img {
                 width: 32px;
                 height: 32px;
@@ -197,6 +199,9 @@
                   border-radius: 20px;
                 }
                 
+              }
+              @media screen and (max-width:1440px) {
+                margin: 4px 0 10px;
               }
             }
 
@@ -398,7 +403,7 @@
         margin-bottom: 0em;
       }
       img {
-        align-items: left;
+        align-items: center;
       }
     }
     .lock-rate-modal-left-inner.centered {
@@ -618,7 +623,6 @@
         }
       }
     }
-  }
   .mat-mdc-dialog-surface {
     border-radius: 24px !important;
   }
