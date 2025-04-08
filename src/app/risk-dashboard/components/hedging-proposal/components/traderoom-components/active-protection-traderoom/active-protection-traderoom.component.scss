@@ -4,11 +4,23 @@
   .hedging-active-protection .mat-mdc-dialog-container {
     width: 100%;
     max-width: 882px;
+    margin: auto;
 
     @media screen and (max-width: 1440px) {
       max-width: 700px !important;
     }
-    margin: auto;
+
+    @media screen and (max-width: 540px) {
+      max-width: 490px !important;
+    }
+
+    @media screen and (max-width: 480px) {
+      max-width: 350px !important;
+    }
+
+    .mat-mdc-dialog-surface {
+      border-radius: 20px !important;
+    }
     .lock-rate-modal-container {
       &.success-model {
         flex-direction: row-reverse !important;
@@ -18,6 +30,11 @@
         }
         .lock-rate-modal-right-inner {
           width: 50% !important;
+
+          @media screen and (max-width: 480px) {
+            width: 45% !important;
+            
+          }
         }
         .lock-rate-new-body {
           width: 100% !important;
@@ -44,14 +61,32 @@
           height: $divider-height;
           margin: $divider-margin 0;
           border-top: 1.2px dashed #ccc;
+
+          @media screen and (max-width: 540px) {
+            margin: 2px 0;
+            border-top: 1px dashed #ccc;
+          }
         }
 
         // Style the columns
         .column {
+
+          &:not(:first-child) {
+            padding: 10px 0px 0 0px;
+
+            @media screen and (max-width: 540px) {
+              padding: 5px 5px 0 5px;
+            }
+  
+          }
           //   width: $column-width;
-          padding: 10px 10px 0 10px;
+         
           display: inline-block;
           vertical-align: top;
+
+          @media screen and (max-width: 540px) {
+            padding: 5px 5px 0 5px;
+          }
 
           //   align-items: center;
           p {
@@ -66,6 +101,10 @@
           font-weight: 700;
           // line-height: 44px;
           letter-spacing: 0.36px;
+
+          @media screen and (max-width: 1024px) {
+            font-size: 10px;
+          }
         }
 
         // Style the titles and values
@@ -84,6 +123,21 @@
           font-weight: 700;
           line-height: 40px;  // temporary set it as 40, it was 44px
           letter-spacing: 0.78px;
+
+          @media screen and (max-width: 1440px) {
+            font-size: 18px;
+            line-height: 32px;
+          }
+
+          @media screen and (max-width: 540px) {
+            font-size: 14px;
+            line-height: 24px;
+          }
+
+          @media screen and (max-width: 480px) {
+            font-size: 12px;
+            line-height: 24px;
+          }
         }
 
         // Style the container
@@ -99,14 +153,34 @@
 
           &.active-protection-container {
             width: 100%;  
-            padding: 75px 72px 18px 70px;
+            padding: 75px 72px 28px 70px;
+
+            @media screen and (max-width: 1440px) {
+              padding: 40px 32px 0 30px;
+            }
+
+            @media screen and (max-width: 540px) {
+              padding: 30px 15px 0 15px;
+            }
+
+            @media screen and (max-width: 480px) {
+              padding: 30px 8px 0 8px;
+            }
             
             .traderoom-connect-title {
               color: #2947F2;
               font-family: 'Manrope';
               font-size: 14px;
               font-weight: 400;
-              line-height: 10px;
+              line-height: 12px;
+
+              @media screen and (max-width: 1440px) {
+                font-size: 13px;
+              }
+
+              @media screen and (max-width: 480px) {
+                font-size: 10px;
+              }
             }
 
             .content {
@@ -116,6 +190,13 @@
               img {
                 width: 32px;
                 height: 32px;
+                border-radius: 32px;
+                @media screen and (max-width: 540px) {
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 20px;
+                }
+                
               }
             }
 
@@ -137,15 +218,30 @@
       position: relative;
       height: 489px;
 
+      &:has(.success-model) {
+        @media screen and (max-width: 480px) {
+          height: 300px !important;         
+        }
+      }
+
       @media only screen and (max-width: 1440px) {
         width: 700px !important;
-        height: 450px;
+        height: 400px;
+      }
+
+      @media screen and (max-width: 540px) {
+        height: 300px !important;
+      }
+
+      
+      @media screen and (max-width: 480px) {
+        height: 240px !important;
       }
 
       @media only screen and (max-width: 600px) {
         max-width: 100% !important;
         width: 100% !important;
-        margin: 0 15px;
+        // margin: 0 15px;
         height: 90%;
       }
     }
@@ -219,30 +315,72 @@
       &:has(.connecting-traderoom-wrapper) {
         align-items: flex-start;
         justify-content: flex-start;
-        padding-left: 88px;
-        padding-right: 36px;
-        padding-top: 93px;
+        padding: 88px 36px 0 93px;
+
+        @media screen and (max-width: 1440px) {
+          padding: 80px 26px 0 68px;
+        }
+
+        @media screen and (max-width: 540px) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+        }
       }
 
       &:has(.connected-traderoom-wrapper) {
-        padding-left: 88px;
-        padding-right: 36px;
-        padding-top: 218px;
         align-items: flex-start;
         justify-content: flex-start;
+        padding: 218px 36px 0 88px;
+        
+
+        @media screen and (max-width: 1440px) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+          padding: 0 40px;
+        }
+
+        @media screen and (max-width: 540px) {
+          padding: 60px 25px 40px 30px;
+        }
       }
 
       &:has(.cancelled-traderoom-wrapper) {
-        padding-left: 91px;
-        padding-right: 33px;
-        padding-top: 112px;
         align-items: flex-start;
         justify-content: flex-start;
+        padding: 112px 33px 0 91px;
+
+        @media screen and (max-width: 1440px) {
+          padding: 80px 26px 0 68px;
+        }
+
+        @media screen and (max-width: 540px) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+        }
       }
 
       &:has(.agents-busy-wrapper) {
         padding-top: 78px;
-        align-items: flex-start;    
+        align-items: flex-start;   
+
+        @media screen and (max-width: 1024px) {
+          padding: 40px;
+          
+        }
+        
+        @media screen and (max-width: 540px) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          
+        }
       }
 
       .title {
@@ -278,15 +416,50 @@
       .img-wrapper {
         display: flex;
         gap: 26px;
+        margin-top: 50px;
+
+        @media screen and (max-width: 1440px) {
+          gap: 18px;
+        }
+
+        @media screen and (max-width: 540px) {
+          margin-top: 15px;
+          gap: 14px;
+        }
+
+        @media screen and (max-width: 480px) {
+          gap: 8px;
+        }
+
+
+
+        img {
+          @media screen and (max-width: 540px) {
+            width: 50px;
+          }
+        }
       }
       .img-modal {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
 
+        @media screen and (max-width: 1440px) {
+          margin-top: 20px;
+        }
+
+        @media screen and (max-width: 540px) {
+          margin-top: 10px;
+        }
+
         img {
           width: 82px;
           height: 82px;
+
+          @media screen and (max-width: 1440px) {
+            width: 60px;
+            height: 60px;
+          }
         }
 
         .traderoom-connect-title {
@@ -297,6 +470,21 @@
           line-height: 44px !important;
           letter-spacing: 1.14px;
           margin-top: 14px;
+
+          @media screen and (max-width: 1440px) {
+            font-size: 25px !important;
+            line-height: 30px !important;
+          }
+
+          @media screen and (max-width: 540px) {
+            font-size: 18px !important;
+            line-height: 20px !important; 
+          }
+
+          @media screen and (max-width: 480px) {
+            font-size: 13px !important;
+            line-height: 14px !important;
+          }
         }
       }
 
@@ -312,13 +500,15 @@
     }
     .lock-rate-modal-right-inner {
       display: flex;
-      // flex-direction: row;
       background: #2947f2;
       justify-content: flex-end;
       width: 45%;
-      img {
-        width: 81%;
+      .img-hedge {
+        width: 86%;
         float: right;
+        @media screen and (min-width: 1600px) {
+          margin-top: 35px;
+        }
       }
     }
     .success {
@@ -337,8 +527,19 @@
       align-items: flex-end;
       gap: 13px;
       width: 100%;
-      margin-top: 16px;
+      margin-top: 25px;
       justify-content: flex-end;
+      
+
+      @media screen and (max-width: 540px) {
+        margin-top: 15px;
+        gap: 8px;
+      }
+
+      @media screen and (max-width: 480px) {
+        justify-content: space-between;
+        padding: 0 4px !important;
+      }
       .back-to-dashboard {
         display: flex;
         height: 35px;
@@ -356,10 +557,21 @@
         font-weight: 600;
         line-height: 35px; /* 291.667% */
         letter-spacing: 0.36px;
+
         &:hover {
           border: 1px solid #2947f2;
           background: #2947f2;
           color: $white;
+        }
+
+        @media screen and (max-width: 540px) {
+          font-size: 10px;
+          letter-spacing: 0;
+        }
+
+        @media screen and (max-width: 480px) {
+          font-size: 9px;
+          padding: 0 4px !important;
         }
       }
       .continue-hedging {
@@ -384,6 +596,16 @@
           border: 1px solid #c9d1f9;
           background: #f5f7fa;
           color: #2947f2;
+        }
+
+        @media screen and (max-width: 540px) {
+          font-size: 10px;
+          letter-spacing: 0;
+        }
+
+        @media screen and (max-width: 480px) {
+          font-size: 8px;
+          padding: 0 4px !important;
         }
       }
       @media only screen and (max-width: 1440px) {

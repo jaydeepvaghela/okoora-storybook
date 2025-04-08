@@ -4,6 +4,8 @@ import { ConnectingTraderoomComponent } from "../connecting-traderoom/connecting
 import { ConnectedTraderoomComponent } from '../connected-traderoom/connected-traderoom.component';
 import { CancelledTraderoomComponent } from "../cancelled-traderoom/cancelled-traderoom.component";
 import { AgentsBusyTraderoomComponent } from '../agents-busy-traderoom/agents-busy-traderoom.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import { HedgingDataService } from '../../../hedging-data.service';
 
 @Component({
   selector: 'app-active-protection-traderoom',
@@ -44,4 +46,23 @@ export class ActiveProtectionTraderoomComponent {
   
     return formattedInt + "." + decimalPart;
   }
+
+  constructor(private dialogRef: MatDialogRef<ActiveProtectionTraderoomComponent>, private hedgeService: HedgingDataService) { 
+
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
+  backToDashboard() {
+    this.dialogRef.close();
+    this.hedgeService.closeHedgeAllDrawer();
+    this.hedgeService.closeQuickHedgeDrawer();
+  }
+
+  continueHedging() { 
+    this.dialogRef.close();
+  }
+
 }

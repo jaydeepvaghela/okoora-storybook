@@ -1,6 +1,19 @@
 .connecting-traderoom-wrapper {
     .okoora-logo-wrapper {
         margin-bottom: 32px;
+        @media screen and (max-width: 540px) {
+            margin-bottom: 18px;
+        }
+        img {
+            @media screen and (max-width: 540px) {
+                width: 50px;
+            }
+
+            @media screen and (max-width: 1024px) {
+                width: 70px;
+            }
+        }
+        
     }
 
     .traderoom-connect-title {
@@ -10,5 +23,15 @@
         font-weight: 800;
         line-height: 44px;
         letter-spacing: 1.14px;
+
+        @media screen and (max-width: 1440px) {
+            font-size: 25px;
+            line-height: 30px;
+        }
+
+        @media screen and (max-width: 540px) {
+            font-size: 18px;
+            line-height: 20px;    
+        }
     }
 }

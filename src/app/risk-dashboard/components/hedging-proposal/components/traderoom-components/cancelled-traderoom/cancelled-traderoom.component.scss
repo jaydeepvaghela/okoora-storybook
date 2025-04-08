@@ -1,6 +1,11 @@
 .cancelled-traderoom-wrapper {
     img {
         margin-bottom: 20px;
+
+        @media screen and (max-width: 540px) {
+            width: 50px;
+            
+        }
     }
 
     .traderoom-connect-title {
@@ -10,6 +15,16 @@
         font-weight: 800;
         line-height: 44px;
         letter-spacing: 1.14px;
+
+        @media screen and (max-width: 1440px) {
+            font-size: 25px;
+            line-height: 30px;
+        }
+
+        @media screen and (max-width: 540px) {
+            font-size: 18px;
+            line-height: 20px;    
+        }
     }
 
     .subtext {
@@ -22,6 +37,11 @@
 
         span {
             white-space: pre;
+        }
+
+        @media screen and (max-width: 540px) {
+            font-size: 16px;
+            line-height: 20px;    
         }
     }
 }

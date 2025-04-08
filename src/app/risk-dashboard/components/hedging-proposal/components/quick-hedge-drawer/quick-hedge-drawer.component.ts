@@ -108,18 +108,18 @@ export class QuickHedgeDrawerComponent {
 
   onHedgeNowBtnClick() {
     this.onHedgeNowClicked = true;
-    // if (this.tandcConfirmed) { 
-    //   const dialogRef = this.dialog.open(ActiveProtectionTraderoomComponent, {
-    //     width: '100vw',
-    //     maxWidth: '100vw',
-    //     disableClose: true,
-    //     panelClass: 'hedging-active-protection',
-    //   });
+    if (this.tandcConfirmed) { 
+      const dialogRef = this.dialog.open(ActiveProtectionTraderoomComponent, {
+        width: '100vw',
+        maxWidth: '100vw',
+        disableClose: true,
+        panelClass: 'hedging-active-protection',
+      });
   
-    //   dialogRef.afterClosed().subscribe(result => {
-    //     console.log('Dialog closed', result);
-    //   });
-    // }
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialog closed', result);
+      });
+    }
   }
 
   ngOnDestroy(): void {

@@ -6,6 +6,13 @@
             max-width: 107px;
             max-height: 93px;
             margin-bottom: 61px;
+
+            @media screen and (max-width: 540px) {
+                max-width: 50px;
+                max-height: 50px;
+                margin-bottom: 18px;
+                
+            }
         }
     }
 
@@ -16,5 +23,15 @@
         font-weight: 800;
         line-height: 44px !important;
         letter-spacing: 1.14px;
+
+        @media screen and (max-width: 1440px) {
+            font-size: 25px !important;
+            line-height: 30px !important;
+        }
+
+        @media screen and (max-width: 540px) {
+            font-size: 18px !important;
+            line-height: 20px !important;    
+        }
     }
 }

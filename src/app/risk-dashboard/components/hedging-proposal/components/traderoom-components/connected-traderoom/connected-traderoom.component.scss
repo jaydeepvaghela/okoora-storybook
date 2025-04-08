@@ -6,6 +6,16 @@
         font-weight: 800;
         line-height: 44px;
         letter-spacing: 1.14px;
+
+        @media screen and (max-width: 1440px) {
+            font-size: 25px;
+            line-height: 30px;
+        }
+
+        @media screen and (max-width: 540px) {
+            font-size: 18px;
+            line-height: 20px;    
+        }
     }
 
     .subtext {
@@ -15,6 +25,11 @@
         font-weight: 800;
         line-height: 24px;
         letter-spacing: 0.54px;
+
+        @media screen and (max-width: 540px) {
+            font-size: 16px;
+            line-height: 20px;    
+        }
 
         span {
             white-space: pre;
