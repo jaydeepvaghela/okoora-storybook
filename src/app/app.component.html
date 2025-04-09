@@ -5,5 +5,6 @@
         <router-outlet />
         <app-dashboard *ngIf="ShowDashboard" (toggleView)="onToggleView($event)"></app-dashboard>
         <app-hedging-proposal *ngIf="Showhedging"></app-hedging-proposal>
+        <app-cashflow-exposure-details *ngIf="showCashflowExposure"></app-cashflow-exposure-details>
     </div>
 </div>

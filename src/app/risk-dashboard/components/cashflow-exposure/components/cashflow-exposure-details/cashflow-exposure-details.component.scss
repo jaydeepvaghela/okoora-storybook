@@ -1,0 +1,1428 @@
+@import "../../../../../../assets/scss/variable";
+
+::ng-deep {
+    .risk-manager-final-step {
+        margin: 35px auto 35px 240px;
+        max-width: 1024px;
+
+        .cash-flow-wrapper {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            .cash-title {
+                .img-wrapper {
+                    display: flex;
+                    text-transform: uppercase;
+                    width: 53px;
+                    height: 53px;
+                    border-radius: 10px;
+                    border: 1px solid #FFF;
+                    background: rgba(41, 71, 242, 0.60);
+                    box-shadow: 0px 10px 14px 0px rgba(41, 71, 242, 0.40);
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 19px 0 0;
+                }
+
+                color:var(--brand-primary-color);
+                font-family:$he_heebo;
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 38px;
+                display: flex;
+                align-items: center;
+                margin: 0 0 35px 0;
+            }
+
+            .hedging-wrap {
+                margin: 0 0 11px 0;
+
+                .hedging-btn {
+                    background-color: transparent;
+                    color: #586D8E;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 45.2px;
+
+                    img {
+                        margin: 0 0 0 5px;
+                        cursor: pointer;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .risk-exposer-wrap {
+            .monthly-exposer-wrap {
+                border-radius: 10px;
+                background: #f8fafe;
+                padding:42px 40px 43px 51px;
+                border:2px solid $white;
+                margin: 0 0 11px;
+                .exposer-desc-wrap {
+                    display: flex;
+                    margin: 0 0 40px;
+                    align-items: center;
+                    justify-content: space-between;
+                    .exposer-img {
+                        margin: 0 15px 0 0;
+                    }
+
+                    .desc {
+                        h3 {
+                            color: var(--brand-primary-color);
+                            font-family: $he_heebo;
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 30px;
+                            margin: 0;
+                        }
+
+                        p {
+                            color: #7C8DA6;
+                            font-family: $he_heebo;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 20px;
+                            margin: 0;
+                        }
+                    }
+                    .progress-container {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        .stepper-progressbar {
+                          max-width: 98px;
+                          min-width: 98px;
+                          width: 100%;
+                          height: 12px;
+                          border-radius: 20px;
+
+                            .mdc-linear-progress__bar-inner {
+                              border-width: 12px;
+                              border-radius: 20px;
+                              border-color: #175CD3;
+
+                              @media screen and (max-width: 1440px) {
+                                border-width: 9px;
+                              }
+
+                              @media screen and (max-width: 1024px) {
+                                border-width: 12px;
+                              }
+                            }
+
+                          @media screen and (max-width: 1440px) {
+                            height: 9px;
+                          }
+
+                          @media screen and (max-width: 1024px) {
+                            height: 12px;
+                          }
+                          @media screen and (max-width:480px) {
+                            max-width:60px;
+                            min-width:60px;
+                            height:9px;
+                          }
+                        }
+
+                        .progress-count {
+                          color: #000;
+                          font-family: $he_heebo;
+                          font-size: 12px;
+                          font-weight: 700;
+                          line-height: 20px;
+                        }
+                      }
+                }
+
+                .currency-wrap {
+                    display: flex;
+                    margin-left: 58px;
+                    @media screen and (max-width: 1440px) {
+                        margin-left: 50px;
+                    }
+                    @media screen and (max-width: 580px) {
+                        margin-left: 10px;
+                    }
+                    .exposer-item {
+                        .expo-head {
+                            color: #344054;
+                            font-family: $he_heebo;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 20px;
+
+                            span {
+                                color:$white;
+                                font-family: $he_heebo;
+                                background-color: #175CD3;
+                                font-size: 12px;
+                                font-style: normal;
+                                font-weight:700;
+                                line-height:18px;
+                                padding:3px 10px;
+                                border-radius: 40px;
+                                position: relative;
+                                top:-10px;
+                                @media screen and (max-width:767px) {
+                                    font-size: 10px;
+                                }
+                            }
+                        }
+
+                        .desc {
+                            color: #1D2939;
+                            font-family: $he_heebo;
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 32px;
+
+                            span {
+                                font-size: 12px;
+                                line-height: 18px;
+                                font-weight: 400;
+                            }
+                        }
+
+                        &.exposer-period {
+                            padding: 0 72px 0 59px;
+                            border-left: 1px dashed #98A2B3;
+                            margin: 0 50px;
+                            border-right: 1px dashed #98A2B3;
+                        }
+                    }
+                }
+            }
+            .exposer-table-wrap{
+                background-color: $white;
+                border-radius: 10px;
+                padding: 23px 19px 0 51px;
+            }
+
+            .exposer-table {
+                padding: 10px;
+
+                .mat-mdc-table {
+                    box-shadow: none;
+
+                    .mdc-data-table__header-row {
+                        height: 60px;
+                    }
+
+                    .mat-mdc-header-cell {
+                        border-bottom-style: solid;
+                        border-bottom-color: #E4E7EC;
+                        padding: 2px 8px;
+                        color: #344054;
+                        font-family: $he_heebo;
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 24px;
+                        white-space: nowrap;
+
+                       
+
+                        img {
+                            cursor: pointer;
+                            display: inline-block;
+                            filter: opacity(0.5);
+                        }
+                    }
+
+                    .mdc-data-table__cell {
+                        color: #344054;
+                        font-family: $he_heebo;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 24px;
+                        border-bottom-color: #E4E7EC;
+                        padding: 9px 16px;
+                        position: relative;
+                        overflow: visible;
+                        min-width: 170px;
+                        white-space: nowrap;
+
+                        
+
+                        .buying-price {
+                            display: inline-block;
+                            color: #344054;
+                            font-family: $he_heebo;
+                            font-size: 16px;
+                            font-weight: 700;
+                            line-height: 24px;
+                        }
+
+                        .edit-exposer {
+                            border-radius: 50%;
+                            background-color: #fff;
+                            margin-left: 4px;
+                        }
+
+                        &:hover {
+                            background-color: #F6F9FD;
+
+                            .edit-exposer {
+                                img {
+                                    filter: invert(1);
+                                }
+                            }
+                        }
+
+                        .edit-exposer-wrap {
+                            position: absolute;
+                            left: 0;
+                            background: #fff;
+                            top: 0;
+                            z-index: 9;
+                            box-shadow: 0px 5px 64px -12px rgba(16, 24, 40, 0.20);
+                            height: auto;
+                            min-width: 414px;
+                            border-left: 3px solid #1570EF;
+                            padding: 16px 18px;
+
+                            .edit-inner {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+
+                                @media screen and (max-width: 540px) {
+                                    gap: 15px;
+                                }
+
+                                .input-wrap {
+                                    position: relative;
+                                    border-radius: 6px;
+                                    border: 1px solid #175CD3;
+                                    .edit-price {
+                                        border: none;
+                                        background: transparent;
+                                        height: 52px;
+                                        padding: 16px 8px 16px 18px;
+                                        color:#475467;
+                                        font-family: $he_heebo;
+                                        font-size: 14px;
+                                        font-weight: 700;
+                                        line-height: 20px;
+                                        width: 169px;
+
+                                        @media screen and (max-width: 1440px) {
+                                            height: 45px;
+                                        }
+                                    }
+
+                                    span {
+                                        position: relative;
+                                        left: 15px;
+
+                                        @media screen and (max-width: 1440px) {
+                                            font-size: 14px;
+                                        }
+                                    }
+
+                                    .clear-input {
+                                        position: relative;
+                                        right: 0;
+                                        top: 0;
+                                        bottom: 0;
+                                        background: transparent;
+                                        z-index: 2;
+                                    }
+                                }
+
+                                .edit-e-option {
+                                    .cancel-btn {
+                                        color: #475467;
+                                        font-family: $he_heebo;
+                                        font-size: 14px;
+                                        font-style: normal;
+                                        font-weight: 400;
+                                        line-height: 20px;
+                                        background-color: transparent;
+                                    }
+
+                                    .save-btn {
+                                        border-radius: 40px;
+                                        background: #1D2939;
+                                        color: $white;
+                                        font-family: $he_heebo;
+                                        font-size: 14px;
+                                        font-style: normal;
+                                        font-weight: 400;
+                                        line-height: 20px;
+                                        padding: 4px 15px;
+                                        margin: 0 0 0 5px;
+                                    }
+                                }
+                            }
+
+                            &.error-input {
+                                padding: 16px 18px 7px 18px;
+
+                                .edit-inner {
+                                    .input-wrap {
+                                        position: relative;
+                                        border-color: #D92D20;
+
+                                        span {
+                                            position: relative;
+                                            left: 15px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .warning-error {
+                                margin: 0;
+                                padding: 5px 0 0;
+                                color: #D92D20;
+                                font-family: Heebo;
+                                font-size: 12px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 18px;
+                            }
+                        }
+
+
+                        &.mat-column-Month {
+                            color: #344054;
+                            font-family: $he_heebo;
+                            padding: 9px 24px;
+                            min-width: 231px;
+                            .date-and-expand {
+                                font-weight: 400;
+                                cursor: pointer;
+                                display: inline-block;
+                                &.inactive-month {
+                                    color: #F04438
+                                }
+                                mat-icon{
+                                    vertical-align: middle;
+                                }
+                                .m-date-tooltip-wrap{
+                                    display: inline-block;
+                                    margin:0 0 0 -25px;
+                                    width: 24px;
+                                    height: 24px;
+                                    vertical-align: middle;
+                                }
+                            }
+                            .monthly-date{
+                                visibility: hidden !important;
+                                position: absolute;
+                            }
+                        }
+
+                        &.mat-column-TotalNet {
+                            padding:16px 13px 16px 21px;
+                            min-width: 138px;
+                            font-weight: 400;
+                            .positive-num {
+                                background: #DCFAE6;
+                                color: #079455;
+                                text-align: center;
+                                font-family: $he_heebo;
+                                font-size: 14px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 20px;
+                                padding: 2px 8px 2px 6px;
+                                border-radius:4px;
+                                word-break: keep-all;
+                            }
+
+                            .negative-num {
+                                background: #FEE4E2;
+                                color: #D92D20;
+                                text-align: center;
+                                font-family: $he_heebo;
+                                font-size: 14px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 20px;
+                                padding: 2px 8px 2px 6px;
+                                border-radius: 4px;
+                                word-break: keep-all;
+                            }
+                        }
+
+                        &.mat-column-Dayoftheexpiry {
+                            padding: 9px 5px 9px 22px;
+                            min-width: 139px;
+                        }
+
+                        &.mat-column-DisableMonth{
+                            padding: 16px 24px;
+                            min-width:121px;
+                            .mat-mdc-slide-toggle{
+                                --mdc-switch-unselected-handle-color:$white;
+                                --mdc-switch-disabled-selected-handle-color: $white;
+                                --mdc-switch-disabled-unselected-handle-color: $white;
+                                --mdc-switch-disabled-selected-track-color: #E9ECF1;
+                                --mdc-switch-disabled-unselected-track-color: #E9ECF1;
+                                --mdc-switch-unselected-focus-track-color: #E9ECF1;
+                                --mdc-switch-unselected-hover-track-color: #E9ECF1;
+                                --mdc-switch-unselected-pressed-track-color: #E9ECF1;
+                                --mdc-switch-unselected-track-color: #E9ECF1;
+                                --mdc-switch-unselected-focus-handle-color: $white;
+                                --mdc-switch-unselected-hover-handle-color: $white;
+                                --mdc-switch-unselected-pressed-handle-color: $white;
+                                --mdc-switch-unselected-handle-color: $white;
+                                --mdc-switch-selected-handle-color: $white;
+                                --mdc-switch-selected-focus-handle-color: $white;
+                                --mdc-switch-selected-hover-handle-color: $white;
+                                --mdc-switch-selected-pressed-handle-color: $white;
+                                --mdc-switch-selected-focus-track-color: #3730F5;
+                                --mdc-switch-selected-hover-track-color: #3730F5;
+                                --mdc-switch-selected-pressed-track-color: #3730F5;
+                                --mdc-switch-selected-track-color:#3730F5;
+                                .mdc-switch{
+                                    .mdc-switch__track {
+                                        border-radius: var(--mdc-switch-track-shape, 12px);
+                                        height: var(--mdc-switch-track-height, 20px);
+                                    }
+                                    .mdc-switch__ripple{
+                                        display: none;
+                                    }
+                                    .mdc-switch__handle-track {
+                                        left:2px;
+                                        .mdc-switch__handle {
+                                            width: var(--mdc-switch-handle-width, 16px);
+                                            height: var(--mdc-switch-handle-height, 16px);
+                                            .mdc-switch__icons{
+                                                display: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .mdc-data-table__row:last-child .mdc-data-table__cell {
+                        border-bottom: 1px solid #E4E7EC;
+                    }
+
+                    .mdc-data-table__row {
+                        height:102px;
+                            .mdc-data-table__cell.disabledColumn {
+                                color: #D1D8E2;
+                              pointer-events: none;
+                              .buying-price{
+                                color:#D1D8E2;
+                              }
+                                .edit-exposer {
+                                    cursor: default;
+                                    img{
+                                        filter: none;
+                                    }
+                                }
+
+                                &.mat-column-Month {
+                                    color: #D1D8E2;
+                                }
+
+                                &.mat-column-TotalNet {
+
+                                    .positive-num,
+                                    .negative-num {
+                                        background-color: #ECEFF3;
+                                        color: $white;
+                                    }
+                                }
+                        }
+                        &.blink-row {
+                            animation:fade 1000ms normal;
+                            -webkit-animation:fade 1000ms normal;
+                          }
+                          @keyframes fade {
+                            from { background-color:$white ;}
+                            50% { background-color: #EFF8FF; }
+                            to { background-color:$white ;}
+                        }
+                        @-webkit-keyframes fade {
+                            from { background-color: $white;}
+                            50% { background-color: #EFF8FF; }
+                            to { background-color:$white ;}
+                        }
+                    }
+                }
+            }
+
+            .error-message {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #D92D20;
+                font-family: $he_heebo;
+                font-size: 13px;
+                font-weight: 400;
+                line-height: 18px;
+                gap: 4px;
+                margin-top: 14px;
+                
+                &.limit-reached {
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin-top: 47px;
+                    margin-bottom: 25px;
+    
+                    @media screen and (max-width: 1440px) {
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+            .add-rows-wrap {
+                text-align: center;
+                .add-btn {
+                    border: 1px dashed #D0D5DD;
+                    border-radius: 50%;
+                    padding:20px 21px;
+                    line-height: 16px;
+                    margin:16px 0 0;
+                    .plus-icon{
+                        background-image: url(../../../../../../assets/images/plus-large-icon.svg);
+                        width:16px;
+                        height:16px;
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    &:hover{
+                        background-color:#175CD3;
+                        border-color: #175CD3;
+                        .plus-icon{
+                            background-image: url(../../../../../../assets/images/plus-large-white.svg);
+                        }
+                    }
+                    &.six-month{
+                        background-color: #F5F8FF;
+                        border-color:#F5F8FF;
+                        border-radius: 40px;
+                        padding:6px 20px;
+                        color: #000;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 45.2px;
+                        .plus-icon{
+                            margin: 0 10px 0 0;
+                        }
+                        &:hover{
+                            background-color:#175CD3;
+                            border-color: #175CD3;
+                            color:$white;
+                            .plus-icon{
+                                background-image: url(../../../../../../assets/images/plus-large-white.svg);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .exposer-btns {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                font-family: $he_heebo;
+                padding: 27px 16px;
+
+                .continue-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 40px;
+                    background: var(--brand-primary-color);
+                    box-shadow: 0px 9px 24px 0px rgba(0, 62, 255, 0.40);
+                    width: 100%;
+                    max-width: 175px;
+                    height: 46px;
+                    padding: 10px;
+                    color: $white;
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 45px;
+                    gap: 10px;
+                    margin: 0 0 0 26px;
+
+                    &:disabled {
+                        background: #f5f5fa !important;
+                        color: #c6c8cc !important;
+                        cursor: not-allowed;
+                        box-shadow: none;
+                    }
+
+                    &.save-fail {
+                        cursor: not-allowed;
+                    }
+
+                    &.loading {
+                      pointer-events: none;
+                    }
+                }
+
+                .back-btn {
+                    color: #374151;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 45px;
+                    padding: 0;
+                }
+            }
+        }
+
+        @media screen and (max-width:1800px) {
+            margin: 35px auto;
+        }
+
+        @media screen and (max-width:1440px) {
+            margin: 0 auto;
+
+            .cash-flow-wrapper {
+                .cash-title {
+                    font-size: 25px;
+                    margin: 0 0 20px 0;
+
+                    .img-wrapper {
+                        width: 43px;
+                        height: 43px;
+                        margin: 0 10px 0 0;
+                    }
+                }
+
+                .hedging-wrap {
+                    .hedging-btn {
+                        line-height: 1;
+                    }
+                }
+            }
+
+            .risk-exposer-wrap {
+                .monthly-exposer-wrap {
+                    padding:25px 40px;
+                    .exposer-desc-wrap {
+                        margin: 0 0 30px;
+
+                        .desc {
+                            h3 {
+                                font-size: 18px;
+                                line-height: 22px;
+                            }
+                        }
+
+                        .exposer-img {
+                            margin: 0 10px 0 0;
+
+                            img {
+                                width: 40px;
+                                height: 40px;
+                            }
+                        }
+                    }
+                }
+                .exposer-table-wrap{
+                    padding:20px 20px 0 40px;
+                }
+                .exposer-table {
+                    padding:10px;
+                }
+            }
+        }
+
+        @media screen and (max-width:1199px) {
+            margin: 0;
+
+            .cash-flow-wrapper {
+                .cash-title {
+                    font-size: 20px;
+                    margin: 0 0 20px 0;
+
+                    .img-wrapper {
+                        width: 35px;
+                        height: 35px;
+                        margin: 0 10px 0 0;
+
+                        img {
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                }
+
+                .hedging-wrap {
+                    .hedging-btn {
+                        line-height: 1;
+                    }
+                }
+            }
+
+            .risk-exposer-wrap {
+                .monthly-exposer-wrap {
+                    padding: 20px;
+
+                    .exposer-desc-wrap {
+                        margin: 0 0 20px;
+
+                        .exposer-img {
+                            img {
+                                width: 30px;
+                                height:30px;
+                            }
+                        }
+
+                        .desc {
+                            h3 {
+                                font-size: 16px;
+                                line-height: 1;
+                            }
+                        }
+                    }
+
+                    .currency-wrap {
+                        .exposer-item {
+                            .expo-head {
+                                line-height: 1;
+                            }
+
+                            .desc {
+                                font-size: 16px;
+                            }
+
+                            &.exposer-period {
+                                padding: 0 40px;
+                                margin: 0 40px;
+                            }
+                        }
+                    }
+                }
+                .exposer-table-wrap{
+                    padding:20px 10px 0;
+                }
+
+                .exposer-table {
+                    .overlay-wrap {
+                        overflow-x: auto;
+
+                        .date-and-expand {
+                            display: flex;
+                            align-items: center;
+                        }
+                    }
+                    .mat-mdc-table {
+                        box-shadow: none;
+
+                        .mdc-data-table__header-row {
+                            height: 50px;
+                        }
+
+                        .mdc-data-table__cell {
+                            min-width: 150px;
+
+                            .edit-exposer-wrap {
+                                min-width: auto;
+
+                                .edit-inner {
+                                    .input-wrap {
+                                        position: relative;
+                                        border-radius: 6px;
+                                        border: 1px solid #175CD3;
+                                        .edit-price {
+                                            height: 40px;
+                                            padding: 8px 10px 8px 20px;
+
+                                        }
+
+                                        span {
+                                            position: relative;
+                                            left: 15px;
+                                        }
+                                    }
+
+                                    .edit-e-option {
+                                        .save-btn {
+                                            padding: 2px 10px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .mdc-data-table__row{
+                            height: 72px;
+                        }
+                    }
+                }
+                .add-rows-wrap {
+                    .add-btn {
+                        padding: 13px 14px;
+                        &.six-month{
+                            padding: 3px 15px;
+                        }
+                    }
+                }
+
+                .exposer-btns {
+                    padding: 20px;
+
+                    .continue-btn {
+                        max-width: 155px;
+
+                        &.loading {
+                          pointer-events: none;
+                        }
+                    }
+
+                }
+            }
+        }
+        @media screen and (max-width:1024px) {
+
+            .risk-exposer-wrap {
+                .monthly-exposer-wrap {
+                    .exposer-desc-wrap {
+                        .desc {
+                            p{
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                    .currency-wrap {
+                        margin: 0;
+                        .exposer-item {
+                            &.exposer-period {
+                                padding: 0 20px;
+                                margin: 0 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:767px) {
+            .cash-flow-wrapper {
+                .cash-title {
+                    margin: 0 0 10px 0;
+                }
+
+                .hedging-wrap {
+                    .hedging-btn {
+                        line-height: 1;
+                    }
+                }
+            }
+
+            .risk-exposer-wrap {
+                .monthly-exposer-wrap {
+                    padding: 15px 10px;
+                    .exposer-desc-wrap {
+                        .desc {
+                            h3 {
+                                font-size: 15px;
+                                line-height: 1;
+                            }
+                        }
+                    }
+                    .currency-wrap {
+                        .exposer-item {
+                            .expo-head {
+                                line-height: 1;
+                            }
+
+                            .desc {
+                                font-size: 16px;
+                            }
+
+                            &.exposer-period {
+                                padding: 0 20px;
+                                margin: 0 20px;
+                            }
+                        }
+                    }
+                }
+
+                .add-rows-wrap {
+                    .add-btn {
+                        padding: 8px 9px;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:580px) {
+            .cash-flow-wrapper {
+                display: block;
+                .cash-title {
+                    margin: 0;
+                }
+                .hedging-wrap {
+                    text-align: right;
+                }
+            }
+
+            .risk-exposer-wrap {
+                .monthly-exposer-wrap {
+                    .exposer-desc-wrap {
+                        align-items: flex-start;
+                        .desc {
+                            p {
+                                font-size: 12px;
+                                line-height:18px;
+                            }
+                        }
+                    }
+                    .currency-wrap {
+                        padding: 0 25px;
+                        display: block;
+
+                        .exposer-item {
+                            &.exposer-period {
+                                padding: 0;
+                                margin: 10px 0;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+
+                .exposer-table {
+                    .mat-mdc-table {
+                        .mdc-data-table__cell {
+                            .edit-exposer-wrap {
+                                .edit-inner {
+                                    .input-wrap {
+                                        border-radius: 6px;
+                                        border: 1px solid #175CD3;
+                                        position: relative;
+                                        .edit-price {
+                                            width: 130px;
+                                        }
+
+                                        span {
+                                            position: relative;
+                                            left: 15px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .postpone-btn {
+        .mat-mdc-button-persistent-ripple {
+            opacity: 0;
+        }
+
+        mat-icon {
+            color: #98A2B3;
+        }
+    }
+
+    .mat-mdc-menu-panel {
+        &.postpone-menu {
+            box-shadow: 0px 5px 64px -12px rgba(16, 24, 40, 0.20);
+            border-radius: 5px;
+            background-color: $white;
+
+            .mat-mdc-menu-content {
+                padding: 17px 19px !important;
+
+                button {
+                    color: #1D2939;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 20px;
+
+                    span {
+                        font-weight: 700;
+
+                        &.setTo {
+                            font-weight: 400;
+                            color: #98A2B3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .risk-step3-tooltip--rm {
+        margin-left: -15px !important;
+        --bs-tooltip-opacity: 1;
+        --bs-tooltip-max-width: 307px;
+
+        .tooltip-inner {
+            background-color: #1D4ED8;
+            color: $white;
+            padding: 19px 18px 19px 29px;
+            font-size: 14px;
+            text-align: left;
+            font-family: $he_heebo;
+            font-weight: 400;
+            line-height: 20px;
+            border-radius: 10px;
+            transform: translateY(-10px);
+            min-width: 281px;
+        }
+
+        .tooltip-arrow {
+            bottom: calc(1* var(--bs-tooltip-arrow-height));
+
+            &::before {
+                border-top-width: 14px;
+                border-left-width: 7px;
+                border-right-width: 7px;
+                border-top-color: #1D4ED8;
+                left: 15px;
+                right: auto;
+            }
+        }
+
+        &.bs-tooltip-top-end {
+            margin-right: -15px !important;
+
+            .tooltip-arrow {
+                &::before {
+                    right: 15px;
+                    left: auto;
+                }
+            }
+        }
+        @media screen and (max-width:767px) {
+            --bs-tooltip-max-width: 250px;
+            .tooltip-inner{
+                padding: 10px 15px;
+            }
+        }
+    }
+    .tooltip {
+        &.cash-flow-date-tooltip{
+            margin-left: -15px !important;
+            --bs-tooltip-opacity: 1;
+            --bs-tooltip-max-width: 307px;
+
+            .tooltip-inner {
+                background-color: #1D4ED8;
+                color: $white;
+                padding: 22px 23px 17px 24px;
+                font-size: 14px;
+                text-align: left;
+                font-family: $he_heebo;
+                font-weight: 400;
+                line-height: 20px;
+                border-radius: 10px;
+                transform: translateY(-10px);
+                min-width: 281px;
+            }
+
+            .tooltip-arrow {
+                bottom: calc(1* var(--bs-tooltip-arrow-height));
+
+                &::before {
+                    border-top-width: 17px;
+                    border-left-width: 8px;
+                    border-right-width: 8px;
+                    border-top-color: #1D4ED8;
+                    left: 15px;
+                    right: auto;
+                }
+            }
+            @media screen and (max-width:1199px) {
+                top: 100% !important;
+                margin: 40px 0 0 -15px !important;
+                .tooltip-arrow::before{
+                    border-bottom-width: 17px;
+                    border-left-width: 8px;
+                    border-right-width: 8px;
+                    border-bottom-color: #1D4ED8;
+                    left: 15px;
+                    right: auto;
+                    top: -25px;
+                    border-top-color: transparent;
+                }
+            }
+            @media screen and (max-width:767px) {
+                --bs-tooltip-max-width:230px;
+                .tooltip-inner{
+                    min-width:100px;
+                }
+            }
+        }
+        .cash-flow-date-wrapper {
+            text-align: left;
+            color: $white;
+            .close_tooltip {
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            top: 0;
+            right:0;
+            background-color: transparent;
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                width: 12px;
+                height: 2px;
+                border-radius: 5px;
+                background-color: $white;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+            &::before {
+                transform: rotate(45deg);
+            }
+            &::after {
+                transform: rotate(-45deg);
+            }
+            }
+            .info-container {
+                .info-container-items {
+                    .title {
+                    font-size: 19px;
+                    color: $white;
+                    font-weight: 700;
+                    line-height: 20px;
+                    display: block;
+                    }
+
+                    .desc {
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height:16px;
+                    margin:10px 0 17px;
+                    padding:0;
+                    @media screen and (max-width:767px) {
+                        max-width: 100%;
+                    }
+                    }
+
+                    .try-btn {
+                        text-align: right;
+
+                        justify-content: space-between;
+                        .step-of{
+                            color:$white;
+                            font-family: $he_heebo;
+                            font-size: 12px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 20px;
+                            opacity: 0.5;
+                        }
+                        .try-btn-text {
+                            background-color: $white;
+                            color:#175CD3;
+                            font-family: $he_heebo;
+                            font-size: 12px;
+                            font-weight: 700;
+                            line-height:20px;
+                            border-radius:40px;
+                            padding:2px 11px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .cashflow-date-calendar-cd {
+        position: relative;
+
+        &.mat-calendar {
+            width: 100% !important;
+            max-width: 324px;
+            min-width: 324px;
+            height: 100% !important;
+
+            .mat-calendar-header {
+                pointer-events: none;
+                padding: 18px 27px 0 10px;
+                .mat-calendar-controls {
+                    margin: 0;
+                    .mat-calendar-previous-button, .mat-calendar-next-button {
+                        display: none;
+                    }
+                }
+            }
+
+            .mat-calendar-header {
+                .mat-calendar-period-button {
+                    text-transform: lowercase;
+                    font-weight: 600;
+                    color: #344054;
+                    font-family: $he_heebo;
+                    line-height: 24px;
+
+                    .mdc-button__label {
+                        span:first-letter {
+                            text-transform: uppercase;
+                        }
+                    }
+
+                    .mat-calendar-arrow {
+                        display: none;
+                    }
+                }
+            }
+
+            .mat-calendar-header button.mat-calendar-period-button span:first-letter {
+              text-transform: uppercase;
+            }
+
+            .mat-calendar-header button.mat-calendar-period-button .mat-calendar-arrow {
+                display: none;
+            }
+
+            .mat-calendar-content {
+                padding: 0 17px 13px 17px;
+                .mat-calendar-table {
+                    .mat-calendar-table-header {
+                        color: #344054;
+                        font-family: $he_heebo;
+                        font-size: 12px;
+                        line-height: 18px;
+                        th {
+                            padding: 10px;
+                            font-weight: 400 !important;
+                        }
+
+                        .mat-calendar-table-header-divider {
+                            padding: 0;
+                            &::after {
+                                left: 0;
+                                right: 0;
+                            }
+                        }
+                    }
+                }
+
+                .mat-calendar-body {
+                    .mat-calendar-body-label {
+                        padding-top: 0 !important;
+                        padding-bottom: 0 !important;
+                        visibility: hidden;
+                    }
+
+                    .mat-calendar-body-cell-container {
+                        width: 40px !important;
+                        height: 40px !important;
+                        .mat-calendar-body-cell {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 10px;
+                            color: #344054;
+                            font-family: $he_heebo;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 18px;
+
+                            &:hover {
+                                .mat-calendar-body-cell-content {
+                                    border-radius: 5px;
+                                }
+                            }
+
+                            .mat-calendar-body-selected {
+                                border-radius: 5px;
+                                box-shadow: none;
+                                background-color: #003EFF !important;
+                            }
+                            &.mat-calendar-body-active{
+                                .mat-calendar-body-cell-content{
+                                    background-color: #003EFF !important;
+                                    color:$white !important;
+                                }
+                            }
+
+                            .mat-calendar-body-cell-content {
+                                border-width: 0;
+                                width: 100%;
+                                height: 100%;
+                                border-style: none;
+                                border-radius: 5px;
+                            }
+
+                            .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+                                border-radius: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .cashflow-date-calendar-cd + .mat-datepicker-actions {
+        padding: 0 27px 26px 15px !important;
+        justify-content: flex-end !important;
+        .cancel-cdc {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #374151 !important;
+            border: none !important;
+            width: 72px !important;
+            height: 35px;
+            padding: 10px 20px;
+            gap: 10px;
+            font-family: $he_heebo !important;
+            font-size: 12px !important;
+            font-weight: 700 !important;
+            line-height: 22px !important;
+        }
+
+        .set-cdc {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #003EFF !important;
+            color: #FFF !important;
+            width: 72px !important;
+            height: 35px;
+            padding: 10px 20px;
+            gap: 10px;
+            border-radius: 40px;
+            box-shadow: 0px 9px 24px 0px rgba(0, 62, 255, 0.40);
+            font-family: $he_heebo;
+            font-size: 12px !important;
+            font-weight: 700 !important;
+            line-height: 22px !important;
+        }
+
+        .close-cdc {
+            position: absolute;
+            top: 5px;
+            right: 0;
+            border: none !important;
+            width: 100% !important;
+            padding: 0 !important;
+            max-width: 40px;
+        }
+    }
+}

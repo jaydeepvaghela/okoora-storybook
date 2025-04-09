@@ -1,0 +1,33 @@
+<div class="monthly-exposer-wrap">
+    <div class="exposer-desc-wrap">
+        <div class="ml-exposure-details d-flex">
+            <div class="exposer-img">
+                <img src="images/monthly-exposer-icon.svg">
+            </div>
+            <div class="desc">
+                <h3> Monthly exposure details </h3>
+                <p> Adjust buy/sell columns to match your monthly exposure. </p>
+            </div>
+        </div>
+    </div>
+    <div class="currency-wrap">
+        <div class="exposer-item currency-pair">
+            <div class="expo-head"> Currencies pair </div>
+            <div class="desc"> {{monthlyExposureObject.pair}}</div>
+        </div>
+        <div class="exposer-item exposer-period">
+            <div class="expo-head"> Exposure period </div>
+            <div class="desc"> {{monthlyExposureObject.monthlyPeriod}} <span>months</span></div>
+        </div>
+        <div class="exposer-item exposer-price">
+            <div class="expo-head"> Monthly exposure <span>{{monthlyExposureObject.selectedExposure}}</span>
+            </div>
+            <div class="desc">
+                <span>{{monthlyExposureObject.sign}}</span>{{valueWithComma(monthlyExposureObject.monthlyAmount, 2) }} 
+                <!-- <ng-container
+                    *ngIf="exposureAmountCeil">.</ng-container>
+                    <span>{{exposureAmountCeil}}</span> -->
+            </div>
+        </div>
+    </div>
+</div>

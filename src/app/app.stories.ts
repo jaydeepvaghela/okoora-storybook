@@ -7,6 +7,7 @@ const meta: Meta<AppComponent> = {
     argTypes:{
         ShowDashboard: { control: 'boolean' },
         Showhedging: { control: 'boolean' },
+        showCashflowExposure: { control: 'boolean' }
     }
 };
 export default meta;
@@ -14,7 +15,8 @@ type Story = StoryObj<AppComponent>;
 
 export const Default: Story = {
     args:{
-        ShowDashboard: true,
+        ShowDashboard: false,
         Showhedging: false,
+        showCashflowExposure: true
     }
 };

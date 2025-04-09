@@ -5,10 +5,11 @@ import { SidebarComponent } from "./risk-dashboard/components/sidebar/sidebar.co
 import { DashboardComponent } from "./risk-dashboard/components/dashboard/dashboard.component";
 import { CommonModule } from '@angular/common';
 import { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';
+import { CashflowExposureDetailsComponent } from "./risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-details/cashflow-exposure-details.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, SidebarComponent, DashboardComponent,CommonModule,HedgingProposalComponent],
+  imports: [RouterOutlet, HeaderComponent, SidebarComponent, DashboardComponent, CommonModule, HedgingProposalComponent, CashflowExposureDetailsComponent],
   templateUrl:'app.component.html',
   styleUrl:'app.component.scss',
 })
@@ -16,12 +17,14 @@ export class AppComponent {
   @ViewChild(SidebarComponent) private sidebar!: SidebarComponent;
   @Input() ShowDashboard: boolean = false;
   @Input() Showhedging: boolean = false;
-  title = 'angular-latest';
+  @Input() showCashflowExposure: boolean = false;
+
   openSidebar() {
     this.sidebar.openSidebar();
   }
   onToggleView(showHedging: boolean) {
     this.Showhedging = showHedging;
     this.ShowDashboard = !showHedging;
+    this.showCashflowExposure = !showHedging && !this.ShowDashboard;
   }
 }
