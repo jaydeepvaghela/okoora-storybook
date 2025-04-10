@@ -9,17 +9,17 @@ const meta: Meta<MonthlyExposureDetailsComponent> = {
             control: 'object',
             description: 'Monthly exposure details',
             defaultValue: {
-                pair: "EUR/USD",
+                pair: "USD/ILS",
                 sign: "$",
                 toCurrency: "USD",
                 selectedExposure: "Selling",
                 monthlyAmount: 100000,
-                monthlyPeriod: "12",
+                monthlyPeriod: 12,
                 flag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
                 code: "USD",
                 baseCurrencyFlag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
-                baseCurrency: "EUR",
-                baseCurrencySign: "€"
+                baseCurrency: "ILS",
+                baseCurrencySign: "₪"
             }
         }
     }
@@ -35,7 +35,7 @@ export const Default: Story = {
             toCurrency: "USD",
             selectedExposure: "Selling",
             monthlyAmount: 100000,
-            monthlyPeriod: "12",
+            monthlyPeriod: 12,
             flag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
             code: "USD",
             baseCurrencyFlag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",

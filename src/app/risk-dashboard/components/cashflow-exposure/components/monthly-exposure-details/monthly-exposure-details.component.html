@@ -9,6 +9,10 @@
                 <p> Adjust buy/sell columns to match your monthly exposure. </p>
             </div>
         </div>
+        <div class="progress-container">
+            <mat-progress-bar #formStepperProgress class="stepper-progressbar" mode="determinate"
+              value="100"></mat-progress-bar> <span class="progress-count"> 4/4 </span>
+        </div>
     </div>
     <div class="currency-wrap">
         <div class="exposer-item currency-pair">
@@ -17,7 +21,7 @@
         </div>
         <div class="exposer-item exposer-period">
             <div class="expo-head"> Exposure period </div>
-            <div class="desc"> {{monthlyExposureObject.monthlyPeriod}} <span>months</span></div>
+            <div class="desc"> {{monthlyPeriod}} <span>months</span></div>
         </div>
         <div class="exposer-item exposer-price">
             <div class="expo-head"> Monthly exposure <span>{{monthlyExposureObject.selectedExposure}}</span>

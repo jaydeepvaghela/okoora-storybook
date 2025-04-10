@@ -3,7 +3,7 @@ import { DashboardComponent } from './risk-dashboard/components/dashboard/dashbo
 import { NgModule } from '@angular/core';
 import { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Default route
   { path: 'dashboard', component: DashboardComponent },
   { path: 'hedging', component: HedgingProposalComponent },

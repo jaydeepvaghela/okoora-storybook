@@ -1,5 +1,6 @@
 @import "../../../../../../assets/scss/variable";
 @import "../../components/monthly-exposure-details/monthly-exposure-details.component.scss";
+
 ::ng-deep {
     .risk-manager-final-step {
         margin: 35px auto 35px 240px;
@@ -34,6 +35,7 @@
                 display: flex;
                 align-items: center;
                 margin: 0 0 35px 0;
+                text-transform: uppercase;
             }
 
             .hedging-wrap {
@@ -203,7 +205,7 @@
             //         }
             //     }
             // }
-            .exposer-table-wrap{
+            .exposer-table-wrap {
                 background-color: $white;
                 border-radius: 10px;
                 padding: 23px 19px 0 51px;
@@ -230,7 +232,7 @@
                         line-height: 24px;
                         white-space: nowrap;
 
-                       
+
 
                         img {
                             cursor: pointer;
@@ -253,6 +255,57 @@
                         min-width: 170px;
                         white-space: nowrap;
 
+                        &.disabledColumn {
+                            .positive-total {
+                                background: #ECEFF3;
+                                color: #FFF;
+                                width: fit-content;
+                                display: flex;
+                                align-items: center;
+                                padding: 2px 8px 2px 6px;
+                                text-align: center;
+                                font-family: $he_heebo;
+                                font-size: 14px;
+                                font-weight: 500;
+                                line-height: 20px; 
+                                border-radius: 4px;
+                            }
+                        }
+
+                        &:not(.disabledColumn) {
+                            .negative-total {
+                                min-width: 81px;
+                                width: fit-content;
+                                display: flex;
+                                align-items: center;
+                                border-radius: 4px;
+                                background: #FDEAEA;
+                                color: #D1293D;  
+                                padding: 2px 8px 2px 6px;
+                                text-align: center;
+                                font-family: $he_heebo;
+                                font-size: 14px;
+                                font-weight: 500;
+                                line-height: 20px; 
+                            }
+    
+                            .positive-total {
+                                min-width: 81px;
+                                width: fit-content;
+                                display: flex;
+                                align-items: center;
+                                border-radius: 4px;
+                                background: #DCFAE6;
+                                color: #079455;
+                                padding: 2px 8px 2px 6px;
+                                text-align: center;
+                                font-family: $he_heebo;
+                                font-size: 14px;
+                                font-weight: 500;
+                                line-height: 20px; 
+                            }
+                        }
+
                         
 
                         .buying-price {
@@ -271,7 +324,7 @@
                         }
 
                         &:hover {
-                            background-color: #F6F9FD;
+                            // background-color: #F6F9FD;
 
                             .edit-exposer {
                                 img {
@@ -305,12 +358,13 @@
                                     position: relative;
                                     border-radius: 6px;
                                     border: 1px solid #175CD3;
+
                                     .edit-price {
                                         border: none;
                                         background: transparent;
                                         height: 52px;
                                         padding: 16px 8px 16px 18px;
-                                        color:#475467;
+                                        color: #475467;
                                         font-family: $he_heebo;
                                         font-size: 14px;
                                         font-weight: 700;
@@ -401,34 +455,40 @@
                             font-family: $he_heebo;
                             padding: 9px 24px;
                             min-width: 231px;
+
                             .date-and-expand {
                                 font-weight: 400;
                                 cursor: pointer;
                                 display: inline-block;
+
                                 &.inactive-month {
                                     color: #F04438
                                 }
-                                mat-icon{
+
+                                mat-icon {
                                     vertical-align: middle;
                                 }
-                                .m-date-tooltip-wrap{
+
+                                .m-date-tooltip-wrap {
                                     display: inline-block;
-                                    margin:0 0 0 -25px;
+                                    margin: 0 0 0 -25px;
                                     width: 24px;
                                     height: 24px;
                                     vertical-align: middle;
                                 }
                             }
-                            .monthly-date{
+
+                            .monthly-date {
                                 visibility: hidden !important;
                                 position: absolute;
                             }
                         }
 
                         &.mat-column-TotalNet {
-                            padding:16px 13px 16px 21px;
+                            padding: 16px 13px 16px 21px;
                             min-width: 138px;
                             font-weight: 400;
+
                             .positive-num {
                                 background: #DCFAE6;
                                 color: #079455;
@@ -439,7 +499,7 @@
                                 font-weight: 500;
                                 line-height: 20px;
                                 padding: 2px 8px 2px 6px;
-                                border-radius:4px;
+                                border-radius: 4px;
                                 word-break: keep-all;
                             }
 
@@ -463,11 +523,12 @@
                             min-width: 139px;
                         }
 
-                        &.mat-column-DisableMonth{
+                        &.mat-column-DisableMonth {
                             padding: 16px 24px;
-                            min-width:121px;
-                            .mat-mdc-slide-toggle{
-                                --mdc-switch-unselected-handle-color:$white;
+                            min-width: 121px;
+
+                            .mat-mdc-slide-toggle {
+                                --mdc-switch-unselected-handle-color: $white;
                                 --mdc-switch-disabled-selected-handle-color: $white;
                                 --mdc-switch-disabled-unselected-handle-color: $white;
                                 --mdc-switch-disabled-selected-track-color: #E9ECF1;
@@ -487,21 +548,26 @@
                                 --mdc-switch-selected-focus-track-color: #3730F5;
                                 --mdc-switch-selected-hover-track-color: #3730F5;
                                 --mdc-switch-selected-pressed-track-color: #3730F5;
-                                --mdc-switch-selected-track-color:#3730F5;
-                                .mdc-switch{
+                                --mdc-switch-selected-track-color: #3730F5;
+
+                                .mdc-switch {
                                     .mdc-switch__track {
-                                        border-radius: var(--mdc-switch-track-shape, 12px);
-                                        height: var(--mdc-switch-track-height, 20px);
+                                        border-radius: 20px;
+                                        height: 20px;
                                     }
-                                    .mdc-switch__ripple{
+
+                                    .mdc-switch__ripple {
                                         display: none;
                                     }
+
                                     .mdc-switch__handle-track {
-                                        left:2px;
+                                        left: 2px;
+
                                         .mdc-switch__handle {
-                                            width: var(--mdc-switch-handle-width, 16px);
-                                            height: var(--mdc-switch-handle-height, 16px);
-                                            .mdc-switch__icons{
+                                            width: 16px;
+                                            height: 16px;
+
+                                            .mdc-switch__icons {
                                                 display: none;
                                             }
                                         }
@@ -516,46 +582,69 @@
                     }
 
                     .mdc-data-table__row {
-                        height:102px;
-                            .mdc-data-table__cell.disabledColumn {
+                        height: 102px;
+
+                        .mdc-data-table__cell.disabledColumn {
+                            color: #D1D8E2;
+                            pointer-events: none;
+
+                            .buying-price {
                                 color: #D1D8E2;
-                              pointer-events: none;
-                              .buying-price{
-                                color:#D1D8E2;
-                              }
-                                .edit-exposer {
-                                    cursor: default;
-                                    img{
-                                        filter: none;
-                                    }
-                                }
+                            }
 
-                                &.mat-column-Month {
-                                    color: #D1D8E2;
-                                }
+                            .edit-exposer {
+                                cursor: default;
 
-                                &.mat-column-TotalNet {
-
-                                    .positive-num,
-                                    .negative-num {
-                                        background-color: #ECEFF3;
-                                        color: $white;
-                                    }
+                                img {
+                                    filter: none;
                                 }
+                            }
+
+                            &.mat-column-Month {
+                                color: #D1D8E2;
+                            }
+
+                            &.mat-column-TotalNet {
+
+                                .positive-num,
+                                .negative-num {
+                                    background-color: #ECEFF3;
+                                    color: $white;
+                                }
+                            }
                         }
+
                         &.blink-row {
-                            animation:fade 1000ms normal;
-                            -webkit-animation:fade 1000ms normal;
-                          }
-                          @keyframes fade {
-                            from { background-color:$white ;}
-                            50% { background-color: #EFF8FF; }
-                            to { background-color:$white ;}
+                            animation: fade 1000ms normal;
+                            -webkit-animation: fade 1000ms normal;
                         }
+
+                        @keyframes fade {
+                            from {
+                                background-color: $white ;
+                            }
+
+                            50% {
+                                background-color: #EFF8FF;
+                            }
+
+                            to {
+                                background-color: $white ;
+                            }
+                        }
+
                         @-webkit-keyframes fade {
-                            from { background-color: $white;}
-                            50% { background-color: #EFF8FF; }
-                            to { background-color:$white ;}
+                            from {
+                                background-color: $white;
+                            }
+
+                            50% {
+                                background-color: #EFF8FF;
+                            }
+
+                            to {
+                                background-color: $white ;
+                            }
                         }
                     }
                 }
@@ -572,13 +661,13 @@
                 line-height: 18px;
                 gap: 4px;
                 margin-top: 14px;
-                
+
                 &.limit-reached {
                     font-size: 16px;
                     line-height: 24px;
                     margin-top: 47px;
                     margin-bottom: 25px;
-    
+
                     @media screen and (max-width: 1440px) {
                         margin-top: 20px;
                         margin-bottom: 10px;
@@ -588,45 +677,53 @@
 
             .add-rows-wrap {
                 text-align: center;
+
                 .add-btn {
                     border: 1px dashed #D0D5DD;
                     border-radius: 50%;
-                    padding:20px 21px;
+                    padding: 20px 21px;
                     line-height: 16px;
-                    margin:16px 0 0;
-                    .plus-icon{
+                    margin: 16px 0 0;
+
+                    .plus-icon {
                         background-image: url(../../../../../../assets/images/plus-large-icon.svg);
-                        width:16px;
-                        height:16px;
+                        width: 16px;
+                        height: 16px;
                         display: inline-block;
                         vertical-align: middle;
                     }
-                    &:hover{
-                        background-color:#175CD3;
+
+                    &:hover {
+                        background-color: #175CD3;
                         border-color: #175CD3;
-                        .plus-icon{
+
+                        .plus-icon {
                             background-image: url(../../../../../../assets/images/plus-large-white.svg);
                         }
                     }
-                    &.six-month{
+
+                    &.six-month {
                         background-color: #F5F8FF;
-                        border-color:#F5F8FF;
+                        border-color: #F5F8FF;
                         border-radius: 40px;
-                        padding:6px 20px;
+                        padding: 6px 20px;
                         color: #000;
                         font-family: $he_heebo;
                         font-size: 14px;
                         font-style: normal;
                         font-weight: 400;
                         line-height: 45.2px;
-                        .plus-icon{
+
+                        .plus-icon {
                             margin: 0 10px 0 0;
                         }
-                        &:hover{
-                            background-color:#175CD3;
+
+                        &:hover {
+                            background-color: #175CD3;
                             border-color: #175CD3;
-                            color:$white;
-                            .plus-icon{
+                            color: $white;
+
+                            .plus-icon {
                                 background-image: url(../../../../../../assets/images/plus-large-white.svg);
                             }
                         }
@@ -672,7 +769,7 @@
                     }
 
                     &.loading {
-                      pointer-events: none;
+                        pointer-events: none;
                     }
                 }
 
@@ -714,7 +811,8 @@
 
             .risk-exposer-wrap {
                 .monthly-exposer-wrap {
-                    padding:25px 40px;
+                    padding: 25px 40px;
+
                     .exposer-desc-wrap {
                         margin: 0 0 30px;
 
@@ -735,11 +833,13 @@
                         }
                     }
                 }
-                .exposer-table-wrap{
-                    padding:20px 20px 0 40px;
+
+                .exposer-table-wrap {
+                    padding: 20px 20px 0 40px;
                 }
+
                 .exposer-table {
-                    padding:10px;
+                    padding: 10px;
                 }
             }
         }
@@ -781,7 +881,7 @@
                         .exposer-img {
                             img {
                                 width: 30px;
-                                height:30px;
+                                height: 30px;
                             }
                         }
 
@@ -810,8 +910,9 @@
                         }
                     }
                 }
-                .exposer-table-wrap{
-                    padding:20px 10px 0;
+
+                .exposer-table-wrap {
+                    padding: 20px 10px 0;
                 }
 
                 .exposer-table {
@@ -823,6 +924,7 @@
                             align-items: center;
                         }
                     }
+
                     .mat-mdc-table {
                         box-shadow: none;
 
@@ -841,6 +943,7 @@
                                         position: relative;
                                         border-radius: 6px;
                                         border: 1px solid #175CD3;
+
                                         .edit-price {
                                             height: 40px;
                                             padding: 8px 10px 8px 20px;
@@ -861,15 +964,18 @@
                                 }
                             }
                         }
-                        .mdc-data-table__row{
+
+                        .mdc-data-table__row {
                             height: 72px;
                         }
                     }
                 }
+
                 .add-rows-wrap {
                     .add-btn {
                         padding: 13px 14px;
-                        &.six-month{
+
+                        &.six-month {
                             padding: 3px 15px;
                         }
                     }
@@ -882,26 +988,29 @@
                         max-width: 155px;
 
                         &.loading {
-                          pointer-events: none;
+                            pointer-events: none;
                         }
                     }
 
                 }
             }
         }
+
         @media screen and (max-width:1024px) {
 
             .risk-exposer-wrap {
                 .monthly-exposer-wrap {
                     .exposer-desc-wrap {
                         .desc {
-                            p{
+                            p {
                                 font-size: 14px;
                             }
                         }
                     }
+
                     .currency-wrap {
                         margin: 0;
+
                         .exposer-item {
                             &.exposer-period {
                                 padding: 0 20px;
@@ -929,6 +1038,7 @@
             .risk-exposer-wrap {
                 .monthly-exposer-wrap {
                     padding: 15px 10px;
+
                     .exposer-desc-wrap {
                         .desc {
                             h3 {
@@ -937,6 +1047,7 @@
                             }
                         }
                     }
+
                     .currency-wrap {
                         .exposer-item {
                             .expo-head {
@@ -966,9 +1077,11 @@
         @media screen and (max-width:580px) {
             .cash-flow-wrapper {
                 display: block;
+
                 .cash-title {
                     margin: 0;
                 }
+
                 .hedging-wrap {
                     text-align: right;
                 }
@@ -978,13 +1091,15 @@
                 .monthly-exposer-wrap {
                     .exposer-desc-wrap {
                         align-items: flex-start;
+
                         .desc {
                             p {
                                 font-size: 12px;
-                                line-height:18px;
+                                line-height: 18px;
                             }
                         }
                     }
+
                     .currency-wrap {
                         padding: 0 25px;
                         display: block;
@@ -1008,6 +1123,7 @@
                                         border-radius: 6px;
                                         border: 1px solid #175CD3;
                                         position: relative;
+
                                         .edit-price {
                                             width: 130px;
                                         }
@@ -1108,15 +1224,18 @@
                 }
             }
         }
+
         @media screen and (max-width:767px) {
             --bs-tooltip-max-width: 250px;
-            .tooltip-inner{
+
+            .tooltip-inner {
                 padding: 10px 15px;
             }
         }
     }
+
     .tooltip {
-        &.cash-flow-date-tooltip{
+        &.cash-flow-date-tooltip {
             margin-left: -15px !important;
             --bs-tooltip-opacity: 1;
             --bs-tooltip-max-width: 307px;
@@ -1147,10 +1266,12 @@
                     right: auto;
                 }
             }
+
             @media screen and (max-width:1199px) {
                 top: 100% !important;
                 margin: 40px 0 0 -15px !important;
-                .tooltip-arrow::before{
+
+                .tooltip-arrow::before {
                     border-bottom-width: 17px;
                     border-left-width: 8px;
                     border-right-width: 8px;
@@ -1161,71 +1282,81 @@
                     border-top-color: transparent;
                 }
             }
+
             @media screen and (max-width:767px) {
-                --bs-tooltip-max-width:230px;
-                .tooltip-inner{
-                    min-width:100px;
+                --bs-tooltip-max-width: 230px;
+
+                .tooltip-inner {
+                    min-width: 100px;
                 }
             }
         }
+
         .cash-flow-date-wrapper {
             text-align: left;
             color: $white;
+
             .close_tooltip {
-            width: 35px;
-            height: 35px;
-            position: absolute;
-            top: 0;
-            right:0;
-            background-color: transparent;
-            &::before,
-            &::after {
-                content: "";
+                width: 35px;
+                height: 35px;
                 position: absolute;
-                width: 12px;
-                height: 2px;
-                border-radius: 5px;
-                background-color: $white;
                 top: 0;
-                bottom: 0;
-                left: 0;
                 right: 0;
-                margin: auto;
+                background-color: transparent;
+
+                &::before,
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 12px;
+                    height: 2px;
+                    border-radius: 5px;
+                    background-color: $white;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+
+                &::before {
+                    transform: rotate(45deg);
+                }
+
+                &::after {
+                    transform: rotate(-45deg);
+                }
             }
-            &::before {
-                transform: rotate(45deg);
-            }
-            &::after {
-                transform: rotate(-45deg);
-            }
-            }
+
             .info-container {
                 .info-container-items {
                     .title {
-                    font-size: 19px;
-                    color: $white;
-                    font-weight: 700;
-                    line-height: 20px;
-                    display: block;
+                        font-size: 19px;
+                        color: $white;
+                        font-weight: 700;
+                        line-height: 20px;
+                        display: block;
                     }
 
                     .desc {
-                    font-size: 14px;
-                    font-weight: 500;
-                    line-height:16px;
-                    margin:10px 0 17px;
-                    padding:0;
-                    @media screen and (max-width:767px) {
-                        max-width: 100%;
-                    }
+                        font-size: 14px;
+                        font-weight: 500;
+                        line-height: 16px;
+                        margin: 10px 0 17px;
+                        padding: 0;
+
+                        @media screen and (max-width:767px) {
+                            max-width: 100%;
+                        }
                     }
 
                     .try-btn {
                         text-align: right;
 
                         justify-content: space-between;
-                        .step-of{
-                            color:$white;
+
+                        .step-of {
+                            color: $white;
                             font-family: $he_heebo;
                             font-size: 12px;
                             font-style: normal;
@@ -1233,15 +1364,16 @@
                             line-height: 20px;
                             opacity: 0.5;
                         }
+
                         .try-btn-text {
                             background-color: $white;
-                            color:#175CD3;
+                            color: #175CD3;
                             font-family: $he_heebo;
                             font-size: 12px;
                             font-weight: 700;
-                            line-height:20px;
-                            border-radius:40px;
-                            padding:2px 11px;
+                            line-height: 20px;
+                            border-radius: 40px;
+                            padding: 2px 11px;
                         }
                     }
                 }
@@ -1261,9 +1393,12 @@
             .mat-calendar-header {
                 pointer-events: none;
                 padding: 18px 27px 0 10px;
+
                 .mat-calendar-controls {
                     margin: 0;
-                    .mat-calendar-previous-button, .mat-calendar-next-button {
+
+                    .mat-calendar-previous-button,
+                    .mat-calendar-next-button {
                         display: none;
                     }
                 }
@@ -1276,6 +1411,7 @@
                     color: #344054;
                     font-family: $he_heebo;
                     line-height: 24px;
+                    font-size: 16px;
 
                     .mdc-button__label {
                         span:first-letter {
@@ -1290,7 +1426,7 @@
             }
 
             .mat-calendar-header button.mat-calendar-period-button span:first-letter {
-              text-transform: uppercase;
+                text-transform: uppercase;
             }
 
             .mat-calendar-header button.mat-calendar-period-button .mat-calendar-arrow {
@@ -1298,20 +1434,31 @@
             }
 
             .mat-calendar-content {
-                padding: 0 17px 13px 17px;
+                padding: 0 27px 13px 17px;
+
                 .mat-calendar-table {
                     .mat-calendar-table-header {
                         color: #344054;
                         font-family: $he_heebo;
                         font-size: 12px;
                         line-height: 18px;
+
                         th {
+                            width: 40px;
+                            max-width: 40px;
+                            min-width: 40px;
                             padding: 10px;
-                            font-weight: 400 !important;
+                            font-weight: 400;
+                            color: #344054;
+                            font-family: $he_heebo;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 18px; 
                         }
 
                         .mat-calendar-table-header-divider {
                             padding: 0;
+
                             &::after {
                                 left: 0;
                                 right: 0;
@@ -1330,6 +1477,7 @@
                     .mat-calendar-body-cell-container {
                         width: 40px !important;
                         height: 40px !important;
+
                         .mat-calendar-body-cell {
                             display: flex;
                             flex-direction: column;
@@ -1353,10 +1501,11 @@
                                 box-shadow: none;
                                 background-color: #003EFF !important;
                             }
-                            &.mat-calendar-body-active{
-                                .mat-calendar-body-cell-content{
+
+                            &.mat-calendar-body-active {
+                                .mat-calendar-body-cell-content {
                                     background-color: #003EFF !important;
-                                    color:$white !important;
+                                    color: $white !important;
                                 }
                             }
 
@@ -1378,9 +1527,10 @@
         }
     }
 
-    .cashflow-date-calendar-cd + .mat-datepicker-actions {
+    .cashflow-date-calendar-cd+.mat-datepicker-actions {
         padding: 0 27px 26px 15px !important;
         justify-content: flex-end !important;
+
         .cancel-cdc {
             display: flex;
             justify-content: center;
