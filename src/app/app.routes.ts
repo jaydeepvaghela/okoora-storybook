@@ -6,14 +6,14 @@ import { CashflowExposureDetailsComponent } from './risk-dashboard/components/ca
 
 export const routes: Routes = [
   { path: '', redirectTo: 'cashflow', pathMatch: 'full' as 'full' },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'hedging', component: HedgingProposalComponent },
-      { path: 'cashflow', component: CashflowExposureDetailsComponent },
-      { path: '**', redirectTo: 'cashflow' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'hedging', component: HedgingProposalComponent },
+  { path: 'cashflow', component: CashflowExposureDetailsComponent },
+  { path: '**', redirectTo: 'cashflow' },
 ];
 
 @NgModule({
-    imports:[RouterModule.forChild(routes)],
-    exports:[RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

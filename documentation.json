@@ -2271,7 +2271,7 @@
         },
         {
             "name": "ChartsTabsComponent",
-            "id": "component-ChartsTabsComponent-bbc0145895f7046fda832f707eede939f74010848b6a3d56b31365e0d735ff4207b4bb5c77cb75b6b9b1ffcb62ae8c9c3d7c4dfd900c4b44651029722f5273c2",
+            "id": "component-ChartsTabsComponent-b79474b4c12897de97c4d8ec579507d25566d78313e5459294198cff98e6b22981f3e0d08791ca7314abcee86deadcd011da33fd68e31bec2264106cecaa5dd8",
             "file": "src/app/risk-dashboard/components/dashboard/components/charts-tabs/charts-tabs.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2287,16 +2287,7 @@
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
-            "outputsClass": [
-                {
-                    "name": "toggleView",
-                    "defaultValue": "new EventEmitter<boolean>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 17,
-                    "type": "EventEmitter"
-                }
-            ],
+            "outputsClass": [],
             "propertiesClass": [
                 {
                     "name": "activeIndex",
@@ -2346,7 +2337,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 20,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2367,7 +2358,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2402,7 +2393,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { MatTabsModule, MatTabChangeEvent } from '@angular/material/tabs';\r\nimport { MonthlyExposureChartComponent } from \"../monthly-exposure-chart/monthly-exposure-chart.component\";\r\nimport { ExposureRateChartComponent } from \"../exposure-rate-chart/exposure-rate-chart.component\";\r\nimport { Router, RouterModule } from '@angular/router';\r\n@Component({\r\n  selector: 'app-charts-tabs',\r\n  imports: [MatTabsModule, CommonModule, MonthlyExposureChartComponent, ExposureRateChartComponent,RouterModule],\r\n  templateUrl: './charts-tabs.component.html',\r\n  styleUrl: './charts-tabs.component.scss'\r\n})\r\nexport class ChartsTabsComponent {\r\n  loadMonthChart: boolean = true;\r\n  loadExposureChart: boolean = false;\r\n  activeIndex: number = 0;\r\n  @Output() toggleView = new EventEmitter<boolean>();\r\n  constructor(private router: Router){\r\n\r\n  }\r\n  onTabChange(event: MatTabChangeEvent) {\r\n    const index = event.index;\r\n    this.activeIndex = index;\r\n    switch (index) {\r\n      case 0:\r\n        this.loadMonthChart = true;\r\n        this.loadExposureChart = false;\r\n        break;\r\n      case 1:\r\n        this.loadExposureChart = true;\r\n        this.loadMonthChart = false;\r\n        break;\r\n      default:\r\n        break;\r\n    }\r\n  }\r\n  showHedge(){\r\n    // this.toggleView.emit(true);\r\n    this.router.navigate(['/hedging']);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, EventEmitter } from '@angular/core';\r\nimport { MatTabsModule, MatTabChangeEvent } from '@angular/material/tabs';\r\nimport { MonthlyExposureChartComponent } from \"../monthly-exposure-chart/monthly-exposure-chart.component\";\r\nimport { ExposureRateChartComponent } from \"../exposure-rate-chart/exposure-rate-chart.component\";\r\nimport { Router, RouterModule } from '@angular/router';\r\n@Component({\r\n  selector: 'app-charts-tabs',\r\n  imports: [MatTabsModule, CommonModule, MonthlyExposureChartComponent, ExposureRateChartComponent,RouterModule],\r\n  templateUrl: './charts-tabs.component.html',\r\n  styleUrl: './charts-tabs.component.scss'\r\n})\r\nexport class ChartsTabsComponent {\r\n  loadMonthChart: boolean = true;\r\n  loadExposureChart: boolean = false;\r\n  activeIndex: number = 0;\r\n  constructor(private router: Router){\r\n\r\n  }\r\n  onTabChange(event: MatTabChangeEvent) {\r\n    const index = event.index;\r\n    this.activeIndex = index;\r\n    switch (index) {\r\n      case 0:\r\n        this.loadMonthChart = true;\r\n        this.loadExposureChart = false;\r\n        break;\r\n      case 1:\r\n        this.loadExposureChart = true;\r\n        this.loadMonthChart = false;\r\n        break;\r\n      default:\r\n        break;\r\n    }\r\n  }\r\n  showHedge(){\r\n    this.router.navigate(['/hedging']);\r\n  }\r\n}\r\n",
             "styleUrl": "./charts-tabs.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2420,7 +2411,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 17,
+                "line": 16,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -2514,7 +2505,7 @@
         },
         {
             "name": "DashboardComponent",
-            "id": "component-DashboardComponent-c18865a81e1664154eb2c19dd2ab581db73e08fea0d552781884655e6f41e16164e8bcbcadbf743ae3abb10555a68c5712d4077fb730f574821fef4d3b957ab7",
+            "id": "component-DashboardComponent-f94c04abd2581f3d7c4e622fa077038900cbba20af01ab4760717d72ecc9825331e313a43c42c8fd24f93ba30ae025c913efb587092008220a0d7fb6d3321649",
             "file": "src/app/risk-dashboard/components/dashboard/dashboard.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2530,47 +2521,9 @@
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
-            "outputsClass": [
-                {
-                    "name": "toggleView",
-                    "defaultValue": "new EventEmitter<boolean>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 17,
-                    "type": "EventEmitter"
-                }
-            ],
+            "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [
-                {
-                    "name": "onToggleView",
-                    "args": [
-                        {
-                            "name": "showHedging",
-                            "type": "boolean",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 19,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "showHedging",
-                            "type": "boolean",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
+            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -2609,150 +2562,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { AnnualExposureDetailsComponent } from \"./components/annual-exposure-details/annual-exposure-details.component\";\r\nimport { BreadcrumbWalletComponent } from './components/breadcrumb-wallet/breadcrumb-wallet.component';\r\nimport { ChartsTabsComponent } from \"./components/charts-tabs/charts-tabs.component\";\r\nimport { RiskEstimateChartComponent } from \"./components/risk-estimate-chart/risk-estimate-chart.component\";\r\nimport { TradeViewChartComponent } from \"./components/trade-view-chart/trade-view-chart.component\";\r\nimport { VolatilityChartComponent } from \"./components/volatility-chart/volatility-chart.component\";\r\nimport { MomentumIndicatorChartComponent } from \"./components/momentum-indicator-chart/momentum-indicator-chart.component\";\r\n\r\n@Component({\r\n  selector: 'app-dashboard',\r\n  imports: [AnnualExposureDetailsComponent, BreadcrumbWalletComponent, ChartsTabsComponent, RiskEstimateChartComponent, TradeViewChartComponent, VolatilityChartComponent, MomentumIndicatorChartComponent],\r\n  templateUrl: './dashboard.component.html',\r\n  styleUrl: './dashboard.component.scss'\r\n})\r\nexport class DashboardComponent {\r\n  @Output() toggleView = new EventEmitter<boolean>();\r\n\r\n  onToggleView(showHedging: boolean) {\r\n    this.toggleView.emit(showHedging); // Pass event up to AppComponent\r\n  }\r\n}",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { AnnualExposureDetailsComponent } from \"./components/annual-exposure-details/annual-exposure-details.component\";\r\nimport { BreadcrumbWalletComponent } from './components/breadcrumb-wallet/breadcrumb-wallet.component';\r\nimport { ChartsTabsComponent } from \"./components/charts-tabs/charts-tabs.component\";\r\nimport { RiskEstimateChartComponent } from \"./components/risk-estimate-chart/risk-estimate-chart.component\";\r\nimport { TradeViewChartComponent } from \"./components/trade-view-chart/trade-view-chart.component\";\r\nimport { VolatilityChartComponent } from \"./components/volatility-chart/volatility-chart.component\";\r\nimport { MomentumIndicatorChartComponent } from \"./components/momentum-indicator-chart/momentum-indicator-chart.component\";\r\n\r\n@Component({\r\n  selector: 'app-dashboard',\r\n  imports: [AnnualExposureDetailsComponent, BreadcrumbWalletComponent, ChartsTabsComponent, RiskEstimateChartComponent, TradeViewChartComponent, VolatilityChartComponent, MomentumIndicatorChartComponent],\r\n  templateUrl: './dashboard.component.html',\r\n  styleUrl: './dashboard.component.scss'\r\n})\r\nexport class DashboardComponent {\r\n}",
             "styleUrl": "./dashboard.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"risk-dashboard\">\r\n    <app-breadcrumb-wallet></app-breadcrumb-wallet>\r\n    <div class=\"dashboard-sections\">\r\n        <div class=\"left-sec\">\r\n            <app-annual-exposure-details></app-annual-exposure-details>\r\n            <app-charts-tabs (toggleView)=\"onToggleView($event)\"></app-charts-tabs>\r\n\r\n            <div class=\"left-two-part\">\r\n                <div class=\"left-haft-part\">\r\n                    <app-trade-view-chart></app-trade-view-chart>\r\n                </div>\r\n                <div class=\"left-haft-part\">\r\n                    <app-volatility-chart></app-volatility-chart>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"right-sec\">\r\n            <app-risk-estimate-chart></app-risk-estimate-chart>\r\n            <app-momentum-indicator-chart></app-momentum-indicator-chart>\r\n        </div>\r\n    </div>\r\n    <div class=\"dashboard-instruction\">\r\n        <p>The FX hedging services provided by Okoora do not constitute investment advice. Our recommendations are\r\n            based on the information provided by the client, and it is the client's responsibility to ensure that\r\n            all information provided to Okoora is accurate and complete. Okoora is not responsible for any losses or\r\n            damages arising from reliance on our recommendations, especially if based on incomplete or incorrect\r\n            information.</p>\r\n        <p>All decisions regarding the use of hedging strategies are made at your discretion. Clients should\r\n            evaluate their own financial situation and seek independent advice before implementing any hedging\r\n            strategies. Past performance is not indicative of future results, and all investments carry risk,\r\n            including potential loss.</p>\r\n        <p>By using Okoora's FX hedging services, you agree to this disclaimer.</p>\r\n    </div>\r\n</div>\r\n"
-        },
-        {
-            "name": "DropdownComponent",
-            "id": "component-DropdownComponent-a49c8a76331aa29bdd0e1d5eb201713216e81501154f81f638faeed564f575e5b663045d21038b67f020b0cfd3066570b117f1869d42f856aed738acee4f5a2d",
-            "file": "src/app/components/currency/dropdown/dropdown.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-dropdown",
-            "styleUrls": [
-                "./dropdown.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./dropdown.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "disabled",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 18,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "options",
-                    "defaultValue": "[]",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 16,
-                    "type": "literal type[]",
-                    "decorators": []
-                },
-                {
-                    "name": "selectedValue",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 17,
-                    "type": "string",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "searchQuery",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 19
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "clearSearch",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 29,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "getSelectedOption",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 20,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "MatSelectModule",
-                    "type": "module"
-                },
-                {
-                    "name": "MatFormFieldModule",
-                    "type": "module"
-                },
-                {
-                    "name": "MatOptionModule",
-                    "type": "module"
-                },
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                },
-                {
-                    "name": "FormsModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { MatOptionModule } from '@angular/material/core';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatSelectModule } from '@angular/material/select';\r\n\r\n@Component({\r\n  selector: 'app-dropdown',\r\n  standalone: true,\r\n  imports: [MatSelectModule, MatFormFieldModule, MatOptionModule,CommonModule,FormsModule],\r\n  templateUrl:'./dropdown.component.html',\r\n  styleUrls: ['./dropdown.component.scss']\r\n})\r\nexport class DropdownComponent {\r\n  @Input() options: { flag: string; label: string; description: string; value: string }[] = [];\r\n  @Input() selectedValue: string = '';\r\n  @Input() disabled: boolean = false;\r\n  searchQuery: string = '';\r\n  getSelectedOption() {\r\n    return this.options.find(option => option.value === this.selectedValue);\r\n  }\r\n  get filteredOptions() {\r\n    return this.options.filter(option =>\r\n      option.label.toLowerCase().includes(this.searchQuery.toLowerCase()) ||\r\n      option.description.toLowerCase().includes(this.searchQuery.toLowerCase())\r\n    );\r\n  }\r\n  clearSearch(){\r\n    this.searchQuery = \"\";\r\n  }\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "::ng-deep {\r\n    .currency-dropdown-container {\r\n        width: 100%;\r\n        max-width: 515px;\r\n    }\r\n\r\n    .currency-dropdown {\r\n        display: flex;\r\n        font-family: \"Heebo\", sans-serif !important;\r\n        border-radius: 6px;\r\n        border: 1px solid #E5E7EB;\r\n\r\n        &[aria-expanded=\"true\"] {\r\n            border-color: #2563EB;\r\n\r\n            .mat-mdc-select-placeholder {\r\n                color: #2947F2;\r\n            }\r\n\r\n            .mat-mdc-select-arrow-wrapper {\r\n                .mat-mdc-select-arrow {\r\n                    background-image: url('../../../../assets/up-arrow.svg');\r\n                    background-repeat: no-repeat;\r\n                    background-size: cover;\r\n                }\r\n            }\r\n        }\r\n\r\n        &.mat-mdc-select-disabled {\r\n            pointer-events: none;\r\n            opacity: 0.5;\r\n            filter: grayscale(1);\r\n            background-color: #F9FAFB;\r\n        }\r\n\r\n        &:hover {\r\n            border-color: #2563EB;\r\n        }\r\n\r\n        .mat-mdc-select-trigger {\r\n            padding: 13px 15px;\r\n        }\r\n\r\n        .mat-mdc-select-placeholder {\r\n            color: #9CA3AF;\r\n            font-size: 16px;\r\n            font-weight: 400;\r\n            line-height: 32px;\r\n        }\r\n\r\n        mat-select-trigger {\r\n            .to-currency-section {\r\n                display: flex;\r\n                align-items: center;\r\n                gap: 9px;\r\n\r\n                .image-wrap {\r\n                    position: relative;\r\n\r\n                    .currency-image {\r\n                        display: inline-block;\r\n                        width: 28px;\r\n                        height: 28px;\r\n                        border-radius: 50%;\r\n                    }\r\n\r\n                    .tick-icn {\r\n                        background-color: #fff;\r\n                        border-radius: 50%;\r\n                        position: absolute;\r\n                        bottom: 0;\r\n                        right: 0;\r\n                    }\r\n                }\r\n\r\n                .currency-info {\r\n                    display: flex;\r\n                    flex-direction: column;\r\n\r\n                    .currency-code {\r\n                        color: #2947F2;\r\n                        font-size: 18px;\r\n                        font-style: normal;\r\n                        font-weight: 700;\r\n                        line-height: 23px;\r\n                        margin: 0;\r\n                    }\r\n\r\n                    .currency-name {\r\n                        color: #01031C;\r\n                        font-size: 12px;\r\n                        font-style: normal;\r\n                        font-weight: 700;\r\n                        line-height: 1;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        .mat-mdc-select-arrow-wrapper {\r\n            .mat-mdc-select-arrow {\r\n                background-image: url('../../../../assets/down-arrow.svg');\r\n                width: 24px;\r\n                height: 24px;\r\n                background-repeat: no-repeat;\r\n                background-size: cover;\r\n\r\n                svg {\r\n                    display: none;\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:1024px) {\r\n            .mat-mdc-select-trigger {\r\n                padding: 12px;\r\n            }\r\n\r\n            .mat-mdc-select-placeholder {\r\n                font-size: 14px;\r\n                line-height: 24px;\r\n            }\r\n\r\n            .mat-mdc-select-arrow-wrapper {\r\n                .mat-mdc-select-arrow {\r\n                    width: 20px;\r\n                    height: 20px;\r\n                }\r\n            }\r\n\r\n            mat-select-trigger {\r\n                .to-currency-section {\r\n                    gap: 5px;\r\n\r\n                    .image-wrap {\r\n                        .currency-image {\r\n                            width: 20px;\r\n                            height: 20px;\r\n                        }\r\n\r\n                        .tick-icn {\r\n                            width: 12px;\r\n                            height: 12px;\r\n                        }\r\n                    }\r\n\r\n                    .currency-info {\r\n                        .currency-code {\r\n                            font-size: 16px;\r\n                            line-height: 20px;\r\n                        }\r\n\r\n                        .currency-name {\r\n                            font-size: 10px;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:767px) {\r\n            .mat-mdc-select-trigger {\r\n                padding: 10px;\r\n            }\r\n\r\n            .mat-mdc-select-placeholder {\r\n                font-size: 12px;\r\n                line-height: 20px;\r\n            }\r\n\r\n            .mat-mdc-select-arrow-wrapper {\r\n                .mat-mdc-select-arrow {\r\n                    width: 16px;\r\n                    height: 16px;\r\n                }\r\n            }\r\n\r\n            mat-select-trigger {\r\n                .to-currency-section {\r\n                    gap: 5px;\r\n\r\n                    .image-wrap {\r\n                        .currency-image {\r\n                            width: 16px;\r\n                            height: 16px;\r\n                        }\r\n\r\n                        .tick-icn {\r\n                            width: 10px;\r\n                            height: 10px;\r\n                        }\r\n                    }\r\n\r\n                    .currency-info {\r\n                        .currency-code {\r\n                            font-size: 14px;\r\n                            line-height: 16px;\r\n                        }\r\n\r\n                        .currency-name {\r\n                            font-size: 8px;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    .mat-mdc-select-panel {\r\n        &.currency-dropdown-panel {\r\n            margin: 5px 0 0;\r\n            padding: 36px 22px 36px 36px;\r\n            border-radius: 6px;\r\n            box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);\r\n\r\n            .search-input-wrapper {\r\n                display: flex;\r\n                flex-direction: column;\r\n\r\n                .input-inner {\r\n                    display: flex;\r\n\r\n                    input {\r\n                        width: 100%;\r\n                        border-radius: 7px;\r\n                        border: 1px solid #2947F2;\r\n                        background: #FFF;\r\n                        box-shadow: 0px 6px 44px 0px rgba(65, 90, 235, 0.11);\r\n                        display: flex;\r\n                        height: 44px;\r\n                        padding: 0px 10px 0px 20px;\r\n                        align-items: center;\r\n                        gap: 10px;\r\n                        color: #5B5B66;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n\r\n                        &::placeholder {\r\n                            color: #5B5B66;\r\n                        }\r\n\r\n                        &:focus-visible {\r\n                            outline: none;\r\n                        }\r\n                    }\r\n                }\r\n\r\n                .error-wrap {\r\n                    margin: 14px 0 0;\r\n                    padding: 9px 29px;\r\n\r\n                    .error-title {\r\n                        color: #01031C;\r\n                        font-size: 18px;\r\n                        font-weight: 400;\r\n                        line-height: 35px;\r\n                    }\r\n\r\n                    .desc {\r\n                        color: #585858;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: normal;\r\n\r\n                        .clear-search {\r\n                            background-color: transparent;\r\n                            color: #175CD3;\r\n                            font-size: 14px;\r\n                            font-weight: 400;\r\n                            line-height: normal;\r\n                            text-decoration-line: underline;\r\n                            border: none;\r\n                            cursor: pointer;\r\n                            padding: 0;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n\r\n            .currency-option-list {\r\n                .mat-mdc-option {\r\n                    padding: 0;\r\n                    border-bottom: 1px dashed #D9DADD;\r\n                    background-color: transparent !important;\r\n\r\n                    .mdc-list-item__primary-text {\r\n                        display: flex;\r\n                        padding: 9px 29px;\r\n                        border-radius: 10px;\r\n                        gap: 18px;\r\n                        margin: 19px 0;\r\n                        width: 100%;\r\n                        align-items: center;\r\n\r\n                        .currency-image {\r\n                            width: 32px;\r\n                            height: 32px;\r\n                            padding: 1px;\r\n                            border-radius: 50%;\r\n                        }\r\n\r\n                        .currency-info {\r\n                            display: flex;\r\n                            flex-direction: column;\r\n\r\n                            .currency-code {\r\n                                color: #01031C;\r\n                                font-size: 18px;\r\n                                font-weight: 400;\r\n                                line-height: 32px;\r\n                            }\r\n\r\n                            .currency-name {\r\n                                color: #01031C;\r\n                                font-size: 14px;\r\n                                font-weight: 400;\r\n                                opacity: 0.7;\r\n                                line-height: 1;\r\n                            }\r\n                        }\r\n                    }\r\n\r\n                    &.mdc-list-item--selected {\r\n                        .mdc-list-item__primary-text {\r\n                            background: #F5F7FA;\r\n\r\n                            .currency-info {\r\n                                .currency-code {\r\n                                    color: #2947F2;\r\n                                    font-weight: 700;\r\n                                }\r\n\r\n                                .currency-name {\r\n                                    color: #01031C;\r\n                                    font-weight: 700;\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n\r\n                    &:hover {\r\n                        .mdc-list-item__primary-text {\r\n                            background: #F5F7FA;\r\n\r\n                            .currency-info {\r\n                                .currency-code {\r\n                                    color: #2947F2;\r\n                                }\r\n\r\n                                .currency-name {\r\n                                    color: #01031C;\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n\r\n                    mat-pseudo-checkbox {\r\n                        display: none;\r\n                    }\r\n                }\r\n            }\r\n\r\n            @media screen and (max-width:1024px) {\r\n                padding: 20px 10px 20px 20px;\r\n\r\n                .search-input-wrapper {\r\n                    .input-inner {\r\n                        input {\r\n                            height: 36px;\r\n                            padding: 0px 10px 0px 15px;\r\n                            font-size: 12px;\r\n                        }\r\n                    }\r\n\r\n                    .error-wrap{\r\n                        margin: 10px 0 0;\r\n                        padding: 5px 20px;\r\n                        .error-title{\r\n                            font-size: 16px;\r\n                            line-height: 1.2;\r\n                        }\r\n                    }\r\n                }\r\n\r\n                .currency-option-list {\r\n                    .mat-mdc-option {\r\n                        .mdc-list-item__primary-text {\r\n                            padding: 9px 20px;\r\n                            gap: 10px;\r\n                            margin: 10px 0;\r\n\r\n                            .currency-image {\r\n                                width: 20px;\r\n                                height: 20px;\r\n                            }\r\n\r\n                            .currency-info {\r\n                                .currency-code {\r\n                                    font-size: 16px;\r\n                                    line-height: 20px;\r\n                                }\r\n\r\n                                .currency-name {\r\n                                    font-size: 12px;\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n\r\n            @media screen and (max-width:767px) {\r\n                padding: 15px 10px 15px 15px;\r\n\r\n                .search-input-wrapper {\r\n                    .input-inner {\r\n                        input {\r\n                            padding: 0px 10px 0px 10px;\r\n                            font-size: 12px;\r\n                        }\r\n                    }\r\n\r\n                    .error-wrap{\r\n                        margin:8px 0 0;\r\n                        padding: 5px 10px;\r\n                        .error-title{\r\n                            font-size: 14px;\r\n                        }\r\n                        .desc{\r\n                            font-size: 12px;\r\n                            .clear-search{\r\n                                font-size: 12px;\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n\r\n                .currency-option-list {\r\n                    .mat-mdc-option {\r\n                        .mdc-list-item__primary-text {\r\n                            padding: 9px 15px;\r\n                            gap: 5px;\r\n                            margin: 5px 0;\r\n\r\n                            .currency-image {\r\n                                width: 16px;\r\n                                height: 16px;\r\n                            }\r\n\r\n                            .currency-info {\r\n                                .currency-code {\r\n                                    font-size: 14px;\r\n                                    line-height: 16px;\r\n                                }\r\n\r\n                                .currency-name {\r\n                                    font-size: 10px;\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n}",
-                    "styleUrl": "./dropdown.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "extends": [],
-            "accessors": {
-                "filteredOptions": {
-                    "name": "filteredOptions",
-                    "getSignature": {
-                        "name": "filteredOptions",
-                        "type": "",
-                        "returnType": "",
-                        "line": 23
-                    }
-                }
-            },
-            "templateData": "<div class=\"currency-dropdown-container\">\r\n    <mat-select [(value)]=\"selectedValue\" [disabled]=\"disabled\" panelClass=\"currency-dropdown-panel\" class=\"form-control currency-dropdown\" placeholder=\"Select\">\r\n      <mat-select-trigger>\r\n          <div *ngIf=\"selectedValue\" class=\"to-currency-section\">\r\n            <div class=\"image-wrap\">\r\n              <img class=\"currency-image\" [src]=\"getSelectedOption()?.flag\" alt=\"currency_flag\" />\r\n              <img src=\"tick-icon.svg\" alt=\"arrow\" class=\"tick-icn\" />\r\n            </div>\r\n            <div class=\"currency-info\">\r\n              <span class=\"currency-code\">{{ getSelectedOption()?.label }}</span>\r\n              <span class=\"currency-name\">{{ getSelectedOption()?.description }}</span>\r\n            </div>\r\n          </div>\r\n      </mat-select-trigger>\r\n      <div class=\"search-input-wrapper\">\r\n        <div class=\"input-inner\">\r\n          <input #searchBeneficiaryCountryInput [(ngModel)]=\"searchQuery\" class=\"filter-input\"\r\n            [ngClass]=\"filteredOptions.length == 0 ? 'error-input' : ''\" type=\"text\"\r\n            placeholder=\"Search\" id=\"search-input\">\r\n        </div>\r\n        <div class=\"error-wrap\" *ngIf=\"filteredOptions?.length == 0\">\r\n          <h3 class=\"error-title\">No currency were found</h3>\r\n          <p class=\"desc\">Try again with different keywords, <button (click)=\"clearSearch()\" class=\"clear-search\">Reset search</button></p>\r\n        </div>\r\n      </div>\r\n      <div class=\"currency-option-list\">\r\n        <mat-option *ngFor=\"let option of filteredOptions\" [value]=\"option.value\">\r\n          <img class=\"currency-image\" [src]=\"option.flag\" alt=\"currency_flag\" />\r\n          <div class=\"currency-info\">\r\n            <span class=\"currency-code\">{{ option.label }}</span>\r\n            <span class=\"currency-name\">{{ option.description }}</span>\r\n          </div>\r\n        </mat-option>\r\n      </div>\r\n    </mat-select>\r\n</div>"
+            "templateData": "<div class=\"risk-dashboard\">\r\n    <app-breadcrumb-wallet></app-breadcrumb-wallet>\r\n    <div class=\"dashboard-sections\">\r\n        <div class=\"left-sec\">\r\n            <app-annual-exposure-details></app-annual-exposure-details>\r\n            <app-charts-tabs></app-charts-tabs>\r\n\r\n            <div class=\"left-two-part\">\r\n                <div class=\"left-haft-part\">\r\n                    <app-trade-view-chart></app-trade-view-chart>\r\n                </div>\r\n                <div class=\"left-haft-part\">\r\n                    <app-volatility-chart></app-volatility-chart>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"right-sec\">\r\n            <app-risk-estimate-chart></app-risk-estimate-chart>\r\n            <app-momentum-indicator-chart></app-momentum-indicator-chart>\r\n        </div>\r\n    </div>\r\n    <div class=\"dashboard-instruction\">\r\n        <p>The FX hedging services provided by Okoora do not constitute investment advice. Our recommendations are\r\n            based on the information provided by the client, and it is the client's responsibility to ensure that\r\n            all information provided to Okoora is accurate and complete. Okoora is not responsible for any losses or\r\n            damages arising from reliance on our recommendations, especially if based on incomplete or incorrect\r\n            information.</p>\r\n        <p>All decisions regarding the use of hedging strategies are made at your discretion. Clients should\r\n            evaluate their own financial situation and seek independent advice before implementing any hedging\r\n            strategies. Past performance is not indicative of future results, and all investments carry risk,\r\n            including potential loss.</p>\r\n        <p>By using Okoora's FX hedging services, you agree to this disclaimer.</p>\r\n    </div>\r\n</div>\r\n"
         },
         {
             "name": "ExposureRateChartComponent",
@@ -7579,13 +7395,13 @@
     "modules": [
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-284c20e2d182b26039802abb45ea7f3c948157b2df5027ac4716be57ecd70e6f11b2f6030062e335be8bde939fb99e0482ba8a5df64dc4f1bf3a082250cff662",
+            "id": "module-AppRoutingModule-d8d60e50ad6f07e80e4573d784bd8feff8bd5cef4f9603774e3ccc5151c6ee4ad01fc4750c53c233598028be2aefdf30d890ecca1cfced6ff6865d0e3758fd84",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.routes.ts",
             "methods": [],
-            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Default route\r\n  { path: 'dashboard', component: DashboardComponent },\r\n  { path: 'hedging', component: HedgingProposalComponent },\r\n  { path: '**', redirectTo: 'dashboard' }\r\n];\r\n\r\n@NgModule({\r\n    imports:[RouterModule.forChild(routes)],\r\n    exports:[RouterModule]\r\n})\r\nexport class AppRoutingModule {}",
+            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\nimport { CashflowExposureDetailsComponent } from './risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-details/cashflow-exposure-details.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'cashflow', pathMatch: 'full' as 'full' },\r\n      { path: 'dashboard', component: DashboardComponent },\r\n      { path: 'hedging', component: HedgingProposalComponent },\r\n      { path: 'cashflow', component: CashflowExposureDetailsComponent },\r\n      { path: '**', redirectTo: 'cashflow' },\r\n];\r\n\r\n@NgModule({\r\n    imports:[RouterModule.forChild(routes)],\r\n    exports:[RouterModule]\r\n})\r\nexport class AppRoutingModule {}",
             "children": [
                 {
                     "type": "providers",
@@ -7889,15 +7705,6 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/currency/dropdown/dropdown.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "DropdownComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/7",
-                "status": "low"
-            },
-            {
                 "filePath": "src/app/risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-data.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -7978,7 +7785,7 @@
                 "linktype": "component",
                 "name": "ChartsTabsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -8051,7 +7858,7 @@
                 "linktype": "component",
                 "name": "DashboardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

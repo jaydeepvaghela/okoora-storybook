@@ -20,6 +20,11 @@
             padding: 28px 2.8% 80px;
             min-height: calc(100vh - 58px);
         }
+
+        @media screen and (max-width:420px) {
+            padding: 48px 2.8% 80px;
+            min-height: calc(100vh - 58px);
+        }
     }
     @media screen and (max-width:1440px) {
         padding:93px 0 0 124px;
