@@ -117,7 +117,6 @@ export class QuickHedgeDrawerComponent {
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        console.log('Dialog closed', result);
       });
     }
   }

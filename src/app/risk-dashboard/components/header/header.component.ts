@@ -35,7 +35,6 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     this.hedgeService.hedgeAllDrawerState$
       .pipe(takeUntil(this.destroy$))
       .subscribe((state) => {
-        console.log('HedgeAllDrawer State:', state);
         if (this.hedgeAllDrawer) {
           if (state) {
             this.hedgeAllDrawer.open();
@@ -54,7 +53,6 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     this.hedgeService.quickHedgeDrawerState$
       .pipe(takeUntil(this.destroy$))
       .subscribe((state) => {
-        console.log('QuickHedgeDrawer State:', state);
         if (this.quickHedgeDrawer) {
           if (state) {
             this.quickHedgeDrawer.open();

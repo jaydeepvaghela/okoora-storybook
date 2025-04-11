@@ -12,7 +12,7 @@ export class MonthlyExposureDetailsComponent {
   @Input() monthlyPeriod: number | undefined;
   
   ngOnInit() {
-    console.log('monthlyPeriod from monthlyExposuredetailsc', this.monthlyPeriod);
+    
   }
 
   valueWithComma(e: any, fraction: any) {

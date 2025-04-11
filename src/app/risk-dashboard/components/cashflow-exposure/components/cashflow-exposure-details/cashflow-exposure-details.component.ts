@@ -113,7 +113,6 @@ export class CashflowExposureDetailsComponent {
 
   ngOnInit() {
     this.monthlyPeriod = this.monthlyExposureObject.monthlyPeriod;
-    console.log(this.monthlyPeriod, 'monthlyPeriod')
   }
   
   chooseCashflowDate(index: number, year: number, month: string, day: number): void {

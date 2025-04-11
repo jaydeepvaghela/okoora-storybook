@@ -41,7 +41,6 @@ export class HedgeAllDrawerComponent {
 
   ngOnInit() {
     this.setFormattedDateRange()
-    console.log('(this.multipleHedgeData)', this.multipleHedgeData);
     this.intervalId = setInterval(() => {
       this.showProgressbar = true;
       setTimeout(() => {
@@ -88,7 +87,6 @@ export class HedgeAllDrawerComponent {
   }
 
   onRowClick(row: any) {
-    console.log('row',row)
     this.specificSelectedRow = row;
   }
 
@@ -125,7 +123,6 @@ export class HedgeAllDrawerComponent {
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        console.log('Dialog closed', result);
       });
     }
     

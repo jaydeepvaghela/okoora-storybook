@@ -25,9 +25,4 @@ export class AppComponent {
   openSidebar() {
     this.sidebar.openSidebar();
   }
-  onToggleView(showHedging: boolean) {
-    this.Showhedging = showHedging;
-    this.ShowDashboard = !showHedging;
-    this.showCashflowExposure = !showHedging && !this.ShowDashboard;
-  }
 }
