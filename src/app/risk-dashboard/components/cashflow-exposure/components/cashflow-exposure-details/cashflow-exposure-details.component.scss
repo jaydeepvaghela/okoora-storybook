@@ -1381,6 +1381,13 @@
         }
     }
 
+    .mat-datepicker-content:has(.cashflow-date-calendar-cd) {
+        border-radius: 8px !important;
+        border: 1px solid #E4E7EC !important;
+        box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.25) !important;
+        background: $white !important;
+    }
+
     .cashflow-date-calendar-cd {
         position: relative;
 
