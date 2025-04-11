@@ -7395,13 +7395,13 @@
     "modules": [
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-d8d60e50ad6f07e80e4573d784bd8feff8bd5cef4f9603774e3ccc5151c6ee4ad01fc4750c53c233598028be2aefdf30d890ecca1cfced6ff6865d0e3758fd84",
+            "id": "module-AppRoutingModule-cd1d38582b046da9146a82ea06b17f41ae7ed466018fa1ccb3dc059c4a16496809bb7da9da8c37b042812938a5b8fcef6f0b6a98e4b1b7cb0e375287c79a8572",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.routes.ts",
             "methods": [],
-            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\nimport { CashflowExposureDetailsComponent } from './risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-details/cashflow-exposure-details.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'cashflow', pathMatch: 'full' as 'full' },\r\n      { path: 'dashboard', component: DashboardComponent },\r\n      { path: 'hedging', component: HedgingProposalComponent },\r\n      { path: 'cashflow', component: CashflowExposureDetailsComponent },\r\n      { path: '**', redirectTo: 'cashflow' },\r\n];\r\n\r\n@NgModule({\r\n    imports:[RouterModule.forChild(routes)],\r\n    exports:[RouterModule]\r\n})\r\nexport class AppRoutingModule {}",
+            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\nimport { CashflowExposureDetailsComponent } from './risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-details/cashflow-exposure-details.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'cashflow', pathMatch: 'full' as 'full' },\r\n  { path: 'dashboard', component: DashboardComponent },\r\n  { path: 'hedging', component: HedgingProposalComponent },\r\n  { path: 'cashflow', component: CashflowExposureDetailsComponent },\r\n  { path: '**', redirectTo: 'cashflow' },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }",
             "children": [
                 {
                     "type": "providers",
