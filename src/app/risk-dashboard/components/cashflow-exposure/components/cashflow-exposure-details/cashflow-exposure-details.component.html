@@ -213,8 +213,8 @@
                     *ngIf="monthlyPeriod == 6"><i class="plus-icon"></i>Next
                     6
                     months</button>
-                <!-- <button class="add-btn" (click)="addOneMore()" id="plusMonthExposureBtn__i1"
-                    *ngIf="monthlyPeriod < 24 && monthlyPeriod > 6"><i class="plus-icon"></i></button> -->
+                <button class="add-btn" (click)="addOneMore()" id="plusMonthExposureBtn__i1"
+                    *ngIf="monthlyPeriod < 24 && monthlyPeriod > 6"><i class="plus-icon"></i></button>
                 <span class="error-message limit-reached" *ngIf="monthlyPeriod > 23">You have reached the limit</span>
             </div>
             <span *ngIf="maxLengthError" class="error-message"> Maximum amount allowed is
