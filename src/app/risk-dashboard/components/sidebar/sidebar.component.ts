@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 export interface MenuItem {
   icon: string;
   label: string;
@@ -10,7 +10,7 @@ export interface MenuItem {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [MatExpansionModule],
+  imports: [MatExpansionModule,RouterModule],
   templateUrl:'sidebar.component.html',
   styleUrl: 'sidebar.component.scss'
 })

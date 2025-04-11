@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "MenuItem",
-            "id": "interface-MenuItem-cf20c254ba04f504e7e2745c544fb3e48ed4eb2d2f72f1116c6c7524bc980f5b2eab1da8f1bb89f703ed02526ebb83fd33dbdf64d06c06dd0ef9b4127f0d013f",
+            "id": "interface-MenuItem-1bb3e4e56296aa3b81d206ef4dd37e9b3326f2dac9c67dba18a9c82daa7ae6754ea178887855fc8bd1603433dc3c3470580692db955e3b35410bbeeb873c4c13",
             "file": "src/app/risk-dashboard/components/sidebar/sidebar.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, ElementRef, ViewChild } from '@angular/core';\r\nimport { MatExpansionModule } from '@angular/material/expansion';\r\nimport { Router } from '@angular/router';\r\nexport interface MenuItem {\r\n  icon: string;\r\n  label: string;\r\n  badge?: string;\r\n  highlight?: boolean;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-sidebar',\r\n  imports: [MatExpansionModule],\r\n  templateUrl:'sidebar.component.html',\r\n  styleUrl: 'sidebar.component.scss'\r\n})\r\nexport class SidebarComponent {\r\n  @ViewChild('sidebar') sidebar!: ElementRef;\r\n  constructor(private router:Router){\r\n\r\n  }\r\n  openSidebar() {\r\n    this.sidebar.nativeElement.classList.add('active');\r\n    document.body.classList.add('overflow-hidden');\r\n  }\r\n\r\n  hideSidebar() {\r\n    this.sidebar.nativeElement.classList.remove('active');\r\n    document.body.classList.remove('overflow-hidden');\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, ElementRef, ViewChild } from '@angular/core';\r\nimport { MatExpansionModule } from '@angular/material/expansion';\r\nimport { Router, RouterModule } from '@angular/router';\r\nexport interface MenuItem {\r\n  icon: string;\r\n  label: string;\r\n  badge?: string;\r\n  highlight?: boolean;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-sidebar',\r\n  imports: [MatExpansionModule,RouterModule],\r\n  templateUrl:'sidebar.component.html',\r\n  styleUrl: 'sidebar.component.scss'\r\n})\r\nexport class SidebarComponent {\r\n  @ViewChild('sidebar') sidebar!: ElementRef;\r\n  constructor(private router:Router){\r\n\r\n  }\r\n  openSidebar() {\r\n    this.sidebar.nativeElement.classList.add('active');\r\n    document.body.classList.add('overflow-hidden');\r\n  }\r\n\r\n  hideSidebar() {\r\n    this.sidebar.nativeElement.classList.remove('active');\r\n    document.body.classList.remove('overflow-hidden');\r\n  }\r\n}\r\n",
             "properties": [
                 {
                     "name": "badge",
@@ -244,31 +244,6 @@
                     "optional": true,
                     "description": "",
                     "line": 28
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "User",
-            "id": "interface-User-23c11020a2831beb3fa02ee911a75b64009c31bb46f73a01145c2560cb13b7f7e641105b678bd8fb01a5a199117001f3da4a78351d29d85d213ed7b82982091f",
-            "file": "src/stories/user.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface User {\r\n  name: string;\r\n}\r\n",
-            "properties": [
-                {
-                    "name": "name",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 2
                 }
             ],
             "indexSignatures": [],
@@ -890,7 +865,7 @@
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-3d5f535021f0e6ae93e4a782becb9d562c7f337e426fcb480eef0519d3193cb0cbef90721e93bae4b1389602f1ccde1aa5088db604ce09baf7c6a8cc60cfd2f8",
+            "id": "component-AppComponent-38f12ee7a25f9de0c2068362e9e7d796284dea6f8627c4a34bf231981087a7adfc905847fcb538c26cc125f996a39f3e9736f61d4051dc7b09ee53d154e80ffb",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -911,7 +886,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 17,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -920,7 +895,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -929,7 +904,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 16,
                     "type": "boolean",
                     "decorators": []
                 }
@@ -944,7 +919,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17,
+                    "line": 14,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -959,6 +934,16 @@
             ],
             "methodsClass": [
                 {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "onToggleView",
                     "args": [
                         {
@@ -971,7 +956,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 28,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -992,7 +977,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 22,
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1015,32 +1000,46 @@
                     "type": "component"
                 },
                 {
-                    "name": "DashboardComponent",
-                    "type": "component"
-                },
-                {
                     "name": "CommonModule",
                     "type": "module"
-                },
-                {
-                    "name": "HedgingProposalComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "CashflowExposureDetailsComponent",
-                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ViewChild } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\nimport { HeaderComponent } from \"./risk-dashboard/components/header/header.component\";\r\nimport { SidebarComponent } from \"./risk-dashboard/components/sidebar/sidebar.component\";\r\nimport { DashboardComponent } from \"./risk-dashboard/components/dashboard/dashboard.component\";\r\nimport { CommonModule } from '@angular/common';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\nimport { CashflowExposureDetailsComponent } from \"./risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-details/cashflow-exposure-details.component\";\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  imports: [RouterOutlet, HeaderComponent, SidebarComponent, DashboardComponent, CommonModule, HedgingProposalComponent, CashflowExposureDetailsComponent],\r\n  templateUrl:'app.component.html',\r\n  styleUrl:'app.component.scss',\r\n})\r\nexport class AppComponent {\r\n  @ViewChild(SidebarComponent) private sidebar!: SidebarComponent;\r\n  @Input() ShowDashboard: boolean = false;\r\n  @Input() Showhedging: boolean = false;\r\n  @Input() showCashflowExposure: boolean = false;\r\n\r\n  openSidebar() {\r\n    this.sidebar.openSidebar();\r\n  }\r\n  onToggleView(showHedging: boolean) {\r\n    this.Showhedging = showHedging;\r\n    this.ShowDashboard = !showHedging;\r\n    this.showCashflowExposure = !showHedging && !this.ShowDashboard;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, ViewChild } from '@angular/core';\r\nimport { Router, RouterOutlet } from '@angular/router';\r\nimport { HeaderComponent } from \"./risk-dashboard/components/header/header.component\";\r\nimport { SidebarComponent } from \"./risk-dashboard/components/sidebar/sidebar.component\";\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  imports: [RouterOutlet, HeaderComponent, SidebarComponent, CommonModule],\r\n  templateUrl:'app.component.html',\r\n  styleUrl:'app.component.scss',\r\n})\r\nexport class AppComponent {\r\n  @ViewChild(SidebarComponent) private sidebar!: SidebarComponent;\r\n  @Input() ShowDashboard: boolean = false;\r\n  @Input() Showhedging: boolean = false;\r\n  @Input() showCashflowExposure: boolean = false;\r\n  constructor(private router: Router) {}\r\n  ngOnInit(): void {\r\n    // Only navigate if it's the initial load (empty path)\r\n    if (this.router.url === '/') {\r\n      this.router.navigate(['/cashflow']);\r\n    }\r\n  }\r\n  openSidebar() {\r\n    this.sidebar.openSidebar();\r\n  }\r\n  onToggleView(showHedging: boolean) {\r\n    this.Showhedging = showHedging;\r\n    this.ShowDashboard = !showHedging;\r\n    this.showCashflowExposure = !showHedging && !this.ShowDashboard;\r\n  }\r\n}\r\n",
             "styleUrl": "app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
-            "templateData": "<div class=\"layout\">\r\n    <app-header (openSidebar)=\"openSidebar()\"></app-header>\r\n    <app-sidebar></app-sidebar>\r\n    <div class=\"content-wrapper risk-manager\">\r\n        <router-outlet />\r\n        <app-dashboard *ngIf=\"ShowDashboard\" (toggleView)=\"onToggleView($event)\"></app-dashboard>\r\n        <app-hedging-proposal *ngIf=\"Showhedging\"></app-hedging-proposal>\r\n        <app-cashflow-exposure-details *ngIf=\"showCashflowExposure\"></app-cashflow-exposure-details>\r\n    </div>\r\n</div>"
+            "templateData": "<div class=\"layout\">\r\n    <app-header (openSidebar)=\"openSidebar()\"></app-header>\r\n    <app-sidebar></app-sidebar>\r\n    <div class=\"content-wrapper risk-manager\">\r\n        <router-outlet />\r\n    </div>\r\n</div>"
         },
         {
             "name": "BreadcrumbWalletComponent",
@@ -1118,267 +1117,6 @@
             "templateData": "<div class=\"risk-header\">\r\n    <div class=\"risk-nav\">\r\n        Dashboard / hedging / <b>risk analysis</b>\r\n    </div>\r\n    <div class=\"risk-header-bottom\">\r\n        <div class=\"left-sec\">\r\n            <button class=\"cash-flow-wrap\" tooltip=\"S.L ROBOTICS\" placement=\"auto\" tooltipClass=\"risk-dash-tooltip--rm1\" container=\"body\">\r\n                <div class=\"currency-pair\">\r\n                    <img [src]=\"fromCurrency\" class=\"from-currency\">\r\n                    <div class=\"base-currency-wrap\">\r\n                        <img [src]=\"baseCurrency\" class=\"base-currency\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"cashflow-details\">\r\n                    <!-- Static content -->\r\n                    <h3 class=\"name\">{{cashFlowName}}</h3>\r\n                    <h5 class=\"month-range-text\">\r\n                        {{monthRange}}\r\n                    </h5>\r\n                </div>\r\n                <div class=\"selection-icons\">\r\n                    <!-- Add icons or leave it empty -->\r\n                </div>\r\n            </button>\r\n            <button class=\"add-flow\"><i class=\"fas fa-plus\"></i></button>\r\n        </div>\r\n        <div class=\"right-buttons\">\r\n            <!-- Static content for buttons -->\r\n            <button class=\"policy-btn\">\r\n                <img src=\"images/plus-icon-round.svg\"> Advanced Policy\r\n                <span class=\"notify-tag\"></span>\r\n            </button>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
         },
         {
-            "name": "ButtonComponent",
-            "id": "component-ButtonComponent-5747b2121bdc472b32e41e4e47db44dbd7601fe73e9c7b3d0f82e7d1aaf97be0d13d4880fee19b0e4d511178aa52a24a5a9ea3ee0034d204ffd659c0aae43e41",
-            "file": "src/stories/button.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-button",
-            "styleUrls": [
-                "./button.css"
-            ],
-            "styles": [],
-            "template": " <button  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "backgroundColor",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nWhat background color to use",
-                    "description": "<p>What background color to use</p>\n",
-                    "line": 25,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "'Button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "pos": 793,
-                            "end": 807,
-                            "kind": 327,
-                            "id": 0,
-                            "flags": 16842752,
-                            "modifierFlagsCache": 0,
-                            "transformFlags": 0,
-                            "tagName": {
-                                "pos": 794,
-                                "end": 802,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "required"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "rawdescription": "\n\nButton contents\n\n",
-                    "description": "<p>Button contents</p>\n",
-                    "line": 37,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "primary",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nIs this the principal call to action on the page?",
-                    "description": "<p>Is this the principal call to action on the page?</p>\n",
-                    "line": 21,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'medium'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nHow large should the button be?",
-                    "description": "<p>How large should the button be?</p>\n",
-                    "line": 29,
-                    "type": "\"small\" | \"medium\" | \"large\"",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onClick",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nOptional click handler",
-                    "description": "<p>Optional click handler</p>\n",
-                    "line": 41,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'storybook-button',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  template: ` <button\r\n  type=\"button\"\r\n  (click)=\"onClick.emit($event)\"\r\n  [ngClass]=\"classes\"\r\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\r\n>\r\n  {{ label }}\r\n</button>`,\r\n  styleUrls: ['./button.css'],\r\n})\r\nexport class ButtonComponent {\r\n  /** Is this the principal call to action on the page? */\r\n  @Input()\r\n  primary = false;\r\n\r\n  /** What background color to use */\r\n  @Input()\r\n  backgroundColor?: string;\r\n\r\n  /** How large should the button be? */\r\n  @Input()\r\n  size: 'small' | 'medium' | 'large' = 'medium';\r\n\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input()\r\n  label = 'Button';\r\n\r\n  /** Optional click handler */\r\n  @Output()\r\n  onClick = new EventEmitter<Event>();\r\n\r\n  public get classes(): string[] {\r\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\r\n\r\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\r\n  }\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-button {\r\n  display: inline-block;\r\n  cursor: pointer;\r\n  border: 0;\r\n  border-radius: 3em;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n}\r\n.storybook-button--primary {\r\n  background-color: #555ab9;\r\n  color: white;\r\n}\r\n.storybook-button--secondary {\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\r\n  background-color: transparent;\r\n  color: #333;\r\n}\r\n.storybook-button--small {\r\n  padding: 10px 16px;\r\n  font-size: 12px;\r\n}\r\n.storybook-button--medium {\r\n  padding: 11px 20px;\r\n  font-size: 14px;\r\n}\r\n.storybook-button--large {\r\n  padding: 12px 24px;\r\n  font-size: 16px;\r\n}\r\n",
-                    "styleUrl": "./button.css"
-                }
-            ],
-            "stylesData": "",
-            "extends": [],
-            "accessors": {
-                "classes": {
-                    "name": "classes",
-                    "getSignature": {
-                        "name": "classes",
-                        "type": "[]",
-                        "returnType": "string[]",
-                        "line": 43
-                    }
-                }
-            }
-        },
-        {
-            "name": "ButtonLinkComponent",
-            "id": "component-ButtonLinkComponent-71c40cb5d243681808a5d97266e6878ffc5864c772c62f80e1c1351434a44663dd13478b9cbff3e9590271da5917cb7b915eb10089ea7f497f3ef3eeba817e44",
-            "file": "src/app/button-link/button-link.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-button-link",
-            "styleUrls": [
-                "button-link.component.scss"
-            ],
-            "styles": [],
-            "template": "    <button\n  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n>\n  {{ label }}\n</button>\n",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "backgroundColor",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nWhat background color to use",
-                    "description": "<p>What background color to use</p>\n",
-                    "line": 22,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "'Button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "pos": 596,
-                            "end": 610,
-                            "kind": 327,
-                            "id": 0,
-                            "flags": 16842752,
-                            "modifierFlagsCache": 0,
-                            "transformFlags": 0,
-                            "tagName": {
-                                "pos": 597,
-                                "end": 605,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "required"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "rawdescription": "\n\nButton contents\n\n",
-                    "description": "<p>Button contents</p>\n",
-                    "line": 34,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "primary",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 18,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'medium'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nHow large should the button be?",
-                    "description": "<p>How large should the button be?</p>\n",
-                    "line": 26,
-                    "type": "\"small\" | \"medium\" | \"large\"",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onClick",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nOptional click handler",
-                    "description": "<p>Optional click handler</p>\n",
-                    "line": 38,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": false,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-button-link',\r\n  imports: [],\r\n  template: `\r\n    <button\r\n  type=\"button\"\r\n  (click)=\"onClick.emit($event)\"\r\n>\r\n  {{ label }}\r\n</button>\r\n  `,\r\n  styleUrls: ['button-link.component.scss']\r\n})\r\nexport class ButtonLinkComponent {\r\n@Input()\r\n  primary = false;\r\n\r\n  /** What background color to use */\r\n  @Input()\r\n  backgroundColor?: string;\r\n\r\n  /** How large should the button be? */\r\n  @Input()\r\n  size: 'small' | 'medium' | 'large' = 'medium';\r\n\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input()\r\n  label = 'Button';\r\n\r\n  /** Optional click handler */\r\n  @Output()\r\n  onClick = new EventEmitter<Event>();\r\n\r\n  public get classes(): string[] {\r\n    const mode = this.primary ? 'app-button-link--primary' : 'app-button-link--secondary';\r\n\r\n    return ['app-button-link', `app-button-link--${this.size}`, mode];\r\n  }\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "button {\r\n  padding: 10px 32px;\r\n  margin: 0;\r\n  font-size: 16px;\r\n  line-height: 1.5;\r\n  border: none 0;\r\n  outline: 0;\r\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\r\n  color: #fff;\r\n  background-image: linear-gradient(277.88deg, #51b441 32.37%, #61c451 99.3%);\r\n  text-transform: uppercase;\r\n  border-radius: 4px;\r\n  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);\r\n  cursor: pointer;\r\n  transition: transform 0.1s ease, box-shadow 0.1s ease;\r\n}\r\n\r\n.app-button-link--primary {\r\n  background-color: hsl(237, 42%, 53%);\r\n  color: white;\r\n}\r\n\r\n.app-button-link--secondary {\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\r\n  background-color: transparent;\r\n  color: #333;\r\n}\r\n\r\n.app-button-link--small {\r\n  padding: 10px 16px;\r\n  font-size: 12px;\r\n}\r\n\r\n.app-button-link--medium {\r\n  padding: 11px 20px;\r\n  font-size: 14px;\r\n}\r\n\r\n.app-button-link--large {\r\n  padding: 12px 24px;\r\n  font-size: 16px;\r\n}",
-                    "styleUrl": "button-link.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "extends": [],
-            "accessors": {
-                "classes": {
-                    "name": "classes",
-                    "getSignature": {
-                        "name": "classes",
-                        "type": "[]",
-                        "returnType": "string[]",
-                        "line": 40
-                    }
-                }
-            }
-        },
-        {
             "name": "CancelledTraderoomComponent",
             "id": "component-CancelledTraderoomComponent-b325cec27e5978952af54feaa444fe4f042d77914c3eaa22f04cdef1fe56af7255a68e5f4b54c906e7e6ab4dd0c9676276a99637b0447f25abe51968b464d9a3",
             "file": "src/app/risk-dashboard/components/hedging-proposal/components/traderoom-components/cancelled-traderoom/cancelled-traderoom.component.ts",
@@ -1415,345 +1153,6 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<div class=\"cancelled-traderoom-wrapper\">\r\n    <picture>\r\n        <img src=\"/images/icon-canceled-call.svg\" alt=\"phone\" />\r\n    </picture>\r\n    <p class=\"title traderoom-connect-title\">Canceled</p>\r\n    <p class=\"subtext\">Call was canceled by agent</p>\r\n</div>\r\n"
-        },
-        {
-            "name": "CardComponent",
-            "id": "component-CardComponent-5909d6d52d197a8153d5a689cd8d266fa585383d192bb9aee847027b2e278e2bad598631156ad57eb30d249ac0ff213149b7d60f648f7b6ba12c489bf817669c",
-            "file": "src/app/card/card.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-card",
-            "styleUrls": [
-                "./card.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./card.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "backgroundColor",
-                    "defaultValue": "'#ffffff'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 16,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "descColor",
-                    "defaultValue": "'#000000'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 19,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "description",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 15,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "fullWidth",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 21,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "hoverColor",
-                    "defaultValue": "'#f0f0f0'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 20,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "imageSrc",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 12,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "isLiked",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 22,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "isSaved",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "subtitle",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "subtitleColor",
-                    "defaultValue": "'#000000'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 18,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "title",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "titleColor",
-                    "defaultValue": "'#000000'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 17,
-                    "type": "string",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "liked",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 24,
-                    "type": "EventEmitter<void>"
-                },
-                {
-                    "name": "paid",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 26,
-                    "type": "EventEmitter<number>"
-                },
-                {
-                    "name": "saved",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 25,
-                    "type": "EventEmitter<void>"
-                }
-            ],
-            "propertiesClass": [
-                {
-                    "name": "activeTab",
-                    "defaultValue": "'description'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 29
-                },
-                {
-                    "name": "counter",
-                    "defaultValue": "0",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 27
-                },
-                {
-                    "name": "hover",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 28
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "pay",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 40,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "selectTab",
-                    "args": [
-                        {
-                            "name": "tab",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 46,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "tab",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "toggleLike",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 30,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "toggleSave",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 35,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-card',\r\n  standalone: true,\r\n  templateUrl: './card.component.html',\r\n  imports: [CommonModule], \r\n  styleUrls: ['./card.component.scss']\r\n})\r\nexport class CardComponent {\r\n  @Input() imageSrc: string = '';\r\n  @Input() title: string = '';\r\n  @Input() subtitle: string = '';\r\n  @Input() description: string = '';\r\n  @Input() backgroundColor: string = '#ffffff'; \r\n  @Input() titleColor: string = '#000000'; \r\n  @Input() subtitleColor: string = '#000000'; \r\n  @Input() descColor: string = '#000000'; \r\n  @Input() hoverColor: string = '#f0f0f0';\r\n  @Input() fullWidth: boolean = false;\r\n  @Input() isLiked: boolean = false;\r\n  @Input() isSaved: boolean = false; \r\n  @Output() liked: EventEmitter<void> = new EventEmitter();\r\n  @Output() saved: EventEmitter<void> = new EventEmitter();\r\n  @Output() paid: EventEmitter<number> = new EventEmitter();\r\n  counter: number = 0;\r\n  hover: boolean = false;\r\n  activeTab: string = 'description';\r\n  toggleLike() {\r\n    this.isLiked = !this.isLiked;\r\n    this.liked.emit();\r\n  }\r\n\r\n  toggleSave() {\r\n    this.isSaved = !this.isSaved;\r\n    this.saved.emit();\r\n  }\r\n\r\n  pay() {\r\n    if (confirm('Are you sure you want to pay?')) {\r\n      this.counter++;\r\n      this.paid.emit(this.counter);\r\n    }\r\n  }\r\n  selectTab(tab: string) {\r\n    this.activeTab = tab;\r\n  }\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "html, body { height: 100%; }\r\nbody,p,h1,h2,h3,h4,h5 { margin: 0; font-family: Roboto, \"Helvetica Neue\", sans-serif; }\r\n\r\n.card {\r\n    background: white;\r\n    padding: 16px;\r\n    border-radius: 8px;\r\n    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);\r\n    width: 300px;\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 10px;\r\n    transition: all 0.3s ease-in-out;\r\n    cursor: pointer;\r\n    &.full-width {\r\n        width: calc(100% - 30px);\r\n      }\r\n  &:hover {\r\n    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);\r\n    transform: translateY(-5px);\r\n  }\r\n  /* Counter Badge */\r\n.counter-badge {\r\n    position: absolute;\r\n    top: 8px;\r\n    right: 8px;\r\n    background-color: red;\r\n    color: white;\r\n    font-size: 12px;\r\n    font-weight: bold;\r\n    padding: 4px 8px;\r\n    border-radius: 12px;\r\n  }\r\n  .card-footer {\r\n    margin-top: 10px;\r\n    display: flex;\r\n    gap: 10px;\r\n  }\r\n  \r\n  button {\r\n    border: none;\r\n    padding: 6px 12px;\r\n    cursor: pointer;\r\n    border-radius: 4px;\r\n    transition: background 0.3s;\r\n  }\r\n  \r\n  button:hover {\r\n    background: lightgray;\r\n  }\r\n  \r\n    .card-header {\r\n      display: flex;\r\n      align-items: center;\r\n      gap: 10px;\r\n  \r\n      .card-logo {\r\n        width: 40px;\r\n        height: 40px;\r\n        border-radius: 8px;\r\n      }\r\n  \r\n      .card-title {\r\n        h3 {\r\n          margin: 0;\r\n          font-size: 16px;\r\n        }\r\n        p {\r\n          margin: 0;\r\n          font-size: 12px;\r\n          color: gray;\r\n        }\r\n      }\r\n    }\r\n  \r\n    .card-description {\r\n      font-size: 14px;\r\n      color: #555;\r\n    }\r\n  \r\n    .card-icon {\r\n      align-self: flex-end;\r\n      width: 24px;\r\n      height: 24px;\r\n    }\r\n    .tabs {\r\n        display: flex;\r\n        gap: 10px;\r\n        margin-top: 10px;\r\n        \r\n        button {\r\n          background: none;\r\n          border: none;\r\n          color: #333;\r\n          font-size:14px;\r\n          padding: 8px;\r\n          cursor: pointer;\r\n          border-bottom: 2px solid transparent;\r\n          border-radius: 0;\r\n      \r\n          &.active {\r\n            border-bottom: 2px solid #666;\r\n          }\r\n        }\r\n      }\r\n      \r\n      .tab-content {\r\n        margin:0;\r\n        font-size:14px;\r\n        line-height: 1.5;\r\n        color: #111;\r\n      }\r\n    \r\n  }\r\n  ",
-                    "styleUrl": "./card.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<div class=\"card\" [ngClass]=\"{'full-width': fullWidth}\" [ngStyle]=\"{'background-color': hover ? hoverColor : backgroundColor}\" (mouseover)=\"hover = true\"\r\n(mouseleave)=\"hover = false\">\r\n<div class=\"counter-badge\" *ngIf=\"counter >= 0\">\r\n    {{ counter }}\r\n  </div>\r\n    <div class=\"card-header\">\r\n      <img [src]=\"imageSrc\" alt=\"Logo\" class=\"card-logo\" />\r\n      <div class=\"card-title\">\r\n        <h3 [ngStyle]=\"{'color': titleColor}\">{{ title }}</h3>\r\n        <p [ngStyle]=\"{'color': subtitleColor}\">By {{ subtitle }}</p>\r\n      </div>\r\n    </div>\r\n    <p class=\"card-description\" [ngStyle]=\"{'color': descColor}\">{{ description }}</p>\r\n    <div class=\"tabs\">\r\n        <button [class.active]=\"activeTab === 'description'\" (click)=\"selectTab('description')\">Description</button>\r\n        <button [class.active]=\"activeTab === 'materials'\" (click)=\"selectTab('materials')\">Materials</button>\r\n      </div>\r\n      <div class=\"tab-content\">\r\n        <div *ngIf=\"activeTab === 'description'\">\r\n          <p>{{ description }}</p>\r\n        </div>\r\n        <div *ngIf=\"activeTab === 'materials'\">\r\n          <p>Materials info will go here.</p>\r\n        </div>\r\n      </div>\r\n    <div class=\"card-footer\">\r\n        <button (click)=\"toggleLike(); $event.stopPropagation()\">{{ isLiked ? '❤️ Liked' : '♡ Like' }}</button>\r\n        <button (click)=\"toggleSave(); $event.stopPropagation()\">{{ isSaved ? '📌 Saved' : '📍 Save' }}</button>\r\n        <button (click)=\"pay(); $event.stopPropagation()\">💳 Pay</button>\r\n      </div>\r\n  </div>\r\n  \r\n  "
-        },
-        {
-            "name": "CardListComponent",
-            "id": "component-CardListComponent-c2c05c75a1f2077d976343fa71d1208bce63050f47f73fd56fa3ebbeaecf1c3763e8f8dc9227ba15ae340a4eb57bb7f4c2df4552c00e5916c60ed656991f7e00",
-            "file": "src/app/card-list/card-list.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-card-list",
-            "styleUrls": [
-                "card-list.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "card-list.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "cards",
-                    "defaultValue": "[]",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "any[]",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CardComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport { CardComponent } from \"../card/card.component\";\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-card-list',\r\n  standalone: true,\r\n  templateUrl: 'card-list.component.html',\r\n  styleUrls: ['card-list.component.scss'],\r\n  imports: [CardComponent,CommonModule],\r\n})\r\nexport class CardListComponent {\r\n  @Input() cards: any[] = [];\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".card-list {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    gap: 16px;\r\n  }\r\n  ",
-                    "styleUrl": "card-list.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<div class=\"card-list\">\r\n    <app-card\r\n      *ngFor=\"let card of cards; let i = index\"\r\n      [imageSrc]=\"card.imageSrc\"\r\n      [title]=\"card.title\"\r\n      [subtitle]=\"card.subtitle\"\r\n      [description]=\"card.description\"\r\n      [backgroundColor]=\"card.backgroundColor\"\r\n      [titleColor]=\"card.titleColor\"\r\n      [hoverColor]=\"card.hoverColor\"\r\n      [fullWidth]=\"card.fullWidth\"\r\n      [isLiked]=\"card.isLiked\"\r\n      [isSaved]=\"card.isSaved\"\r\n      (liked)=\"card.isLiked = !card.isLiked\"\r\n            (saved)=\"card.isSaved = !card.isSaved\"\r\n            (paid)=\"card.counter = $event\"\r\n    ></app-card>\r\n  </div>\r\n  "
         },
         {
             "name": "CashflowExposureDetailsComponent",
@@ -2868,11 +2267,11 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div class=\"risk-manager-final-step\" id=\"riskManagerFinalStep\">\r\n    <div class=\"cash-flow-wrapper\">\r\n        <h2 class=\"cash-title\">\r\n            <div class=\"img-wrapper\">\r\n                <img src=\"images/money-bag-cashflow.svg\" alt=\"money-bag\" class=\"bag-img\" />\r\n            </div> Cash flow exposure\r\n        </h2>\r\n        <div class=\"hedging-wrap\">\r\n            <button class=\"hedging-btn\">How our hedging works? <img container=\"body\" [ngbTooltip]=\"sellingToolTip\" placement=\"top-right\"\r\n                tooltipClass=\"risk-step3-tooltip--rm\"\r\n                    src=\"images/hedging-info.svg\"></button>\r\n            <!-- <ng-template #buyingToolTip>\r\n                You are at risk when {{monthlyExposureObject.toCurrency}} goes up because it will cost more to buy {{monthlyExposureObject.toCurrency}} with\r\n                {{monthlyExposureObject.baseCurrency}}, increasing your costs\r\n            </ng-template> -->\r\n            <ng-template #sellingToolTip>\r\n                You are at risk when {{monthlyExposureObject.toCurrency}} goes down because you will get fewer\r\n                {{monthlyExposureObject.baseCurrency}} when\r\n                converting {{monthlyExposureObject.toCurrency}}, reducing your income\r\n            </ng-template>\r\n            <ng-template #cashflowDate>\r\n                You can select in which day you want the your monthly exposure will be expired\r\n            </ng-template>\r\n            <ng-template #total>\r\n                Total is calculated by subtracting buying from selling\r\n            </ng-template>\r\n            <ng-template #disableMonth>\r\n                You can select if you want to set disable this month, and it will be set to 0\r\n            </ng-template>\r\n        </div>\r\n    </div>\r\n    <div class=\"risk-exposer-wrap\">\r\n        <app-monthly-exposure-details [monthlyPeriod]=\"monthlyPeriod\"></app-monthly-exposure-details>\r\n        <div class=\"exposer-table-wrap\">\r\n            <div class=\"exposer-table\">\r\n                <div class=\"overlay-wrap\">\r\n                    <table mat-table [dataSource]=\"cashflowExposureRows\" class=\"mat-elevation-z8\">\r\n                        <ng-container matColumnDef=\"Month\" class=\"exposer-month\">\r\n                            <th mat-header-cell *matHeaderCellDef> Cashflow date <img\r\n                                src=\"images/help-circle-icon-black.svg\" [ngbTooltip]=\"cashflowDate\"\r\n                                placement=\"top-left\" tooltipClass=\"risk-step3-tooltip--rm\">\r\n                            </th>\r\n                            <td mat-cell *matCellDef=\"let element; let i = index\" style=\"position: relative;\"\r\n                                [class.disabledColumn]=\"element.disabledColumn\">\r\n                                <span class=\"date-and-expand\" (click)=\"chooseCashflowDate(i, element?.year, element?.month, element?.cashflowDate)\">\r\n                                    <span>{{element?.cashflowDate}} <b>{{element?.month}}</b> {{element?.year}}</span>\r\n                                    <mat-icon>expand_more</mat-icon>\r\n                                    <span class=\"m-date-tooltip-wrap\" *ngIf=\"i === 0\" id=\"cashflowDateColumn\"\r\n                                        #cashflowDateColumn [ngbTooltip]=\"cashflowDateTooltip\" [autoClose]=\"false\"\r\n                                        #riskAlert=\"ngbTooltip\" tooltipClass=\"cash-flow-date-tooltip\"\r\n                                        placement=\"top-left\" triggers=\"manual\">\r\n                                        <ng-template #cashflowDateTooltip>\r\n                                            <div id=\"riskPopup\" class=\"cash-flow-date-wrapper\">\r\n                                                <div class=\"info-container\">\r\n                                                    <div class=\"info-container-items\">\r\n                                                        <div class=\"title\">Set cash flow dates</div>\r\n                                                        <div class=\"desc\">You can edit the day of the exposure of each month</div>\r\n                                                        <div class=\"try-btn d-flex\">\r\n                                                            <span class=\"step-of\">Step 1 of 4</span>\r\n                                                            <button class=\"try-btn-text\" (click)=\"chooseCashflowDate(i, element?.year, element?.month, element?.cashflowDate)\">Edit</button>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                        </ng-template>\r\n                                    </span>\r\n\r\n                                    <mat-form-field class=\"monthly-date\">\r\n                                        <input matInput [matDatepicker]=\"datepicker\" [(ngModel)]=\"element.date\" />\r\n                                        <mat-datepicker-toggle matIconSuffix [for]=\"datepicker\"></mat-datepicker-toggle>\r\n                                        <mat-datepicker #datepicker panelClass=\"cashflow-date-calendar-cd\">\r\n                                          <mat-datepicker-actions>\r\n                                            <button mat-button matDatepickerCancel class=\"cancel-cdc\">Cancel</button>\r\n                                            <button mat-raised-button matDatepickerApply class=\"set-cdc\" (click)=\"setMonthlyDate(i,element)\">Set</button>\r\n                                            <button mat-button matDatepickerCancel class=\"close-cdc\"><img src=\"images/close-btn-cashflow.svg\"></button>\r\n                                          </mat-datepicker-actions>\r\n                                        </mat-datepicker>\r\n                                    </mat-form-field>\r\n                                </span>\r\n                            </td>\r\n                        </ng-container>\r\n\r\n                        <ng-container matColumnDef=\"Selling\" class=\"exposer-selling\">\r\n                            <th mat-header-cell *matHeaderCellDef> Selling </th>\r\n                            <td mat-cell *matCellDef=\"let element; let i = index\"\r\n                                [class.disabledColumn]=\"element.disabledColumn\">\r\n                                <div class=\"buying-price\">\r\n                                    {{monthlyExposureObject.sign}}{{valueWithComma(element?.selling, 2)}}\r\n                                </div>\r\n                                <button (click)=\"editSelling(element , i)\" class=\"edit-exposer\">\r\n                                    <img src=\"images/edit-exposer-icon.svg\"></button>\r\n                                <div *ngIf=\"element?.openEditForSelling && openEditSellingIndex === i\"\r\n                                    class=\"edit-exposer-wrap\"\r\n                                    [ngClass]=\"element?.errMsgForsellingFlag ? 'error-input' : ''\">\r\n                                    <div class=\"edit-inner\">\r\n                                        <div class=\"input-wrap\">\r\n                                            <span>{{monthlyExposureObject.sign}}</span>\r\n                                            <input type=\"text\" id=\"sellEdit__price{{i}}\"\r\n                                                [(ngModel)]=\"sellingValueForedit\"\r\n                                                class=\"edit-price\" appOnlyNumbers\r\n                                                [maxLength]=\"14\"\r\n                                                (click)=\"clearSellingZeroValue(element,i)\"\r\n                                                (input)=\"formatValue($event, 'sellingValueForedit')\"\r\n                                                (keypress)=\"restrictLength($event)\"\r\n                                                (keydown)=\"preventDecimalValue($event)\">\r\n                                                \r\n                                            <button class=\"clear-input\" (click)=\"clearInput(2)\"\r\n                                                id=\"clearSellEdit__btn{{i}}\"><img\r\n                                                    src=\"images/clear_input.svg\"></button>\r\n                                        </div>\r\n                                        <div class=\"edit-e-option\">\r\n                                            <button class=\"cancel-btn\" id=\"cancelSellEdit__btn{{i}}\"\r\n                                            (click)=\"cancelEditSelling(element , i)\"> Cancel </button>\r\n                                            <button class=\"save-btn\" id=\"saveSellEdit__btn{{i}}\"\r\n                                            (click)=\"saveEditSelling(element , i)\"> Save </button>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"warning-error\" *ngIf=\"element?.errMsgForsellingFlag\"><img\r\n                                            src=\"images/warning-circle-icon.svg\"> {{errrMsgForBuyingAndSelling}}\r\n                                    </div>\r\n                                </div>\r\n                            </td>\r\n                        </ng-container>\r\n\r\n                        <ng-container matColumnDef=\"Buying\" class=\"exposer-buying\">\r\n                            <th mat-header-cell *matHeaderCellDef> Buying </th>\r\n                            <td mat-cell *matCellDef=\"let element; let i = index\" class=\"buying-cell\"\r\n                                [class.disabledColumn]=\"element.disabledColumn\">\r\n                                <div class=\"buying-price\">\r\n                                    {{monthlyExposureObject.sign}}{{ valueWithComma(element?.buying, 2) }}\r\n                                </div>\r\n                                <button class=\"edit-exposer\" (click)=\"editBuying(element , i)\"\r\n                                    [ngbTooltip]=\"editBuyAmountCashflowTooltip\" [autoClose]=\"false\"\r\n                                    #riskAlert=\"ngbTooltip\" tooltipClass=\"risk-tooltip\" placement=\"top-left\"\r\n                                    triggers=\"manual\"><img src=\"images/edit-exposer-icon.svg\"></button>\r\n\r\n                                <ng-template #editBuyAmountCashflowTooltip>\r\n                                    <div id=\"riskPopup\" class=\"risk-manager-wrapper\">\r\n                                        <button class=\"close_tooltip\"></button>\r\n                                        <div class=\"info-container\">\r\n                                            <div class=\"info-container-items\">\r\n                                                <div class=\"title\">Cash flow amounts</div>\r\n                                                <div class=\"desc\">You can edit both buying & selling amounts\r\n                                                </div>\r\n                                                <div class=\"try-btn d-flex\" style=\"justify-content: space-between;\">\r\n                                                    <span class=\"step-of\">Step 2 of 4</span>\r\n                                                    <button class=\"try-btn-text\" (click)=\"chooseCashflowDate(i, element?.year, element?.month, element?.cashflowDate)\">Edit</button>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </ng-template>\r\n                                <div *ngIf=\"element?.openEditForBuying && openEditBuyingIndex === i\"\r\n                                    class=\"edit-exposer-wrap\"\r\n                                    [ngClass]=\"element?.errMsgForbuyingFlag ? 'error-input' : ''\">\r\n                                    <div class=\"edit-inner\">\r\n                                        <div class=\"input-wrap\">\r\n                                            <span>{{monthlyExposureObject.sign}}</span>\r\n                                            <input type=\"text\" id=\"buyEdit__price{{i}}\"\r\n                                                class=\"edit-price\" appOnlyNumbers [maxLength]=\"14\"\r\n                                                [(ngModel)]=\"buyingValueForedit\"\r\n                                                (click)=\"ClearBuyingZeroValue(element,i)\"\r\n                                                (input)=\"formatValue($event, 'buyingValueForedit')\"\r\n                                                (keypress)=\"restrictLength($event)\"\r\n                                                (keydown)=\"preventDecimalValue($event)\"\r\n                                            >\r\n                                            <button class=\"clear-input\" (click)=\"clearInput(1)\"\r\n                                                id=\"clearBuyEdit__btn{{i}}\"><img\r\n                                                    src=\"images/clear_input.svg\"></button>\r\n                                        </div>\r\n                                        <div class=\"edit-e-option\">\r\n                                            <button class=\"cancel-btn\" id=\"cancelBuyEdit__btn{{i}}\"\r\n                                            (click)=\"cancelEditBuying(element , i)\"> Cancel </button>\r\n                                            <button class=\"save-btn\" id=\"saveBuyEdit__btn{{i}}\"\r\n                                            (click)=\"saveEditBuying(element , i)\"> Save </button>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div *ngIf=\"element?.errMsgForbuyingFlag\" class=\"warning-error\"><img\r\n                                            src=\"images/warning-circle-icon.svg\"> {{errrMsgForBuyingAndSelling}}\r\n                                    </div>\r\n                                </div>\r\n                            </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"TotalNet\" class=\"total-net\">\r\n                            <th mat-header-cell *matHeaderCellDef> Total <img\r\n                                    src=\"images/help-circle-icon-black.svg\" [ngbTooltip]=\"total\"\r\n                                    placement=\"top-left\" tooltipClass=\"risk-step3-tooltip--rm\"></th>\r\n                            <td mat-cell *matCellDef=\"let element\" class=\"total-price\"\r\n                                [class.disabledColumn]=\"element.disabledColumn\">\r\n                                <span [ngClass]=\"element?.totalNetValue < 0 ? 'negative-total' : 'positive-total'\"> {{element?.totalNetValue < 0 ? '-' : '+'\r\n                                    }}{{monthlyExposureObject.sign}}{{valueWithComma(element?.totalNetValue, 2)}}\r\n                                </span>\r\n                            </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"DisableMonth\" class=\"postpone\">\r\n                            <th mat-header-cell *matHeaderCellDef>Disable month <img\r\n                                    src=\"images/help-circle-icon-black.svg\" [ngbTooltip]=\"disableMonth\"\r\n                                    placement=\"top-right\" tooltipClass=\"risk-step3-tooltip--rm\"></th>\r\n                            <td mat-cell *matCellDef=\"let element; let i = index\">\r\n                                <mat-slide-toggle (change)=\"onSwitchToggle($event,element, i)\">\r\n                                </mat-slide-toggle>\r\n                            </td>\r\n                        </ng-container>\r\n                        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                        <tr mat-row *matRowDef=\"let row; columns: displayedColumns; let i = index;\"\r\n                            [ngClass]=\"((row.postPoneFlag) || (row.openEditForBuying) || (row.openEditForSelling) ? 'active' : '') || (i === row.blinkRowIndex ? 'blink-row' : '')\">\r\n                        </tr>\r\n                    </table>\r\n                </div>\r\n            </div>\r\n            <div class=\"add-rows-wrap\">\r\n                <button class=\"add-btn six-month\" id=\"plusMonthExposureBtn__i0\"\r\n                    *ngIf=\"monthlyPeriod == 6\"><i class=\"plus-icon\"></i>Next\r\n                    6\r\n                    months</button>\r\n                <!-- <button class=\"add-btn\" (click)=\"addOneMore()\" id=\"plusMonthExposureBtn__i1\"\r\n                    *ngIf=\"monthlyPeriod < 24 && monthlyPeriod > 6\"><i class=\"plus-icon\"></i></button> -->\r\n                <span class=\"error-message limit-reached\" *ngIf=\"monthlyPeriod > 23\">You have reached the limit</span>\r\n            </div>\r\n            <span *ngIf=\"maxLengthError\" class=\"error-message\"> Maximum amount allowed is\r\n                {{monthlyExposureObject.sign}}100,000,000 </span>\r\n            <div class=\"exposer-btns\">\r\n                <button matStepperPrevious class=\"back-btn\" (click)=\"backToPrevious()\" id=\"backStep3Btn__i4\"> Back\r\n                </button>\r\n                <button (click)=\"exposureDetailsNextStep()\" class=\"continue-btn\"> Save & continue <img src=\"images/next-btn-arrow.svg\"></button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+            "templateData": "<div class=\"risk-manager-final-step\" id=\"riskManagerFinalStep\">\r\n    <div class=\"cash-flow-wrapper\">\r\n        <h2 class=\"cash-title\">\r\n            <div class=\"img-wrapper\">\r\n                <img src=\"images/money-bag-cashflow.svg\" alt=\"money-bag\" class=\"bag-img\" />\r\n            </div> Cash flow exposure\r\n        </h2>\r\n        <div class=\"hedging-wrap\">\r\n            <button class=\"hedging-btn\">How our hedging works? <img container=\"body\" [ngbTooltip]=\"sellingToolTip\" placement=\"top-right\"\r\n                tooltipClass=\"risk-step3-tooltip--rm\"\r\n                    src=\"images/hedging-info.svg\"></button>\r\n            <!-- <ng-template #buyingToolTip>\r\n                You are at risk when {{monthlyExposureObject.toCurrency}} goes up because it will cost more to buy {{monthlyExposureObject.toCurrency}} with\r\n                {{monthlyExposureObject.baseCurrency}}, increasing your costs\r\n            </ng-template> -->\r\n            <ng-template #sellingToolTip>\r\n                You are at risk when {{monthlyExposureObject.toCurrency}} goes down because you will get fewer\r\n                {{monthlyExposureObject.baseCurrency}} when\r\n                converting {{monthlyExposureObject.toCurrency}}, reducing your income\r\n            </ng-template>\r\n            <ng-template #cashflowDate>\r\n                You can select in which day you want the your monthly exposure will be expired\r\n            </ng-template>\r\n            <ng-template #total>\r\n                Total is calculated by subtracting buying from selling\r\n            </ng-template>\r\n            <ng-template #disableMonth>\r\n                You can select if you want to set disable this month, and it will be set to 0\r\n            </ng-template>\r\n        </div>\r\n    </div>\r\n    <div class=\"risk-exposer-wrap\">\r\n        <app-monthly-exposure-details [monthlyPeriod]=\"monthlyPeriod\"></app-monthly-exposure-details>\r\n        <div class=\"exposer-table-wrap\">\r\n            <div class=\"exposer-table\">\r\n                <div class=\"overlay-wrap\">\r\n                    <table mat-table [dataSource]=\"cashflowExposureRows\" class=\"mat-elevation-z8\">\r\n                        <ng-container matColumnDef=\"Month\" class=\"exposer-month\">\r\n                            <th mat-header-cell *matHeaderCellDef> Cashflow date <img\r\n                                src=\"images/help-circle-icon-black.svg\" [ngbTooltip]=\"cashflowDate\"\r\n                                placement=\"top-left\" tooltipClass=\"risk-step3-tooltip--rm\">\r\n                            </th>\r\n                            <td mat-cell *matCellDef=\"let element; let i = index\" style=\"position: relative;\"\r\n                                [class.disabledColumn]=\"element.disabledColumn\">\r\n                                <span class=\"date-and-expand\" (click)=\"chooseCashflowDate(i, element?.year, element?.month, element?.cashflowDate)\">\r\n                                    <span>{{element?.cashflowDate}} <b>{{element?.month}}</b> {{element?.year}}</span>\r\n                                    <mat-icon>expand_more</mat-icon>\r\n                                    <span class=\"m-date-tooltip-wrap\" *ngIf=\"i === 0\" id=\"cashflowDateColumn\"\r\n                                        #cashflowDateColumn [ngbTooltip]=\"cashflowDateTooltip\" [autoClose]=\"false\"\r\n                                        #riskAlert=\"ngbTooltip\" tooltipClass=\"cash-flow-date-tooltip\"\r\n                                        placement=\"top-left\" triggers=\"manual\">\r\n                                        <ng-template #cashflowDateTooltip>\r\n                                            <div id=\"riskPopup\" class=\"cash-flow-date-wrapper\">\r\n                                                <div class=\"info-container\">\r\n                                                    <div class=\"info-container-items\">\r\n                                                        <div class=\"title\">Set cash flow dates</div>\r\n                                                        <div class=\"desc\">You can edit the day of the exposure of each month</div>\r\n                                                        <div class=\"try-btn d-flex\">\r\n                                                            <span class=\"step-of\">Step 1 of 4</span>\r\n                                                            <button class=\"try-btn-text\" (click)=\"chooseCashflowDate(i, element?.year, element?.month, element?.cashflowDate)\">Edit</button>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                        </ng-template>\r\n                                    </span>\r\n\r\n                                    <mat-form-field class=\"monthly-date\">\r\n                                        <input matInput [matDatepicker]=\"datepicker\" [(ngModel)]=\"element.date\" />\r\n                                        <mat-datepicker-toggle matIconSuffix [for]=\"datepicker\"></mat-datepicker-toggle>\r\n                                        <mat-datepicker #datepicker panelClass=\"cashflow-date-calendar-cd\">\r\n                                          <mat-datepicker-actions>\r\n                                            <button mat-button matDatepickerCancel class=\"cancel-cdc\">Cancel</button>\r\n                                            <button mat-raised-button matDatepickerApply class=\"set-cdc\" (click)=\"setMonthlyDate(i,element)\">Set</button>\r\n                                            <button mat-button matDatepickerCancel class=\"close-cdc\"><img src=\"images/close-btn-cashflow.svg\"></button>\r\n                                          </mat-datepicker-actions>\r\n                                        </mat-datepicker>\r\n                                    </mat-form-field>\r\n                                </span>\r\n                            </td>\r\n                        </ng-container>\r\n\r\n                        <ng-container matColumnDef=\"Selling\" class=\"exposer-selling\">\r\n                            <th mat-header-cell *matHeaderCellDef> Selling </th>\r\n                            <td mat-cell *matCellDef=\"let element; let i = index\"\r\n                                [class.disabledColumn]=\"element.disabledColumn\">\r\n                                <div class=\"buying-price\">\r\n                                    {{monthlyExposureObject.sign}}{{valueWithComma(element?.selling, 2)}}\r\n                                </div>\r\n                                <button (click)=\"editSelling(element , i)\" class=\"edit-exposer\">\r\n                                    <img src=\"images/edit-exposer-icon.svg\"></button>\r\n                                <div *ngIf=\"element?.openEditForSelling && openEditSellingIndex === i\"\r\n                                    class=\"edit-exposer-wrap\"\r\n                                    [ngClass]=\"element?.errMsgForsellingFlag ? 'error-input' : ''\">\r\n                                    <div class=\"edit-inner\">\r\n                                        <div class=\"input-wrap\">\r\n                                            <span>{{monthlyExposureObject.sign}}</span>\r\n                                            <input type=\"text\" id=\"sellEdit__price{{i}}\"\r\n                                                [(ngModel)]=\"sellingValueForedit\"\r\n                                                class=\"edit-price\" appOnlyNumbers\r\n                                                [maxLength]=\"14\"\r\n                                                (click)=\"clearSellingZeroValue(element,i)\"\r\n                                                (input)=\"formatValue($event, 'sellingValueForedit')\"\r\n                                                (keypress)=\"restrictLength($event)\"\r\n                                                (keydown)=\"preventDecimalValue($event)\">\r\n                                                \r\n                                            <button class=\"clear-input\" (click)=\"clearInput(2)\"\r\n                                                id=\"clearSellEdit__btn{{i}}\"><img\r\n                                                    src=\"images/clear_input.svg\"></button>\r\n                                        </div>\r\n                                        <div class=\"edit-e-option\">\r\n                                            <button class=\"cancel-btn\" id=\"cancelSellEdit__btn{{i}}\"\r\n                                            (click)=\"cancelEditSelling(element , i)\"> Cancel </button>\r\n                                            <button class=\"save-btn\" id=\"saveSellEdit__btn{{i}}\"\r\n                                            (click)=\"saveEditSelling(element , i)\"> Save </button>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"warning-error\" *ngIf=\"element?.errMsgForsellingFlag\"><img\r\n                                            src=\"images/warning-circle-icon.svg\"> {{errrMsgForBuyingAndSelling}}\r\n                                    </div>\r\n                                </div>\r\n                            </td>\r\n                        </ng-container>\r\n\r\n                        <ng-container matColumnDef=\"Buying\" class=\"exposer-buying\">\r\n                            <th mat-header-cell *matHeaderCellDef> Buying </th>\r\n                            <td mat-cell *matCellDef=\"let element; let i = index\" class=\"buying-cell\"\r\n                                [class.disabledColumn]=\"element.disabledColumn\">\r\n                                <div class=\"buying-price\">\r\n                                    {{monthlyExposureObject.sign}}{{ valueWithComma(element?.buying, 2) }}\r\n                                </div>\r\n                                <button class=\"edit-exposer\" (click)=\"editBuying(element , i)\"\r\n                                    [ngbTooltip]=\"editBuyAmountCashflowTooltip\" [autoClose]=\"false\"\r\n                                    #riskAlert=\"ngbTooltip\" tooltipClass=\"risk-tooltip\" placement=\"top-left\"\r\n                                    triggers=\"manual\"><img src=\"images/edit-exposer-icon.svg\"></button>\r\n\r\n                                <ng-template #editBuyAmountCashflowTooltip>\r\n                                    <div id=\"riskPopup\" class=\"risk-manager-wrapper\">\r\n                                        <button class=\"close_tooltip\"></button>\r\n                                        <div class=\"info-container\">\r\n                                            <div class=\"info-container-items\">\r\n                                                <div class=\"title\">Cash flow amounts</div>\r\n                                                <div class=\"desc\">You can edit both buying & selling amounts\r\n                                                </div>\r\n                                                <div class=\"try-btn d-flex\" style=\"justify-content: space-between;\">\r\n                                                    <span class=\"step-of\">Step 2 of 4</span>\r\n                                                    <button class=\"try-btn-text\" (click)=\"chooseCashflowDate(i, element?.year, element?.month, element?.cashflowDate)\">Edit</button>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </ng-template>\r\n                                <div *ngIf=\"element?.openEditForBuying && openEditBuyingIndex === i\"\r\n                                    class=\"edit-exposer-wrap\"\r\n                                    [ngClass]=\"element?.errMsgForbuyingFlag ? 'error-input' : ''\">\r\n                                    <div class=\"edit-inner\">\r\n                                        <div class=\"input-wrap\">\r\n                                            <span>{{monthlyExposureObject.sign}}</span>\r\n                                            <input type=\"text\" id=\"buyEdit__price{{i}}\"\r\n                                                class=\"edit-price\" appOnlyNumbers [maxLength]=\"14\"\r\n                                                [(ngModel)]=\"buyingValueForedit\"\r\n                                                (click)=\"ClearBuyingZeroValue(element,i)\"\r\n                                                (input)=\"formatValue($event, 'buyingValueForedit')\"\r\n                                                (keypress)=\"restrictLength($event)\"\r\n                                                (keydown)=\"preventDecimalValue($event)\"\r\n                                            >\r\n                                            <button class=\"clear-input\" (click)=\"clearInput(1)\"\r\n                                                id=\"clearBuyEdit__btn{{i}}\"><img\r\n                                                    src=\"images/clear_input.svg\"></button>\r\n                                        </div>\r\n                                        <div class=\"edit-e-option\">\r\n                                            <button class=\"cancel-btn\" id=\"cancelBuyEdit__btn{{i}}\"\r\n                                            (click)=\"cancelEditBuying(element , i)\"> Cancel </button>\r\n                                            <button class=\"save-btn\" id=\"saveBuyEdit__btn{{i}}\"\r\n                                            (click)=\"saveEditBuying(element , i)\"> Save </button>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div *ngIf=\"element?.errMsgForbuyingFlag\" class=\"warning-error\"><img\r\n                                            src=\"images/warning-circle-icon.svg\"> {{errrMsgForBuyingAndSelling}}\r\n                                    </div>\r\n                                </div>\r\n                            </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"TotalNet\" class=\"total-net\">\r\n                            <th mat-header-cell *matHeaderCellDef> Total <img\r\n                                    src=\"images/help-circle-icon-black.svg\" [ngbTooltip]=\"total\"\r\n                                    placement=\"top-left\" tooltipClass=\"risk-step3-tooltip--rm\"></th>\r\n                            <td mat-cell *matCellDef=\"let element\" class=\"total-price\"\r\n                                [class.disabledColumn]=\"element.disabledColumn\">\r\n                                <span [ngClass]=\"element?.totalNetValue < 0 ? 'negative-total' : 'positive-total'\"> {{element?.totalNetValue < 0 ? '-' : '+'\r\n                                    }}{{monthlyExposureObject.sign}}{{valueWithComma(element?.totalNetValue, 2)}}\r\n                                </span>\r\n                            </td>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"DisableMonth\" class=\"postpone\">\r\n                            <th mat-header-cell *matHeaderCellDef>Disable month <img\r\n                                    src=\"images/help-circle-icon-black.svg\" [ngbTooltip]=\"disableMonth\"\r\n                                    placement=\"top-right\" tooltipClass=\"risk-step3-tooltip--rm\"></th>\r\n                            <td mat-cell *matCellDef=\"let element; let i = index\">\r\n                                <mat-slide-toggle (change)=\"onSwitchToggle($event,element, i)\">\r\n                                </mat-slide-toggle>\r\n                            </td>\r\n                        </ng-container>\r\n                        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n                        <tr mat-row *matRowDef=\"let row; columns: displayedColumns; let i = index;\"\r\n                            [ngClass]=\"((row.postPoneFlag) || (row.openEditForBuying) || (row.openEditForSelling) ? 'active' : '') || (i === row.blinkRowIndex ? 'blink-row' : '')\">\r\n                        </tr>\r\n                    </table>\r\n                </div>\r\n            </div>\r\n            <div class=\"add-rows-wrap\">\r\n                <button class=\"add-btn six-month\" id=\"plusMonthExposureBtn__i0\"\r\n                    *ngIf=\"monthlyPeriod == 6\"><i class=\"plus-icon\"></i>Next\r\n                    6\r\n                    months</button>\r\n                <button class=\"add-btn\" (click)=\"addOneMore()\" id=\"plusMonthExposureBtn__i1\"\r\n                    *ngIf=\"monthlyPeriod < 24 && monthlyPeriod > 6\"><i class=\"plus-icon\"></i></button>\r\n                <span class=\"error-message limit-reached\" *ngIf=\"monthlyPeriod > 23\">You have reached the limit</span>\r\n            </div>\r\n            <span *ngIf=\"maxLengthError\" class=\"error-message\"> Maximum amount allowed is\r\n                {{monthlyExposureObject.sign}}100,000,000 </span>\r\n            <div class=\"exposer-btns\">\r\n                <button matStepperPrevious class=\"back-btn\" (click)=\"backToPrevious()\" id=\"backStep3Btn__i4\"> Back\r\n                </button>\r\n                <button (click)=\"exposureDetailsNextStep()\" class=\"continue-btn\"> Save & continue <img src=\"images/next-btn-arrow.svg\"></button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
         },
         {
             "name": "ChartsTabsComponent",
-            "id": "component-ChartsTabsComponent-909499e2d6163139b2d263a2bf497e8d328d04272587a7fe09dee73a59d6f043b9ac991aadbe6b6df42c01d91f96dca63cbcd3097fefe3508771edcc9dacec1c",
+            "id": "component-ChartsTabsComponent-bbc0145895f7046fda832f707eede939f74010848b6a3d56b31365e0d735ff4207b4bb5c77cb75b6b9b1ffcb62ae8c9c3d7c4dfd900c4b44651029722f5273c2",
             "file": "src/app/risk-dashboard/components/dashboard/components/charts-tabs/charts-tabs.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3003,7 +2402,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { MatTabsModule, MatTabChangeEvent } from '@angular/material/tabs';\r\nimport { MonthlyExposureChartComponent } from \"../monthly-exposure-chart/monthly-exposure-chart.component\";\r\nimport { ExposureRateChartComponent } from \"../exposure-rate-chart/exposure-rate-chart.component\";\r\nimport { Router, RouterModule } from '@angular/router';\r\n@Component({\r\n  selector: 'app-charts-tabs',\r\n  imports: [MatTabsModule, CommonModule, MonthlyExposureChartComponent, ExposureRateChartComponent,RouterModule],\r\n  templateUrl: './charts-tabs.component.html',\r\n  styleUrl: './charts-tabs.component.scss'\r\n})\r\nexport class ChartsTabsComponent {\r\n  loadMonthChart: boolean = true;\r\n  loadExposureChart: boolean = false;\r\n  activeIndex: number = 0;\r\n  @Output() toggleView = new EventEmitter<boolean>();\r\n  constructor(private router: Router){\r\n\r\n  }\r\n  onTabChange(event: MatTabChangeEvent) {\r\n    const index = event.index;\r\n    this.activeIndex = index;\r\n    switch (index) {\r\n      case 0:\r\n        this.loadMonthChart = true;\r\n        this.loadExposureChart = false;\r\n        break;\r\n      case 1:\r\n        this.loadExposureChart = true;\r\n        this.loadMonthChart = false;\r\n        break;\r\n      default:\r\n        break;\r\n    }\r\n  }\r\n  showHedge(){\r\n    this.toggleView.emit(true);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { MatTabsModule, MatTabChangeEvent } from '@angular/material/tabs';\r\nimport { MonthlyExposureChartComponent } from \"../monthly-exposure-chart/monthly-exposure-chart.component\";\r\nimport { ExposureRateChartComponent } from \"../exposure-rate-chart/exposure-rate-chart.component\";\r\nimport { Router, RouterModule } from '@angular/router';\r\n@Component({\r\n  selector: 'app-charts-tabs',\r\n  imports: [MatTabsModule, CommonModule, MonthlyExposureChartComponent, ExposureRateChartComponent,RouterModule],\r\n  templateUrl: './charts-tabs.component.html',\r\n  styleUrl: './charts-tabs.component.scss'\r\n})\r\nexport class ChartsTabsComponent {\r\n  loadMonthChart: boolean = true;\r\n  loadExposureChart: boolean = false;\r\n  activeIndex: number = 0;\r\n  @Output() toggleView = new EventEmitter<boolean>();\r\n  constructor(private router: Router){\r\n\r\n  }\r\n  onTabChange(event: MatTabChangeEvent) {\r\n    const index = event.index;\r\n    this.activeIndex = index;\r\n    switch (index) {\r\n      case 0:\r\n        this.loadMonthChart = true;\r\n        this.loadExposureChart = false;\r\n        break;\r\n      case 1:\r\n        this.loadExposureChart = true;\r\n        this.loadMonthChart = false;\r\n        break;\r\n      default:\r\n        break;\r\n    }\r\n  }\r\n  showHedge(){\r\n    // this.toggleView.emit(true);\r\n    this.router.navigate(['/hedging']);\r\n  }\r\n}\r\n",
             "styleUrl": "./charts-tabs.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -4094,93 +3493,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-35575735b3444c6f049822f5234963ce3b046795ea9cdf6a15e8c7d72acd8ededb78ca25c4e1fbb5f0416c5855203a87ae0483f5d065c2dfa68d5329e347a84b",
-            "file": "src/stories/header.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-header",
-            "styleUrls": [
-                "./header.css"
-            ],
-            "styles": [],
-            "template": "<header>  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 66,
-                    "type": "User | null",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onCreateAccount",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 75,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogin",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 69,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogout",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 72,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                },
-                {
-                    "name": "ButtonComponent",
-                    "type": "component"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { ButtonComponent } from './button.component';\r\nimport type { User } from './user';\r\n\r\n@Component({\r\n  selector: 'storybook-header',\r\n  standalone: true,\r\n  imports: [CommonModule, ButtonComponent],\r\n  template: `<header>\r\n  <div class=\"storybook-header\">\r\n    <div>\r\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\r\n        <g fill=\"none\" fillRule=\"evenodd\">\r\n          <path\r\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\r\n            fill=\"#FFF\"\r\n          />\r\n          <path\r\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\r\n            fill=\"#555AB9\"\r\n          />\r\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\r\n        </g>\r\n      </svg>\r\n      <h1>Acme</h1>\r\n    </div>\r\n    <div>\r\n      <div *ngIf=\"user\">\r\n        <span class=\"welcome\">\r\n          Welcome, <b>{{ user.name }}</b\r\n          >!\r\n        </span>\r\n        <storybook-button\r\n          *ngIf=\"user\"\r\n          size=\"small\"\r\n          (onClick)=\"onLogout.emit($event)\"\r\n          label=\"Log out\"\r\n        ></storybook-button>\r\n      </div>\r\n      <div *ngIf=\"!user\">\r\n        <storybook-button\r\n          *ngIf=\"!user\"\r\n          size=\"small\"\r\n          class=\"margin-left\"\r\n          (onClick)=\"onLogin.emit($event)\"\r\n          label=\"Log in\"\r\n        ></storybook-button>\r\n        <storybook-button\r\n          *ngIf=\"!user\"\r\n          size=\"small\"\r\n          [primary]=\"true\"\r\n          class=\"margin-left\"\r\n          (onClick)=\"onCreateAccount.emit($event)\"\r\n          label=\"Sign up\"\r\n        ></storybook-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</header>`,\r\n  styleUrls: ['./header.css'],\r\n})\r\nexport class HeaderComponent {\r\n  @Input()\r\n  user: User | null = null;\r\n\r\n  @Output()\r\n  onLogin = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onLogout = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onCreateAccount = new EventEmitter<Event>();\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\r\n  padding: 15px 20px;\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.storybook-header svg {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.storybook-header h1 {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin: 6px 0 6px 10px;\r\n  font-weight: 700;\r\n  font-size: 20px;\r\n  line-height: 1;\r\n}\r\n\r\n.storybook-header button + button {\r\n  margin-left: 10px;\r\n}\r\n\r\n.storybook-header .welcome {\r\n  margin-right: 10px;\r\n  color: #333;\r\n  font-size: 14px;\r\n}\r\n",
-                    "styleUrl": "./header.css"
-                }
-            ],
-            "stylesData": "",
-            "extends": []
-        },
-        {
-            "name": "HeaderComponent",
-            "id": "component-HeaderComponent-28d0e0d8ff1908434d20d8887fda909fde1cd003c9b0f8d1155d977250661d70b0fe30557b34d98e20eb4a863fa421ed90c9ffc22a555678da34c657bb1ffebf-1",
+            "id": "component-HeaderComponent-28d0e0d8ff1908434d20d8887fda909fde1cd003c9b0f8d1155d977250661d70b0fe30557b34d98e20eb4a863fa421ed90c9ffc22a555678da34c657bb1ffebf",
             "file": "src/app/risk-dashboard/components/header/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4407,10 +3720,7 @@
                 "AfterViewInit",
                 "OnDestroy"
             ],
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "HeaderComponent-1",
-            "templateData": "<header>\r\n    <div class=\"topheder-business-users\">\r\n        <div class=\"header-inner\">\r\n            <button class=\"navbar-toggler\" type=\"button\" (click)=\"openMenu()\" id=\"db-header-8\">\r\n                <img src=\"images/side-menu.svg\">\r\n            </button>\r\n        </div>\r\n        <nav class=\"navbar main-nav\">\r\n            <div class=\"nav-inner\">\r\n                <div class=\"nav-left\">\r\n                    <div class=\"wallet-list-business\">\r\n                        <div class=\"flag\">\r\n                            <img src=\"images/ils-flag.svg\" alt=\"flag\">\r\n                        </div>\r\n                        <div class=\"currency-wrapper\">\r\n                            <div class=\"wallet-ammount\">\r\n                                3,200,000<span class=\"sub-part\">.00</span>\r\n                            </div>\r\n                            <button class=\"wallet-list-button\" mat-icon-button></button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"nav-option-right\">\r\n                    <div class=\"lang-wrapper\">\r\n                        <button type=\"button\" class=\"drop-down-btn lang-btn\" [matMenuTriggerFor]=\"langMenu\"\r\n                            id=\"dropdownForm2\">\r\n                            <img height=\"20px\" width=\"20px\" src=\"images/gloabe-icn.svg\" alt=\"language icon\">\r\n                        </button>\r\n                        <mat-menu #langMenu=\"matMenu\"\r\n                            class=\"header-menu-panel side-nav-wrapper language-wrapper animated fadeIn py-2 px-2\">\r\n                            <ul>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-1\">English</button>\r\n                                </li>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-2\">עברית</button>\r\n                                </li>\r\n                            </ul>\r\n                        </mat-menu>\r\n                    </div>\r\n                    <button class=\"header-btn download-app\">\r\n                        Download App\r\n                    </button>\r\n                    <a class=\"header-btn market-place\">\r\n                        <svg width=\"22\" height=\"20\" viewBox=\"0 0 22 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                            <path id=\"Vector\"\r\n                                d=\"M21.9483 6.58348C21.9248 6.53253 21.8963 6.48416 21.8632 6.43913C21.8382 6.31428 21.8046 6.19137 21.7628 6.0713C21.7577 6.05739 21.7526 6.04348 21.7458 6.02956L19.4031 0.521739C19.3369 0.366601 19.2277 0.234598 19.0891 0.141919C18.9505 0.049241 18.7884 -8.19612e-05 18.6228 1.02236e-07H3.30575C3.14011 -8.19612e-05 2.97804 0.049241 2.83943 0.141919C2.70082 0.234598 2.59169 0.366601 2.52543 0.521739L0.168309 6.07043C-0.056103 6.65243 -0.056103 7.29975 0.168309 7.88174C0.385115 8.3882 0.699203 8.84504 1.09196 9.22518C1.48472 9.60532 1.94815 9.90103 2.4548 10.0948V19.1304C2.4548 19.3611 2.54446 19.5822 2.70404 19.7453C2.86362 19.9084 3.08007 20 3.30575 20H18.6228C18.8485 20 19.0649 19.9084 19.2245 19.7453C19.3841 19.5822 19.4737 19.3611 19.4737 19.1304V10.0948C19.9803 9.90127 20.4436 9.60585 20.8364 9.22601C21.2291 8.84617 21.5433 8.38965 21.7602 7.88348C21.8304 7.70055 21.877 7.5091 21.8989 7.31391C21.9557 7.20211 21.9894 7.07959 21.9979 6.95393C22.0064 6.82828 21.9895 6.70219 21.9483 6.58348ZM8.41143 18.2609V13.0435H10.1133V18.2609H8.41143ZM11.8152 18.2609V13.0435H13.5171V18.2609H11.8152ZM17.7718 18.2609H15.219V12.1739C15.219 11.9433 15.1294 11.7221 14.9698 11.559C14.8102 11.396 14.5937 11.3043 14.3681 11.3043H7.56048C7.3348 11.3043 7.11836 11.396 6.95877 11.559C6.79919 11.7221 6.70954 11.9433 6.70954 12.1739V18.2609H4.1567V10.4348C4.80138 10.443 5.44005 10.3072 6.028 10.0369C6.61595 9.7665 7.13898 9.36811 7.56048 8.86957C7.9868 9.36234 8.51071 9.75693 9.09752 10.0272C9.68432 10.2974 10.3206 10.4372 10.9643 10.4372C11.6079 10.4372 12.2442 10.2974 12.831 10.0272C13.4178 9.75693 13.9417 9.36234 14.3681 8.86957C14.7896 9.36811 15.3126 9.7665 15.9005 10.0369C16.4885 10.3072 17.1272 10.443 17.7718 10.4348V18.2609ZM20.186 7.21739C19.9683 7.67738 19.6239 8.06235 19.195 8.32498C18.7661 8.5876 18.2714 8.71644 17.7718 8.69565C17.1525 8.74712 16.5381 8.54822 16.0608 8.14172C15.5834 7.73521 15.2812 7.15354 15.219 6.52174C15.219 6.29112 15.1294 6.06994 14.9698 5.90686C14.8102 5.74379 14.5937 5.65217 14.3681 5.65217C14.1424 5.65217 13.9259 5.74379 13.7663 5.90686C13.6068 6.06994 13.5171 6.29112 13.5171 6.52174C13.455 7.15354 13.1527 7.73521 12.6754 8.14172C12.198 8.54822 11.5836 8.74712 10.9643 8.69565C10.3449 8.74712 9.73054 8.54822 9.25318 8.14172C8.77581 7.73521 8.47358 7.15354 8.41143 6.52174C8.41143 6.29112 8.32178 6.06994 8.1622 5.90686C8.00261 5.74379 7.78617 5.65217 7.56048 5.65217C7.3348 5.65217 7.11836 5.74379 6.95877 5.90686C6.79919 6.06994 6.70954 6.29112 6.70954 6.52174C6.64739 7.15354 6.34516 7.73521 5.86779 8.14172C5.39043 8.54822 4.77604 8.74712 4.1567 8.69565C3.65699 8.7165 3.1622 8.5877 2.73316 8.32507C2.30412 8.06245 1.95952 7.67745 1.74171 7.21739C1.68468 7.05701 1.68468 6.88125 1.74171 6.72087L3.86397 1.73913H18.0646L20.1724 6.69565C20.2382 6.86222 20.2431 7.04747 20.186 7.21739Z\"\r\n                                fill=\"black\" />\r\n                        </svg>\r\n                        Marketplace\r\n                    </a>\r\n                    <button class=\"add-money\" mat-button id=\"db-header-10\">+ Add Money</button>\r\n                    <div class=\"user-profile\">\r\n                        <button class=\"profile-btn\" [matMenuTriggerFor]=\"accountsMenu\" id=\"db-header-11\">T</button>\r\n                        <button class=\"user-option\" mat-icon-button [matMenuTriggerFor]=\"profileMenu\" id=\"db-header-12\">\r\n                            <img src=\"images/menu-down-arrow.svg\">\r\n                        </button>\r\n                        <mat-menu #profileMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"db-header-13\">Logout</button>\r\n                        </mat-menu>\r\n                        <mat-menu #accountsMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"dbheader-company\">Tamir</button>\r\n                        </mat-menu>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nav>\r\n    </div>\r\n</header>\r\n<ng-container *ngIf=\"\">\r\n    <mat-drawer #quickHedgeDrawer  mode=\"over\" position=\"end\" class=\"drawer-hedge-quick\" [opened]=\"false\"> \r\n        <app-quick-hedge-drawer (closeDrawer)=\"closeQuickHedgeDrawer()\"></app-quick-hedge-drawer>\r\n    </mat-drawer>\r\n      \r\n    <mat-drawer #hedgeAllDrawer mode=\"side\" position=\"end\" class=\"drawer-hedge-all\" [opened]=\"false\">\r\n        <app-hedge-all-drawer (closeDrawer)=\"closeHedgeAllDrawer()\"></app-hedge-all-drawer>\r\n    </mat-drawer>\r\n</ng-container>\r\n\r\n  \r\n"
+            "templateData": "<header>\r\n    <div class=\"topheder-business-users\">\r\n        <div class=\"header-inner\">\r\n            <button class=\"navbar-toggler\" type=\"button\" (click)=\"openMenu()\" id=\"db-header-8\">\r\n                <img src=\"images/side-menu.svg\">\r\n            </button>\r\n        </div>\r\n        <nav class=\"navbar main-nav\">\r\n            <div class=\"nav-inner\">\r\n                <div class=\"nav-left\">\r\n                    <div class=\"wallet-list-business\">\r\n                        <div class=\"flag\">\r\n                            <img src=\"images/ils-flag.svg\" alt=\"flag\">\r\n                        </div>\r\n                        <div class=\"currency-wrapper\">\r\n                            <div class=\"wallet-ammount\">\r\n                                3,200,000<span class=\"sub-part\">.00</span>\r\n                            </div>\r\n                            <button class=\"wallet-list-button\" mat-icon-button></button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"nav-option-right\">\r\n                    <div class=\"lang-wrapper\">\r\n                        <button type=\"button\" class=\"drop-down-btn lang-btn\" [matMenuTriggerFor]=\"langMenu\"\r\n                            id=\"dropdownForm2\">\r\n                            <img height=\"20px\" width=\"20px\" src=\"images/gloabe-icn.svg\" alt=\"language icon\">\r\n                        </button>\r\n                        <mat-menu #langMenu=\"matMenu\"\r\n                            class=\"header-menu-panel side-nav-wrapper language-wrapper animated fadeIn py-2 px-2\">\r\n                            <ul>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-1\">English</button>\r\n                                </li>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-2\">עברית</button>\r\n                                </li>\r\n                            </ul>\r\n                        </mat-menu>\r\n                    </div>\r\n                    <button class=\"header-btn download-app\">\r\n                        Download App\r\n                    </button>\r\n                    <a class=\"header-btn market-place\">\r\n                        <svg width=\"22\" height=\"20\" viewBox=\"0 0 22 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                            <path id=\"Vector\"\r\n                                d=\"M21.9483 6.58348C21.9248 6.53253 21.8963 6.48416 21.8632 6.43913C21.8382 6.31428 21.8046 6.19137 21.7628 6.0713C21.7577 6.05739 21.7526 6.04348 21.7458 6.02956L19.4031 0.521739C19.3369 0.366601 19.2277 0.234598 19.0891 0.141919C18.9505 0.049241 18.7884 -8.19612e-05 18.6228 1.02236e-07H3.30575C3.14011 -8.19612e-05 2.97804 0.049241 2.83943 0.141919C2.70082 0.234598 2.59169 0.366601 2.52543 0.521739L0.168309 6.07043C-0.056103 6.65243 -0.056103 7.29975 0.168309 7.88174C0.385115 8.3882 0.699203 8.84504 1.09196 9.22518C1.48472 9.60532 1.94815 9.90103 2.4548 10.0948V19.1304C2.4548 19.3611 2.54446 19.5822 2.70404 19.7453C2.86362 19.9084 3.08007 20 3.30575 20H18.6228C18.8485 20 19.0649 19.9084 19.2245 19.7453C19.3841 19.5822 19.4737 19.3611 19.4737 19.1304V10.0948C19.9803 9.90127 20.4436 9.60585 20.8364 9.22601C21.2291 8.84617 21.5433 8.38965 21.7602 7.88348C21.8304 7.70055 21.877 7.5091 21.8989 7.31391C21.9557 7.20211 21.9894 7.07959 21.9979 6.95393C22.0064 6.82828 21.9895 6.70219 21.9483 6.58348ZM8.41143 18.2609V13.0435H10.1133V18.2609H8.41143ZM11.8152 18.2609V13.0435H13.5171V18.2609H11.8152ZM17.7718 18.2609H15.219V12.1739C15.219 11.9433 15.1294 11.7221 14.9698 11.559C14.8102 11.396 14.5937 11.3043 14.3681 11.3043H7.56048C7.3348 11.3043 7.11836 11.396 6.95877 11.559C6.79919 11.7221 6.70954 11.9433 6.70954 12.1739V18.2609H4.1567V10.4348C4.80138 10.443 5.44005 10.3072 6.028 10.0369C6.61595 9.7665 7.13898 9.36811 7.56048 8.86957C7.9868 9.36234 8.51071 9.75693 9.09752 10.0272C9.68432 10.2974 10.3206 10.4372 10.9643 10.4372C11.6079 10.4372 12.2442 10.2974 12.831 10.0272C13.4178 9.75693 13.9417 9.36234 14.3681 8.86957C14.7896 9.36811 15.3126 9.7665 15.9005 10.0369C16.4885 10.3072 17.1272 10.443 17.7718 10.4348V18.2609ZM20.186 7.21739C19.9683 7.67738 19.6239 8.06235 19.195 8.32498C18.7661 8.5876 18.2714 8.71644 17.7718 8.69565C17.1525 8.74712 16.5381 8.54822 16.0608 8.14172C15.5834 7.73521 15.2812 7.15354 15.219 6.52174C15.219 6.29112 15.1294 6.06994 14.9698 5.90686C14.8102 5.74379 14.5937 5.65217 14.3681 5.65217C14.1424 5.65217 13.9259 5.74379 13.7663 5.90686C13.6068 6.06994 13.5171 6.29112 13.5171 6.52174C13.455 7.15354 13.1527 7.73521 12.6754 8.14172C12.198 8.54822 11.5836 8.74712 10.9643 8.69565C10.3449 8.74712 9.73054 8.54822 9.25318 8.14172C8.77581 7.73521 8.47358 7.15354 8.41143 6.52174C8.41143 6.29112 8.32178 6.06994 8.1622 5.90686C8.00261 5.74379 7.78617 5.65217 7.56048 5.65217C7.3348 5.65217 7.11836 5.74379 6.95877 5.90686C6.79919 6.06994 6.70954 6.29112 6.70954 6.52174C6.64739 7.15354 6.34516 7.73521 5.86779 8.14172C5.39043 8.54822 4.77604 8.74712 4.1567 8.69565C3.65699 8.7165 3.1622 8.5877 2.73316 8.32507C2.30412 8.06245 1.95952 7.67745 1.74171 7.21739C1.68468 7.05701 1.68468 6.88125 1.74171 6.72087L3.86397 1.73913H18.0646L20.1724 6.69565C20.2382 6.86222 20.2431 7.04747 20.186 7.21739Z\"\r\n                                fill=\"black\" />\r\n                        </svg>\r\n                        Marketplace\r\n                    </a>\r\n                    <button class=\"add-money\" mat-button id=\"db-header-10\">+ Add Money</button>\r\n                    <div class=\"user-profile\">\r\n                        <button class=\"profile-btn\" [matMenuTriggerFor]=\"accountsMenu\" id=\"db-header-11\">T</button>\r\n                        <button class=\"user-option\" mat-icon-button [matMenuTriggerFor]=\"profileMenu\" id=\"db-header-12\">\r\n                            <img src=\"images/menu-down-arrow.svg\">\r\n                        </button>\r\n                        <mat-menu #profileMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"db-header-13\">Logout</button>\r\n                        </mat-menu>\r\n                        <mat-menu #accountsMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"dbheader-company\">Tamir</button>\r\n                        </mat-menu>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nav>\r\n    </div>\r\n</header>\r\n<!-- <ng-container *ngIf=\"\"> -->\r\n    <mat-drawer #quickHedgeDrawer  mode=\"over\" position=\"end\" class=\"drawer-hedge-quick\" [opened]=\"false\"> \r\n        <app-quick-hedge-drawer (closeDrawer)=\"closeQuickHedgeDrawer()\"></app-quick-hedge-drawer>\r\n    </mat-drawer>\r\n      \r\n    <mat-drawer #hedgeAllDrawer mode=\"side\" position=\"end\" class=\"drawer-hedge-all\" [opened]=\"false\">\r\n        <app-hedge-all-drawer (closeDrawer)=\"closeHedgeAllDrawer()\"></app-hedge-all-drawer>\r\n    </mat-drawer>\r\n<!-- </ng-container> -->\r\n\r\n  \r\n"
         },
         {
             "name": "HedgeAllDrawerComponent",
@@ -7228,100 +6538,6 @@
             "templateData": "<div class=\"monthly-exposer-wrap\">\r\n    <div class=\"exposer-desc-wrap\">\r\n        <div class=\"ml-exposure-details d-flex\">\r\n            <div class=\"exposer-img\">\r\n                <img src=\"images/monthly-exposer-icon.svg\">\r\n            </div>\r\n            <div class=\"desc\">\r\n                <h3> Monthly exposure details </h3>\r\n                <p> Adjust buy/sell columns to match your monthly exposure. </p>\r\n            </div>\r\n        </div>\r\n        <div class=\"progress-container\">\r\n            <mat-progress-bar #formStepperProgress class=\"stepper-progressbar\" mode=\"determinate\"\r\n              value=\"100\"></mat-progress-bar> <span class=\"progress-count\"> 4/4 </span>\r\n        </div>\r\n    </div>\r\n    <div class=\"currency-wrap\">\r\n        <div class=\"exposer-item currency-pair\">\r\n            <div class=\"expo-head\"> Currencies pair </div>\r\n            <div class=\"desc\"> {{monthlyExposureObject.pair}}</div>\r\n        </div>\r\n        <div class=\"exposer-item exposer-period\">\r\n            <div class=\"expo-head\"> Exposure period </div>\r\n            <div class=\"desc\"> {{monthlyPeriod}} <span>months</span></div>\r\n        </div>\r\n        <div class=\"exposer-item exposer-price\">\r\n            <div class=\"expo-head\"> Monthly exposure <span>{{monthlyExposureObject.selectedExposure}}</span>\r\n            </div>\r\n            <div class=\"desc\">\r\n                <span>{{monthlyExposureObject.sign}}</span>{{valueWithComma(monthlyExposureObject.monthlyAmount, 2) }} \r\n                <!-- <ng-container\r\n                    *ngIf=\"exposureAmountCeil\">.</ng-container>\r\n                    <span>{{exposureAmountCeil}}</span> -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
         },
         {
-            "name": "PageComponent",
-            "id": "component-PageComponent-79bfb042a722f49579739dfd01d8f1b67681d0272a72a283c14edeb22f0462775c80ba4f7c1eb0fa4bd5fa1844083da0140980e75b5500cd98cc26421ec6d569",
-            "file": "src/stories/page.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-page",
-            "styleUrls": [
-                "./page.css"
-            ],
-            "styles": [],
-            "template": "<article>  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "User | null",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 69
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "doCreateAccount",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 79,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "doLogin",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 75,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "doLogout",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 71,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                },
-                {
-                    "name": "HeaderComponent",
-                    "type": "component"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { HeaderComponent } from './header.component';\r\nimport type { User } from './user';\r\n\r\n@Component({\r\n  selector: 'storybook-page',\r\n  standalone: true,\r\n  imports: [CommonModule, HeaderComponent],\r\n  template: `<article>\r\n  <storybook-header\r\n    [user]=\"user\"\r\n    (onLogout)=\"doLogout()\"\r\n    (onLogin)=\"doLogin()\"\r\n    (onCreateAccount)=\"doCreateAccount()\"\r\n  ></storybook-header>\r\n  <section class=\"storybook-page\">\r\n    <h2>Pages in Storybook</h2>\r\n    <p>\r\n      We recommend building UIs with a\r\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n        <strong>component-driven</strong>\r\n      </a>\r\n      process starting with atomic components and ending with pages.\r\n    </p>\r\n    <p>\r\n      Render pages with mock data. This makes it easy to build and review page states without\r\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\r\n      in Storybook:\r\n    </p>\r\n    <ul>\r\n      <li>\r\n        Use a higher-level connected component. Storybook helps you compose such data from the\r\n        \"args\" of child component stories\r\n      </li>\r\n      <li>\r\n        Assemble data in the page component from your services. You can mock these services out\r\n        using Storybook.\r\n      </li>\r\n    </ul>\r\n    <p>\r\n      Get a guided tutorial on component-driven development at\r\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n        Storybook tutorials\r\n      </a>\r\n      . Read more in the\r\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\r\n      .\r\n    </p>\r\n    <div class=\"tip-wrapper\">\r\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\r\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\r\n        <g fill=\"none\" fillRule=\"evenodd\">\r\n          <path\r\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\r\n            id=\"a\"\r\n            fill=\"#999\"\r\n          />\r\n        </g>\r\n      </svg>\r\n      Viewports addon in the toolbar\r\n    </div>\r\n  </section>\r\n</article>`,\r\n  styleUrls: ['./page.css'],\r\n})\r\nexport class PageComponent {\r\n  user: User | null = null;\r\n\r\n  doLogout() {\r\n    this.user = null;\r\n  }\r\n\r\n  doLogin() {\r\n    this.user = { name: 'Jane Doe' };\r\n  }\r\n\r\n  doCreateAccount() {\r\n    this.user = { name: 'Jane Doe' };\r\n  }\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-page {\r\n  margin: 0 auto;\r\n  padding: 48px 20px;\r\n  max-width: 600px;\r\n  color: #333;\r\n  font-size: 14px;\r\n  line-height: 24px;\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.storybook-page h2 {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin: 0 0 4px;\r\n  font-weight: 700;\r\n  font-size: 32px;\r\n  line-height: 1;\r\n}\r\n\r\n.storybook-page p {\r\n  margin: 1em 0;\r\n}\r\n\r\n.storybook-page a {\r\n  color: inherit;\r\n}\r\n\r\n.storybook-page ul {\r\n  margin: 1em 0;\r\n  padding-left: 30px;\r\n}\r\n\r\n.storybook-page li {\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.storybook-page .tip {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-right: 10px;\r\n  border-radius: 1em;\r\n  background: #e7fdd8;\r\n  padding: 4px 12px;\r\n  color: #357a14;\r\n  font-weight: 700;\r\n  font-size: 11px;\r\n  line-height: 12px;\r\n}\r\n\r\n.storybook-page .tip-wrapper {\r\n  margin-top: 40px;\r\n  margin-bottom: 40px;\r\n  font-size: 13px;\r\n  line-height: 20px;\r\n}\r\n\r\n.storybook-page .tip-wrapper svg {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 3px;\r\n  margin-right: 4px;\r\n  width: 12px;\r\n  height: 12px;\r\n}\r\n\r\n.storybook-page .tip-wrapper svg path {\r\n  fill: #1ea7fd;\r\n}\r\n",
-                    "styleUrl": "./page.css"
-                }
-            ],
-            "stylesData": "",
-            "extends": []
-        },
-        {
             "name": "QuickHedgeDrawerComponent",
             "id": "component-QuickHedgeDrawerComponent-62983b5fcfaf197c87992180755fb7eb5a6f57f8c2c5139d63cd9acbdeebf5277a540fe0e69f72441190ac60e9a6db9175dc3294716f332ddbc78cf471bd148f",
             "file": "src/app/risk-dashboard/components/hedging-proposal/components/quick-hedge-drawer/quick-hedge-drawer.component.ts",
@@ -7819,7 +7035,7 @@
         },
         {
             "name": "SidebarComponent",
-            "id": "component-SidebarComponent-cf20c254ba04f504e7e2745c544fb3e48ed4eb2d2f72f1116c6c7524bc980f5b2eab1da8f1bb89f703ed02526ebb83fd33dbdf64d06c06dd0ef9b4127f0d013f",
+            "id": "component-SidebarComponent-1bb3e4e56296aa3b81d206ef4dd37e9b3326f2dac9c67dba18a9c82daa7ae6754ea178887855fc8bd1603433dc3c3470580692db955e3b35410bbeeb873c4c13",
             "file": "src/app/risk-dashboard/components/sidebar/sidebar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -7888,12 +7104,16 @@
                 {
                     "name": "MatExpansionModule",
                     "type": "module"
+                },
+                {
+                    "name": "RouterModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, ViewChild } from '@angular/core';\r\nimport { MatExpansionModule } from '@angular/material/expansion';\r\nimport { Router } from '@angular/router';\r\nexport interface MenuItem {\r\n  icon: string;\r\n  label: string;\r\n  badge?: string;\r\n  highlight?: boolean;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-sidebar',\r\n  imports: [MatExpansionModule],\r\n  templateUrl:'sidebar.component.html',\r\n  styleUrl: 'sidebar.component.scss'\r\n})\r\nexport class SidebarComponent {\r\n  @ViewChild('sidebar') sidebar!: ElementRef;\r\n  constructor(private router:Router){\r\n\r\n  }\r\n  openSidebar() {\r\n    this.sidebar.nativeElement.classList.add('active');\r\n    document.body.classList.add('overflow-hidden');\r\n  }\r\n\r\n  hideSidebar() {\r\n    this.sidebar.nativeElement.classList.remove('active');\r\n    document.body.classList.remove('overflow-hidden');\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, ElementRef, ViewChild } from '@angular/core';\r\nimport { MatExpansionModule } from '@angular/material/expansion';\r\nimport { Router, RouterModule } from '@angular/router';\r\nexport interface MenuItem {\r\n  icon: string;\r\n  label: string;\r\n  badge?: string;\r\n  highlight?: boolean;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-sidebar',\r\n  imports: [MatExpansionModule,RouterModule],\r\n  templateUrl:'sidebar.component.html',\r\n  styleUrl: 'sidebar.component.scss'\r\n})\r\nexport class SidebarComponent {\r\n  @ViewChild('sidebar') sidebar!: ElementRef;\r\n  constructor(private router:Router){\r\n\r\n  }\r\n  openSidebar() {\r\n    this.sidebar.nativeElement.classList.add('active');\r\n    document.body.classList.add('overflow-hidden');\r\n  }\r\n\r\n  hideSidebar() {\r\n    this.sidebar.nativeElement.classList.remove('active');\r\n    document.body.classList.remove('overflow-hidden');\r\n  }\r\n}\r\n",
             "styleUrl": "sidebar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -7925,132 +7145,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div class=\"sidebar-background\" #sidebar>\r\n  <div class=\"sidebar\">\r\n    <!-- Logo -->\r\n    <div class=\"close-btn\">\r\n      <button class=\"men-close-btn\" (click)=\"hideSidebar()\">\r\n        <img src=\"images/close-icon.svg\" class=\"close-icn\" alt=\"close\">\r\n      </button>\r\n    </div>\r\n    <div class=\"side-bar-wrapper\">\r\n      <div class=\"logo\">\r\n        <img src=\"images/okoora-logo.svg\" class=\"main-logo\" alt=\"Logo\" />\r\n        <img src=\"images/logo-abcm-small.svg\" class=\"small-logo\" alt=\"Logo\" />\r\n      </div>\r\n      <div class=\"menu-list\">\r\n        <div class=\"first-divider\"></div>\r\n        <!-- Navigation -->\r\n        <a class=\"menu-item\"><i class=\"icon-dashboard\"></i> <span class=\"menu-text\">Dashboard</span></a>\r\n        <a class=\"menu-item\"><i class=\"icon-payments\"></i> <span class=\"menu-text\">Payments</span></a>\r\n        <a class=\"menu-item\"><i class=\"icon-funds\"></i> <span class=\"menu-text\">Received Funds</span></a>\r\n        <a class=\"menu-item\"><i class=\"icon-purchases\"></i> <span class=\"menu-text\">Purchases</span></a>\r\n        <a class=\"menu-item active\" routerLinkActive=\"active\">\r\n          <i class=\"icon-risk\"></i> <span class=\"menu-text\">Risk Manager</span> <span class=\"new-badge\">New</span>\r\n        </a>\r\n        <div class=\"second-divider\"></div>\r\n        <mat-accordion id=\"navReports\">\r\n          <mat-expansion-panel class=\"shadow-none mb-3 reports-expansion-panel\">\r\n            <mat-expansion-panel-header id=\"navReportsExpansion\" class=\"header-reports\">\r\n              <mat-panel-title class=\"panel-item\">\r\n                <i class=\"icon-reports\"></i> <span class=\"menu-text\">Reports</span>\r\n              </mat-panel-title>\r\n            </mat-expansion-panel-header>\r\n            <mat-panel-description class=\"sub-tabs-reports\">\r\n              <a id=\"all-transactions-link\">\r\n                <p class=\"submenu-name\">All transactions</p>\r\n              </a>\r\n              <a id=\"smartConvert-link\">\r\n                <p class=\"submenu-name\">Period end balance</p>\r\n              </a>\r\n              <hr class=\"bottom-line\">\r\n            </mat-panel-description>\r\n          </mat-expansion-panel>\r\n        </mat-accordion>\r\n        <a class=\"menu-item\"><i class=\"icon-alerts\"></i> <span class=\"menu-text\">Alerts</span></a>\r\n        <a class=\"menu-item\"><i class=\"icon-contacts\"></i> <span class=\"menu-text\">Contacts</span></a>\r\n        <a class=\"menu-item\"><i class=\"icon-help\"></i> <span class=\"menu-text\">Help</span></a>\r\n        <a class=\"menu-item marketplace\">\r\n          <i class=\"market-place\"></i> <span class=\"menu-text\">Marketplace</span>\r\n        </a>\r\n        <button id=\"downloadApp\" class=\"download-app\">\r\n          Download App\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
-        },
-        {
-            "name": "TagComponent",
-            "id": "component-TagComponent-4b75c14f8ca210ef7389413375c35c8fc330c28db75c905d24c47824da468261bdeaa6a5ce28835a97287c38f8bcfef1ed5a9b0cd03006dee1ef9423ccbfc1d6",
-            "file": "src/app/tag/tag.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-tag",
-            "styleUrls": [
-                "tag.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "tag.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "label",
-                    "defaultValue": "'Label'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 11,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "removable",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 14,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'medium'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 12,
-                    "type": "\"small\" | \"medium\" | \"large\"",
-                    "decorators": []
-                },
-                {
-                    "name": "state",
-                    "defaultValue": "'inactive'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "\"inactive\" | \"active\" | \"removable\" | \"deactivated\"",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [
-                {
-                    "name": "onClick",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 16,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "removeTag",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 23,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": false,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-tag',\r\n  imports: [CommonModule],\r\n  templateUrl:'tag.component.html',\r\n  styleUrls: ['tag.component.scss']\r\n})\r\nexport class TagComponent {\r\n  @Input() label: string = 'Label';\r\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\r\n  @Input() state: 'inactive' | 'active' | 'removable' | 'deactivated' = 'inactive';\r\n  @Input() removable: boolean = false;\r\n\r\n  onClick() {\r\n    if (this.state === 'deactivated') {\r\n      return;\r\n    }\r\n    console.log('Tag clicked:', this.label);\r\n  }\r\n\r\n  removeTag(event: Event) {\r\n    event.stopPropagation();\r\n    console.log('Tag removed:', this.label);\r\n  }\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".tag {\r\n    display: inline-flex;\r\n    align-items: center;\r\n    padding:7px;\r\n    border-radius: 50px;\r\n    font-size: 14px;\r\n    font-family: 'Heebo', sans-serif;\r\n    font-weight: 400;\r\n    line-height: 16px;\r\n    cursor: pointer;\r\n    transition: 0.3s;\r\n    width: auto;\r\n    min-width: 71px;\r\n    justify-content: center;\r\n}\r\n\r\n.small {\r\n    padding:7px;\r\n}\r\n\r\n.medium {\r\n    padding: 9px 17px;\r\n    min-width: 91px;\r\n}\r\n\r\n.large {\r\n    padding:12px 17px;\r\n    min-width: 91px;\r\n}\r\n\r\n.inactive {\r\n    border: 1px solid #2563EB;\r\n    background-color: #EFF6FF;\r\n    color: #111827;\r\n}\r\n\r\n.active {\r\n    background-color: #2947F2;\r\n    border: 1px solid #2947F2;\r\n    color: #fff;\r\n}\r\n\r\n.removable {\r\n    border: 1px solid #E5E7EB;\r\n    background: #fff;\r\n    color: #111827;\r\n}\r\n\r\n.deactivated {\r\n    background: #E5E7EB;\r\n    color: #D1D5DB;\r\n    border: 1px solid #E5E7EB;\r\n    pointer-events: none;\r\n}\r\n\r\n.close-btn {\r\n    background: none;\r\n    border: none;\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n    font-size: 10px;\r\n    width: 10px;\r\n    height: 10px;\r\n    position: relative;\r\n}\r\n\r\n.close-btn::before,\r\n.close-btn::after {\r\n    content: '';\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    width: 9px;\r\n    height: 2px;\r\n    background-color: #111827;\r\n    transform: translate(-50%, -50%) rotate(45deg);\r\n}\r\n\r\n.close-btn::after {\r\n    transform: translate(-50%, -50%) rotate(-45deg);\r\n}\r\n\r\n.inactive {\r\n    .close-btn::before,\r\n    .close-btn::after {\r\n        background-color: #111827;\r\n    }\r\n}\r\n.active {\r\n    .close-btn::before,\r\n    .close-btn::after {\r\n        background-color: #fff;\r\n    }\r\n}\r\n.removable {\r\n    .close-btn::before,\r\n    .close-btn::after {\r\n        background-color: #2947F2;\r\n    }\r\n}\r\n.deactivated {\r\n    .close-btn::before,\r\n    .close-btn::after {\r\n        background-color: #D1D5DB;\r\n    }\r\n}\r\n",
-                    "styleUrl": "tag.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<div class=\"tag-container\">\r\n    <button class=\"tag\" [ngClass]=\"[size, state]\" (click)=\"onClick()\">\r\n        {{ label }}\r\n        <span *ngIf=\"removable\" class=\"close-btn\" (click)=\"removeTag($event)\"></span>\r\n    </button>\r\n</div>"
+            "templateData": "<div class=\"sidebar-background\" #sidebar>\r\n  <div class=\"sidebar\">\r\n    <!-- Logo -->\r\n    <div class=\"close-btn\">\r\n      <button class=\"men-close-btn\" (click)=\"hideSidebar()\">\r\n        <img src=\"images/close-icon.svg\" class=\"close-icn\" alt=\"close\">\r\n      </button>\r\n    </div>\r\n    <div class=\"side-bar-wrapper\">\r\n      <div class=\"logo\">\r\n        <img src=\"images/okoora-logo.svg\" class=\"main-logo\" alt=\"Logo\" />\r\n        <img src=\"images/logo-abcm-small.svg\" class=\"small-logo\" alt=\"Logo\" />\r\n      </div>\r\n      <div class=\"menu-list\">\r\n        <div class=\"first-divider\"></div>\r\n        <!-- Navigation -->\r\n        <a class=\"menu-item\"><i class=\"icon-dashboard\"></i> <span class=\"menu-text\">Dashboard</span></a>\r\n        <a class=\"menu-item\"><i class=\"icon-payments\"></i> <span class=\"menu-text\">Payments</span></a>\r\n        <a class=\"menu-item\"><i class=\"icon-funds\"></i> <span class=\"menu-text\">Received Funds</span></a>\r\n        <a class=\"menu-item\"><i class=\"icon-purchases\"></i> <span class=\"menu-text\">Purchases</span></a>\r\n        <a class=\"menu-item active\" routerLinkActive=\"active\" [routerLink]=\"['/cashflow']\">\r\n          <i class=\"icon-risk\"></i> <span class=\"menu-text\">Risk Manager</span> <span class=\"new-badge\">New</span>\r\n        </a>\r\n        <div class=\"second-divider\"></div>\r\n        <mat-accordion id=\"navReports\">\r\n          <mat-expansion-panel class=\"shadow-none mb-3 reports-expansion-panel\">\r\n            <mat-expansion-panel-header id=\"navReportsExpansion\" class=\"header-reports\">\r\n              <mat-panel-title class=\"panel-item\">\r\n                <i class=\"icon-reports\"></i> <span class=\"menu-text\">Reports</span>\r\n              </mat-panel-title>\r\n            </mat-expansion-panel-header>\r\n            <mat-panel-description class=\"sub-tabs-reports\">\r\n              <a id=\"all-transactions-link\">\r\n                <p class=\"submenu-name\">All transactions</p>\r\n              </a>\r\n              <a id=\"smartConvert-link\">\r\n                <p class=\"submenu-name\">Period end balance</p>\r\n              </a>\r\n              <hr class=\"bottom-line\">\r\n            </mat-panel-description>\r\n          </mat-expansion-panel>\r\n        </mat-accordion>\r\n        <a class=\"menu-item\"><i class=\"icon-alerts\"></i> <span class=\"menu-text\">Alerts</span></a>\r\n        <a class=\"menu-item\"><i class=\"icon-contacts\"></i> <span class=\"menu-text\">Contacts</span></a>\r\n        <a class=\"menu-item\"><i class=\"icon-help\"></i> <span class=\"menu-text\">Help</span></a>\r\n        <a class=\"menu-item marketplace\">\r\n          <i class=\"market-place\"></i> <span class=\"menu-text\">Marketplace</span>\r\n        </a>\r\n        <button id=\"downloadApp\" class=\"download-app\">\r\n          Download App\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
         },
         {
             "name": "TradeViewChartComponent",
@@ -8484,13 +7579,13 @@
     "modules": [
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-3b1e19721037230ece479d643bfc132ceb833ade4a34b9404fb46207d01a650c2ac63bec0443ae3a62bc2bcfbf8911e7b557c70c9dea18bd91b0bffb8a948f8e",
+            "id": "module-AppRoutingModule-284c20e2d182b26039802abb45ea7f3c948157b2df5027ac4716be57ecd70e6f11b2f6030062e335be8bde939fb99e0482ba8a5df64dc4f1bf3a082250cff662",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.routes.ts",
             "methods": [],
-            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Default route\r\n  { path: 'dashboard', component: DashboardComponent },\r\n  { path: 'hedging', component: HedgingProposalComponent },\r\n  { path: '**', redirectTo: 'dashboard' }\r\n];\r\n\r\n@NgModule({\r\n    imports:[RouterModule.forRoot(routes)],\r\n    exports:[RouterModule]\r\n})\r\nexport class AppRoutingModule {}",
+            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Default route\r\n  { path: 'dashboard', component: DashboardComponent },\r\n  { path: 'hedging', component: HedgingProposalComponent },\r\n  { path: '**', redirectTo: 'dashboard' }\r\n];\r\n\r\n@NgModule({\r\n    imports:[RouterModule.forChild(routes)],\r\n    exports:[RouterModule]\r\n})\r\nexport class AppRoutingModule {}",
             "children": [
                 {
                     "type": "providers",
@@ -8771,7 +7866,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 3,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -8780,7 +7875,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {
@@ -8791,33 +7886,6 @@
                 "name": "appConfig",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/button-link/button-link.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "ButtonLinkComponent",
-                "coveragePercent": 66,
-                "coverageCount": "4/6",
-                "status": "good"
-            },
-            {
-                "filePath": "src/app/card-list/card-list.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "CardListComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/card/card.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "CardComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -9140,51 +8208,6 @@
                 "name": "MenuItem",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/tag/tag.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "TagComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/7",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/button.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
-            },
-            {
-                "filePath": "src/stories/header.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "HeaderComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/page.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "PageComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/user.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "User",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
                 "status": "low"
             }
         ]

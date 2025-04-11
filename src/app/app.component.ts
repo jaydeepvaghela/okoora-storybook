@@ -1,15 +1,12 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./risk-dashboard/components/header/header.component";
 import { SidebarComponent } from "./risk-dashboard/components/sidebar/sidebar.component";
-import { DashboardComponent } from "./risk-dashboard/components/dashboard/dashboard.component";
 import { CommonModule } from '@angular/common';
-import { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';
-import { CashflowExposureDetailsComponent } from "./risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-details/cashflow-exposure-details.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, SidebarComponent, DashboardComponent, CommonModule, HedgingProposalComponent, CashflowExposureDetailsComponent],
+  imports: [RouterOutlet, HeaderComponent, SidebarComponent, CommonModule],
   templateUrl:'app.component.html',
   styleUrl:'app.component.scss',
 })
@@ -18,7 +15,13 @@ export class AppComponent {
   @Input() ShowDashboard: boolean = false;
   @Input() Showhedging: boolean = false;
   @Input() showCashflowExposure: boolean = false;
-
+  constructor(private router: Router) {}
+  ngOnInit(): void {
+    // Only navigate if it's the initial load (empty path)
+    if (this.router.url === '/') {
+      this.router.navigate(['/cashflow']);
+    }
+  }
   openSidebar() {
     this.sidebar.openSidebar();
   }

@@ -67,7 +67,7 @@
         </nav>
     </div>
 </header>
-<ng-container *ngIf="">
+<!-- <ng-container *ngIf=""> -->
     <mat-drawer #quickHedgeDrawer  mode="over" position="end" class="drawer-hedge-quick" [opened]="false"> 
         <app-quick-hedge-drawer (closeDrawer)="closeQuickHedgeDrawer()"></app-quick-hedge-drawer>
     </mat-drawer>
@@ -75,6 +75,6 @@
     <mat-drawer #hedgeAllDrawer mode="side" position="end" class="drawer-hedge-all" [opened]="false">
         <app-hedge-all-drawer (closeDrawer)="closeHedgeAllDrawer()"></app-hedge-all-drawer>
     </mat-drawer>
-</ng-container>
+<!-- </ng-container> -->
 
   

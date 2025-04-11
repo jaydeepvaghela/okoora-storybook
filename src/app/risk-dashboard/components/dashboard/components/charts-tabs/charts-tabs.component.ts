@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { MatTabsModule, MatTabChangeEvent } from '@angular/material/tabs';
 import { MonthlyExposureChartComponent } from "../monthly-exposure-chart/monthly-exposure-chart.component";
 import { ExposureRateChartComponent } from "../exposure-rate-chart/exposure-rate-chart.component";
@@ -14,7 +14,6 @@ export class ChartsTabsComponent {
   loadMonthChart: boolean = true;
   loadExposureChart: boolean = false;
   activeIndex: number = 0;
-  @Output() toggleView = new EventEmitter<boolean>();
   constructor(private router: Router){
 
   }
@@ -35,6 +34,6 @@ export class ChartsTabsComponent {
     }
   }
   showHedge(){
-    this.toggleView.emit(true);
+    this.router.navigate(['/hedging']);
   }
 }
