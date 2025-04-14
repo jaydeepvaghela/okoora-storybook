@@ -12,6 +12,43 @@ export const monthlyExposureObject = {
   "baseCurrencySign": "₪"
 }
 
+export const walletData = [
+    {
+        "code": "GBP",
+        "defaultCurrency": false,
+        "sign": "£",
+        "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/GBP.png",
+        "currencyName": "British Pound Sterling"
+    },
+    {
+        "code": "JPY",
+        "defaultCurrency": false,
+        "sign": "￥",
+        "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/JPY.png",
+        "currencyName": "Japanese Yen"
+    },
+    {
+        "code": "USD",
+        "defaultCurrency": false,
+        "sign": "$",
+        "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+        "currencyName": "United States Dollar"
+    },
+    {
+        "code": "PLN",
+        "defaultCurrency": false,
+        "sign": "zł",
+        "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/PLN.png",
+        "currencyName": "Polish Zloty"
+    },
+    {
+        "code": "ILS",
+        "defaultCurrency": true,
+        "sign": "₪",
+        "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png",
+        "currencyName": "Israeli Shekel"
+    }
+];
 
 export const cashflowExposureRows = [
   {

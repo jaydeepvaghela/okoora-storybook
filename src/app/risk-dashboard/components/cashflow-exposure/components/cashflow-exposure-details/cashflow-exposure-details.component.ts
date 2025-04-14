@@ -339,7 +339,6 @@ export class CashflowExposureDetailsComponent {
   }
 
   addOneMore() {
-    debugger
     this.monthlyPeriod++
     this.tempcashflowExposureRows = this.cashflowExposureRows;
     this.cashflowExposureRows = [];

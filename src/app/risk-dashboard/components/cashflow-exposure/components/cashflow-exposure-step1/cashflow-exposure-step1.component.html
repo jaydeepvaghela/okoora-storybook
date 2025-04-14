@@ -1,0 +1,54 @@
+<div class="risk-intro-wrap">
+    <div class="risk-banner-wrap">
+        <img class="banner-right-img" src="images/globe-full.svg" alt="Introducing risk manager">
+        <div class="banner-info">
+            <div class="intro-head-title"><span>Introducing risk manager</span></div>
+            <h3 class="intro-title"><span>When you,</span>
+                <div class="animate-title">
+                    <ul class="fliptext">
+                        <li>Buy</li>
+                        <li>Sell</li>
+                        <li>Pay</li>
+                        <li>Convert</li>
+                    </ul>
+                </div>
+            </h3>
+            <h4 class="intro-sub-title">Your cash flow is at <span>risk.</span></h4>
+            <p>Introducing ABCM<sup>TM</sup> risk manager, the tool that can protect your cash flow from market
+                volatility
+            </p>
+            <button class="start-btn" id="rmGetStarted_btn" (click)="cashflowExposureNextStep()">Get Started</button>
+        </div>
+    </div>
+    <div class="intro-details">
+        <h4 class="work-title">How it works</h4>
+        <div class="item-wrap">
+            <div class="intro-item s-1">
+                <div class="img-sec">
+                    <img src="images/risk-step-select-currency.png" alt="Select currencies">
+                </div>
+                <div class="item-info">
+                    <h4 class="item-title">Select currencies</h4>
+                    <p class="desc">Select the exposed currency and specify if you are buying or selling.</p>
+                    <div class="link-sec">
+                        <button class="item-link" #rmSelectCurrency id="rmSelectCurrency"
+                            (click)="cashflowExposureNextStep()">Select currencies</button>
+                    </div>
+                </div>
+            </div>
+            <div class="intro-item s-2">
+                <div class="img-sec">
+                    <img src="images/risk-step-set-amount-img.png" alt="Set an amount">
+                </div>
+                <div class="item-info">
+                    <h4 class="item-title">Set an amount</h4>
+                    <p class="desc">Enter the monthly estimated exposure amount.</p>
+                    <div class="link-sec">
+                        <button class="item-link" #rmSetAmount id="rmSetAmount"
+                            (click)="cashflowExposureNextStep()">Let's start</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

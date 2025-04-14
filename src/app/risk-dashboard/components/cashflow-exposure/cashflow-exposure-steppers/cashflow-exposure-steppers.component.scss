@@ -1,0 +1,13 @@
+::ng-deep {
+    .mat-horizontal-stepper-header-container {
+        display: none !important;
+    }
+    .risk-manager-stepper {
+        mat-stepper {
+            background-color: transparent;
+            .mat-horizontal-content-container {
+                padding: 0;
+            }
+        }
+    }
+}

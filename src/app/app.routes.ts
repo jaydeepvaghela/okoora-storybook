@@ -3,12 +3,13 @@ import { DashboardComponent } from './risk-dashboard/components/dashboard/dashbo
 import { NgModule } from '@angular/core';
 import { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';
 import { CashflowExposureDetailsComponent } from './risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-details/cashflow-exposure-details.component';
+import { CashflowExposureSteppersComponent } from './risk-dashboard/components/cashflow-exposure/cashflow-exposure-steppers/cashflow-exposure-steppers.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'cashflow', pathMatch: 'full' as 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'hedging', component: HedgingProposalComponent },
-  { path: 'cashflow', component: CashflowExposureDetailsComponent },
+  { path: 'cashflow', component: CashflowExposureSteppersComponent },
   { path: '**', redirectTo: 'cashflow' },
 ];
 
