@@ -13,7 +13,8 @@ export class HedgingDataService {
   private quickHedgeDrawerState = new BehaviorSubject<boolean>(false);
   quickHedgeDrawerState$ = this.quickHedgeDrawerState.asObservable();
 
-  
+  public setExposureFormValue = new BehaviorSubject<any>({});
+  getExposureFormValue = this.setExposureFormValue.asObservable();
 
   openQuickHedgeDrawer() {
     this.quickHedgeDrawerState.next(true);

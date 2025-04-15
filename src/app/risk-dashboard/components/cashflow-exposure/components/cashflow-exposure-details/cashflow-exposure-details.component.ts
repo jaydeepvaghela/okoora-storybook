@@ -25,6 +25,8 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { MonthlyExposureDetailsComponent } from '../monthly-exposure-details/monthly-exposure-details.component';
 import { cashflowExposureRows, monthlyExposureObject } from '../cashflow-exposure-data';
 import { Router } from '@angular/router';
+import { MatStepper } from '@angular/material/stepper';
+import { HedgingDataService } from '../../../hedging-proposal/hedging-data.service';
 
 // Custom Date Adapter
 @Injectable()
@@ -104,15 +106,49 @@ export class CashflowExposureDetailsComponent {
   buyingFlag!: boolean;
   tempcashflowExposureRows: any;
   isCurrentMonthIncrement: boolean = false;
+  exposureAmount!: number;
+  exposureAmountFloor!: string;
+  exposureAmountCeil!: string;
+  exposureBaseCurrency!: string;
+  exposureToCurrency!: string;
   
-  constructor(private cd: ChangeDetectorRef, private router: Router) {}
+  constructor(private cd: ChangeDetectorRef, private router: Router, private stepper: MatStepper, private hedgeDataService: HedgingDataService) {}
   
   /**
    * Opens the datepicker for a specific row and sets the date
    */
 
   ngOnInit() {
+    this.hedgeDataService.getExposureFormValue.subscribe((res: any) => {
+      this.isCurrentMonthIncrement = false;
+      this.cashflowExposureRows = []
+      this.monthlyExposureObject = res
+      localStorage.setItem('cashFlowExposureData', JSON.stringify(this.monthlyExposureObject));
+      this.exposureAmount = this.monthlyExposureObject?.monthlyAmount;
+      this.exposureAmountFloor = this.exposureAmount.toString().split(".")[0];
+      this.exposureAmountCeil = this.exposureAmount.toString().split(".")[1];
+      this.exposureBaseCurrency = this.monthlyExposureObject?.pair.toString().split("/")[1];
+      this.exposureToCurrency = this.monthlyExposureObject?.pair.toString().split("/")[0];
+      this.buyingFlag = this.monthlyExposureObject?.selectedExposure == "Buying" ? true : false;
+      this.monthlyPeriod = this.monthlyExposureObject?.monthlyPeriod;
+      this.getNext12MonthNamesWithYear(this.monthlyPeriod);
+      this.cd.detectChanges();
+    });
     this.monthlyPeriod = this.monthlyExposureObject.monthlyPeriod;
+  }
+
+  addSixMonth() {
+    debugger
+    this.monthlyPeriod += 6;
+    this.tempcashflowExposureRows = this.cashflowExposureRows;
+    this.cashflowExposureRows = []
+    this.isCurrentMonthIncrement = true;
+    this.getNext12MonthNamesWithYear(this.monthlyPeriod);
+    this.cashflowExposureRows?.splice(0, this.tempcashflowExposureRows?.length);
+    this.cashflowExposureRows = [...this.tempcashflowExposureRows, ...this.cashflowExposureRows]
+    // for (let index = 6; index < 12; index++) {
+    //   this.cashflowExposureRows.index = index;
+    // }
   }
   
   chooseCashflowDate(index: number, year: number, month: string, day: number): void {
@@ -426,6 +462,6 @@ export class CashflowExposureDetailsComponent {
   }
 
   backToPrevious() {
-    throw new Error('Method not implemented.');
+    this.stepper.previous();
   }
 }

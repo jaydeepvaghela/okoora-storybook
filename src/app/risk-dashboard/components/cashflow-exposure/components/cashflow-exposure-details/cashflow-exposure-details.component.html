@@ -210,7 +210,7 @@
             </div>
             <div class="add-rows-wrap">
                 <button class="add-btn six-month" id="plusMonthExposureBtn__i0"
-                    *ngIf="monthlyPeriod == 6"><i class="plus-icon"></i>Next
+                    *ngIf="monthlyPeriod == 6" (click)="addSixMonth()"><i class="plus-icon"></i>Next
                     6
                     months</button>
                 <button class="add-btn" (click)="addOneMore()" id="plusMonthExposureBtn__i1"
@@ -220,7 +220,7 @@
             <span *ngIf="maxLengthError" class="error-message"> Maximum amount allowed is
                 {{monthlyExposureObject.sign}}100,000,000 </span>
             <div class="exposer-btns">
-                <button matStepperPrevious class="back-btn" (click)="backToPrevious()" id="backStep3Btn__i4"> Back
+                <button class="back-btn" (click)="backToPrevious()" id="backStep3Btn__i4"> Back
                 </button>
                 <button (click)="exposureDetailsNextStep()" class="continue-btn"> Save & continue <img src="images/next-btn-arrow.svg"></button>
             </div>

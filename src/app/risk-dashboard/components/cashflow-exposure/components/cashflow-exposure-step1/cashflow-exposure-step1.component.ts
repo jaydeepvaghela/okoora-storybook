@@ -12,6 +12,6 @@ export class CashflowExposureStep1Component {
   constructor(private matStepper: MatStepper) { }
 
   cashflowExposureNextStep() {
-   
+    this.matStepper.next();
   }
 }
