@@ -3,17 +3,17 @@
         <mat-progress-bar #formStepperProgress [hidden]="true"> -- </mat-progress-bar>
         <mat-step>
             <ng-template matStepContent>
-                <app-cashflow-exposure-step1> </app-cashflow-exposure-step1>
+                <app-cashflow-exposure-step1 [stepper]="formStepper"> </app-cashflow-exposure-step1>
             </ng-template>
         </mat-step>
         <mat-step>
             <ng-template matStepContent>
-                <app-cashflow-exposure-step2> </app-cashflow-exposure-step2>
+                <app-cashflow-exposure-step2 [stepper]="formStepper"> </app-cashflow-exposure-step2>
             </ng-template>
         </mat-step>
         <mat-step>
             <ng-template matStepContent>
-                <app-cashflow-exposure-details> </app-cashflow-exposure-details>
+                <app-cashflow-exposure-details [stepper]="formStepper"> </app-cashflow-exposure-details>
             </ng-template>
         </mat-step>
     </mat-stepper>

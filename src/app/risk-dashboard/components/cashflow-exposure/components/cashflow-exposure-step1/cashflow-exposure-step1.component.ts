@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 
 @Component({
@@ -8,10 +8,10 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrl: './cashflow-exposure-step1.component.scss'
 })
 export class CashflowExposureStep1Component {
-
-  constructor(private matStepper: MatStepper) { }
+  @Input() stepper!: MatStepper;
+  constructor() { }
 
   cashflowExposureNextStep() {
-    this.matStepper.next();
+    this.stepper.next();
   }
 }

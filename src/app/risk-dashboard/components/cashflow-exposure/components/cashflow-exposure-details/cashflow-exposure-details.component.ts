@@ -7,6 +7,7 @@ import {
   ViewChildren,
   ChangeDetectorRef,
   Injectable,
+  Input,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -88,6 +89,7 @@ export const MATERIAL_DATEPICKER_FORMATS = {
 export class CashflowExposureDetailsComponent {
   @ViewChildren(MatDatepicker) datepickers!: QueryList<MatDatepicker<any>>;
   @ViewChild('cashflowDateColumn', { static: false }) cashflowDateColumn!: ElementRef;
+  @Input() stepper!: MatStepper;
   cashflowExposureRows = cashflowExposureRows;
   monthlyExposureObject = monthlyExposureObject;
 
@@ -112,7 +114,7 @@ export class CashflowExposureDetailsComponent {
   exposureBaseCurrency!: string;
   exposureToCurrency!: string;
   
-  constructor(private cd: ChangeDetectorRef, private router: Router, private stepper: MatStepper, private hedgeDataService: HedgingDataService) {}
+  constructor(private cd: ChangeDetectorRef, private router: Router, private hedgeDataService: HedgingDataService) {}
   
   /**
    * Opens the datepicker for a specific row and sets the date
@@ -138,7 +140,6 @@ export class CashflowExposureDetailsComponent {
   }
 
   addSixMonth() {
-    debugger
     this.monthlyPeriod += 6;
     this.tempcashflowExposureRows = this.cashflowExposureRows;
     this.cashflowExposureRows = []

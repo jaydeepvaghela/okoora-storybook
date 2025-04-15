@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
@@ -21,6 +21,7 @@ export enum BuySell {
 })
 
 export class CashflowExposureStep2Component implements OnInit {
+  @Input() stepper!: MatStepper;
   isCreateMonthlyTable = false;
   cashFlowExposureForm: any;
   isFormSubmit = false;
@@ -46,7 +47,7 @@ export class CashflowExposureStep2Component implements OnInit {
   toCurrencyObject: any;
   
 
-  constructor(private formBuilder: FormBuilder, private matStepper: MatStepper, private hedgeDataService: HedgingDataService) { }
+  constructor(private formBuilder: FormBuilder, private hedgeDataService: HedgingDataService) { }
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -299,7 +300,7 @@ export class CashflowExposureStep2Component implements OnInit {
       this.hedgeDataService.setExposureFormValue.next(cashFlowExposureRes);
 
       setTimeout(() => {
-        this.matStepper.next();
+        this.stepper.next();
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
         const offset = 20;
@@ -313,11 +314,11 @@ export class CashflowExposureStep2Component implements OnInit {
         }
         this.isCreateMonthlyTable = false;
       }, 100);
-      this.matStepper.next();
+      this.stepper.next();
     }
   }
 
   goToPrevious() {
-    this.matStepper.previous();
+    this.stepper.previous();
   }
 }
