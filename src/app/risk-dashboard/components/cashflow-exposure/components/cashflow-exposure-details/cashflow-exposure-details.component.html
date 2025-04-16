@@ -9,10 +9,6 @@
             <button class="hedging-btn">How our hedging works? <img container="body" [ngbTooltip]="sellingToolTip" placement="top-right"
                 tooltipClass="risk-step3-tooltip--rm"
                     src="images/hedging-info.svg"></button>
-            <!-- <ng-template #buyingToolTip>
-                You are at risk when {{monthlyExposureObject.toCurrency}} goes up because it will cost more to buy {{monthlyExposureObject.toCurrency}} with
-                {{monthlyExposureObject.baseCurrency}}, increasing your costs
-            </ng-template> -->
             <ng-template #sellingToolTip>
                 You are at risk when {{monthlyExposureObject.toCurrency}} goes down because you will get fewer
                 {{monthlyExposureObject.baseCurrency}} when

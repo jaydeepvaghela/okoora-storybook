@@ -1,5 +1,5 @@
 <div class="risk-manager-stepper">
-    <mat-stepper #formStepper class="form-stepper">
+    <mat-stepper #formStepper class="form-stepper" (selectionChange)="onStepChange()">
         <mat-progress-bar #formStepperProgress [hidden]="true"> -- </mat-progress-bar>
         <mat-step>
             <ng-template matStepContent>

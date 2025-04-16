@@ -14,12 +14,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgbTooltip, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { MonthlyExposureDetailsComponent } from '../monthly-exposure-details/monthly-exposure-details.component';
-import { cashflowExposureRows, monthlyExposureObject } from '../cashflow-exposure-data';
+import { cashflowExposureRows } from '../cashflow-exposure-data';
 import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { HedgingDataService } from '../../../hedging-proposal/hedging-data.service';
 
-// Custom Date Adapter
 @Injectable()
 export class CustomDateAdapter extends MomentDateAdapter {
   constructor(@Inject(MAT_DATE_LOCALE) locale: string) {
@@ -355,7 +354,7 @@ export class CashflowExposureDetailsComponent {
   restrictLength(event: KeyboardEvent): void {
     const input = event.target as HTMLInputElement;
     const valueWithoutCommas = input.value.replace(/,/g, '');
-    const cursorPosition = input.selectionStart; // Track cursor position
+    const cursorPosition = input.selectionStart;
     const parts = valueWithoutCommas.split('.');
     const integerPart = parts[0];
     const decimalPart = parts[1] || '';
@@ -415,11 +414,7 @@ export class CashflowExposureDetailsComponent {
     for (var i = 0; i < monthlyPeriod; ++i) {
       let buyingValue: any = this.buyingFlag ? this.monthlyExposureObject.monthlyAmount : "0";
       let sellingValue: any = this.buyingFlag ? "0" : this.monthlyExposureObject.monthlyAmount;
-
-      // Getting Net value
       let totalNetValue =  sellingValue - buyingValue
-
-      // Getting last DD date
       let getMonthNumberFromName = new Date(`${names[month]} 1, ${year}`).getMonth() + 1;
       let lastDayDD = new Date(year, getMonthNumberFromName, 0).getDate();
 
@@ -475,6 +470,7 @@ export class CashflowExposureDetailsComponent {
   
   exposureDetailsNextStep() {
     this.router.navigate(['/dashboard']);
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
   backToPrevious() {

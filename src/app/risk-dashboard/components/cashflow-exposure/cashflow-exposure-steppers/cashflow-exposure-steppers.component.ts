@@ -12,5 +12,21 @@ import { CashflowExposureStep2Component } from '../components/cashflow-exposure-
   styleUrl: './cashflow-exposure-steppers.component.scss'
 })
 export class CashflowExposureSteppersComponent {
+  onStepChange(): void {
+    setTimeout(() => {
+      const offset = 20;
+      const element = document.getElementById('content-wrapper');
+      if (element) {
+        const topPosition = Math.max(0, element.getBoundingClientRect().top + window.pageYOffset - offset);
+        window.scrollTo({
+          top: topPosition,
+          behavior: 'auto'
+        });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+    }, 50);
+  }
+  
 }
 

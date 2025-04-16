@@ -94,8 +94,6 @@ export class CashflowExposureStep2Component implements OnInit {
       this.cashFlowExposureForm.controls['monthlyAmount'].setValue('');
     }
   }
-  
-  
 
   setupSearchFilter() {
     this.searchControl.valueChanges.subscribe((searchValue: string | null) => {
