@@ -240,8 +240,8 @@
     <!-- Step 2 -->
     <ng-container *ngIf="isFormSubmit && !isDisplayAmountExplosure && isSelectedCurrency">
       <button class="back-to-previous" (click)="closeFormSubmit()" id="backToPrev__i2">Back</button>
-      <!-- <button class="move-to-next" (click)="submitFormWithoutBuyORSell()" id="backToNext__i2"> -->
-        <button class="move-to-next" id="backToNext__i2">
+      <button class="move-to-next" (click)="submitFormWithoutBuyORSell()" id="backToNext__i2">
+      <!-- <button class="move-to-next" id="backToNext__i2"> -->
         <span>Next</span> <img src="images/arrow-right-next.svg" alt="next"></button>
     </ng-container>
     <!-- Step 3 -->
