@@ -22,6 +22,7 @@ export enum BuySell {
 
 export class CashflowExposureStep2Component implements OnInit {
   @Input() stepper!: MatStepper;
+  @Input() monthlyPeriod: number = 12;
   isCreateMonthlyTable = false;
   cashFlowExposureForm: any;
   isFormSubmit = false;
@@ -42,11 +43,9 @@ export class CashflowExposureStep2Component implements OnInit {
   BuySellEnum: any = BuySell;
   selectedFromCurrency: any = null;
   exposureRequired!: boolean;
-  @Input() monthlyPeriod: number = 12
   buySellCurrRes: any;
   toCurrencyObject: any;
   
-
   constructor(private formBuilder: FormBuilder, private hedgeDataService: HedgingDataService) { }
 
   ngAfterViewInit() {
@@ -250,19 +249,21 @@ export class CashflowExposureStep2Component implements OnInit {
   sendAmountValue() {
     if (this.isSelectedCurrency) {
       this.exposureRequired = false;
+  
       if (this.amountValue == 0) {
         this.cashFlowExposureForm.controls['monthlyAmount'].setValue('');
         this.isDisplayAmountValidationMsg = true;
         return;
       }
-
-      const currencyPair = this.gettoCurrencyvalue() +'/'+ this.selectedFromCurrency.code;
+  
+      this.isCreateMonthlyTable = true;
+      const currencyPair = this.gettoCurrencyvalue() + '/' + this.selectedFromCurrency.code;
       console.log('currencyPair', currencyPair);
       const staticRes = {
         pair: currencyPair,
         monthlyExposure: this.getMonthlyAmountvalue(),
-      } 
-
+      };
+  
       const cashFlowExposureRes: {
         pair: string;
         monthlyExposure?: any;
@@ -277,7 +278,7 @@ export class CashflowExposureStep2Component implements OnInit {
         baseCurrency?: string;
         baseCurrencySign?: string;
       } = { ...staticRes };
-
+  
       cashFlowExposureRes['sign'] = this.buySellCurrRes.sign;
       cashFlowExposureRes['toCurrency'] = this.buySellCurrRes.code;
       cashFlowExposureRes['selectedExposure'] = this.isSelectedCurrency == 1 ? "Buying" : "Selling";
@@ -288,18 +289,17 @@ export class CashflowExposureStep2Component implements OnInit {
       cashFlowExposureRes['baseCurrencyFlag'] = this.selectedFromCurrency.flag;
       cashFlowExposureRes['baseCurrency'] = this.selectedFromCurrency.code;
       cashFlowExposureRes['baseCurrencySign'] = this.selectedFromCurrency.sign;
-
+  
       delete cashFlowExposureRes['monthlyExposure'];
-
+  
       console.log('cashFlowExposureRes 231', cashFlowExposureRes);
-
-      // Do the same actions as if API call succeeded
       this.hedgeDataService.setExposureFormValue.next(cashFlowExposureRes);
-
+  
       setTimeout(() => {
         this.stepper.next();
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
+  
         const offset = 20;
         const element = document.getElementById('content-wrapper');
         if (element) {
@@ -309,11 +309,12 @@ export class CashflowExposureStep2Component implements OnInit {
             behavior: 'auto'
           });
         }
+  
         this.isCreateMonthlyTable = false;
-      }, 100);
-      this.stepper.next();
+      }, 1500);
     }
   }
+  
 
   goToPrevious() {
     this.stepper.previous();

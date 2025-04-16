@@ -6,8 +6,15 @@
     <h3 class="heading">Cash flow exposure</h3>
   </div>
   <button class="how-hedging-work">
-    <span>How our hedging works? <img src="images/more-info-risk.svg" container="body" alt="more-info" /> </span>
+    <span>How our hedging works? <img src="images/more-info-risk.svg" container="body"
+        [ngbTooltip]="buyingToolTip"
+        placement="top-right" tooltipClass="risk-rate-tooltip--rm" alt="more-info" /> </span>
   </button>
+  <ng-template #buyingToolTip>
+    You are at risk when ILS goes up because it will cost more to buy USD with
+    USD, increasing your costs
+  </ng-template>
+  
   <form [formGroup]="cashFlowExposureForm">
     <div class="currency-pair-wrapper">
       <div class="pair-wrapper">
@@ -55,7 +62,7 @@
               <!-- TO CURRENCY (EDITABLE) -->
               <div class="country-dropdown">
                 <mat-select class="form-control to-currency-rm" panelClass="rm-curr-dropdown"
-                  [ngClass]="submitFirstStep && cashFlowExposureForm.controls['toCurrency'].invalid ? 'invalid-currency' : ''"
+                  [ngClass]="currencyNotMatch || (submitFirstStep && cashFlowExposureForm.controls['toCurrency'].invalid)  ? 'invalid-currency' : ''"
                   id="toCurrency" formControlName="toCurrency" placeholder="Select"
                   (selectionChange)="onToCurrencyChange($event.value)" (openedChange)="onDropdownOpen($event)">
                   <mat-select-trigger>

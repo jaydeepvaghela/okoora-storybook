@@ -1,4 +1,4 @@
-import { Component, ElementRef, Inject, QueryList, ViewChild, ViewChildren, ChangeDetectorRef, Injectable, Input } from '@angular/core';
+import { Component, ElementRef, Inject, QueryList, ViewChild, ViewChildren, ChangeDetectorRef, Injectable, Input, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltip, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { MonthlyExposureDetailsComponent } from '../monthly-exposure-details/monthly-exposure-details.component';
 import { cashflowExposureRows, monthlyExposureObject } from '../cashflow-exposure-data';
 import { Router } from '@angular/router';
@@ -97,7 +97,7 @@ export class CashflowExposureDetailsComponent {
 
   displayedColumns: string[] = ['Month', 'Selling', 'Buying', 'TotalNet', 'DisableMonth'];
   staticMonthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
+  @ViewChild('riskAlert', { static: false }) riskAlert!: NgbTooltip;
   openEditSellingIndex: number | null = null;
   openEditBuyingIndex: number | null = null;
   errorMessage: string | null = null;
@@ -116,13 +116,25 @@ export class CashflowExposureDetailsComponent {
   exposureBaseCurrency!: string;
   exposureToCurrency!: string;
   
-  constructor(private cd: ChangeDetectorRef, private router: Router, private hedgeDataService: HedgingDataService) {}
-  
-  /**
-   * Opens the datepicker for a specific row and sets the date
-   */
+  constructor(private cd: ChangeDetectorRef, private renderer: Renderer2, private router: Router, private hedgeDataService: HedgingDataService) {}
+
+  ngAfterViewInit() {
+    this.riskAlert.open();
+  }
 
   ngOnInit() {
+    this.hedgeDataService.openCashflowDateTooltip.subscribe(res => {
+      if (res) {
+        setTimeout(() => {
+          this.riskAlert.open();
+        }, 1000);
+      }
+    });
+    this.renderer.listen('document', 'click', (event) => {
+      if (!this.cashflowDateColumn.nativeElement.contains(event.target)) {
+        this.riskAlert.close();
+      }
+    });
     this.hedgeDataService.getExposureFormValue.subscribe((res: any) => {
       this.isCurrentMonthIncrement = false;
       this.cashflowExposureRows = []
@@ -155,6 +167,7 @@ export class CashflowExposureDetailsComponent {
   }
   
   chooseCashflowDate(index: number, year: number, month: string, day: number): void {
+    this.riskAlert.close();
     const monthIndex = this.staticMonthNames.findIndex((m) => m === month);
     const selectedDate = new Date(year, monthIndex, day);
     this.cashflowExposureRows[index].date = selectedDate;

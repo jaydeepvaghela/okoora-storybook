@@ -187,7 +187,7 @@
                                     placement="top-left" tooltipClass="risk-step3-tooltip--rm"></th>
                             <td mat-cell *matCellDef="let element" class="total-price"
                                 [class.disabledColumn]="element.disabledColumn">
-                                <span [ngClass]="element?.totalNetValue < 0 ? 'negative-total' : 'positive-total'"> {{element?.totalNetValue < 0 ? '-' : '+'
+                                <span [ngClass]="element?.totalNetValue < 0 ? 'negative-total' : 'positive-total'"> {{element?.totalNetValue < 0 ? '' : '+'
                                     }}{{monthlyExposureObject.sign}}{{valueWithComma(element?.totalNetValue, 2)}}
                                 </span>
                             </td>

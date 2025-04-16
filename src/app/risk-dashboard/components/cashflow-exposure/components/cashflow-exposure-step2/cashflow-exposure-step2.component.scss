@@ -1,6 +1,13 @@
 @import "../../../../../../assets/scss/variable";
 
 ::ng-deep {
+  .cdk-overlay-connected-position-bounding-box:has(.rm-curr-dropdown) {
+    left: 1035px !important;
+    @media screen and (max-width: 1440px) {
+      left: 710px !important;
+    }
+  }
+
   .cashflow-exposure-step2-wrapper {
     position: relative;
     width: 100%;
@@ -39,7 +46,7 @@
 
     .how-hedging-work {
       position: absolute;
-      top: 50px;
+      top: 35px;
       width: auto;
       right: 0;
       display: flex;
@@ -47,10 +54,6 @@
       font-family: $he_heebo;
       height: 28px;
       background-color: transparent;
-
-      @media screen and (max-width: 1440px) {
-        top: 40px;
-      }
 
       span {
         color: #586D8E;
@@ -169,6 +172,12 @@
 
         .img-pair {
           margin-top: 6px;
+
+          img {
+            @media screen and (max-width: 1440px) {
+              width: 40px;
+            }
+          }
         }
 
         .content-pair-main {
@@ -186,9 +195,10 @@
                 font-weight: 500;
                 line-height: 30px;
                 margin-bottom: 0;
-                @media screen and (max-width: 480px) {
-                  font-size:18px;
-                  line-height:26px;
+
+                @media screen and (max-width: 1440px) {
+                  font-size: 18px;
+                  line-height: 26px;
                 }
               }
     
@@ -198,10 +208,14 @@
                 font-weight: 400;
                 line-height: 24px;
                 margin-bottom: 0;
+
+                @media screen and (max-width: 1440px) {
+                  font-size: 14px;
+                  line-height: 20px;
+                }
     
                 @media screen and (max-width: 480px) {
                   font-size: 12px;
-                  line-height: 20px;
                 }
               }
             }
@@ -326,6 +340,12 @@
                     }
                   }
 
+                  &.pe-none {
+                    .mat-mdc-select-arrow-wrapper{
+                      display: none;
+                    }
+                  }
+
                   .currency-code {
                     color: #111827;
                     font-family: $he_heebo;
@@ -370,29 +390,34 @@
 
     .exposure-pair-wrapper {
       background-color: $white;
-      padding: 52px 40px 55px 77px;
+      padding: 52px 45px 55px 77px;
       border-radius: 10px;
       margin-top: 14px;
-      &.button-padding{
-        padding-bottom:150px;
+
+      &.button-padding {
+        padding-bottom: 134px;
       }
+      
       @media screen and (max-width: 1440px) {
         padding: 40px 40px 40px 50px;
-        &.button-padding{
-          padding-bottom:120px;
+
+        &.button-padding {
+          padding-bottom: 120px;
         }
       }
 
       @media screen and (max-width: 853px) {
         padding: 40px 40px 40px 25px;
-        &.button-padding{
-          padding-bottom:120px;
+
+        &.button-padding {
+          padding-bottom: 120px;
         }
       }
 
       @media screen and (max-width: 480px) {
         padding: 30px 15px 30px 15px;
-        &.button-padding{
+
+        &.button-padding {
           padding-bottom:120px;
         }
       }
@@ -421,9 +446,10 @@
                 font-weight: 500;
                 line-height: 30px;
                 margin-bottom: 0;
-                @media screen and (max-width: 480px) {
-                  font-size:18px;
-                  line-height:26px;
+                
+                @media screen and (max-width: 1440px) {
+                  font-size: 18px;
+                  line-height: 26px;
                 }
               }
     
@@ -433,10 +459,14 @@
                 font-weight: 400;
                 line-height: 24px;
                 margin-bottom: 0;
+
+                @media screen and (max-width: 1440px) {
+                  font-size: 14px;
+                  line-height: 20px;
+                }
     
                 @media screen and (max-width: 480px) {
                   font-size: 12px;
-                  line-height: 20px;
                 }
               }
             }
@@ -456,7 +486,7 @@
 
               @media screen and (max-width: 1440px) {
                 margin: 34px 0 15px 23px;
-                font-size: 22px;
+                font-size: 20px;
               }
 
               @media screen and (max-width: 480px) {
@@ -477,23 +507,29 @@
               cursor: pointer;
 
               @media screen and (max-width: 1440px) {
+                min-width: 570px;
+                max-width: 570px;
                 padding: 16px 22px 16px 13px;
               }
 
               @media screen and (max-width: 1024px) {
+                max-width: 438px;
                 min-width: 438px;
               }
 
               @media screen and (max-width: 540px) {
+                max-width: 400px;
                 min-width: 400px;
                 gap: 18px;
               }
 
               @media screen and (max-width: 480px) {
+                max-width: 280px;
                 min-width: 280px;
               }
 
               @media screen and (max-width: 360px) {
+                max-width: 260px;
                 min-width: 260px;
               }
 
@@ -615,16 +651,16 @@
                 }
 
                 .buy-sell-btn {
-                  border-radius: 40px;
-                  border: 1px solid #CDD4E0;
-                  background: $white;
-                  height: 30px;
-                  padding: 10px;
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                  width: 92px;
                   color: #374151;
+                  border: 1px solid #CDD4E0;
+                  border-radius: 40px;
+                  background: $white;
+                  height: 30px;
+                  padding: 10px 7px 10px 10px;
+                  width: 92px;
                   font-family: $he_heebo;
                   font-size: 14px;
                   font-weight: 500;
@@ -636,7 +672,7 @@
                   }
 
                   &.selected-opt {
-                    // gap: 3px;
+                    gap: 3px;
                     background: #003EFF;
                     min-width: 100px;
                     color: $white;
@@ -712,9 +748,10 @@
                 font-weight: 500;
                 line-height: 30px;
                 margin-bottom: 0;
-                @media screen and (max-width: 480px) {
-                  font-size:18px;
-                  line-height:26px;
+
+                @media screen and (max-width: 1440px) {
+                  font-size: 18px;
+                  line-height: 26px;
                 }
               }
     
@@ -724,10 +761,14 @@
                 font-weight: 400;
                 line-height: 24px;
                 margin-bottom: 0;
+
+                @media screen and (max-width: 1440px) {
+                  font-size: 14px;
+                  line-height: 20px;
+                }
     
                 @media screen and (max-width: 480px) {
                   font-size: 12px;
-                  line-height: 20px;
                 }
               }
             }
@@ -1105,9 +1146,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    top: -85px;
+    top: -78px;
     right: 44px;
-    gap: 41px;
+    gap: 40px;
     font-family: $he_heebo;
 
     .move-to-next {
@@ -1165,12 +1206,12 @@
       max-height: 380px;
       min-width: 264px;
       min-height: 422px;
-      padding: 22px 33px 34px 33px !important;
+      padding: 23px 35px 34px 28px !important;
       border-radius: 10px !important;
-      margin-top: 15px;
-      // @media (max-width: 991px) {
-      //     right: 160px !important;
-      // }
+      margin-top: 25px;
+      @media (max-width: 1440px) {
+         margin-top: 15px !important;
+      }
 
         @media screen and (max-width: 1440px) {
           padding: 16px !important;
@@ -1306,9 +1347,10 @@
       .currancy-flag-list {
         max-height: 310px;
         overflow-y: auto;
-        margin-top: 9px;
+        margin-top: 16px;
 
         @media screen and (max-width: 1440px) {
+          margin-top: 12px;
           max-height: 235px;
         }
 

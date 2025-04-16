@@ -16,6 +16,7 @@ export class HedgingDataService {
   public setExposureFormValue = new BehaviorSubject<any>({});
   getExposureFormValue = this.setExposureFormValue.asObservable();
 
+  openCashflowDateTooltip = new BehaviorSubject<boolean>(false);
   openQuickHedgeDrawer() {
     this.quickHedgeDrawerState.next(true);
   }
