@@ -8,7 +8,6 @@ const meta: Meta<SidebarComponent> = {
   component: SidebarComponent,
   decorators: [
     moduleMetadata({
-      declarations: [SidebarComponent],
       providers: [
         {
           provide: ActivatedRoute,
