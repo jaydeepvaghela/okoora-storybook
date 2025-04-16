@@ -1,13 +1,6 @@
 @import "../../../../../../assets/scss/variable";
 
 ::ng-deep {
-  .cdk-overlay-connected-position-bounding-box:has(.rm-curr-dropdown) {
-    left: 1035px !important;
-    @media screen and (max-width: 1440px) {
-      left: 710px !important;
-    }
-  }
-
   .cashflow-exposure-step2-wrapper {
     position: relative;
     width: 100%;
@@ -1208,7 +1201,7 @@
       min-height: 422px;
       padding: 23px 35px 34px 28px !important;
       border-radius: 10px !important;
-      margin-top: 25px;
+      margin: 25px 0 0 -12px;
       @media (max-width: 1440px) {
          margin-top: 15px !important;
       }
