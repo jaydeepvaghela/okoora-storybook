@@ -1,14 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  Inject,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-  ChangeDetectorRef,
-  Injectable,
-  Input,
-} from '@angular/core';
+import { Component, ElementRef, Inject, QueryList, ViewChild, ViewChildren, ChangeDetectorRef, Injectable, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -91,7 +81,19 @@ export class CashflowExposureDetailsComponent {
   @ViewChild('cashflowDateColumn', { static: false }) cashflowDateColumn!: ElementRef;
   @Input() stepper!: MatStepper;
   cashflowExposureRows = cashflowExposureRows;
-  monthlyExposureObject = monthlyExposureObject;
+  monthlyExposureObject = {
+    pair: "USD/ILS",
+    sign: "$",
+    toCurrency: "USD",
+    selectedExposure: "Selling",
+    monthlyAmount: 100000,
+    monthlyPeriod: 12,
+    flag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+    code: "USD",
+    baseCurrencyFlag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
+    baseCurrency: "ILS",
+    baseCurrencySign: "₪"
+  };;
 
   displayedColumns: string[] = ['Month', 'Selling', 'Buying', 'TotalNet', 'DisableMonth'];
   staticMonthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -140,11 +142,11 @@ export class CashflowExposureDetailsComponent {
   }
 
   addSixMonth() {
-    this.monthlyPeriod += 6;
+      this.monthlyPeriod += 6;
     this.tempcashflowExposureRows = this.cashflowExposureRows;
     this.cashflowExposureRows = []
-    this.isCurrentMonthIncrement = true;
-    this.getNext12MonthNamesWithYear(this.monthlyPeriod);
+      this.isCurrentMonthIncrement = true;
+      this.getNext12MonthNamesWithYear(this.monthlyPeriod);
     this.cashflowExposureRows?.splice(0, this.tempcashflowExposureRows?.length);
     this.cashflowExposureRows = [...this.tempcashflowExposureRows, ...this.cashflowExposureRows]
     // for (let index = 6; index < 12; index++) {

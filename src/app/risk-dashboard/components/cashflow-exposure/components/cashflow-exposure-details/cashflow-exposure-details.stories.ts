@@ -5,6 +5,23 @@ const meta: Meta<CashflowExposureDetailsComponent> = {
     title: 'Components/Risk-Manager/Cashflow-Exposure',
     component: CashflowExposureDetailsComponent,
     argTypes: {
+      monthlyExposureObject: {
+        control: 'object',
+        description: 'Monthly exposure Object',
+        defaultValue: {
+          pair: "USD/ILS",
+          sign: "$",
+          toCurrency: "USD",
+          selectedExposure: "Selling",
+          monthlyAmount: 100000,
+          monthlyPeriod: 12,
+          flag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+          code: "USD",
+          baseCurrencyFlag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
+          baseCurrency: "ILS",
+          baseCurrencySign: "₪"
+        }
+      },
       cashflowExposureRows: {
             control: 'object',
             description: 'Cashflow exposure details',
@@ -281,6 +298,19 @@ type Story = StoryObj<CashflowExposureDetailsComponent>;
 
 export const Default: Story = {
     args: {
+      monthlyExposureObject: {
+          pair: "USD/ILS",
+          sign: "$",
+          toCurrency: "USD",
+          selectedExposure: "Selling",
+          monthlyAmount: 100000,
+          monthlyPeriod: 12,
+          flag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+          code: "USD",
+          baseCurrencyFlag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
+          baseCurrency: "ILS",
+          baseCurrencySign: "₪"
+        },
         cashflowExposureRows: [
           {
             month: "Apr",

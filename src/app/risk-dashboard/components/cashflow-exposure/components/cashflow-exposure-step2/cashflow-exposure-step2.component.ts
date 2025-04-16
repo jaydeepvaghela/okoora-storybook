@@ -248,11 +248,9 @@ export class CashflowExposureStep2Component implements OnInit {
   }
 
   sendAmountValue() {
-    debugger
     if (this.isSelectedCurrency) {
       this.exposureRequired = false;
       if (this.amountValue == 0) {
-        debugger
         this.cashFlowExposureForm.controls['monthlyAmount'].setValue('');
         this.isDisplayAmountValidationMsg = true;
         return;
