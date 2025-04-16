@@ -260,6 +260,7 @@
                                 background: #ECEFF3;
                                 color: #FFF;
                                 width: fit-content;
+                                max-width: 100px;
                                 display: flex;
                                 align-items: center;
                                 padding: 2px 8px 2px 6px;
@@ -274,8 +275,8 @@
 
                         &:not(.disabledColumn) {
                             .negative-total {
-                                min-width: 81px;
                                 width: fit-content;
+                                max-width: 100px;
                                 display: flex;
                                 align-items: center;
                                 border-radius: 4px;
@@ -290,8 +291,8 @@
                             }
     
                             .positive-total {
-                                min-width: 81px;
                                 width: fit-content;
+                                max-width: 100px;
                                 display: flex;
                                 align-items: center;
                                 border-radius: 4px;
