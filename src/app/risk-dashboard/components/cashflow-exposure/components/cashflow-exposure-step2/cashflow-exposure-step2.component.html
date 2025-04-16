@@ -217,9 +217,9 @@
                   </div>
                 </div>
                 <div class="amount-container-items">
-                  <mat-select class="select-month" panelClass="month-exposure-ddl" id="monthExposureddl" (valueChange)="getMonthValue($event)" [(ngModel)]="monthlyPeriod" [ngModelOptions]="{standalone: true}">
-                    <mat-option value="12">12 Months</mat-option>
-                    <mat-option value="6">6 Months</mat-option>
+                  <mat-select class="select-month" panelClass="month-exposure-ddl" id="monthExposureddl" (selectionChange)="getMonthValue($event)" [(ngModel)]="monthlyPeriod" [ngModelOptions]="{standalone: true}">
+                    <mat-option [value]="12">12 Months</mat-option>
+                    <mat-option [value]="6">6 Months</mat-option>
                   </mat-select>
                 </div>
               </div>

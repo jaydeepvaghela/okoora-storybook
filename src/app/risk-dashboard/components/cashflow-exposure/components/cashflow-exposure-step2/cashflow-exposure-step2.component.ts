@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { walletData } from '../cashflow-exposure-data';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatStepper } from '@angular/material/stepper';
@@ -42,7 +42,7 @@ export class CashflowExposureStep2Component implements OnInit {
   BuySellEnum: any = BuySell;
   selectedFromCurrency: any = null;
   exposureRequired!: boolean;
-  monthlyPeriod: string = '12';
+  @Input() monthlyPeriod: number = 12
   buySellCurrRes: any;
   toCurrencyObject: any;
   
@@ -156,9 +156,8 @@ export class CashflowExposureStep2Component implements OnInit {
   }
   
 
-  getMonthValue(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    this.monthlyPeriod = selectElement.value;
+  getMonthValue(event: MatSelectChange): void {
+    this.monthlyPeriod = event.value;
     console.log('this.monthlyPeriod',this.monthlyPeriod);
   }
 
@@ -273,7 +272,7 @@ export class CashflowExposureStep2Component implements OnInit {
         toCurrency?: string;
         selectedExposure?: string;
         monthlyAmount?: string;
-        monthlyPeriod?: string;
+        monthlyPeriod?: number;
         flag?: string;
         code?: string;
         baseCurrencyFlag?: string;
