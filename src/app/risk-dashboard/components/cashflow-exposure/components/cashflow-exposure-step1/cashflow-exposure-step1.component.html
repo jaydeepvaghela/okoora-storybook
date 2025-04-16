@@ -1,22 +1,17 @@
 <div class="risk-intro-wrap">
     <div class="risk-banner-wrap">
-        <img class="banner-right-img" src="images/globe-full.svg" alt="Introducing risk manager">
+        <img class="banner-right-img" src="images/globe-full.svg" alt="{{heading}}">
         <div class="banner-info">
-            <div class="intro-head-title"><span>Introducing risk manager</span></div>
+            <div class="intro-head-title"><span>{{heading}}</span></div>
             <h3 class="intro-title"><span>When you,</span>
                 <div class="animate-title">
                     <ul class="fliptext">
-                        <li>Buy</li>
-                        <li>Sell</li>
-                        <li>Pay</li>
-                        <li>Convert</li>
+                        <li *ngFor="let word of actionWords">{{ word }}</li>
                     </ul>
                 </div>
             </h3>
-            <h4 class="intro-sub-title">Your cash flow is at <span>risk.</span></h4>
-            <p>Introducing ABCM<sup>TM</sup> risk manager, the tool that can protect your cash flow from market
-                volatility
-            </p>
+            <h4 class="intro-sub-title">{{subHeading}} <span>risk.</span></h4>
+            <p>{{introText}}</p>
             <button class="start-btn" id="rmGetStarted_btn" (click)="cashflowExposureNextStep()">Get Started</button>
         </div>
     </div>
