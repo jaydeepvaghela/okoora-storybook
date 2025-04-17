@@ -4,7 +4,6 @@ import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { AdvancedPolicyStep1Component } from './components/advanced-policy-step1/advanced-policy-step1.component';
 import { AdvancedPolicyStep2Component } from './components/advanced-policy-step2/advanced-policy-step2.component';
 import { AdvancedPolicyStep3Component } from './components/advanced-policy-step3/advanced-policy-step3.component';
-import { Subscription } from 'rxjs';
 import { HedgingDataService } from '../hedging-proposal/hedging-data.service';
 
 @Component({

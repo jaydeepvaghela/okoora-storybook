@@ -33,13 +33,7 @@
               </div>
               <button type="button" class="btn-generateRate" id="generate-me-btn" (click)="generateBudgetRate()">Generate Me</button>
             </div>
-            <!-- <p class="generate-desc">
-              If you don't have <span><a href="javascript:void(0)">Generate one</a></span>
-            </p> -->
             <p class="error-msg-wrap" *ngIf="errorMessage">
-              <!-- <span *ngIf="rate?.errors?.['required']">Rate is required. Please enter a value</span> -->
-              <!-- <span *ngIf="rate?.errors?.['pattern']">Only numbers and upto four decimal points are allowed.</span> -->
-              <!-- <span *ngIf="rate?.errors?.['min'] || rate?.errors?.['max']">Value must be between 0.0000 and 99.9999.</span>  -->
               <span *ngIf="errorMessage">{{ errorMessage }}</span>
             </p>
           </div>
@@ -50,7 +44,6 @@
         <div class="btn-wrap">
           <button type="button" class="btn-policy" id="budget-rate-dashboard-btn" (click)="backTodashboard()">Dashboard</button>
           <div class="right-btn">
-            <!-- <button type="button" class="btn-back" (click)="backTodashboard()">Back</button> -->
             <button type="submit" class="btn-next" id="budget-rate-next-btn" (click)="submitForm()">
               <span>Next</span><img src="images/arrow-right-next.svg" alt="next" />
             </button>
