@@ -412,9 +412,12 @@ export class CashflowExposureDetailsComponent {
     var res = [];
 
     for (var i = 0; i < monthlyPeriod; ++i) {
-      let buyingValue: any = this.buyingFlag ? this.monthlyExposureObject.monthlyAmount : "0";
-      let sellingValue: any = this.buyingFlag ? "0" : this.monthlyExposureObject.monthlyAmount;
-      let totalNetValue =  sellingValue - buyingValue
+      let buyingValueRaw: any = this.buyingFlag ? this.monthlyExposureObject.monthlyAmount : "0";
+      let sellingValueRaw: any = this.buyingFlag ? "0" : this.monthlyExposureObject.monthlyAmount;
+      let buyingValue: number = parseFloat(buyingValueRaw.toString().replace(/,/g, '')) || 0;
+      let sellingValue: number = parseFloat(sellingValueRaw.toString().replace(/,/g, '')) || 0;
+      let totalNetValueNumber = sellingValue - buyingValue;
+      let totalNetValue = this.valueWithComma(totalNetValueNumber, 2);
       let getMonthNumberFromName = new Date(`${names[month]} 1, ${year}`).getMonth() + 1;
       let lastDayDD = new Date(year, getMonthNumberFromName, 0).getDate();
 
@@ -423,7 +426,7 @@ export class CashflowExposureDetailsComponent {
 
       const midDayDD = new Date((startDate.getTime() + endDate.getTime()) / 2);
       let monthFormate: any = month + 1
-
+      
       const newElement: any = {
         month: this.cashflowExposureRows[i]?.month ? this.cashflowExposureRows[i]?.month : names[month],
         year: this.cashflowExposureRows[i]?.year ? this.cashflowExposureRows[i]?.year : year,

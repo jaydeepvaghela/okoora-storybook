@@ -85,14 +85,7 @@ export class CashflowExposureStep2Component implements OnInit {
   }
 
   setAmountWithTwoFraction(): void {
-    const numeric = parseFloat(this.amountValue.replace(/,/g, ''));
-    if (!isNaN(numeric)) {
-      const formatted = numeric.toFixed(2);
-      this.amountValue = formatted;
-      this.cashFlowExposureForm.controls['monthlyAmount'].setValue(formatted);
-    } else {
-      this.cashFlowExposureForm.controls['monthlyAmount'].setValue('');
-    }
+    this.cashFlowExposureForm.controls['monthlyAmount'].setValue(this.amountValue);
   }
 
   setupSearchFilter() {
