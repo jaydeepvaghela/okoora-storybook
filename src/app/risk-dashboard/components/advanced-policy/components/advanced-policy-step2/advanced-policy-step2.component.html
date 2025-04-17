@@ -1,1 +1,67 @@
-<p>advanced-policy-step2 works!</p>
+<div class="adv-policy-questions-wrapper">
+    <h3 class="heading">Advanced policy</h3>
+    <div class="questions-step-wrapper">
+      <div class="step-form-wrap">
+        <mat-horizontal-stepper #setp2Stepper class="main-policy-stepper">
+          <mat-step *ngFor="let item of advancePolicyData; let i = index" [formGroup]="formGroups[i]">
+            <div class="progress-steps-wrapper {{item?.className}}">
+              <div class="progress-container">
+                <mat-progress-bar #formStepperProgress class="stepper-progressbar" mode="determinate" value="{{ ((i + 1) / advancePolicyData.length) * 100 }}"></mat-progress-bar>
+                <span class="progress-count">{{ i + 2 }}/{{ advancePolicyData.length + 1 }}</span>
+              </div>
+              <ng-template matStepLabel>{{ item.firstheading }}</ng-template>
+              <div class="annual-head">
+                <p class="sub-text">{{ item.firstheading }}</p>
+                <h2 class="title">{{ item.questions }}</h2>
+              </div>
+              <ul class="list-items policy-choose-option">
+                <label class="choose-answer">{{ item.selectAnswer }}</label>
+                <li>
+                  <mat-radio-group formControlName="answer" class="inline-radio-group">
+                    <div class="radio-line" [ngClass]="{'first-two-steps': i < 2}">
+                      <ng-container *ngFor="let answer of item.Ans">
+                        <div class="radio-container" *ngIf="i > 1">
+                          <mat-radio-button [value]="answer.a1" id="ans-1"></mat-radio-button>
+                          <label>{{ answer.a1 }}</label>
+                        </div>
+                        <div class="radio-container">
+                          <mat-radio-button [value]="answer.a2" id="ans-2"></mat-radio-button>
+                          <label>{{ answer.a2 }}</label>
+                        </div>
+                        <div class="radio-container">
+                          <mat-radio-button [value]="answer.a3" id="ans-3"></mat-radio-button>
+                          <label>{{ answer.a3 }}</label>
+                        </div>
+                        <div class="radio-container">
+                          <mat-radio-button [value]="answer.a4" id="ans-4"></mat-radio-button>
+                          <label>{{ answer.a4 }}</label>
+                        </div>
+                        <div class="radio-container">
+                          <mat-radio-button [value]="answer.a5" id="ans-5"></mat-radio-button>
+                          <label>{{ answer.a5 }}</label>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </mat-radio-group>
+                </li>
+              </ul>
+              <p *ngIf="this.isSubmitForm && !this.errorMessage" class="error-msg">Please select an one of the options</p>
+              <div class="rate-info">
+                <p *ngIf="i !== 0">{{ item.bottomDesc }}</p>
+                <p *ngIf="i == 0"> <b>For example,</b> if you have signed contracts guaranteeing revenue or expenditure for the next few months, this indicates high certainty. </p>
+              </div>
+              <div class="btn-wrap">
+                <button class="btn-policy" (click)="backTodashboard()" id="questions-dashboard-btn">Dashboard</button>
+                <div class="right-btn">
+                  <button class="btn-back" (click)="previous()" id="questions-back-btn">Back</button>
+                  <button class="btn-next" matStepperNext (click)="submitFormValue()" id="questions-next-btn"><span>Next</span><img src="images/arrow-right-next.svg" alt="next" /></button>
+                </div>
+              </div>
+            </div>
+  
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
+    </div>
+  </div>
+  

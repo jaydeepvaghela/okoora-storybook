@@ -18,6 +18,9 @@ export class HedgingDataService {
 
   openCashflowDateTooltip = new BehaviorSubject<boolean>(false);
 
+  public setAdvancePolicyStepperIndex = new BehaviorSubject<number>(-1);
+  getAdvancePolicyStepperIndex = this.setAdvancePolicyStepperIndex.asObservable();  
+
   public setAdvancePolicyBudgetRate = new BehaviorSubject<any>({});
   getAdvancePolicyBudgetRate = this.setAdvancePolicyBudgetRate.asObservable();
 
@@ -25,6 +28,12 @@ export class HedgingDataService {
   advancePolicyFlag$ = this.advancePolicyFlagSubject.asObservable();
 
   step2LastIndex = new BehaviorSubject<boolean>(false);
+
+  public setAdvancePolicyStep2Data = new BehaviorSubject<any>([]);
+  getAdvancePolicyStep2Data = this.setAdvancePolicyStep2Data.asObservable();
+
+  isAdvancePolicyCompletedSubject = new BehaviorSubject<boolean>(false);
+  advancePolicyCompleted$ = this.isAdvancePolicyCompletedSubject.asObservable();
 
   setAdvancePolicyFormvalue(formValue: any) {
     this.setAdvancePolicyBudgetRate.next(formValue);
@@ -48,5 +57,9 @@ export class HedgingDataService {
 
   closeHedgeAllDrawer() {
     this.hedgeAllDrawerState.next(false);
+  }
+
+  setAdvancePolicyStep2Formvalue(formValue: any) {
+    this.setAdvancePolicyStep2Data.next(formValue);
   }
 }
