@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, Optional } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 import { FormGroup, FormControl, Validators, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,11 +16,11 @@ import { advancePolicyStep1Obj } from '../advance-policy-data';
     CommonModule, 
     MatProgressBarModule, 
     ReactiveFormsModule
-  ]
+  ],
 })
 export class AdvancedPolicyStep1Component {
   hedgingDataService = inject(HedgingDataService);
-  matStepper = inject(MatStepper);
+  @Optional() private matStepper = inject(MatStepper, { optional: true });
 
   form: FormGroup;
   errorMessage: string | null = null;
@@ -28,7 +28,7 @@ export class AdvancedPolicyStep1Component {
   toCurrency: any;
   exposerData: any;
   apiErrorMessage: any;
-  midSpotRate = 5.555;
+  @Input() midSpotRate = 5.555;
   midSpotSubscription: Subscription | null = null;
   minBudgetRate!: number;
   maxBudgetRate!: number;
@@ -153,7 +153,7 @@ export class AdvancedPolicyStep1Component {
     this.errorMessage = null;
     // Move to the next step in the stepper
     this.hedgingDataService.setAdvancePolicyFlag(this.generateBudgetRateFlag);
-    this.matStepper.next();
+    this.matStepper?.next();
   }
 
   get rate() {
