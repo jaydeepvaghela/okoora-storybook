@@ -10,6 +10,9 @@
       line-height: 38px;
       margin: 40px 0 34px;
     }
+    .mat-horizontal-stepper-header-container{
+        display: none !important;
+    }
     .progress-steps-wrapper {
       padding: 30px;
 
@@ -229,7 +232,9 @@
               .mdc-form-field {
                 margin-left: 6px;
               }
-
+              .mat-mdc-radio-button .mat-radio-ripple>.mat-ripple-element{
+                opacity: 0;
+              }
               .mdc-radio,
               .mat-mdc-radio-touch-target,.mdc-radio__native-control {
                 padding: 0;

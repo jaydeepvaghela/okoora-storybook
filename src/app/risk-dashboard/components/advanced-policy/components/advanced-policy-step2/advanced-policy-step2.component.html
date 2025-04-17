@@ -2,7 +2,7 @@
     <h3 class="heading">Advanced policy</h3>
     <div class="questions-step-wrapper">
       <div class="step-form-wrap">
-        <mat-horizontal-stepper #setp2Stepper class="main-policy-stepper">
+        <mat-horizontal-stepper #setp2Stepper [selectedIndex]="selectedMainStepprIndex" class="main-policy-stepper">
           <mat-step *ngFor="let item of advancePolicyData; let i = index" [formGroup]="formGroups[i]">
             <div class="progress-steps-wrapper {{item?.className}}">
               <div class="progress-container">

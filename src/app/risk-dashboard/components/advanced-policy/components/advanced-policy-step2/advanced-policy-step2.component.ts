@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, inject, Input, NgZone, OnDestroy, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, inject, Input, NgZone, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { AdvancePolicyModel } from '../../../model/advance-policy-model';
@@ -18,11 +18,11 @@ import { MatRadioModule } from '@angular/material/radio';
 })
 export class AdvancedPolicyStep2Component implements AfterViewInit,OnDestroy {
   @ViewChild('setp2Stepper') setp2Stepper!: MatStepper;
-  @Input("selectedMainStepprIndex") selectedMainStepprIndex!: number;
+  @Input("selectedMainStepprIndex") selectedMainStepprIndex: number = 0;
   @Output() moveNextPage = new EventEmitter<void>();
   @Output() movePreviousPage = new EventEmitter<void>();
   router = inject(Router);
-  advancePolicyData: AdvancePolicyModel[] = AdvancePolicyData;
+  @Input() advancePolicyData: AdvancePolicyModel[] = AdvancePolicyData;
   formGroups: FormGroup[] = [];
   fb = inject(FormBuilder);
   riskManagerService = inject(HedgingDataService);
@@ -116,7 +116,11 @@ export class AdvancedPolicyStep2Component implements AfterViewInit,OnDestroy {
       }
     })
   }
-
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['selectedMainStepprIndex'] && this.setp2Stepper) {
+      this.setp2Stepper.selectedIndex = this.selectedMainStepprIndex;
+    }
+  }
   getAlreadyCompletedPolicy() {
     this.riskManagerService.getAdvancePolicyStep2Data.subscribe(data => {
         if (data) {
