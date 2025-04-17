@@ -80,3 +80,15 @@ export const AdvancePolicyData = [{
 },
 ]
 
+export const advancePolicyStep1Obj = {
+  "pair": "USD/ILS",
+  "sign": "$",
+  "toCurrency": "US",
+  "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+  "code": "USD",
+  "baseCurrencyFlag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png",
+  "baseCurrency": "ILS",
+  "baseCurrencySign": "₪",
+  "cashFlowName": "test",
+  "monthlyAmount": 4,
+}
