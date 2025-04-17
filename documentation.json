@@ -1837,7 +1837,7 @@
         },
         {
             "name": "AdvancedPolicyStep2Component",
-            "id": "component-AdvancedPolicyStep2Component-6c02d507991da6c88f951821e9fc9f5a055b3ee3f01d5fbe9cc473aa38a17848f03b764c11dd44d03adb9970d1e840f27718c3fe6277cb16eeb4c3aa50deb504",
+            "id": "component-AdvancedPolicyStep2Component-7da3d94021f709323a3af8f42e8e12a849342e0f3a76b6582ea0ae4e8d763a27dc0f1bbd79f2340d48aa668dc0de2ddf8d21d220e86210720473b17e4121c872",
             "file": "src/app/risk-dashboard/components/advanced-policy/components/advanced-policy-step2/advanced-policy-step2.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1854,7 +1854,17 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "advancePolicyData",
+                    "defaultValue": "AdvancePolicyData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "AdvancePolicyModel[]",
+                    "decorators": []
+                },
+                {
                     "name": "selectedMainStepprIndex",
+                    "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 21,
@@ -1881,17 +1891,6 @@
                 }
             ],
             "propertiesClass": [
-                {
-                    "name": "advancePolicyData",
-                    "defaultValue": "AdvancePolicyData",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "AdvancePolicyModel[]",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 25
-                },
                 {
                     "name": "budgetRateobj",
                     "deprecated": false,
@@ -2077,7 +2076,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 194,
+                    "line": 198,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2087,7 +2086,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 120,
+                    "line": 124,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2102,12 +2101,40 @@
                     "deprecationMessage": ""
                 },
                 {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 119,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "ngOnDestroy",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 189,
+                    "line": 193,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2127,7 +2154,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 176,
+                    "line": 180,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2137,7 +2164,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 148,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2172,7 +2199,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, inject, Input, NgZone, OnDestroy, Output, ViewChild } from '@angular/core';\r\nimport { MatStepper, MatStepperModule } from '@angular/material/stepper';\r\nimport { Router } from '@angular/router';\r\nimport { AdvancePolicyModel } from '../../../model/advance-policy-model';\r\nimport { AdvancePolicyData } from '../advance-policy-data';\r\nimport { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';\r\nimport { Subscription } from 'rxjs';\r\nimport { HedgingDataService } from '../../../hedging-proposal/hedging-data.service';\r\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatRadioModule } from '@angular/material/radio';\r\n\r\n@Component({\r\n  selector: 'app-advanced-policy-step2',\r\n  imports: [MatStepperModule,MatProgressBarModule,ReactiveFormsModule,CommonModule,MatRadioModule],\r\n  templateUrl: './advanced-policy-step2.component.html',\r\n  styleUrl: './advanced-policy-step2.component.scss'\r\n})\r\nexport class AdvancedPolicyStep2Component implements AfterViewInit,OnDestroy {\r\n  @ViewChild('setp2Stepper') setp2Stepper!: MatStepper;\r\n  @Input(\"selectedMainStepprIndex\") selectedMainStepprIndex!: number;\r\n  @Output() moveNextPage = new EventEmitter<void>();\r\n  @Output() movePreviousPage = new EventEmitter<void>();\r\n  router = inject(Router);\r\n  advancePolicyData: AdvancePolicyModel[] = AdvancePolicyData;\r\n  formGroups: FormGroup[] = [];\r\n  fb = inject(FormBuilder);\r\n  riskManagerService = inject(HedgingDataService);\r\n  cdr = inject(ChangeDetectorRef);\r\n\r\n  step2LastIndex = false;\r\n  errorData: any;\r\n  errorMessage: any;\r\n  isSubmitForm = false;\r\n  step1FormValue: any;\r\n  budgetRateobj!: { index: number; answer: any; };\r\n  getAdvancePolicyBudgetRate$!: Subscription;\r\n  step2LastIndex$!: Subscription;\r\n  isAlreadyCompletedPolicy: boolean= false;\r\n  selectedIndex!: number;\r\n\r\n  constructor(private zone: NgZone) {\r\n\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.riskManagerService.getAdvancePolicyStepperIndex.subscribe(res => {\r\n\r\n      if (this.step2LastIndex) {\r\n        this.step2LastIndex = false;\r\n      }\r\n      if (this.setp2Stepper) { // Check if setp2Stepper is defined\r\n        if (res == 0) {\r\n          this.setp2Stepper.selectedIndex = res; // from step3 edit first step tan index start from 0 in step2\r\n        } else if (res > 0) {\r\n          const stepperIndex = res - 1;\r\n          // this.zone.run(() => {\r\n            this.setp2Stepper.selectedIndex = stepperIndex;\r\n            this.cdr.detectChanges();\r\n          // });\r\n          const formValuesWithIndexAndAnswer = this.formGroups.map((formGroup, index) => ({\r\n            index: index + 1,\r\n            answer: formGroup.value.answer\r\n          }));\r\n          if (this.setp2Stepper.selectedIndex === formValuesWithIndexAndAnswer.length - 1) {\r\n            this.step2LastIndex = true;\r\n          }\r\n          this.cdr.detectChanges();\r\n        }\r\n      }\r\n    });\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.getAdvancePolicyBudgetRate$ = this.riskManagerService.getAdvancePolicyBudgetRate.subscribe({\r\n      next: (res) => {\r\n        this.step1FormValue = res;\r\n      },\r\n      error: (err) => {\r\n        console.error('Error fetching Advance Policy Budget Rate:', err);\r\n      }\r\n    });\r\n\r\n    this.step2LastIndex$ = this.riskManagerService.step2LastIndex.subscribe(res => {\r\n      if (res) {\r\n        this.step2LastIndex = false;\r\n      }\r\n    }\r\n    )\r\n    this.advancePolicyData.forEach((item, index) => {\r\n      const formGroup = this.fb.group({\r\n        answer: ['', Validators.required]\r\n      });\r\n      // Subscribe to value changes to clear error messages\r\n      formGroup.get('answer')!.valueChanges.subscribe(value => {\r\n        if (value) {\r\n          this.errorMessage = '';\r\n          this.isSubmitForm = false;\r\n          if (this.setp2Stepper) {\r\n\r\n            this.setp2Stepper.selectedIndex = this.setp2Stepper.selectedIndex;\r\n          }\r\n        }\r\n      });\r\n\r\n      this.formGroups.push(formGroup);\r\n    });\r\n    this.riskManagerService.advancePolicyCompleted$.subscribe({\r\n      next: (result) => {\r\n        if (result) {\r\n          this.getAlreadyCompletedPolicy();\r\n        }\r\n      },\r\n      error: (error) => {\r\n\r\n      }\r\n    })\r\n  }\r\n\r\n  getAlreadyCompletedPolicy() {\r\n    this.riskManagerService.getAdvancePolicyStep2Data.subscribe(data => {\r\n        if (data) {\r\n            this.isAlreadyCompletedPolicy = true;\r\n\r\n            // Replace index 9 with index 5\r\n            data.forEach((item: any) => {\r\n                if (item.index === 9) {\r\n                    item.index = 5; // Replace index 9 with index 5\r\n                }\r\n            });\r\n\r\n            // Patch the formGroups with the updated data\r\n            data.forEach((item: any) => {\r\n                const formGroup = this.formGroups[item.index - 1]; // Adjust for zero-based index\r\n                if (formGroup) {\r\n                    formGroup.patchValue({ answer: item.answer });\r\n                }\r\n            });\r\n        }\r\n    });\r\n  }\r\n\r\n\r\n  submitFormValue() {\r\n    this.budgetRateobj = {\r\n      index: 0,\r\n      answer: Object.values(this.step1FormValue)[0] || this.step1FormValue\r\n    };\r\n    this.isSubmitForm = true;\r\n    const formValuesWithIndexAndAnswer = this.formGroups.map((formGroup, index) => ({\r\n      index: index + 1,\r\n      answer: formGroup.value.answer\r\n    }));\r\n    if (this.step2LastIndex) {\r\n      if (!formValuesWithIndexAndAnswer[formValuesWithIndexAndAnswer.length - 1].answer) {\r\n        this.setp2Stepper.selectedIndex = this.setp2Stepper.selectedIndex;  // index:4\r\n        this.errorMessage = '';\r\n        return;\r\n      }\r\n      this.moveNextPage.emit(); // move to step3 page\r\n    }\r\n\r\n    this.errorData = formValuesWithIndexAndAnswer.filter(data => data.index === this.setp2Stepper.selectedIndex)[0];\r\n    this.errorMessage = this.errorData.answer;\r\n    if (!this.errorData.answer) {\r\n      this.setp2Stepper.selectedIndex = this.setp2Stepper.selectedIndex - 1;\r\n      return;\r\n    }\r\n    if (this.setp2Stepper.selectedIndex === formValuesWithIndexAndAnswer.length - 1) {\r\n      this.step2LastIndex = true;\r\n    }\r\n    formValuesWithIndexAndAnswer.push(this.budgetRateobj)\r\n    this.riskManagerService.setAdvancePolicyStep2Formvalue(formValuesWithIndexAndAnswer);\r\n  }\r\n\r\n  previous() {\r\n    this.isSubmitForm = false;\r\n    this.errorMessage = '';\r\n    if (this.step2LastIndex) {\r\n      this.step2LastIndex = false;\r\n    }\r\n    if (this.setp2Stepper.selectedIndex === 0) {\r\n      this.movePreviousPage.emit(); // move to step1 page\r\n    } else {\r\n      this.setp2Stepper.previous();\r\n    }\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.getAdvancePolicyBudgetRate$.unsubscribe();\r\n    this.step2LastIndex$.unsubscribe();\r\n  }\r\n  \r\n  backTodashboard() {\r\n    this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + 'risk-manager/risk-manager-dashboard' : '/risk-manager/risk-manager-dashboard']);\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, inject, Input, NgZone, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';\r\nimport { MatStepper, MatStepperModule } from '@angular/material/stepper';\r\nimport { Router } from '@angular/router';\r\nimport { AdvancePolicyModel } from '../../../model/advance-policy-model';\r\nimport { AdvancePolicyData } from '../advance-policy-data';\r\nimport { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';\r\nimport { Subscription } from 'rxjs';\r\nimport { HedgingDataService } from '../../../hedging-proposal/hedging-data.service';\r\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatRadioModule } from '@angular/material/radio';\r\n\r\n@Component({\r\n  selector: 'app-advanced-policy-step2',\r\n  imports: [MatStepperModule,MatProgressBarModule,ReactiveFormsModule,CommonModule,MatRadioModule],\r\n  templateUrl: './advanced-policy-step2.component.html',\r\n  styleUrl: './advanced-policy-step2.component.scss'\r\n})\r\nexport class AdvancedPolicyStep2Component implements AfterViewInit,OnDestroy {\r\n  @ViewChild('setp2Stepper') setp2Stepper!: MatStepper;\r\n  @Input(\"selectedMainStepprIndex\") selectedMainStepprIndex: number = 0;\r\n  @Output() moveNextPage = new EventEmitter<void>();\r\n  @Output() movePreviousPage = new EventEmitter<void>();\r\n  router = inject(Router);\r\n  @Input() advancePolicyData: AdvancePolicyModel[] = AdvancePolicyData;\r\n  formGroups: FormGroup[] = [];\r\n  fb = inject(FormBuilder);\r\n  riskManagerService = inject(HedgingDataService);\r\n  cdr = inject(ChangeDetectorRef);\r\n\r\n  step2LastIndex = false;\r\n  errorData: any;\r\n  errorMessage: any;\r\n  isSubmitForm = false;\r\n  step1FormValue: any;\r\n  budgetRateobj!: { index: number; answer: any; };\r\n  getAdvancePolicyBudgetRate$!: Subscription;\r\n  step2LastIndex$!: Subscription;\r\n  isAlreadyCompletedPolicy: boolean= false;\r\n  selectedIndex!: number;\r\n\r\n  constructor(private zone: NgZone) {\r\n\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.riskManagerService.getAdvancePolicyStepperIndex.subscribe(res => {\r\n\r\n      if (this.step2LastIndex) {\r\n        this.step2LastIndex = false;\r\n      }\r\n      if (this.setp2Stepper) { // Check if setp2Stepper is defined\r\n        if (res == 0) {\r\n          this.setp2Stepper.selectedIndex = res; // from step3 edit first step tan index start from 0 in step2\r\n        } else if (res > 0) {\r\n          const stepperIndex = res - 1;\r\n          // this.zone.run(() => {\r\n            this.setp2Stepper.selectedIndex = stepperIndex;\r\n            this.cdr.detectChanges();\r\n          // });\r\n          const formValuesWithIndexAndAnswer = this.formGroups.map((formGroup, index) => ({\r\n            index: index + 1,\r\n            answer: formGroup.value.answer\r\n          }));\r\n          if (this.setp2Stepper.selectedIndex === formValuesWithIndexAndAnswer.length - 1) {\r\n            this.step2LastIndex = true;\r\n          }\r\n          this.cdr.detectChanges();\r\n        }\r\n      }\r\n    });\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.getAdvancePolicyBudgetRate$ = this.riskManagerService.getAdvancePolicyBudgetRate.subscribe({\r\n      next: (res) => {\r\n        this.step1FormValue = res;\r\n      },\r\n      error: (err) => {\r\n        console.error('Error fetching Advance Policy Budget Rate:', err);\r\n      }\r\n    });\r\n\r\n    this.step2LastIndex$ = this.riskManagerService.step2LastIndex.subscribe(res => {\r\n      if (res) {\r\n        this.step2LastIndex = false;\r\n      }\r\n    }\r\n    )\r\n    this.advancePolicyData.forEach((item, index) => {\r\n      const formGroup = this.fb.group({\r\n        answer: ['', Validators.required]\r\n      });\r\n      // Subscribe to value changes to clear error messages\r\n      formGroup.get('answer')!.valueChanges.subscribe(value => {\r\n        if (value) {\r\n          this.errorMessage = '';\r\n          this.isSubmitForm = false;\r\n          if (this.setp2Stepper) {\r\n\r\n            this.setp2Stepper.selectedIndex = this.setp2Stepper.selectedIndex;\r\n          }\r\n        }\r\n      });\r\n\r\n      this.formGroups.push(formGroup);\r\n    });\r\n    this.riskManagerService.advancePolicyCompleted$.subscribe({\r\n      next: (result) => {\r\n        if (result) {\r\n          this.getAlreadyCompletedPolicy();\r\n        }\r\n      },\r\n      error: (error) => {\r\n\r\n      }\r\n    })\r\n  }\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    if (changes['selectedMainStepprIndex'] && this.setp2Stepper) {\r\n      this.setp2Stepper.selectedIndex = this.selectedMainStepprIndex;\r\n    }\r\n  }\r\n  getAlreadyCompletedPolicy() {\r\n    this.riskManagerService.getAdvancePolicyStep2Data.subscribe(data => {\r\n        if (data) {\r\n            this.isAlreadyCompletedPolicy = true;\r\n\r\n            // Replace index 9 with index 5\r\n            data.forEach((item: any) => {\r\n                if (item.index === 9) {\r\n                    item.index = 5; // Replace index 9 with index 5\r\n                }\r\n            });\r\n\r\n            // Patch the formGroups with the updated data\r\n            data.forEach((item: any) => {\r\n                const formGroup = this.formGroups[item.index - 1]; // Adjust for zero-based index\r\n                if (formGroup) {\r\n                    formGroup.patchValue({ answer: item.answer });\r\n                }\r\n            });\r\n        }\r\n    });\r\n  }\r\n\r\n\r\n  submitFormValue() {\r\n    this.budgetRateobj = {\r\n      index: 0,\r\n      answer: Object.values(this.step1FormValue)[0] || this.step1FormValue\r\n    };\r\n    this.isSubmitForm = true;\r\n    const formValuesWithIndexAndAnswer = this.formGroups.map((formGroup, index) => ({\r\n      index: index + 1,\r\n      answer: formGroup.value.answer\r\n    }));\r\n    if (this.step2LastIndex) {\r\n      if (!formValuesWithIndexAndAnswer[formValuesWithIndexAndAnswer.length - 1].answer) {\r\n        this.setp2Stepper.selectedIndex = this.setp2Stepper.selectedIndex;  // index:4\r\n        this.errorMessage = '';\r\n        return;\r\n      }\r\n      this.moveNextPage.emit(); // move to step3 page\r\n    }\r\n\r\n    this.errorData = formValuesWithIndexAndAnswer.filter(data => data.index === this.setp2Stepper.selectedIndex)[0];\r\n    this.errorMessage = this.errorData.answer;\r\n    if (!this.errorData.answer) {\r\n      this.setp2Stepper.selectedIndex = this.setp2Stepper.selectedIndex - 1;\r\n      return;\r\n    }\r\n    if (this.setp2Stepper.selectedIndex === formValuesWithIndexAndAnswer.length - 1) {\r\n      this.step2LastIndex = true;\r\n    }\r\n    formValuesWithIndexAndAnswer.push(this.budgetRateobj)\r\n    this.riskManagerService.setAdvancePolicyStep2Formvalue(formValuesWithIndexAndAnswer);\r\n  }\r\n\r\n  previous() {\r\n    this.isSubmitForm = false;\r\n    this.errorMessage = '';\r\n    if (this.step2LastIndex) {\r\n      this.step2LastIndex = false;\r\n    }\r\n    if (this.setp2Stepper.selectedIndex === 0) {\r\n      this.movePreviousPage.emit(); // move to step1 page\r\n    } else {\r\n      this.setp2Stepper.previous();\r\n    }\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.getAdvancePolicyBudgetRate$.unsubscribe();\r\n    this.step2LastIndex$.unsubscribe();\r\n  }\r\n  \r\n  backTodashboard() {\r\n    this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + 'risk-manager/risk-manager-dashboard' : '/risk-manager/risk-manager-dashboard']);\r\n  }\r\n\r\n}\r\n",
             "styleUrl": "./advanced-policy-step2.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2208,7 +2235,7 @@
                 "AfterViewInit",
                 "OnDestroy"
             ],
-            "templateData": "<div class=\"adv-policy-questions-wrapper\">\r\n    <h3 class=\"heading\">Advanced policy</h3>\r\n    <div class=\"questions-step-wrapper\">\r\n      <div class=\"step-form-wrap\">\r\n        <mat-horizontal-stepper #setp2Stepper class=\"main-policy-stepper\">\r\n          <mat-step *ngFor=\"let item of advancePolicyData; let i = index\" [formGroup]=\"formGroups[i]\">\r\n            <div class=\"progress-steps-wrapper {{item?.className}}\">\r\n              <div class=\"progress-container\">\r\n                <mat-progress-bar #formStepperProgress class=\"stepper-progressbar\" mode=\"determinate\" value=\"{{ ((i + 1) / advancePolicyData.length) * 100 }}\"></mat-progress-bar>\r\n                <span class=\"progress-count\">{{ i + 2 }}/{{ advancePolicyData.length + 1 }}</span>\r\n              </div>\r\n              <ng-template matStepLabel>{{ item.firstheading }}</ng-template>\r\n              <div class=\"annual-head\">\r\n                <p class=\"sub-text\">{{ item.firstheading }}</p>\r\n                <h2 class=\"title\">{{ item.questions }}</h2>\r\n              </div>\r\n              <ul class=\"list-items policy-choose-option\">\r\n                <label class=\"choose-answer\">{{ item.selectAnswer }}</label>\r\n                <li>\r\n                  <mat-radio-group formControlName=\"answer\" class=\"inline-radio-group\">\r\n                    <div class=\"radio-line\" [ngClass]=\"{'first-two-steps': i < 2}\">\r\n                      <ng-container *ngFor=\"let answer of item.Ans\">\r\n                        <div class=\"radio-container\" *ngIf=\"i > 1\">\r\n                          <mat-radio-button [value]=\"answer.a1\" id=\"ans-1\"></mat-radio-button>\r\n                          <label>{{ answer.a1 }}</label>\r\n                        </div>\r\n                        <div class=\"radio-container\">\r\n                          <mat-radio-button [value]=\"answer.a2\" id=\"ans-2\"></mat-radio-button>\r\n                          <label>{{ answer.a2 }}</label>\r\n                        </div>\r\n                        <div class=\"radio-container\">\r\n                          <mat-radio-button [value]=\"answer.a3\" id=\"ans-3\"></mat-radio-button>\r\n                          <label>{{ answer.a3 }}</label>\r\n                        </div>\r\n                        <div class=\"radio-container\">\r\n                          <mat-radio-button [value]=\"answer.a4\" id=\"ans-4\"></mat-radio-button>\r\n                          <label>{{ answer.a4 }}</label>\r\n                        </div>\r\n                        <div class=\"radio-container\">\r\n                          <mat-radio-button [value]=\"answer.a5\" id=\"ans-5\"></mat-radio-button>\r\n                          <label>{{ answer.a5 }}</label>\r\n                        </div>\r\n                      </ng-container>\r\n                    </div>\r\n                  </mat-radio-group>\r\n                </li>\r\n              </ul>\r\n              <p *ngIf=\"this.isSubmitForm && !this.errorMessage\" class=\"error-msg\">Please select an one of the options</p>\r\n              <div class=\"rate-info\">\r\n                <p *ngIf=\"i !== 0\">{{ item.bottomDesc }}</p>\r\n                <p *ngIf=\"i == 0\"> <b>For example,</b> if you have signed contracts guaranteeing revenue or expenditure for the next few months, this indicates high certainty. </p>\r\n              </div>\r\n              <div class=\"btn-wrap\">\r\n                <button class=\"btn-policy\" (click)=\"backTodashboard()\" id=\"questions-dashboard-btn\">Dashboard</button>\r\n                <div class=\"right-btn\">\r\n                  <button class=\"btn-back\" (click)=\"previous()\" id=\"questions-back-btn\">Back</button>\r\n                  <button class=\"btn-next\" matStepperNext (click)=\"submitFormValue()\" id=\"questions-next-btn\"><span>Next</span><img src=\"images/arrow-right-next.svg\" alt=\"next\" /></button>\r\n                </div>\r\n              </div>\r\n            </div>\r\n  \r\n          </mat-step>\r\n        </mat-horizontal-stepper>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  "
+            "templateData": "<div class=\"adv-policy-questions-wrapper\">\r\n    <h3 class=\"heading\">Advanced policy</h3>\r\n    <div class=\"questions-step-wrapper\">\r\n      <div class=\"step-form-wrap\">\r\n        <mat-horizontal-stepper #setp2Stepper [selectedIndex]=\"selectedMainStepprIndex\" class=\"main-policy-stepper\">\r\n          <mat-step *ngFor=\"let item of advancePolicyData; let i = index\" [formGroup]=\"formGroups[i]\">\r\n            <div class=\"progress-steps-wrapper {{item?.className}}\">\r\n              <div class=\"progress-container\">\r\n                <mat-progress-bar #formStepperProgress class=\"stepper-progressbar\" mode=\"determinate\" value=\"{{ ((i + 1) / advancePolicyData.length) * 100 }}\"></mat-progress-bar>\r\n                <span class=\"progress-count\">{{ i + 2 }}/{{ advancePolicyData.length + 1 }}</span>\r\n              </div>\r\n              <ng-template matStepLabel>{{ item.firstheading }}</ng-template>\r\n              <div class=\"annual-head\">\r\n                <p class=\"sub-text\">{{ item.firstheading }}</p>\r\n                <h2 class=\"title\">{{ item.questions }}</h2>\r\n              </div>\r\n              <ul class=\"list-items policy-choose-option\">\r\n                <label class=\"choose-answer\">{{ item.selectAnswer }}</label>\r\n                <li>\r\n                  <mat-radio-group formControlName=\"answer\" class=\"inline-radio-group\">\r\n                    <div class=\"radio-line\" [ngClass]=\"{'first-two-steps': i < 2}\">\r\n                      <ng-container *ngFor=\"let answer of item.Ans\">\r\n                        <div class=\"radio-container\" *ngIf=\"i > 1\">\r\n                          <mat-radio-button [value]=\"answer.a1\" id=\"ans-1\"></mat-radio-button>\r\n                          <label>{{ answer.a1 }}</label>\r\n                        </div>\r\n                        <div class=\"radio-container\">\r\n                          <mat-radio-button [value]=\"answer.a2\" id=\"ans-2\"></mat-radio-button>\r\n                          <label>{{ answer.a2 }}</label>\r\n                        </div>\r\n                        <div class=\"radio-container\">\r\n                          <mat-radio-button [value]=\"answer.a3\" id=\"ans-3\"></mat-radio-button>\r\n                          <label>{{ answer.a3 }}</label>\r\n                        </div>\r\n                        <div class=\"radio-container\">\r\n                          <mat-radio-button [value]=\"answer.a4\" id=\"ans-4\"></mat-radio-button>\r\n                          <label>{{ answer.a4 }}</label>\r\n                        </div>\r\n                        <div class=\"radio-container\">\r\n                          <mat-radio-button [value]=\"answer.a5\" id=\"ans-5\"></mat-radio-button>\r\n                          <label>{{ answer.a5 }}</label>\r\n                        </div>\r\n                      </ng-container>\r\n                    </div>\r\n                  </mat-radio-group>\r\n                </li>\r\n              </ul>\r\n              <p *ngIf=\"this.isSubmitForm && !this.errorMessage\" class=\"error-msg\">Please select an one of the options</p>\r\n              <div class=\"rate-info\">\r\n                <p *ngIf=\"i !== 0\">{{ item.bottomDesc }}</p>\r\n                <p *ngIf=\"i == 0\"> <b>For example,</b> if you have signed contracts guaranteeing revenue or expenditure for the next few months, this indicates high certainty. </p>\r\n              </div>\r\n              <div class=\"btn-wrap\">\r\n                <button class=\"btn-policy\" (click)=\"backTodashboard()\" id=\"questions-dashboard-btn\">Dashboard</button>\r\n                <div class=\"right-btn\">\r\n                  <button class=\"btn-back\" (click)=\"previous()\" id=\"questions-back-btn\">Back</button>\r\n                  <button class=\"btn-next\" matStepperNext (click)=\"submitFormValue()\" id=\"questions-next-btn\"><span>Next</span><img src=\"images/arrow-right-next.svg\" alt=\"next\" /></button>\r\n                </div>\r\n              </div>\r\n            </div>\r\n  \r\n          </mat-step>\r\n        </mat-horizontal-stepper>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  "
         },
         {
             "name": "AdvancedPolicyStep3Component",
@@ -10398,7 +10425,7 @@
                 "linktype": "component",
                 "name": "AdvancedPolicyStep2Component",
                 "coveragePercent": 0,
-                "coverageCount": "0/29",
+                "coverageCount": "0/30",
                 "status": "low"
             },
             {
