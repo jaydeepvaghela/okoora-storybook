@@ -1,11 +1,11 @@
 <div class="advance-policy-stepper">
     <mat-stepper #formStepper class="form-stepper">
         <mat-progress-bar #formStepperProgress [hidden]="true"> --</mat-progress-bar>
-        <mat-step>
+        <!-- <mat-step>
             <ng-template matStepContent>
             <app-advanced-policy-step1> </app-advanced-policy-step1>
             </ng-template>
-        </mat-step>
+        </mat-step> -->
         <mat-step>
             <ng-template matStepContent>
                 <app-advanced-policy-step2 (moveNextPage)="moveNextPage()" (movePreviousPage)="movePreviousPage()"></app-advanced-policy-step2>

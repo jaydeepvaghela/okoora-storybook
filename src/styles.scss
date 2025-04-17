@@ -41,6 +41,9 @@
 html, body { height: 100%; font-family: $he_heebo;touch-action: manipulation;}
 body,p,h1,h2,h3,h4,h5,ul { margin: 0; font-family: $he_heebo; letter-spacing: 0;}
 a{text-decoration: none;}
+ul, li {
+  list-style-type: none;
+}
 input:focus-visible{
   outline: none;
 }
