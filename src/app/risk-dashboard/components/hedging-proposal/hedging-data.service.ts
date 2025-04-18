@@ -62,4 +62,7 @@ export class HedgingDataService {
   setAdvancePolicyStep2Formvalue(formValue: any) {
     this.setAdvancePolicyStep2Data.next(formValue);
   }
+  navigateToAdvancePolicyStepper(stepperIndex: any) {
+    this.setAdvancePolicyStepperIndex.next(stepperIndex);
+  }
 }

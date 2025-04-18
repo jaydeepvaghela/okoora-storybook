@@ -21,15 +21,15 @@ export class AdvancedPolicyComponent {
   }
 
   ngOnInit(): void {
-    // this.riskManagerService.getAdvancePolicyStepperIndex.subscribe(res => {
-    //   if (this.formStepper) {
-    //     if (res == 0) {
-    //       this.formStepper.selectedIndex = res;
-    //     } else if (res > 0) {
-    //       this.formStepper.selectedIndex = 1;
-    //     }
-    //   }
-    // });
+    this.riskManagerService.getAdvancePolicyStepperIndex.subscribe(res => {
+      if (this.formStepper) {
+        if (res == 0) {
+          this.formStepper.selectedIndex = res;
+        } else if (res > 0) {
+          this.formStepper.selectedIndex = 1;
+        }
+      }
+    });
   }
 
   ngAfterViewInit(): void {
