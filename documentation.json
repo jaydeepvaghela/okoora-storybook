@@ -497,7 +497,7 @@
         },
         {
             "name": "HedgingDataService",
-            "id": "injectable-HedgingDataService-619764061d5483f459ed56359a5abd23ee6611a51475e80940c0f286578731ed86317f967952f416ea555812b882dd701418bdd2e6298da0b930ebdf0db1b544",
+            "id": "injectable-HedgingDataService-1b52f145c3b43a1a1fdb2aec7aa8b0af500558f138344dbe64d2234b1804e068bde1fa70273d2dc90249c2446f6ee77492281abd30dda7db8a800d189ed84969",
             "file": "src/app/risk-dashboard/components/hedging-proposal/hedging-data.service.ts",
             "properties": [
                 {
@@ -742,6 +742,34 @@
                     "deprecationMessage": ""
                 },
                 {
+                    "name": "navigateToAdvancePolicyStepper",
+                    "args": [
+                        {
+                            "name": "stepperIndex",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 65,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "stepperIndex",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "openHedgeAllDrawer",
                     "args": [],
                     "optional": false,
@@ -850,7 +878,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class HedgingDataService {\r\n  constructor() { }\r\n\r\n  private hedgeAllDrawerState = new BehaviorSubject<boolean>(false);\r\n  hedgeAllDrawerState$ = this.hedgeAllDrawerState.asObservable();\r\n\r\n  private quickHedgeDrawerState = new BehaviorSubject<boolean>(false);\r\n  quickHedgeDrawerState$ = this.quickHedgeDrawerState.asObservable();\r\n\r\n  public setExposureFormValue = new BehaviorSubject<any>({});\r\n  getExposureFormValue = this.setExposureFormValue.asObservable();\r\n\r\n  openCashflowDateTooltip = new BehaviorSubject<boolean>(false);\r\n\r\n  public setAdvancePolicyStepperIndex = new BehaviorSubject<number>(-1);\r\n  getAdvancePolicyStepperIndex = this.setAdvancePolicyStepperIndex.asObservable();  \r\n\r\n  public setAdvancePolicyBudgetRate = new BehaviorSubject<any>({});\r\n  getAdvancePolicyBudgetRate = this.setAdvancePolicyBudgetRate.asObservable();\r\n\r\n  private advancePolicyFlagSubject = new BehaviorSubject<boolean>(false);\r\n  advancePolicyFlag$ = this.advancePolicyFlagSubject.asObservable();\r\n\r\n  step2LastIndex = new BehaviorSubject<boolean>(false);\r\n\r\n  public setAdvancePolicyStep2Data = new BehaviorSubject<any>([]);\r\n  getAdvancePolicyStep2Data = this.setAdvancePolicyStep2Data.asObservable();\r\n\r\n  isAdvancePolicyCompletedSubject = new BehaviorSubject<boolean>(false);\r\n  advancePolicyCompleted$ = this.isAdvancePolicyCompletedSubject.asObservable();\r\n\r\n  setAdvancePolicyFormvalue(formValue: any) {\r\n    this.setAdvancePolicyBudgetRate.next(formValue);\r\n  }\r\n\r\n  setAdvancePolicyFlag(value: boolean) {\r\n    this.advancePolicyFlagSubject.next(value);\r\n  }\r\n\r\n  openQuickHedgeDrawer() {\r\n    this.quickHedgeDrawerState.next(true);\r\n  }\r\n\r\n  closeQuickHedgeDrawer() {\r\n    this.quickHedgeDrawerState.next(false);\r\n  }\r\n\r\n  openHedgeAllDrawer() {\r\n    this.hedgeAllDrawerState.next(true);\r\n  }\r\n\r\n  closeHedgeAllDrawer() {\r\n    this.hedgeAllDrawerState.next(false);\r\n  }\r\n\r\n  setAdvancePolicyStep2Formvalue(formValue: any) {\r\n    this.setAdvancePolicyStep2Data.next(formValue);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class HedgingDataService {\r\n  constructor() { }\r\n\r\n  private hedgeAllDrawerState = new BehaviorSubject<boolean>(false);\r\n  hedgeAllDrawerState$ = this.hedgeAllDrawerState.asObservable();\r\n\r\n  private quickHedgeDrawerState = new BehaviorSubject<boolean>(false);\r\n  quickHedgeDrawerState$ = this.quickHedgeDrawerState.asObservable();\r\n\r\n  public setExposureFormValue = new BehaviorSubject<any>({});\r\n  getExposureFormValue = this.setExposureFormValue.asObservable();\r\n\r\n  openCashflowDateTooltip = new BehaviorSubject<boolean>(false);\r\n\r\n  public setAdvancePolicyStepperIndex = new BehaviorSubject<number>(-1);\r\n  getAdvancePolicyStepperIndex = this.setAdvancePolicyStepperIndex.asObservable();  \r\n\r\n  public setAdvancePolicyBudgetRate = new BehaviorSubject<any>({});\r\n  getAdvancePolicyBudgetRate = this.setAdvancePolicyBudgetRate.asObservable();\r\n\r\n  private advancePolicyFlagSubject = new BehaviorSubject<boolean>(false);\r\n  advancePolicyFlag$ = this.advancePolicyFlagSubject.asObservable();\r\n\r\n  step2LastIndex = new BehaviorSubject<boolean>(false);\r\n\r\n  public setAdvancePolicyStep2Data = new BehaviorSubject<any>([]);\r\n  getAdvancePolicyStep2Data = this.setAdvancePolicyStep2Data.asObservable();\r\n\r\n  isAdvancePolicyCompletedSubject = new BehaviorSubject<boolean>(false);\r\n  advancePolicyCompleted$ = this.isAdvancePolicyCompletedSubject.asObservable();\r\n\r\n  setAdvancePolicyFormvalue(formValue: any) {\r\n    this.setAdvancePolicyBudgetRate.next(formValue);\r\n  }\r\n\r\n  setAdvancePolicyFlag(value: boolean) {\r\n    this.advancePolicyFlagSubject.next(value);\r\n  }\r\n\r\n  openQuickHedgeDrawer() {\r\n    this.quickHedgeDrawerState.next(true);\r\n  }\r\n\r\n  closeQuickHedgeDrawer() {\r\n    this.quickHedgeDrawerState.next(false);\r\n  }\r\n\r\n  openHedgeAllDrawer() {\r\n    this.hedgeAllDrawerState.next(true);\r\n  }\r\n\r\n  closeHedgeAllDrawer() {\r\n    this.hedgeAllDrawerState.next(false);\r\n  }\r\n\r\n  setAdvancePolicyStep2Formvalue(formValue: any) {\r\n    this.setAdvancePolicyStep2Data.next(formValue);\r\n  }\r\n  navigateToAdvancePolicyStepper(stepperIndex: any) {\r\n    this.setAdvancePolicyStepperIndex.next(stepperIndex);\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -1122,7 +1150,7 @@
         },
         {
             "name": "AdvancedPolicyComponent",
-            "id": "component-AdvancedPolicyComponent-c5043bc21caca7be842c4abb6f1c46abab44e14bb22b8aca2d0b1a9cee22518ded76367211d08ce5c271ab160696ba1e11dfee16490003429df8eff977a73117",
+            "id": "component-AdvancedPolicyComponent-5d7fbec7b5aba686d1bb8338aded0c64011fc8dd7c460b38968db381af1817ec276e6a90dbbde5997f0898fc56a6aff988d10722cde962e739940c432ac32e93",
             "file": "src/app/risk-dashboard/components/advanced-policy/advanced-policy.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1263,7 +1291,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, inject, ViewChild } from '@angular/core';\r\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\r\nimport { MatStepper, MatStepperModule } from '@angular/material/stepper';\r\nimport { AdvancedPolicyStep1Component } from './components/advanced-policy-step1/advanced-policy-step1.component';\r\nimport { AdvancedPolicyStep2Component } from './components/advanced-policy-step2/advanced-policy-step2.component';\r\nimport { AdvancedPolicyStep3Component } from './components/advanced-policy-step3/advanced-policy-step3.component';\r\nimport { HedgingDataService } from '../hedging-proposal/hedging-data.service';\r\n\r\n@Component({\r\n  selector: 'app-advanced-policy',\r\n  imports: [ MatStepperModule, MatProgressBarModule, AdvancedPolicyStep1Component, AdvancedPolicyStep2Component, AdvancedPolicyStep3Component ],\r\n  templateUrl: './advanced-policy.component.html',\r\n  styleUrl: './advanced-policy.component.scss'\r\n})\r\nexport class AdvancedPolicyComponent {\r\n  @ViewChild('formStepper') formStepper!: MatStepper;\r\n  riskManagerService = inject(HedgingDataService);\r\n  // stepperIndex$: Subscription;\r\n  isPolicyAlreadyCompleted: boolean | undefined;\r\n  constructor() {\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    // this.riskManagerService.getAdvancePolicyStepperIndex.subscribe(res => {\r\n    //   if (this.formStepper) {\r\n    //     if (res == 0) {\r\n    //       this.formStepper.selectedIndex = res;\r\n    //     } else if (res > 0) {\r\n    //       this.formStepper.selectedIndex = 1;\r\n    //     }\r\n    //   }\r\n    // });\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    setTimeout(() => {\r\n      this.checkIfPolicyAlreadyCompleted();\r\n    });\r\n  }\r\n\r\n\r\n  checkIfPolicyAlreadyCompleted() {\r\n    // this.riskManagerService.advancePolicyCompleted$.subscribe({\r\n    //   next: (result) => {\r\n    //     this.isPolicyAlreadyCompleted = result;\r\n    //     if (this.isPolicyAlreadyCompleted && this.formStepper) {\r\n    //       this.formStepper.selectedIndex = 2;\r\n    //     }\r\n    //   },\r\n    //   error: (err) => {\r\n    //     console.log('')\r\n    //   }\r\n    // })\r\n  }\r\n\r\n  moveNextPage() {\r\n    this.formStepper.next();\r\n  }\r\n\r\n  movePreviousPage() {\r\n    this.formStepper.previous();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, inject, ViewChild } from '@angular/core';\r\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\r\nimport { MatStepper, MatStepperModule } from '@angular/material/stepper';\r\nimport { AdvancedPolicyStep1Component } from './components/advanced-policy-step1/advanced-policy-step1.component';\r\nimport { AdvancedPolicyStep2Component } from './components/advanced-policy-step2/advanced-policy-step2.component';\r\nimport { AdvancedPolicyStep3Component } from './components/advanced-policy-step3/advanced-policy-step3.component';\r\nimport { HedgingDataService } from '../hedging-proposal/hedging-data.service';\r\n\r\n@Component({\r\n  selector: 'app-advanced-policy',\r\n  imports: [ MatStepperModule, MatProgressBarModule, AdvancedPolicyStep1Component, AdvancedPolicyStep2Component, AdvancedPolicyStep3Component ],\r\n  templateUrl: './advanced-policy.component.html',\r\n  styleUrl: './advanced-policy.component.scss'\r\n})\r\nexport class AdvancedPolicyComponent {\r\n  @ViewChild('formStepper') formStepper!: MatStepper;\r\n  riskManagerService = inject(HedgingDataService);\r\n  // stepperIndex$: Subscription;\r\n  isPolicyAlreadyCompleted: boolean | undefined;\r\n  constructor() {\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.riskManagerService.getAdvancePolicyStepperIndex.subscribe(res => {\r\n      if (this.formStepper) {\r\n        if (res == 0) {\r\n          this.formStepper.selectedIndex = res;\r\n        } else if (res > 0) {\r\n          this.formStepper.selectedIndex = 1;\r\n        }\r\n      }\r\n    });\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    setTimeout(() => {\r\n      this.checkIfPolicyAlreadyCompleted();\r\n    });\r\n  }\r\n\r\n\r\n  checkIfPolicyAlreadyCompleted() {\r\n    // this.riskManagerService.advancePolicyCompleted$.subscribe({\r\n    //   next: (result) => {\r\n    //     this.isPolicyAlreadyCompleted = result;\r\n    //     if (this.isPolicyAlreadyCompleted && this.formStepper) {\r\n    //       this.formStepper.selectedIndex = 2;\r\n    //     }\r\n    //   },\r\n    //   error: (err) => {\r\n    //     console.log('')\r\n    //   }\r\n    // })\r\n  }\r\n\r\n  moveNextPage() {\r\n    this.formStepper.next();\r\n  }\r\n\r\n  movePreviousPage() {\r\n    this.formStepper.previous();\r\n  }\r\n}\r\n",
             "styleUrl": "./advanced-policy.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1277,7 +1305,7 @@
                 "line": 19
             },
             "extends": [],
-            "templateData": "<div class=\"advance-policy-stepper\">\r\n    <mat-stepper #formStepper class=\"form-stepper\">\r\n        <mat-progress-bar #formStepperProgress [hidden]=\"true\"> --</mat-progress-bar>\r\n        <mat-step>\r\n            <ng-template matStepContent>\r\n            <app-advanced-policy-step1> </app-advanced-policy-step1>\r\n            </ng-template>\r\n        </mat-step>\r\n        <!-- <mat-step>\r\n            <ng-template matStepContent>\r\n                <app-advanced-policy-step2 (moveNextPage)=\"moveNextPage()\" (movePreviousPage)=\"movePreviousPage()\"></app-advanced-policy-step2>\r\n            </ng-template>\r\n        </mat-step> \r\n        <mat-step>\r\n            <ng-template matStepContent>\r\n                <app-advanced-policy-step3 (fromStep3)=\"movePreviousPage()\"> </app-advanced-policy-step3>\r\n            </ng-template>\r\n        </mat-step> -->\r\n    </mat-stepper>\r\n</div>"
+            "templateData": "<div class=\"advance-policy-stepper\">\r\n    <mat-stepper #formStepper class=\"form-stepper\">\r\n        <mat-progress-bar #formStepperProgress [hidden]=\"true\"> --</mat-progress-bar>\r\n        <mat-step>\r\n            <ng-template matStepContent>\r\n            <app-advanced-policy-step1> </app-advanced-policy-step1>\r\n            </ng-template>\r\n        </mat-step>\r\n        <mat-step>\r\n            <ng-template matStepContent>\r\n                <app-advanced-policy-step2 (moveNextPage)=\"moveNextPage()\" (movePreviousPage)=\"movePreviousPage()\"></app-advanced-policy-step2>\r\n            </ng-template>\r\n        </mat-step> \r\n        <!-- <mat-step>\r\n            <ng-template matStepContent>\r\n                <app-advanced-policy-step3 (fromStep3)=\"movePreviousPage()\"> </app-advanced-policy-step3>\r\n            </ng-template>\r\n        </mat-step> -->\r\n    </mat-stepper>\r\n</div>"
         },
         {
             "name": "AdvancedPolicyStep1Component",
@@ -1790,7 +1818,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '../../../../../../assets/scss/variable';\r\n\r\n::ng-deep {\r\n    .adv-policy-wrapper {\r\n        .progress-container {\r\n            display: flex;\r\n            align-items: center;\r\n            gap: 8px;\r\n            .stepper-progressbar {\r\n              max-width: 98px;\r\n              min-width: 98px;\r\n              width: 100%;\r\n              height: 12px;\r\n              border-radius: 20px;\r\n      \r\n              .mdc-linear-progress__buffer {\r\n                height: 100%;\r\n              }\r\n              \r\n              .mdc-linear-progress__bar {\r\n                height: 100%;\r\n              }\r\n      \r\n                .mdc-linear-progress__bar-inner {\r\n                  border-width: 12px;\r\n                  border-radius: 20px;\r\n                  border-color: #175CD3;\r\n            \r\n                  @media screen and (max-width: 1440px) {\r\n                    border-width: 9px;\r\n                  }\r\n            \r\n                  @media screen and (max-width: 1024px) {\r\n                    border-width: 12px;\r\n                  }\r\n                }\r\n            \r\n              @media screen and (max-width: 1440px) {\r\n                height: 9px;\r\n              }\r\n            \r\n              @media screen and (max-width: 1024px) {\r\n                height: 12px;\r\n              }\r\n            }\r\n      \r\n            .progress-count {\r\n              color: #000;\r\n              font-family: $he_heebo;\r\n              font-size: 12px;\r\n              font-weight: 700;\r\n              line-height: 20px;\r\n            }\r\n            @media screen and (max-width:480px) {\r\n              .stepper-progressbar{\r\n                min-width: 60px;\r\n                max-width: 60px;\r\n                height: 9px;\r\n              }\r\n            }\r\n        }\r\n        .heading {\r\n            color: #2947F2;\r\n            font-family: $he_heebo;\r\n            font-size: 30px;\r\n            font-weight: 700;\r\n            line-height: 38px;\r\n            margin: 40px 0 34px;\r\n        }\r\n\r\n        .step1-wrapper {\r\n            background-color: $white;\r\n            padding: 50px 40px 50px 63px;\r\n            border-radius: 10px;\r\n\r\n            .step-form-wrap {\r\n                text-align: center;\r\n\r\n                .progress-container {\r\n                    display: flex;\r\n                    align-items: center;\r\n                    gap: 8px;\r\n                    justify-content: center;\r\n\r\n                    .stepper-progressbar {\r\n                        max-width: 98px;\r\n                        min-width: 98px;\r\n                        width: 100%;\r\n                        height: 8px;\r\n                        border-radius: 20px;\r\n\r\n                        .mdc-linear-progress__bar-inner {\r\n                            border-width: 8px;\r\n                            border-radius: 50%;\r\n                            border-color: #175CD3;\r\n                            left: 0;\r\n                        }\r\n                    }\r\n\r\n                    .progress-count {\r\n                        color: #000;\r\n                        font-family: $he_heebo;\r\n                        font-size: 12px;\r\n                        font-weight: 700;\r\n                        line-height: 20px;\r\n                    }\r\n\r\n                    @media screen and (max-width:480px) {\r\n                        .stepper-progressbar {\r\n                            min-width: 60px;\r\n                            max-width: 60px;\r\n                        }\r\n                    }\r\n                }\r\n\r\n                .anual-head {\r\n                    margin: 42px 0;\r\n\r\n                    .sub-text {\r\n                        color: #2947F2;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 700;\r\n                        line-height: 20px;\r\n                        margin: 0 0 2px;\r\n                    }\r\n\r\n                    .title {\r\n                        color: #344054;\r\n                        font-family: $he_heebo;\r\n                        font-size: 30px;\r\n                        font-weight: 700;\r\n                        line-height: 38px;\r\n                        margin: 0;\r\n                    }\r\n                    .desc{\r\n                        color:#98A2B3;\r\n                        text-align: center;\r\n                        font-family:$he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: 18px;\r\n                        margin: 2px 0 0;\r\n                    }\r\n                }\r\n\r\n                .rate-wrap {\r\n                    margin: auto;\r\n                    max-width: 563px;\r\n\r\n                    .inner-wrap {\r\n                        display: flex;\r\n                        gap: 14px;\r\n\r\n                        .form-wrap {\r\n                            display: flex;\r\n                            position: relative;\r\n                            border: 1px solid #3B82F6;\r\n                            border-radius: 5px;\r\n                            background-color: $white;\r\n                            height: 60px;\r\n                            align-items: center;\r\n                            padding: 14px 15px 10px 17px;\r\n                            width: 100%;\r\n\r\n                            .rate-label {\r\n                                position: absolute;\r\n                                top: -7px;\r\n                                left: 9px;\r\n                                padding: 0 4px;\r\n                                background-color: $white;\r\n                                color: #3B82F6;\r\n                                font-family: 'Roboto';\r\n                                font-size: 12px;\r\n                                font-weight: 400;\r\n                                line-height: 16px;\r\n                            }\r\n\r\n                            .flag-wrap {\r\n                                padding: 0 15px 0 0;\r\n                                display: flex;\r\n                                align-items: center;\r\n\r\n                                img {\r\n                                    width: 29px;\r\n                                    height: auto;\r\n\r\n                                    &.from-currency {\r\n                                        margin: 0 0 0 -14px;\r\n                                    }\r\n\r\n                                    &.no-data {\r\n                                        filter: grayscale(1);\r\n                                        opacity: 0.6;\r\n                                    }\r\n                                }\r\n                            }\r\n\r\n                            .rate-input {\r\n                                border: none;\r\n                                padding: 0 12px;\r\n                                border-left: 1px solid #E4E7EC;\r\n                                font-family: $he_heebo;\r\n                                font-size: 14px;\r\n                                font-weight: 400;\r\n                                line-height: 35px;\r\n                                color: $black;\r\n                                width: 100%;\r\n\r\n                                &::placeholder {\r\n                                    color: #B4BBC6;\r\n                                }\r\n                            }\r\n\r\n                            .clear-btn {\r\n                                padding: 0 0 4px;\r\n                                line-height: 0;\r\n                            }\r\n\r\n                            &.errorInput {\r\n                                border-color: #D92D20;\r\n                                .rate-label{\r\n                                    color:#D92D20;\r\n                                }\r\n                            }\r\n                        }\r\n\r\n                        .btn-generateRate {\r\n                            display: flex;\r\n                            height: 60px;\r\n                            padding: 10px;\r\n                            justify-content: center;\r\n                            align-items: center;\r\n                            gap: 10px;\r\n                            border-radius: 8px;\r\n                            border: 1px solid #D0D5DD;\r\n                            color: #003EFF;\r\n                            font-family: $he_heebo;\r\n                            font-size: 14px;\r\n                            font-weight: 400;\r\n                            line-height: 22px;\r\n                            width: 100%;\r\n                            max-width: 125px;\r\n                            transition: all 0.5s ease;\r\n                            &:hover{\r\n                                background-color: #2947F2;\r\n                                border-color: #2947F2;\r\n                                color:$white;\r\n                            }\r\n                        }\r\n                    }\r\n\r\n                    .generate-desc {\r\n                        text-align: right;\r\n                        color: #666;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: 22px;\r\n                        margin: 9px 0 0;\r\n\r\n                        span {\r\n                            color: #003EFF;\r\n                        }\r\n                    }\r\n\r\n                    .error-msg-wrap {\r\n                        margin:7px 0 0;\r\n                        color: #D92D20;\r\n                        text-align: left;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: 20px;\r\n                    }\r\n                }\r\n\r\n                .rate-info {\r\n                    max-width: 518px;\r\n                    margin:44px auto 196px;\r\n\r\n                    p {\r\n                        margin: 0;\r\n                        color: #98A2B3;\r\n                        text-align: center;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: 18px;\r\n                    }\r\n                }\r\n            }\r\n\r\n            .btn-wrap {\r\n                display: flex;\r\n                justify-content: space-between;\r\n                align-items: center;\r\n\r\n                .btn-policy {\r\n                    display: flex;\r\n                    height: 46px;\r\n                    padding: 10px 20px;\r\n                    justify-content: center;\r\n                    align-items: center;\r\n                    color: #7889B0;\r\n                    font-family: $he_heebo;\r\n                    font-size: 14px;\r\n                    font-weight: 700;\r\n                    line-height: 45.2px;\r\n                    border-radius: 40px;\r\n                    border: 1px solid #E4E4E5;\r\n                    box-shadow: 0px 9px 40px 0px rgba(0, 62, 255, 0.1);\r\n                    transition: all 0.5s ease;\r\n                    &:hover{\r\n                        background-color: #2947F2;\r\n                        border-color: #2947F2;\r\n                        color:$white;\r\n                    }\r\n                }\r\n\r\n                .right-btn {\r\n                    display: flex;\r\n                    gap: 44px;\r\n\r\n                    .btn-back {\r\n                        color: #374151;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: 45.2px;\r\n                        padding: 0;\r\n                    }\r\n\r\n                    .btn-next {\r\n                        display: flex;\r\n                        width: 123px;\r\n                        height: 46px;\r\n                        padding: 10px;\r\n                        justify-content: center;\r\n                        align-items: center;\r\n                        gap: 10px;\r\n                        border-radius: 40px;\r\n                        background: #2947F2;\r\n                        box-shadow: 0px 9px 24px 0px rgba(0, 62, 255, 0.40);\r\n                        color: $white;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 700;\r\n                        line-height: 45.2px;\r\n                        &:hover{\r\n                            opacity: 0.9;\r\n                        }\r\n                        &.disabled {\r\n                            color: #9ca3af;\r\n                            background: #f3f4f6;\r\n                            box-shadow: none;\r\n\r\n                            img {\r\n                                filter: contrast(0.5);\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:1440px) {\r\n            .heading {\r\n                font-size: 20px;\r\n                margin: 0 0 25px;\r\n                line-height: 30px;\r\n            }\r\n\r\n            .step1-wrapper {\r\n                padding: 30px;\r\n\r\n                .step-form-wrap {\r\n                    .anual-head {\r\n                        margin:30px 0;\r\n\r\n                        .title {\r\n                            font-size: 24px;\r\n                            line-height: 30px;\r\n                        }\r\n                    }\r\n\r\n                    .rate-wrap {\r\n                        .inner-wrap {\r\n                            .form-wrap {\r\n                                .flag-wrap {\r\n                                    padding: 0 10px 0 0;\r\n\r\n                                    img {\r\n                                        width: 25px;\r\n\r\n                                        &.from-currency {\r\n                                            margin: 0 0 0 -10px;\r\n                                        }\r\n                                    }\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                    .rate-info {\r\n                        margin:30px auto;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:1024px) {\r\n            .heading {\r\n                font-size: 18px;\r\n                margin: 0 0 20px;\r\n                line-height: 1.2;\r\n            }\r\n\r\n            .step1-wrapper {\r\n                .step-form-wrap {\r\n                    .anual-head {\r\n                        .title {\r\n                            font-size: 22px;\r\n                            line-height: 1.2;\r\n                        }\r\n                    }\r\n\r\n                    .rate-wrap {\r\n                        .inner-wrap {\r\n                            .form-wrap {\r\n                                height: 50px;\r\n                            }\r\n\r\n                            .btn-generateRate {\r\n                                height: 50px;\r\n                                max-width: 110px;\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n\r\n                .btn-wrap {\r\n                    .btn-policy {\r\n                        height: 36px;\r\n                        line-height: 30px;\r\n                        padding: 5px 15px;\r\n                    }\r\n\r\n                    .right-btn {\r\n                        gap: 20px;\r\n\r\n                        .btn-back {\r\n                            line-height: 30px;\r\n                        }\r\n\r\n                        .btn-next {\r\n                            width: 90px;\r\n                            height: 36px;\r\n                            line-height: 30px;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:767px) {\r\n            .step1-wrapper {\r\n                .step-form-wrap {\r\n                    .anual-head {\r\n                        margin: 20px 0;\r\n\r\n                        .title {\r\n                            font-size: 20px;\r\n                            line-height: 1.2;\r\n                        }\r\n                    }\r\n\r\n                    .rate-wrap {\r\n\r\n                        .generate-desc {\r\n                            font-size: 12px;\r\n                        }\r\n\r\n                        .error-msg-wrap {\r\n                            font-size: 12px;\r\n                        }\r\n                    }\r\n\r\n                    .rate-info {\r\n                        p {\r\n                            font-size: 12px;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:680px) {\r\n            .step1-wrapper {\r\n                .step-form-wrap {\r\n                    .anual-head {\r\n                        .sub-text,.desc {\r\n                            font-size: 12px;\r\n                        }\r\n\r\n                        .title {\r\n                            font-size: 18px;\r\n                            line-height: 1.2;\r\n                        }\r\n                    }\r\n\r\n                    .rate-wrap {\r\n                        .inner-wrap {\r\n                            .form-wrap {\r\n                                height: 50px;\r\n                                padding: 10px;\r\n\r\n                                .flag-wrap {\r\n                                    img {\r\n                                        width: 20px;\r\n                                    }\r\n                                }\r\n                            }\r\n                        }\r\n\r\n                        .error-msg-wrap {\r\n                            margin:5px 0 0;\r\n                            font-size: 11px;\r\n                        }\r\n                    }\r\n                }\r\n\r\n                .btn-wrap {\r\n                    .btn-policy {\r\n                        font-size: 12px;\r\n                    }\r\n\r\n                    .right-btn {\r\n                        gap: 10px;\r\n\r\n                        .btn-back {\r\n                            font-size: 12px;\r\n                        }\r\n\r\n                        .btn-next {\r\n                            font-size: 12px;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:420px) {\r\n            .step1-wrapper {\r\n                padding: 20px;\r\n\r\n                .step-form-wrap {\r\n                    .anual-head {\r\n                        .title {\r\n                            font-size: 15px;\r\n                        }\r\n                    }\r\n                    .rate-wrap {\r\n                        .inner-wrap {\r\n                            flex-direction: column;\r\n                            align-items: flex-end;\r\n                            gap: 10px;\r\n                            .btn-generateRate{\r\n                                font-size: 12px;\r\n                                max-width: max-content;\r\n                                height: 40px;\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n}",
+                    "data": "@import '../../../../../../assets/scss/variable';\r\n\r\n::ng-deep {\r\n    .adv-policy-wrapper {\r\n        .progress-container {\r\n            display: flex;\r\n            align-items: center;\r\n            gap: 8px;\r\n            .stepper-progressbar {\r\n              max-width: 98px;\r\n              min-width: 98px;\r\n              width: 100%;\r\n              height: 12px;\r\n              border-radius: 20px;\r\n      \r\n              .mdc-linear-progress__buffer {\r\n                height: 100%;\r\n              }\r\n              \r\n              .mdc-linear-progress__bar {\r\n                height: 100%;\r\n              }\r\n      \r\n                .mdc-linear-progress__bar-inner {\r\n                  border-width: 12px;\r\n                  border-radius: 20px;\r\n                  border-color: #175CD3;\r\n            \r\n                  @media screen and (max-width: 1440px) {\r\n                    border-width: 9px;\r\n                  }\r\n            \r\n                  @media screen and (max-width: 1024px) {\r\n                    border-width: 12px;\r\n                  }\r\n                }\r\n            \r\n              @media screen and (max-width: 1440px) {\r\n                height: 9px;\r\n              }\r\n            \r\n              @media screen and (max-width: 1024px) {\r\n                height: 12px;\r\n              }\r\n            }\r\n      \r\n            .progress-count {\r\n              color: #000;\r\n              font-family: $he_heebo;\r\n              font-size: 12px;\r\n              font-weight: 700;\r\n              line-height: 20px;\r\n            }\r\n            @media screen and (max-width:480px) {\r\n              .stepper-progressbar{\r\n                min-width: 60px;\r\n                max-width: 60px;\r\n                height: 9px;\r\n              }\r\n            }\r\n        }\r\n        .heading {\r\n            color: #2947F2;\r\n            font-family: $he_heebo;\r\n            font-size: 30px;\r\n            font-weight: 700;\r\n            line-height: 38px;\r\n            margin: 40px 0 34px;\r\n        }\r\n\r\n        .step1-wrapper {\r\n            background-color: $white;\r\n            padding: 50px 40px 36px 63px;\r\n            border-radius: 10px;\r\n\r\n            .step-form-wrap {\r\n                text-align: center;\r\n\r\n                .progress-container {\r\n                    display: flex;\r\n                    align-items: center;\r\n                    gap: 8px;\r\n                    justify-content: center;\r\n\r\n                    .stepper-progressbar {\r\n                        max-width: 98px;\r\n                        min-width: 98px;\r\n                        width: 100%;\r\n                        height: 8px;\r\n                        border-radius: 20px;\r\n\r\n                        .mdc-linear-progress__bar-inner {\r\n                            border-width: 8px;\r\n                            border-radius: 50%;\r\n                            border-color: #175CD3;\r\n                            left: 0;\r\n                        }\r\n                    }\r\n\r\n                    .progress-count {\r\n                        color: #000;\r\n                        font-family: $he_heebo;\r\n                        font-size: 12px;\r\n                        font-weight: 700;\r\n                        line-height: 20px;\r\n                    }\r\n\r\n                    @media screen and (max-width:480px) {\r\n                        .stepper-progressbar {\r\n                            min-width: 60px;\r\n                            max-width: 60px;\r\n                        }\r\n                    }\r\n                }\r\n\r\n                .anual-head {\r\n                    margin: 42px 0;\r\n\r\n                    .sub-text {\r\n                        color: #2947F2;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 700;\r\n                        line-height: 20px;\r\n                        margin: 0 0 2px;\r\n                    }\r\n\r\n                    .title {\r\n                        color: #344054;\r\n                        font-family: $he_heebo;\r\n                        font-size: 30px;\r\n                        font-weight: 700;\r\n                        line-height: 38px;\r\n                        margin: 0;\r\n                    }\r\n                    .desc{\r\n                        color:#98A2B3;\r\n                        text-align: center;\r\n                        font-family:$he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: 18px;\r\n                        margin: 2px 0 0;\r\n                    }\r\n                }\r\n\r\n                .rate-wrap {\r\n                    margin: auto;\r\n                    max-width: 563px;\r\n\r\n                    .inner-wrap {\r\n                        display: flex;\r\n                        gap: 14px;\r\n\r\n                        .form-wrap {\r\n                            display: flex;\r\n                            position: relative;\r\n                            border: 1px solid #3B82F6;\r\n                            border-radius: 5px;\r\n                            background-color: $white;\r\n                            height: 60px;\r\n                            align-items: center;\r\n                            padding: 14px 15px 10px 17px;\r\n                            width: 100%;\r\n\r\n                            .rate-label {\r\n                                position: absolute;\r\n                                top: -7px;\r\n                                left: 9px;\r\n                                padding: 0 4px;\r\n                                background-color: $white;\r\n                                color: #3B82F6;\r\n                                font-family: 'Roboto';\r\n                                font-size: 12px;\r\n                                font-weight: 400;\r\n                                line-height: 16px;\r\n                            }\r\n\r\n                            .flag-wrap {\r\n                                padding: 0 15px 0 0;\r\n                                display: flex;\r\n                                align-items: center;\r\n\r\n                                img {\r\n                                    width: 29px;\r\n                                    height: auto;\r\n\r\n                                    &.from-currency {\r\n                                        margin: 0 0 0 -14px;\r\n                                    }\r\n\r\n                                    &.no-data {\r\n                                        filter: grayscale(1);\r\n                                        opacity: 0.6;\r\n                                    }\r\n                                }\r\n                            }\r\n\r\n                            .rate-input {\r\n                                border: none;\r\n                                padding: 0 12px;\r\n                                border-left: 1px solid #E4E7EC;\r\n                                font-family: $he_heebo;\r\n                                font-size: 14px;\r\n                                font-weight: 400;\r\n                                line-height: 35px;\r\n                                color: $black;\r\n                                width: 100%;\r\n\r\n                                &::placeholder {\r\n                                    color: #B4BBC6;\r\n                                }\r\n                            }\r\n\r\n                            .clear-btn {\r\n                                padding: 0 0 4px;\r\n                                line-height: 0;\r\n                            }\r\n\r\n                            &.errorInput {\r\n                                border-color: #D92D20;\r\n                                .rate-label{\r\n                                    color:#D92D20;\r\n                                }\r\n                            }\r\n                        }\r\n\r\n                        .btn-generateRate {\r\n                            display: flex;\r\n                            height: 60px;\r\n                            padding: 10px;\r\n                            justify-content: center;\r\n                            align-items: center;\r\n                            gap: 10px;\r\n                            border-radius: 8px;\r\n                            border: 1px solid #D0D5DD;\r\n                            color: #003EFF;\r\n                            font-family: $he_heebo;\r\n                            font-size: 14px;\r\n                            font-weight: 400;\r\n                            line-height: 22px;\r\n                            width: 100%;\r\n                            max-width: 125px;\r\n                            transition: all 0.5s ease;\r\n                            &:hover{\r\n                                background-color: #2947F2;\r\n                                border-color: #2947F2;\r\n                                color:$white;\r\n                            }\r\n                        }\r\n                    }\r\n\r\n                    .generate-desc {\r\n                        text-align: right;\r\n                        color: #666;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: 22px;\r\n                        margin: 9px 0 0;\r\n\r\n                        span {\r\n                            color: #003EFF;\r\n                        }\r\n                    }\r\n\r\n                    .error-msg-wrap {\r\n                        margin:7px 0 0;\r\n                        color: #D92D20;\r\n                        text-align: left;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: 20px;\r\n                    }\r\n                }\r\n\r\n                .rate-info {\r\n                    max-width: 518px;\r\n                    margin:44px auto 196px;\r\n\r\n                    p {\r\n                        margin: 0;\r\n                        color: #98A2B3;\r\n                        text-align: center;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: 18px;\r\n                    }\r\n                }\r\n            }\r\n\r\n            .btn-wrap {\r\n                display: flex;\r\n                justify-content: space-between;\r\n                align-items: center;\r\n\r\n                .btn-policy {\r\n                    display: flex;\r\n                    height: 46px;\r\n                    padding: 10px 20px;\r\n                    justify-content: center;\r\n                    align-items: center;\r\n                    color: #7889B0;\r\n                    font-family: $he_heebo;\r\n                    font-size: 14px;\r\n                    font-weight: 700;\r\n                    line-height: 45.2px;\r\n                    border-radius: 40px;\r\n                    border: 1px solid #E4E4E5;\r\n                    box-shadow: 0px 9px 40px 0px rgba(0, 62, 255, 0.1);\r\n                    transition: all 0.5s ease;\r\n                    &:hover{\r\n                        background-color: #2947F2;\r\n                        border-color: #2947F2;\r\n                        color:$white;\r\n                    }\r\n                }\r\n\r\n                .right-btn {\r\n                    display: flex;\r\n                    gap: 44px;\r\n\r\n                    .btn-back {\r\n                        color: #374151;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 400;\r\n                        line-height: 45.2px;\r\n                        padding: 0;\r\n                    }\r\n\r\n                    .btn-next {\r\n                        display: flex;\r\n                        width: 123px;\r\n                        height: 46px;\r\n                        padding: 10px;\r\n                        justify-content: center;\r\n                        align-items: center;\r\n                        gap: 10px;\r\n                        border-radius: 40px;\r\n                        background: #2947F2;\r\n                        box-shadow: 0px 9px 24px 0px rgba(0, 62, 255, 0.40);\r\n                        color: $white;\r\n                        font-family: $he_heebo;\r\n                        font-size: 14px;\r\n                        font-weight: 700;\r\n                        line-height: 45.2px;\r\n                        &:hover{\r\n                            opacity: 0.9;\r\n                        }\r\n                        &.disabled {\r\n                            color: #9ca3af;\r\n                            background: #f3f4f6;\r\n                            box-shadow: none;\r\n\r\n                            img {\r\n                                filter: contrast(0.5);\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:1440px) {\r\n            .heading {\r\n                font-size: 20px;\r\n                margin: 0 0 25px;\r\n                line-height: 30px;\r\n            }\r\n\r\n            .step1-wrapper {\r\n                padding: 30px;\r\n\r\n                .step-form-wrap {\r\n                    .anual-head {\r\n                        margin:30px 0;\r\n\r\n                        .title {\r\n                            font-size: 24px;\r\n                            line-height: 30px;\r\n                        }\r\n                    }\r\n\r\n                    .rate-wrap {\r\n                        .inner-wrap {\r\n                            .form-wrap {\r\n                                .flag-wrap {\r\n                                    padding: 0 10px 0 0;\r\n\r\n                                    img {\r\n                                        width: 25px;\r\n\r\n                                        &.from-currency {\r\n                                            margin: 0 0 0 -10px;\r\n                                        }\r\n                                    }\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                    .rate-info {\r\n                        margin:30px auto;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:1024px) {\r\n            .heading {\r\n                font-size: 18px;\r\n                margin: 0 0 20px;\r\n                line-height: 1.2;\r\n            }\r\n\r\n            .step1-wrapper {\r\n                .step-form-wrap {\r\n                    .anual-head {\r\n                        .title {\r\n                            font-size: 22px;\r\n                            line-height: 1.2;\r\n                        }\r\n                    }\r\n\r\n                    .rate-wrap {\r\n                        .inner-wrap {\r\n                            .form-wrap {\r\n                                height: 50px;\r\n                            }\r\n\r\n                            .btn-generateRate {\r\n                                height: 50px;\r\n                                max-width: 110px;\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n\r\n                .btn-wrap {\r\n                    .btn-policy {\r\n                        height: 36px;\r\n                        line-height: 30px;\r\n                        padding: 5px 15px;\r\n                    }\r\n\r\n                    .right-btn {\r\n                        gap: 20px;\r\n\r\n                        .btn-back {\r\n                            line-height: 30px;\r\n                        }\r\n\r\n                        .btn-next {\r\n                            width: 90px;\r\n                            height: 36px;\r\n                            line-height: 30px;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:767px) {\r\n            .step1-wrapper {\r\n                .step-form-wrap {\r\n                    .anual-head {\r\n                        margin: 20px 0;\r\n\r\n                        .title {\r\n                            font-size: 20px;\r\n                            line-height: 1.2;\r\n                        }\r\n                    }\r\n\r\n                    .rate-wrap {\r\n\r\n                        .generate-desc {\r\n                            font-size: 12px;\r\n                        }\r\n\r\n                        .error-msg-wrap {\r\n                            font-size: 12px;\r\n                        }\r\n                    }\r\n\r\n                    .rate-info {\r\n                        p {\r\n                            font-size: 12px;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:680px) {\r\n            .step1-wrapper {\r\n                .step-form-wrap {\r\n                    .anual-head {\r\n                        .sub-text,.desc {\r\n                            font-size: 12px;\r\n                        }\r\n\r\n                        .title {\r\n                            font-size: 18px;\r\n                            line-height: 1.2;\r\n                        }\r\n                    }\r\n\r\n                    .rate-wrap {\r\n                        .inner-wrap {\r\n                            .form-wrap {\r\n                                height: 50px;\r\n                                padding: 10px;\r\n\r\n                                .flag-wrap {\r\n                                    img {\r\n                                        width: 20px;\r\n                                    }\r\n                                }\r\n                            }\r\n                        }\r\n\r\n                        .error-msg-wrap {\r\n                            margin:5px 0 0;\r\n                            font-size: 11px;\r\n                        }\r\n                    }\r\n                }\r\n\r\n                .btn-wrap {\r\n                    .btn-policy {\r\n                        font-size: 12px;\r\n                    }\r\n\r\n                    .right-btn {\r\n                        gap: 10px;\r\n\r\n                        .btn-back {\r\n                            font-size: 12px;\r\n                        }\r\n\r\n                        .btn-next {\r\n                            font-size: 12px;\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        @media screen and (max-width:420px) {\r\n            .step1-wrapper {\r\n                padding: 20px;\r\n\r\n                .step-form-wrap {\r\n                    .anual-head {\r\n                        .title {\r\n                            font-size: 15px;\r\n                        }\r\n                    }\r\n                    .rate-wrap {\r\n                        .inner-wrap {\r\n                            flex-direction: column;\r\n                            align-items: flex-end;\r\n                            gap: 10px;\r\n                            .btn-generateRate{\r\n                                font-size: 12px;\r\n                                max-width: max-content;\r\n                                height: 40px;\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n}",
                     "styleUrl": "./advanced-policy-step1.component.scss"
                 }
             ],
@@ -2239,7 +2267,7 @@
         },
         {
             "name": "AdvancedPolicyStep3Component",
-            "id": "component-AdvancedPolicyStep3Component-9745f97e61f82b13ebb731187cb653f11d2e0ce6389174a89080d67a6cc2a93925a9f0b112b38704da55821cb9b7e24c605a468dd28e516cc3d9e2fcbf1fb7e8",
+            "id": "component-AdvancedPolicyStep3Component-36aaf0d56b5f4603d367ac98f5b20157754e3c1a3e86f539613a39fcf24641433dc28a7ed65975df5ed352ef07be5f7cacce5505acd59ef91a3830c96753c5b3",
             "file": "src/app/risk-dashboard/components/advanced-policy/components/advanced-policy-step3/advanced-policy-step3.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2255,25 +2283,321 @@
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "outputsClass": [
+                {
+                    "name": "fromStep3",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "advancePolicyFlag",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "advancePolicyFromAPI",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "errorMessage",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "riskManagerService",
+                    "defaultValue": "inject(HedgingDataService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "router",
+                    "defaultValue": "inject(Router)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "showfinalStep",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "showLoader",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "step2Res",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "backToDashboard",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 82,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "mapAnswerToInteger",
+                    "args": [
+                        {
+                            "name": "answer",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "questionIndex",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 149,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "answer",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "questionIndex",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "mapIntegerToAnswer",
+                    "args": [
+                        {
+                            "name": "score",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "questionIndex",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 90,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "score",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "questionIndex",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "mapQuestionsToInteger",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 208,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "navigateToSteppers",
+                    "args": [
+                        {
+                            "name": "stepperindex",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 86,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "stepperindex",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onConfirm",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 220,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "previous",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
             "standalone": false,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-advanced-policy-step3',\r\n  imports: [],\r\n  templateUrl: './advanced-policy-step3.component.html',\r\n  styleUrl: './advanced-policy-step3.component.scss'\r\n})\r\nexport class AdvancedPolicyStep3Component {\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\nimport { HedgingDataService } from '../../../hedging-proposal/hedging-data.service';\r\nimport { AdvancePolicyQuestions } from '../../../enums/advancePolicyQuestions';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-advanced-policy-step3',\r\n  imports: [CommonModule],\r\n  templateUrl: './advanced-policy-step3.component.html',\r\n  styleUrl: './advanced-policy-step3.component.scss'\r\n})\r\nexport class AdvancedPolicyStep3Component implements OnInit {\r\n  showfinalStep: boolean = false;\r\n  router = inject(Router);\r\n  step2Res: any;\r\n  advancePolicyFlag: boolean = false;\r\n  riskManagerService = inject(HedgingDataService);\r\n  @Output() fromStep3 = new EventEmitter<void>();\r\n  errorMessage = \"\";\r\n  showLoader: boolean = false;\r\n  advancePolicyFromAPI: any;\r\n\r\n  ngOnInit(): void {\r\n    // this.getAlreadyCompletedPolicy();\r\n    this.riskManagerService.getAdvancePolicyStep2Data.subscribe(res => {\r\n      this.step2Res = res.sort((a: any, b: any) => a.index - b.index);\r\n    })\r\n    // this.advancePolicyFlag = this.riskManagerService.advancePolicyFlag;\r\n    this.riskManagerService.advancePolicyFlag$.subscribe(flag => {\r\n      this.advancePolicyFlag = flag;\r\n    });\r\n  }\r\n\r\n\r\n  // getAlreadyCompletedPolicy() {\r\n  //   this.riskManagerService?.advancePolicyCompleted$.subscribe({\r\n  //     next: (response) => {\r\n  //       if (response) {\r\n  //         this.riskManagerService?.getAdvancePolicyData().subscribe({\r\n  //           next: (result) => {\r\n  //             this.advancePolicyFromAPI = result;\r\n  //             const budgetRateFromAPI = this.advancePolicyFromAPI?.budgetRate;\r\n  //             this.riskManagerService.setAdvancePolicyFormvalue(budgetRateFromAPI);\r\n  //             if (this.advancePolicyFromAPI && this.advancePolicyFromAPI?.questionAndScores) {\r\n  //               this.step2Res = [];\r\n  //               this.step2Res.push({\r\n  //                 index: 0,\r\n  //                 answer: this.advancePolicyFromAPI.budgetRate\r\n  //               });\r\n\r\n  //               this.step2Res.forEach((item: any) => {\r\n  //                 const index = item.advancePolicyQuestions;\r\n  //                 if (index >= 0) {\r\n  //                   this.step2Res.push({\r\n  //                     index: index,\r\n  //                     answer: this.mapIntegerToAnswer(item.score, index)\r\n  //                   });\r\n  //                 }\r\n  //               });\r\n  //               this.step2Res = this.step2Res.sort((a: any, b: any) => a.index - b.index);\r\n  //               this.riskManagerService.setAdvancePolicyStep2Formvalue(this.step2Res);\r\n  //         //     }\r\n  //           },\r\n  //           error: (error) => {\r\n\r\n  //           }\r\n  //         })\r\n  //       }\r\n  //     },\r\n  //     error: () => {\r\n  //       console.error('Error fetching policy completion flag');\r\n  //     }\r\n  //   });\r\n  // }\r\n\r\n\r\n  previous() {\r\n    this.fromStep3.emit();\r\n  }\r\n\r\n  backToDashboard() {\r\n    this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + 'risk-manager/risk-manager-dashboard' : '/risk-manager/risk-manager-dashboard']);\r\n  }\r\n\r\n  navigateToSteppers(stepperindex: number) {\r\n    this.riskManagerService.navigateToAdvancePolicyStepper(stepperindex);\r\n  }\r\n\r\n  private mapIntegerToAnswer(score: number, questionIndex: number): string {\r\n    switch (questionIndex) {\r\n      case 1:\r\n        switch (score) {\r\n          case 4: return \"Very High\";\r\n          case 3: return \"High\";\r\n          case 2: return \"Medium\";\r\n          case 1: return \"Low\";\r\n          default: return \"Unknown\";\r\n        }\r\n      case 2:\r\n        switch (score) {\r\n          case 4: return \"No Impact\";\r\n          case 3: return \"Low\";\r\n          case 2: return \"Medium\";\r\n          case 1: return \"High\";\r\n          default: return \"Unknown\";\r\n        }\r\n      case 3:\r\n        switch (score) {\r\n          case 4: return \"Very Low\";\r\n          case 3: return \"Low\";\r\n          case 2: return \"Medium\";\r\n          case 1: return \"High\";\r\n          case 0: return \"Don't Know\";\r\n          default: return \"Unknown\";\r\n        }\r\n      case 4:\r\n        switch (score) {\r\n          case 4: return \"Very High\";\r\n          case 3: return \"High\";\r\n          case 2: return \"Medium\";\r\n          case 1: return \"Low\";\r\n          case 0: return \"Don't Know\";\r\n          default: return \"Unknown\";\r\n        }\r\n      case 5:\r\n        switch (score) {\r\n          case 4: return \"Low\";\r\n          case 3: return \"Medium\";\r\n          case 2: return \"High\";\r\n          case 1: return \"Very High\";\r\n          case 0: return \"Don't Know\";\r\n          default: return \"Unknown\";\r\n        }\r\n      case 9:\r\n        switch (score) {\r\n          case 4: return \"Low\";\r\n          case 3: return \"Medium\";\r\n          case 2: return \"High\";\r\n          case 1: return \"Very High\";\r\n          case 0: return \"Don't Know\";\r\n          default: return \"Unknown\";\r\n        }\r\n      default:\r\n        return \"Unknown\";\r\n    }\r\n  }\r\n\r\n  private mapAnswerToInteger(answer: string, questionIndex: number): number {\r\n    switch (questionIndex) {\r\n      case 1:\r\n        switch (answer) {\r\n          case \"Very High\": return 4;\r\n          case \"High\": return 3;\r\n          case \"Medium\": return 2;\r\n          case \"Low\": return 1;\r\n          default: return -1;\r\n        }\r\n      case 2:\r\n        switch (answer) {\r\n          case \"No Impact\": return 4;\r\n          case \"Low\": return 3;\r\n          case \"Medium\": return 2;\r\n          case \"High\": return 1;\r\n          default: return -1;\r\n        }\r\n      case 3:\r\n        switch (answer) {\r\n          case \"Very Low\": return 4;\r\n          case \"Low\": return 3;\r\n          case \"Medium\": return 2;\r\n          case \"High\": return 1;\r\n          case \"Don't Know\": return 0;\r\n          default: return -1;\r\n        }\r\n      case 4:\r\n        switch (answer) {\r\n          case \"Very High\": return 4;\r\n          case \"High\": return 3;\r\n          case \"Medium\": return 2;\r\n          case \"Low\": return 1;\r\n          case \"Don't Know\": return 0;\r\n          default: return -1;\r\n        }\r\n      case 5:\r\n        switch (answer) {\r\n          case \"Low\": return 4;\r\n          case \"Medium\": return 3;\r\n          case \"High\": return 2;\r\n          case \"Very High\": return 1;\r\n          case \"Don't Know\": return 0;\r\n          default: return -1;\r\n        }\r\n      case 9:\r\n          switch (answer) {\r\n            case \"Low\": return 4;\r\n            case \"Medium\": return 3;\r\n            case \"High\": return 2;\r\n            case \"Very High\": return 1;\r\n            case \"Don't Know\": return 0;\r\n            default: return -1;\r\n          }\r\n      default:\r\n        return -1;\r\n    }\r\n  }\r\n\r\n  private mapQuestionsToInteger(index: number): number {\r\n    switch (index) {\r\n      case 1: return AdvancePolicyQuestions[\"CertaintyExposureLevel\"];\r\n      case 2: return AdvancePolicyQuestions[\"AbilityImpactCustomer\"];\r\n      case 3: return AdvancePolicyQuestions[\"DifferentiationFromCompetitors\"];\r\n      case 4: return AdvancePolicyQuestions[\"CompetitivenessLevel\"];\r\n      case 5: return AdvancePolicyQuestions[\"CreditSensitivity\"];\r\n      case 9: return AdvancePolicyQuestions[\"CreditSensitivity\"];\r\n      default: return -1; // Handle unexpected values\r\n    }\r\n  }\r\n\r\n  onConfirm() {\r\n    this.showLoader = true;\r\n    if (this.step2Res && this.step2Res.length !== 0) {\r\n      let questionAndScores = [];\r\n      this.errorMessage = '';\r\n      for (let index = 1; index < this.step2Res.length; index++) {\r\n        const obj = {\r\n          advancePolicyQuestions: 0,\r\n          score: 0\r\n        };\r\n        // Map question index and score\r\n        obj.advancePolicyQuestions = this.mapQuestionsToInteger(this.step2Res[index].index);\r\n        // obj.score = this.mapAnswerToInteger(this.step2Res[index].answer);\r\n        obj.score = this.mapAnswerToInteger(this.step2Res[index].answer, this.step2Res[index].index);\r\n        questionAndScores.push(obj);\r\n      }\r\n\r\n      const updateAdvancePolicyModel = {\r\n        \"budgetRate\": this.step2Res[0]?.answer,\r\n        \"questionAndScores\": questionAndScores\r\n      }\r\n      this.showfinalStep = true;\r\n\r\n      // this.riskManagerService?.updateAdvancePolicydata(updateAdvancePolicyModel).subscribe((res: any) => {\r\n      //   if (res?.[\"body\"]) {\r\n      //     this.showfinalStep = true;\r\n      //     this.showLoader = false;\r\n      //   }\r\n      // }, (error) => {\r\n      //   this.showLoader = false;\r\n      //   this.errorMessage = error?.error?.apiErrorMessage[0] ? error?.error?.apiErrorMessage[0] : \"Oops! Something went wrong. Please try again later.\";\r\n      // });\r\n    }\r\n  }\r\n\r\n}\r\n",
             "styleUrl": "./advanced-policy-step3.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>advanced-policy-step3 works!</p>\r\n"
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"policy-summary-wrap\" [class.showFinalStep]=\"showfinalStep\">\r\n    <button (click)=\"previous()\" class=\"btn-back\"><img src=\"images/back-icon-policy.svg\" alt=\"back\" />\r\n      Back</button>\r\n    <h3 class=\"heading\">Advanced Policy</h3>\r\n    <!-- <div class=\"loader-wrapper\">\r\n      <app-page-loader id=\"loader\" classes=\"bg-white section-loader\" *ngIf=\"showLoader\"></app-page-loader> -->\r\n    <div class=\"confirm-wrap\" *ngIf=\"!showfinalStep\">\r\n      <div class=\"summary-wrap\">\r\n        <h1 class=\"cnf-title\">Before you confirm</h1>\r\n        <p class=\"desc\">Please review your answers and confirm</p>\r\n        <div class=\"summary-inner\">\r\n          <div class=\"step-item step1\">\r\n            <div class=\"step-info\">\r\n              <h2 class=\"title\">Do you have an annual budget exchange rate?</h2>\r\n              <p class=\"rate-tag\">{{ step2Res?.[0] ? step2Res?.[0]?.answer : '--'}}</p>\r\n              <p class=\"generate-tag\" *ngIf=\"advancePolicyFlag\">Generated by okoora</p>\r\n            </div>\r\n            <button class=\"edit-btn\" id=\"budget-rate-edit-btn\" (click)=\"navigateToSteppers(0)\"><img src=\"images/edit-step-icon.svg\" alt=\"edit\" /></button>\r\n          </div>\r\n  \r\n          <div class=\"step-item step1\">\r\n            <div class=\"step-info\">\r\n              <h2 class=\"title\">How certain are you that your projected cash flow will be realized?</h2>\r\n              <p class=\"rate-tag\">{{ step2Res?.[1] ? step2Res?.[1]?.answer : '--'}}</p>\r\n            </div>\r\n            <button class=\"edit-btn\" id=\"budget-rate-one-edit-btn\" (click)=\"navigateToSteppers(1)\"><img src=\"images/edit-step-icon.svg\" alt=\"edit\" /></button>\r\n          </div>\r\n          <div class=\"step-item\">\r\n            <div class=\"step-info\">\r\n              <h2 class=\"title\">To what extent can you influence customer pricing or supplier costs?</h2>\r\n              <p class=\"rate-tag\">{{ step2Res?.[2] ? step2Res?.[2]?.answer : '--'}}</p>\r\n            </div>\r\n            <button class=\"edit-btn\" id=\"question-two-edit-btn\" (click)=\"navigateToSteppers(2)\"><img src=\"images/edit-step-icon.svg\" alt=\"edit\" /></button>\r\n          </div>\r\n          <div class=\"step-item\">\r\n            <div class=\"step-info\">\r\n              <h2 class=\"title\">How similar is your exposure to exchange rates compared to that of your main competitors?</h2>\r\n              <p class=\"rate-tag\">{{ step2Res?.[3] ? step2Res?.[3]?.answer : '--'}}</p>\r\n            </div>\r\n            <button class=\"edit-btn\" id=\"question-three-edit-btn\" (click)=\"navigateToSteppers(3)\"><img src=\"images/edit-step-icon.svg\" alt=\"edit\" /></button>\r\n          </div>\r\n          <div class=\"step-item\">\r\n            <div class=\"step-info\">\r\n              <h2 class=\"title\">How competitive is the industry your company operates in?</h2>\r\n              <p class=\"rate-tag\">{{ step2Res?.[4] ? step2Res?.[4]?.answer : '--'}}</p>\r\n            </div>\r\n            <button class=\"edit-btn\" id=\"question-four-edit-btn\" (click)=\"navigateToSteppers(4)\"><img src=\"images/edit-step-icon.svg\" alt=\"edit\" /></button>\r\n          </div>\r\n          <div class=\"step-item\">\r\n            <div class=\"step-info\">\r\n              <h2 class=\"title\">What is the company's ability to consume additional credit lines for possible collateral requirements?</h2>\r\n              <p class=\"rate-tag\">{{ step2Res?.[5] ? step2Res?.[5]?.answer : '--'}}</p>\r\n            </div>\r\n            <button class=\"edit-btn\" id=\"question-five-edit-btn\" (click)=\"navigateToSteppers(5)\"><img src=\"images/edit-step-icon.svg\" alt=\"edit\" /></button>\r\n          </div>\r\n        </div>\r\n        <span class=\"error-message\" *ngIf=\"errorMessage\">{{errorMessage}}</span>\r\n        <div class=\"btn-wrap\">\r\n          <button class=\"btn-confirm\" id=\"question-confirm-btn\" (click)=\"onConfirm()\">Confirm</button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <!-- </div> -->\r\n    <div class=\"final-step\" *ngIf=\"showfinalStep\">\r\n      <div class=\"success-wrap\">\r\n        <picture>\r\n          <img src=\"images/mass-payment/success.gif\" alt=\"tick\">\r\n        </picture>\r\n        <h3 class=\"congrats-text\">Congratulations,</h3>\r\n        <p class=\"sub-info\">You have successfully established an advanced policy</p>\r\n      </div>\r\n      <button class=\"btn-dashboard\" id=\"adv-policy-succ-back-dash-btn\" (click)=\"backToDashboard()\">Back to dashboard</button>\r\n    </div>\r\n  </div>\r\n  "
         },
         {
             "name": "AgentsBusyTraderoomComponent",
@@ -10094,6 +10418,47 @@
         ],
         "enumerations": [
             {
+                "name": "AdvancePolicyQuestions",
+                "childs": [
+                    {
+                        "name": "CertaintyExposureLevel",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "AbilityImpactCustomer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "DifferentiationFromCompetitors",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    },
+                    {
+                        "name": "CompetitivenessLevel",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 4
+                    },
+                    {
+                        "name": "CreditSensitivity",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 9
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/risk-dashboard/components/enums/advancePolicyQuestions.ts"
+            },
+            {
                 "name": "BuySell",
                 "childs": [
                     {
@@ -10274,6 +10639,49 @@
         },
         "groupedFunctions": {},
         "groupedEnumerations": {
+            "src/app/risk-dashboard/components/enums/advancePolicyQuestions.ts": [
+                {
+                    "name": "AdvancePolicyQuestions",
+                    "childs": [
+                        {
+                            "name": "CertaintyExposureLevel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "AbilityImpactCustomer",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "DifferentiationFromCompetitors",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        },
+                        {
+                            "name": "CompetitivenessLevel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 4
+                        },
+                        {
+                            "name": "CreditSensitivity",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 9
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/risk-dashboard/components/enums/advancePolicyQuestions.ts"
+                }
+            ],
             "src/app/risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-step2/cashflow-exposure-step2.component.ts": [
                 {
                     "name": "BuySell",
@@ -10434,7 +10842,7 @@
                 "linktype": "component",
                 "name": "AdvancedPolicyStep3Component",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/18",
                 "status": "low"
             },
             {
@@ -10728,7 +11136,7 @@
                 "linktype": "injectable",
                 "name": "HedgingDataService",
                 "coveragePercent": 0,
-                "coverageCount": "0/27",
+                "coverageCount": "0/28",
                 "status": "low"
             },
             {
