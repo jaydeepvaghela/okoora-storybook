@@ -52,7 +52,7 @@
 
     .questions-step-wrapper {
       background-color: $white;
-      padding: 20px 10px 3px 33px; // removed 30 pixels
+      padding: 20px 21px 3px 33px; // removed 30 pixels
       border-radius: 10px;
 
       @media screen and (max-width: 768px) {
@@ -89,6 +89,7 @@
             .mdc-linear-progress__bar-inner {
               border-width: 8px;
               border-radius: 20px;
+              // border-radius: 50%;
               border-color: #175cd3;
               left: 0;
             }
@@ -492,7 +493,7 @@
         padding: 15px 15px 0 33px;
         .step-form-wrap {
           .annual-head {
-            margin: 10px auto;
+            margin: 12px auto;
             max-width: 600px;
             .title {
               font-size: 20px;

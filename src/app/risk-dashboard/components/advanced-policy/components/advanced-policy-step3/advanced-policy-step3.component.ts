@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { HedgingDataService } from '../../../hedging-proposal/hedging-data.service';
 import { AdvancePolicyQuestions } from '../../../enums/advancePolicyQuestions';
@@ -13,7 +13,32 @@ import { CommonModule } from '@angular/common';
 export class AdvancedPolicyStep3Component implements OnInit {
   showfinalStep: boolean = false;
   router = inject(Router);
-  step2Res: any;
+  @Input() step2Res = [
+    {
+        "index": 0,
+        "answer": "5.0955"
+    },
+    {
+        "index": 1,
+        "answer": "High"
+    },
+    {
+        "index": 2,
+        "answer": "Medium"
+    },
+    {
+        "index": 3,
+        "answer": "Low"
+    },
+    {
+        "index": 4,
+        "answer": "Very High"
+    },
+    {
+        "index": 5,
+        "answer": "High"
+    }
+  ];
   advancePolicyFlag: boolean = false;
   riskManagerService = inject(HedgingDataService);
   @Output() fromStep3 = new EventEmitter<void>();
@@ -24,7 +49,11 @@ export class AdvancedPolicyStep3Component implements OnInit {
   ngOnInit(): void {
     // this.getAlreadyCompletedPolicy();
     this.riskManagerService.getAdvancePolicyStep2Data.subscribe(res => {
-      this.step2Res = res.sort((a: any, b: any) => a.index - b.index);
+      if (res && res.length > 0) {
+        this.step2Res = res.sort((a: any, b: any) => a.index - b.index);
+      } 
+      console.log('response from step2', this.step2Res);
+
     })
     // this.advancePolicyFlag = this.riskManagerService.advancePolicyFlag;
     this.riskManagerService.advancePolicyFlag$.subscribe(flag => {

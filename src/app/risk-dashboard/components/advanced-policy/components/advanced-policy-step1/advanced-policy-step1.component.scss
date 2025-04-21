@@ -70,7 +70,7 @@
 
         .step1-wrapper {
             background-color: $white;
-            padding: 50px 40px 36px 63px;
+            padding: 50px 52px 37px 63px;
             border-radius: 10px;
 
             .step-form-wrap {
@@ -91,7 +91,7 @@
 
                         .mdc-linear-progress__bar-inner {
                             border-width: 8px;
-                            border-radius: 50%;
+                            border-radius: 20px;
                             border-color: #175CD3;
                             left: 0;
                         }
@@ -114,7 +114,7 @@
                 }
 
                 .anual-head {
-                    margin: 42px 0;
+                    margin: 42px 0 49px 0;
 
                     .sub-text {
                         color: #2947F2;
@@ -277,7 +277,7 @@
 
                 .rate-info {
                     max-width: 518px;
-                    margin:44px auto 196px;
+                    margin:44.5px auto 196px;
 
                     p {
                         margin: 0;

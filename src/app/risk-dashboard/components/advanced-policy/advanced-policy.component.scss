@@ -4,6 +4,7 @@
     }
     .advance-policy-stepper {
         max-width: 1024px;
+        width: 100%;
         margin: auto 321px auto 238px; // minus the side padding
         mat-stepper {
             background-color: transparent;
