@@ -30,10 +30,15 @@
         mat-expansion-panel {
             // height: 120px;
             //min-height    : 22rem;
+            box-shadow: none !important;
             border-radius : 10px !important;
             @include respond(xl) {
                 // min-height : 30rem;
             }
+        }
+        hr{
+            border: 1px dashed #C5C5C5;
+            margin:14px 0 6px;
         }
         .mat-expansion-panel {
             padding:unset;
@@ -53,7 +58,7 @@
         .mat-expansion-panel-header {
             
             height  : fit-content;
-            padding : 1rem;
+            padding : 1.25rem;
 
             & * {
                 max-width : 100%;
@@ -94,28 +99,44 @@
     }
 }
 .at-title {
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-weight:700;
+    font-size:18px;
+    color: #000;
+    @media screen and (max-width: 1440px) {
+        font-size: 16px;
+    }
+    @media screen and (max-width: 1024px) {
+        font-size: 14px;    
+    }
 }
 .at-icon {
-    margin-right: 30px;
+    margin-right:20px;
 }
 .at-description {
-    
-    font-size: 0.8rem;
+    font-weight: 300;
+    font-size:16px;
+    color:#111827;
+    line-height: 26px;
+    @media screen and (max-width: 1440px) {
+        font-size: 14px;
+    }
+    @media screen and (max-width: 1024px) {
+        font-size: 12px;    
+    }
 }
 .continue-btn {
-    background: linear-gradient(111.05deg, #444444 2.91%, #000000 96.88%);
+    background: #01031C;
     border-radius: 40px;
     font-size: 16px;
     // line-height: 22px;
     font-weight: 600;
     color: #fff;
-    padding: 12px 0px;
+    padding: 14px 0px;
     height: auto;
     transition: 0.3s;
     position: relative;
     width: 100% !important;
+    margin: 26px 0 0;
     @media screen and (max-width: 1440px) {
         // height: 25px;
         width: 25px;
