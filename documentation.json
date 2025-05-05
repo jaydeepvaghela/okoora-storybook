@@ -9507,7 +9507,7 @@
         },
         {
             "name": "KycOneComponent",
-            "id": "component-KycOneComponent-31d3f1f5d058efc17007f57bc2ccc899b54eafe71555b8362f5bf1371a09b65a30f1741b17fc7b7119389e67b53e668ea6d21a4e056fa39d1b25bb25ecd7946b",
+            "id": "component-KycOneComponent-1700d62ce2832e077a7d06aa4f2c6d5f3ff939f2c4f25d825f2ba5e796ab7778c8ed2923b20990e79a120599bad963c39a037fd5caad60c365e02c4aade8df6a",
             "file": "src/app/sign-up/kyc-one/kyc-one.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9527,7 +9527,7 @@
                     "name": "kycForm",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 23,
                     "type": "any",
                     "decorators": []
                 },
@@ -9535,7 +9535,7 @@
                     "name": "parentFormGroup",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 22,
                     "type": "FormGroup",
                     "decorators": []
                 },
@@ -9543,7 +9543,7 @@
                     "name": "stepsObj",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 24,
                     "type": "IStepsObj",
                     "decorators": []
                 }
@@ -9554,7 +9554,7 @@
                     "defaultValue": "new EventEmitter<IKycData['businessTypes']>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "EventEmitter"
                 },
                 {
@@ -9562,7 +9562,7 @@
                     "defaultValue": "new EventEmitter<StepActionType>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "EventEmitter"
                 }
             ],
@@ -9576,7 +9576,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27
+                    "line": 28
                 },
                 {
                     "name": "businessTypes",
@@ -9587,7 +9587,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 26
+                    "line": 27
                 },
                 {
                     "name": "businessTypesCompanyAccount",
@@ -9597,7 +9597,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 30
                 },
                 {
                     "name": "businessTypesPrivateAccount",
@@ -9607,7 +9607,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 31
                 },
                 {
                     "name": "componentDestroyed",
@@ -9618,7 +9618,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 21
                 },
                 {
                     "name": "countryName",
@@ -9628,7 +9628,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 33
                 },
                 {
                     "name": "privateCountryNotIsrael",
@@ -9639,7 +9639,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 32
                 },
                 {
                     "name": "step_1",
@@ -9649,7 +9649,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 28
+                    "line": 29
                 }
             ],
             "methodsClass": [
@@ -9659,7 +9659,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 101,
+                    "line": 102,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9682,7 +9682,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9712,7 +9712,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 78,
+                    "line": 79,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9722,7 +9722,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 105,
+                    "line": 106,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9732,7 +9732,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -9765,12 +9765,16 @@
                 {
                     "name": "TranslateModule",
                     "type": "module"
+                },
+                {
+                    "name": "SelectCountryComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';\r\nimport {AbstractControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';\r\nimport {MatExpansionModule, MatExpansionPanel} from '@angular/material/expansion';\r\nimport {Subject} from 'rxjs';\r\nimport {EBusinessType, EDetailsToShowNames, IKycData, IStepsObj} from '../models';\r\n// import {KycService} from '../services/kyc.service';\r\nimport {StepActionType} from '../types/global.type';\r\n// import { onlyValidIdNumber } from '../../shared/custom-validators';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatError } from '@angular/material/select';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\n\r\n@Component({\r\n  selector: 'app-kyc-one',\r\n  imports: [CommonModule,MatExpansionModule,FormsModule,ReactiveFormsModule,MatError,TranslateModule],\r\n  templateUrl: './kyc-one.component.html',\r\n  styleUrl: './kyc-one.component.scss'\r\n})\r\nexport class KycOneComponent {\r\n  componentDestroyed = new Subject<any>();\r\n  @Input('parentFormGroup') parentFormGroup!: FormGroup;\r\n  @Input('kycForm') kycForm: any;\r\n  @Input('stepsObj') stepsObj!: IStepsObj;\r\n  @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();\r\n  @Output('activatedBusinessType') activatedBusinessType = new EventEmitter<IKycData['businessTypes']>();\r\n  businessTypes = EBusinessType;\r\n  assetsPath = 'environment.assetsPath';\r\n  step_1!: FormGroup;\r\n  businessTypesCompanyAccount!: FormGroup;\r\n  businessTypesPrivateAccount!: FormGroup;\r\n  privateCountryNotIsrael: boolean = false;\r\n  countryName: any;\r\n  constructor(\r\n    // private KycS: KycService,\r\n  ) {\r\n  }\r\n  ngOnInit(): void {\r\n    this.step_1 = <FormGroup>this.kycForm.get('step_1');\r\n    this.businessTypesCompanyAccount = <FormGroup>this.kycForm.get('step_1').get(this.businessTypes.companyAccount)\r\n    this.businessTypesPrivateAccount = <FormGroup>this.kycForm.get('step_1').get(this.businessTypes.privateAccount)\r\n  }\r\n\r\n  handleBusinessTypeChange(panel: MatExpansionPanel, fgName: IKycData['businessTypes']) {\r\n    // this.KycS.handleResetCountries$.next(true);\r\n\r\n    if (fgName === EDetailsToShowNames.privateAcc) {\r\n      this.kycForm.controls['step_7'].get('id_number').addValidators([Validators.required]);\r\n    }\r\n\r\n    if (fgName === EDetailsToShowNames.companyAcc) {\r\n      this.kycForm.controls['step_7'].get('id_number').setValidators(null);\r\n      this.kycForm.controls['step_7'].get('id_number').setErrors(null);\r\n      this.kycForm.controls['step_7'].get('id_number').updateValueAndValidity();\r\n    }\r\n\r\n    const groupSelected = this.kycForm.controls.step_1.get(fgName);\r\n    if (!groupSelected) {\r\n      console.error(`group didnt found given ${groupSelected} \\n form group name given ${fgName}`);\r\n      return;\r\n    }\r\n\r\n    Object.keys(this.kycForm.controls.step_1['controls']).forEach(bt => {\r\n      const currentBusiness:any = (<AbstractControl>this.kycForm.controls.step_1['controls'][bt]);\r\n\r\n      currentBusiness.reset();\r\n\r\n      currentBusiness.get('isActive').setValue(null);\r\n      if (bt !== EBusinessType.invitedAccount) {\r\n        currentBusiness.get('countrySelected').setValue(null);\r\n      }\r\n    });\r\n\r\n    this.kycForm.controls.step_1.get(fgName).get('isActive').setValue(panel.expanded);\r\n\r\n    this.activatedBusinessType.next(fgName)\r\n  }\r\n\r\n  handleNextStep() {\r\n   this.privateCountryNotIsrael = false;\r\n    if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected != null){\r\n      if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected){\r\n        this.nextStepEvent.next('NEXT');\r\n      }else{\r\n        localStorage.removeItem('kycForm')\r\n        localStorage.setItem('step', JSON.stringify(1));\r\n        window.location.href = \"https://onboarding-demo.paydirect.io/okoora/forms/corporate\"\r\n      }\r\n    }else{    \r\n      if(this.kycForm?.value?.step_1?.privateAcc?.countrySelected != null && this.kycForm?.value?.step_1?.privateAcc?.countrySelected !='Israel'){\r\n        if(this.countryName === null || this.countryName === undefined){\r\n          this.countryName = this.kycForm?.value?.step_1?.privateAcc?.countrySelected\r\n          // this.KycS.PrivateKYCCountry(this.countryName).subscribe();\r\n        }\r\n        this.privateCountryNotIsrael = true;        \r\n      } else {\r\n        this.nextStepEvent.next('NEXT');\r\n      }\r\n    }\r\n  }\r\n\r\n  canClickNextStep(): boolean {\r\n    return this.kycForm.get('step_1').valid;\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.componentDestroyed.next(null);\r\n    this.componentDestroyed.complete();\r\n  };\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';\r\nimport {AbstractControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';\r\nimport {MatExpansionModule, MatExpansionPanel} from '@angular/material/expansion';\r\nimport {Subject} from 'rxjs';\r\nimport {EBusinessType, EDetailsToShowNames, IKycData, IStepsObj} from '../models';\r\n// import {KycService} from '../services/kyc.service';\r\nimport {StepActionType} from '../types/global.type';\r\n// import { onlyValidIdNumber } from '../../shared/custom-validators';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatError } from '@angular/material/select';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { SelectCountryComponent } from '../fields/select-country/select-country.component';\r\n\r\n@Component({\r\n  selector: 'app-kyc-one',\r\n  imports: [CommonModule,MatExpansionModule,FormsModule,ReactiveFormsModule,MatError,TranslateModule, SelectCountryComponent],\r\n  templateUrl: './kyc-one.component.html',\r\n  styleUrl: './kyc-one.component.scss'\r\n})\r\nexport class KycOneComponent {\r\n  componentDestroyed = new Subject<any>();\r\n  @Input('parentFormGroup') parentFormGroup!: FormGroup;\r\n  @Input('kycForm') kycForm: any;\r\n  @Input('stepsObj') stepsObj!: IStepsObj;\r\n  @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();\r\n  @Output('activatedBusinessType') activatedBusinessType = new EventEmitter<IKycData['businessTypes']>();\r\n  businessTypes = EBusinessType;\r\n  assetsPath = 'environment.assetsPath';\r\n  step_1!: FormGroup;\r\n  businessTypesCompanyAccount!: FormGroup;\r\n  businessTypesPrivateAccount!: FormGroup;\r\n  privateCountryNotIsrael: boolean = false;\r\n  countryName: any;\r\n  constructor(\r\n    // private KycS: KycService,\r\n  ) {\r\n  }\r\n  ngOnInit(): void {\r\n    this.step_1 = <FormGroup>this.kycForm.get('step_1');\r\n    this.businessTypesCompanyAccount = <FormGroup>this.kycForm.get('step_1').get(this.businessTypes.companyAccount)\r\n    this.businessTypesPrivateAccount = <FormGroup>this.kycForm.get('step_1').get(this.businessTypes.privateAccount)\r\n  }\r\n\r\n  handleBusinessTypeChange(panel: MatExpansionPanel, fgName: IKycData['businessTypes']) {\r\n    // this.KycS.handleResetCountries$.next(true);\r\n\r\n    if (fgName === EDetailsToShowNames.privateAcc) {\r\n      this.kycForm.controls['step_7'].get('id_number').addValidators([Validators.required]);\r\n    }\r\n\r\n    if (fgName === EDetailsToShowNames.companyAcc) {\r\n      this.kycForm.controls['step_7'].get('id_number').setValidators(null);\r\n      this.kycForm.controls['step_7'].get('id_number').setErrors(null);\r\n      this.kycForm.controls['step_7'].get('id_number').updateValueAndValidity();\r\n    }\r\n\r\n    const groupSelected = this.kycForm.controls.step_1.get(fgName);\r\n    if (!groupSelected) {\r\n      console.error(`group didnt found given ${groupSelected} \\n form group name given ${fgName}`);\r\n      return;\r\n    }\r\n\r\n    Object.keys(this.kycForm.controls.step_1['controls']).forEach(bt => {\r\n      const currentBusiness:any = (<AbstractControl>this.kycForm.controls.step_1['controls'][bt]);\r\n\r\n      currentBusiness.reset();\r\n\r\n      currentBusiness.get('isActive').setValue(null);\r\n      if (bt !== EBusinessType.invitedAccount) {\r\n        currentBusiness.get('countrySelected').setValue(null);\r\n      }\r\n    });\r\n\r\n    this.kycForm.controls.step_1.get(fgName).get('isActive').setValue(panel.expanded);\r\n\r\n    this.activatedBusinessType.next(fgName)\r\n  }\r\n\r\n  handleNextStep() {\r\n   this.privateCountryNotIsrael = false;\r\n    if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected != null){\r\n      if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected){\r\n        this.nextStepEvent.next('NEXT');\r\n      }else{\r\n        localStorage.removeItem('kycForm')\r\n        localStorage.setItem('step', JSON.stringify(1));\r\n        window.location.href = \"https://onboarding-demo.paydirect.io/okoora/forms/corporate\"\r\n      }\r\n    }else{    \r\n      if(this.kycForm?.value?.step_1?.privateAcc?.countrySelected != null && this.kycForm?.value?.step_1?.privateAcc?.countrySelected !='Israel'){\r\n        if(this.countryName === null || this.countryName === undefined){\r\n          this.countryName = this.kycForm?.value?.step_1?.privateAcc?.countrySelected\r\n          // this.KycS.PrivateKYCCountry(this.countryName).subscribe();\r\n        }\r\n        this.privateCountryNotIsrael = true;        \r\n      } else {\r\n        this.nextStepEvent.next('NEXT');\r\n      }\r\n    }\r\n  }\r\n\r\n  canClickNextStep(): boolean {\r\n    return this.kycForm.get('step_1').valid;\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.componentDestroyed.next(null);\r\n    this.componentDestroyed.complete();\r\n  };\r\n}\r\n",
             "styleUrl": "./kyc-one.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -9781,10 +9785,10 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 32
+                "line": 33
             },
             "extends": [],
-            "templateData": "<ng-container *ngIf=\"parentFormGroup\" [formGroup]=\"parentFormGroup\">\r\n    <ng-container [formGroup]=\"step_1\">\r\n      <mat-accordion class=\"at__accordion px-md-5\" [multi]=\"false\">\r\n        <mat-expansion-panel class=\"mb-4\" #panel1\r\n          [expanded]=\"kycForm.get('step_1').get(businessTypes.companyAccount).value.isActive\"\r\n          [formGroup]=\"businessTypesCompanyAccount\">\r\n          <mat-expansion-panel-header (click)=\"handleBusinessTypeChange(panel1, businessTypes.companyAccount)\">\r\n            <mat-panel-title class=\"kyc-ah--1\">\r\n              <mat-radio-group formControlName=\"isActive\">\r\n                <input type=\"checkbox\" style=\"display: none\" />\r\n                <div class=\"d-flex flex-column align-items-center justify-content-center text-center justify-content-center d-md-none\"\r\n                  (click)=\"handleBusinessTypeChange(panel1, businessTypes.companyAccount)\">\r\n                  <img class=\"at-icon mb-4\" src=\"images/suitcase-bag.svg\" alt=\"company icon\">\r\n                  <h3 class=\"at-title at-ah--1 mb-4\">{{ 'KYC_Step_1.companyAcc.title' | translate}}</h3>\r\n                  <p class=\"at-description at-p--1\">{{ 'KYC_Step_1.companyAcc.description' | translate}}\r\n                  </p>\r\n                </div>\r\n                <div class=\"inner-radio-button d-none d-md-flex align-items-start\"\r\n                  (click)=\"handleBusinessTypeChange(panel1, businessTypes.companyAccount)\">\r\n                  <img class=\"at-icon\" src=\"images/suitcase-bag.svg\" alt=\"company icon\">\r\n                  <div>\r\n                    <h3 class=\"at-title at-ah--1\">{{ 'KYC_Step_1.companyAcc.title' | translate}}</h3>\r\n                    <p class=\"at-description at-p--1\">{{ 'KYC_Step_1.companyAcc.description' | translate}}</p>\r\n                  </div>\r\n                </div>\r\n              </mat-radio-group>\r\n            </mat-panel-title>\r\n          </mat-expansion-panel-header>\r\n          <!-- <app-select-country [kycForm]=\"kycForm\" [specialClasses]=\"'custom-mat-form-field--1'\"\r\n            [currentFormGroup]=\"businessTypesCompanyAccount\" [currentformControlName]=\"'countrySelected'\"\r\n            [matLabelTranslation]=\"'KYC_Step_1.companyAcc.field_label' | translate\" >\r\n          </app-select-country> -->\r\n          <button  type=\"button\" [class.disabled]=\"!kycForm.get('step_1').valid\" [disabled]=\"!kycForm.get('step_1').valid\" mat-raised-button color=\"primary\"\r\n            class=\"continue-btn\" (click)=\"handleNextStep()\" id=\"kyc-one-continue-btn--1\">\r\n            {{ 'KYC.Continue' | translate}}\r\n          </button>\r\n        </mat-expansion-panel>\r\n        <hr>\r\n        <mat-expansion-panel class=\"mb-4\" #panel2 [formGroup]=\"businessTypesPrivateAccount\"\r\n          [expanded]=\"kycForm.get('step_1').get(businessTypes.privateAccount).value.isActive\">\r\n          <mat-expansion-panel-header (click)=\"handleBusinessTypeChange(panel2, businessTypes.privateAccount)\">\r\n            <mat-panel-title class=\"kyc-ah--1\">\r\n              <mat-radio-group formControlName=\"isActive\">\r\n                <input type=\"checkbox\" style=\"display: none\" />\r\n                <div class=\"d-flex flex-column align-items-center justify-content-center text-center d-md-none\"\r\n                (click)=\"handleBusinessTypeChange(panel2, businessTypes.privateAccount)\">\r\n                  <img class=\"at-icon mb-4\" src=\"images/private-icon.svg\" alt=\"private icon\">\r\n                  <h3 class=\"at-title at-ah--1 mb-4\">{{ 'KYC_Step_1.privateAcc.title' | translate}}</h3>\r\n                  <span class=\"at-description at-p--1\">{{ 'KYC_Step_1.privateAcc.description' | translate}}</span>\r\n                </div>\r\n                <div  (click)=\"handleBusinessTypeChange(panel2, businessTypes.privateAccount)\" class=\"inner-radio-button d-none d-md-flex align-items-start\">\r\n                  <img class=\"at-icon\" src=\"images//private-icon.svg\" alt=\"private icon\">\r\n                  <div>\r\n                    <h3 class=\"at-title at-ah--1\">{{ 'KYC_Step_1.privateAcc.title' | translate}}</h3>\r\n                    <p class=\"at-description at-p--1\">{{ 'KYC_Step_1.privateAcc.description' |translate}}</p>\r\n                  </div>\r\n                </div>\r\n              </mat-radio-group>\r\n            </mat-panel-title>\r\n          </mat-expansion-panel-header>\r\n          <!-- <app-select-country [kycForm]=\"kycForm\" [specialClasses]=\"'custom-mat-form-field--1'\"\r\n            [currentFormGroup]=\"businessTypesPrivateAccount\" [currentformControlName]=\"'countrySelected'\"\r\n            [matLabelTranslation]=\"'KYC_Step_1.privateAcc.field_label' | translate\">\r\n        </app-select-country> -->\r\n        <mat-error *ngIf=\"privateCountryNotIsrael\" [style]=\"'font-size:13px; transform: translateY(-56%);'\">\r\n          {{ 'KYC_Step_1.privateAcc.country_not_from_israel' | translate}}\r\n          </mat-error>\r\n          <button [class.disabled]=\"!kycForm.get('step_1').valid\" [disabled]=\"!kycForm.get('step_1').valid\" type=\"button\" mat-raised-button color=\"primary\"\r\n            class=\"continue-btn\" (click)=\"handleNextStep()\" id=\"kyc-one-continue-btn--2\">\r\n            {{ 'KYC.Continue' | translate}}\r\n          </button>\r\n        </mat-expansion-panel><!-- # PRIVATE ACCOUNT Panel-->\r\n      </mat-accordion>\r\n    </ng-container>\r\n  </ng-container>"
+            "templateData": "<ng-container *ngIf=\"parentFormGroup\" [formGroup]=\"parentFormGroup\">\r\n    <ng-container [formGroup]=\"step_1\">\r\n      <mat-accordion class=\"at__accordion px-md-5\" [multi]=\"false\">\r\n        <mat-expansion-panel class=\"mb-4\" #panel1\r\n          [expanded]=\"kycForm.get('step_1').get(businessTypes.companyAccount).value.isActive\"\r\n          [formGroup]=\"businessTypesCompanyAccount\">\r\n          <mat-expansion-panel-header (click)=\"handleBusinessTypeChange(panel1, businessTypes.companyAccount)\">\r\n            <mat-panel-title class=\"kyc-ah--1\">\r\n              <mat-radio-group formControlName=\"isActive\">\r\n                <input type=\"checkbox\" style=\"display: none\" />\r\n                <div class=\"d-flex flex-column align-items-center justify-content-center text-center justify-content-center d-md-none\"\r\n                  (click)=\"handleBusinessTypeChange(panel1, businessTypes.companyAccount)\">\r\n                  <img class=\"at-icon mb-4\" src=\"assets/images/comapny-icon.svg\" alt=\"company icon\">\r\n                  <h3 class=\"at-title at-ah--1 mb-4\">{{ 'KYC_Step_1.companyAcc.title' | translate}}</h3>\r\n                  <p class=\"at-description at-p--1\">{{ 'KYC_Step_1.companyAcc.description' | translate}}\r\n                  </p>\r\n                </div>\r\n                <div class=\"inner-radio-button d-none d-md-flex\"\r\n                  (click)=\"handleBusinessTypeChange(panel1, businessTypes.companyAccount)\">\r\n                  <img class=\"at-icon\" src=\"assets/images/comapny-icon.svg\" alt=\"company icon\">\r\n                  <div>\r\n                    <h3 class=\"at-title at-ah--1\">{{ 'KYC_Step_1.companyAcc.title' | translate}}</h3>\r\n                    <p class=\"at-description at-p--1\">{{ 'KYC_Step_1.companyAcc.description' | translate}}</p>\r\n                  </div>\r\n                </div>\r\n              </mat-radio-group>\r\n            </mat-panel-title>\r\n          </mat-expansion-panel-header>\r\n          <app-select-country [kycForm]=\"kycForm\" [specialClasses]=\"'custom-mat-form-field--1'\"\r\n            [currentFormGroup]=\"businessTypesCompanyAccount\" [currentformControlName]=\"'countrySelected'\"\r\n            [matLabelTranslation]=\"'KYC_Step_1.companyAcc.field_label' | translate\" >\r\n          </app-select-country>\r\n          <button  type=\"button\" [class.disabled]=\"!kycForm.get('step_1').valid\" [disabled]=\"!kycForm.get('step_1').valid\" mat-raised-button color=\"primary\"\r\n            class=\"continue-btn\" (click)=\"handleNextStep()\" id=\"kyc-one-continue-btn--1\">\r\n            {{ 'KYC.Continue' | translate}}\r\n          </button>\r\n        </mat-expansion-panel>\r\n        <mat-expansion-panel class=\"mb-4\" #panel2 [formGroup]=\"businessTypesPrivateAccount\"\r\n          [expanded]=\"kycForm.get('step_1').get(businessTypes.privateAccount).value.isActive\">\r\n          <mat-expansion-panel-header (click)=\"handleBusinessTypeChange(panel2, businessTypes.privateAccount)\">\r\n            <mat-panel-title class=\"kyc-ah--1\">\r\n              <mat-radio-group formControlName=\"isActive\">\r\n                <input type=\"checkbox\" style=\"display: none\" />\r\n                <div class=\"d-flex flex-column align-items-center justify-content-center text-center d-md-none\"\r\n                (click)=\"handleBusinessTypeChange(panel2, businessTypes.privateAccount)\">\r\n                  <img class=\"at-icon mb-4\" src=\"assets/images/private-icon.svg\" alt=\"private icon\">\r\n                  <h3 class=\"at-title at-ah--1 mb-4\">{{ 'KYC_Step_1.privateAcc.title' | translate}}</h3>\r\n                  <span class=\"at-description at-p--1\">{{ 'KYC_Step_1.privateAcc.description' | translate}}</span>\r\n                </div>\r\n                <div  (click)=\"handleBusinessTypeChange(panel2, businessTypes.privateAccount)\" class=\"inner-radio-button d-none d-md-flex\">\r\n                  <img class=\"at-icon\" src=\"assets/images//private-icon.svg\" alt=\"private icon\">\r\n                  <div>\r\n                    <h3 class=\"at-title at-ah--1\">{{ 'KYC_Step_1.privateAcc.title' | translate}}</h3>\r\n                    <p class=\"at-description at-p--1\">{{ 'KYC_Step_1.privateAcc.description' |translate}}</p>\r\n                  </div>\r\n                </div>\r\n              </mat-radio-group>\r\n            </mat-panel-title>\r\n          </mat-expansion-panel-header>\r\n          <app-select-country [kycForm]=\"kycForm\" [specialClasses]=\"'custom-mat-form-field--1'\"\r\n            [currentFormGroup]=\"businessTypesPrivateAccount\" [currentformControlName]=\"'countrySelected'\"\r\n            [matLabelTranslation]=\"'KYC_Step_1.privateAcc.field_label' | translate\">\r\n          </app-select-country>\r\n        <mat-error *ngIf=\"privateCountryNotIsrael\" [style]=\"'font-size:13px; transform: translateY(-56%);'\">\r\n          {{ 'KYC_Step_1.privateAcc.country_not_from_israel' | translate}}\r\n          </mat-error>\r\n          <button [class.disabled]=\"!kycForm.get('step_1').valid\" [disabled]=\"!kycForm.get('step_1').valid\" type=\"button\" mat-raised-button color=\"primary\"\r\n            class=\"continue-btn\" (click)=\"handleNextStep()\" id=\"kyc-one-continue-btn--2\">\r\n            {{ 'KYC.Continue' | translate}}\r\n          </button>\r\n        </mat-expansion-panel><!-- # PRIVATE ACCOUNT Panel-->\r\n      </mat-accordion>\r\n    </ng-container>\r\n  </ng-container>"
         },
         {
             "name": "MomentumIndicatorChartComponent",
@@ -11232,6 +11236,304 @@
             "templateData": "<div class=\"loader-wrapper\">\r\n    <div class=\"risk-estimate-wrapper\">\r\n        <div class=\"estimate-head\">\r\n            <h3 class=\"head-title\">What is my risk estimate?</h3>\r\n            <p class=\"head-sub\">You are at risk when the <span class=\"risk-up\">USD goes up </span> <img src=\"images/cross-arrow-icon.svg\"\r\n                    alt=\"Arrow\"></p>\r\n        </div>\r\n        <ng-template #graphtool>\r\n            Benchmark\r\n        </ng-template>\r\n        <ng-template #minlose>\r\n            Minimal expected loss under extreme conditions\r\n        </ng-template>\r\n        <ng-template #avglose>\r\n            Average expected loss under extreme conditions\r\n        </ng-template>\r\n\r\n        <div class=\"risk-esti-chart-wrapper\">\r\n            <div class=\"chart-inner\">\r\n                <img src=\"images/risk-estimate-circle.svg\" alt=\"Risk Estimate Circle\">\r\n                <div class=\"benchmark-circle\" [style.transform]=\"'rotate(' + benchmarkRotate + 'deg)'\">\r\n                    <div class=\"benchmark-pointer\"\r\n                        [ngbTooltip]=\"graphtool\"\r\n                        [autoClose]=\"false\"\r\n                        #graphtooltip=\"ngbTooltip\"\r\n                        placement=\"top\"\r\n                        triggers=\"manual\"\r\n                        tooltipClass=\"risk-dash-tooltip-benchmark\"\r\n                        container=\"body\">\r\n                      <svg width=\"17\" height=\"25\" viewBox=\"0 0 17 25\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                        <path\r\n                          d=\"M16.4238 0.703854L14.4981 24.824L11.8892 24.6157L13.815 0.495527L16.4238 0.703854ZM9.89539 0.287289L9.25246 24.4758L6.636 24.4062L7.27907 0.217773L9.89539 0.287289ZM3.94499 24.4062L1.32867 24.4758L0.685593 0.287289L3.30206 0.217773L3.94499 24.4062Z\"\r\n                          fill=\"#344054\" />\r\n                      </svg>\r\n                    </div>\r\n                  </div>\r\n                <div class=\"chart-circle\" [style.transform]=\"'rotate(' + riskangle + 'deg)'\">\r\n                    <svg class=\"circle-pointer\" width=\"41\" height=\"74\" viewBox=\"0 0 41 74\" fill=\"none\"\r\n                        xmlns=\"http://www.w3.org/2000/svg\">\r\n                        <path d=\"M37.9327 28.5146L31.4657 37.682L26.7599 27.4977L37.9327 28.5146Z\" [style.fill]=\"riskColor\" />\r\n                        <path d=\"M36.7194 71.1411C36.7194 42.6422 23.2795 17.4227 2.66016 2.0228\" [style.stroke]=\"riskColor\"\r\n                            stroke-width=\"4\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" />\r\n                    </svg>\r\n                </div>\r\n\r\n                <div class=\"chart-info\">\r\n                    <div class=\"desc\">\r\n                        <h4 class=\"risk-level-text\">Total Risk Level</h4>\r\n                        <h3 class=\"risk-label\" [style.color]=\"riskColor\">{{totalRiskLevel}}</h3>\r\n                        <p class=\"info\">and <span [style.color]=\"riskColor\">{{benchmark}}</span> the benchmark</p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"risk-estimate-info-wrapper\">\r\n            <div class=\"lose-info\">\r\n                <h4 class=\"info-title\"> <img src=\"images/risk-warn-icon.svg\" alt=\"Warning\">How much can I lose?</h4>\r\n                <div class=\"lose-desc\">\r\n                    <p><span class=\"desc\">Under extreme conditions, </span> <span class=\"every\">once every </span>\r\n                        <mat-select class=\"year-selector\" [(value)]=\"selectedYear\" panelClass=\"risk-estimate-chart-ddl\">\r\n                            <mat-option value=\"Y5\">5 years</mat-option>\r\n                            <mat-option value=\"Y10\" selected>10 years</mat-option>\r\n                            <mat-option value=\"Y20\">20 years</mat-option>\r\n                        </mat-select>,\r\n                    </p>\r\n                    <p class=\"annual-lose\">your annual loss will exceed <span>{{annualLoss}}</span></p>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"lose-wrapper\">\r\n                <div class=\"min-expected-lose\">\r\n                    <h4 class=\"item-title\">Minimum expected lost <img src=\"images/annual-title-help-icon.svg\"\r\n                            alt=\"Help\" [ngbTooltip]=\"minlose\" placement=\"top\" tooltipClass=\"risk-dash-tooltip--rm\"></h4>\r\n\r\n                    <div class=\"lose-item\">\r\n                        <h5 class=\"exceed-title\">Initial loss level</h5>\r\n                        <div class=\"initial lose-bar\" style=\"width: 100%\" \r\n                        ngbTooltip=\"$4,476\" placement=\"top\"\r\n                        tooltipClass=\"risk-dash-tooltip--rm\">{{initialloss}}</div>\r\n                    </div>\r\n\r\n                    <div class=\"lose-item\">\r\n                        <h5 class=\"exceed-title\">Benchmark loss level</h5>\r\n                        <div class=\"benchmark lose-bar\" style=\"width: 80%\"\r\n                        ngbTooltip=\"$3,476\" placement=\"top\"\r\n                        tooltipClass=\"risk-dash-tooltip--rm\">{{benchmarkloss}}</div>\r\n                    </div>\r\n\r\n                    <div class=\"lose-item\">\r\n                        <h5 class=\"exceed-title\">My loss level</h5>\r\n                        <div class=\"my lose-bar\" style=\"width: 100%\"\r\n                        ngbTooltip=\"$4,476\" placement=\"top\"\r\n                        tooltipClass=\"risk-dash-tooltip--rm\">{{myloss}}</div>\r\n                    </div>\r\n                </div>\r\n                \r\n                <div class=\"average-expected-lose\">\r\n                    <h4 class=\"item-title\">Average expected lost <img src=\"images/annual-title-help-icon.svg\"\r\n                        alt=\"Help\" [ngbTooltip]=\"avglose\" placement=\"auto\" tooltipClass=\"risk-dash-tooltip--rm\"></h4>\r\n\r\n                    <div class=\"lose-item\">\r\n                        <div class=\"initial lose-bar\" style=\"width: 100%\"\r\n                        ngbTooltip=\"$4,476\" placement=\"top\"\r\n                        tooltipClass=\"risk-dash-tooltip--rm\">{{avginitialloss}}</div>\r\n                    </div>\r\n\r\n                    <div class=\"lose-item\">\r\n                        <div class=\"benchmark lose-bar\" style=\"width: 80%\"\r\n                        ngbTooltip=\"$4,476\" placement=\"top\"\r\n                        tooltipClass=\"risk-dash-tooltip--rm\">{{avgbenchmarkloss}}</div>\r\n                    </div>\r\n\r\n                    <div class=\"lose-item\">\r\n                        <div class=\"my lose-bar\" style=\"width: 95%\"\r\n                        ngbTooltip=\"$4,476\" placement=\"top\"\r\n                        tooltipClass=\"risk-dash-tooltip--rm\">{{avgmyloss}}</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
         },
         {
+            "name": "SelectCountryComponent",
+            "id": "component-SelectCountryComponent-a923575b5ed9ca9564b187f4aee540c09552eeeb360676e1132deb8691b983e91d8c8ada1e9d37b52ddcf2b540311b831bea60cbb02a60839db6c7ce842955f6",
+            "file": "src/app/sign-up/fields/select-country/select-country.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-select-country",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./select-country.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "currentformControlName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "currentFormGroup",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "FormGroup",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "formFieldType",
+                    "defaultValue": "'DEFAULT'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "\"DEFAULT\" | \"CUSTOM-FORM-FIELD\"",
+                    "decorators": []
+                },
+                {
+                    "name": "handlerOnBlur",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "function",
+                    "decorators": []
+                },
+                {
+                    "name": "kycForm",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "FormGroup",
+                    "decorators": []
+                },
+                {
+                    "name": "matLabelTranslation",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "specialClasses",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "componentDestroyed",
+                    "defaultValue": "new Subject<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "countryArr",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "handleCountryNameSearch",
+                    "args": [
+                        {
+                            "name": "e",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "e",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleCountryNameSearchBlur",
+                    "args": [
+                        {
+                            "name": "data",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 65,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "data",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 117,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "restrictSpecialCharacters",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 102,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabled",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 96,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "trimLabel",
+                    "args": [
+                        {
+                            "name": "label",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 59,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "label",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatAutocompleteModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatFormFieldModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { FormGroup, ReactiveFormsModule } from '@angular/forms';\r\nimport { Subject, skipWhile, takeUntil, switchMap } from 'rxjs';\r\nimport { countryData } from '../country-data';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { MatError, MatFormFieldModule } from '@angular/material/form-field';\r\n\r\n@Component({\r\n  selector: 'app-select-country',\r\n  imports: [CommonModule, ReactiveFormsModule, MatAutocompleteModule, MatFormFieldModule],\r\n  templateUrl: './select-country.component.html',\r\n  styleUrl: './select-country.component.scss'\r\n})\r\nexport class SelectCountryComponent implements OnInit {\r\n  componentDestroyed = new Subject<any>();\r\n  countryArr!: any[];\r\n  @Input(\"kycForm\") kycForm!: FormGroup;\r\n  @Input('disabled') disabled: boolean = false;\r\n  @Input(\"currentFormGroup\") currentFormGroup!: FormGroup;\r\n  @Input(\"currentformControlName\") currentformControlName!: string;\r\n  @Input(\"matLabelTranslation\") matLabelTranslation!: string;\r\n  @Input(\"handlerOnBlur\") handlerOnBlur?: () => void;\r\n  @Input(\"specialClasses\") specialClasses!: string;\r\n  @Input(\"formFieldType\") formFieldType: 'DEFAULT' | 'CUSTOM-FORM-FIELD' = 'DEFAULT';\r\n\r\n  constructor(\r\n  ) {\r\n  }\r\n\r\n  ngOnInit(): void {\r\n      // this.KycS.allCountries$\r\n      //     .pipe(\r\n      //         skipWhile(countries => !Array.isArray(countries)),\r\n      //         takeUntil(this.componentDestroyed)\r\n      //     )\r\n      //     .subscribe(countries => {\r\n      //         this.countryArr = countries;\r\n      //     });\r\n\r\n      this.countryArr = countryData\r\n\r\n      // this.KycS.handleResetCountries$\r\n      //     .pipe(\r\n      //         switchMap(() => this.KycS.allCountries$)\r\n      //     )\r\n      //     .subscribe(allCountries => {\r\n      //         this.countryArr = allCountries;\r\n      //         this.currentFormGroup.get(this.currentformControlName).setValue('');\r\n      //     });\r\n      // console.log(this.disabled);\r\n      this.setDisabled();\r\n  };//#ngOnInit\r\n\r\n  handleCountryNameSearch(e: Event) {\r\n      // this.countryArr = this.KycS.handleCountrySearch({event: e, action: 'NAME'})\r\n  }\r\n\r\n  trimLabel(label:any) {\r\n     const newLabel = label.replace(/\\s+/g, '');;\r\n     return newLabel\r\n  }\r\n\r\n\r\n  handleCountryNameSearchBlur(data: { event: Event, parentFormGroup: FormGroup, controlName: string }) {\r\n      const {event, parentFormGroup, controlName} = data;\r\n\r\n      if (!parentFormGroup) {\r\n          console.error(`you must provide a parentFormGroup, \\n given ${parentFormGroup}`);\r\n          return;\r\n      }\r\n      if (!controlName) {\r\n          console.error(`you must provide a controlName, \\n given ${controlName}`);\r\n          return;\r\n      }\r\n      if (!parentFormGroup.get(controlName)) {\r\n          console.error(`the control name (${controlName}) from parent form group is falsy`);\r\n          return;\r\n      }\r\n      let countrySearched = parentFormGroup.get(controlName)?.value?.toLowerCase();\r\n      let foundCountry = countryData.find(c => c.countryName.toLowerCase() === countrySearched || c.countryName.toLowerCase().includes(countrySearched));\r\n\r\n      if (!foundCountry) {\r\n          parentFormGroup.get(controlName)!.setValue('');\r\n          parentFormGroup.get(controlName)!.setErrors({ countryNotFound: true });\r\n          parentFormGroup.get(controlName)!.updateValueAndValidity();\r\n          // this.countryArr = this.KycS.allCountries$.getValue();\r\n      } else {\r\n          parentFormGroup.get('countryCode')!.setValue(foundCountry.countryCode);\r\n      }\r\n      if (this.handlerOnBlur) {\r\n          this.handlerOnBlur();\r\n      }\r\n  }\r\n\r\n  setDisabled() {\r\n      if (this.disabled) {\r\n          this.currentFormGroup.controls[this.currentformControlName].disable();\r\n      }\r\n  }\r\n\r\n  restrictSpecialCharacters(event: any) {\r\n      if (event?.target?.value?.length === 0 && (event?.key === \"0\" || event?.key === \".\")) {\r\n        event?.preventDefault();\r\n      }\r\n      else {\r\n        if (event?.key == \".\" && event?.target?.value.includes(\".\")) {\r\n          event?.preventDefault();\r\n        }\r\n        const allowedKeys = /^[a-zA-Z0-9.]$/;\r\n        if (!allowedKeys.test(event.key) && !['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {\r\n          event.preventDefault();\r\n        }\r\n      }\r\n    }\r\n\r\n  ngOnDestroy() {\r\n      this.componentDestroyed.next(null);\r\n      this.componentDestroyed.complete();\r\n  };\r\n}\r\n",
+            "styleUrl": "./select-country.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 25
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<ng-container [formGroup]=\"currentFormGroup\">\r\n    <ng-container [ngSwitch]=\"formFieldType\">\r\n        <ng-container *ngSwitchCase=\"'CUSTOM-FORM-FIELD'\">\r\n            <span>{{matLabelTranslation}}</span>\r\n            <input class=\"form-control\" id=\"country_field_1_{{trimLabel(matLabelTranslation)}}\" type=\"text\" matInput (input)=\"handleCountryNameSearch($event)\" (keydown)=\"restrictSpecialCharacters($event)\"\r\n                (blur)=\"handleCountryNameSearchBlur({event:$event, parentFormGroup: currentFormGroup, controlName: currentformControlName})\"\r\n                formControlName=\"{{currentformControlName}}\" [ngClass]=\"{'disabled': disabled === true}\"\r\n                [matAutocomplete]=\"auto\">\r\n            <mat-autocomplete autoActiveFirstOption=\"true\" #auto=\"matAutocomplete\">\r\n                <mat-option *ngFor=\"let cd of countryArr\" [value]=\"cd.countryName\">\r\n                    {{cd.countryName}}\r\n                </mat-option>\r\n            </mat-autocomplete>\r\n            <!-- <app-error [HTMLType]=\"'MATERIAL'\" [controlName]=\"currentFormGroup.get(currentformControlName)\">\r\n                </app-error> -->\r\n        </ng-container>\r\n        <ng-container *ngSwitchDefault>\r\n            <mat-form-field class=\"country-field\" appearance=\"fill\">\r\n                <mat-label>{{ matLabelTranslation }}</mat-label>\r\n                <input type=\"text\" matInput id=\"country_field_2_{{trimLabel(matLabelTranslation)}}\" (input)=\"handleCountryNameSearch($event)\" (keydown)=\"restrictSpecialCharacters($event)\"\r\n                    (blur)=\"handleCountryNameSearchBlur({event:$event, parentFormGroup: currentFormGroup, controlName: currentformControlName})\"\r\n                    formControlName=\"{{currentformControlName}}\" [ngClass]=\"{'disabled': disabled === true}\"\r\n                    [matAutocompletePosition]=\"'below'\" [matAutocomplete]=\"auto\">\r\n                <mat-autocomplete autoActiveFirstOption=\"true\" #auto=\"matAutocomplete\">\r\n                    <mat-option *ngFor=\"let cd of countryArr\" [value]=\"cd.countryName\">\r\n                        {{cd.countryName}}\r\n                    </mat-option>\r\n                </mat-autocomplete>\r\n                <!-- <app-error [controlName]=\"currentFormGroup.get(currentformControlName)\">\r\n                </app-error> -->\r\n            </mat-form-field>\r\n        </ng-container>\r\n    </ng-container>\r\n</ng-container>\r\n"
+        },
+        {
             "name": "SidebarComponent",
             "id": "component-SidebarComponent-1bb3e4e56296aa3b81d206ef4dd37e9b3326f2dac9c67dba18a9c82daa7ae6754ea178887855fc8bd1603433dc3c3470580692db955e3b35410bbeeb873c4c13",
             "file": "src/app/risk-dashboard/components/sidebar/sidebar.component.ts",
@@ -11883,6 +12185,16 @@
                 "deprecationMessage": "",
                 "type": "[]",
                 "defaultValue": "[\r\n  {\r\n      \"month\": \"Apr\",\r\n      \"year\": 2025,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 30,\r\n      \"midDay\": 15,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Apr\",\r\n      \"monthNumber\": 3,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/04/2025\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2025, 4, 15),\r\n      \"disabledColumn\": false,\r\n  },\r\n  {\r\n      \"month\": \"May\",\r\n      \"year\": 2025,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 31,\r\n      \"midDay\": 16,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"May\",\r\n      \"monthNumber\": 4,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/05/2025\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2025, 5, 15),\r\n      \"disabledColumn\": false,\r\n  },\r\n  {\r\n      \"month\": \"Jun\",\r\n      \"year\": 2025,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 30,\r\n      \"midDay\": 15,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Jun\",\r\n      \"monthNumber\": 5,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/06/2025\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2025, 6, 15),\r\n      \"disabledColumn\": false,\r\n  },\r\n  {\r\n      \"month\": \"Jul\",\r\n      \"year\": 2025,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 31,\r\n      \"midDay\": 16,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Jul\",\r\n      \"monthNumber\": 6,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/07/2025\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2025, 7, 15),\r\n      \"disabledColumn\": false,\r\n  },\r\n  {\r\n      \"month\": \"Aug\",\r\n      \"year\": 2025,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 31,\r\n      \"midDay\": 16,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Aug\",\r\n      \"monthNumber\": 7,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/08/2025\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2025, 8, 15)\r\n  },\r\n  {\r\n      \"month\": \"Sep\",\r\n      \"year\": 2025,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 30,\r\n      \"midDay\": 15,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Sep\",\r\n      \"monthNumber\": 8,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/09/2025\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2025, 9, 15),\r\n      \"disabledColumn\": false,\r\n  },\r\n  {\r\n      \"month\": \"Oct\",\r\n      \"year\": 2025,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 31,\r\n      \"midDay\": 16,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Oct\",\r\n      \"monthNumber\": 9,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/10/2025\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2025, 10, 15),\r\n      \"disabledColumn\": false,\r\n  },\r\n  {\r\n      \"month\": \"Nov\",\r\n      \"year\": 2025,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 30,\r\n      \"midDay\": 15,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Nov\",\r\n      \"monthNumber\": 10,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/11/2025\",\r\n      \"date\": new Date(2025, 11, 15),\r\n      \"disabledColumn\": false,\r\n  },\r\n  {\r\n      \"month\": \"Dec\",\r\n      \"year\": 2025,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 31,\r\n      \"midDay\": 16,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Dec\",\r\n      \"monthNumber\": 11,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/12/2025\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2025, 12, 15),\r\n      \"disabledColumn\": false,\r\n  },\r\n  {\r\n      \"month\": \"Jan\",\r\n      \"year\": 2026,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 31,\r\n      \"midDay\": 16,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Jan\",\r\n      \"monthNumber\": 0,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/01/2026\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2026, 1, 15),\r\n      \"disabledColumn\": false,\r\n  },\r\n  {\r\n      \"month\": \"Feb\",\r\n      \"year\": 2026,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 28,\r\n      \"midDay\": 14,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Feb\",\r\n      \"monthNumber\": 1,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/02/2026\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2026, 2, 15),\r\n      \"disabledColumn\": false,\r\n  },\r\n  {\r\n      \"month\": \"Mar\",\r\n      \"year\": 2026,\r\n      \"buying\": \"0\",\r\n      \"selling\": \"100,000\",\r\n      \"totalNetValue\": 100000,\r\n      \"lastDay\": 31,\r\n      \"midDay\": 16,\r\n      \"openEditForBuying\": false,\r\n      \"openEditForSelling\": false,\r\n      \"errMsgForbuyingFlag\": false,\r\n      \"errMsgForsellingFlag\": false,\r\n      \"postPoneFlag\": false,\r\n      \"postPoneInactiveFlag\": true,\r\n      \"postPoneMonth\": \"Mar\",\r\n      \"monthNumber\": 2,\r\n      \"cashflowDate\": 15,\r\n      \"Month\": \"15/03/2026\",\r\n      \"dayOfExpity\": \"15\",\r\n      \"date\": new Date(2026, 3, 15),\r\n      \"disabledColumn\": false,\r\n  }\r\n]"
+            },
+            {
+                "name": "countryData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/sign-up/fields/country-data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n        {\r\n            \"countryName\": \"Albania\",\r\n            \"countryCode\": \"al\",\r\n            \"countryCode3Letters\": \"ALB\",\r\n            \"phoneCode\": 355,\r\n            \"score\": 2,\r\n            \"canRegister\": 1,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/al.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Algeria\",\r\n            \"countryCode\": \"dz\",\r\n            \"countryCode3Letters\": \"DZA\",\r\n            \"phoneCode\": 213,\r\n            \"score\": 1,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/dz.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Andorra\",\r\n            \"countryCode\": \"ad\",\r\n            \"countryCode3Letters\": \"AND\",\r\n            \"phoneCode\": 376,\r\n            \"score\": 2,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/ad.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Antarctica\",\r\n            \"countryCode\": \"aq\",\r\n            \"countryCode3Letters\": \"ATA\",\r\n            \"phoneCode\": 672,\r\n            \"score\": 4,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/aq.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Argentina\",\r\n            \"countryCode\": \"ar\",\r\n            \"countryCode3Letters\": \"ARG\",\r\n            \"phoneCode\": 54,\r\n            \"score\": 3,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/ar.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Armenia\",\r\n            \"countryCode\": \"am\",\r\n            \"countryCode3Letters\": \"ARM\",\r\n            \"phoneCode\": 374,\r\n            \"score\": 4,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/am.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Aruba\",\r\n            \"countryCode\": \"aw\",\r\n            \"countryCode3Letters\": \"ABW\",\r\n            \"phoneCode\": 297,\r\n            \"score\": 4,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/aw.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Australia\",\r\n            \"countryCode\": \"au\",\r\n            \"countryCode3Letters\": \"AUS\",\r\n            \"phoneCode\": 61,\r\n            \"score\": 3,\r\n            \"canRegister\": 1,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/au.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Austria\",\r\n            \"countryCode\": \"at\",\r\n            \"countryCode3Letters\": \"AUT\",\r\n            \"phoneCode\": 43,\r\n            \"score\": 1,\r\n            \"canRegister\": 1,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/at.svg\"\r\n        },\r\n    ]"
             },
             {
                 "name": "CountryData",
@@ -13453,6 +13765,18 @@
                     "deprecationMessage": "",
                     "type": "[]",
                     "defaultValue": "[\r\n    {\r\n        \"code\": \"GBP\",\r\n        \"defaultCurrency\": false,\r\n        \"sign\": \"£\",\r\n        \"flag\": \"https://okoora-stage-api2023.azurewebsites.net/Images/Flags/GBP.png\",\r\n        \"currencyName\": \"British Pound Sterling\"\r\n    },\r\n    {\r\n        \"code\": \"JPY\",\r\n        \"defaultCurrency\": false,\r\n        \"sign\": \"￥\",\r\n        \"flag\": \"https://okoora-stage-api2023.azurewebsites.net/Images/Flags/JPY.png\",\r\n        \"currencyName\": \"Japanese Yen\"\r\n    },\r\n    {\r\n        \"code\": \"USD\",\r\n        \"defaultCurrency\": false,\r\n        \"sign\": \"$\",\r\n        \"flag\": \"https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png\",\r\n        \"currencyName\": \"United States Dollar\"\r\n    },\r\n    {\r\n        \"code\": \"PLN\",\r\n        \"defaultCurrency\": false,\r\n        \"sign\": \"zł\",\r\n        \"flag\": \"https://okoora-stage-api2023.azurewebsites.net/Images/Flags/PLN.png\",\r\n        \"currencyName\": \"Polish Zloty\"\r\n    },\r\n    {\r\n        \"code\": \"ILS\",\r\n        \"defaultCurrency\": true,\r\n        \"sign\": \"₪\",\r\n        \"flag\": \"https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png\",\r\n        \"currencyName\": \"Israeli Shekel\"\r\n    }\r\n]"
+                }
+            ],
+            "src/app/sign-up/fields/country-data.ts": [
+                {
+                    "name": "countryData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/sign-up/fields/country-data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n        {\r\n            \"countryName\": \"Albania\",\r\n            \"countryCode\": \"al\",\r\n            \"countryCode3Letters\": \"ALB\",\r\n            \"phoneCode\": 355,\r\n            \"score\": 2,\r\n            \"canRegister\": 1,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/al.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Algeria\",\r\n            \"countryCode\": \"dz\",\r\n            \"countryCode3Letters\": \"DZA\",\r\n            \"phoneCode\": 213,\r\n            \"score\": 1,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/dz.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Andorra\",\r\n            \"countryCode\": \"ad\",\r\n            \"countryCode3Letters\": \"AND\",\r\n            \"phoneCode\": 376,\r\n            \"score\": 2,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/ad.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Antarctica\",\r\n            \"countryCode\": \"aq\",\r\n            \"countryCode3Letters\": \"ATA\",\r\n            \"phoneCode\": 672,\r\n            \"score\": 4,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/aq.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Argentina\",\r\n            \"countryCode\": \"ar\",\r\n            \"countryCode3Letters\": \"ARG\",\r\n            \"phoneCode\": 54,\r\n            \"score\": 3,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/ar.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Armenia\",\r\n            \"countryCode\": \"am\",\r\n            \"countryCode3Letters\": \"ARM\",\r\n            \"phoneCode\": 374,\r\n            \"score\": 4,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/am.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Aruba\",\r\n            \"countryCode\": \"aw\",\r\n            \"countryCode3Letters\": \"ABW\",\r\n            \"phoneCode\": 297,\r\n            \"score\": 4,\r\n            \"canRegister\": 0,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/aw.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Australia\",\r\n            \"countryCode\": \"au\",\r\n            \"countryCode3Letters\": \"AUS\",\r\n            \"phoneCode\": 61,\r\n            \"score\": 3,\r\n            \"canRegister\": 1,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/au.svg\"\r\n        },\r\n        {\r\n            \"countryName\": \"Austria\",\r\n            \"countryCode\": \"at\",\r\n            \"countryCode3Letters\": \"AUT\",\r\n            \"phoneCode\": 43,\r\n            \"score\": 1,\r\n            \"canRegister\": 1,\r\n            \"flag\": \"https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/at.svg\"\r\n        },\r\n    ]"
                 }
             ],
             "src/app/sign-up/models/country.ts": [
@@ -15124,6 +15448,25 @@
                 "name": "ValidationErrors",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/fields/country-data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "countryData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/fields/select-country/select-country.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SelectCountryComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/19",
                 "status": "low"
             },
             {

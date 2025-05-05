@@ -26,10 +26,10 @@
               </mat-radio-group>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <!-- <app-select-country [kycForm]="kycForm" [specialClasses]="'custom-mat-form-field--1'"
+          <app-select-country [kycForm]="kycForm" [specialClasses]="'custom-mat-form-field--1'"
             [currentFormGroup]="businessTypesCompanyAccount" [currentformControlName]="'countrySelected'"
             [matLabelTranslation]="'KYC_Step_1.companyAcc.field_label' | translate" >
-          </app-select-country> -->
+          </app-select-country>
           <button  type="button" [class.disabled]="!kycForm.get('step_1').valid" [disabled]="!kycForm.get('step_1').valid" mat-raised-button color="primary"
             class="continue-btn" (click)="handleNextStep()" id="kyc-one-continue-btn--1">
             {{ 'KYC.Continue' | translate}}
@@ -58,10 +58,10 @@
               </mat-radio-group>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <!-- <app-select-country [kycForm]="kycForm" [specialClasses]="'custom-mat-form-field--1'"
+          <app-select-country [kycForm]="kycForm" [specialClasses]="'custom-mat-form-field--1'"
             [currentFormGroup]="businessTypesPrivateAccount" [currentformControlName]="'countrySelected'"
             [matLabelTranslation]="'KYC_Step_1.privateAcc.field_label' | translate">
-        </app-select-country> -->
+        </app-select-country>
         <mat-error *ngIf="privateCountryNotIsrael" [style]="'font-size:13px; transform: translateY(-56%);'">
           {{ 'KYC_Step_1.privateAcc.country_not_from_israel' | translate}}
           </mat-error>
