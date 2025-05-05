@@ -5,6 +5,10 @@
     align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
+
+    &.not-dashboard {
+        padding: 0;
+    }
     .content-wrapper {
         position: relative;
         padding: 42px 4.31% 42px 2.8%;

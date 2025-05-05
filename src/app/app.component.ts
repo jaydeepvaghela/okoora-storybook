@@ -19,8 +19,12 @@ export class AppComponent {
   ngOnInit(): void {
     // Only navigate if it's the initial load (empty path)
     if (this.router.url === '/') {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/sign-up']);
     }
+  }
+
+  get isSignUpRoute(): boolean {
+    return this.router.url === '/sign-up';
   }
   openSidebar() {
     this.sidebar.openSidebar();

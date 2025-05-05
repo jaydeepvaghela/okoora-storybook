@@ -1,6 +1,9 @@
-<div class="layout">
-    <app-header (openSidebar)="openSidebar()"></app-header>
-    <app-sidebar></app-sidebar>
+<div class="layout" [ngClass]="{'not-dashboard': isSignUpRoute}">
+    <ng-container *ngIf="!isSignUpRoute">
+        <app-header (openSidebar)="openSidebar()"></app-header>
+        <app-sidebar></app-sidebar>
+    </ng-container>
+    
     <div class="content-wrapper risk-manager">
         <router-outlet />
     </div>
