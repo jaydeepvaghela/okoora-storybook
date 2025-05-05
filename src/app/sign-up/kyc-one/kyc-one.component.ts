@@ -9,10 +9,11 @@ import {StepActionType} from '../types/global.type';
 import { CommonModule } from '@angular/common';
 import { MatError } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
+import { SelectCountryComponent } from '../fields/select-country/select-country.component';
 
 @Component({
   selector: 'app-kyc-one',
-  imports: [CommonModule,MatExpansionModule,FormsModule,ReactiveFormsModule,MatError,TranslateModule],
+  imports: [CommonModule,MatExpansionModule,FormsModule,ReactiveFormsModule,MatError,TranslateModule, SelectCountryComponent],
   templateUrl: './kyc-one.component.html',
   styleUrl: './kyc-one.component.scss'
 })

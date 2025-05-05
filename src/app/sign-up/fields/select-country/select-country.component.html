@@ -1,0 +1,42 @@
+<ng-container [formGroup]="currentFormGroup">
+    <ng-container [ngSwitch]="formFieldType">
+        <mat-form-field class="country-field w-100" appearance="fill">
+            <mat-label>{{ matLabelTranslation }}</mat-label>
+            <input
+              type="text"
+              matInput
+              id="country_field_2_{{ trimLabel(matLabelTranslation) }}"
+              (input)="handleCountryNameSearch($event)"
+              (keydown)="restrictSpecialCharacters($event)"
+              (blur)="handleCountryNameSearchBlur({ event: $event, parentFormGroup: currentFormGroup, controlName: currentformControlName })"
+              [formControlName]="currentformControlName"
+              [ngClass]="{ 'disabled': disabled === true }"
+              [matAutocompletePosition]="'below'"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete autoActiveFirstOption="true" #auto="matAutocomplete">
+              <mat-option *ngFor="let cd of countryArr" [value]="cd.countryName">
+                {{ cd.countryName }}
+              </mat-option>
+            </mat-autocomplete>
+            <!-- <app-error [controlName]="currentFormGroup.get(currentformControlName)"></app-error> -->
+          </mat-form-field>
+          
+        <!-- <ng-container *ngSwitchDefault>
+            <mat-form-field class="country-field" appearance="fill">
+                <mat-label>{{ matLabelTranslation }}</mat-label>
+                <input type="text" matInput id="country_field_2_{{trimLabel(matLabelTranslation)}}" (input)="handleCountryNameSearch($event)" (keydown)="restrictSpecialCharacters($event)"
+                    (blur)="handleCountryNameSearchBlur({event:$event, parentFormGroup: currentFormGroup, controlName: currentformControlName})"
+                    formControlName="{{currentformControlName}}" [ngClass]="{'disabled': disabled === true}"
+                    [matAutocompletePosition]="'below'" [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption="true" #auto="matAutocomplete">
+                    <mat-option *ngFor="let cd of countryArr" [value]="cd.countryName">
+                        {{cd.countryName}}
+                    </mat-option>
+                </mat-autocomplete>
+                <app-error [controlName]="currentFormGroup.get(currentformControlName)">
+                </app-error>
+            </mat-form-field>
+        </ng-container> -->
+    </ng-container>
+</ng-container>

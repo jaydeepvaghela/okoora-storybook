@@ -1,4 +1,17 @@
 {
+  "KYC": {
+    "Continue": "Continue",
+    "ContinueLogin": "Continue to login",
+    "Login": "Log in",
+    "confirmation_incorrect": "Confirmation code is incorrect",
+    "try_again": "Try again",
+    "createAccount": "Click here to create password",
+    "PassedLimitTitle": "Too Many Attempts",
+    "PassedLimitParagraph": "Sorry! you have reached our limit for the number of times you can request a verification code. You can try again in 10 minutes",
+    "alreadyHaveAccount": "Already have an account?",
+    "SignIn": "Sign in",
+    "FAQ": "FAQ"
+  },
   "KYC_Step_1": {
     "title": "Open a new account",
     "p_1": "",
