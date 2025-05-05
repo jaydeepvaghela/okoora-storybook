@@ -100,7 +100,7 @@ export class KycOneComponent {
   }
 
   canClickNextStep(): boolean {
-    return this.kycForm.get('step_1').valid;
+    return this.kycForm.get('step_1')?.valid;
   }
 
   ngOnDestroy() {

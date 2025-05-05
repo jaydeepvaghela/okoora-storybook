@@ -7,6 +7,7 @@ import { IStepsObj, EStepNumber, TBusinessTypes, EBusinessType, IKycData } from 
 import { KycOneComponent } from '../kyc-one/kyc-one.component';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { StepActionType } from '../types/global.type';
+import { KycTwoComponent } from '../kyc-two/kyc-two.component';
 
 @Component({
   selector: 'app-kyc-main',
@@ -16,7 +17,8 @@ import { StepActionType } from '../types/global.type';
     MatIconModule,
     TranslateModule,
     ReactiveFormsModule,
-    KycOneComponent
+    KycOneComponent, 
+    KycTwoComponent
   ],
   templateUrl: './kyc-main.component.html',
   styleUrls: ['./kyc-main.component.scss']
@@ -211,6 +213,9 @@ export class KycMainComponent implements OnInit {
     }
   }// # stepHandler
   handleDetailToShow(bType: IKycData['businessTypes']) {
-    this.detailsToShow.step_1.detailName = bType;
+    if (this.detailsToShow.step_1) {
+      this.detailsToShow.step_1.detailName = bType;
+
+    }
 }
 }
