@@ -4,6 +4,7 @@
 ::ng-deep {
     .content-wrapper {
         padding: unset !important;
+        background: linear-gradient(0deg, #FFF 0%, #FFF 100%), #F5F7FA;
     }
 }
 .app-kyc-container {
@@ -13,6 +14,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    margin: 0;
+    font-family: $he_heebo;
 
     .kyc-language-wrapper {
         position: absolute;
@@ -30,8 +33,19 @@
     }
 }
 .title {
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size:26px;
+    font-weight: 700;
+    color:#111827;
+    margin: 0 0 14px;
+    @media screen and (max-width: 1440px) {
+        font-size: 20px;
+    }
+    @media screen and (max-width: 1024px) {
+        font-size: 18px;    
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 16px;        
+    }
 }
 .kyc {
     $root: &;
@@ -172,10 +186,10 @@
     // }
 
     &-form-section {
-        width: 600px;
+        width:700px;
         margin: 0 auto;
         border: 1px solid #e2e2e2;
-        border-radius: 15px;
+        border-radius: 17px;
         background-color: #fff;
         // padding: 5rem 0;
         padding: 10px;
@@ -267,11 +281,23 @@
 }
 
 .kyc-p--1 {
-    font-weight: 400;
-    line-height: 1.41176;
-    letter-spacing: -0.025em;
-    color: #525c66;
-    font-size: 0.8rem;
+    font-weight:300;
+    line-height:1;
+    color: #111827;
+    font-size:16px;
+    opacity: 0.6;
+}
+.m-b-step1{
+    margin: 0 0 38px;
+    @media screen and (max-width: 1440px) {
+        margin: 0 0 28px;
+    }
+    @media screen and (max-width: 1024px) {
+        margin: 0 0 18px;       
+    }
+    @media screen and (max-width: 768px) {
+        margin: 0 0 8px;            
+    }
 }
 
 .kyc-form {

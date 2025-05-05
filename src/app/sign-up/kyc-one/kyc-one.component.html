@@ -1,7 +1,7 @@
 <ng-container *ngIf="parentFormGroup" [formGroup]="parentFormGroup">
     <ng-container [formGroup]="step_1">
       <mat-accordion class="at__accordion px-md-5" [multi]="false">
-        <mat-expansion-panel class="mb-4" #panel1
+        <mat-expansion-panel class="mb-0" #panel1
           [expanded]="kycForm.get('step_1').get(businessTypes.companyAccount).value.isActive"
           [formGroup]="businessTypesCompanyAccount">
           <mat-expansion-panel-header (click)="handleBusinessTypeChange(panel1, businessTypes.companyAccount)">
@@ -10,14 +10,14 @@
                 <input type="checkbox" style="display: none" />
                 <div class="d-flex flex-column align-items-center justify-content-center text-center justify-content-center d-md-none"
                   (click)="handleBusinessTypeChange(panel1, businessTypes.companyAccount)">
-                  <img class="at-icon mb-4" src="assets/images/comapny-icon.svg" alt="company icon">
+                  <img class="at-icon mb-4" src="images/suitcase-bag.svg" alt="company icon">
                   <h3 class="at-title at-ah--1 mb-4">{{ 'KYC_Step_1.companyAcc.title' | translate}}</h3>
                   <p class="at-description at-p--1">{{ 'KYC_Step_1.companyAcc.description' | translate}}
                   </p>
                 </div>
-                <div class="inner-radio-button d-none d-md-flex"
+                <div class="inner-radio-button d-none d-md-flex align-items-start"
                   (click)="handleBusinessTypeChange(panel1, businessTypes.companyAccount)">
-                  <img class="at-icon" src="assets/images/comapny-icon.svg" alt="company icon">
+                  <img class="at-icon" src="images/suitcase-bag.svg" alt="company icon">
                   <div>
                     <h3 class="at-title at-ah--1">{{ 'KYC_Step_1.companyAcc.title' | translate}}</h3>
                     <p class="at-description at-p--1">{{ 'KYC_Step_1.companyAcc.description' | translate}}</p>
@@ -35,7 +35,8 @@
             {{ 'KYC.Continue' | translate}}
           </button>
         </mat-expansion-panel>
-        <mat-expansion-panel class="mb-4" #panel2 [formGroup]="businessTypesPrivateAccount"
+        <hr>
+        <mat-expansion-panel class="mb-0" #panel2 [formGroup]="businessTypesPrivateAccount"
           [expanded]="kycForm.get('step_1').get(businessTypes.privateAccount).value.isActive">
           <mat-expansion-panel-header (click)="handleBusinessTypeChange(panel2, businessTypes.privateAccount)">
             <mat-panel-title class="kyc-ah--1">
@@ -43,12 +44,12 @@
                 <input type="checkbox" style="display: none" />
                 <div class="d-flex flex-column align-items-center justify-content-center text-center d-md-none"
                 (click)="handleBusinessTypeChange(panel2, businessTypes.privateAccount)">
-                  <img class="at-icon mb-4" src="assets/images/private-icon.svg" alt="private icon">
+                  <img class="at-icon mb-4" src="images/private-icon.svg" alt="private icon">
                   <h3 class="at-title at-ah--1 mb-4">{{ 'KYC_Step_1.privateAcc.title' | translate}}</h3>
                   <span class="at-description at-p--1">{{ 'KYC_Step_1.privateAcc.description' | translate}}</span>
                 </div>
-                <div  (click)="handleBusinessTypeChange(panel2, businessTypes.privateAccount)" class="inner-radio-button d-none d-md-flex">
-                  <img class="at-icon" src="assets/images//private-icon.svg" alt="private icon">
+                <div  (click)="handleBusinessTypeChange(panel2, businessTypes.privateAccount)" class="inner-radio-button d-none d-md-flex align-items-start">
+                  <img class="at-icon" src="images//private-icon.svg" alt="private icon">
                   <div>
                     <h3 class="at-title at-ah--1">{{ 'KYC_Step_1.privateAcc.title' | translate}}</h3>
                     <p class="at-description at-p--1">{{ 'KYC_Step_1.privateAcc.description' |translate}}</p>
@@ -60,7 +61,7 @@
           <app-select-country [kycForm]="kycForm" [specialClasses]="'custom-mat-form-field--1'"
             [currentFormGroup]="businessTypesPrivateAccount" [currentformControlName]="'countrySelected'"
             [matLabelTranslation]="'KYC_Step_1.privateAcc.field_label' | translate">
-          </app-select-country>
+        </app-select-country>
         <mat-error *ngIf="privateCountryNotIsrael" [style]="'font-size:13px; transform: translateY(-56%);'">
           {{ 'KYC_Step_1.privateAcc.country_not_from_israel' | translate}}
           </mat-error>

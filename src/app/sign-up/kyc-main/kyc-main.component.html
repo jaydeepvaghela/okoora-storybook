@@ -26,7 +26,7 @@
                         <ng-container *ngSwitchCase="Esteps.typeOfBusiness">
                             <h1 class="title"> {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }} </h1>
                             <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
-                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>
+                            <p class="kyc-p--1 m-b-step1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>
                         </ng-container>
                         <ng-container *ngSwitchCase="Esteps.email">
                             <h1 class="title">
@@ -177,7 +177,7 @@
 
                 </form>
 
-                <article *ngIf="showLoginBtn()" class="login-wrapper">
+                <article class="login-wrapper">
                     <a class="faq-p--1" [href]="faqUrl" target="_blank" rel="noopener noreferrer">{{ 'KYC.FAQ' |
                         translate}}</a>
                     &nbsp;
