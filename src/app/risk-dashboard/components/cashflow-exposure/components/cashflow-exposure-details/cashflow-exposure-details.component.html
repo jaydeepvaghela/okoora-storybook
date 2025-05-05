@@ -9,10 +9,6 @@
             <button class="hedging-btn">How our hedging works? <img container="body" [ngbTooltip]="sellingToolTip" placement="top-right"
                 tooltipClass="risk-step3-tooltip--rm"
                     src="images/hedging-info.svg"></button>
-            <!-- <ng-template #buyingToolTip>
-                You are at risk when {{monthlyExposureObject.toCurrency}} goes up because it will cost more to buy {{monthlyExposureObject.toCurrency}} with
-                {{monthlyExposureObject.baseCurrency}}, increasing your costs
-            </ng-template> -->
             <ng-template #sellingToolTip>
                 You are at risk when {{monthlyExposureObject.toCurrency}} goes down because you will get fewer
                 {{monthlyExposureObject.baseCurrency}} when
@@ -30,7 +26,7 @@
         </div>
     </div>
     <div class="risk-exposer-wrap">
-        <app-monthly-exposure-details [monthlyPeriod]="monthlyPeriod"></app-monthly-exposure-details>
+        <app-monthly-exposure-details [monthlyExposureObject]="monthlyExposureObject" [monthlyPeriod]="monthlyPeriod"></app-monthly-exposure-details>
         <div class="exposer-table-wrap">
             <div class="exposer-table">
                 <div class="overlay-wrap">
@@ -84,7 +80,7 @@
                             <th mat-header-cell *matHeaderCellDef> Selling </th>
                             <td mat-cell *matCellDef="let element; let i = index"
                                 [class.disabledColumn]="element.disabledColumn">
-                                <div class="buying-price">
+                                <div class="buying-price" (click)="editSelling(element , i)">
                                     {{monthlyExposureObject.sign}}{{valueWithComma(element?.selling, 2)}}
                                 </div>
                                 <button (click)="editSelling(element , i)" class="edit-exposer">
@@ -126,7 +122,7 @@
                             <th mat-header-cell *matHeaderCellDef> Buying </th>
                             <td mat-cell *matCellDef="let element; let i = index" class="buying-cell"
                                 [class.disabledColumn]="element.disabledColumn">
-                                <div class="buying-price">
+                                <div class="buying-price" (click)="editBuying(element , i)">
                                     {{monthlyExposureObject.sign}}{{ valueWithComma(element?.buying, 2) }}
                                 </div>
                                 <button class="edit-exposer" (click)="editBuying(element , i)"
@@ -186,9 +182,9 @@
                                     src="images/help-circle-icon-black.svg" [ngbTooltip]="total"
                                     placement="top-left" tooltipClass="risk-step3-tooltip--rm"></th>
                             <td mat-cell *matCellDef="let element" class="total-price"
-                                [class.disabledColumn]="element.disabledColumn">
-                                <span [ngClass]="element?.totalNetValue < 0 ? 'negative-total' : 'positive-total'"> {{element?.totalNetValue < 0 ? '-' : '+'
-                                    }}{{monthlyExposureObject.sign}}{{valueWithComma(element?.totalNetValue, 2)}}
+                                [class.disabledColumn]="element.disabledColumn"> 
+                                <span [ngClass]="element?.totalNetValue?.toString().includes('-') ? 'negative-total' : 'positive-total'">
+                                    {{ element?.totalNetValue?.toString().includes('-') ? '-' : '+'}}{{monthlyExposureObject.sign}}{{valueWithComma(element?.totalNetValue?.toString().replace('-', ''), 2)}}
                                 </span>
                             </td>
                         </ng-container>
@@ -210,7 +206,7 @@
             </div>
             <div class="add-rows-wrap">
                 <button class="add-btn six-month" id="plusMonthExposureBtn__i0"
-                    *ngIf="monthlyPeriod == 6"><i class="plus-icon"></i>Next
+                    *ngIf="monthlyPeriod == 6" (click)="addSixMonth()"><i class="plus-icon"></i>Next
                     6
                     months</button>
                 <button class="add-btn" (click)="addOneMore()" id="plusMonthExposureBtn__i1"
@@ -220,7 +216,7 @@
             <span *ngIf="maxLengthError" class="error-message"> Maximum amount allowed is
                 {{monthlyExposureObject.sign}}100,000,000 </span>
             <div class="exposer-btns">
-                <button matStepperPrevious class="back-btn" (click)="backToPrevious()" id="backStep3Btn__i4"> Back
+                <button class="back-btn" (click)="backToPrevious()" id="backStep3Btn__i4"> Back
                 </button>
                 <button (click)="exposureDetailsNextStep()" class="continue-btn"> Save & continue <img src="images/next-btn-arrow.svg"></button>
             </div>

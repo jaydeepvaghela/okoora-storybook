@@ -19,15 +19,10 @@ export class AppComponent {
   ngOnInit(): void {
     // Only navigate if it's the initial load (empty path)
     if (this.router.url === '/') {
-      this.router.navigate(['/cashflow']);
+      this.router.navigate(['/dashboard']);
     }
   }
   openSidebar() {
     this.sidebar.openSidebar();
-  }
-  onToggleView(showHedging: boolean) {
-    this.Showhedging = showHedging;
-    this.ShowDashboard = !showHedging;
-    this.showCashflowExposure = !showHedging && !this.ShowDashboard;
   }
 }

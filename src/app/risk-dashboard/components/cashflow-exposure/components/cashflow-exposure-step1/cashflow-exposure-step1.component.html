@@ -1,0 +1,61 @@
+<div class="risk-intro-wrap">
+    <div class="risk-banner-wrap">
+        <img class="banner-right-img" src="images/globe-full.svg" alt="{{heading}}">
+        <div class="banner-info">
+            <div class="intro-head-title"><span>{{heading}}</span></div>
+            <h3 class="intro-title"><span>When you,</span>
+                <div class="animate-title">
+                    <ul class="fliptext">
+                        <li *ngFor="let word of actionWords">{{ word }}</li>
+                    </ul>
+                </div>
+            </h3>
+            <h4 class="intro-sub-title">{{subHeading}} <span>risk.</span></h4>
+            <p>{{introText}}</p>
+            <button class="start-btn" id="rmGetStarted_btn" (click)="cashflowExposureNextStep()">Get Started</button>
+        </div>
+    </div>
+    <div class="intro-details">
+        <h4 class="work-title">How it works</h4>
+        <div class="item-wrap">
+            <div class="intro-item s-1">
+                <div class="img-sec">
+                    <img src="images/risk-step-select-currency.png" alt="Select currencies">
+                </div>
+                <div class="item-info">
+                    <h4 class="item-title">Select currencies</h4>
+                    <p class="desc">Select the exposed currency and specify if you are buying or selling.</p>
+                    <div class="link-sec">
+                        <button class="item-link" #rmSelectCurrency id="rmSelectCurrency"
+                            (click)="cashflowExposureNextStep()">Select currencies</button>
+                    </div>
+                </div>
+            </div>
+            <div class="intro-item s-2">
+                <div class="img-sec">
+                    <img src="images/risk-step-set-amount-img.png" alt="Set an amount">
+                </div>
+                <div class="item-info">
+                    <h4 class="item-title">Set an amount</h4>
+                    <p class="desc">Enter the monthly estimated exposure amount.</p>
+                    <div class="link-sec">
+                        <button class="item-link" #rmSetAmount id="rmSetAmount"
+                            (click)="cashflowExposureNextStep()">Let's start</button>
+                    </div>
+                </div>
+            </div>
+            <div class="intro-item s-3">
+                <div class="img-sec">
+                  <img src="images/risk-step-table-img.png" alt="Manage exposure">
+                </div>
+                <div class="item-info">
+                  <h4 class="item-title">Manage exposure</h4>
+                  <p class="desc">Identify risks, hedge, and monitor to stabilize and protect your business.</p>
+                  <div class="link-sec">
+                  <button class="item-link" #rmManageExposure id="rmManageExposure" (click)="cashflowExposureNextStep()" >Let's start</button>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,579 @@
+@import '../../../../../../assets/scss/variable';
+
+::ng-deep {
+    .adv-policy-wrapper {
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            .stepper-progressbar {
+              max-width: 98px;
+              min-width: 98px;
+              width: 100%;
+              height: 12px;
+              border-radius: 20px;
+      
+              .mdc-linear-progress__buffer {
+                height: 100%;
+              }
+              
+              .mdc-linear-progress__bar {
+                height: 100%;
+              }
+      
+                .mdc-linear-progress__bar-inner {
+                  border-width: 12px;
+                  border-radius: 20px;
+                  border-color: #175CD3;
+            
+                  @media screen and (max-width: 1440px) {
+                    border-width: 9px;
+                  }
+            
+                  @media screen and (max-width: 1024px) {
+                    border-width: 12px;
+                  }
+                }
+            
+              @media screen and (max-width: 1440px) {
+                height: 9px;
+              }
+            
+              @media screen and (max-width: 1024px) {
+                height: 12px;
+              }
+            }
+      
+            .progress-count {
+              color: #000;
+              font-family: $he_heebo;
+              font-size: 12px;
+              font-weight: 700;
+              line-height: 20px;
+            }
+            @media screen and (max-width:480px) {
+              .stepper-progressbar{
+                min-width: 60px;
+                max-width: 60px;
+                height: 9px;
+              }
+            }
+        }
+        .heading {
+            color: #2947F2;
+            font-family: $he_heebo;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 38px;
+            margin: 40px 0 34px;
+        }
+
+        .step1-wrapper {
+            background-color: $white;
+            padding: 50px 51px 36px 63px;
+            border-radius: 10px;
+
+            .step-form-wrap {
+                text-align: center;
+
+                .progress-container {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    justify-content: center;
+
+                    .stepper-progressbar {
+                        max-width: 98px;
+                        min-width: 98px;
+                        width: 100%;
+                        height: 8px;
+                        border-radius: 20px;
+
+                        .mdc-linear-progress__bar-inner {
+                            border-width: 8px;
+                            border-radius: 20px;
+                            border-color: #175CD3;
+                            left: 0;
+                        }
+                    }
+
+                    .progress-count {
+                        color: #000;
+                        font-family: $he_heebo;
+                        font-size: 12px;
+                        font-weight: 700;
+                        line-height: 20px;
+                    }
+
+                    @media screen and (max-width:480px) {
+                        .stepper-progressbar {
+                            min-width: 60px;
+                            max-width: 60px;
+                        }
+                    }
+                }
+
+                .anual-head {
+                    margin: 42px 0 49px 0;
+
+                    .sub-text {
+                        color: #2947F2;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 700;
+                        line-height: 20px;
+                        margin: 0 0 2px;
+                    }
+
+                    .title {
+                        color: #344054;
+                        font-family: $he_heebo;
+                        font-size: 30px;
+                        font-weight: 700;
+                        line-height: 38px;
+                        margin: 0;
+                    }
+                    .desc{
+                        color:#98A2B3;
+                        text-align: center;
+                        font-family:$he_heebo;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 18px;
+                        margin: 2px 0 0;
+                    }
+                }
+
+                .rate-wrap {
+                    margin: auto;
+                    max-width: 563px;
+
+                    .inner-wrap {
+                        display: flex;
+                        gap: 14px;
+
+                        .form-wrap {
+                            display: flex;
+                            position: relative;
+                            border: 1px solid #3B82F6;
+                            border-radius: 5px;
+                            background-color: $white;
+                            height: 60px;
+                            align-items: center;
+                            padding: 14px 15px 10px 17px;
+                            width: 100%;
+
+                            .rate-label {
+                                position: absolute;
+                                top: -7px;
+                                left: 9px;
+                                padding: 0 4px;
+                                background-color: $white;
+                                color: #3B82F6;
+                                font-family: 'Roboto';
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 16px;
+                            }
+
+                            .flag-wrap {
+                                padding: 0 15px 0 0;
+                                display: flex;
+                                align-items: center;
+
+                                img {
+                                    width: 29px;
+                                    height: auto;
+
+                                    &.from-currency {
+                                        margin: 0 0 0 -14px;
+                                    }
+
+                                    &.no-data {
+                                        filter: grayscale(1);
+                                        opacity: 0.6;
+                                    }
+                                }
+                            }
+
+                            .rate-input {
+                                border: none;
+                                padding: 0 12px;
+                                border-left: 1px solid #E4E7EC;
+                                font-family: $he_heebo;
+                                font-size: 14px;
+                                font-weight: 400;
+                                line-height: 35px;
+                                color: $black;
+                                width: 100%;
+
+                                &::placeholder {
+                                    color: #B4BBC6;
+                                }
+                            }
+
+                            .clear-btn {
+                                padding: 0 0 4px;
+                                line-height: 0;
+                            }
+
+                            &.errorInput {
+                                border-color: #D92D20;
+                                .rate-label{
+                                    color:#D92D20;
+                                }
+                            }
+                        }
+
+                        .btn-generateRate {
+                            display: flex;
+                            height: 60px;
+                            padding: 10px;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 10px;
+                            border-radius: 8px;
+                            border: 1px solid #D0D5DD;
+                            color: #003EFF;
+                            font-family: $he_heebo;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 22px;
+                            width: 100%;
+                            max-width: 125px;
+                            transition: all 0.5s ease;
+                            &:hover{
+                                background-color: #2947F2;
+                                border-color: #2947F2;
+                                color:$white;
+                            }
+                        }
+                    }
+
+                    .generate-desc {
+                        text-align: right;
+                        color: #666;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 22px;
+                        margin: 9px 0 0;
+
+                        span {
+                            color: #003EFF;
+                        }
+                    }
+
+                    .error-msg-wrap {
+                        margin:7px 0 0;
+                        color: #D92D20;
+                        text-align: left;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 20px;
+                    }
+                }
+
+                .rate-info {
+                    max-width: 518px;
+                    margin:44px auto 196px;
+
+                    p {
+                        margin: 0;
+                        color: #98A2B3;
+                        text-align: center;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 18px;
+                    }
+                }
+            }
+
+            .btn-wrap {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .btn-policy {
+                    display: flex;
+                    height: 46px;
+                    padding: 10px 20px;
+                    justify-content: center;
+                    align-items: center;
+                    color: #7889B0;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 45.2px;
+                    border-radius: 40px;
+                    border: 1px solid #E4E4E5;
+                    box-shadow: 0px 9px 40px 0px rgba(0, 62, 255, 0.1);
+                    transition: all 0.5s ease;
+                    &:hover{
+                        background-color: #2947F2;
+                        border-color: #2947F2;
+                        color:$white;
+                    }
+                }
+
+                .right-btn {
+                    display: flex;
+                    gap: 44px;
+
+                    .btn-back {
+                        color: #374151;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 45.2px;
+                        padding: 0;
+                    }
+
+                    .btn-next {
+                        display: flex;
+                        width: 123px;
+                        height: 46px;
+                        padding: 10px;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        border-radius: 40px;
+                        background: #2947F2;
+                        box-shadow: 0px 9px 24px 0px rgba(0, 62, 255, 0.40);
+                        color: $white;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 700;
+                        line-height: 45.2px;
+                        &:hover{
+                            opacity: 0.9;
+                        }
+                        &.disabled {
+                            color: #9ca3af;
+                            background: #f3f4f6;
+                            box-shadow: none;
+
+                            img {
+                                filter: contrast(0.5);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:1440px) {
+            .heading {
+                font-size: 20px;
+                margin: 0 0 25px;
+                line-height: 30px;
+            }
+
+            .step1-wrapper {
+                padding: 30px;
+
+                .step-form-wrap {
+                    .anual-head {
+                        margin:30px 0;
+
+                        .title {
+                            font-size: 24px;
+                            line-height: 30px;
+                        }
+                    }
+
+                    .rate-wrap {
+                        .inner-wrap {
+                            .form-wrap {
+                                .flag-wrap {
+                                    padding: 0 10px 0 0;
+
+                                    img {
+                                        width: 25px;
+
+                                        &.from-currency {
+                                            margin: 0 0 0 -10px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .rate-info {
+                        margin:30px auto;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:1024px) {
+            .heading {
+                font-size: 18px;
+                margin: 0 0 20px;
+                line-height: 1.2;
+            }
+
+            .step1-wrapper {
+                .step-form-wrap {
+                    .anual-head {
+                        .title {
+                            font-size: 22px;
+                            line-height: 1.2;
+                        }
+                    }
+
+                    .rate-wrap {
+                        .inner-wrap {
+                            .form-wrap {
+                                height: 50px;
+                            }
+
+                            .btn-generateRate {
+                                height: 50px;
+                                max-width: 110px;
+                            }
+                        }
+                    }
+                }
+
+                .btn-wrap {
+                    .btn-policy {
+                        height: 36px;
+                        line-height: 30px;
+                        padding: 5px 15px;
+                    }
+
+                    .right-btn {
+                        gap: 20px;
+
+                        .btn-back {
+                            line-height: 30px;
+                        }
+
+                        .btn-next {
+                            width: 90px;
+                            height: 36px;
+                            line-height: 30px;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:767px) {
+            .step1-wrapper {
+                .step-form-wrap {
+                    .anual-head {
+                        margin: 20px 0;
+
+                        .title {
+                            font-size: 20px;
+                            line-height: 1.2;
+                        }
+                    }
+
+                    .rate-wrap {
+
+                        .generate-desc {
+                            font-size: 12px;
+                        }
+
+                        .error-msg-wrap {
+                            font-size: 12px;
+                        }
+                    }
+
+                    .rate-info {
+                        p {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:680px) {
+            .step1-wrapper {
+                .step-form-wrap {
+                    .anual-head {
+                        .sub-text,.desc {
+                            font-size: 12px;
+                        }
+
+                        .title {
+                            font-size: 18px;
+                            line-height: 1.2;
+                        }
+                    }
+
+                    .rate-wrap {
+                        .inner-wrap {
+                            .form-wrap {
+                                height: 50px;
+                                padding: 10px;
+
+                                .flag-wrap {
+                                    img {
+                                        width: 20px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .error-msg-wrap {
+                            margin:5px 0 0;
+                            font-size: 11px;
+                        }
+                    }
+                }
+
+                .btn-wrap {
+                    .btn-policy {
+                        font-size: 12px;
+                    }
+
+                    .right-btn {
+                        gap: 10px;
+
+                        .btn-back {
+                            font-size: 12px;
+                        }
+
+                        .btn-next {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:420px) {
+            .step1-wrapper {
+                padding: 20px;
+
+                .step-form-wrap {
+                    .anual-head {
+                        .title {
+                            font-size: 15px;
+                        }
+                    }
+                    .rate-wrap {
+                        .inner-wrap {
+                            flex-direction: column;
+                            align-items: flex-end;
+                            gap: 10px;
+                            .btn-generateRate{
+                                font-size: 12px;
+                                max-width: max-content;
+                                height: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

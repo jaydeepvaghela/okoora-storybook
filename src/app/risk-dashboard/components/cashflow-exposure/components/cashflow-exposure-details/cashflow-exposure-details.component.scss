@@ -260,6 +260,7 @@
                                 background: #ECEFF3;
                                 color: #FFF;
                                 width: fit-content;
+                                max-width: fit-content;
                                 display: flex;
                                 align-items: center;
                                 padding: 2px 8px 2px 6px;
@@ -274,8 +275,8 @@
 
                         &:not(.disabledColumn) {
                             .negative-total {
-                                min-width: 81px;
                                 width: fit-content;
+                                max-width: fit-content;
                                 display: flex;
                                 align-items: center;
                                 border-radius: 4px;
@@ -290,8 +291,8 @@
                             }
     
                             .positive-total {
-                                min-width: 81px;
                                 width: fit-content;
+                                max-width: fit-content;
                                 display: flex;
                                 align-items: center;
                                 border-radius: 4px;
@@ -315,6 +316,7 @@
                             font-size: 16px;
                             font-weight: 700;
                             line-height: 24px;
+                            cursor: pointer;
                         }
 
                         .edit-exposer {
@@ -416,7 +418,7 @@
                                         font-weight: 400;
                                         line-height: 20px;
                                         padding: 4px 15px;
-                                        margin: 0 0 0 5px;
+                                        margin: 0 0 0 13px;
                                     }
                                 }
                             }
@@ -1381,6 +1383,13 @@
         }
     }
 
+    .mat-datepicker-content:has(.cashflow-date-calendar-cd) {
+        border-radius: 8px !important;
+        border: 1px solid #E4E7EC !important;
+        box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.25) !important;
+        background: $white !important;
+    }
+
     .cashflow-date-calendar-cd {
         position: relative;
 
@@ -1412,6 +1421,7 @@
                     font-family: $he_heebo;
                     line-height: 24px;
                     font-size: 16px;
+                    letter-spacing: 0;
 
                     .mdc-button__label {
                         span:first-letter {
@@ -1545,6 +1555,7 @@
             font-size: 12px !important;
             font-weight: 700 !important;
             line-height: 22px !important;
+            letter-spacing: 0;
         }
 
         .set-cdc {
@@ -1563,6 +1574,7 @@
             font-size: 12px !important;
             font-weight: 700 !important;
             line-height: 22px !important;
+            letter-spacing: 0;
         }
 
         .close-cdc {
@@ -1573,6 +1585,10 @@
             width: 100% !important;
             padding: 0 !important;
             max-width: 40px;
+
+            img {
+                filter: invert(1);
+            }
         }
     }
 }

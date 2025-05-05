@@ -1,19 +1,27 @@
 import { Component, Input } from '@angular/core';
-import { monthlyExposureObject } from '../cashflow-exposure-data';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-monthly-exposure-details',
-  imports: [MatProgressBarModule],
+  imports: [MatProgressBarModule, CommonModule],
   templateUrl: './monthly-exposure-details.component.html',
   styleUrl: './monthly-exposure-details.component.scss'
 })
 export class MonthlyExposureDetailsComponent {
-  monthlyExposureObject = monthlyExposureObject;
-  @Input() monthlyPeriod: number | undefined;
-  
-  ngOnInit() {
-    console.log('monthlyPeriod from monthlyExposuredetailsc', this.monthlyPeriod);
-  }
+  @Input() monthlyPeriod: number | undefined = 12;
+  @Input() monthlyExposureObject: any = {
+    pair: "USD/ILS",
+    sign: "$",
+    toCurrency: "USD",
+    selectedExposure: "Selling",
+    monthlyAmount: 100000,
+    monthlyPeriod: 12,
+    flag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+    code: "USD",
+    baseCurrencyFlag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
+    baseCurrency: "ILS",
+    baseCurrencySign: "₪"
+  };
 
   valueWithComma(e: any, fraction: any) {
     if (e) {

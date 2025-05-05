@@ -1,6 +1,20 @@
 import { Meta, StoryObj } from "@storybook/angular";
 import { MonthlyExposureDetailsComponent } from "./monthly-exposure-details.component";
 
+const defaultMonthlyExposureObject = {
+    pair: "USD/ILS",
+    sign: "$",
+    toCurrency: "USD",
+    selectedExposure: "Selling",
+    monthlyAmount: 100000,
+    monthlyPeriod: 12,
+    flag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+    code: "USD",
+    baseCurrencyFlag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
+    baseCurrency: "ILS",
+    baseCurrencySign: "₪"
+};
+
 const meta: Meta<MonthlyExposureDetailsComponent> = {
     title: 'Components/Risk-Manager/Cashflow-Exposure/Monthly-Exposure-Details',
     component: MonthlyExposureDetailsComponent,
@@ -8,19 +22,11 @@ const meta: Meta<MonthlyExposureDetailsComponent> = {
         monthlyExposureObject: {
             control: 'object',
             description: 'Monthly exposure details',
-            defaultValue: {
-                pair: "USD/ILS",
-                sign: "$",
-                toCurrency: "USD",
-                selectedExposure: "Selling",
-                monthlyAmount: 100000,
-                monthlyPeriod: 12,
-                flag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
-                code: "USD",
-                baseCurrencyFlag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
-                baseCurrency: "ILS",
-                baseCurrencySign: "₪"
-            }
+            defaultValue: defaultMonthlyExposureObject
+        },
+        monthlyPeriod: {
+            control: 'number',
+            defaultValue: 12
         }
     }
 };
@@ -29,18 +35,7 @@ type Story = StoryObj<MonthlyExposureDetailsComponent>;
 
 export const Default: Story = {
     args: {
-        monthlyExposureObject: {
-            pair: "EUR/USD",
-            sign: "$",
-            toCurrency: "USD",
-            selectedExposure: "Selling",
-            monthlyAmount: 100000,
-            monthlyPeriod: 12,
-            flag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
-            code: "USD",
-            baseCurrencyFlag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
-            baseCurrency: "EUR",
-            baseCurrencySign: "€"
-        }
+        monthlyExposureObject: defaultMonthlyExposureObject,
+        monthlyPeriod: 12
     }
 };

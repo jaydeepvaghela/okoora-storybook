@@ -1,0 +1,410 @@
+@import '../../../../../../assets/scss/variable';
+::ng-deep {
+    .policy-summary-wrap{
+        .btn-back{
+            color:#344054;
+            font-family:$he_heebo;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1;
+            background-color: transparent;
+            margin:0 0 26px;
+            padding: 0 6px;
+            display: block;
+            img{
+                margin: 0 8px 0 0;
+            }
+        }
+        .heading{
+            color: #2947F2;
+            font-family:$he_heebo;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 38px;
+            margin:0 0 34px;
+        }
+        .confirm-wrap{
+            background-color: $white;
+            border-radius: 10px;
+            padding: 104px 40px 68px 63px;
+            .summary-wrap{
+                max-width: 604px;
+                margin:0 auto;
+                .cnf-title{
+                    color:#344054;
+                    text-align: center;
+                    font-family:$he_heebo;
+                    font-size: 30px;
+                    font-weight: 700;
+                    line-height: 38px;
+                    margin: 0 0 4px;
+                }
+                .desc{
+                    color:#98A2B3;
+                    text-align: center;
+                    font-family:$he_heebo;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    margin: 0;
+                }
+                .summary-inner{
+                    border: 1px solid #E4E7EC;
+                    border-top-left-radius: 4px;
+                    border-top-right-radius: 4px;
+                    padding:22px 20px 12px 30px;
+                    margin: 56px 0 27px;
+                    .step-item{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 0 0 33px;
+                        gap: 10px;
+                        .step-info{
+                            max-width: 426px;
+                            .title{
+                                color:#475467;
+                                font-family:$he_heebo;
+                                font-size: 14px;
+                                font-weight: 400;
+                                line-height: 20px;
+                                margin: 0 0 6px;
+                            }
+                            .rate-tag{
+                                display: inline-block;
+                                padding: 5px 10px;
+                                border-radius: 40px;
+                                background:#EFF8FF;
+                                color:#475467;
+                                text-align: center;
+                                font-family: $he_heebo;
+                                font-size: 14px;
+                                font-weight: 700;
+                                line-height: 20px;
+                                margin: 0 5px 6px 0;
+                            }
+                            .generate-tag{
+                                border-radius: 40px;
+                                border: 1px solid #F2F4F7;
+                                background:$white;
+                                display:inline-block;
+                                padding: 5px 10px;
+                                gap: 10px;
+                                color:#175CD3;
+                                text-align: center;
+                                font-family:$he_heebo;
+                                font-size: 12px;
+                                font-weight: 700;
+                                line-height: 18px;
+                                margin:0;
+                            }
+                        }
+                        .edit-btn{
+                            padding: 0;
+                        }
+                        &.step1{
+                            margin: 0 0 42px;
+                        }
+                        &:last-child{
+                            margin: 0;
+                        }
+                    }
+                }
+                .error-message {
+                    margin: 10px 0;
+                    border-radius: 4px;
+                    border: 1px solid #FECDCA;
+                    background-color: #FFFBFA;
+                    color: #D92D20;
+                    text-align: center;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    padding:5px;
+                    display: block;
+                }
+                .btn-wrap{
+                    display: flex;
+                    justify-content: center;
+                    .btn-confirm{
+                        display: flex;
+                        height: 46px;
+                        padding: 10px 30px;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        border-radius: 40px;
+                        background: #2947F2;
+                        box-shadow: 0px 9px 24px 0px rgba(0, 62, 255, 0.40);
+                        color:$white;
+                        font-family:$he_heebo;
+                        font-size: 14px;
+                        font-weight: 700;
+                        line-height: 45.2px;
+                    }
+                }
+            }
+            @media screen and (max-width:1440px) {
+                padding:60px 30px;
+                .summary-wrap{
+                    .cnf-title{
+                        font-size:25px;
+                        line-height: 30px;
+                    }
+                    .summary-inner{
+                        padding:15px 30px;
+                        margin:25px 0;
+                        .step-item{
+                            margin: 0 0 20px;
+                            &.step1{
+                                margin: 0 0 20px;
+                            }
+                        }
+                    }
+                }
+            }
+            @media screen and (max-width:1199px) {
+                padding:50px 30px;
+                .summary-wrap{
+                    .cnf-title{
+                        font-size:22px;
+                        line-height: 1.2;
+                    }
+                    .summary-inner{
+                        padding:15px 20px;
+                        margin:20px 0;
+                    }
+                }
+            }
+            @media screen and (max-width:1024px) {
+                padding:30px;
+                .summary-wrap{
+                    .cnf-title{
+                        font-size:20px;
+                    }
+                    .summary-inner{
+                        padding:15px;
+                    }
+                    .btn-wrap{
+                        .btn-confirm{
+                            height:36px;
+                            padding:5px 30px;
+                            font-size: 14px;
+                            line-height:1;
+                        }
+                    }
+                }
+            }
+            @media screen and (max-width:680px) {
+                padding: 20px;
+                .summary-wrap{
+                    .cnf-title{
+                        font-size:16px;
+                    }
+                    .desc{
+                        font-size: 12px;
+                    }
+                    .summary-inner{
+                        .step-item{
+                            .step-info{
+                                .title{
+                                    font-size: 12px;
+                                    line-height:1.2;
+                                }
+                                .rate-tag{
+                                    font-size: 12px;
+                                    line-height: 1.2;
+                                }
+                            }
+                            .edit-btn{
+                                img{
+                                    width: 15px;
+                                    height: 15px;
+                                }
+                            }
+                        }
+                    }
+                    .btn-wrap{
+                        .btn-confirm{
+                            height:30px;
+                            padding:5px 20px;
+                            font-size:12px;
+                            line-height:1;
+                        }
+                    }
+                }
+            }
+            @media screen and (max-width:360px) {
+                .summary-wrap{
+                    .summary-inner{
+                        .step-item{
+                            .step-info{
+                                .generate-tag{
+                                    padding: 5px 8px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .final-step{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: $white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            flex-direction: column;
+            height: 791px;
+            .success-wrap{
+                margin:0 0 72px;
+                .congrats-text{
+                    color:#344054;
+                    font-family:$he_heebo;
+                    font-size: 30px;
+                    font-weight: 700;
+                    line-height: 38px;
+                    margin: 0 0 4px;
+                }
+                .sub-info{
+                    color:#667085;
+                    font-family:$he_heebo;
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 20px; 
+                    margin: 0;
+                }
+                picture {
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        max-height: 287px;
+                        max-width: 287px;
+                        margin-top: 20px;
+
+                        @media screen and (max-width: 1440px) {
+                            max-height: 200px;
+                            max-width: 200px;
+                            margin-top: 15px;
+                        }
+                    }
+                }
+
+            }
+            .btn-dashboard{
+                display: flex;
+                height: 46px;
+                padding: 10px 30px;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                border-radius: 40px;
+                background: #2947F2;
+                box-shadow: 0px 9px 24px 0px rgba(0, 62, 255, 0.40);
+                color: #FFF;
+                font-family:$he_heebo;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 45.2px;
+            }
+            @media screen and (max-width:1440px) {
+                height: 450px;
+                .success-wrap{
+                    margin:0 0 35px;
+                    .congrats-text{
+                        font-size:25px;
+                        line-height: 30px;
+                    }
+                    .sub-info{
+                        font-size: 14px;
+                        font-weight: 600;
+                        line-height: 20px; 
+                        margin: 0;
+                    }
+                }
+                .btn-dashboard{
+                    height:40px;
+                    padding: 10px 30px;
+                    line-height:1.2;
+                }
+            }
+            @media screen and (max-width:1199px) {
+                .success-wrap{
+                    margin:0 0 20px;
+                    .congrats-text{
+                        font-size:22px;
+                        line-height:1.2;
+                    }
+                    .sub-info{
+                        font-size:12px;
+                    }
+                }
+                .btn-dashboard{
+                    height:36px;
+                    padding:5px 20px;
+                    line-height:1;
+                }
+            }
+            @media screen and (max-width:1024px) {
+                .success-wrap{
+                    .congrats-text{
+                        font-size:20px;
+                    }
+                }
+            }
+            @media screen and (max-width:767px) {
+                .success-wrap{
+                    margin:0 0 10px;
+                    .congrats-text{
+                        font-size:18px;
+                        line-height:1.2;
+                    }
+                }
+                .btn-dashboard{
+                    height:30px;
+                    padding:5px 10px;
+                    font-size: 12px;
+                }
+            }
+        }
+        &.showFinalStep{
+            margin: 40px 0 0;
+            .btn-back{
+                display:none;
+            }
+        }
+        @media screen and (max-width:1440px) {
+            .btn-back{
+                margin: 0 0 10px;
+            }
+            .heading{
+                font-size: 20px;
+                margin: 0 0 20px;
+                line-height: 30px;
+            }
+            &.showFinalStep{
+                margin:0;
+            }
+        }
+        @media screen and (max-width:1024px) {
+            .btn-back{
+                margin: 0 0 5px;
+                img{
+                    margin: 0 4px 0 0;
+                }
+            }
+            .heading{
+                font-size:18px;
+                line-height:1.2;
+            }
+        }
+        @media screen and (max-width:680px) {
+            .btn-back{
+                font-size:12px;
+            }
+        }
+    }
+}

@@ -1,13 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  Inject,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-  ChangeDetectorRef,
-  Injectable,
-} from '@angular/core';
+import { Component, ElementRef, Inject, QueryList, ViewChild, ViewChildren, ChangeDetectorRef, Injectable, Input, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -21,12 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltip, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { MonthlyExposureDetailsComponent } from '../monthly-exposure-details/monthly-exposure-details.component';
-import { cashflowExposureRows, monthlyExposureObject } from '../cashflow-exposure-data';
+import { cashflowExposureRows } from '../cashflow-exposure-data';
 import { Router } from '@angular/router';
+import { MatStepper } from '@angular/material/stepper';
+import { HedgingDataService } from '../../../hedging-proposal/hedging-data.service';
 
-// Custom Date Adapter
 @Injectable()
 export class CustomDateAdapter extends MomentDateAdapter {
   constructor(@Inject(MAT_DATE_LOCALE) locale: string) {
@@ -86,12 +78,25 @@ export const MATERIAL_DATEPICKER_FORMATS = {
 export class CashflowExposureDetailsComponent {
   @ViewChildren(MatDatepicker) datepickers!: QueryList<MatDatepicker<any>>;
   @ViewChild('cashflowDateColumn', { static: false }) cashflowDateColumn!: ElementRef;
+  @Input() stepper!: MatStepper;
   cashflowExposureRows = cashflowExposureRows;
-  monthlyExposureObject = monthlyExposureObject;
+  monthlyExposureObject = {
+    pair: "USD/ILS",
+    sign: "$",
+    toCurrency: "USD",
+    selectedExposure: "Selling",
+    monthlyAmount: 100000,
+    monthlyPeriod: 12,
+    flag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+    code: "USD",
+    baseCurrencyFlag: "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
+    baseCurrency: "ILS",
+    baseCurrencySign: "₪"
+  };;
 
   displayedColumns: string[] = ['Month', 'Selling', 'Buying', 'TotalNet', 'DisableMonth'];
   staticMonthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
+  @ViewChild('riskAlert', { static: false }) riskAlert!: NgbTooltip;
   openEditSellingIndex: number | null = null;
   openEditBuyingIndex: number | null = null;
   errorMessage: string | null = null;
@@ -104,19 +109,64 @@ export class CashflowExposureDetailsComponent {
   buyingFlag!: boolean;
   tempcashflowExposureRows: any;
   isCurrentMonthIncrement: boolean = false;
+  exposureAmount!: number;
+  exposureAmountFloor!: string;
+  exposureAmountCeil!: string;
+  exposureBaseCurrency!: string;
+  exposureToCurrency!: string;
   
-  constructor(private cd: ChangeDetectorRef, private router: Router) {}
-  
-  /**
-   * Opens the datepicker for a specific row and sets the date
-   */
+  constructor(private cd: ChangeDetectorRef, private renderer: Renderer2, private router: Router, private hedgeDataService: HedgingDataService) {}
+
+  ngAfterViewInit() {
+    this.riskAlert.open();
+  }
 
   ngOnInit() {
+    this.hedgeDataService.openCashflowDateTooltip.subscribe(res => {
+      if (res) {
+        setTimeout(() => {
+          this.riskAlert.open();
+        }, 1000);
+      }
+    });
+    this.renderer.listen('document', 'click', (event) => {
+      if (!this.cashflowDateColumn.nativeElement.contains(event.target)) {
+        this.riskAlert.close();
+      }
+    });
+    this.hedgeDataService.getExposureFormValue.subscribe((res: any) => {
+      this.isCurrentMonthIncrement = false;
+      this.cashflowExposureRows = []
+      this.monthlyExposureObject = res
+      localStorage.setItem('cashFlowExposureData', JSON.stringify(this.monthlyExposureObject));
+      this.exposureAmount = this.monthlyExposureObject?.monthlyAmount;
+      this.exposureAmountFloor = this.exposureAmount.toString().split(".")[0];
+      this.exposureAmountCeil = this.exposureAmount.toString().split(".")[1];
+      this.exposureBaseCurrency = this.monthlyExposureObject?.pair.toString().split("/")[1];
+      this.exposureToCurrency = this.monthlyExposureObject?.pair.toString().split("/")[0];
+      this.buyingFlag = this.monthlyExposureObject?.selectedExposure == "Buying" ? true : false;
+      this.monthlyPeriod = this.monthlyExposureObject?.monthlyPeriod;
+      this.getNext12MonthNamesWithYear(this.monthlyPeriod);
+      this.cd.detectChanges();
+    });
     this.monthlyPeriod = this.monthlyExposureObject.monthlyPeriod;
-    console.log(this.monthlyPeriod, 'monthlyPeriod')
+  }
+
+  addSixMonth() {
+      this.monthlyPeriod += 6;
+    this.tempcashflowExposureRows = this.cashflowExposureRows;
+    this.cashflowExposureRows = []
+      this.isCurrentMonthIncrement = true;
+      this.getNext12MonthNamesWithYear(this.monthlyPeriod);
+    this.cashflowExposureRows?.splice(0, this.tempcashflowExposureRows?.length);
+    this.cashflowExposureRows = [...this.tempcashflowExposureRows, ...this.cashflowExposureRows]
+    // for (let index = 6; index < 12; index++) {
+    //   this.cashflowExposureRows.index = index;
+    // }
   }
   
   chooseCashflowDate(index: number, year: number, month: string, day: number): void {
+    this.riskAlert.close();
     const monthIndex = this.staticMonthNames.findIndex((m) => m === month);
     const selectedDate = new Date(year, monthIndex, day);
     this.cashflowExposureRows[index].date = selectedDate;
@@ -304,7 +354,7 @@ export class CashflowExposureDetailsComponent {
   restrictLength(event: KeyboardEvent): void {
     const input = event.target as HTMLInputElement;
     const valueWithoutCommas = input.value.replace(/,/g, '');
-    const cursorPosition = input.selectionStart; // Track cursor position
+    const cursorPosition = input.selectionStart;
     const parts = valueWithoutCommas.split('.');
     const integerPart = parts[0];
     const decimalPart = parts[1] || '';
@@ -340,7 +390,6 @@ export class CashflowExposureDetailsComponent {
   }
 
   addOneMore() {
-    debugger
     this.monthlyPeriod++
     this.tempcashflowExposureRows = this.cashflowExposureRows;
     this.cashflowExposureRows = [];
@@ -363,13 +412,12 @@ export class CashflowExposureDetailsComponent {
     var res = [];
 
     for (var i = 0; i < monthlyPeriod; ++i) {
-      let buyingValue: any = this.buyingFlag ? this.monthlyExposureObject.monthlyAmount : "0";
-      let sellingValue: any = this.buyingFlag ? "0" : this.monthlyExposureObject.monthlyAmount;
-
-      // Getting Net value
-      let totalNetValue =  sellingValue - buyingValue
-
-      // Getting last DD date
+      let buyingValueRaw: any = this.buyingFlag ? this.monthlyExposureObject.monthlyAmount : "0";
+      let sellingValueRaw: any = this.buyingFlag ? "0" : this.monthlyExposureObject.monthlyAmount;
+      let buyingValue: number = parseFloat(buyingValueRaw.toString().replace(/,/g, '')) || 0;
+      let sellingValue: number = parseFloat(sellingValueRaw.toString().replace(/,/g, '')) || 0;
+      let totalNetValueNumber = sellingValue - buyingValue;
+      let totalNetValue = this.valueWithComma(totalNetValueNumber, 2);
       let getMonthNumberFromName = new Date(`${names[month]} 1, ${year}`).getMonth() + 1;
       let lastDayDD = new Date(year, getMonthNumberFromName, 0).getDate();
 
@@ -378,7 +426,7 @@ export class CashflowExposureDetailsComponent {
 
       const midDayDD = new Date((startDate.getTime() + endDate.getTime()) / 2);
       let monthFormate: any = month + 1
-
+      
       const newElement: any = {
         month: this.cashflowExposureRows[i]?.month ? this.cashflowExposureRows[i]?.month : names[month],
         year: this.cashflowExposureRows[i]?.year ? this.cashflowExposureRows[i]?.year : year,
@@ -425,9 +473,10 @@ export class CashflowExposureDetailsComponent {
   
   exposureDetailsNextStep() {
     this.router.navigate(['/dashboard']);
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
   backToPrevious() {
-    throw new Error('Method not implemented.');
+    this.stepper.previous();
   }
 }
