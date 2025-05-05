@@ -142,6 +142,331 @@
             "extends": []
         },
         {
+            "name": "CountriesData",
+            "id": "interface-CountriesData-4be3965b61c6750fdb457d02af50ca9948932d9dac9a359fe5373f67d4d48177c6f65e31e07dc2869b478042f33f268366a2f3e3b2fff039d385df02641f3863",
+            "file": "src/app/sign-up/kyc.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IStepsObj {\r\n    currentStep: number,\r\n    maxSteps: number,\r\n    minSteps: number\r\n}\r\n\r\nexport interface IKycData {\r\n    businessTypes: 'companyAcc' | 'privateAcc' | 'invitedAcc';\r\n}\r\n\r\nexport interface IKYCFormGroups {\r\n    step_1: {\r\n        companyAcc: {isActive:boolean, countrySelected:string},\r\n        privateAcc:{isActive:boolean, countrySelected:string},\r\n        invitedAcc:{isActive:boolean}\r\n    },\r\n    step_2: {\r\n        email: string\r\n    }\r\n}\r\n\r\nexport enum EBusinessType {\r\n    companyAccount = \"companyAcc\",\r\n    privateAccount = \"privateAcc\",\r\n    invitedAccount = \"invitedAcc\"\r\n}\r\nexport enum EKycStatus {\r\n    basicKYC = 1,\r\n    partialKYC = 2,\r\n    fullKYC = 3\r\n}\r\n\r\nexport type TBusinessTypes = EBusinessType.companyAccount | EBusinessType.privateAccount;\r\nexport enum EDetailsToShowNames {\r\n    DEFAULT = \"DEFAULT\",\r\n    companyAcc = \"companyAcc\",\r\n    privateAcc = \"privateAcc\",\r\n    invitedAcc = \"invitedAcc\",\r\n    email = \"email\",\r\n    emailConfirmation = \"emailConfirmation\",\r\n    phone=  \"phone\",\r\n    phoneConfirmation = \"phoneConfirmation\",\r\n    createdPassword = \"createdPassword\",\r\n    personalDetails = \"personalDetails\",\r\n    personalAddress = \"personalAddress\",\r\n}\r\n\r\nexport enum EStepNumber {\r\n    typeOfBusiness = 1,\r\n    email = 2,\r\n    emailConfirmation = 3,\r\n    phone = 4,\r\n    phoneConfirmation = 5,\r\n    createPassword = 6,\r\n    personalDetails = 7,\r\n    personalAddress = 8\r\n}\r\n\r\nexport enum VerificationReturnType\r\n{\r\n    Success = 1,\r\n    GeneralError = 2,\r\n    PassedLimitError = 3,\r\n}\r\n\r\nexport enum SiteSource\r\n{\r\n    Ofakim = 1,\r\n    Okoora = 2\r\n}\r\n\r\nexport type EmailVerificationPerCustomerResponse = { SiteSource :any}\r\n\r\nexport type VerificationReturnTypeOptions = VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError;\r\nexport type TSiteSource = SiteSource.Ofakim | SiteSource.Okoora;\r\nexport type TSendMailResponse = {\r\n    Success:VerificationReturnTypeOptions, \r\n    SiteSource: TSiteSource,\r\n    PassedLimitError?:VerificationReturnTypeOptions\r\n}\r\n\r\nexport interface ICheckEmailVerification {\r\n    action: 'CHECK_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendEmailVerification {\r\n    action: 'SEND_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ICheckPhoneVerification {\r\n    action: 'CHECK_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendPhoneVerification {\r\n    action: 'SEND_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport type IPerformVerification = ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification;\r\n\r\nexport type TVerificationCodeStatus =  'DEFAULT' | 'INCORRECT' | 'VALID' | 'PASSED_LIMIT';\r\nexport enum EErrorMessages {\r\n    SomethingWentWrong = 'Something went wrong.',\r\n    FillAllFields = 'Please fill all fields in order to continue',\r\n}\r\nexport interface IErrorData {hasError:boolean,msg:string}\r\nexport interface CountriesData  {\r\n    phoneCode:number,\r\n    countryCode: string,\r\n    countryName:string\r\n}",
+            "properties": [
+                {
+                    "name": "countryCode",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 120
+                },
+                {
+                    "name": "countryName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 121
+                },
+                {
+                    "name": "phoneCode",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 119
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "ICheckEmailVerification",
+            "id": "interface-ICheckEmailVerification-4be3965b61c6750fdb457d02af50ca9948932d9dac9a359fe5373f67d4d48177c6f65e31e07dc2869b478042f33f268366a2f3e3b2fff039d385df02641f3863",
+            "file": "src/app/sign-up/kyc.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IStepsObj {\r\n    currentStep: number,\r\n    maxSteps: number,\r\n    minSteps: number\r\n}\r\n\r\nexport interface IKycData {\r\n    businessTypes: 'companyAcc' | 'privateAcc' | 'invitedAcc';\r\n}\r\n\r\nexport interface IKYCFormGroups {\r\n    step_1: {\r\n        companyAcc: {isActive:boolean, countrySelected:string},\r\n        privateAcc:{isActive:boolean, countrySelected:string},\r\n        invitedAcc:{isActive:boolean}\r\n    },\r\n    step_2: {\r\n        email: string\r\n    }\r\n}\r\n\r\nexport enum EBusinessType {\r\n    companyAccount = \"companyAcc\",\r\n    privateAccount = \"privateAcc\",\r\n    invitedAccount = \"invitedAcc\"\r\n}\r\nexport enum EKycStatus {\r\n    basicKYC = 1,\r\n    partialKYC = 2,\r\n    fullKYC = 3\r\n}\r\n\r\nexport type TBusinessTypes = EBusinessType.companyAccount | EBusinessType.privateAccount;\r\nexport enum EDetailsToShowNames {\r\n    DEFAULT = \"DEFAULT\",\r\n    companyAcc = \"companyAcc\",\r\n    privateAcc = \"privateAcc\",\r\n    invitedAcc = \"invitedAcc\",\r\n    email = \"email\",\r\n    emailConfirmation = \"emailConfirmation\",\r\n    phone=  \"phone\",\r\n    phoneConfirmation = \"phoneConfirmation\",\r\n    createdPassword = \"createdPassword\",\r\n    personalDetails = \"personalDetails\",\r\n    personalAddress = \"personalAddress\",\r\n}\r\n\r\nexport enum EStepNumber {\r\n    typeOfBusiness = 1,\r\n    email = 2,\r\n    emailConfirmation = 3,\r\n    phone = 4,\r\n    phoneConfirmation = 5,\r\n    createPassword = 6,\r\n    personalDetails = 7,\r\n    personalAddress = 8\r\n}\r\n\r\nexport enum VerificationReturnType\r\n{\r\n    Success = 1,\r\n    GeneralError = 2,\r\n    PassedLimitError = 3,\r\n}\r\n\r\nexport enum SiteSource\r\n{\r\n    Ofakim = 1,\r\n    Okoora = 2\r\n}\r\n\r\nexport type EmailVerificationPerCustomerResponse = { SiteSource :any}\r\n\r\nexport type VerificationReturnTypeOptions = VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError;\r\nexport type TSiteSource = SiteSource.Ofakim | SiteSource.Okoora;\r\nexport type TSendMailResponse = {\r\n    Success:VerificationReturnTypeOptions, \r\n    SiteSource: TSiteSource,\r\n    PassedLimitError?:VerificationReturnTypeOptions\r\n}\r\n\r\nexport interface ICheckEmailVerification {\r\n    action: 'CHECK_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendEmailVerification {\r\n    action: 'SEND_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ICheckPhoneVerification {\r\n    action: 'CHECK_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendPhoneVerification {\r\n    action: 'SEND_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport type IPerformVerification = ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification;\r\n\r\nexport type TVerificationCodeStatus =  'DEFAULT' | 'INCORRECT' | 'VALID' | 'PASSED_LIMIT';\r\nexport enum EErrorMessages {\r\n    SomethingWentWrong = 'Something went wrong.',\r\n    FillAllFields = 'Please fill all fields in order to continue',\r\n}\r\nexport interface IErrorData {hasError:boolean,msg:string}\r\nexport interface CountriesData  {\r\n    phoneCode:number,\r\n    countryCode: string,\r\n    countryName:string\r\n}",
+            "properties": [
+                {
+                    "name": "action",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 83
+                },
+                {
+                    "name": "payload",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 84
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "ICheckPhoneVerification",
+            "id": "interface-ICheckPhoneVerification-4be3965b61c6750fdb457d02af50ca9948932d9dac9a359fe5373f67d4d48177c6f65e31e07dc2869b478042f33f268366a2f3e3b2fff039d385df02641f3863",
+            "file": "src/app/sign-up/kyc.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IStepsObj {\r\n    currentStep: number,\r\n    maxSteps: number,\r\n    minSteps: number\r\n}\r\n\r\nexport interface IKycData {\r\n    businessTypes: 'companyAcc' | 'privateAcc' | 'invitedAcc';\r\n}\r\n\r\nexport interface IKYCFormGroups {\r\n    step_1: {\r\n        companyAcc: {isActive:boolean, countrySelected:string},\r\n        privateAcc:{isActive:boolean, countrySelected:string},\r\n        invitedAcc:{isActive:boolean}\r\n    },\r\n    step_2: {\r\n        email: string\r\n    }\r\n}\r\n\r\nexport enum EBusinessType {\r\n    companyAccount = \"companyAcc\",\r\n    privateAccount = \"privateAcc\",\r\n    invitedAccount = \"invitedAcc\"\r\n}\r\nexport enum EKycStatus {\r\n    basicKYC = 1,\r\n    partialKYC = 2,\r\n    fullKYC = 3\r\n}\r\n\r\nexport type TBusinessTypes = EBusinessType.companyAccount | EBusinessType.privateAccount;\r\nexport enum EDetailsToShowNames {\r\n    DEFAULT = \"DEFAULT\",\r\n    companyAcc = \"companyAcc\",\r\n    privateAcc = \"privateAcc\",\r\n    invitedAcc = \"invitedAcc\",\r\n    email = \"email\",\r\n    emailConfirmation = \"emailConfirmation\",\r\n    phone=  \"phone\",\r\n    phoneConfirmation = \"phoneConfirmation\",\r\n    createdPassword = \"createdPassword\",\r\n    personalDetails = \"personalDetails\",\r\n    personalAddress = \"personalAddress\",\r\n}\r\n\r\nexport enum EStepNumber {\r\n    typeOfBusiness = 1,\r\n    email = 2,\r\n    emailConfirmation = 3,\r\n    phone = 4,\r\n    phoneConfirmation = 5,\r\n    createPassword = 6,\r\n    personalDetails = 7,\r\n    personalAddress = 8\r\n}\r\n\r\nexport enum VerificationReturnType\r\n{\r\n    Success = 1,\r\n    GeneralError = 2,\r\n    PassedLimitError = 3,\r\n}\r\n\r\nexport enum SiteSource\r\n{\r\n    Ofakim = 1,\r\n    Okoora = 2\r\n}\r\n\r\nexport type EmailVerificationPerCustomerResponse = { SiteSource :any}\r\n\r\nexport type VerificationReturnTypeOptions = VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError;\r\nexport type TSiteSource = SiteSource.Ofakim | SiteSource.Okoora;\r\nexport type TSendMailResponse = {\r\n    Success:VerificationReturnTypeOptions, \r\n    SiteSource: TSiteSource,\r\n    PassedLimitError?:VerificationReturnTypeOptions\r\n}\r\n\r\nexport interface ICheckEmailVerification {\r\n    action: 'CHECK_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendEmailVerification {\r\n    action: 'SEND_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ICheckPhoneVerification {\r\n    action: 'CHECK_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendPhoneVerification {\r\n    action: 'SEND_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport type IPerformVerification = ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification;\r\n\r\nexport type TVerificationCodeStatus =  'DEFAULT' | 'INCORRECT' | 'VALID' | 'PASSED_LIMIT';\r\nexport enum EErrorMessages {\r\n    SomethingWentWrong = 'Something went wrong.',\r\n    FillAllFields = 'Please fill all fields in order to continue',\r\n}\r\nexport interface IErrorData {hasError:boolean,msg:string}\r\nexport interface CountriesData  {\r\n    phoneCode:number,\r\n    countryCode: string,\r\n    countryName:string\r\n}",
+            "properties": [
+                {
+                    "name": "action",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 97
+                },
+                {
+                    "name": "payload",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 98
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IErrorData",
+            "id": "interface-IErrorData-4be3965b61c6750fdb457d02af50ca9948932d9dac9a359fe5373f67d4d48177c6f65e31e07dc2869b478042f33f268366a2f3e3b2fff039d385df02641f3863",
+            "file": "src/app/sign-up/kyc.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IStepsObj {\r\n    currentStep: number,\r\n    maxSteps: number,\r\n    minSteps: number\r\n}\r\n\r\nexport interface IKycData {\r\n    businessTypes: 'companyAcc' | 'privateAcc' | 'invitedAcc';\r\n}\r\n\r\nexport interface IKYCFormGroups {\r\n    step_1: {\r\n        companyAcc: {isActive:boolean, countrySelected:string},\r\n        privateAcc:{isActive:boolean, countrySelected:string},\r\n        invitedAcc:{isActive:boolean}\r\n    },\r\n    step_2: {\r\n        email: string\r\n    }\r\n}\r\n\r\nexport enum EBusinessType {\r\n    companyAccount = \"companyAcc\",\r\n    privateAccount = \"privateAcc\",\r\n    invitedAccount = \"invitedAcc\"\r\n}\r\nexport enum EKycStatus {\r\n    basicKYC = 1,\r\n    partialKYC = 2,\r\n    fullKYC = 3\r\n}\r\n\r\nexport type TBusinessTypes = EBusinessType.companyAccount | EBusinessType.privateAccount;\r\nexport enum EDetailsToShowNames {\r\n    DEFAULT = \"DEFAULT\",\r\n    companyAcc = \"companyAcc\",\r\n    privateAcc = \"privateAcc\",\r\n    invitedAcc = \"invitedAcc\",\r\n    email = \"email\",\r\n    emailConfirmation = \"emailConfirmation\",\r\n    phone=  \"phone\",\r\n    phoneConfirmation = \"phoneConfirmation\",\r\n    createdPassword = \"createdPassword\",\r\n    personalDetails = \"personalDetails\",\r\n    personalAddress = \"personalAddress\",\r\n}\r\n\r\nexport enum EStepNumber {\r\n    typeOfBusiness = 1,\r\n    email = 2,\r\n    emailConfirmation = 3,\r\n    phone = 4,\r\n    phoneConfirmation = 5,\r\n    createPassword = 6,\r\n    personalDetails = 7,\r\n    personalAddress = 8\r\n}\r\n\r\nexport enum VerificationReturnType\r\n{\r\n    Success = 1,\r\n    GeneralError = 2,\r\n    PassedLimitError = 3,\r\n}\r\n\r\nexport enum SiteSource\r\n{\r\n    Ofakim = 1,\r\n    Okoora = 2\r\n}\r\n\r\nexport type EmailVerificationPerCustomerResponse = { SiteSource :any}\r\n\r\nexport type VerificationReturnTypeOptions = VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError;\r\nexport type TSiteSource = SiteSource.Ofakim | SiteSource.Okoora;\r\nexport type TSendMailResponse = {\r\n    Success:VerificationReturnTypeOptions, \r\n    SiteSource: TSiteSource,\r\n    PassedLimitError?:VerificationReturnTypeOptions\r\n}\r\n\r\nexport interface ICheckEmailVerification {\r\n    action: 'CHECK_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendEmailVerification {\r\n    action: 'SEND_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ICheckPhoneVerification {\r\n    action: 'CHECK_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendPhoneVerification {\r\n    action: 'SEND_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport type IPerformVerification = ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification;\r\n\r\nexport type TVerificationCodeStatus =  'DEFAULT' | 'INCORRECT' | 'VALID' | 'PASSED_LIMIT';\r\nexport enum EErrorMessages {\r\n    SomethingWentWrong = 'Something went wrong.',\r\n    FillAllFields = 'Please fill all fields in order to continue',\r\n}\r\nexport interface IErrorData {hasError:boolean,msg:string}\r\nexport interface CountriesData  {\r\n    phoneCode:number,\r\n    countryCode: string,\r\n    countryName:string\r\n}",
+            "properties": [
+                {
+                    "name": "hasError",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 117
+                },
+                {
+                    "name": "msg",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 117
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IKycData",
+            "id": "interface-IKycData-4be3965b61c6750fdb457d02af50ca9948932d9dac9a359fe5373f67d4d48177c6f65e31e07dc2869b478042f33f268366a2f3e3b2fff039d385df02641f3863",
+            "file": "src/app/sign-up/kyc.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IStepsObj {\r\n    currentStep: number,\r\n    maxSteps: number,\r\n    minSteps: number\r\n}\r\n\r\nexport interface IKycData {\r\n    businessTypes: 'companyAcc' | 'privateAcc' | 'invitedAcc';\r\n}\r\n\r\nexport interface IKYCFormGroups {\r\n    step_1: {\r\n        companyAcc: {isActive:boolean, countrySelected:string},\r\n        privateAcc:{isActive:boolean, countrySelected:string},\r\n        invitedAcc:{isActive:boolean}\r\n    },\r\n    step_2: {\r\n        email: string\r\n    }\r\n}\r\n\r\nexport enum EBusinessType {\r\n    companyAccount = \"companyAcc\",\r\n    privateAccount = \"privateAcc\",\r\n    invitedAccount = \"invitedAcc\"\r\n}\r\nexport enum EKycStatus {\r\n    basicKYC = 1,\r\n    partialKYC = 2,\r\n    fullKYC = 3\r\n}\r\n\r\nexport type TBusinessTypes = EBusinessType.companyAccount | EBusinessType.privateAccount;\r\nexport enum EDetailsToShowNames {\r\n    DEFAULT = \"DEFAULT\",\r\n    companyAcc = \"companyAcc\",\r\n    privateAcc = \"privateAcc\",\r\n    invitedAcc = \"invitedAcc\",\r\n    email = \"email\",\r\n    emailConfirmation = \"emailConfirmation\",\r\n    phone=  \"phone\",\r\n    phoneConfirmation = \"phoneConfirmation\",\r\n    createdPassword = \"createdPassword\",\r\n    personalDetails = \"personalDetails\",\r\n    personalAddress = \"personalAddress\",\r\n}\r\n\r\nexport enum EStepNumber {\r\n    typeOfBusiness = 1,\r\n    email = 2,\r\n    emailConfirmation = 3,\r\n    phone = 4,\r\n    phoneConfirmation = 5,\r\n    createPassword = 6,\r\n    personalDetails = 7,\r\n    personalAddress = 8\r\n}\r\n\r\nexport enum VerificationReturnType\r\n{\r\n    Success = 1,\r\n    GeneralError = 2,\r\n    PassedLimitError = 3,\r\n}\r\n\r\nexport enum SiteSource\r\n{\r\n    Ofakim = 1,\r\n    Okoora = 2\r\n}\r\n\r\nexport type EmailVerificationPerCustomerResponse = { SiteSource :any}\r\n\r\nexport type VerificationReturnTypeOptions = VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError;\r\nexport type TSiteSource = SiteSource.Ofakim | SiteSource.Okoora;\r\nexport type TSendMailResponse = {\r\n    Success:VerificationReturnTypeOptions, \r\n    SiteSource: TSiteSource,\r\n    PassedLimitError?:VerificationReturnTypeOptions\r\n}\r\n\r\nexport interface ICheckEmailVerification {\r\n    action: 'CHECK_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendEmailVerification {\r\n    action: 'SEND_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ICheckPhoneVerification {\r\n    action: 'CHECK_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendPhoneVerification {\r\n    action: 'SEND_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport type IPerformVerification = ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification;\r\n\r\nexport type TVerificationCodeStatus =  'DEFAULT' | 'INCORRECT' | 'VALID' | 'PASSED_LIMIT';\r\nexport enum EErrorMessages {\r\n    SomethingWentWrong = 'Something went wrong.',\r\n    FillAllFields = 'Please fill all fields in order to continue',\r\n}\r\nexport interface IErrorData {hasError:boolean,msg:string}\r\nexport interface CountriesData  {\r\n    phoneCode:number,\r\n    countryCode: string,\r\n    countryName:string\r\n}",
+            "properties": [
+                {
+                    "name": "businessTypes",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"companyAcc\" | \"privateAcc\" | \"invitedAcc\"",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IKYCFormGroups",
+            "id": "interface-IKYCFormGroups-4be3965b61c6750fdb457d02af50ca9948932d9dac9a359fe5373f67d4d48177c6f65e31e07dc2869b478042f33f268366a2f3e3b2fff039d385df02641f3863",
+            "file": "src/app/sign-up/kyc.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IStepsObj {\r\n    currentStep: number,\r\n    maxSteps: number,\r\n    minSteps: number\r\n}\r\n\r\nexport interface IKycData {\r\n    businessTypes: 'companyAcc' | 'privateAcc' | 'invitedAcc';\r\n}\r\n\r\nexport interface IKYCFormGroups {\r\n    step_1: {\r\n        companyAcc: {isActive:boolean, countrySelected:string},\r\n        privateAcc:{isActive:boolean, countrySelected:string},\r\n        invitedAcc:{isActive:boolean}\r\n    },\r\n    step_2: {\r\n        email: string\r\n    }\r\n}\r\n\r\nexport enum EBusinessType {\r\n    companyAccount = \"companyAcc\",\r\n    privateAccount = \"privateAcc\",\r\n    invitedAccount = \"invitedAcc\"\r\n}\r\nexport enum EKycStatus {\r\n    basicKYC = 1,\r\n    partialKYC = 2,\r\n    fullKYC = 3\r\n}\r\n\r\nexport type TBusinessTypes = EBusinessType.companyAccount | EBusinessType.privateAccount;\r\nexport enum EDetailsToShowNames {\r\n    DEFAULT = \"DEFAULT\",\r\n    companyAcc = \"companyAcc\",\r\n    privateAcc = \"privateAcc\",\r\n    invitedAcc = \"invitedAcc\",\r\n    email = \"email\",\r\n    emailConfirmation = \"emailConfirmation\",\r\n    phone=  \"phone\",\r\n    phoneConfirmation = \"phoneConfirmation\",\r\n    createdPassword = \"createdPassword\",\r\n    personalDetails = \"personalDetails\",\r\n    personalAddress = \"personalAddress\",\r\n}\r\n\r\nexport enum EStepNumber {\r\n    typeOfBusiness = 1,\r\n    email = 2,\r\n    emailConfirmation = 3,\r\n    phone = 4,\r\n    phoneConfirmation = 5,\r\n    createPassword = 6,\r\n    personalDetails = 7,\r\n    personalAddress = 8\r\n}\r\n\r\nexport enum VerificationReturnType\r\n{\r\n    Success = 1,\r\n    GeneralError = 2,\r\n    PassedLimitError = 3,\r\n}\r\n\r\nexport enum SiteSource\r\n{\r\n    Ofakim = 1,\r\n    Okoora = 2\r\n}\r\n\r\nexport type EmailVerificationPerCustomerResponse = { SiteSource :any}\r\n\r\nexport type VerificationReturnTypeOptions = VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError;\r\nexport type TSiteSource = SiteSource.Ofakim | SiteSource.Okoora;\r\nexport type TSendMailResponse = {\r\n    Success:VerificationReturnTypeOptions, \r\n    SiteSource: TSiteSource,\r\n    PassedLimitError?:VerificationReturnTypeOptions\r\n}\r\n\r\nexport interface ICheckEmailVerification {\r\n    action: 'CHECK_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendEmailVerification {\r\n    action: 'SEND_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ICheckPhoneVerification {\r\n    action: 'CHECK_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendPhoneVerification {\r\n    action: 'SEND_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport type IPerformVerification = ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification;\r\n\r\nexport type TVerificationCodeStatus =  'DEFAULT' | 'INCORRECT' | 'VALID' | 'PASSED_LIMIT';\r\nexport enum EErrorMessages {\r\n    SomethingWentWrong = 'Something went wrong.',\r\n    FillAllFields = 'Please fill all fields in order to continue',\r\n}\r\nexport interface IErrorData {hasError:boolean,msg:string}\r\nexport interface CountriesData  {\r\n    phoneCode:number,\r\n    countryCode: string,\r\n    countryName:string\r\n}",
+            "properties": [
+                {
+                    "name": "step_1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "step_2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "ISendEmailVerification",
+            "id": "interface-ISendEmailVerification-4be3965b61c6750fdb457d02af50ca9948932d9dac9a359fe5373f67d4d48177c6f65e31e07dc2869b478042f33f268366a2f3e3b2fff039d385df02641f3863",
+            "file": "src/app/sign-up/kyc.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IStepsObj {\r\n    currentStep: number,\r\n    maxSteps: number,\r\n    minSteps: number\r\n}\r\n\r\nexport interface IKycData {\r\n    businessTypes: 'companyAcc' | 'privateAcc' | 'invitedAcc';\r\n}\r\n\r\nexport interface IKYCFormGroups {\r\n    step_1: {\r\n        companyAcc: {isActive:boolean, countrySelected:string},\r\n        privateAcc:{isActive:boolean, countrySelected:string},\r\n        invitedAcc:{isActive:boolean}\r\n    },\r\n    step_2: {\r\n        email: string\r\n    }\r\n}\r\n\r\nexport enum EBusinessType {\r\n    companyAccount = \"companyAcc\",\r\n    privateAccount = \"privateAcc\",\r\n    invitedAccount = \"invitedAcc\"\r\n}\r\nexport enum EKycStatus {\r\n    basicKYC = 1,\r\n    partialKYC = 2,\r\n    fullKYC = 3\r\n}\r\n\r\nexport type TBusinessTypes = EBusinessType.companyAccount | EBusinessType.privateAccount;\r\nexport enum EDetailsToShowNames {\r\n    DEFAULT = \"DEFAULT\",\r\n    companyAcc = \"companyAcc\",\r\n    privateAcc = \"privateAcc\",\r\n    invitedAcc = \"invitedAcc\",\r\n    email = \"email\",\r\n    emailConfirmation = \"emailConfirmation\",\r\n    phone=  \"phone\",\r\n    phoneConfirmation = \"phoneConfirmation\",\r\n    createdPassword = \"createdPassword\",\r\n    personalDetails = \"personalDetails\",\r\n    personalAddress = \"personalAddress\",\r\n}\r\n\r\nexport enum EStepNumber {\r\n    typeOfBusiness = 1,\r\n    email = 2,\r\n    emailConfirmation = 3,\r\n    phone = 4,\r\n    phoneConfirmation = 5,\r\n    createPassword = 6,\r\n    personalDetails = 7,\r\n    personalAddress = 8\r\n}\r\n\r\nexport enum VerificationReturnType\r\n{\r\n    Success = 1,\r\n    GeneralError = 2,\r\n    PassedLimitError = 3,\r\n}\r\n\r\nexport enum SiteSource\r\n{\r\n    Ofakim = 1,\r\n    Okoora = 2\r\n}\r\n\r\nexport type EmailVerificationPerCustomerResponse = { SiteSource :any}\r\n\r\nexport type VerificationReturnTypeOptions = VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError;\r\nexport type TSiteSource = SiteSource.Ofakim | SiteSource.Okoora;\r\nexport type TSendMailResponse = {\r\n    Success:VerificationReturnTypeOptions, \r\n    SiteSource: TSiteSource,\r\n    PassedLimitError?:VerificationReturnTypeOptions\r\n}\r\n\r\nexport interface ICheckEmailVerification {\r\n    action: 'CHECK_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendEmailVerification {\r\n    action: 'SEND_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ICheckPhoneVerification {\r\n    action: 'CHECK_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendPhoneVerification {\r\n    action: 'SEND_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport type IPerformVerification = ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification;\r\n\r\nexport type TVerificationCodeStatus =  'DEFAULT' | 'INCORRECT' | 'VALID' | 'PASSED_LIMIT';\r\nexport enum EErrorMessages {\r\n    SomethingWentWrong = 'Something went wrong.',\r\n    FillAllFields = 'Please fill all fields in order to continue',\r\n}\r\nexport interface IErrorData {hasError:boolean,msg:string}\r\nexport interface CountriesData  {\r\n    phoneCode:number,\r\n    countryCode: string,\r\n    countryName:string\r\n}",
+            "properties": [
+                {
+                    "name": "action",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 90
+                },
+                {
+                    "name": "payload",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 91
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "ISendPhoneVerification",
+            "id": "interface-ISendPhoneVerification-4be3965b61c6750fdb457d02af50ca9948932d9dac9a359fe5373f67d4d48177c6f65e31e07dc2869b478042f33f268366a2f3e3b2fff039d385df02641f3863",
+            "file": "src/app/sign-up/kyc.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IStepsObj {\r\n    currentStep: number,\r\n    maxSteps: number,\r\n    minSteps: number\r\n}\r\n\r\nexport interface IKycData {\r\n    businessTypes: 'companyAcc' | 'privateAcc' | 'invitedAcc';\r\n}\r\n\r\nexport interface IKYCFormGroups {\r\n    step_1: {\r\n        companyAcc: {isActive:boolean, countrySelected:string},\r\n        privateAcc:{isActive:boolean, countrySelected:string},\r\n        invitedAcc:{isActive:boolean}\r\n    },\r\n    step_2: {\r\n        email: string\r\n    }\r\n}\r\n\r\nexport enum EBusinessType {\r\n    companyAccount = \"companyAcc\",\r\n    privateAccount = \"privateAcc\",\r\n    invitedAccount = \"invitedAcc\"\r\n}\r\nexport enum EKycStatus {\r\n    basicKYC = 1,\r\n    partialKYC = 2,\r\n    fullKYC = 3\r\n}\r\n\r\nexport type TBusinessTypes = EBusinessType.companyAccount | EBusinessType.privateAccount;\r\nexport enum EDetailsToShowNames {\r\n    DEFAULT = \"DEFAULT\",\r\n    companyAcc = \"companyAcc\",\r\n    privateAcc = \"privateAcc\",\r\n    invitedAcc = \"invitedAcc\",\r\n    email = \"email\",\r\n    emailConfirmation = \"emailConfirmation\",\r\n    phone=  \"phone\",\r\n    phoneConfirmation = \"phoneConfirmation\",\r\n    createdPassword = \"createdPassword\",\r\n    personalDetails = \"personalDetails\",\r\n    personalAddress = \"personalAddress\",\r\n}\r\n\r\nexport enum EStepNumber {\r\n    typeOfBusiness = 1,\r\n    email = 2,\r\n    emailConfirmation = 3,\r\n    phone = 4,\r\n    phoneConfirmation = 5,\r\n    createPassword = 6,\r\n    personalDetails = 7,\r\n    personalAddress = 8\r\n}\r\n\r\nexport enum VerificationReturnType\r\n{\r\n    Success = 1,\r\n    GeneralError = 2,\r\n    PassedLimitError = 3,\r\n}\r\n\r\nexport enum SiteSource\r\n{\r\n    Ofakim = 1,\r\n    Okoora = 2\r\n}\r\n\r\nexport type EmailVerificationPerCustomerResponse = { SiteSource :any}\r\n\r\nexport type VerificationReturnTypeOptions = VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError;\r\nexport type TSiteSource = SiteSource.Ofakim | SiteSource.Okoora;\r\nexport type TSendMailResponse = {\r\n    Success:VerificationReturnTypeOptions, \r\n    SiteSource: TSiteSource,\r\n    PassedLimitError?:VerificationReturnTypeOptions\r\n}\r\n\r\nexport interface ICheckEmailVerification {\r\n    action: 'CHECK_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendEmailVerification {\r\n    action: 'SEND_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ICheckPhoneVerification {\r\n    action: 'CHECK_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendPhoneVerification {\r\n    action: 'SEND_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport type IPerformVerification = ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification;\r\n\r\nexport type TVerificationCodeStatus =  'DEFAULT' | 'INCORRECT' | 'VALID' | 'PASSED_LIMIT';\r\nexport enum EErrorMessages {\r\n    SomethingWentWrong = 'Something went wrong.',\r\n    FillAllFields = 'Please fill all fields in order to continue',\r\n}\r\nexport interface IErrorData {hasError:boolean,msg:string}\r\nexport interface CountriesData  {\r\n    phoneCode:number,\r\n    countryCode: string,\r\n    countryName:string\r\n}",
+            "properties": [
+                {
+                    "name": "action",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 104
+                },
+                {
+                    "name": "payload",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 105
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IStepsObj",
+            "id": "interface-IStepsObj-4be3965b61c6750fdb457d02af50ca9948932d9dac9a359fe5373f67d4d48177c6f65e31e07dc2869b478042f33f268366a2f3e3b2fff039d385df02641f3863",
+            "file": "src/app/sign-up/kyc.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface IStepsObj {\r\n    currentStep: number,\r\n    maxSteps: number,\r\n    minSteps: number\r\n}\r\n\r\nexport interface IKycData {\r\n    businessTypes: 'companyAcc' | 'privateAcc' | 'invitedAcc';\r\n}\r\n\r\nexport interface IKYCFormGroups {\r\n    step_1: {\r\n        companyAcc: {isActive:boolean, countrySelected:string},\r\n        privateAcc:{isActive:boolean, countrySelected:string},\r\n        invitedAcc:{isActive:boolean}\r\n    },\r\n    step_2: {\r\n        email: string\r\n    }\r\n}\r\n\r\nexport enum EBusinessType {\r\n    companyAccount = \"companyAcc\",\r\n    privateAccount = \"privateAcc\",\r\n    invitedAccount = \"invitedAcc\"\r\n}\r\nexport enum EKycStatus {\r\n    basicKYC = 1,\r\n    partialKYC = 2,\r\n    fullKYC = 3\r\n}\r\n\r\nexport type TBusinessTypes = EBusinessType.companyAccount | EBusinessType.privateAccount;\r\nexport enum EDetailsToShowNames {\r\n    DEFAULT = \"DEFAULT\",\r\n    companyAcc = \"companyAcc\",\r\n    privateAcc = \"privateAcc\",\r\n    invitedAcc = \"invitedAcc\",\r\n    email = \"email\",\r\n    emailConfirmation = \"emailConfirmation\",\r\n    phone=  \"phone\",\r\n    phoneConfirmation = \"phoneConfirmation\",\r\n    createdPassword = \"createdPassword\",\r\n    personalDetails = \"personalDetails\",\r\n    personalAddress = \"personalAddress\",\r\n}\r\n\r\nexport enum EStepNumber {\r\n    typeOfBusiness = 1,\r\n    email = 2,\r\n    emailConfirmation = 3,\r\n    phone = 4,\r\n    phoneConfirmation = 5,\r\n    createPassword = 6,\r\n    personalDetails = 7,\r\n    personalAddress = 8\r\n}\r\n\r\nexport enum VerificationReturnType\r\n{\r\n    Success = 1,\r\n    GeneralError = 2,\r\n    PassedLimitError = 3,\r\n}\r\n\r\nexport enum SiteSource\r\n{\r\n    Ofakim = 1,\r\n    Okoora = 2\r\n}\r\n\r\nexport type EmailVerificationPerCustomerResponse = { SiteSource :any}\r\n\r\nexport type VerificationReturnTypeOptions = VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError;\r\nexport type TSiteSource = SiteSource.Ofakim | SiteSource.Okoora;\r\nexport type TSendMailResponse = {\r\n    Success:VerificationReturnTypeOptions, \r\n    SiteSource: TSiteSource,\r\n    PassedLimitError?:VerificationReturnTypeOptions\r\n}\r\n\r\nexport interface ICheckEmailVerification {\r\n    action: 'CHECK_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendEmailVerification {\r\n    action: 'SEND_EMAIL_VERIFICATION',\r\n    payload: {\r\n        email: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ICheckPhoneVerification {\r\n    action: 'CHECK_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport interface ISendPhoneVerification {\r\n    action: 'SEND_PHONE_VERIFICATION',\r\n    payload: {\r\n        phone: string,\r\n        onFinalize?: ()=>void\r\n    }\r\n}\r\nexport type IPerformVerification = ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification;\r\n\r\nexport type TVerificationCodeStatus =  'DEFAULT' | 'INCORRECT' | 'VALID' | 'PASSED_LIMIT';\r\nexport enum EErrorMessages {\r\n    SomethingWentWrong = 'Something went wrong.',\r\n    FillAllFields = 'Please fill all fields in order to continue',\r\n}\r\nexport interface IErrorData {hasError:boolean,msg:string}\r\nexport interface CountriesData  {\r\n    phoneCode:number,\r\n    countryCode: string,\r\n    countryName:string\r\n}",
+            "properties": [
+                {
+                    "name": "currentStep",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "maxSteps",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "minSteps",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "MenuItem",
             "id": "interface-MenuItem-1bb3e4e56296aa3b81d206ef4dd37e9b3326f2dac9c67dba18a9c82daa7ae6754ea178887855fc8bd1603433dc3c3470580692db955e3b35410bbeeb873c4c13",
             "file": "src/app/risk-dashboard/components/sidebar/sidebar.component.ts",
@@ -2737,7 +3062,7 @@
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-29815e910273d0ea4017fd8ff197cb399343acbfcc2b71d597201762a93f6fb3b384c8687e5ce93f30359bb9c0eea78a383259a3ca4e5576060ac956ea37282f",
+            "id": "component-AppComponent-7c73939171ab8e798c4123cd83f90beeada4b111dda91a66a82e7d8e11c5c92fbf9cc1d7eea55e3bc7e2439d97b289f2a34e1a39f1f0c013127a9174bbf9eb4a",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2821,7 +3146,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2851,7 +3176,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ViewChild } from '@angular/core';\r\nimport { Router, RouterOutlet } from '@angular/router';\r\nimport { HeaderComponent } from \"./risk-dashboard/components/header/header.component\";\r\nimport { SidebarComponent } from \"./risk-dashboard/components/sidebar/sidebar.component\";\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  imports: [RouterOutlet, HeaderComponent, SidebarComponent, CommonModule],\r\n  templateUrl:'app.component.html',\r\n  styleUrl:'app.component.scss',\r\n})\r\nexport class AppComponent {\r\n  @ViewChild(SidebarComponent) private sidebar!: SidebarComponent;\r\n  @Input() ShowDashboard: boolean = false;\r\n  @Input() Showhedging: boolean = false;\r\n  @Input() showCashflowExposure: boolean = false;\r\n  constructor(private router: Router) {}\r\n  ngOnInit(): void {\r\n    // Only navigate if it's the initial load (empty path)\r\n    if (this.router.url === '/') {\r\n      this.router.navigate(['/dashboard']);\r\n    }\r\n  }\r\n  openSidebar() {\r\n    this.sidebar.openSidebar();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, ViewChild } from '@angular/core';\r\nimport { Router, RouterOutlet } from '@angular/router';\r\nimport { HeaderComponent } from \"./risk-dashboard/components/header/header.component\";\r\nimport { SidebarComponent } from \"./risk-dashboard/components/sidebar/sidebar.component\";\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  imports: [RouterOutlet, HeaderComponent, SidebarComponent, CommonModule],\r\n  templateUrl:'app.component.html',\r\n  styleUrl:'app.component.scss',\r\n})\r\nexport class AppComponent {\r\n  @ViewChild(SidebarComponent) private sidebar!: SidebarComponent;\r\n  @Input() ShowDashboard: boolean = false;\r\n  @Input() Showhedging: boolean = false;\r\n  @Input() showCashflowExposure: boolean = false;\r\n  constructor(private router: Router) {}\r\n  ngOnInit(): void {\r\n    // Only navigate if it's the initial load (empty path)\r\n    if (this.router.url === '/') {\r\n      this.router.navigate(['/sign-up']);\r\n    }\r\n  }\r\n\r\n  get isSignUpRoute(): boolean {\r\n    return this.router.url === '/sign-up';\r\n  }\r\n  openSidebar() {\r\n    this.sidebar.openSidebar();\r\n  }\r\n}\r\n",
             "styleUrl": "app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2883,7 +3208,18 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div class=\"layout\">\r\n    <app-header (openSidebar)=\"openSidebar()\"></app-header>\r\n    <app-sidebar></app-sidebar>\r\n    <div class=\"content-wrapper risk-manager\">\r\n        <router-outlet />\r\n    </div>\r\n</div>"
+            "accessors": {
+                "isSignUpRoute": {
+                    "name": "isSignUpRoute",
+                    "getSignature": {
+                        "name": "isSignUpRoute",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 26
+                    }
+                }
+            },
+            "templateData": "<div class=\"layout\" [ngClass]=\"{'not-dashboard': isSignUpRoute}\">\r\n    <ng-container *ngIf=\"!isSignUpRoute\">\r\n        <app-header (openSidebar)=\"openSidebar()\"></app-header>\r\n        <app-sidebar></app-sidebar>\r\n    </ng-container>\r\n    \r\n    <div class=\"content-wrapper risk-manager\">\r\n        <router-outlet />\r\n    </div>\r\n</div>"
         },
         {
             "name": "BreadcrumbWalletComponent",
@@ -8265,13 +8601,18 @@
         },
         {
             "name": "KycMainComponent",
-            "id": "component-KycMainComponent-1c557eef2bc4425681df00a7bd993bbe854bf4b2b035f08ae70d5d7d781a71548d5eaf9bb6e6efa32ec0da05a67c0191001e97233249690322ae2bbd64f2041a",
+            "id": "component-KycMainComponent-3232cce3268ad13022d16f945da50ba3a9da2eed377cb4fe06cb7a62e024060c9ee44ee574ccd55f83786e0a7d4489c48be39e5c157b69442d8d858f486686fa",
             "file": "src/app/sign-up/kyc-main/kyc-main.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": "TranslateService",
+                    "type": "injectable"
+                }
+            ],
             "selector": "app-kyc-main",
             "styleUrls": [],
             "styles": [],
@@ -8282,24 +8623,261 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "accountType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TBusinessTypes",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "codeStatus",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "EBusinessType",
+                    "defaultValue": "EBusinessType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "error",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "Esteps",
+                    "defaultValue": "EStepNumber",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "faqUrl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "stepsObj",
+                    "defaultValue": "{\r\n    currentStep: EStepNumber.typeOfBusiness,\r\n    maxSteps: EStepNumber.personalAddress,\r\n    minSteps: EStepNumber.typeOfBusiness\r\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IStepsObj",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "emailValue",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "goToLogin",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleEditValue",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "type",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "$event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "type",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handlePreviousBtn",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "phoneValue",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "showLoginBtn",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 60,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "showPrevBtn",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "tryAgain",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
             "standalone": false,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TranslateModule",
+                    "type": "module"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-kyc-main',\r\n  imports: [],\r\n  templateUrl: './kyc-main.component.html',\r\n  styleUrl: './kyc-main.component.scss'\r\n})\r\nexport class KycMainComponent {\r\n\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { EBusinessType, EStepNumber, IStepsObj, TBusinessTypes } from '../kyc';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { TranslateModule, TranslateService } from '@ngx-translate/core';\r\n\r\n@Component({\r\n  selector: 'app-kyc-main',\r\n  imports: [CommonModule, MatIconModule, TranslateModule],\r\n  providers: [TranslateService],\r\n  templateUrl: './kyc-main.component.html',\r\n  styleUrl: './kyc-main.component.scss'\r\n})\r\nexport class KycMainComponent {\r\n  stepsObj: IStepsObj = {\r\n    currentStep: EStepNumber.typeOfBusiness,\r\n    maxSteps: EStepNumber.personalAddress,\r\n    minSteps: EStepNumber.typeOfBusiness\r\n  };\r\n\r\n  Esteps: typeof EStepNumber = EStepNumber;\r\n\r\n  accountType!: TBusinessTypes;\r\n  EBusinessType = EBusinessType;\r\n  error: any;\r\n  codeStatus: any;\r\n  faqUrl: any;\r\n\r\n\r\n  constructor(private translate: TranslateService) { }\r\n\r\n  ngOnInit() { }\r\n\r\n  handlePreviousBtn() {\r\n\r\n  }\r\n\r\n  showPrevBtn() {\r\n\r\n  }\r\n\r\n  emailValue() {\r\n\r\n  }\r\n\r\n  handleEditValue($event: any, type: any) {\r\n\r\n  }\r\n\r\n  phoneValue() {\r\n\r\n  }\r\n\r\n  tryAgain() {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n  goToLogin() {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n  showLoginBtn(): any {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n\r\n}\r\n",
             "styleUrl": "./kyc-main.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "translate",
+                        "type": "TranslateService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 27,
+                "jsdoctags": [
+                    {
+                        "name": "translate",
+                        "type": "TranslateService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
-            "templateData": "<p>kyc-main works!</p>\r\n"
+            "templateData": "<main class=\"app-kyc-container\">\r\n\r\n    <section class=\"row kyc-wrapper\">\r\n        <div class=\"kyc-left\">\r\n\r\n            <div class=\"kyc-top\">\r\n                <img class=\"logo-img\" src=\"images/abcm-logo.svg\" alt=\"okooora logo\" />\r\n            </div>\r\n\r\n            <section class=\"kyc-form-section loader-wrapper\" [ngClass]=\"{\r\n                'typeOfBusiness': stepsObj.currentStep === Esteps.typeOfBusiness,\r\n                'email': stepsObj.currentStep === Esteps.email,\r\n                'emailConfirmation': stepsObj.currentStep === Esteps.emailConfirmation,\r\n                'phone': stepsObj.currentStep === Esteps.phone,\r\n                'phoneConfirmation': stepsObj.currentStep === Esteps.phoneConfirmation,\r\n                'createPassword': stepsObj.currentStep === Esteps.createPassword,\r\n                'personalDetails': stepsObj.currentStep === Esteps.personalDetails,\r\n                'personalAddress': stepsObj.currentStep === Esteps.personalAddress\r\n            }\">\r\n                <button (click)=\"handlePreviousBtn()\" id=\"back-to-website\">\r\n                    <img class=\"logo-img\" src=\"images/back-kyc.svg\" alt=\"back\" />\r\n                </button>\r\n                <!-- <button class=\"\" *ngIf=\"showCloseBtn\" (click)=\"goToLogin()\">\r\n                <img class=\"logo-img\" src=\"../../assets/images/back-kyc.svg\" alt=\"okooora logo\" />\r\n\r\n            </button> -->\r\n                <ng-container [ngSwitch]=\"stepsObj.currentStep\">\r\n                    <article class=\"kyc-headlines px-5 step--{{stepsObj.currentStep}}\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <h1 class=\"title\"> {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }} </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + (accountType === EBusinessType.companyAccount ?\r\n                                '.titleCompany' : '.titlePrivate') | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 email\">{{emailValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-email action-anchor\" (click)=\"handleEditValue($event, 'EMAIL')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_email' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 phone\">{{phoneValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-phone action-anchor\" (click)=\"handleEditValue($event, 'PHONE')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_phone' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchDefault>\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                    </article>\r\n                </ng-container>\r\n\r\n                <div>\r\n                    <div class=\"error-box alert alert-danger\" role=\"alert\" [ngClass]=\"{\r\n                        'd-none': !error.hasError && !error.msg,\r\n                        'd-block': error.hasError || error.msg\r\n                    }\" [ngStyle]=\"{'visibility': (!error.hasError && !error.msg) ? 'hidden' : 'visible'}\">\r\n                        <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-exclamation-triangle\"></mat-icon>\r\n                        {{error.msg}}\r\n                    </div>\r\n                </div>\r\n\r\n                <!-- <form #kycFormRef class=\"kyc-form\" [ngClass]=\"{\r\n                    'light-form': stepsObj.currentStep !== Esteps.typeOfBusiness\r\n                }\" [formGroup]=\"kycForm\" (ngSubmit)=\"handleSubmit()\" (keydown.enter)=\"$event.preventDefault()\"\r\n                autocomplete=\"off\">\r\n                <div [ngSwitch]=\"stepsObj.currentStep\">\r\n                    <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                        <kyc-one [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\" (activatedBusinessType)=\"handleDetailToShow($event)\">\r\n                        </kyc-one>\r\n                    </ng-container>\r\n\r\n                    <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                        <kyc-two [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\">\r\n                        </kyc-two>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                        <kyc-email-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\">\r\n                        </kyc-email-confirm>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                        <kyc-phone [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\" [nextStepIsValid]=\"nextStepIsValid\">\r\n                        </kyc-phone>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                        <kyc-phone-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\">\r\n                        </kyc-phone-confirm>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                        <kyc-create-password [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\"  (loginEvent)=\"goToLogin()\">\r\n                        </kyc-create-password>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                        <kyc-personal-details [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\">\r\n                        </kyc-personal-details>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.personalAddress\">\r\n                        <kyc-address [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\"  (loginEvent)=\"goToLogin()\">\r\n                        </kyc-address>\r\n                    </ng-container>\r\n\r\n\r\n                </div>\r\n\r\n            </form> -->\r\n\r\n                <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n                    <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' |\r\n                        translate}}</a>\r\n                    &nbsp;\r\n                    /\r\n                    &nbsp;\r\n                    <p class=\"login-p--1 m-0\">\r\n                        {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                        &nbsp;\r\n                        <a class=\"login-link\" (click)=\"goToLogin()\" id=\"login-btn\">{{ 'KYC.SignIn' | translate}}</a>\r\n                    </p>\r\n                </article>\r\n            </section>\r\n\r\n        </div>\r\n\r\n        <!-- <div class=\"kyc-right\">\r\n        <app-step-details [detailsToShow]=\"detailsToShow\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n        [showLoginBtn]=\"showLoginBtn()\">\r\n    </app-step-details>\r\n    <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n        <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' | translate}}\r\n            /</a>\r\n            &nbsp;\r\n            <p class=\"login-p--1\">\r\n                {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                &nbsp;\r\n                <a class=\"login-link\" [href]=\"appLoginUrl\" id=\"login-btn-2\">{{ 'KYC.SignIn' | translate}}</a>\r\n            </p>\r\n        </article>\r\n        <img class=\"icon-bottom-right\" src=\"assets/images/kyc/icons/blue-up-down-arrow.svg\"\r\n        alt=\"blue up and down arrow icon\" />\r\n    </div> -->\r\n\r\n\r\n    </section>\r\n\r\n    <div *ngIf=\"codeStatus !== 'DEFAULT' \" class=\"confirmation-incorrect\">\r\n        <button class=\"confirmation-incorrect__close action-btn\" (click)=\"tryAgain()\" mat-button>\r\n            <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-times\"></mat-icon>\r\n        </button>\r\n\r\n        <div class=\"container\">\r\n            <div class=\"confirmation-incorrect__wrapper\">\r\n                <mat-icon class=\"incorrect-icon text-danger mb-5\" fontSet=\"fontawesome\" fontIcon=\"fa-times-circle\">\r\n                </mat-icon>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'INCORRECT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.confirmation_incorrect' | translate}}</h3>\r\n                </ng-container>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'PASSED_LIMIT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.PassedLimitTitle' | translate}}</h3>\r\n                    <p class=\"confirmation-incorrect-p--1\">{{ 'KYC.PassedLimitParagraph' | translate}}</p>\r\n                </ng-container>\r\n\r\n                <button type=\"button\" mat-raised-button color=\"primary\" class=\"continue-btn mt-5\" (click)=\"tryAgain()\">\r\n                    {{ 'KYC.try_again' | translate}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</main>"
         },
         {
             "name": "MomentumIndicatorChartComponent",
@@ -10292,13 +10870,13 @@
     "modules": [
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-4a417ccac7dd1c8b6285fc78edc5e2284c74cfffbdf7b3f6ff3c297d00a713f7ab56b0d2562a9ebef830e6a60b6336735d44bafb48a3178723499177b2656fa8",
+            "id": "module-AppRoutingModule-5d523e9a57ca0e54cf28faf31db77e8d1628cdafa93f50bb5a70b072d35627685120793a3bf846c642940e57d83ecebdb59f73c6e9465e5acc17dc2aa8f8e521",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.routes.ts",
             "methods": [],
-            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\nimport { CashflowExposureSteppersComponent } from './risk-dashboard/components/cashflow-exposure/cashflow-exposure-steppers/cashflow-exposure-steppers.component';\r\nimport { AdvancedPolicyComponent } from './risk-dashboard/components/advanced-policy/advanced-policy.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'dashboard', pathMatch: 'full' as 'full' },\r\n  { path: 'dashboard', component: DashboardComponent },\r\n  { path: 'hedging', component: HedgingProposalComponent },\r\n  { path: 'cashflow', component: CashflowExposureSteppersComponent },\r\n  { path: 'advanced-policy', component: AdvancedPolicyComponent },\r\n  { path: '**', redirectTo: 'dashboard' },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }",
+            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\nimport { CashflowExposureSteppersComponent } from './risk-dashboard/components/cashflow-exposure/cashflow-exposure-steppers/cashflow-exposure-steppers.component';\r\nimport { AdvancedPolicyComponent } from './risk-dashboard/components/advanced-policy/advanced-policy.component';\r\nimport { KycMainComponent } from './sign-up/kyc-main/kyc-main.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'sign-up', pathMatch: 'full' as 'full' },\r\n  { path: 'dashboard', component: DashboardComponent },\r\n  { path: 'sign-up', component: KycMainComponent },\r\n  { path: 'hedging', component: HedgingProposalComponent },\r\n  { path: 'cashflow', component: CashflowExposureSteppersComponent },\r\n  { path: 'advanced-policy', component: AdvancedPolicyComponent },\r\n  { path: '**', redirectTo: 'sign-up' },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }",
             "children": [
                 {
                     "type": "providers",
@@ -10452,6 +11030,83 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 187
+            },
+            {
+                "name": "EmailVerificationPerCustomerResponse",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/sign-up/kyc.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
+                "name": "IPerformVerification",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification",
+                "file": "src/app/sign-up/kyc.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "TBusinessTypes",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "EBusinessType.companyAccount | EBusinessType.privateAccount",
+                "file": "src/app/sign-up/kyc.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "TSendMailResponse",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/sign-up/kyc.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
+                "name": "TSiteSource",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "SiteSource.Ofakim | SiteSource.Okoora",
+                "file": "src/app/sign-up/kyc.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "TVerificationCodeStatus",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"DEFAULT\" | \"INCORRECT\" | \"VALID\" | \"PASSED_LIMIT\"",
+                "file": "src/app/sign-up/kyc.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "VerificationReturnTypeOptions",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError",
+                "file": "src/app/sign-up/kyc.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
             }
         ],
         "enumerations": [
@@ -10520,6 +11175,223 @@
                 "file": "src/app/risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-step2/cashflow-exposure-step2.component.ts"
             },
             {
+                "name": "EBusinessType",
+                "childs": [
+                    {
+                        "name": "companyAccount",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "companyAcc"
+                    },
+                    {
+                        "name": "privateAccount",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "privateAcc"
+                    },
+                    {
+                        "name": "invitedAccount",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "invitedAcc"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/sign-up/kyc.ts"
+            },
+            {
+                "name": "EDetailsToShowNames",
+                "childs": [
+                    {
+                        "name": "DEFAULT",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "DEFAULT"
+                    },
+                    {
+                        "name": "companyAcc",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "companyAcc"
+                    },
+                    {
+                        "name": "privateAcc",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "privateAcc"
+                    },
+                    {
+                        "name": "invitedAcc",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "invitedAcc"
+                    },
+                    {
+                        "name": "email",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "email"
+                    },
+                    {
+                        "name": "emailConfirmation",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "emailConfirmation"
+                    },
+                    {
+                        "name": "phone",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "phone"
+                    },
+                    {
+                        "name": "phoneConfirmation",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "phoneConfirmation"
+                    },
+                    {
+                        "name": "createdPassword",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "createdPassword"
+                    },
+                    {
+                        "name": "personalDetails",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "personalDetails"
+                    },
+                    {
+                        "name": "personalAddress",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "personalAddress"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/sign-up/kyc.ts"
+            },
+            {
+                "name": "EErrorMessages",
+                "childs": [
+                    {
+                        "name": "SomethingWentWrong",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "Something went wrong."
+                    },
+                    {
+                        "name": "FillAllFields",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "Please fill all fields in order to continue"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/sign-up/kyc.ts"
+            },
+            {
+                "name": "EKycStatus",
+                "childs": [
+                    {
+                        "name": "basicKYC",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "partialKYC",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "fullKYC",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/sign-up/kyc.ts"
+            },
+            {
+                "name": "EStepNumber",
+                "childs": [
+                    {
+                        "name": "typeOfBusiness",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "email",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "emailConfirmation",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    },
+                    {
+                        "name": "phone",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 4
+                    },
+                    {
+                        "name": "phoneConfirmation",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 5
+                    },
+                    {
+                        "name": "createPassword",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 6
+                    },
+                    {
+                        "name": "personalDetails",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 7
+                    },
+                    {
+                        "name": "personalAddress",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 8
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/sign-up/kyc.ts"
+            },
+            {
                 "name": "HedgingType",
                 "childs": [
                     {
@@ -10547,6 +11419,58 @@
                 "deprecationMessage": "",
                 "description": "",
                 "file": "src/app/risk-dashboard/components/enums/hedgingData.ts"
+            },
+            {
+                "name": "SiteSource",
+                "childs": [
+                    {
+                        "name": "Ofakim",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "Okoora",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/sign-up/kyc.ts"
+            },
+            {
+                "name": "VerificationReturnType",
+                "childs": [
+                    {
+                        "name": "Success",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "GeneralError",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "PassedLimitError",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/sign-up/kyc.ts"
             }
         ],
         "groupedVariables": {
@@ -10745,6 +11669,277 @@
                     "file": "src/app/risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-step2/cashflow-exposure-step2.component.ts"
                 }
             ],
+            "src/app/sign-up/kyc.ts": [
+                {
+                    "name": "EBusinessType",
+                    "childs": [
+                        {
+                            "name": "companyAccount",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "companyAcc"
+                        },
+                        {
+                            "name": "privateAccount",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "privateAcc"
+                        },
+                        {
+                            "name": "invitedAccount",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "invitedAcc"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/sign-up/kyc.ts"
+                },
+                {
+                    "name": "EDetailsToShowNames",
+                    "childs": [
+                        {
+                            "name": "DEFAULT",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "DEFAULT"
+                        },
+                        {
+                            "name": "companyAcc",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "companyAcc"
+                        },
+                        {
+                            "name": "privateAcc",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "privateAcc"
+                        },
+                        {
+                            "name": "invitedAcc",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "invitedAcc"
+                        },
+                        {
+                            "name": "email",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "email"
+                        },
+                        {
+                            "name": "emailConfirmation",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "emailConfirmation"
+                        },
+                        {
+                            "name": "phone",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "phone"
+                        },
+                        {
+                            "name": "phoneConfirmation",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "phoneConfirmation"
+                        },
+                        {
+                            "name": "createdPassword",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "createdPassword"
+                        },
+                        {
+                            "name": "personalDetails",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "personalDetails"
+                        },
+                        {
+                            "name": "personalAddress",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "personalAddress"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/sign-up/kyc.ts"
+                },
+                {
+                    "name": "EErrorMessages",
+                    "childs": [
+                        {
+                            "name": "SomethingWentWrong",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "Something went wrong."
+                        },
+                        {
+                            "name": "FillAllFields",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "Please fill all fields in order to continue"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/sign-up/kyc.ts"
+                },
+                {
+                    "name": "EKycStatus",
+                    "childs": [
+                        {
+                            "name": "basicKYC",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "partialKYC",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "fullKYC",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/sign-up/kyc.ts"
+                },
+                {
+                    "name": "EStepNumber",
+                    "childs": [
+                        {
+                            "name": "typeOfBusiness",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "email",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "emailConfirmation",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        },
+                        {
+                            "name": "phone",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 4
+                        },
+                        {
+                            "name": "phoneConfirmation",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 5
+                        },
+                        {
+                            "name": "createPassword",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 6
+                        },
+                        {
+                            "name": "personalDetails",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 7
+                        },
+                        {
+                            "name": "personalAddress",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 8
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/sign-up/kyc.ts"
+                },
+                {
+                    "name": "SiteSource",
+                    "childs": [
+                        {
+                            "name": "Ofakim",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "Okoora",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/sign-up/kyc.ts"
+                },
+                {
+                    "name": "VerificationReturnType",
+                    "childs": [
+                        {
+                            "name": "Success",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "GeneralError",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "PassedLimitError",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/sign-up/kyc.ts"
+                }
+            ],
             "src/app/risk-dashboard/components/enums/hedgingData.ts": [
                 {
                     "name": "HedgingType",
@@ -10789,6 +11984,85 @@
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 187
+                }
+            ],
+            "src/app/sign-up/kyc.ts": [
+                {
+                    "name": "EmailVerificationPerCustomerResponse",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/sign-up/kyc.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                },
+                {
+                    "name": "IPerformVerification",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "ICheckEmailVerification | ISendEmailVerification | ICheckPhoneVerification | ISendPhoneVerification",
+                    "file": "src/app/sign-up/kyc.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                },
+                {
+                    "name": "TBusinessTypes",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "EBusinessType.companyAccount | EBusinessType.privateAccount",
+                    "file": "src/app/sign-up/kyc.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                },
+                {
+                    "name": "TSendMailResponse",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/sign-up/kyc.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                },
+                {
+                    "name": "TSiteSource",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "SiteSource.Ofakim | SiteSource.Okoora",
+                    "file": "src/app/sign-up/kyc.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                },
+                {
+                    "name": "TVerificationCodeStatus",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"DEFAULT\" | \"INCORRECT\" | \"VALID\" | \"PASSED_LIMIT\"",
+                    "file": "src/app/sign-up/kyc.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                },
+                {
+                    "name": "VerificationReturnTypeOptions",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "VerificationReturnType.Success | VerificationReturnType.GeneralError | VerificationReturnType.PassedLimitError",
+                    "file": "src/app/sign-up/kyc.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
                 }
             ]
         }
@@ -11256,6 +12530,157 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "KycMainComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/18",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "CountriesData",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ICheckEmailVerification",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ICheckPhoneVerification",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IErrorData",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IKycData",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IKYCFormGroups",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ISendEmailVerification",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ISendPhoneVerification",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IStepsObj",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "EmailVerificationPerCustomerResponse",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "IPerformVerification",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TBusinessTypes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TSendMailResponse",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TSiteSource",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TVerificationCodeStatus",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "VerificationReturnTypeOptions",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

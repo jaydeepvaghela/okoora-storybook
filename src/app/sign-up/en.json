@@ -1,0 +1,83 @@
+{
+    "KYC_Step_1": {
+    "title": "Open a new account",
+    "p_1": "",
+    "p_2": "Select your account type:",
+    "companyAcc": {
+      "title": "I want to create a company account",
+      "description": "Business activity under a legal entity such as a Enterprise; Company; Institutions; Licensed / Tiny Dealer; Association, etc",
+      "field_label": "Country of incorporation"
+    },
+    "privateAcc": {
+      "title": "I want to create a private account",
+      "description": "A private person who operates independently and personally not in a business setting",
+      "field_label": "Country of residence",
+      "id_file": "Upload ID / Driving License / Passport file",
+      "country_not_from_israel": "We are sorry, private registration is currently not available in this country"
+    },
+    "invitedAcc": {
+      "title": "I was invited to join a company",
+      "description": "You received an invitation to join a company’s account"
+    }
+  },
+  "KYC_Step_2": {
+    "titlePrivate": "Enter your email",
+    "titleCompany": "Enter your work email",
+    "OfakimEmailInUseTitle": "Existing Profile Alert",
+    "OfakimEmailInUse": "Hi. Your email address already exists in the system. Please log in with your regular credentials and continue your registration process from the system.",
+    "OfakimEmailInUseLogIn": "Log In",
+    "p_1": "We need an email address that is not already used for another account.",
+    "p_2": ""
+  },
+  "KYC_Step_3": {
+    "title": "Confirm your email",
+    "p_1": "Check your spam folder and the spelling of your email address.",
+    "p_2": "Incorrect email?",
+    "edit_email": "Edit email address",
+    "enter_code": "Enter code from email",
+    "code_not_arrived": "Code hasn't arrived?",
+    "resend_code": "Re-send code",
+    "you_can_retry": "You can retry in"
+  },
+  "KYC_Step_4": {
+    "title": "Enter your phone number",
+    "p_1": "We will only use this number for account setup and for security purposes, such as two-factor authentication. We do not share personal information with third parties.",
+    "p_2": ""
+  },
+  "KYC_Step_5": {
+    "title": "Confirm your phone number",
+    "p_1": "We've sent you a confirmation code via SMS.",
+    "p_2": "Wrong number?",
+    "edit_phone": "Edit",
+    "enter_code": "Enter confirmation code from SMS"
+  },
+  "KYC_Step_6": {
+    "title": "Create your password",
+    "p_1": "Create a strong password and keep it secure.",
+    "p_2": ""
+  },
+  "KYC_Step_7": {
+    "title": "Personal details",
+    "p_1": "As stated on your official ID. We will need your name to verify your identity.",
+    "p_2": "",
+    "id_duplication": "ID exists in system!",
+    "id_length": "ID length must be 9 digits",
+    "verified": "User has been verified successfully!",
+    "unverified": "User couldn't be verified, please make sure you upload a clear and legible document!"
+  },
+  "KYC_Step_8": {
+    "title": "Home address",
+    "p_1": "By law, we require your home address to open your account.",
+    "p_2": ""
+  },
+  "EMAIL_VERIFICATION": {
+    "title": "Confirm your email",
+    "p_1": "Check your spam folder and the spelling of your email address.",
+    "p_2": "Incorrect email?",
+    "edit_email": "Edit email address",
+    "enter_code": "Enter code from email",
+    "code_not_arrived": "Code hasn't arrived?",
+    "resend_code": "Re-send code",
+    "you_can_retry": "You can retry in"
+  }
+}

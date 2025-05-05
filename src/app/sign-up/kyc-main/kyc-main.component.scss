@@ -1,0 +1,318 @@
+@import "../../../assets/scss/variable";
+@import "../../../assets/scss/mixins";
+
+::ng-deep {
+    .content-wrapper {
+        padding: unset !important;
+    }
+}
+.app-kyc-container {
+    min-height: 100vh;
+}
+.kyc-wrapper {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    .kyc-language-wrapper {
+        position: absolute;
+        top: 3rem;
+        right: 5rem;
+    }
+    .kyc-left{
+        .kyc-top{
+            .logo-img{
+                width: 100%;
+                max-width: 124px;
+                height: auto;
+            }
+        }
+    }
+}
+.title {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.kyc {
+    $root: &;
+    @include respond(lg) {
+        margin: 0 2rem;
+    }
+
+    &-wrapper {
+        display: flex;
+        align-items: stretch;
+        @include respond(lg) {
+            flex-direction: column;
+        }
+
+        & kyc-one {
+            mat-form-field {
+                text-align: right;
+            }
+        }
+
+        kyc-phone {
+            .kyc-phone {
+                background-color: red;
+            }
+        }
+
+        sms-verification {
+            .form-group-input-wrapper {
+                direction: ltr;
+                justify-content: end;
+            }
+        }
+
+        kyc-create-password {
+            input {
+                direction: ltr;
+                text-align: left;
+            }
+        }
+
+        kyc-personal-details {
+            & .custom-input--with-icon mat-datepicker-toggle {
+                left: 2rem;
+                right: unset;
+            }
+        }
+
+        .mat-expansion-panel {
+            .inner-radio-button {
+                .at-icon + div {
+                    text-align: right !important;
+                }
+            }
+        }
+    }
+
+    &-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5rem;
+    }
+
+    &-left {
+        position: relative;
+        min-height: 100vh;
+        flex: 60%;
+        padding: 3rem;
+        @include respond(lg) {
+            min-height: 60vh;
+            padding: 1rem;
+        }
+
+        .login-wrapper {
+            display: inline-flex;
+            position: absolute;
+            left: 50%;
+            bottom: 3%;
+            transform: translateX(-50%);
+            font-size: 16px;
+
+            & * {
+                font-size: 13px;
+            }
+
+            @include respond(lg) {
+                display: none;
+            }
+
+            & .login-link {
+                font-weight: 700;
+                color: #000;
+                text-decoration: none;
+            }
+        }
+    }
+
+    // &-right {
+    //     min-height: 100vh;
+    //     flex: 40%;
+    //     @include respond(lg) {
+    //         background-color: $color-stratos;
+    //         min-height: 40vh;
+    //     }
+
+    //     & .login-wrapper {
+    //         display: none;
+
+    //         @include respond(lg) {
+    //             max-width: 100%;
+    //             width: 100%;
+    //             display: flex;
+    //             justify-content: center;
+    //             & * {
+    //                 font-weight: $fw-regular;
+    //                 color: #fff;
+    //                 text-decoration: none;
+    //             }
+    //             & .login-link {
+    //                 font-weight: $fw-bold;
+    //             }
+    //         }
+    //     }
+
+    //     & .icon-bottom-right {
+    //         display: none;
+    //         @include respond(lg) {
+    //             max-width: 9rem;
+    //             display: block;
+    //             position: absolute;
+    //             bottom: 0;
+    //             right: 0;
+    //         }
+    //         @include respond(md) {
+    //             max-width: 7rem;
+    //         }
+    //     }
+    // }
+
+    &-form-section {
+        width: 600px;
+        margin: 0 auto;
+        border: 1px solid #e2e2e2;
+        border-radius: 15px;
+        background-color: #fff;
+        // padding: 5rem 0;
+        padding: 10px;
+        position: relative;
+
+        @include respond(lg) {
+            max-width: 95%;
+            width: auto;
+        }
+
+        &.emailConfirmation,
+        &.phoneConfirmation {
+            #{$root}-headlines {
+                a.action-anchor {
+                    //color       : $color-white !important;
+                    font-weight: 700;
+                }
+            }
+
+            #{$root}-h--2 {
+                margin-bottom: 1.2rem;
+            }
+
+            #{$root}-ah--2 {
+            }
+
+            & ::ng-deep .disclaimer {
+                margin-top: 4rem;
+                text-align: center;
+
+                & .mat-checkbox-label {
+                    @include respond(lg) {
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+
+        ::ng-deep .fields-wrapper {
+            // max-width: 70%;
+            margin: 0 auto;
+
+            @include respond(lg) {
+                max-width: 100%;
+            }
+
+            & > *:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+        }
+
+        ::ng-deep .grouped-fields {
+            display: flex;
+
+            & > * {
+                flex: 0 0 49%;
+
+                &:not(:last-child) {
+                    margin-inline-end: 2%;
+                }
+            }
+        }
+    }
+
+    &-headlines {
+        text-align: center;
+
+        & #{$root}-h--1,
+        & #{$root}-h--2 {
+            position: relative;
+        }
+    }
+}
+.loader-wrapper {
+    position: relative;
+    .loader {
+        &.section-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.7) !important;
+            z-index: 999;
+        }
+    }
+}
+
+.kyc-p--1 {
+    font-weight: 400;
+    line-height: 1.41176;
+    letter-spacing: -0.025em;
+    color: #525c66;
+    font-size: 0.8rem;
+}
+
+.kyc-form {
+    // max-width: 70%;
+    margin: 0 auto;
+}
+.kyc-form-section {
+    padding-bottom: 4em;
+}
+.confirmation-incorrect {
+    position: fixed;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #fff;
+
+    & .container {
+        height: 100%;
+    }
+
+    &__wrapper {
+        max-width: 40%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        ::ng-deep {
+            mat-icon {
+                $mat-icon-size: 10rem;
+                font-size: $mat-icon-size;
+                width: $mat-icon-size;
+                height: $mat-icon-size;
+            }
+        }
+    }
+
+    &__close {
+        left: unset;
+        // right: $fixed-items-unit;
+    }
+}

@@ -1,1 +1,247 @@
-<p>kyc-main works!</p>
+<main class="app-kyc-container">
+
+    <section class="row kyc-wrapper">
+        <div class="kyc-left">
+
+            <div class="kyc-top">
+                <img class="logo-img" src="images/abcm-logo.svg" alt="okooora logo" />
+            </div>
+
+            <section class="kyc-form-section loader-wrapper" [ngClass]="{
+                'typeOfBusiness': stepsObj.currentStep === Esteps.typeOfBusiness,
+                'email': stepsObj.currentStep === Esteps.email,
+                'emailConfirmation': stepsObj.currentStep === Esteps.emailConfirmation,
+                'phone': stepsObj.currentStep === Esteps.phone,
+                'phoneConfirmation': stepsObj.currentStep === Esteps.phoneConfirmation,
+                'createPassword': stepsObj.currentStep === Esteps.createPassword,
+                'personalDetails': stepsObj.currentStep === Esteps.personalDetails,
+                'personalAddress': stepsObj.currentStep === Esteps.personalAddress
+            }">
+                <button (click)="handlePreviousBtn()" id="back-to-website">
+                    <img class="logo-img" src="images/back-kyc.svg" alt="back" />
+                </button>
+                <!-- <button class="" *ngIf="showCloseBtn" (click)="goToLogin()">
+                <img class="logo-img" src="../../assets/images/back-kyc.svg" alt="okooora logo" />
+
+            </button> -->
+                <ng-container [ngSwitch]="stepsObj.currentStep">
+                    <article class="kyc-headlines px-5 step--{{stepsObj.currentStep}}">
+                        <ng-container *ngSwitchCase="Esteps.typeOfBusiness">
+                            <h1 class="title"> {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }} </h1>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="Esteps.email">
+                            <h1 class="title">
+                                {{ 'KYC_Step_' + stepsObj.currentStep + (accountType === EBusinessType.companyAccount ?
+                                '.titleCompany' : '.titlePrivate') | translate }}
+                            </h1>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
+
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="Esteps.emailConfirmation">
+                            <h1 class="title">
+                                <button *ngIf="showPrevBtn()" class="action-btn in-title--mobile"
+                                    (click)="handlePreviousBtn()">
+                                    <span class="fas fa-chevron-left"></span>
+                                </button>
+                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
+                            </h1>
+                            <h3 class="kyc-h--3 email">{{emailValue()}}</h3>
+                            <p class="kyc-p--1 m-0">
+                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}
+                            </p>
+                            <p class="kyc-p--1 m-0">
+                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}
+                                <a class="edit-email action-anchor" (click)="handleEditValue($event, 'EMAIL')">
+                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_email' | translate }}
+                                </a>
+                            </p>
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="Esteps.phone">
+                            <h1 class="title">
+                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
+                            </h1>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="Esteps.phoneConfirmation">
+                            <h1 class="title">
+                                <button *ngIf="showPrevBtn()" class="action-btn in-title--mobile"
+                                    (click)="handlePreviousBtn()">
+                                    <span class="fas fa-chevron-left"></span>
+                                </button>
+                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
+                            </h1>
+                            <h3 class="kyc-h--3 phone">{{phoneValue()}}</h3>
+                            <p class="kyc-p--1 m-0">
+                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}
+                            </p>
+                            <p class="kyc-p--1 m-0">
+                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}
+                                <a class="edit-phone action-anchor" (click)="handleEditValue($event, 'PHONE')">
+                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_phone' | translate }}
+                                </a>
+                            </p>
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="Esteps.createPassword">
+                            <h1 class="title">
+                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
+                            </h1>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="Esteps.personalDetails">
+                            <h1 class="title">
+                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
+                            </h1>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>
+                        </ng-container>
+
+                        <ng-container *ngSwitchDefault>
+                            <h1 class="title">
+                                <button *ngIf="showPrevBtn()" class="action-btn in-title--mobile"
+                                    (click)="handlePreviousBtn()">
+                                    <span class="fas fa-chevron-left"></span>
+                                </button>
+                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
+                            </h1>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
+                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>
+                        </ng-container>
+                    </article>
+                </ng-container>
+
+                <div>
+                    <div class="error-box alert alert-danger" role="alert" [ngClass]="{
+                        'd-none': !error.hasError && !error.msg,
+                        'd-block': error.hasError || error.msg
+                    }" [ngStyle]="{'visibility': (!error.hasError && !error.msg) ? 'hidden' : 'visible'}">
+                        <mat-icon fontSet="fontawesome" fontIcon="fa-exclamation-triangle"></mat-icon>
+                        {{error.msg}}
+                    </div>
+                </div>
+
+                <!-- <form #kycFormRef class="kyc-form" [ngClass]="{
+                    'light-form': stepsObj.currentStep !== Esteps.typeOfBusiness
+                }" [formGroup]="kycForm" (ngSubmit)="handleSubmit()" (keydown.enter)="$event.preventDefault()"
+                autocomplete="off">
+                <div [ngSwitch]="stepsObj.currentStep">
+                    <ng-container *ngSwitchCase="Esteps.typeOfBusiness">
+                        <kyc-one [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                            (nextStepEvent)="stepHandler($event)" (activatedBusinessType)="handleDetailToShow($event)">
+                        </kyc-one>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="Esteps.email">
+                        <kyc-two [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                            (nextStepEvent)="stepHandler($event)">
+                        </kyc-two>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="Esteps.emailConfirmation">
+                        <kyc-email-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                            (nextStepEvent)="stepHandler($event)">
+                        </kyc-email-confirm>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="Esteps.phone">
+                        <kyc-phone [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                            (nextStepEvent)="stepHandler($event)" [nextStepIsValid]="nextStepIsValid">
+                        </kyc-phone>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="Esteps.phoneConfirmation">
+                        <kyc-phone-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                            (nextStepEvent)="stepHandler($event)">
+                        </kyc-phone-confirm>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="Esteps.createPassword">
+                        <kyc-create-password [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                            (nextStepEvent)="stepHandler($event)"  (loginEvent)="goToLogin()">
+                        </kyc-create-password>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="Esteps.personalDetails">
+                        <kyc-personal-details [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                            (nextStepEvent)="stepHandler($event)">
+                        </kyc-personal-details>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="Esteps.personalAddress">
+                        <kyc-address [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                            (nextStepEvent)="stepHandler($event)"  (loginEvent)="goToLogin()">
+                        </kyc-address>
+                    </ng-container>
+
+
+                </div>
+
+            </form> -->
+
+                <article *ngIf="showLoginBtn()" class="login-wrapper">
+                    <a class="faq-p--1" [href]="faqUrl" target="_blank" rel="noopener noreferrer">{{ 'KYC.FAQ' |
+                        translate}}</a>
+                    &nbsp;
+                    /
+                    &nbsp;
+                    <p class="login-p--1 m-0">
+                        {{ 'KYC.alreadyHaveAccount' | translate}}
+                        &nbsp;
+                        <a class="login-link" (click)="goToLogin()" id="login-btn">{{ 'KYC.SignIn' | translate}}</a>
+                    </p>
+                </article>
+            </section>
+
+        </div>
+
+        <!-- <div class="kyc-right">
+        <app-step-details [detailsToShow]="detailsToShow" [kycForm]="kycForm" [stepsObj]="stepsObj"
+        [showLoginBtn]="showLoginBtn()">
+    </app-step-details>
+    <article *ngIf="showLoginBtn()" class="login-wrapper">
+        <a class="faq-p--1" [href]="faqUrl" target="_blank" rel="noopener noreferrer">{{ 'KYC.FAQ' | translate}}
+            /</a>
+            &nbsp;
+            <p class="login-p--1">
+                {{ 'KYC.alreadyHaveAccount' | translate}}
+                &nbsp;
+                <a class="login-link" [href]="appLoginUrl" id="login-btn-2">{{ 'KYC.SignIn' | translate}}</a>
+            </p>
+        </article>
+        <img class="icon-bottom-right" src="assets/images/kyc/icons/blue-up-down-arrow.svg"
+        alt="blue up and down arrow icon" />
+    </div> -->
+
+
+    </section>
+
+    <div *ngIf="codeStatus !== 'DEFAULT' " class="confirmation-incorrect">
+        <button class="confirmation-incorrect__close action-btn" (click)="tryAgain()" mat-button>
+            <mat-icon fontSet="fontawesome" fontIcon="fa-times"></mat-icon>
+        </button>
+
+        <div class="container">
+            <div class="confirmation-incorrect__wrapper">
+                <mat-icon class="incorrect-icon text-danger mb-5" fontSet="fontawesome" fontIcon="fa-times-circle">
+                </mat-icon>
+
+                <ng-container *ngIf="codeStatus === 'INCORRECT'">
+                    <h3 class="confirmation-incorrect-h--1">{{ 'KYC.confirmation_incorrect' | translate}}</h3>
+                </ng-container>
+
+                <ng-container *ngIf="codeStatus === 'PASSED_LIMIT'">
+                    <h3 class="confirmation-incorrect-h--1">{{ 'KYC.PassedLimitTitle' | translate}}</h3>
+                    <p class="confirmation-incorrect-p--1">{{ 'KYC.PassedLimitParagraph' | translate}}</p>
+                </ng-container>
+
+                <button type="button" mat-raised-button color="primary" class="continue-btn mt-5" (click)="tryAgain()">
+                    {{ 'KYC.try_again' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+</main>
