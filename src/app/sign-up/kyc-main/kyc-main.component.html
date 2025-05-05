@@ -126,19 +126,19 @@
                     </div>
                 </div>
 
-                <!-- <form #kycFormRef class="kyc-form" [ngClass]="{
+                <form #kycFormRef class="kyc-form" [ngClass]="{
                     'light-form': stepsObj.currentStep !== Esteps.typeOfBusiness
-                }" [formGroup]="kycForm" (ngSubmit)="handleSubmit()" (keydown.enter)="$event.preventDefault()"
+                }" [formGroup]="kycForm" (keydown.enter)="$event.preventDefault()"
                     autocomplete="off">
                     <div [ngSwitch]="stepsObj.currentStep">
                         <ng-container *ngSwitchCase="Esteps.typeOfBusiness">
-                            <kyc-one [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                            <app-kyc-one [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)"
                                 (activatedBusinessType)="handleDetailToShow($event)">
-                            </kyc-one>
+                            </app-kyc-one>
                         </ng-container>
 
-                        <ng-container *ngSwitchCase="Esteps.email">
+                        <!-- <ng-container *ngSwitchCase="Esteps.email">
                             <kyc-two [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)">
                             </kyc-two>
@@ -172,10 +172,10 @@
                             <kyc-address [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)" (loginEvent)="goToLogin()">
                             </kyc-address>
-                        </ng-container>
+                        </ng-container> -->
                     </div>
 
-                </form> -->
+                </form>
 
                 <article *ngIf="showLoginBtn()" class="login-wrapper">
                     <a class="faq-p--1" [href]="faqUrl" target="_blank" rel="noopener noreferrer">{{ 'KYC.FAQ' |
@@ -214,7 +214,7 @@
 
     </section>
 
-    <div *ngIf="codeStatus !== 'DEFAULT' " class="confirmation-incorrect">
+    <!-- <div *ngIf="codeStatus !== 'DEFAULT' " class="confirmation-incorrect">
         <button class="confirmation-incorrect__close action-btn" (click)="tryAgain()" mat-button>
             <mat-icon fontSet="fontawesome" fontIcon="fa-times"></mat-icon>
         </button>
@@ -238,6 +238,6 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </main>
