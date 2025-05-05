@@ -19,8 +19,15 @@ export class AppComponent {
   ngOnInit(): void {
     // Only navigate if it's the initial load (empty path)
     if (this.router.url === '/') {
+      this.router.navigate(['/dashboard']);
+    }
+    const isLoggedInUser = localStorage.getItem('isLoggedInUser') === 'false'
+    if (isLoggedInUser) {
       this.router.navigate(['/sign-up']);
     }
+  }
+  get isRiskManagerRoute(): boolean {
+    return this.router.url === '/dashboard' || this.router.url === '/hedging' || this.router.url === '/cashflow' || this.router.url === '/advanced-policy';
   }
 
   get isSignUpRoute(): boolean {
