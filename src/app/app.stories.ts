@@ -4,6 +4,7 @@ import { CommonModule } from "@angular/common";
 import { provideRouter, withHashLocation } from "@angular/router";
 import { importProvidersFrom } from "@angular/core";
 import { routes } from "./app.routes";
+import { TranslateModule } from "@ngx-translate/core";
 
 const meta: Meta<AppComponent> = {
     title: 'Components/Layout',
@@ -12,7 +13,7 @@ const meta: Meta<AppComponent> = {
         applicationConfig({
             providers: [
                 provideRouter(routes, withHashLocation()),
-                importProvidersFrom(CommonModule)
+                importProvidersFrom(CommonModule, TranslateModule)
             ],
         }),
     ],

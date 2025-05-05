@@ -3062,7 +3062,7 @@
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-7c73939171ab8e798c4123cd83f90beeada4b111dda91a66a82e7d8e11c5c92fbf9cc1d7eea55e3bc7e2439d97b289f2a34e1a39f1f0c013127a9174bbf9eb4a",
+            "id": "component-AppComponent-4ed4fc8a81c65e2f498347e4a3c4fb5ef14cd2233bf60d4dc17650d36389b65dddeb994984acd7a94222273d1912463ab084b44f98e7862f8039892ac31ebc3c",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3146,7 +3146,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 29,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -3176,7 +3176,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ViewChild } from '@angular/core';\r\nimport { Router, RouterOutlet } from '@angular/router';\r\nimport { HeaderComponent } from \"./risk-dashboard/components/header/header.component\";\r\nimport { SidebarComponent } from \"./risk-dashboard/components/sidebar/sidebar.component\";\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  imports: [RouterOutlet, HeaderComponent, SidebarComponent, CommonModule],\r\n  templateUrl:'app.component.html',\r\n  styleUrl:'app.component.scss',\r\n})\r\nexport class AppComponent {\r\n  @ViewChild(SidebarComponent) private sidebar!: SidebarComponent;\r\n  @Input() ShowDashboard: boolean = false;\r\n  @Input() Showhedging: boolean = false;\r\n  @Input() showCashflowExposure: boolean = false;\r\n  constructor(private router: Router) {}\r\n  ngOnInit(): void {\r\n    // Only navigate if it's the initial load (empty path)\r\n    if (this.router.url === '/') {\r\n      this.router.navigate(['/sign-up']);\r\n    }\r\n  }\r\n\r\n  get isSignUpRoute(): boolean {\r\n    return this.router.url === '/sign-up';\r\n  }\r\n  openSidebar() {\r\n    this.sidebar.openSidebar();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, ViewChild } from '@angular/core';\r\nimport { Router, RouterOutlet } from '@angular/router';\r\nimport { HeaderComponent } from \"./risk-dashboard/components/header/header.component\";\r\nimport { SidebarComponent } from \"./risk-dashboard/components/sidebar/sidebar.component\";\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  imports: [RouterOutlet, HeaderComponent, SidebarComponent, CommonModule],\r\n  templateUrl:'app.component.html',\r\n  styleUrl:'app.component.scss',\r\n})\r\nexport class AppComponent {\r\n  @ViewChild(SidebarComponent) private sidebar!: SidebarComponent;\r\n  @Input() ShowDashboard: boolean = false;\r\n  @Input() Showhedging: boolean = false;\r\n  @Input() showCashflowExposure: boolean = false;\r\n  constructor(private router: Router) {}\r\n  ngOnInit(): void {\r\n    // Only navigate if it's the initial load (empty path)\r\n    if (this.router.url === '/') {\r\n      this.router.navigate(['/dashboard']);\r\n    }\r\n    const isLoggedInUser = localStorage.getItem('isLoggedInUser') === 'false'\r\n    if (isLoggedInUser) {\r\n      this.router.navigate(['/sign-up']);\r\n    }\r\n  }\r\n  get isRiskManagerRoute(): boolean {\r\n    return this.router.url === '/dashboard' || this.router.url === '/hedging' || this.router.url === '/cashflow' || this.router.url === '/advanced-policy';\r\n  }\r\n\r\n  get isSignUpRoute(): boolean {\r\n    return this.router.url === '/sign-up';\r\n  }\r\n  openSidebar() {\r\n    this.sidebar.openSidebar();\r\n  }\r\n}\r\n",
             "styleUrl": "app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3209,17 +3209,26 @@
             },
             "extends": [],
             "accessors": {
+                "isRiskManagerRoute": {
+                    "name": "isRiskManagerRoute",
+                    "getSignature": {
+                        "name": "isRiskManagerRoute",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 29
+                    }
+                },
                 "isSignUpRoute": {
                     "name": "isSignUpRoute",
                     "getSignature": {
                         "name": "isSignUpRoute",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 26
+                        "line": 33
                     }
                 }
             },
-            "templateData": "<div class=\"layout\" [ngClass]=\"{'not-dashboard': isSignUpRoute}\">\r\n    <ng-container *ngIf=\"!isSignUpRoute\">\r\n        <app-header (openSidebar)=\"openSidebar()\"></app-header>\r\n        <app-sidebar></app-sidebar>\r\n    </ng-container>\r\n    \r\n    <div class=\"content-wrapper risk-manager\">\r\n        <router-outlet />\r\n    </div>\r\n</div>"
+            "templateData": "<div class=\"layout\" [ngClass]=\"{'not-dashboard': isSignUpRoute}\">\r\n    <ng-container *ngIf=\"!isSignUpRoute\">\r\n        <app-header (openSidebar)=\"openSidebar()\"></app-header>\r\n        <app-sidebar></app-sidebar>\r\n    </ng-container>\r\n    \r\n    <div class=\"content-wrapper\" [ngClass]=\"{'risk-manager': isRiskManagerRoute}\">\r\n        <router-outlet />\r\n    </div>\r\n</div>"
         },
         {
             "name": "BreadcrumbWalletComponent",
@@ -6512,7 +6521,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-ab73d7fe52ff2ff8810e2787b3a910d484a548e4384a2e4c3843e996d5871886301277cf3894c6081fe8fec96a3790733ae4d8fe959d92fdd762517cb0d3613d",
+            "id": "component-HeaderComponent-436cf45d930a3ea3baa5ab8419860ead8470433b4cb7ca3cd3508723705dce5b80bacfe72e961e51114437dd02835f59312ac2c8d3ba5ed531c438575a7d175a",
             "file": "src/app/risk-dashboard/components/header/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6536,7 +6545,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 22,
                     "type": "EventEmitter"
                 }
             ],
@@ -6550,7 +6559,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 24,
                     "modifierKind": [
                         123
                     ]
@@ -6563,7 +6572,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -6582,7 +6591,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 21,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -6601,7 +6610,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6611,7 +6620,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 53,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6621,7 +6630,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 74,
+                    "line": 75,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6631,7 +6640,17 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 70,
+                    "line": 71,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "logout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 87,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6641,7 +6660,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 28,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6651,7 +6670,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 82,
+                    "line": 83,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6661,7 +6680,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 78,
+                    "line": 79,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -6699,7 +6718,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Output, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport { MatDrawer } from '@angular/material/sidenav';\r\nimport { CommonModule } from '@angular/common';\r\nimport { QuickHedgeDrawerComponent } from '../hedging-proposal/components/quick-hedge-drawer/quick-hedge-drawer.component';\r\nimport { HedgeAllDrawerComponent } from '../hedging-proposal/components/hedge-all-drawer/hedge-all-drawer.component';\r\nimport { HedgingDataService } from '../hedging-proposal/hedging-data.service';\r\nimport { Subject, takeUntil } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'app-header',\r\n  standalone: true,\r\n  imports: [MatIconModule, MatMenuModule, QuickHedgeDrawerComponent, HedgeAllDrawerComponent, MatDrawer, CommonModule],\r\n  templateUrl: './header.component.html',\r\n  styleUrls: ['./header.component.scss']\r\n})\r\nexport class HeaderComponent implements AfterViewInit, OnDestroy {\r\n  @ViewChild('hedgeAllDrawer') hedgeAllDrawer!: MatDrawer;\r\n  @ViewChild('quickHedgeDrawer') quickHedgeDrawer!: MatDrawer;\r\n  @Output() openSidebar = new EventEmitter();\r\n\r\n  private destroy$ = new Subject<void>();\r\n\r\n  constructor(private hedgeService: HedgingDataService) {}\r\n\r\n  ngAfterViewInit() {\r\n    setTimeout(() => {\r\n      this.checkHedgeAllDrawerState();\r\n      this.checkQuickHedgeDrawerState();\r\n    });\r\n  }\r\n\r\n  checkHedgeAllDrawerState() {\r\n    this.hedgeService.hedgeAllDrawerState$\r\n      .pipe(takeUntil(this.destroy$))\r\n      .subscribe((state) => {\r\n        if (this.hedgeAllDrawer) {\r\n          if (state) {\r\n            this.hedgeAllDrawer.open();\r\n            document.querySelector('body')!.style.overflowY = 'hidden';\r\n            document.querySelector('.drawer-hedge-all')?.insertAdjacentHTML(\"afterend\", \"<div class='drawer-backdrop'></div>\");\r\n          } else {\r\n            this.hedgeAllDrawer.close();\r\n            document.querySelector('body')!.style.overflowY = 'auto';\r\n            document.querySelector('.drawer-backdrop')?.remove();\r\n          }\r\n        }\r\n      });\r\n  }\r\n\r\n  checkQuickHedgeDrawerState() {\r\n    this.hedgeService.quickHedgeDrawerState$\r\n      .pipe(takeUntil(this.destroy$))\r\n      .subscribe((state) => {\r\n        if (this.quickHedgeDrawer) {\r\n          if (state) {\r\n            this.quickHedgeDrawer.open();\r\n            document.querySelector('body')!.style.overflowY = 'hidden';\r\n            document.querySelector('.drawer-hedge-quick')?.insertAdjacentHTML(\"afterend\", \"<div class='drawer-backdrop'></div>\");\r\n          } else {\r\n            this.quickHedgeDrawer.close();\r\n            document.querySelector('body')!.style.overflowY = 'auto';\r\n            document.querySelector('.drawer-backdrop')?.remove();\r\n          }\r\n        }\r\n      });\r\n  }\r\n\r\n  closeQuickHedgeDrawer() {\r\n    this.hedgeService.closeQuickHedgeDrawer();\r\n  }\r\n  \r\n  closeHedgeAllDrawer() {\r\n    this.hedgeService.closeHedgeAllDrawer();\r\n  }\r\n\r\n  openMenu() {\r\n    this.openSidebar.emit();\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.destroy$.next();\r\n    this.destroy$.complete();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Output, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport { MatDrawer } from '@angular/material/sidenav';\r\nimport { CommonModule } from '@angular/common';\r\nimport { QuickHedgeDrawerComponent } from '../hedging-proposal/components/quick-hedge-drawer/quick-hedge-drawer.component';\r\nimport { HedgeAllDrawerComponent } from '../hedging-proposal/components/hedge-all-drawer/hedge-all-drawer.component';\r\nimport { HedgingDataService } from '../hedging-proposal/hedging-data.service';\r\nimport { Subject, takeUntil } from 'rxjs';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-header',\r\n  standalone: true,\r\n  imports: [MatIconModule, MatMenuModule, QuickHedgeDrawerComponent, HedgeAllDrawerComponent, MatDrawer, CommonModule],\r\n  templateUrl: './header.component.html',\r\n  styleUrls: ['./header.component.scss']\r\n})\r\nexport class HeaderComponent implements AfterViewInit, OnDestroy {\r\n  @ViewChild('hedgeAllDrawer') hedgeAllDrawer!: MatDrawer;\r\n  @ViewChild('quickHedgeDrawer') quickHedgeDrawer!: MatDrawer;\r\n  @Output() openSidebar = new EventEmitter();\r\n\r\n  private destroy$ = new Subject<void>();\r\n\r\n  constructor(private hedgeService: HedgingDataService,private router:Router) {}\r\n\r\n  ngAfterViewInit() {\r\n    setTimeout(() => {\r\n      this.checkHedgeAllDrawerState();\r\n      this.checkQuickHedgeDrawerState();\r\n    });\r\n  }\r\n\r\n  checkHedgeAllDrawerState() {\r\n    this.hedgeService.hedgeAllDrawerState$\r\n      .pipe(takeUntil(this.destroy$))\r\n      .subscribe((state) => {\r\n        if (this.hedgeAllDrawer) {\r\n          if (state) {\r\n            this.hedgeAllDrawer.open();\r\n            document.querySelector('body')!.style.overflowY = 'hidden';\r\n            document.querySelector('.drawer-hedge-all')?.insertAdjacentHTML(\"afterend\", \"<div class='drawer-backdrop'></div>\");\r\n          } else {\r\n            this.hedgeAllDrawer.close();\r\n            document.querySelector('body')!.style.overflowY = 'auto';\r\n            document.querySelector('.drawer-backdrop')?.remove();\r\n          }\r\n        }\r\n      });\r\n  }\r\n\r\n  checkQuickHedgeDrawerState() {\r\n    this.hedgeService.quickHedgeDrawerState$\r\n      .pipe(takeUntil(this.destroy$))\r\n      .subscribe((state) => {\r\n        if (this.quickHedgeDrawer) {\r\n          if (state) {\r\n            this.quickHedgeDrawer.open();\r\n            document.querySelector('body')!.style.overflowY = 'hidden';\r\n            document.querySelector('.drawer-hedge-quick')?.insertAdjacentHTML(\"afterend\", \"<div class='drawer-backdrop'></div>\");\r\n          } else {\r\n            this.quickHedgeDrawer.close();\r\n            document.querySelector('body')!.style.overflowY = 'auto';\r\n            document.querySelector('.drawer-backdrop')?.remove();\r\n          }\r\n        }\r\n      });\r\n  }\r\n\r\n  closeQuickHedgeDrawer() {\r\n    this.hedgeService.closeQuickHedgeDrawer();\r\n  }\r\n  \r\n  closeHedgeAllDrawer() {\r\n    this.hedgeService.closeHedgeAllDrawer();\r\n  }\r\n\r\n  openMenu() {\r\n    this.openSidebar.emit();\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.destroy$.next();\r\n    this.destroy$.complete();\r\n  }\r\n  logout(){\r\n    localStorage.setItem('isLoggedInUser', 'false');\r\n    this.router.navigate(['/sign-up']);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -6719,13 +6738,28 @@
                         "type": "HedgingDataService",
                         "deprecated": false,
                         "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
                     }
                 ],
-                "line": 23,
+                "line": 24,
                 "jsdoctags": [
                     {
                         "name": "hedgeService",
                         "type": "HedgingDataService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -6739,7 +6773,7 @@
                 "AfterViewInit",
                 "OnDestroy"
             ],
-            "templateData": "<header>\r\n    <div class=\"topheder-business-users\">\r\n        <div class=\"header-inner\">\r\n            <button class=\"navbar-toggler\" type=\"button\" (click)=\"openMenu()\" id=\"db-header-8\">\r\n                <img src=\"images/side-menu.svg\">\r\n            </button>\r\n        </div>\r\n        <nav class=\"navbar main-nav\">\r\n            <div class=\"nav-inner\">\r\n                <div class=\"nav-left\">\r\n                    <div class=\"wallet-list-business\">\r\n                        <div class=\"flag\">\r\n                            <img src=\"images/ils-flag.svg\" alt=\"flag\">\r\n                        </div>\r\n                        <div class=\"currency-wrapper\">\r\n                            <div class=\"wallet-ammount\">\r\n                                3,200,000<span class=\"sub-part\">.00</span>\r\n                            </div>\r\n                            <button class=\"wallet-list-button\" mat-icon-button></button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"nav-option-right\">\r\n                    <div class=\"lang-wrapper\">\r\n                        <button type=\"button\" class=\"drop-down-btn lang-btn\" [matMenuTriggerFor]=\"langMenu\"\r\n                            id=\"dropdownForm2\">\r\n                            <img height=\"20px\" width=\"20px\" src=\"images/gloabe-icn.svg\" alt=\"language icon\">\r\n                        </button>\r\n                        <mat-menu #langMenu=\"matMenu\"\r\n                            class=\"header-menu-panel side-nav-wrapper language-wrapper animated fadeIn py-2 px-2\">\r\n                            <ul>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-1\">English</button>\r\n                                </li>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-2\">עברית</button>\r\n                                </li>\r\n                            </ul>\r\n                        </mat-menu>\r\n                    </div>\r\n                    <button class=\"header-btn download-app\">\r\n                        Download App\r\n                    </button>\r\n                    <a class=\"header-btn market-place\">\r\n                        <svg width=\"22\" height=\"20\" viewBox=\"0 0 22 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                            <path id=\"Vector\"\r\n                                d=\"M21.9483 6.58348C21.9248 6.53253 21.8963 6.48416 21.8632 6.43913C21.8382 6.31428 21.8046 6.19137 21.7628 6.0713C21.7577 6.05739 21.7526 6.04348 21.7458 6.02956L19.4031 0.521739C19.3369 0.366601 19.2277 0.234598 19.0891 0.141919C18.9505 0.049241 18.7884 -8.19612e-05 18.6228 1.02236e-07H3.30575C3.14011 -8.19612e-05 2.97804 0.049241 2.83943 0.141919C2.70082 0.234598 2.59169 0.366601 2.52543 0.521739L0.168309 6.07043C-0.056103 6.65243 -0.056103 7.29975 0.168309 7.88174C0.385115 8.3882 0.699203 8.84504 1.09196 9.22518C1.48472 9.60532 1.94815 9.90103 2.4548 10.0948V19.1304C2.4548 19.3611 2.54446 19.5822 2.70404 19.7453C2.86362 19.9084 3.08007 20 3.30575 20H18.6228C18.8485 20 19.0649 19.9084 19.2245 19.7453C19.3841 19.5822 19.4737 19.3611 19.4737 19.1304V10.0948C19.9803 9.90127 20.4436 9.60585 20.8364 9.22601C21.2291 8.84617 21.5433 8.38965 21.7602 7.88348C21.8304 7.70055 21.877 7.5091 21.8989 7.31391C21.9557 7.20211 21.9894 7.07959 21.9979 6.95393C22.0064 6.82828 21.9895 6.70219 21.9483 6.58348ZM8.41143 18.2609V13.0435H10.1133V18.2609H8.41143ZM11.8152 18.2609V13.0435H13.5171V18.2609H11.8152ZM17.7718 18.2609H15.219V12.1739C15.219 11.9433 15.1294 11.7221 14.9698 11.559C14.8102 11.396 14.5937 11.3043 14.3681 11.3043H7.56048C7.3348 11.3043 7.11836 11.396 6.95877 11.559C6.79919 11.7221 6.70954 11.9433 6.70954 12.1739V18.2609H4.1567V10.4348C4.80138 10.443 5.44005 10.3072 6.028 10.0369C6.61595 9.7665 7.13898 9.36811 7.56048 8.86957C7.9868 9.36234 8.51071 9.75693 9.09752 10.0272C9.68432 10.2974 10.3206 10.4372 10.9643 10.4372C11.6079 10.4372 12.2442 10.2974 12.831 10.0272C13.4178 9.75693 13.9417 9.36234 14.3681 8.86957C14.7896 9.36811 15.3126 9.7665 15.9005 10.0369C16.4885 10.3072 17.1272 10.443 17.7718 10.4348V18.2609ZM20.186 7.21739C19.9683 7.67738 19.6239 8.06235 19.195 8.32498C18.7661 8.5876 18.2714 8.71644 17.7718 8.69565C17.1525 8.74712 16.5381 8.54822 16.0608 8.14172C15.5834 7.73521 15.2812 7.15354 15.219 6.52174C15.219 6.29112 15.1294 6.06994 14.9698 5.90686C14.8102 5.74379 14.5937 5.65217 14.3681 5.65217C14.1424 5.65217 13.9259 5.74379 13.7663 5.90686C13.6068 6.06994 13.5171 6.29112 13.5171 6.52174C13.455 7.15354 13.1527 7.73521 12.6754 8.14172C12.198 8.54822 11.5836 8.74712 10.9643 8.69565C10.3449 8.74712 9.73054 8.54822 9.25318 8.14172C8.77581 7.73521 8.47358 7.15354 8.41143 6.52174C8.41143 6.29112 8.32178 6.06994 8.1622 5.90686C8.00261 5.74379 7.78617 5.65217 7.56048 5.65217C7.3348 5.65217 7.11836 5.74379 6.95877 5.90686C6.79919 6.06994 6.70954 6.29112 6.70954 6.52174C6.64739 7.15354 6.34516 7.73521 5.86779 8.14172C5.39043 8.54822 4.77604 8.74712 4.1567 8.69565C3.65699 8.7165 3.1622 8.5877 2.73316 8.32507C2.30412 8.06245 1.95952 7.67745 1.74171 7.21739C1.68468 7.05701 1.68468 6.88125 1.74171 6.72087L3.86397 1.73913H18.0646L20.1724 6.69565C20.2382 6.86222 20.2431 7.04747 20.186 7.21739Z\"\r\n                                fill=\"black\" />\r\n                        </svg>\r\n                        Marketplace\r\n                    </a>\r\n                    <button class=\"add-money\" mat-button id=\"db-header-10\">+ Add Money</button>\r\n                    <div class=\"user-profile\">\r\n                        <button class=\"profile-btn\" [matMenuTriggerFor]=\"accountsMenu\" id=\"db-header-11\">T</button>\r\n                        <button class=\"user-option\" mat-icon-button [matMenuTriggerFor]=\"profileMenu\" id=\"db-header-12\">\r\n                            <img src=\"images/menu-down-arrow.svg\">\r\n                        </button>\r\n                        <mat-menu #profileMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"db-header-13\">Logout</button>\r\n                        </mat-menu>\r\n                        <mat-menu #accountsMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"dbheader-company\">Tamir</button>\r\n                        </mat-menu>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nav>\r\n    </div>\r\n</header>\r\n<!-- <ng-container *ngIf=\"\"> -->\r\n    <mat-drawer #quickHedgeDrawer  mode=\"over\" position=\"end\" class=\"drawer-hedge-quick\" [opened]=\"false\"> \r\n        <app-quick-hedge-drawer (closeDrawer)=\"closeQuickHedgeDrawer()\"></app-quick-hedge-drawer>\r\n    </mat-drawer>\r\n      \r\n    <mat-drawer #hedgeAllDrawer mode=\"side\" position=\"end\" class=\"drawer-hedge-all\" [opened]=\"false\">\r\n        <app-hedge-all-drawer (closeDrawer)=\"closeHedgeAllDrawer()\"></app-hedge-all-drawer>\r\n    </mat-drawer>\r\n<!-- </ng-container> -->\r\n\r\n  \r\n"
+            "templateData": "<header>\r\n    <div class=\"topheder-business-users\">\r\n        <div class=\"header-inner\">\r\n            <button class=\"navbar-toggler\" type=\"button\" (click)=\"openMenu()\" id=\"db-header-8\">\r\n                <img src=\"images/side-menu.svg\">\r\n            </button>\r\n        </div>\r\n        <nav class=\"navbar main-nav\">\r\n            <div class=\"nav-inner\">\r\n                <div class=\"nav-left\">\r\n                    <div class=\"wallet-list-business\">\r\n                        <div class=\"flag\">\r\n                            <img src=\"images/ils-flag.svg\" alt=\"flag\">\r\n                        </div>\r\n                        <div class=\"currency-wrapper\">\r\n                            <div class=\"wallet-ammount\">\r\n                                3,200,000<span class=\"sub-part\">.00</span>\r\n                            </div>\r\n                            <button class=\"wallet-list-button\" mat-icon-button></button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"nav-option-right\">\r\n                    <div class=\"lang-wrapper\">\r\n                        <button type=\"button\" class=\"drop-down-btn lang-btn\" [matMenuTriggerFor]=\"langMenu\"\r\n                            id=\"dropdownForm2\">\r\n                            <img height=\"20px\" width=\"20px\" src=\"images/gloabe-icn.svg\" alt=\"language icon\">\r\n                        </button>\r\n                        <mat-menu #langMenu=\"matMenu\"\r\n                            class=\"header-menu-panel side-nav-wrapper language-wrapper animated fadeIn py-2 px-2\">\r\n                            <ul>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-1\">English</button>\r\n                                </li>\r\n                                <li>\r\n                                    <button class=\"drop-down-btn\" id=\"lang-list-2\">עברית</button>\r\n                                </li>\r\n                            </ul>\r\n                        </mat-menu>\r\n                    </div>\r\n                    <button class=\"header-btn download-app\">\r\n                        Download App\r\n                    </button>\r\n                    <a class=\"header-btn market-place\">\r\n                        <svg width=\"22\" height=\"20\" viewBox=\"0 0 22 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\r\n                            <path id=\"Vector\"\r\n                                d=\"M21.9483 6.58348C21.9248 6.53253 21.8963 6.48416 21.8632 6.43913C21.8382 6.31428 21.8046 6.19137 21.7628 6.0713C21.7577 6.05739 21.7526 6.04348 21.7458 6.02956L19.4031 0.521739C19.3369 0.366601 19.2277 0.234598 19.0891 0.141919C18.9505 0.049241 18.7884 -8.19612e-05 18.6228 1.02236e-07H3.30575C3.14011 -8.19612e-05 2.97804 0.049241 2.83943 0.141919C2.70082 0.234598 2.59169 0.366601 2.52543 0.521739L0.168309 6.07043C-0.056103 6.65243 -0.056103 7.29975 0.168309 7.88174C0.385115 8.3882 0.699203 8.84504 1.09196 9.22518C1.48472 9.60532 1.94815 9.90103 2.4548 10.0948V19.1304C2.4548 19.3611 2.54446 19.5822 2.70404 19.7453C2.86362 19.9084 3.08007 20 3.30575 20H18.6228C18.8485 20 19.0649 19.9084 19.2245 19.7453C19.3841 19.5822 19.4737 19.3611 19.4737 19.1304V10.0948C19.9803 9.90127 20.4436 9.60585 20.8364 9.22601C21.2291 8.84617 21.5433 8.38965 21.7602 7.88348C21.8304 7.70055 21.877 7.5091 21.8989 7.31391C21.9557 7.20211 21.9894 7.07959 21.9979 6.95393C22.0064 6.82828 21.9895 6.70219 21.9483 6.58348ZM8.41143 18.2609V13.0435H10.1133V18.2609H8.41143ZM11.8152 18.2609V13.0435H13.5171V18.2609H11.8152ZM17.7718 18.2609H15.219V12.1739C15.219 11.9433 15.1294 11.7221 14.9698 11.559C14.8102 11.396 14.5937 11.3043 14.3681 11.3043H7.56048C7.3348 11.3043 7.11836 11.396 6.95877 11.559C6.79919 11.7221 6.70954 11.9433 6.70954 12.1739V18.2609H4.1567V10.4348C4.80138 10.443 5.44005 10.3072 6.028 10.0369C6.61595 9.7665 7.13898 9.36811 7.56048 8.86957C7.9868 9.36234 8.51071 9.75693 9.09752 10.0272C9.68432 10.2974 10.3206 10.4372 10.9643 10.4372C11.6079 10.4372 12.2442 10.2974 12.831 10.0272C13.4178 9.75693 13.9417 9.36234 14.3681 8.86957C14.7896 9.36811 15.3126 9.7665 15.9005 10.0369C16.4885 10.3072 17.1272 10.443 17.7718 10.4348V18.2609ZM20.186 7.21739C19.9683 7.67738 19.6239 8.06235 19.195 8.32498C18.7661 8.5876 18.2714 8.71644 17.7718 8.69565C17.1525 8.74712 16.5381 8.54822 16.0608 8.14172C15.5834 7.73521 15.2812 7.15354 15.219 6.52174C15.219 6.29112 15.1294 6.06994 14.9698 5.90686C14.8102 5.74379 14.5937 5.65217 14.3681 5.65217C14.1424 5.65217 13.9259 5.74379 13.7663 5.90686C13.6068 6.06994 13.5171 6.29112 13.5171 6.52174C13.455 7.15354 13.1527 7.73521 12.6754 8.14172C12.198 8.54822 11.5836 8.74712 10.9643 8.69565C10.3449 8.74712 9.73054 8.54822 9.25318 8.14172C8.77581 7.73521 8.47358 7.15354 8.41143 6.52174C8.41143 6.29112 8.32178 6.06994 8.1622 5.90686C8.00261 5.74379 7.78617 5.65217 7.56048 5.65217C7.3348 5.65217 7.11836 5.74379 6.95877 5.90686C6.79919 6.06994 6.70954 6.29112 6.70954 6.52174C6.64739 7.15354 6.34516 7.73521 5.86779 8.14172C5.39043 8.54822 4.77604 8.74712 4.1567 8.69565C3.65699 8.7165 3.1622 8.5877 2.73316 8.32507C2.30412 8.06245 1.95952 7.67745 1.74171 7.21739C1.68468 7.05701 1.68468 6.88125 1.74171 6.72087L3.86397 1.73913H18.0646L20.1724 6.69565C20.2382 6.86222 20.2431 7.04747 20.186 7.21739Z\"\r\n                                fill=\"black\" />\r\n                        </svg>\r\n                        Marketplace\r\n                    </a>\r\n                    <button class=\"add-money\" mat-button id=\"db-header-10\">+ Add Money</button>\r\n                    <div class=\"user-profile\">\r\n                        <button class=\"profile-btn\" [matMenuTriggerFor]=\"accountsMenu\" id=\"db-header-11\">T</button>\r\n                        <button class=\"user-option\" mat-icon-button [matMenuTriggerFor]=\"profileMenu\" id=\"db-header-12\">\r\n                            <img src=\"images/menu-down-arrow.svg\">\r\n                        </button>\r\n                        <mat-menu #profileMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"db-header-13\" (click)=\"logout()\">Logout</button>\r\n                        </mat-menu>\r\n                        <mat-menu #accountsMenu=\"matMenu\" class=\"header-menu-panel\">\r\n                            <button mat-menu-item class=\"custom-menu-item\" id=\"dbheader-company\">Tamir</button>\r\n                        </mat-menu>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </nav>\r\n    </div>\r\n</header>\r\n<!-- <ng-container *ngIf=\"\"> -->\r\n    <mat-drawer #quickHedgeDrawer  mode=\"over\" position=\"end\" class=\"drawer-hedge-quick\" [opened]=\"false\"> \r\n        <app-quick-hedge-drawer (closeDrawer)=\"closeQuickHedgeDrawer()\"></app-quick-hedge-drawer>\r\n    </mat-drawer>\r\n      \r\n    <mat-drawer #hedgeAllDrawer mode=\"side\" position=\"end\" class=\"drawer-hedge-all\" [opened]=\"false\">\r\n        <app-hedge-all-drawer (closeDrawer)=\"closeHedgeAllDrawer()\"></app-hedge-all-drawer>\r\n    </mat-drawer>\r\n<!-- </ng-container> -->\r\n\r\n  \r\n"
         },
         {
             "name": "HedgeAllDrawerComponent",
@@ -8601,7 +8635,7 @@
         },
         {
             "name": "KycMainComponent",
-            "id": "component-KycMainComponent-3232cce3268ad13022d16f945da50ba3a9da2eed377cb4fe06cb7a62e024060c9ee44ee574ccd55f83786e0a7d4489c48be39e5c157b69442d8d858f486686fa",
+            "id": "component-KycMainComponent-16bf22f7beb25cc9f699bdc9f92f79ae0fe21245f2119fbc9e1ea190010a72eb216ec40287befe0b6afa179e68afe3dd50da6a752d162210d612b5f36b0e56dd",
             "file": "src/app/sign-up/kyc-main/kyc-main.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -8633,6 +8667,16 @@
                     "optional": false,
                     "description": "",
                     "line": 23
+                },
+                {
+                    "name": "appLoginUrl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
                 },
                 {
                     "name": "codeStatus",
@@ -8705,7 +8749,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8715,7 +8759,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 58,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8738,7 +8782,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -8768,7 +8812,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8778,7 +8822,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8788,7 +8832,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8798,7 +8842,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8808,7 +8852,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 39,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8818,7 +8862,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 55,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -8845,7 +8889,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { EBusinessType, EStepNumber, IStepsObj, TBusinessTypes } from '../kyc';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { TranslateModule, TranslateService } from '@ngx-translate/core';\r\n\r\n@Component({\r\n  selector: 'app-kyc-main',\r\n  imports: [CommonModule, MatIconModule, TranslateModule],\r\n  providers: [TranslateService],\r\n  templateUrl: './kyc-main.component.html',\r\n  styleUrl: './kyc-main.component.scss'\r\n})\r\nexport class KycMainComponent {\r\n  stepsObj: IStepsObj = {\r\n    currentStep: EStepNumber.typeOfBusiness,\r\n    maxSteps: EStepNumber.personalAddress,\r\n    minSteps: EStepNumber.typeOfBusiness\r\n  };\r\n\r\n  Esteps: typeof EStepNumber = EStepNumber;\r\n\r\n  accountType!: TBusinessTypes;\r\n  EBusinessType = EBusinessType;\r\n  error: any;\r\n  codeStatus: any;\r\n  faqUrl: any;\r\n\r\n\r\n  constructor(private translate: TranslateService) { }\r\n\r\n  ngOnInit() { }\r\n\r\n  handlePreviousBtn() {\r\n\r\n  }\r\n\r\n  showPrevBtn() {\r\n\r\n  }\r\n\r\n  emailValue() {\r\n\r\n  }\r\n\r\n  handleEditValue($event: any, type: any) {\r\n\r\n  }\r\n\r\n  phoneValue() {\r\n\r\n  }\r\n\r\n  tryAgain() {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n  goToLogin() {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n  showLoginBtn(): any {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { EBusinessType, EStepNumber, IStepsObj, TBusinessTypes } from '../kyc';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { TranslateModule, TranslateService } from '@ngx-translate/core';\r\n\r\n@Component({\r\n  selector: 'app-kyc-main',\r\n  imports: [CommonModule, MatIconModule, TranslateModule],\r\n  providers: [TranslateService],\r\n  templateUrl: './kyc-main.component.html',\r\n  styleUrl: './kyc-main.component.scss'\r\n})\r\nexport class KycMainComponent {\r\n  stepsObj: IStepsObj = {\r\n    currentStep: EStepNumber.typeOfBusiness,\r\n    maxSteps: EStepNumber.personalAddress,\r\n    minSteps: EStepNumber.typeOfBusiness\r\n  };\r\n\r\n  Esteps: typeof EStepNumber = EStepNumber;\r\n\r\n  accountType!: TBusinessTypes;\r\n  EBusinessType = EBusinessType;\r\n  error: any;\r\n  codeStatus: any;\r\n  faqUrl: any;\r\nappLoginUrl: any;\r\n\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit() { }\r\n\r\n  handlePreviousBtn() {\r\n\r\n  }\r\n\r\n  showPrevBtn() {\r\n\r\n  }\r\n\r\n  emailValue() {\r\n\r\n  }\r\n\r\n  handleEditValue($event: any, type: any) {\r\n\r\n  }\r\n\r\n  phoneValue() {\r\n\r\n  }\r\n\r\n  tryAgain() {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n  goToLogin() {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n  showLoginBtn(): any {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n\r\n}\r\n",
             "styleUrl": "./kyc-main.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -8855,29 +8899,11 @@
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "translate",
-                        "type": "TranslateService",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 27,
-                "jsdoctags": [
-                    {
-                        "name": "translate",
-                        "type": "TranslateService",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
+                "args": [],
+                "line": 28
             },
             "extends": [],
-            "templateData": "<main class=\"app-kyc-container\">\r\n\r\n    <section class=\"row kyc-wrapper\">\r\n        <div class=\"kyc-left\">\r\n\r\n            <div class=\"kyc-top\">\r\n                <img class=\"logo-img\" src=\"images/abcm-logo.svg\" alt=\"okooora logo\" />\r\n            </div>\r\n\r\n            <section class=\"kyc-form-section loader-wrapper\" [ngClass]=\"{\r\n                'typeOfBusiness': stepsObj.currentStep === Esteps.typeOfBusiness,\r\n                'email': stepsObj.currentStep === Esteps.email,\r\n                'emailConfirmation': stepsObj.currentStep === Esteps.emailConfirmation,\r\n                'phone': stepsObj.currentStep === Esteps.phone,\r\n                'phoneConfirmation': stepsObj.currentStep === Esteps.phoneConfirmation,\r\n                'createPassword': stepsObj.currentStep === Esteps.createPassword,\r\n                'personalDetails': stepsObj.currentStep === Esteps.personalDetails,\r\n                'personalAddress': stepsObj.currentStep === Esteps.personalAddress\r\n            }\">\r\n                <button (click)=\"handlePreviousBtn()\" id=\"back-to-website\">\r\n                    <img class=\"logo-img\" src=\"images/back-kyc.svg\" alt=\"back\" />\r\n                </button>\r\n                <!-- <button class=\"\" *ngIf=\"showCloseBtn\" (click)=\"goToLogin()\">\r\n                <img class=\"logo-img\" src=\"../../assets/images/back-kyc.svg\" alt=\"okooora logo\" />\r\n\r\n            </button> -->\r\n                <ng-container [ngSwitch]=\"stepsObj.currentStep\">\r\n                    <article class=\"kyc-headlines px-5 step--{{stepsObj.currentStep}}\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <h1 class=\"title\"> {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }} </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + (accountType === EBusinessType.companyAccount ?\r\n                                '.titleCompany' : '.titlePrivate') | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 email\">{{emailValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-email action-anchor\" (click)=\"handleEditValue($event, 'EMAIL')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_email' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 phone\">{{phoneValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-phone action-anchor\" (click)=\"handleEditValue($event, 'PHONE')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_phone' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchDefault>\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                    </article>\r\n                </ng-container>\r\n\r\n                <div>\r\n                    <div class=\"error-box alert alert-danger\" role=\"alert\" [ngClass]=\"{\r\n                        'd-none': !error.hasError && !error.msg,\r\n                        'd-block': error.hasError || error.msg\r\n                    }\" [ngStyle]=\"{'visibility': (!error.hasError && !error.msg) ? 'hidden' : 'visible'}\">\r\n                        <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-exclamation-triangle\"></mat-icon>\r\n                        {{error.msg}}\r\n                    </div>\r\n                </div>\r\n\r\n                <!-- <form #kycFormRef class=\"kyc-form\" [ngClass]=\"{\r\n                    'light-form': stepsObj.currentStep !== Esteps.typeOfBusiness\r\n                }\" [formGroup]=\"kycForm\" (ngSubmit)=\"handleSubmit()\" (keydown.enter)=\"$event.preventDefault()\"\r\n                autocomplete=\"off\">\r\n                <div [ngSwitch]=\"stepsObj.currentStep\">\r\n                    <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                        <kyc-one [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\" (activatedBusinessType)=\"handleDetailToShow($event)\">\r\n                        </kyc-one>\r\n                    </ng-container>\r\n\r\n                    <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                        <kyc-two [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\">\r\n                        </kyc-two>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                        <kyc-email-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\">\r\n                        </kyc-email-confirm>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                        <kyc-phone [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\" [nextStepIsValid]=\"nextStepIsValid\">\r\n                        </kyc-phone>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                        <kyc-phone-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\">\r\n                        </kyc-phone-confirm>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                        <kyc-create-password [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\"  (loginEvent)=\"goToLogin()\">\r\n                        </kyc-create-password>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                        <kyc-personal-details [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\">\r\n                        </kyc-personal-details>\r\n                    </ng-container>\r\n                    <ng-container *ngSwitchCase=\"Esteps.personalAddress\">\r\n                        <kyc-address [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                            (nextStepEvent)=\"stepHandler($event)\"  (loginEvent)=\"goToLogin()\">\r\n                        </kyc-address>\r\n                    </ng-container>\r\n\r\n\r\n                </div>\r\n\r\n            </form> -->\r\n\r\n                <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n                    <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' |\r\n                        translate}}</a>\r\n                    &nbsp;\r\n                    /\r\n                    &nbsp;\r\n                    <p class=\"login-p--1 m-0\">\r\n                        {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                        &nbsp;\r\n                        <a class=\"login-link\" (click)=\"goToLogin()\" id=\"login-btn\">{{ 'KYC.SignIn' | translate}}</a>\r\n                    </p>\r\n                </article>\r\n            </section>\r\n\r\n        </div>\r\n\r\n        <!-- <div class=\"kyc-right\">\r\n        <app-step-details [detailsToShow]=\"detailsToShow\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n        [showLoginBtn]=\"showLoginBtn()\">\r\n    </app-step-details>\r\n    <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n        <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' | translate}}\r\n            /</a>\r\n            &nbsp;\r\n            <p class=\"login-p--1\">\r\n                {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                &nbsp;\r\n                <a class=\"login-link\" [href]=\"appLoginUrl\" id=\"login-btn-2\">{{ 'KYC.SignIn' | translate}}</a>\r\n            </p>\r\n        </article>\r\n        <img class=\"icon-bottom-right\" src=\"assets/images/kyc/icons/blue-up-down-arrow.svg\"\r\n        alt=\"blue up and down arrow icon\" />\r\n    </div> -->\r\n\r\n\r\n    </section>\r\n\r\n    <div *ngIf=\"codeStatus !== 'DEFAULT' \" class=\"confirmation-incorrect\">\r\n        <button class=\"confirmation-incorrect__close action-btn\" (click)=\"tryAgain()\" mat-button>\r\n            <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-times\"></mat-icon>\r\n        </button>\r\n\r\n        <div class=\"container\">\r\n            <div class=\"confirmation-incorrect__wrapper\">\r\n                <mat-icon class=\"incorrect-icon text-danger mb-5\" fontSet=\"fontawesome\" fontIcon=\"fa-times-circle\">\r\n                </mat-icon>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'INCORRECT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.confirmation_incorrect' | translate}}</h3>\r\n                </ng-container>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'PASSED_LIMIT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.PassedLimitTitle' | translate}}</h3>\r\n                    <p class=\"confirmation-incorrect-p--1\">{{ 'KYC.PassedLimitParagraph' | translate}}</p>\r\n                </ng-container>\r\n\r\n                <button type=\"button\" mat-raised-button color=\"primary\" class=\"continue-btn mt-5\" (click)=\"tryAgain()\">\r\n                    {{ 'KYC.try_again' | translate}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</main>"
+            "templateData": "<main class=\"app-kyc-container\">\r\n\r\n    <section class=\"row kyc-wrapper\">\r\n        <div class=\"kyc-left\">\r\n\r\n            <div class=\"kyc-top\">\r\n                <img class=\"logo-img\" src=\"images/abcm-logo.svg\" alt=\"okooora logo\" />\r\n            </div>\r\n\r\n            <section class=\"kyc-form-section loader-wrapper\" [ngClass]=\"{\r\n                'typeOfBusiness': stepsObj.currentStep === Esteps.typeOfBusiness,\r\n                'email': stepsObj.currentStep === Esteps.email,\r\n                'emailConfirmation': stepsObj.currentStep === Esteps.emailConfirmation,\r\n                'phone': stepsObj.currentStep === Esteps.phone,\r\n                'phoneConfirmation': stepsObj.currentStep === Esteps.phoneConfirmation,\r\n                'createPassword': stepsObj.currentStep === Esteps.createPassword,\r\n                'personalDetails': stepsObj.currentStep === Esteps.personalDetails,\r\n                'personalAddress': stepsObj.currentStep === Esteps.personalAddress\r\n            }\">\r\n                <button (click)=\"handlePreviousBtn()\" id=\"back-to-website\">\r\n                    <img class=\"logo-img\" src=\"images/back-kyc.svg\" alt=\"back\" />\r\n                </button>\r\n                <button class=\"\" (click)=\"goToLogin()\">\r\n                    <img class=\"logo-img\" src=\"../../assets/images/back-kyc.svg\" alt=\"okooora logo\" />\r\n\r\n                </button>\r\n                <ng-container [ngSwitch]=\"stepsObj.currentStep\">\r\n                    <article class=\"kyc-headlines px-5 step--{{stepsObj.currentStep}}\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <h1 class=\"title\"> {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }} </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + (accountType === EBusinessType.companyAccount ?\r\n                                '.titleCompany' : '.titlePrivate') | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 email\">{{emailValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-email action-anchor\" (click)=\"handleEditValue($event, 'EMAIL')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_email' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 phone\">{{phoneValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-phone action-anchor\" (click)=\"handleEditValue($event, 'PHONE')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_phone' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchDefault>\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                    </article>\r\n                </ng-container>\r\n\r\n                <div>\r\n                    <div class=\"error-box alert alert-danger\" role=\"alert\" [ngClass]=\"{\r\n                        'd-none': !error.hasError && !error.msg,\r\n                        'd-block': error.hasError || error.msg\r\n                    }\" [ngStyle]=\"{'visibility': (!error.hasError && !error.msg) ? 'hidden' : 'visible'}\">\r\n                        <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-exclamation-triangle\"></mat-icon>\r\n                        {{error.msg}}\r\n                    </div>\r\n                </div>\r\n\r\n                <!-- <form #kycFormRef class=\"kyc-form\" [ngClass]=\"{\r\n                    'light-form': stepsObj.currentStep !== Esteps.typeOfBusiness\r\n                }\" [formGroup]=\"kycForm\" (ngSubmit)=\"handleSubmit()\" (keydown.enter)=\"$event.preventDefault()\"\r\n                    autocomplete=\"off\">\r\n                    <div [ngSwitch]=\"stepsObj.currentStep\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <kyc-one [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\"\r\n                                (activatedBusinessType)=\"handleDetailToShow($event)\">\r\n                            </kyc-one>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <kyc-two [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-two>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <kyc-email-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-email-confirm>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <kyc-phone [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" [nextStepIsValid]=\"nextStepIsValid\">\r\n                            </kyc-phone>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <kyc-phone-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-phone-confirm>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <kyc-create-password [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" (loginEvent)=\"goToLogin()\">\r\n                            </kyc-create-password>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <kyc-personal-details [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-personal-details>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalAddress\">\r\n                            <kyc-address [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" (loginEvent)=\"goToLogin()\">\r\n                            </kyc-address>\r\n                        </ng-container>\r\n                    </div>\r\n\r\n                </form> -->\r\n\r\n                <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n                    <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' |\r\n                        translate}}</a>\r\n                    &nbsp;\r\n                    /\r\n                    &nbsp;\r\n                    <p class=\"login-p--1 m-0\">\r\n                        {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                        &nbsp;\r\n                        <a class=\"login-link\" (click)=\"goToLogin()\" id=\"login-btn\">{{ 'KYC.SignIn' | translate}}</a>\r\n                    </p>\r\n                </article>\r\n            </section>\r\n\r\n        </div>\r\n\r\n        <div class=\"kyc-right\">\r\n            <!-- <app-step-details [detailsToShow]=\"detailsToShow\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                [showLoginBtn]=\"showLoginBtn()\">\r\n            </app-step-details> -->\r\n            <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n                <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' | translate}}\r\n                    /</a>\r\n                &nbsp;\r\n                <p class=\"login-p--1\">\r\n                    {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                    &nbsp;\r\n                    <a class=\"login-link\" [href]=\"appLoginUrl\" id=\"login-btn-2\">{{ 'KYC.SignIn' | translate}}</a>\r\n                </p>\r\n            </article>\r\n            <img class=\"icon-bottom-right\" src=\"assets/images/kyc/icons/blue-up-down-arrow.svg\"\r\n                alt=\"blue up and down arrow icon\" />\r\n        </div>\r\n\r\n\r\n    </section>\r\n\r\n    <div *ngIf=\"codeStatus !== 'DEFAULT' \" class=\"confirmation-incorrect\">\r\n        <button class=\"confirmation-incorrect__close action-btn\" (click)=\"tryAgain()\" mat-button>\r\n            <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-times\"></mat-icon>\r\n        </button>\r\n\r\n        <div class=\"container\">\r\n            <div class=\"confirmation-incorrect__wrapper\">\r\n                <mat-icon class=\"incorrect-icon text-danger mb-5\" fontSet=\"fontawesome\" fontIcon=\"fa-times-circle\">\r\n                </mat-icon>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'INCORRECT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.confirmation_incorrect' | translate}}</h3>\r\n                </ng-container>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'PASSED_LIMIT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.PassedLimitTitle' | translate}}</h3>\r\n                    <p class=\"confirmation-incorrect-p--1\">{{ 'KYC.PassedLimitParagraph' | translate}}</p>\r\n                </ng-container>\r\n\r\n                <button type=\"button\" mat-raised-button color=\"primary\" class=\"continue-btn mt-5\" (click)=\"tryAgain()\">\r\n                    {{ 'KYC.try_again' | translate}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</main>"
         },
         {
             "name": "MomentumIndicatorChartComponent",
@@ -10870,13 +10896,13 @@
     "modules": [
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-5d523e9a57ca0e54cf28faf31db77e8d1628cdafa93f50bb5a70b072d35627685120793a3bf846c642940e57d83ecebdb59f73c6e9465e5acc17dc2aa8f8e521",
+            "id": "module-AppRoutingModule-7ec025aa3ad7176ae4abd6c7f5a6fba235c336bb0214ac3f414faccbb605d779ea421eaab8f65b008518cd1e0480595bbb2d2ad70e52d1d6bd695e77e96f255a",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.routes.ts",
             "methods": [],
-            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\nimport { CashflowExposureSteppersComponent } from './risk-dashboard/components/cashflow-exposure/cashflow-exposure-steppers/cashflow-exposure-steppers.component';\r\nimport { AdvancedPolicyComponent } from './risk-dashboard/components/advanced-policy/advanced-policy.component';\r\nimport { KycMainComponent } from './sign-up/kyc-main/kyc-main.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'sign-up', pathMatch: 'full' as 'full' },\r\n  { path: 'dashboard', component: DashboardComponent },\r\n  { path: 'sign-up', component: KycMainComponent },\r\n  { path: 'hedging', component: HedgingProposalComponent },\r\n  { path: 'cashflow', component: CashflowExposureSteppersComponent },\r\n  { path: 'advanced-policy', component: AdvancedPolicyComponent },\r\n  { path: '**', redirectTo: 'sign-up' },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }",
+            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\nimport { CashflowExposureSteppersComponent } from './risk-dashboard/components/cashflow-exposure/cashflow-exposure-steppers/cashflow-exposure-steppers.component';\r\nimport { AdvancedPolicyComponent } from './risk-dashboard/components/advanced-policy/advanced-policy.component';\r\nimport { KycMainComponent } from './sign-up/kyc-main/kyc-main.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'dashboard', pathMatch: 'full' as 'full' },\r\n  { path: 'dashboard', component: DashboardComponent },\r\n  { path: 'sign-up', component: KycMainComponent },\r\n  { path: 'hedging', component: HedgingProposalComponent },\r\n  { path: 'cashflow', component: CashflowExposureSteppersComponent },\r\n  { path: 'advanced-policy', component: AdvancedPolicyComponent },\r\n  { path: '**', redirectTo: 'dashboard' },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }",
             "children": [
                 {
                     "type": "providers",
@@ -12367,7 +12393,7 @@
                 "linktype": "component",
                 "name": "HeaderComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/13",
+                "coverageCount": "0/14",
                 "status": "low"
             },
             {
@@ -12531,7 +12557,7 @@
                 "linktype": "component",
                 "name": "KycMainComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/18",
+                "coverageCount": "0/19",
                 "status": "low"
             },
             {

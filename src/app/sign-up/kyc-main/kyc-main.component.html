@@ -20,10 +20,7 @@
                 <button (click)="handlePreviousBtn()" id="back-to-website">
                     <img class="logo-img" src="images/back-kyc.svg" alt="back" />
                 </button>
-                <!-- <button class="" *ngIf="showCloseBtn" (click)="goToLogin()">
-                <img class="logo-img" src="../../assets/images/back-kyc.svg" alt="okooora logo" />
-
-            </button> -->
+            
                 <ng-container [ngSwitch]="stepsObj.currentStep">
                     <article class="kyc-headlines px-5 step--{{stepsObj.currentStep}}">
                         <ng-container *ngSwitchCase="Esteps.typeOfBusiness">
@@ -132,54 +129,53 @@
                 <!-- <form #kycFormRef class="kyc-form" [ngClass]="{
                     'light-form': stepsObj.currentStep !== Esteps.typeOfBusiness
                 }" [formGroup]="kycForm" (ngSubmit)="handleSubmit()" (keydown.enter)="$event.preventDefault()"
-                autocomplete="off">
-                <div [ngSwitch]="stepsObj.currentStep">
-                    <ng-container *ngSwitchCase="Esteps.typeOfBusiness">
-                        <kyc-one [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                            (nextStepEvent)="stepHandler($event)" (activatedBusinessType)="handleDetailToShow($event)">
-                        </kyc-one>
-                    </ng-container>
+                    autocomplete="off">
+                    <div [ngSwitch]="stepsObj.currentStep">
+                        <ng-container *ngSwitchCase="Esteps.typeOfBusiness">
+                            <kyc-one [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)"
+                                (activatedBusinessType)="handleDetailToShow($event)">
+                            </kyc-one>
+                        </ng-container>
 
-                    <ng-container *ngSwitchCase="Esteps.email">
-                        <kyc-two [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                            (nextStepEvent)="stepHandler($event)">
-                        </kyc-two>
-                    </ng-container>
-                    <ng-container *ngSwitchCase="Esteps.emailConfirmation">
-                        <kyc-email-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                            (nextStepEvent)="stepHandler($event)">
-                        </kyc-email-confirm>
-                    </ng-container>
-                    <ng-container *ngSwitchCase="Esteps.phone">
-                        <kyc-phone [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                            (nextStepEvent)="stepHandler($event)" [nextStepIsValid]="nextStepIsValid">
-                        </kyc-phone>
-                    </ng-container>
-                    <ng-container *ngSwitchCase="Esteps.phoneConfirmation">
-                        <kyc-phone-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                            (nextStepEvent)="stepHandler($event)">
-                        </kyc-phone-confirm>
-                    </ng-container>
-                    <ng-container *ngSwitchCase="Esteps.createPassword">
-                        <kyc-create-password [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                            (nextStepEvent)="stepHandler($event)"  (loginEvent)="goToLogin()">
-                        </kyc-create-password>
-                    </ng-container>
-                    <ng-container *ngSwitchCase="Esteps.personalDetails">
-                        <kyc-personal-details [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                            (nextStepEvent)="stepHandler($event)">
-                        </kyc-personal-details>
-                    </ng-container>
-                    <ng-container *ngSwitchCase="Esteps.personalAddress">
-                        <kyc-address [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                            (nextStepEvent)="stepHandler($event)"  (loginEvent)="goToLogin()">
-                        </kyc-address>
-                    </ng-container>
+                        <ng-container *ngSwitchCase="Esteps.email">
+                            <kyc-two [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)">
+                            </kyc-two>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="Esteps.emailConfirmation">
+                            <kyc-email-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)">
+                            </kyc-email-confirm>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="Esteps.phone">
+                            <kyc-phone [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)" [nextStepIsValid]="nextStepIsValid">
+                            </kyc-phone>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="Esteps.phoneConfirmation">
+                            <kyc-phone-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)">
+                            </kyc-phone-confirm>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="Esteps.createPassword">
+                            <kyc-create-password [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)" (loginEvent)="goToLogin()">
+                            </kyc-create-password>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="Esteps.personalDetails">
+                            <kyc-personal-details [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)">
+                            </kyc-personal-details>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="Esteps.personalAddress">
+                            <kyc-address [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)" (loginEvent)="goToLogin()">
+                            </kyc-address>
+                        </ng-container>
+                    </div>
 
-
-                </div>
-
-            </form> -->
+                </form> -->
 
                 <article *ngIf="showLoginBtn()" class="login-wrapper">
                     <a class="faq-p--1" [href]="faqUrl" target="_blank" rel="noopener noreferrer">{{ 'KYC.FAQ' |
@@ -198,22 +194,22 @@
         </div>
 
         <!-- <div class="kyc-right">
-        <app-step-details [detailsToShow]="detailsToShow" [kycForm]="kycForm" [stepsObj]="stepsObj"
-        [showLoginBtn]="showLoginBtn()">
-    </app-step-details>
-    <article *ngIf="showLoginBtn()" class="login-wrapper">
-        <a class="faq-p--1" [href]="faqUrl" target="_blank" rel="noopener noreferrer">{{ 'KYC.FAQ' | translate}}
-            /</a>
-            &nbsp;
-            <p class="login-p--1">
-                {{ 'KYC.alreadyHaveAccount' | translate}}
+            <app-step-details [detailsToShow]="detailsToShow" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                [showLoginBtn]="showLoginBtn()">
+            </app-step-details>
+            <article *ngIf="showLoginBtn()" class="login-wrapper">
+                <a class="faq-p--1" [href]="faqUrl" target="_blank" rel="noopener noreferrer">{{ 'KYC.FAQ' | translate}}
+                    /</a>
                 &nbsp;
-                <a class="login-link" [href]="appLoginUrl" id="login-btn-2">{{ 'KYC.SignIn' | translate}}</a>
-            </p>
-        </article>
-        <img class="icon-bottom-right" src="assets/images/kyc/icons/blue-up-down-arrow.svg"
-        alt="blue up and down arrow icon" />
-    </div> -->
+                <p class="login-p--1">
+                    {{ 'KYC.alreadyHaveAccount' | translate}}
+                    &nbsp;
+                    <a class="login-link" [href]="appLoginUrl" id="login-btn-2">{{ 'KYC.SignIn' | translate}}</a>
+                </p>
+            </article>
+            <img class="icon-bottom-right" src="images/kyc/icons/blue-up-down-arrow.svg"
+                alt="blue up and down arrow icon" />
+        </div> -->
 
 
     </section>

@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
-import { EBusinessType, EStepNumber, IStepsObj, TBusinessTypes } from '../kyc';
+// kyc-main.component.ts
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { IStepsObj, EStepNumber, TBusinessTypes, EBusinessType } from '../kyc';
 
 @Component({
   selector: 'app-kyc-main',
-  imports: [CommonModule, MatIconModule, TranslateModule],
-  providers: [TranslateService],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatIconModule,
+    TranslateModule,
+  ],
   templateUrl: './kyc-main.component.html',
-  styleUrl: './kyc-main.component.scss'
+  styleUrls: ['./kyc-main.component.scss']
 })
-export class KycMainComponent {
+export class KycMainComponent implements OnInit {
   stepsObj: IStepsObj = {
     currentStep: EStepNumber.typeOfBusiness,
     maxSteps: EStepNumber.personalAddress,
@@ -19,46 +24,62 @@ export class KycMainComponent {
   };
 
   Esteps: typeof EStepNumber = EStepNumber;
-
+  error: any = {
+    hasError: false,
+    msg: null
+  };
   accountType!: TBusinessTypes;
   EBusinessType = EBusinessType;
-  error: any;
   codeStatus: any;
   faqUrl: any;
+  appLoginUrl: any;
 
+  constructor(private translateService: TranslateService) {
+    // You can set default language here if needed
+    // this.translateService.setDefaultLang('en');
+  }
 
-  constructor(private translate: TranslateService) { }
-
-  ngOnInit() { }
+  ngOnInit(): void {
+    this.stepsObj.currentStep = 1;
+  }
 
   handlePreviousBtn() {
-
+    if (this.stepsObj.currentStep > this.stepsObj.minSteps) {
+      this.stepsObj.currentStep--;
+    }
   }
 
   showPrevBtn() {
-
+    return this.stepsObj.currentStep > this.stepsObj.minSteps;
   }
 
   emailValue() {
-
+    // Implement as needed
+    return '';
   }
 
   handleEditValue($event: any, type: any) {
-
+    // Implement as needed
+    console.log('Edit value:', $event, 'for type:', type);
   }
 
   phoneValue() {
-
+    // Implement as needed
+    return '';
   }
 
   tryAgain() {
-    throw new Error('Method not implemented.');
+    // Implement retry logic
+    this.error = { hasError: false, msg: null };
   }
+  
   goToLogin() {
-    throw new Error('Method not implemented.');
+    // Implement login navigation
+    window.location.href = this.appLoginUrl || '/login';
   }
-  showLoginBtn(): any {
-    throw new Error('Method not implemented.');
+  
+  showLoginBtn(): boolean {
+    // Return boolean instead of any
+    return !!this.codeStatus && this.codeStatus === 'ACCOUNT_EXISTS';
   }
-
 }
