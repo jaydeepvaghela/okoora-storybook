@@ -7,6 +7,7 @@ import { QuickHedgeDrawerComponent } from '../hedging-proposal/components/quick-
 import { HedgeAllDrawerComponent } from '../hedging-proposal/components/hedge-all-drawer/hedge-all-drawer.component';
 import { HedgingDataService } from '../hedging-proposal/hedging-data.service';
 import { Subject, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,7 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private hedgeService: HedgingDataService) {}
+  constructor(private hedgeService: HedgingDataService,private router:Router) {}
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -82,5 +83,9 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+  logout(){
+    localStorage.setItem('isLoggedInUser', 'false');
+    this.router.navigate(['/sign-up']);
   }
 }
