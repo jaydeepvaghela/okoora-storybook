@@ -499,7 +499,7 @@ export class KycMainComponent implements OnInit {
     }
 
     showLoginBtn(): boolean {
-        return this.stepsObj.currentStep < EStepNumber.phone
+        return this.stepsObj.currentStep < EStepNumber.createPassword
     }
 
     showCloseBtn(): boolean {

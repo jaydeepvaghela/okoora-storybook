@@ -46,7 +46,7 @@
                                 </button>
                                 {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
                             </h1>
-                            <h3 class="kyc-h--3 email">{{emailValue()}}</h3>
+                            <h3 class="kyc-h--3 email mb-2">{{emailValue()}}</h3>
                             <p class="kyc-p--1 desc-m">
                                 {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}
                             </p>
@@ -90,7 +90,7 @@
                             <h1 class="title">
                                 {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
                             </h1>
-                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
+                            <p class="kyc-p--1 m-b-step4">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
                             <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>
                         </ng-container>
 
@@ -178,7 +178,7 @@
 
                 </form>
 
-                <article class="login-wrapper">
+                <article class="login-wrapper" *ngIf="showLoginBtn()">
                     <a class="faq-p--1" [href]="faqUrl" target="_blank" rel="noopener noreferrer">{{ 'KYC.FAQ' |
                         translate}}</a>
                     &nbsp;
