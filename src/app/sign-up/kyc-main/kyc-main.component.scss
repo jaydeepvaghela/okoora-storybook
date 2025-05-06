@@ -6,6 +6,9 @@
         padding: unset !important;
         background: linear-gradient(0deg, #FFF 0%, #FFF 100%), #F5F7FA;
     }
+    .mat-mdc-form-field-subscript-wrapper{
+        display: none;
+    }
 }
 .app-kyc-container {
     min-height: 100vh;
