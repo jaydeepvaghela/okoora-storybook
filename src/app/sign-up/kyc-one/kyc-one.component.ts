@@ -78,7 +78,6 @@ export class KycOneComponent {
   }
 
   handleNextStep() {
-  debugger
    this.privateCountryNotIsrael = false;
     if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected != null){
       if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected){

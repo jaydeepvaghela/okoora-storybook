@@ -1,0 +1,166 @@
+<ng-container [formGroup]="parentFormGroup">
+    <ng-container [formGroup]="step_7">
+        <div class="form-control-wrapper w-small-ns">
+            <ng-container [formGroup]="parentFormGroup">
+                <div class="control-field"
+                    *ngIf="kycForm.get('step_1')?.get(businessTypes.privateAccount)?.get('isActive')?.value">
+                    <div id="sumsub-websdk-container">
+                        <img src="images/sumsub-verification.svg" alt="sumsub-verification"
+                            class="sumsub-verification">
+                    </div>
+                </div>
+            </ng-container>
+            <div [hidden]="(hideFieldsAutomatically$ | async)">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>{{'fields.first_name' | translate}} *</label>
+                            <div class="input-icon form-group">
+
+                                <input class="form-control" (paste)="restrictSpecialCharacters($event)" (keydown)="restrictSpecialCharacters($event)" formControlName="first_name" matInput
+                                    [ngClass]="{'disabled': autoApproved === true}" autocomplete="off"
+                                    [disabled]="true">
+                                <button
+                                    *ngIf="kycForm.get('step_1')?.get(businessTypes.privateAccount)?.get('isActive')?.value"
+                                    class="bg-none border-0 icon inside-input" matSuffix type="button"
+                                    (click)="editData()">
+                                    <img class="menu-icons" src="/images/edit-icon2.svg" alt="edit-icon">
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <app-error [HTMLType]="'MATERIAL'" [controlName]="kycForm.get('step_7')?.get('first_name')!">
+                            </app-error>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row" *ngIf="hebrewDocument">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>{{'fields.first_name_he' |translate}} *</label>
+                            <input class="form-control" formControlName="first_name_he"  matInput autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <app-error [HTMLType]="'MATERIAL'" [controlName]="kycForm.get('step_7')?.get('last_name')!">
+                            </app-error>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>{{'fields.last_name' | translate}} *</label>
+                            <div class="input-icon form-group">
+
+                                <input class="form-control" (paste)="restrictSpecialCharacters($event)" (keydown)="restrictSpecialCharacters($event)" formControlName="last_name" matInput autocomplete="off"
+                                    [ngClass]="{'disabled': autoApproved === true}" [disabled]="true">
+                                <button
+                                    *ngIf="kycForm.get('step_1')?.get(businessTypes.privateAccount)?.get('isActive')?.value"
+                                    class="bg-none border-0 icon inside-input" matSuffix type="button"
+                                    (click)="editData()">
+                                    <img class="menu-icons" src="/images/edit-icon2.svg" alt="edit-icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row" *ngIf="hebrewDocument">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>{{'fields.last_name_he' | translate}} *</label>
+                            <input class="form-control" formControlName="last_name_he" matInput autocomplete="off">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row" *ngIf="kycForm.get('step_1')?.get(businessTypes.privateAccount)?.get('isActive')?.value">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>{{'fields.id_number' | translate}} *</label>
+                            <div class="input-icon form-group">
+                                <input class="form-control" (input)="checkIdDuplication($event)" (keydown)="restrictSpecialCharacters($event)" autocomplete="off"
+                                    formControlName="id_number" matInput
+                                    placeholder="{{ 'KYC_Step_7.id_length' | translate}}" type="text"
+                                    [ngClass]="{'disabled': autoApproved === true}" [disabled]="true">
+                                <button class="bg-none border-0 icon inside-input" matSuffix type="button"
+                                    (click)="editData()">
+                                    <img class="menu-icons" src="/images/edit-icon2.svg" alt="edit-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <ng-container>
+                            <mat-slide-toggle class="identification-toggle-custom" [formControl]="idValidation"
+                                (ngModelChange)="changedIdValidation($event)">
+                                <span class="font-6 color-red-i font-weight-5">ID Validation: {{idValidation.value ?
+                                    'Required' : 'Not required'}}</span>
+                            </mat-slide-toggle>
+                        </ng-container>
+                    </div>
+                    <div class="col-12">
+                        <app-error [HTMLType]="'MATERIAL'" [controlName]="kycForm.get('step_7')?.get('id_number')!">
+                        </app-error>
+                        <mat-error
+                            *ngIf="(idValidation.value && !(validateID(kycForm.get('step_7')?.get('id_number')?.value) && kycForm.get('step_7')?.get('id_number')?.value.toString().length > 0))">
+                            {{ 'FORMS_ERRORS.not_valid_id_number' | translate}}
+                        </mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label class="birthDate-name" for="birthDate">{{'fields.birth_date' | translate}} *</label>
+                            <div
+                                [class.input-icon.form-group]="kycForm.get('step_1')?.get(businessTypes.privateAccount)?.get('isActive')?.value">
+                                <input class="form-control" (click)="picker.open()" [matDatepicker]="picker"
+                                    [max]="minAge" formControlName="birth_date"
+                                    [ngClass]="{'disabled': autoApproved === true}" (change)="editData()"
+                                    autocomplete="off" matInput placeholder="MM/DD/YYYY" readonly>
+                                <mat-datepicker-toggle [for]="picker" class="custom-input-icon" (change)="editData()"
+                                    *ngIf="kycForm.get('step_1')?.get(businessTypes.companyAccount)?.get('isActive')?.value">
+                                </mat-datepicker-toggle>
+                                <button
+                                    *ngIf="kycForm.get('step_1')?.get(businessTypes.privateAccount)?.get('isActive')?.value"
+                                    class="bg-none border-0 icon inside-input" matSuffix type="button"
+                                    (click)="editData()">
+                                    <img class="menu-icons" src="/images/edit-icon2.svg" alt="edit-icon">
+                                </button>
+                            </div>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- <mat-datepicker #picker></mat-datepicker> -->
+            </div>
+            
+            <button (click)="handleNextStep()"
+                [disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value &&(idValidation.value && !(validateID(kycForm.get('step_7')?.get('id_number')?.value) && kycForm.get('step_7')?.get('id_number')?.value.toString().length > 0))) || !(kycForm.get('step_7')?.get('first_name')?.value && kycForm.get('step_7')?.get('last_name')?.value && kycForm.get('step_7')?.get('birth_date')?.value)"
+                [class.disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value &&(idValidation.value && !(validateID(kycForm.get('step_7')?.get('id_number')?.value) && kycForm.get('step_7')?.get('id_number')?.value.toString().length > 0)) ) || !(kycForm.get('step_7')?.get('first_name')?.value && kycForm.get('step_7')?.get('last_name')?.value && kycForm.get('step_7')?.get('birth_date')?.value)"
+                class="continue-btn mt-5 mx-auto" color="primary" mat-raised-button type="button" id="pdetails-btn-continue">
+                {{ 'KYC.Continue' | translate}}
+            </button>
+        </div>
+
+    </ng-container>
+</ng-container>
+
+<ng-template #shuftiModal let-data>
+    <div class="modal-container">
+        <button [mat-dialog-close]="true" class="close" mat-button>
+            <span class="fas fa-times"></span>
+        </button>
+
+        <iframe #iframe [src]="data?.verificationUrl" allow="camera" class="border-0" height="100%"
+            id="shuftipro-iframe" width="100%"></iframe>
+
+        <!-- <app-loader [loading]="loading"></app-loader> -->
+    </div>
+</ng-template>

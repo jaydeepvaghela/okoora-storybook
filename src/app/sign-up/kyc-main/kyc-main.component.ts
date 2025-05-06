@@ -15,21 +15,23 @@ import { KycEmailConfirmComponent } from '../kyc-email-confirm/kyc-email-confirm
 import { KycOneComponent } from '../kyc-one/kyc-one.component';
 import { KycPhoneComponent } from '../kyc-phone/kyc-phone.component';
 import { KycTwoComponent } from '../kyc-two/kyc-two.component';
+import { KycPersonalDetailsComponent } from '../kyc-personal-details/kyc-personal-details.component';
 
 // import { select, Store } from "@ngrx/store";
 
 @Component({
     selector: 'app-kyc-main',
     imports: [
-      CommonModule,
-    MatIconModule,
-    TranslateModule,
-    ReactiveFormsModule,
-    KycOneComponent,
-    KycTwoComponent,
-    KycEmailConfirmComponent,
-    KycPhoneComponent,
-    KycCreatePasswordComponent,
+        CommonModule,
+        MatIconModule,
+        TranslateModule,
+        ReactiveFormsModule,
+        KycOneComponent,
+        KycTwoComponent,
+        KycEmailConfirmComponent,
+        KycPhoneComponent,
+        KycCreatePasswordComponent,
+        KycPersonalDetailsComponent
     ],
     templateUrl: './kyc-main.component.html',
     styleUrls: ['./kyc-main.component.scss'],
