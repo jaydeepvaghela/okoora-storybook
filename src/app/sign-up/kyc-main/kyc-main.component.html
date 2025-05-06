@@ -148,7 +148,7 @@
                                 (nextStepEvent)="stepHandler($event)">
                             </kyc-email-confirm>
                         </ng-container>
-                        <ng-container *ngSwitchCase="Esteps.phone">
+                        <!-- <ng-container *ngSwitchCase="Esteps.phone">
                             <kyc-phone [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)" [nextStepIsValid]="nextStepIsValid">
                             </kyc-phone>
@@ -159,21 +159,22 @@
                                 (nextStepEvent)="stepHandler($event)" (loginEvent)="goToLogin()">
                             </kyc-create-password>
                         </ng-container>
+                        <ng-container *ngSwitchCase="Esteps.personalDetails">
+                            <kyc-personal-details [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)">
+                            </kyc-personal-details>
+                        </ng-container> -->
+                        <!-- <ng-container *ngSwitchCase="Esteps.personalAddress">
+                            <kyc-address [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)" (loginEvent)="goToLogin()">
+                            </kyc-address>
+                        </ng-container> -->
                         <!-- <ng-container *ngSwitchCase="Esteps.phoneConfirmation">
                             <kyc-phone-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)">
                             </kyc-phone-confirm>
                         </ng-container>
-                        <ng-container *ngSwitchCase="Esteps.personalDetails">
-                            <kyc-personal-details [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                                (nextStepEvent)="stepHandler($event)">
-                            </kyc-personal-details>
-                        </ng-container>
-                        <ng-container *ngSwitchCase="Esteps.personalAddress">
-                            <kyc-address [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                                (nextStepEvent)="stepHandler($event)" (loginEvent)="goToLogin()">
-                            </kyc-address>
-                        </ng-container> -->
+                         -->
                     </div>
 
                 </form>

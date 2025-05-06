@@ -8,7 +8,7 @@ import { debounceTime, takeWhile } from 'rxjs/operators';
 // import { CommonService } from 'src/app/common/services/common.service';
 // import { DataService } from 'src/app/core/services/data.service';
 // import { environment } from 'src/environments/environment';
-// import snsWebSdk from '@sumsub/websdk';
+import snsWebSdk from '@sumsub/websdk';
 import {
     CountriesData,
     CountryData,
@@ -252,32 +252,38 @@ export class KycService {
     //         return this.http.get<any>(environment.baseApiUrl + '/Kyc/GetSumSubAccessToken?email=' + email);
     // }
 
-    // launchWebSdk(accessToken: any, phone: string, email: string) {
-    //     let snsWebSdkInstance = snsWebSdk.init(
-    //             accessToken,
-    //             () => this.getNewAccessToken(email)
-    //         )
-    //         .withConf({
-    //             lang: 'en',
-    //             email: email,
-    //             phone: phone,
-    //         })
-    //         .on('idCheck.onStepCompleted', (payload) => {
+    launchWebSdk(accessToken: any, phone: string, email: string) {
+        let snsWebSdkInstance = snsWebSdk.init(
+                accessToken,
+                () => this.getNewAccessToken(email)
+            )
+            .withConf({
+                lang: 'en',
+                email: email,
+                phone: phone,
+            })
+            .on('idCheck.onStepCompleted', (payload) => {
 
-    //         })
-    //         .on('idCheck.onError', (error) => {
-    //         })
-    //         .onMessage((type, payload:any) => {
-    //             if(type as string == "idCheck.onApplicantLoaded" ){
-    //                 this.getSumSubApplicant(payload.applicantId).subscribe()
-    //             }
+            })
+            .on('idCheck.onError', (error) => {
+            })
+            .onMessage((type, payload:any) => {
+                if(type as string == "idCheck.onApplicantLoaded" ){
+                    this.getSumSubApplicant(payload.applicantId)
+                }
 
-    //         })
+            })
 
-    //         .build();
+            .build();
 
-    //     snsWebSdkInstance.launch('#sumsub-websdk-container')
-    //   }
+        snsWebSdkInstance.launch('#sumsub-websdk-container')
+      }
+    getSumSubApplicant(applicantId: any) {
+        throw new Error('Method not implemented.');
+    }
+    getNewAccessToken(email: string): Promise<string> {
+        throw new Error('Method not implemented.');
+    }
 
     //   getNewAccessToken(email: string) {
     //     return this.getSumSubAccessToken(email)

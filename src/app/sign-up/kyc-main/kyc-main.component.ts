@@ -15,21 +15,23 @@ import { KycEmailConfirmComponent } from '../kyc-email-confirm/kyc-email-confirm
 import { KycOneComponent } from '../kyc-one/kyc-one.component';
 import { KycPhoneComponent } from '../kyc-phone/kyc-phone.component';
 import { KycTwoComponent } from '../kyc-two/kyc-two.component';
+import { KycPersonalDetailsComponent } from '../kyc-personal-details/kyc-personal-details.component';
 
 // import { select, Store } from "@ngrx/store";
 
 @Component({
     selector: 'app-kyc-main',
     imports: [
-      CommonModule,
-    MatIconModule,
-    TranslateModule,
-    ReactiveFormsModule,
-    KycOneComponent,
-    KycTwoComponent,
-    KycEmailConfirmComponent,
-    KycPhoneComponent,
-    KycCreatePasswordComponent,
+        CommonModule,
+        MatIconModule,
+        TranslateModule,
+        ReactiveFormsModule,
+        KycOneComponent,
+        KycTwoComponent,
+        KycEmailConfirmComponent,
+        KycPhoneComponent,
+        KycCreatePasswordComponent,
+        KycPersonalDetailsComponent
     ],
     templateUrl: './kyc-main.component.html',
     styleUrls: ['./kyc-main.component.scss'],
@@ -422,7 +424,7 @@ export class KycMainComponent implements OnInit {
         switch (this.stepsObj.currentStep) {
             case EStepNumber.typeOfBusiness:
                 // this.auth.logout();
-                localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';
+                // window.location.href = '/login';
                 // localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';
                 break;
             case EStepNumber.createPassword:
@@ -466,11 +468,11 @@ export class KycMainComponent implements OnInit {
     }
 
     goToLogin() {
-        localStorage.removeItem('kycForm')
-        localStorage.removeItem('step')
+        // localStorage.removeItem('kycForm')
+        // localStorage.removeItem('step')
         // this.router.navigate(['/login']);
         // window.location.href = this.appLoginUrl;
-        localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';
+        // localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';
     }
     passwordMatchValidator = (): ValidatorFn => {
         return (control: AbstractControl): ValidationErrors | null => {

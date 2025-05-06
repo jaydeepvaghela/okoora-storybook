@@ -278,5 +278,14 @@ export const countryData =
             "score": 1,
             "canRegister": 0,
             "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/cn.svg"
-        }
+        },
+        {
+            "countryName": "Israel",
+            "countryCode": "il",
+            "countryCode3Letters": "ISR",
+            "phoneCode": 972,
+            "score": 5,
+            "canRegister": 1,
+            "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/il.svg"
+        },
     ]

@@ -9,6 +9,7 @@ import { IStepsObj, EErrorMessages } from '../kyc';
 import { StepActionType } from '../types/global.type';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { KycService } from '../services/kyc.service';
 
 export const pwdConfirming = (data: { key: string, confirmationKey: string }): ValidatorFn => {
     const { key, confirmationKey } = data;
@@ -59,7 +60,7 @@ export class KycCreatePasswordComponent implements OnInit {
   step_6_passwords!: FormGroup | any;
 
     constructor(
-        // private KycS: KycService,
+        private KycS: KycService,
         private route: ActivatedRoute
     ) {
     }
@@ -126,7 +127,7 @@ export class KycCreatePasswordComponent implements OnInit {
       this.createUser$
             .pipe(
                 tap(() => {
-                    // this.KycS.loading$.next(true);
+                    this.KycS.loading$.next(true);
                     this.loading = true;
                 }),
                 throttleTime(500),
@@ -146,7 +147,7 @@ export class KycCreatePasswordComponent implements OnInit {
                     return [];  
                 }),
                 catchError((e: HttpErrorResponse) => {
-                    // this.KycS.loading$.next(false);
+                    this.KycS.loading$.next(false);
                     this.loading = false;
                     return EMPTY;
                 })
@@ -161,9 +162,9 @@ export class KycCreatePasswordComponent implements OnInit {
                       this.nextStepEvent.next('NEXT');
 
                 } else {
-                    // this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong })
+                    this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong })
                 }
-                // this.KycS.loading$.next(false);
+                this.KycS.loading$.next(false);
                 this.loading = false;
             });
     }
