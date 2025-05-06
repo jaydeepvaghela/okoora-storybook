@@ -6,10 +6,12 @@ import { CommonModule } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { KycService } from '../../services/kyc.service';
+import { ErrorComponent } from "../error/error.component";
 
 @Component({
   selector: 'app-select-country',
-  imports: [CommonModule, ReactiveFormsModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, ReactiveFormsModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, ErrorComponent, ErrorComponent],
   templateUrl: './select-country.component.html',
   styleUrl: './select-country.component.scss'
 })
@@ -25,36 +27,36 @@ export class SelectCountryComponent implements OnInit {
   @Input("specialClasses") specialClasses!: string;
   @Input("formFieldType") formFieldType: 'DEFAULT' | 'CUSTOM-FORM-FIELD' = 'DEFAULT';
 
-  constructor(
+  constructor( private kycS: KycService
   ) {
   }
 
   ngOnInit(): void {
-      // this.KycS.allCountries$
-      //     .pipe(
-      //         skipWhile(countries => !Array.isArray(countries)),
-      //         takeUntil(this.componentDestroyed)
-      //     )
-      //     .subscribe(countries => {
-      //         this.countryArr = countries;
-      //     });
+      this.kycS.allCountries$
+          .pipe(
+              skipWhile(countries => !Array.isArray(countries)),
+              takeUntil(this.componentDestroyed)
+          )
+          .subscribe(countries => {
+              this.countryArr = countries;
+        });
 
       this.countryArr = countryData
 
-      // this.KycS.handleResetCountries$
-      //     .pipe(
-      //         switchMap(() => this.KycS.allCountries$)
-      //     )
-      //     .subscribe(allCountries => {
-      //         this.countryArr = allCountries;
-      //         this.currentFormGroup.get(this.currentformControlName).setValue('');
-      //     });
-      // console.log(this.disabled);
+      this.kycS.handleResetCountries$
+          .pipe(
+              switchMap(() => this.kycS.allCountries$)
+          )
+          .subscribe(allCountries => {
+              this.countryArr = allCountries;
+              this.currentFormGroup.get(this.currentformControlName)!.setValue('');
+          });
+      console.log(this.disabled);
       this.setDisabled();
   };//#ngOnInit
 
   handleCountryNameSearch(e: Event) {
-      // this.countryArr = this.KycS.handleCountrySearch({event: e, action: 'NAME'})
+      this.countryArr = this.kycS.handleCountrySearch({event: e, action: 'NAME'})
   }
 
   trimLabel(label:any) {
@@ -85,7 +87,7 @@ export class SelectCountryComponent implements OnInit {
           parentFormGroup.get(controlName)!.setValue('');
           parentFormGroup.get(controlName)!.setErrors({ countryNotFound: true });
           parentFormGroup.get(controlName)!.updateValueAndValidity();
-          // this.countryArr = this.KycS.allCountries$.getValue();
+          this.countryArr = this.kycS.allCountries$.getValue();
       } else {
           parentFormGroup.get('countryCode')!.setValue(foundCountry.countryCode);
       }

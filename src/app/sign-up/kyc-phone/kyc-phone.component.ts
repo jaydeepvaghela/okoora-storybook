@@ -34,7 +34,7 @@ export class KycPhoneComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.countryArr = countryData;
+        this.countryArr = countryData.filter(country => country.phoneCode !== null) as CountriesData[];
         this.step_4 = <FormGroup>this.kycForm.get('step_4');
     }
 

@@ -6,7 +6,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
-import { IStepsObj, TVerificationCodeStatus, VerificationReturnType, IPerformVerification, EStepNumber, TSendMailResponse } from '../../kyc';
+import { IStepsObj, TVerificationCodeStatus, VerificationReturnType, IPerformVerification, EStepNumber, TSendMailResponse, EErrorMessages } from '../../kyc';
+import { KycService } from '../../services/kyc.service';
 
 @Component({
   selector: 'sms-verification',
@@ -57,7 +58,7 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
   smsReturnType = VerificationReturnType;
   performVerification$ = new Subject<IPerformVerification>();
 
-  constructor() { }
+  constructor(private kycS: KycService) { }
 
   ngOnInit() {
     if (!this.formControlNameToSetValue) {
@@ -71,22 +72,40 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
       this.loading = loading;
     });
 
-    // this.KycS.verificationCodeStatus.pipe(
-    //   takeUntil(this.componentDestroyed)
-    // ).subscribe(codeStatus => {
-    //   this.codeStatus = codeStatus;
-    //   if (codeStatus === 'DEFAULT' || codeStatus === 'INCORRECT') {
-    //     this.startTimer();
-    //   } else {
-    //     this.startTimer(codeStatus);
-    //   }
-    // });
+    this.kycS.verificationCodeStatus.pipe(
+      takeUntil(this.componentDestroyed)
+    ).subscribe(codeStatus => {
+      this.codeStatus = codeStatus;
+      if (codeStatus === 'DEFAULT' || codeStatus === 'INCORRECT') {
+        this.startTimer();
+      } else {
+        this.startTimer(codeStatus);
+      }
+    });
   }
+
+  onInputChange(): void {
+    if (this.refreshAPIError) {
+      this.refreshAPIError = false;
+    }
+  }
+  
 
   checkVerification() {
     if (!this.digit1 || !this.digit2 || !this.digit3 || !this.digit4) {
       return;
     }
+  
+    this.code = this.digit1 + this.digit2 + this.digit3 + this.digit4;
+  
+    // Custom check for code 1111
+    if (this.code === '1111') {
+      this.refreshAPIError = true;
+      this.codeIsValid = false;
+      this.kycS.loading$.next(false);
+      return;
+    }
+  
     if (!this.formControlNameToSetValue) {
       console.warn(`formControlNameToSetValue must be set! at step ${this.stepsObj.currentStep} \n given "${this.formControlNameToSetValue}"`);
       return;
@@ -103,25 +122,18 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
       console.error(`form control with the name ${this.formControlNameToCompareValue} does not exist in step_${this.stepsObj.currentStep}`);
       return;
     }
-
+  
     this.resendCode = false;
     this.codeIsValid = true;
     this.loading = true;
-
-    this.code = this.digit1 + this.digit2 + this.digit3 + this.digit4;
-
+  
     const control = this.kycForm.controls[`step_${this.stepsObj.currentStep}`].get(this.formControlNameToSetValue);
     if (control) {
       control.setValue(this.code);
     } else {
       console.error(`Control with name ${this.formControlNameToSetValue} is null or undefined.`);
     }
-
-    const formControl = this.kycForm.controls[`step_${this.stepsObj.currentStep}`].get(this.formControlNameToSetValue);
-    const formControlValue = formControl ? formControl.value : null;
-    const formControlCompare = this.kycForm.controls[`step_${this.stepsObj.currentStep}`].get(this.formControlNameToCompareValue);
-    const formControlCompareValue = formControlCompare ? formControlCompare.value : null;
-
+  
     this.handleActionByStep({ action: 'CHECK' });
   }
 
@@ -194,24 +206,25 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
             let response: TSendMailResponse = <TSendMailResponse>res;
             if (response?.Success === VerificationReturnType.Success) {
               this.startTimer();
-              // this.KycS.loading$.next(false);
+              this.kycS.loading$.next(false);
             } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {
               this.startTimer('PASSED_LIMIT');
-              // this.KycS.loading$.next(false);
+              this.kycS.loading$.next(false);
             } else {
-              // this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
+              this.kycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
             }
             break;
           case 'CHECK':
-            if (res) {
+            if (res) { 
+              console.log('res', res);
               this.codeStatus = 'VALID';
               this.codeValidEvent.next(true);
-              // this.KycS.loading$.next(false);
+              this.kycS.loading$.next(false);
               this.refreshAPIError = false;
             } else {
               this.codeStatus = 'INCORRECT';
               this.codeIsValid = false;
-              // this.KycS.loading$.next(false);
+              this.kycS.loading$.next(false);
             }
             break;
           default:
@@ -250,23 +263,23 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
           let response: TSendMailResponse = <TSendMailResponse>res;
           if (response?.Success === VerificationReturnType.Success) {
             this.startTimer();
-            // this.KycS.loading$.next(false);
+            this.kycS.loading$.next(false);
           } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {
             this.startTimer('PASSED_LIMIT');
-            // this.KycS.loading$.next(false);
+            this.kycS.loading$.next(false);
           } else {
-            // this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
+            this.kycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
           }
           break;
         case 'CHECK':
           if (res) {
             this.codeStatus = 'VALID';
             this.codeValidEvent.next(true);
-            // this.KycS.loading$.next(false);
+            this.kycS.loading$.next(false);
           } else {
             this.codeStatus = 'INCORRECT';
             this.codeIsValid = false;
-            // this.KycS.loading$.next(false);
+            this.kycS.loading$.next(false);
           }
           break;
         default:

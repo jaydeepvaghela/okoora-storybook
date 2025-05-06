@@ -30,7 +30,11 @@
     }
 
     .error-msg {
-      color: #dc3545;
-      font-weight: 900;
+        color: #B00;
+        font-family: $he_heebo;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px; /* 142.857% */
     }
 }

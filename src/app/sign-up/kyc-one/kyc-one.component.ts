@@ -10,10 +10,11 @@ import { CommonModule } from '@angular/common';
 import { MatError } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
 import { SelectCountryComponent } from '../fields/select-country/select-country.component';
+import { MatRadioGroup } from '@angular/material/radio';
 
 @Component({
   selector: 'app-kyc-one',
-  imports: [CommonModule,MatExpansionModule,FormsModule,ReactiveFormsModule,MatError,TranslateModule, SelectCountryComponent],
+  imports: [CommonModule,MatExpansionModule,FormsModule,ReactiveFormsModule,MatError,TranslateModule, SelectCountryComponent, MatRadioGroup],
   templateUrl: './kyc-one.component.html',
   styleUrl: './kyc-one.component.scss'
 })
@@ -77,6 +78,7 @@ export class KycOneComponent {
   }
 
   handleNextStep() {
+  debugger
    this.privateCountryNotIsrael = false;
     if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected != null){
       if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected){
