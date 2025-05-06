@@ -1,0 +1,17 @@
+<ng-container [formGroup]="parentFormGroup">
+    <ng-container [formGroup]="step_3">
+        <section class="mail-conf text-center">
+            <p class="at-title mail-conf-ah--1">{{ 'KYC_Step_3.enter_code' | translate }}</p>
+
+            <sms-verification
+            [kycForm]="kycForm"
+            [stepsObj]="stepsObj"
+            (codeValidEvent)="codeValidHandler()"
+            [timerTooltip]="('fields.code_hasnt_arrived_tooltip'|translate)"
+            [formControlNameToSetValue]="'email_code_user_enter'"
+            [formControlNameToCompareValue]="'email_code_sent'"
+        ></sms-verification>
+
+        </section>
+    </ng-container>
+</ng-container>

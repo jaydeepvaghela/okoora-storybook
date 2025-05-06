@@ -1,0 +1,71 @@
+@import "mixins";
+/**
+* HEADLINES
+*/
+%h--1 {
+    font-size: 3rem;
+}
+%h--2 {
+    font-size: 2.1rem;
+    @include respond(lg) {
+        font-size: 2.8rem;
+    }
+}
+%h--3 {
+    font-size: 3.7rem;
+    @include respond(lg) {
+        font-size: 2.9rem;
+    }
+}
+
+/**
+* ARTICLE HEADLINES
+*/
+%ah--1 {
+    font-size: 1.7rem;
+}
+%ah--2 {
+    font-size: 2rem;
+    @include respond(lg) {
+        font-size: 2.7rem;
+    }
+}
+
+/**
+* PARAGRAPHS
+*/
+%p--1 {
+    font-size: 1.5rem;
+    @include respond(xl) {
+        font-size: 1.8rem;
+    }
+}
+%p--2 {
+    font-size: 1.2rem;
+    @include respond(xl) {
+        font-size: 1.5rem;
+    }
+}
+%p--3 {
+    font-size: 1.05rem;
+    @include respond(xl) {
+        font-size: 1.305rem;
+    }
+}
+
+/**
+* BUTTONS FONT SIZE
+*/
+%btn-fs--1 {
+    font-size: 1.3rem;
+}
+
+/**
+* Disclaimer FONT SIZE
+*/
+%disclaimer-fs--1 {
+    font-size: 11px;
+}
+%disclaimer-fs--2 {
+    font-size: 8px;
+}

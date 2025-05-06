@@ -1,0 +1,30 @@
+<ng-container [formGroup]="parentFormGroup">
+    <ng-container [formGroup]="step_4">
+        <div class="kyc-phone">
+            <div class="kyc-phone__fields d-flex align-items-center justify-content-center">
+                <input type="text" class="kyc-phone-input country-phone-code" aria-label="Code" matInput
+                    [placeholder]="'fields.phone_code' | translate" (input)="handleCountryCodeSearch($event)"
+                    formControlName="phone_code" [matAutocomplete]="auto" (keydown)="restrictSpecialCharacters($event)" appOnlyNumbers>
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let cd of countryArr" [value]="cd.phoneCode" (click)="telInputRef.select()">
+                        <div class="country-phone-code__wrapper">
+                            <div class="country">
+                                {{cd.countryName}}
+                            </div>
+                            <div class="phone-code text-secondary">
+                                +{{cd.phoneCode}}
+                            </div>
+                        </div>
+                    </mat-option>
+                </mat-autocomplete>
+                <input class="kyc-phone-input" formControlName="phone" [placeholder]="'fields.phone_num' | translate"
+                    type="tel" #telInputRef matInput (keydown)="restrictSpecialCharacters($event)" appOnlyNumbers>
+            </div>
+            <small *ngIf="apiErrorMessage" class="text-danger">{{ apiErrorMessage }}</small>
+            <button type="button" mat-raised-button color="primary" class="continue-btn mt-5 mx-auto d-block" id="kyc_phone_step_4"
+                (click)="handleNextStep()">
+                {{ 'KYC.Continue' | translate}}
+            </button>
+        </div>
+    </ng-container>
+</ng-container>

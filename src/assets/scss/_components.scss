@@ -1,0 +1,513 @@
+@import "typography-placeholders";
+@import "../scss/variable";
+.action-btn {
+    position        : absolute;
+    top             : 2rem;
+    left            : 0;
+
+    &.previous-page,
+    &.goto-login {
+        @include respond(lg) {
+            display : none;
+        }
+    }
+
+    width           : 3.5rem;
+    height          : 3.5rem;
+    padding         : 2rem;
+    border-radius   : 10px;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    background      : #fff;
+    border          : 2px solid #1b1d33;
+    color           : #000;
+    margin-left     : 16px;
+    margin-right    : 16px;
+}
+
+::ng-deep {
+    .action-btn {
+        text-decoration : none;
+
+        mat-icon {
+            width           : 3.5rem;
+            height          : 3.5rem;
+            padding         : 2rem;
+            border-radius   : 10px;
+            position        : relative;
+            display         : flex;
+            align-items     : center;
+            justify-content : center;
+            border-width    : 1px;
+            border-style    : solid;
+            background      : #1B1D33;
+            border          : 1px solid #FFFFFF80;
+            color           : #FFF;
+
+            &::before {
+                color : #FFF;
+            }
+        }
+
+        &.in-title--mobile {
+            display : none;
+            @include respond(lg) {
+                position  : absolute;
+                top       : unset;
+                //left      : -10%;
+                left      : -14%;
+                display   : inline-flex !important;
+                padding   : unset;
+                // min-width : unset;
+                border    : unset;
+            }
+
+            mat-icon {
+                border           : unset;
+                background-color : $color-stratos;
+            }
+
+        }
+    }
+
+    //.action-btn
+}
+
+
+::ng-deep {
+    .action-anchor {
+        font-weight     : 500;
+        cursor          : pointer;
+        text-decoration : none;
+        color           : $color-blaze-orange !important;
+
+        &:hover {
+            text-decoration : none;
+        }
+
+        &.edit-email, &.resend-code {
+            margin-inline-start : 2px;
+        }
+    }
+
+    // #.action-anchor
+}
+
+/**
+* mat tool tip
+*/
+::ng-deep {
+    .custom-tooltip {
+        white-space   : pre-line;
+        border-radius : 8px;
+        transition    : box-shadow 200ms cubic-bezier(0.4, 0.3, 0.8, 0.6) 0s;
+        box-shadow    : rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        font-size     : 13px;
+    }
+}
+
+@mixin buttonNotDisabled($bgc: $primary-color) {
+    &:not([disabled]) {
+        &:hover {
+            background-color : darken($bgc, 5%) !important;
+        }
+    }
+}
+
+button.continue-btn {
+    width            : 100%;
+    border-radius    : 25px;
+    min-height       : 5.4rem;
+    font-weight      : 300;
+    background-color : $primary-color !important;
+    color            : #fff;
+    @include respond(xl) {
+        min-height : 6.4rem;
+    }
+
+    &:disabled {
+        opacity : 0.5;
+    }
+
+    @include buttonNotDisabled($bgc : $primary-color);
+
+    &--2 {
+        @extend .continue-btn;
+        background-color : $color-blaze-orange !important;
+        @include buttonNotDisabled($bgc : $color-blaze-orange);
+    }
+}
+
+#upload-img-container {
+    align-self      : center;
+    justify-content : center;
+    align-items     : center;
+    padding         : 20%;
+}
+
+button.upload-img-btn {
+    align-self       : center;
+    width            : auto;
+    border-radius    : 25px;
+    min-height       : 5rem;
+    font-weight      : 300;
+    color            : #fff;
+    background-color : $color-blue !important;
+
+    @media screen and (min-width : 768px) {
+        width : 50%;
+    }
+}
+
+::ng-deep {
+    .country-phone-code {
+        max-width         : 11rem;
+        margin-inline-end : 0.8rem;
+
+        &__wrapper {
+            display         : flex;
+            justify-content : space-between;
+
+            & * {
+                font-weight : 400;
+            }
+        }
+
+        .country {
+            max-width : 30rem;
+            width     : 100%;
+        }
+    }
+}
+
+::ng-deep {
+    mat-error {
+        font-size : 11px;
+    }
+}
+
+.fields-wrapper {
+    display        : flex;
+    flex-direction : column;
+}
+
+/**
+* Buttons
+*/
+//buttons
+.btn-1 {
+    @extend %p--1;
+
+    background-color : $color-blue;
+    //border           : none;
+    border-radius    : 25px;
+    //box-shadow       : 0 15px 14px -10px rgba(0, 0, 0, 0.2);
+    color            : #fff;
+    //font-weight      : 500;
+    font-weight      : bold;
+    padding          : 0.65rem 2.2rem;
+    transition       : 0.4s;
+    border           : 2px solid $color-blue;
+
+    &:hover {
+        background-color : #fff;
+        color            : $color-blue;
+
+    }
+
+    &:disabled {
+        opacity : 0.5;
+    }
+
+    &.red {
+        border           : 1px solid $color-9;
+        background-color : $color-9;
+        color            : #FFF;
+
+        &:hover {
+            background-color : #FFF;
+            color            : $color-9;
+        }
+    }
+
+    &.white {
+        border           : 1px solid $color-4;
+        background-color : #FFF;
+        color            : $color-4;
+
+        &:hover {
+            background-color : $color-4;
+            color            : #FFF;
+        }
+    }
+
+
+    &.alter {
+        background-color : #FFF;
+        color            : $color-blue;
+
+        &:hover {
+            background-color : $color-blue;
+            color            : #FFF;
+        }
+    }
+
+    &.yellow {
+        border           : 1px solid $color-10;
+        background-color : $color-10;
+        color            : #FFF;
+
+        &:hover {
+            background-color : #FFF;
+            color            : $color-10;
+        }
+    }
+
+    &-outline {
+        @extend .btn-1;
+        border           : 1px solid $color-blue;
+        background-color : #FFF;
+        color            : $color-blue;
+    }
+
+    // #btn-1-outline
+    &-static {
+        @extend .btn-1;
+
+        &:hover {
+            background-color : $color-blue;
+            color            : #FFF;
+        }
+    }
+
+    // #btn-1-static
+}
+
+::ng-deep {
+    .custom-mat-form-field {
+        &--1 {
+            .mat-form-field-flex {
+                background    : #fff;
+                /* border: 1px solid; */
+                border        : 1px solid #E2E2E2;
+                border-radius : 12px
+            }
+
+            .mat-form-field-underline {
+                display : none;
+            }
+        }
+    }
+}
+
+
+/**
+* dark form
+*/
+@mixin custom-form($text-color: $color-black, $input-bg: #FFF) {
+    & *[class] {
+        color : $text-color;
+    }
+
+    & button[class*="continue"] {
+        & * {
+            color : #FFF;
+        }
+    }
+
+    & label[for] {
+        text-align : left;
+    }
+
+    & *.error-2 {
+        color : $color-danger;
+    }
+    ::ng-deep {
+        mat-error {
+            color : $color-danger;
+        }
+    }
+    ::ng-deep .custom-input {
+        &--with-icon {
+            .custom-input-icon {
+                position  : absolute;
+                right     : 2rem;
+                top       : 50%;
+                transform : translateY(-50%);
+            }
+        }
+    }
+    & input[class][type],
+    & input[class][formcontrolname] {
+        background-color : $input-bg;
+        border           : 1px solid $text-color;
+        border-radius    : 15px;
+        color            : $text-color;
+        text-indent      : 10px;
+        min-height       : 50px;
+        @include respond(xl) {
+            height : 45px;
+        }
+
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active,
+        &:-webkit-autofill {
+            -webkit-box-shadow      : 0 0 0 30px $input-bg inset !important;
+            -webkit-text-fill-color : $text-color;
+        }
+
+        &::placeholder {
+            color     : $text-color;
+            font-size : 13px;
+        }
+
+        &.masked-input {
+            text-indent   : 0;
+            width         : 50px;
+            border        : 1px solid $text-color;
+            border-radius : 10px;
+        }
+    }
+
+    & button[class][type="submit"] {
+        @extend .btn-1;
+        width : 100%;
+
+        &:hover {
+            color            : #FFF;
+            background-color : lighten($color-blue, 5%);
+        }
+    }
+
+    & a[class][href] {
+        color : $text-color;
+    }
+
+    mat-checkbox {
+        flex-basis : 50%;
+        background : transparent;
+        border     : none;
+        display    : flex;
+        font-size  : 13px;
+
+        .mat-checkbox-inner-container {
+            background-color  : transparent;
+            border            : 1px solid $text-color;
+            margin            : 0;
+            margin-inline-end : 10px;
+        }
+
+        .mat-checkbox-background {
+            background-color : transparent !important;
+        }
+
+        & .mat-checkbox-layout {
+            display        : initial;
+            white-space    : unset;
+            vertical-align : unset;
+            text-align     : center;
+        }
+
+        .mat-checkbox-frame {
+            border : none;
+        }
+
+        .mat-checkbox-checkmark-path {
+            stroke : $text-color !important;
+        }
+    }
+    // #mat-checkbox
+}
+
+.dark-form {
+    @include custom-form;
+}
+
+// #.dark-form
+.light-form {
+    @include custom-form($text-color : $color-stratos, $input-bg : #FFF);
+
+    & input[class][type] {
+        border : 1px solid $color-stratos;
+    }
+}
+
+.light-blue-form {
+    @include custom-form($text-color : #FFF, $input-bg : var(--color-blue-royal));
+
+    & button[class][type="submit"] {
+        background-color : $color-stratos;
+        color            : #FFF;
+
+        &:hover {
+            color            : #FFF;
+            background-color : $color-stratos;
+        }
+    }
+}
+
+/**
+* custom-form field
+*/
+.custom-form-field {
+    $root         : &;
+    display       : flex;
+    height        : 50px;
+    align-items   : center;
+    border        : 1px solid $color-light-gray-2;
+    border-radius : 5px;
+    transition    : border 0.2s ease-in-out;
+
+    &:hover {
+        border-color : $color-blue;
+    }
+
+    &-container {
+        min-width      : 13rem;
+        display        : flex;
+        flex-direction : column
+    }
+
+    &-content {
+        display        : flex;
+        flex-direction : column;
+    }
+
+    &--2 {
+        @extend .custom-form-field;
+        border-radius : 12px;
+    }
+
+    &--3 {
+        @extend .custom-form-field;
+
+        &:hover {
+            border-color : unset;
+        }
+
+        #{$root}-container {
+            display        : flex;
+            flex-direction : column;
+        }
+    }
+}
+
+@keyframes blinker {
+    from {
+        opacity : 1.0;
+    }
+    to {
+        opacity : 0.0;
+    }
+}
+
+.blink {
+    text-decoration           : blink;
+    animation-name            : blinker;
+    animation-duration        : 0.5s;
+    animation-iteration-count : 4;
+    animation-timing-function : ease-in-out;
+    animation-direction       : alternate;
+}
