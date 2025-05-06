@@ -424,7 +424,7 @@ export class KycMainComponent implements OnInit {
         switch (this.stepsObj.currentStep) {
             case EStepNumber.typeOfBusiness:
                 // this.auth.logout();
-                localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';
+                // window.location.href = '/login';
                 // localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';
                 break;
             case EStepNumber.createPassword:
@@ -468,11 +468,11 @@ export class KycMainComponent implements OnInit {
     }
 
     goToLogin() {
-        localStorage.removeItem('kycForm')
-        localStorage.removeItem('step')
+        // localStorage.removeItem('kycForm')
+        // localStorage.removeItem('step')
         // this.router.navigate(['/login']);
         // window.location.href = this.appLoginUrl;
-        localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';
+        // localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';
     }
     passwordMatchValidator = (): ValidatorFn => {
         return (control: AbstractControl): ValidationErrors | null => {
