@@ -126,9 +126,10 @@
             bottom: 3%;
             transform: translateX(-50%);
             font-size: 16px;
-
+            color:#111827;
+            font-weight: 300;
             & * {
-                font-size: 13px;
+                font-size: 14px;
             }
 
             @include respond(lg) {
@@ -136,8 +137,8 @@
             }
 
             & .login-link {
-                font-weight: 700;
-                color: #000;
+                font-weight: 500;
+                color: #111827;
                 text-decoration: none;
             }
         }
@@ -192,7 +193,7 @@
         border-radius: 17px;
         background-color: #fff;
         // padding: 5rem 0;
-        padding: 10px;
+        padding: 14px 10px;
         position: relative;
 
         @include respond(lg) {
@@ -286,6 +287,9 @@
     color: #111827;
     font-size:16px;
     opacity: 0.6;
+    @media screen and (max-width: 1440px) {
+        font-size: 14px;
+    }
 }
 .m-b-step1{
     margin: 0 0 38px;
@@ -305,7 +309,7 @@
     margin: 0 auto;
 }
 .kyc-form-section {
-    padding-bottom: 4em;
+    padding-bottom:76px;
 }
 .confirmation-incorrect {
     position: fixed;
