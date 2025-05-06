@@ -7,7 +7,7 @@
             <div class="form-group form-group-input-wrapper d-flex justify-content-center">
                 <input type="text" [(ngModel)]="digit1" name="digit1" class="form-control masked-input" #dOne
                     #digit1Txt="ngModel" (focus)="dOne.select()"
-                    (input)="dOne.value ? dTwo.select() : dOne.focus();"
+                    (input)="onInputChange(); dOne.value ? dTwo.select() : dOne.focus();"
                     required (paste)="restrictSpecialCharacters($event)"
                     (keydown)="restrictSpecialCharacters($event)"
                 >
@@ -15,7 +15,7 @@
 
                 <input type="text" [(ngModel)]="digit2" name="digit2" class="form-control masked-input" #dTwo
                     #digit2Txt="ngModel" (focus)="dTwo.select()"
-                    (input)="dTwo.value ? dThree.select() : dTwo.focus();"
+                    (input)="onInputChange(); dTwo.value ? dThree.select() : dTwo.focus();"
                     (keydown.backspace)="dOne.select()"
                     required (paste)="restrictSpecialCharacters($event)"
             (keydown)="restrictSpecialCharacters($event)"
@@ -23,7 +23,7 @@
 
                 <input type="text" [(ngModel)]="digit3" name="digit3" class="form-control masked-input" #dThree
                     #digit3Txt="ngModel" (focus)="dThree.select()"
-                    (input)="dThree.value ? dFour.select() : dThree.focus();"
+                    (input)="onInputChange(); dThree.value ? dFour.select() : dThree.focus();"
                     (keydown.backspace)="dTwo.select()"
                     required (paste)="restrictSpecialCharacters($event)"
             (keydown)="restrictSpecialCharacters($event)"
@@ -32,11 +32,10 @@
                 <input type="text" [(ngModel)]="digit4" name="digit4" class="form-control masked-input" #dFour
                     #digit4Txt="ngModel" (focus)="dFour.select()"
                     (keydown.backspace)="dThree.select(); dFour.value = '';"
-                    (input)="dFour.value ? dFour.blur() : dFour.focus();"
+                    (input)="onInputChange();dFour.value ? dFour.blur() : dFour.focus();"
                     (blur)="checkVerification()"
                     required (paste)="restrictSpecialCharacters($event)"
-            (keydown)="restrictSpecialCharacters($event)"
-                >
+                    (keydown)="restrictSpecialCharacters($event)">
             </div>
 
         </div>
