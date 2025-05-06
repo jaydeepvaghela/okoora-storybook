@@ -9107,7 +9107,7 @@
         },
         {
             "name": "KycMainComponent",
-            "id": "component-KycMainComponent-83c341f4816c7e35279255a7c798dfdecb256da029fdf23cfdc5cbeea94e908cf3ec6c5199488a1d95c511ee70a4e630cf11d8c73b8355cfa86dce6bbb3bc5a3",
+            "id": "component-KycMainComponent-be8f8353ff0ea4ade6478078b8027c874f6a999653ac3cf8732c765232d3685eb59b61775bd9ec00bf101b5df71bb7c7462ec33db1ab90ac3a4053717ce92e61",
             "file": "src/app/sign-up/kyc-main/kyc-main.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9135,7 +9135,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 37
+                    "line": 39
                 },
                 {
                     "name": "appLoginUrl",
@@ -9145,7 +9145,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 41
+                    "line": 43
                 },
                 {
                     "name": "codeStatus",
@@ -9155,7 +9155,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 39
+                    "line": 41
                 },
                 {
                     "name": "detailsToShow",
@@ -9165,7 +9165,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 43
+                    "line": 45
                 },
                 {
                     "name": "EBusinessType",
@@ -9176,7 +9176,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 38
+                    "line": 40
                 },
                 {
                     "name": "error",
@@ -9187,7 +9187,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33
+                    "line": 35
                 },
                 {
                     "name": "Esteps",
@@ -9198,7 +9198,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 34
                 },
                 {
                     "name": "faqUrl",
@@ -9208,7 +9208,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 40
+                    "line": 42
                 },
                 {
                     "name": "kycForm",
@@ -9218,7 +9218,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 32
                 },
                 {
                     "name": "passwordMatchValidator",
@@ -9229,7 +9229,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 117
+                    "line": 119
                 },
                 {
                     "name": "stepCurrent",
@@ -9239,7 +9239,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 42
+                    "line": 44
                 },
                 {
                     "name": "stepsObj",
@@ -9250,7 +9250,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 27
                 }
             ],
             "methodsClass": [
@@ -9260,7 +9260,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 143,
+                    "line": 145,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9270,7 +9270,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 163,
+                    "line": 165,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9287,7 +9287,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 213,
+                    "line": 215,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9321,7 +9321,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 148,
+                    "line": 150,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9351,7 +9351,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 133,
+                    "line": 135,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9361,7 +9361,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 116,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9371,7 +9371,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 153,
+                    "line": 155,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9381,7 +9381,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 168,
+                    "line": 170,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9391,7 +9391,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 139,
+                    "line": 141,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9408,7 +9408,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 172,
+                    "line": 174,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9429,7 +9429,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 158,
+                    "line": 160,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -9459,12 +9459,16 @@
                 {
                     "name": "KycOneComponent",
                     "type": "component"
+                },
+                {
+                    "name": "KycTwoComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { IStepsObj, EStepNumber, TBusinessTypes, EBusinessType, IKycData } from '../kyc';\r\nimport { KycOneComponent } from '../kyc-one/kyc-one.component';\r\nimport { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';\r\nimport { StepActionType } from '../types/global.type';\r\n\r\n@Component({\r\n  selector: 'app-kyc-main',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatIconModule,\r\n    TranslateModule,\r\n    ReactiveFormsModule,\r\n    KycOneComponent\r\n  ],\r\n  templateUrl: './kyc-main.component.html',\r\n  styleUrls: ['./kyc-main.component.scss']\r\n})\r\nexport class KycMainComponent implements OnInit {\r\n  stepsObj: IStepsObj = {\r\n    currentStep: EStepNumber.typeOfBusiness,\r\n    maxSteps: EStepNumber.personalAddress,\r\n    minSteps: EStepNumber.typeOfBusiness\r\n  };\r\n  kycForm: any;\r\n\r\n  Esteps: typeof EStepNumber = EStepNumber;\r\n  error: any = {\r\n    hasError: false,\r\n    msg: null\r\n  };\r\n  accountType!: TBusinessTypes;\r\n  EBusinessType = EBusinessType;\r\n  codeStatus: any;\r\n  faqUrl: any;\r\n  appLoginUrl: any;\r\n  stepCurrent: any;\r\n  detailsToShow: any;\r\n\r\n  constructor(private fb: FormBuilder,) {\r\n    this.kycForm = this.fb.group({\r\n      // kyc-one\r\n      step_1: fb.group({\r\n          companyAcc: fb.group({\r\n              isActive: [false],\r\n              countrySelected: [''],\r\n              countryCode: ['']\r\n          }),\r\n          privateAcc: fb.group({\r\n              isActive: [false],\r\n              countrySelected: [''],\r\n              countryCode: ['']\r\n\r\n          }),\r\n      }),\r\n      // kyc-two\r\n      step_2: fb.group({\r\n          email: ['', [Validators.required, Validators.email,Validators.pattern('^(?!-)[a-z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,4}$')]],\r\n          agree: [false, [Validators.requiredTrue]]\r\n      }),\r\n\r\n\r\n      // kyc-email-confirm\r\n      step_3: fb.group({\r\n          email_code_sent: [''],\r\n          email_code_user_enter: [''],\r\n      }),\r\n      // kyc-phone\r\n      step_4: fb.group({\r\n          phone_code: ['', Validators.required],\r\n          phone: ['', Validators.required],\r\n      }),\r\n      // kyc-phone-confirm\r\n      step_5: fb.group({\r\n          phone_confirmation_sent: [''],\r\n          phone_confirmation_user_enter: [''],\r\n      }),\r\n      // kyc-create-password\r\n      step_6: fb.group({\r\n          passwords: new FormGroup(\r\n              {\r\n                  password: new FormControl(\"\", [Validators.required]),\r\n                  confirmPassword: new FormControl(\"\", [Validators.required]),\r\n              }, {\r\n              validators: this.passwordMatchValidator()\r\n          }\r\n          )\r\n      }),\r\n\r\n      step_7: fb.group({\r\n          first_name: ['', [Validators.required]],\r\n          first_name_he: [''],\r\n          last_name: ['', [Validators.required,]],\r\n          last_name_he: [''],\r\n          id_number: ['', [Validators.required]],\r\n          birth_date: ['', [Validators.required]],\r\n          applicantId: [''],\r\n\r\n      }),\r\n      step_8: fb.group({\r\n          country: ['', Validators.required],\r\n          street_address: ['', [Validators.required]],\r\n          city: ['', [Validators.required,]],\r\n          zipcode: ['', [Validators.required]],\r\n      }),\r\n  });\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.stepsObj.currentStep;\r\n  }\r\n  passwordMatchValidator = (): ValidatorFn => {\r\n    return (control: AbstractControl): ValidationErrors | null => {\r\n        const password = control.get('password');\r\n        const confirmPassword = control.get('confirmPassword');\r\n\r\n        if (!password || !confirmPassword) {\r\n            return null;\r\n        }\r\n\r\n        if (password.value !== confirmPassword.value) {\r\n            return { passwordMismatch: true };\r\n        }\r\n\r\n        return null;\r\n    };\r\n};\r\n  handlePreviousBtn() {\r\n    if (this.stepsObj.currentStep > this.stepsObj.minSteps) {\r\n      this.stepsObj.currentStep--;\r\n    }\r\n  }\r\n\r\n  showPrevBtn() {\r\n    return this.stepsObj.currentStep > this.stepsObj.minSteps;\r\n  }\r\n\r\n  emailValue() {\r\n    // Implement as needed\r\n    return '';\r\n  }\r\n\r\n  handleEditValue($event: any, type: any) {\r\n    // Implement as needed\r\n    console.log('Edit value:', $event, 'for type:', type);\r\n  }\r\n\r\n  phoneValue() {\r\n    // Implement as needed\r\n    return '';\r\n  }\r\n\r\n  tryAgain() {\r\n    // Implement retry logic\r\n    this.error = { hasError: false, msg: null };\r\n  }\r\n\r\n  goToLogin() {\r\n    // Implement login navigation\r\n    window.location.href = this.appLoginUrl || '/login';\r\n  }\r\n\r\n  showLoginBtn(): boolean {\r\n    // Return boolean instead of any\r\n    return !!this.codeStatus && this.codeStatus === 'ACCOUNT_EXISTS';\r\n  }\r\n  stepHandler(action: StepActionType) {\r\n    if (!action) {\r\n      console.warn(`action is not provided in stepHander`);\r\n      return;\r\n    }\r\n    if (this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== null && this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== 'Israel')\r\n      this.stepsObj.maxSteps = EStepNumber.createPassword;\r\n\r\n    switch (action) {\r\n      case 'NEXT':\r\n        // console.log(this.kycForm)\r\n        if (this.stepsObj.currentStep >= this.stepsObj.maxSteps) {\r\n          if (this.stepsObj.currentStep > this.stepsObj.maxSteps) {\r\n            console.warn(`current step was greater than the max steps \\n currenct step given ${this.stepsObj.currentStep} \\n max steps: ${this.stepsObj.maxSteps}`);\r\n          }\r\n          this.stepsObj.currentStep = this.stepsObj.maxSteps;\r\n        } else {\r\n          if (this.stepsObj.currentStep == this.Esteps.phone) {\r\n            this.stepsObj.currentStep++;\r\n          }\r\n          this.stepCurrent = ++this.stepsObj.currentStep;\r\n          localStorage.setItem('step', JSON.stringify(this.stepCurrent));\r\n          localStorage.setItem('kycForm', JSON.stringify(this.kycForm.value));\r\n        }\r\n        break;\r\n      case 'PREV':\r\n        if (this.stepsObj.currentStep <= this.stepsObj.minSteps) {\r\n          this.stepsObj.currentStep = this.stepsObj.minSteps;\r\n        } else {\r\n          if (this.stepsObj.currentStep == this.Esteps.createPassword) {\r\n            this.stepsObj.currentStep--;\r\n          }\r\n          this.stepsObj.currentStep--;\r\n        }\r\n        break;\r\n      default:\r\n        const exhaustiveCheck: never = action;\r\n        console.error(`unhandeled action occured. ${exhaustiveCheck}`);\r\n        break;\r\n    }\r\n  }// # stepHandler\r\n  handleDetailToShow(bType: IKycData['businessTypes']) {\r\n    this.detailsToShow.step_1.detailName = bType;\r\n}\r\n}",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { IStepsObj, EStepNumber, TBusinessTypes, EBusinessType, IKycData } from '../kyc';\r\nimport { KycOneComponent } from '../kyc-one/kyc-one.component';\r\nimport { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';\r\nimport { StepActionType } from '../types/global.type';\r\nimport { KycTwoComponent } from '../kyc-two/kyc-two.component';\r\n\r\n@Component({\r\n  selector: 'app-kyc-main',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatIconModule,\r\n    TranslateModule,\r\n    ReactiveFormsModule,\r\n    KycOneComponent, \r\n    KycTwoComponent\r\n  ],\r\n  templateUrl: './kyc-main.component.html',\r\n  styleUrls: ['./kyc-main.component.scss']\r\n})\r\nexport class KycMainComponent implements OnInit {\r\n  stepsObj: IStepsObj = {\r\n    currentStep: EStepNumber.typeOfBusiness,\r\n    maxSteps: EStepNumber.personalAddress,\r\n    minSteps: EStepNumber.typeOfBusiness\r\n  };\r\n  kycForm: any;\r\n\r\n  Esteps: typeof EStepNumber = EStepNumber;\r\n  error: any = {\r\n    hasError: false,\r\n    msg: null\r\n  };\r\n  accountType!: TBusinessTypes;\r\n  EBusinessType = EBusinessType;\r\n  codeStatus: any;\r\n  faqUrl: any;\r\n  appLoginUrl: any;\r\n  stepCurrent: any;\r\n  detailsToShow: any;\r\n\r\n  constructor(private fb: FormBuilder,) {\r\n    this.kycForm = this.fb.group({\r\n      // kyc-one\r\n      step_1: fb.group({\r\n          companyAcc: fb.group({\r\n              isActive: [false],\r\n              countrySelected: [''],\r\n              countryCode: ['']\r\n          }),\r\n          privateAcc: fb.group({\r\n              isActive: [false],\r\n              countrySelected: [''],\r\n              countryCode: ['']\r\n\r\n          }),\r\n      }),\r\n      // kyc-two\r\n      step_2: fb.group({\r\n          email: ['', [Validators.required, Validators.email,Validators.pattern('^(?!-)[a-z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,4}$')]],\r\n          agree: [false, [Validators.requiredTrue]]\r\n      }),\r\n\r\n\r\n      // kyc-email-confirm\r\n      step_3: fb.group({\r\n          email_code_sent: [''],\r\n          email_code_user_enter: [''],\r\n      }),\r\n      // kyc-phone\r\n      step_4: fb.group({\r\n          phone_code: ['', Validators.required],\r\n          phone: ['', Validators.required],\r\n      }),\r\n      // kyc-phone-confirm\r\n      step_5: fb.group({\r\n          phone_confirmation_sent: [''],\r\n          phone_confirmation_user_enter: [''],\r\n      }),\r\n      // kyc-create-password\r\n      step_6: fb.group({\r\n          passwords: new FormGroup(\r\n              {\r\n                  password: new FormControl(\"\", [Validators.required]),\r\n                  confirmPassword: new FormControl(\"\", [Validators.required]),\r\n              }, {\r\n              validators: this.passwordMatchValidator()\r\n          }\r\n          )\r\n      }),\r\n\r\n      step_7: fb.group({\r\n          first_name: ['', [Validators.required]],\r\n          first_name_he: [''],\r\n          last_name: ['', [Validators.required,]],\r\n          last_name_he: [''],\r\n          id_number: ['', [Validators.required]],\r\n          birth_date: ['', [Validators.required]],\r\n          applicantId: [''],\r\n\r\n      }),\r\n      step_8: fb.group({\r\n          country: ['', Validators.required],\r\n          street_address: ['', [Validators.required]],\r\n          city: ['', [Validators.required,]],\r\n          zipcode: ['', [Validators.required]],\r\n      }),\r\n  });\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.stepsObj.currentStep;\r\n  }\r\n  passwordMatchValidator = (): ValidatorFn => {\r\n    return (control: AbstractControl): ValidationErrors | null => {\r\n        const password = control.get('password');\r\n        const confirmPassword = control.get('confirmPassword');\r\n\r\n        if (!password || !confirmPassword) {\r\n            return null;\r\n        }\r\n\r\n        if (password.value !== confirmPassword.value) {\r\n            return { passwordMismatch: true };\r\n        }\r\n\r\n        return null;\r\n    };\r\n};\r\n  handlePreviousBtn() {\r\n    if (this.stepsObj.currentStep > this.stepsObj.minSteps) {\r\n      this.stepsObj.currentStep--;\r\n    }\r\n  }\r\n\r\n  showPrevBtn() {\r\n    return this.stepsObj.currentStep > this.stepsObj.minSteps;\r\n  }\r\n\r\n  emailValue() {\r\n    // Implement as needed\r\n    return '';\r\n  }\r\n\r\n  handleEditValue($event: any, type: any) {\r\n    // Implement as needed\r\n    console.log('Edit value:', $event, 'for type:', type);\r\n  }\r\n\r\n  phoneValue() {\r\n    // Implement as needed\r\n    return '';\r\n  }\r\n\r\n  tryAgain() {\r\n    // Implement retry logic\r\n    this.error = { hasError: false, msg: null };\r\n  }\r\n\r\n  goToLogin() {\r\n    // Implement login navigation\r\n    window.location.href = this.appLoginUrl || '/login';\r\n  }\r\n\r\n  showLoginBtn(): boolean {\r\n    // Return boolean instead of any\r\n    return !!this.codeStatus && this.codeStatus === 'ACCOUNT_EXISTS';\r\n  }\r\n  stepHandler(action: StepActionType) {\r\n    if (!action) {\r\n      console.warn(`action is not provided in stepHander`);\r\n      return;\r\n    }\r\n    if (this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== null && this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== 'Israel')\r\n      this.stepsObj.maxSteps = EStepNumber.createPassword;\r\n\r\n    switch (action) {\r\n      case 'NEXT':\r\n        // console.log(this.kycForm)\r\n        if (this.stepsObj.currentStep >= this.stepsObj.maxSteps) {\r\n          if (this.stepsObj.currentStep > this.stepsObj.maxSteps) {\r\n            console.warn(`current step was greater than the max steps \\n currenct step given ${this.stepsObj.currentStep} \\n max steps: ${this.stepsObj.maxSteps}`);\r\n          }\r\n          this.stepsObj.currentStep = this.stepsObj.maxSteps;\r\n        } else {\r\n          if (this.stepsObj.currentStep == this.Esteps.phone) {\r\n            this.stepsObj.currentStep++;\r\n          }\r\n          this.stepCurrent = ++this.stepsObj.currentStep;\r\n          localStorage.setItem('step', JSON.stringify(this.stepCurrent));\r\n          localStorage.setItem('kycForm', JSON.stringify(this.kycForm.value));\r\n        }\r\n        break;\r\n      case 'PREV':\r\n        if (this.stepsObj.currentStep <= this.stepsObj.minSteps) {\r\n          this.stepsObj.currentStep = this.stepsObj.minSteps;\r\n        } else {\r\n          if (this.stepsObj.currentStep == this.Esteps.createPassword) {\r\n            this.stepsObj.currentStep--;\r\n          }\r\n          this.stepsObj.currentStep--;\r\n        }\r\n        break;\r\n      default:\r\n        const exhaustiveCheck: never = action;\r\n        console.error(`unhandeled action occured. ${exhaustiveCheck}`);\r\n        break;\r\n    }\r\n  }// # stepHandler\r\n  handleDetailToShow(bType: IKycData['businessTypes']) {\r\n    if (this.detailsToShow.step_1) {\r\n      this.detailsToShow.step_1.detailName = bType;\r\n\r\n    }\r\n}\r\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -9486,7 +9490,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 43,
+                "line": 45,
                 "jsdoctags": [
                     {
                         "name": "fb",
@@ -9503,11 +9507,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<main class=\"app-kyc-container\">\r\n\r\n    <section class=\"row kyc-wrapper\">\r\n        <div class=\"kyc-left\">\r\n\r\n            <div class=\"kyc-top\">\r\n                <img class=\"logo-img\" src=\"images/abcm-logo.svg\" alt=\"okooora logo\" />\r\n            </div>\r\n\r\n            <section class=\"kyc-form-section loader-wrapper\" [ngClass]=\"{\r\n                'typeOfBusiness': stepsObj.currentStep === Esteps.typeOfBusiness,\r\n                'email': stepsObj.currentStep === Esteps.email,\r\n                'emailConfirmation': stepsObj.currentStep === Esteps.emailConfirmation,\r\n                'phone': stepsObj.currentStep === Esteps.phone,\r\n                'phoneConfirmation': stepsObj.currentStep === Esteps.phoneConfirmation,\r\n                'createPassword': stepsObj.currentStep === Esteps.createPassword,\r\n                'personalDetails': stepsObj.currentStep === Esteps.personalDetails,\r\n                'personalAddress': stepsObj.currentStep === Esteps.personalAddress\r\n            }\">\r\n                <button (click)=\"handlePreviousBtn()\" id=\"back-to-website\">\r\n                    <img class=\"logo-img\" src=\"images/back-kyc.svg\" alt=\"back\" />\r\n                </button>\r\n            \r\n                <ng-container [ngSwitch]=\"stepsObj.currentStep\">\r\n                    <article class=\"kyc-headlines px-5 step--{{stepsObj.currentStep}}\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <h1 class=\"title\"> {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }} </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1 m-b-step1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + (accountType === EBusinessType.companyAccount ?\r\n                                '.titleCompany' : '.titlePrivate') | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 email\">{{emailValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-email action-anchor\" (click)=\"handleEditValue($event, 'EMAIL')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_email' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 phone\">{{phoneValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-phone action-anchor\" (click)=\"handleEditValue($event, 'PHONE')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_phone' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchDefault>\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                    </article>\r\n                </ng-container>\r\n\r\n                <div>\r\n                    <div class=\"error-box alert alert-danger\" role=\"alert\" [ngClass]=\"{\r\n                        'd-none': !error.hasError && !error.msg,\r\n                        'd-block': error.hasError || error.msg\r\n                    }\" [ngStyle]=\"{'visibility': (!error.hasError && !error.msg) ? 'hidden' : 'visible'}\">\r\n                        <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-exclamation-triangle\"></mat-icon>\r\n                        {{error.msg}}\r\n                    </div>\r\n                </div>\r\n\r\n                <form #kycFormRef class=\"kyc-form\" [ngClass]=\"{\r\n                    'light-form': stepsObj.currentStep !== Esteps.typeOfBusiness\r\n                }\" [formGroup]=\"kycForm\" (keydown.enter)=\"$event.preventDefault()\"\r\n                    autocomplete=\"off\">\r\n                    <div [ngSwitch]=\"stepsObj.currentStep\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <app-kyc-one [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\"\r\n                                (activatedBusinessType)=\"handleDetailToShow($event)\">\r\n                            </app-kyc-one>\r\n                        </ng-container>\r\n\r\n                        <!-- <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <kyc-two [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-two>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <kyc-email-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-email-confirm>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <kyc-phone [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" [nextStepIsValid]=\"nextStepIsValid\">\r\n                            </kyc-phone>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <kyc-phone-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-phone-confirm>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <kyc-create-password [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" (loginEvent)=\"goToLogin()\">\r\n                            </kyc-create-password>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <kyc-personal-details [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-personal-details>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalAddress\">\r\n                            <kyc-address [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" (loginEvent)=\"goToLogin()\">\r\n                            </kyc-address>\r\n                        </ng-container> -->\r\n                    </div>\r\n\r\n                </form>\r\n\r\n                <article class=\"login-wrapper\">\r\n                    <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' |\r\n                        translate}}</a>\r\n                    &nbsp;\r\n                    /\r\n                    &nbsp;\r\n                    <p class=\"login-p--1 m-0\">\r\n                        {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                        &nbsp;\r\n                        <a class=\"login-link\" (click)=\"goToLogin()\" id=\"login-btn\">{{ 'KYC.SignIn' | translate}}</a>\r\n                    </p>\r\n                </article>\r\n            </section>\r\n\r\n        </div>\r\n\r\n        <!-- <div class=\"kyc-right\">\r\n            <app-step-details [detailsToShow]=\"detailsToShow\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                [showLoginBtn]=\"showLoginBtn()\">\r\n            </app-step-details>\r\n            <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n                <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' | translate}}\r\n                    /</a>\r\n                &nbsp;\r\n                <p class=\"login-p--1\">\r\n                    {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                    &nbsp;\r\n                    <a class=\"login-link\" [href]=\"appLoginUrl\" id=\"login-btn-2\">{{ 'KYC.SignIn' | translate}}</a>\r\n                </p>\r\n            </article>\r\n            <img class=\"icon-bottom-right\" src=\"images/kyc/icons/blue-up-down-arrow.svg\"\r\n                alt=\"blue up and down arrow icon\" />\r\n        </div> -->\r\n\r\n\r\n    </section>\r\n\r\n    <!-- <div *ngIf=\"codeStatus !== 'DEFAULT' \" class=\"confirmation-incorrect\">\r\n        <button class=\"confirmation-incorrect__close action-btn\" (click)=\"tryAgain()\" mat-button>\r\n            <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-times\"></mat-icon>\r\n        </button>\r\n\r\n        <div class=\"container\">\r\n            <div class=\"confirmation-incorrect__wrapper\">\r\n                <mat-icon class=\"incorrect-icon text-danger mb-5\" fontSet=\"fontawesome\" fontIcon=\"fa-times-circle\">\r\n                </mat-icon>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'INCORRECT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.confirmation_incorrect' | translate}}</h3>\r\n                </ng-container>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'PASSED_LIMIT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.PassedLimitTitle' | translate}}</h3>\r\n                    <p class=\"confirmation-incorrect-p--1\">{{ 'KYC.PassedLimitParagraph' | translate}}</p>\r\n                </ng-container>\r\n\r\n                <button type=\"button\" mat-raised-button color=\"primary\" class=\"continue-btn mt-5\" (click)=\"tryAgain()\">\r\n                    {{ 'KYC.try_again' | translate}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div> -->\r\n\r\n</main>"
+            "templateData": "<main class=\"app-kyc-container\">\r\n\r\n    <section class=\"row kyc-wrapper\">\r\n        <div class=\"kyc-left\">\r\n\r\n            <div class=\"kyc-top\">\r\n                <img class=\"logo-img\" src=\"images/abcm-logo.svg\" alt=\"okooora logo\" />\r\n            </div>\r\n\r\n            <section class=\"kyc-form-section loader-wrapper\" [ngClass]=\"{\r\n                'typeOfBusiness': stepsObj.currentStep === Esteps.typeOfBusiness,\r\n                'email': stepsObj.currentStep === Esteps.email,\r\n                'emailConfirmation': stepsObj.currentStep === Esteps.emailConfirmation,\r\n                'phone': stepsObj.currentStep === Esteps.phone,\r\n                'phoneConfirmation': stepsObj.currentStep === Esteps.phoneConfirmation,\r\n                'createPassword': stepsObj.currentStep === Esteps.createPassword,\r\n                'personalDetails': stepsObj.currentStep === Esteps.personalDetails,\r\n                'personalAddress': stepsObj.currentStep === Esteps.personalAddress\r\n            }\">\r\n                <button (click)=\"handlePreviousBtn()\" id=\"back-to-website\">\r\n                    <img class=\"logo-img\" src=\"images/back-kyc.svg\" alt=\"back\" />\r\n                </button>\r\n            \r\n                <ng-container [ngSwitch]=\"stepsObj.currentStep\">\r\n                    <article class=\"kyc-headlines px-5 step--{{stepsObj.currentStep}}\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <h1 class=\"title\"> {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }} </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + (accountType === EBusinessType.companyAccount ?\r\n                                '.titleCompany' : '.titlePrivate') | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 email\">{{emailValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-email action-anchor\" (click)=\"handleEditValue($event, 'EMAIL')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_email' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 phone\">{{phoneValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-phone action-anchor\" (click)=\"handleEditValue($event, 'PHONE')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_phone' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchDefault>\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                    </article>\r\n                </ng-container>\r\n\r\n                <div>\r\n                    <div class=\"error-box alert alert-danger\" role=\"alert\" [ngClass]=\"{\r\n                        'd-none': !error.hasError && !error.msg,\r\n                        'd-block': error.hasError || error.msg\r\n                    }\" [ngStyle]=\"{'visibility': (!error.hasError && !error.msg) ? 'hidden' : 'visible'}\">\r\n                        <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-exclamation-triangle\"></mat-icon>\r\n                        {{error.msg}}\r\n                    </div>\r\n                </div>\r\n\r\n                <form #kycFormRef class=\"kyc-form\" [ngClass]=\"{\r\n                    'light-form': stepsObj.currentStep !== Esteps.typeOfBusiness\r\n                }\" [formGroup]=\"kycForm\" (keydown.enter)=\"$event.preventDefault()\"\r\n                    autocomplete=\"off\">\r\n                    <div [ngSwitch]=\"stepsObj.currentStep\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <app-kyc-one [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\"\r\n                                (activatedBusinessType)=\"handleDetailToShow($event)\">\r\n                            </app-kyc-one>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <app-kyc-two [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </app-kyc-two>\r\n                        </ng-container>\r\n                        <!-- <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <kyc-email-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-email-confirm>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <kyc-phone [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" [nextStepIsValid]=\"nextStepIsValid\">\r\n                            </kyc-phone>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <kyc-phone-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-phone-confirm>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <kyc-create-password [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" (loginEvent)=\"goToLogin()\">\r\n                            </kyc-create-password>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <kyc-personal-details [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-personal-details>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalAddress\">\r\n                            <kyc-address [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" (loginEvent)=\"goToLogin()\">\r\n                            </kyc-address>\r\n                        </ng-container> -->\r\n                    </div>\r\n\r\n                </form>\r\n\r\n                <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n                    <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' |\r\n                        translate}}</a>\r\n                    &nbsp;\r\n                    /\r\n                    &nbsp;\r\n                    <p class=\"login-p--1 m-0\">\r\n                        {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                        &nbsp;\r\n                        <a class=\"login-link\" (click)=\"goToLogin()\" id=\"login-btn\">{{ 'KYC.SignIn' | translate}}</a>\r\n                    </p>\r\n                </article>\r\n            </section>\r\n\r\n        </div>\r\n\r\n        <!-- <div class=\"kyc-right\">\r\n            <app-step-details [detailsToShow]=\"detailsToShow\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                [showLoginBtn]=\"showLoginBtn()\">\r\n            </app-step-details>\r\n            <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n                <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' | translate}}\r\n                    /</a>\r\n                &nbsp;\r\n                <p class=\"login-p--1\">\r\n                    {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                    &nbsp;\r\n                    <a class=\"login-link\" [href]=\"appLoginUrl\" id=\"login-btn-2\">{{ 'KYC.SignIn' | translate}}</a>\r\n                </p>\r\n            </article>\r\n            <img class=\"icon-bottom-right\" src=\"images/kyc/icons/blue-up-down-arrow.svg\"\r\n                alt=\"blue up and down arrow icon\" />\r\n        </div> -->\r\n\r\n\r\n    </section>\r\n\r\n    <!-- <div *ngIf=\"codeStatus !== 'DEFAULT' \" class=\"confirmation-incorrect\">\r\n        <button class=\"confirmation-incorrect__close action-btn\" (click)=\"tryAgain()\" mat-button>\r\n            <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-times\"></mat-icon>\r\n        </button>\r\n\r\n        <div class=\"container\">\r\n            <div class=\"confirmation-incorrect__wrapper\">\r\n                <mat-icon class=\"incorrect-icon text-danger mb-5\" fontSet=\"fontawesome\" fontIcon=\"fa-times-circle\">\r\n                </mat-icon>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'INCORRECT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.confirmation_incorrect' | translate}}</h3>\r\n                </ng-container>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'PASSED_LIMIT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.PassedLimitTitle' | translate}}</h3>\r\n                    <p class=\"confirmation-incorrect-p--1\">{{ 'KYC.PassedLimitParagraph' | translate}}</p>\r\n                </ng-container>\r\n\r\n                <button type=\"button\" mat-raised-button color=\"primary\" class=\"continue-btn mt-5\" (click)=\"tryAgain()\">\r\n                    {{ 'KYC.try_again' | translate}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div> -->\r\n\r\n</main>"
         },
         {
             "name": "KycOneComponent",
-            "id": "component-KycOneComponent-1700d62ce2832e077a7d06aa4f2c6d5f3ff939f2c4f25d825f2ba5e796ab7778c8ed2923b20990e79a120599bad963c39a037fd5caad60c365e02c4aade8df6a",
+            "id": "component-KycOneComponent-906142e1f576e68f047a4761288c181e5155f5952549d8dada87cab6679a18d6b0097fed07cd03c76391ea9ea59f967c977fef5cdc87720481500de5afc7b74a",
             "file": "src/app/sign-up/kyc-one/kyc-one.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9774,7 +9778,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';\r\nimport {AbstractControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';\r\nimport {MatExpansionModule, MatExpansionPanel} from '@angular/material/expansion';\r\nimport {Subject} from 'rxjs';\r\nimport {EBusinessType, EDetailsToShowNames, IKycData, IStepsObj} from '../models';\r\n// import {KycService} from '../services/kyc.service';\r\nimport {StepActionType} from '../types/global.type';\r\n// import { onlyValidIdNumber } from '../../shared/custom-validators';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatError } from '@angular/material/select';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { SelectCountryComponent } from '../fields/select-country/select-country.component';\r\n\r\n@Component({\r\n  selector: 'app-kyc-one',\r\n  imports: [CommonModule,MatExpansionModule,FormsModule,ReactiveFormsModule,MatError,TranslateModule, SelectCountryComponent],\r\n  templateUrl: './kyc-one.component.html',\r\n  styleUrl: './kyc-one.component.scss'\r\n})\r\nexport class KycOneComponent {\r\n  componentDestroyed = new Subject<any>();\r\n  @Input('parentFormGroup') parentFormGroup!: FormGroup;\r\n  @Input('kycForm') kycForm: any;\r\n  @Input('stepsObj') stepsObj!: IStepsObj;\r\n  @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();\r\n  @Output('activatedBusinessType') activatedBusinessType = new EventEmitter<IKycData['businessTypes']>();\r\n  businessTypes = EBusinessType;\r\n  assetsPath = 'environment.assetsPath';\r\n  step_1!: FormGroup;\r\n  businessTypesCompanyAccount!: FormGroup;\r\n  businessTypesPrivateAccount!: FormGroup;\r\n  privateCountryNotIsrael: boolean = false;\r\n  countryName: any;\r\n  constructor(\r\n    // private KycS: KycService,\r\n  ) {\r\n  }\r\n  ngOnInit(): void {\r\n    this.step_1 = <FormGroup>this.kycForm.get('step_1');\r\n    this.businessTypesCompanyAccount = <FormGroup>this.kycForm.get('step_1').get(this.businessTypes.companyAccount)\r\n    this.businessTypesPrivateAccount = <FormGroup>this.kycForm.get('step_1').get(this.businessTypes.privateAccount)\r\n  }\r\n\r\n  handleBusinessTypeChange(panel: MatExpansionPanel, fgName: IKycData['businessTypes']) {\r\n    // this.KycS.handleResetCountries$.next(true);\r\n\r\n    if (fgName === EDetailsToShowNames.privateAcc) {\r\n      this.kycForm.controls['step_7'].get('id_number').addValidators([Validators.required]);\r\n    }\r\n\r\n    if (fgName === EDetailsToShowNames.companyAcc) {\r\n      this.kycForm.controls['step_7'].get('id_number').setValidators(null);\r\n      this.kycForm.controls['step_7'].get('id_number').setErrors(null);\r\n      this.kycForm.controls['step_7'].get('id_number').updateValueAndValidity();\r\n    }\r\n\r\n    const groupSelected = this.kycForm.controls.step_1.get(fgName);\r\n    if (!groupSelected) {\r\n      console.error(`group didnt found given ${groupSelected} \\n form group name given ${fgName}`);\r\n      return;\r\n    }\r\n\r\n    Object.keys(this.kycForm.controls.step_1['controls']).forEach(bt => {\r\n      const currentBusiness:any = (<AbstractControl>this.kycForm.controls.step_1['controls'][bt]);\r\n\r\n      currentBusiness.reset();\r\n\r\n      currentBusiness.get('isActive').setValue(null);\r\n      if (bt !== EBusinessType.invitedAccount) {\r\n        currentBusiness.get('countrySelected').setValue(null);\r\n      }\r\n    });\r\n\r\n    this.kycForm.controls.step_1.get(fgName).get('isActive').setValue(panel.expanded);\r\n\r\n    this.activatedBusinessType.next(fgName)\r\n  }\r\n\r\n  handleNextStep() {\r\n   this.privateCountryNotIsrael = false;\r\n    if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected != null){\r\n      if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected){\r\n        this.nextStepEvent.next('NEXT');\r\n      }else{\r\n        localStorage.removeItem('kycForm')\r\n        localStorage.setItem('step', JSON.stringify(1));\r\n        window.location.href = \"https://onboarding-demo.paydirect.io/okoora/forms/corporate\"\r\n      }\r\n    }else{    \r\n      if(this.kycForm?.value?.step_1?.privateAcc?.countrySelected != null && this.kycForm?.value?.step_1?.privateAcc?.countrySelected !='Israel'){\r\n        if(this.countryName === null || this.countryName === undefined){\r\n          this.countryName = this.kycForm?.value?.step_1?.privateAcc?.countrySelected\r\n          // this.KycS.PrivateKYCCountry(this.countryName).subscribe();\r\n        }\r\n        this.privateCountryNotIsrael = true;        \r\n      } else {\r\n        this.nextStepEvent.next('NEXT');\r\n      }\r\n    }\r\n  }\r\n\r\n  canClickNextStep(): boolean {\r\n    return this.kycForm.get('step_1').valid;\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.componentDestroyed.next(null);\r\n    this.componentDestroyed.complete();\r\n  };\r\n}\r\n",
+            "sourceCode": "import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';\r\nimport {AbstractControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';\r\nimport {MatExpansionModule, MatExpansionPanel} from '@angular/material/expansion';\r\nimport {Subject} from 'rxjs';\r\nimport {EBusinessType, EDetailsToShowNames, IKycData, IStepsObj} from '../models';\r\n// import {KycService} from '../services/kyc.service';\r\nimport {StepActionType} from '../types/global.type';\r\n// import { onlyValidIdNumber } from '../../shared/custom-validators';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatError } from '@angular/material/select';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { SelectCountryComponent } from '../fields/select-country/select-country.component';\r\n\r\n@Component({\r\n  selector: 'app-kyc-one',\r\n  imports: [CommonModule,MatExpansionModule,FormsModule,ReactiveFormsModule,MatError,TranslateModule, SelectCountryComponent],\r\n  templateUrl: './kyc-one.component.html',\r\n  styleUrl: './kyc-one.component.scss'\r\n})\r\nexport class KycOneComponent {\r\n  componentDestroyed = new Subject<any>();\r\n  @Input('parentFormGroup') parentFormGroup!: FormGroup;\r\n  @Input('kycForm') kycForm: any;\r\n  @Input('stepsObj') stepsObj!: IStepsObj;\r\n  @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();\r\n  @Output('activatedBusinessType') activatedBusinessType = new EventEmitter<IKycData['businessTypes']>();\r\n  businessTypes = EBusinessType;\r\n  assetsPath = 'environment.assetsPath';\r\n  step_1!: FormGroup;\r\n  businessTypesCompanyAccount!: FormGroup;\r\n  businessTypesPrivateAccount!: FormGroup;\r\n  privateCountryNotIsrael: boolean = false;\r\n  countryName: any;\r\n  constructor(\r\n    // private KycS: KycService,\r\n  ) {\r\n  }\r\n  ngOnInit(): void {\r\n    this.step_1 = <FormGroup>this.kycForm.get('step_1');\r\n    this.businessTypesCompanyAccount = <FormGroup>this.kycForm.get('step_1').get(this.businessTypes.companyAccount)\r\n    this.businessTypesPrivateAccount = <FormGroup>this.kycForm.get('step_1').get(this.businessTypes.privateAccount)\r\n  }\r\n\r\n  handleBusinessTypeChange(panel: MatExpansionPanel, fgName: IKycData['businessTypes']) {\r\n    // this.KycS.handleResetCountries$.next(true);\r\n\r\n    if (fgName === EDetailsToShowNames.privateAcc) {\r\n      this.kycForm.controls['step_7'].get('id_number').addValidators([Validators.required]);\r\n    }\r\n\r\n    if (fgName === EDetailsToShowNames.companyAcc) {\r\n      this.kycForm.controls['step_7'].get('id_number').setValidators(null);\r\n      this.kycForm.controls['step_7'].get('id_number').setErrors(null);\r\n      this.kycForm.controls['step_7'].get('id_number').updateValueAndValidity();\r\n    }\r\n\r\n    const groupSelected = this.kycForm.controls.step_1.get(fgName);\r\n    if (!groupSelected) {\r\n      console.error(`group didnt found given ${groupSelected} \\n form group name given ${fgName}`);\r\n      return;\r\n    }\r\n\r\n    Object.keys(this.kycForm.controls.step_1['controls']).forEach(bt => {\r\n      const currentBusiness:any = (<AbstractControl>this.kycForm.controls.step_1['controls'][bt]);\r\n\r\n      currentBusiness.reset();\r\n\r\n      currentBusiness.get('isActive').setValue(null);\r\n      if (bt !== EBusinessType.invitedAccount) {\r\n        currentBusiness.get('countrySelected').setValue(null);\r\n      }\r\n    });\r\n\r\n    this.kycForm.controls.step_1.get(fgName).get('isActive').setValue(panel.expanded);\r\n\r\n    this.activatedBusinessType.next(fgName)\r\n  }\r\n\r\n  handleNextStep() {\r\n   this.privateCountryNotIsrael = false;\r\n    if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected != null){\r\n      if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected){\r\n        this.nextStepEvent.next('NEXT');\r\n      }else{\r\n        localStorage.removeItem('kycForm')\r\n        localStorage.setItem('step', JSON.stringify(1));\r\n        window.location.href = \"https://onboarding-demo.paydirect.io/okoora/forms/corporate\"\r\n      }\r\n    }else{    \r\n      if(this.kycForm?.value?.step_1?.privateAcc?.countrySelected != null && this.kycForm?.value?.step_1?.privateAcc?.countrySelected !='Israel'){\r\n        if(this.countryName === null || this.countryName === undefined){\r\n          this.countryName = this.kycForm?.value?.step_1?.privateAcc?.countrySelected\r\n          // this.KycS.PrivateKYCCountry(this.countryName).subscribe();\r\n        }\r\n        this.privateCountryNotIsrael = true;        \r\n      } else {\r\n        this.nextStepEvent.next('NEXT');\r\n      }\r\n    }\r\n  }\r\n\r\n  canClickNextStep(): boolean {\r\n    return this.kycForm.get('step_1')?.valid;\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.componentDestroyed.next(null);\r\n    this.componentDestroyed.complete();\r\n  };\r\n}\r\n",
             "styleUrl": "./kyc-one.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -9789,6 +9793,279 @@
             },
             "extends": [],
             "templateData": "<ng-container *ngIf=\"parentFormGroup\" [formGroup]=\"parentFormGroup\">\r\n    <ng-container [formGroup]=\"step_1\">\r\n      <mat-accordion class=\"at__accordion px-md-5\" [multi]=\"false\">\r\n        <mat-expansion-panel class=\"mb-0\" #panel1\r\n          [expanded]=\"kycForm.get('step_1').get(businessTypes.companyAccount).value.isActive\"\r\n          [formGroup]=\"businessTypesCompanyAccount\">\r\n          <mat-expansion-panel-header (click)=\"handleBusinessTypeChange(panel1, businessTypes.companyAccount)\">\r\n            <mat-panel-title class=\"kyc-ah--1\">\r\n              <mat-radio-group formControlName=\"isActive\">\r\n                <input type=\"checkbox\" style=\"display: none\" />\r\n                <div class=\"d-flex flex-column align-items-center justify-content-center text-center justify-content-center d-md-none\"\r\n                  (click)=\"handleBusinessTypeChange(panel1, businessTypes.companyAccount)\">\r\n                  <img class=\"at-icon mb-4\" src=\"images/suitcase-bag.svg\" alt=\"company icon\">\r\n                  <h3 class=\"at-title at-ah--1 mb-4\">{{ 'KYC_Step_1.companyAcc.title' | translate}}</h3>\r\n                  <p class=\"at-description at-p--1\">{{ 'KYC_Step_1.companyAcc.description' | translate}}\r\n                  </p>\r\n                </div>\r\n                <div class=\"inner-radio-button d-none d-md-flex align-items-start\"\r\n                  (click)=\"handleBusinessTypeChange(panel1, businessTypes.companyAccount)\">\r\n                  <img class=\"at-icon\" src=\"images/suitcase-bag.svg\" alt=\"company icon\">\r\n                  <div>\r\n                    <h3 class=\"at-title at-ah--1\">{{ 'KYC_Step_1.companyAcc.title' | translate}}</h3>\r\n                    <p class=\"at-description at-p--1\">{{ 'KYC_Step_1.companyAcc.description' | translate}}</p>\r\n                  </div>\r\n                </div>\r\n              </mat-radio-group>\r\n            </mat-panel-title>\r\n          </mat-expansion-panel-header>\r\n          <app-select-country [kycForm]=\"kycForm\" [specialClasses]=\"'custom-mat-form-field--1'\"\r\n            [currentFormGroup]=\"businessTypesCompanyAccount\" [currentformControlName]=\"'countrySelected'\"\r\n            [matLabelTranslation]=\"'KYC_Step_1.companyAcc.field_label' | translate\" >\r\n          </app-select-country>\r\n          <button  type=\"button\" [class.disabled]=\"!kycForm.get('step_1').valid\" [disabled]=\"!kycForm.get('step_1').valid\" mat-raised-button color=\"primary\"\r\n            class=\"continue-btn\" (click)=\"handleNextStep()\" id=\"kyc-one-continue-btn--1\">\r\n            {{ 'KYC.Continue' | translate}}\r\n          </button>\r\n        </mat-expansion-panel>\r\n        <hr>\r\n        <mat-expansion-panel class=\"mb-0\" #panel2 [formGroup]=\"businessTypesPrivateAccount\"\r\n          [expanded]=\"kycForm.get('step_1').get(businessTypes.privateAccount).value.isActive\">\r\n          <mat-expansion-panel-header (click)=\"handleBusinessTypeChange(panel2, businessTypes.privateAccount)\">\r\n            <mat-panel-title class=\"kyc-ah--1\">\r\n              <mat-radio-group formControlName=\"isActive\">\r\n                <input type=\"checkbox\" style=\"display: none\" />\r\n                <div class=\"d-flex flex-column align-items-center justify-content-center text-center d-md-none\"\r\n                (click)=\"handleBusinessTypeChange(panel2, businessTypes.privateAccount)\">\r\n                  <img class=\"at-icon mb-4\" src=\"images/private-icon.svg\" alt=\"private icon\">\r\n                  <h3 class=\"at-title at-ah--1 mb-4\">{{ 'KYC_Step_1.privateAcc.title' | translate}}</h3>\r\n                  <span class=\"at-description at-p--1\">{{ 'KYC_Step_1.privateAcc.description' | translate}}</span>\r\n                </div>\r\n                <div  (click)=\"handleBusinessTypeChange(panel2, businessTypes.privateAccount)\" class=\"inner-radio-button d-none d-md-flex align-items-start\">\r\n                  <img class=\"at-icon\" src=\"images//private-icon.svg\" alt=\"private icon\">\r\n                  <div>\r\n                    <h3 class=\"at-title at-ah--1\">{{ 'KYC_Step_1.privateAcc.title' | translate}}</h3>\r\n                    <p class=\"at-description at-p--1\">{{ 'KYC_Step_1.privateAcc.description' |translate}}</p>\r\n                  </div>\r\n                </div>\r\n              </mat-radio-group>\r\n            </mat-panel-title>\r\n          </mat-expansion-panel-header>\r\n          <app-select-country [kycForm]=\"kycForm\" [specialClasses]=\"'custom-mat-form-field--1'\"\r\n            [currentFormGroup]=\"businessTypesPrivateAccount\" [currentformControlName]=\"'countrySelected'\"\r\n            [matLabelTranslation]=\"'KYC_Step_1.privateAcc.field_label' | translate\">\r\n        </app-select-country>\r\n        <mat-error *ngIf=\"privateCountryNotIsrael\" [style]=\"'font-size:13px; transform: translateY(-56%);'\">\r\n          {{ 'KYC_Step_1.privateAcc.country_not_from_israel' | translate}}\r\n          </mat-error>\r\n          <button [class.disabled]=\"!kycForm.get('step_1').valid\" [disabled]=\"!kycForm.get('step_1').valid\" type=\"button\" mat-raised-button color=\"primary\"\r\n            class=\"continue-btn\" (click)=\"handleNextStep()\" id=\"kyc-one-continue-btn--2\">\r\n            {{ 'KYC.Continue' | translate}}\r\n          </button>\r\n        </mat-expansion-panel><!-- # PRIVATE ACCOUNT Panel-->\r\n      </mat-accordion>\r\n    </ng-container>\r\n  </ng-container>"
+        },
+        {
+            "name": "KycTwoComponent",
+            "id": "component-KycTwoComponent-ec2287797f3236f354ccf7f212dd3048adbfc2c7bd06a937c2e4c61f5612d1acf966663936c81f323e9e41667d0bb16f51fadf783663f7f932235c00401c48c3",
+            "file": "src/app/sign-up/kyc-two/kyc-two.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-kyc-two",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./kyc-two.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "kycForm",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "parentFormGroup",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "FormGroup",
+                    "decorators": []
+                },
+                {
+                    "name": "stepsObj",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "IStepsObj",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "nextStepEvent",
+                    "defaultValue": "new EventEmitter<StepActionType>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "accountType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TBusinessTypes",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "componentDestroyed",
+                    "defaultValue": "new Subject<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "EBusinessType",
+                    "defaultValue": "EBusinessType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "emailSignUp$",
+                    "defaultValue": "new Subject<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "isLoading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "privacyPolicyUrl",
+                    "defaultValue": "'https://okoora.com/terms-of-service/'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "step_2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "termsOfUseUrl",
+                    "defaultValue": "'https://okoora.com/terms-of-service/'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "disableSignUpBtn",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 94,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "filterInvalidCharacters",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 119,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleSignUp",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 76,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 125,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "restrictSpecialCharacters",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 98,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatCheckboxModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TranslateModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { FormGroup, ReactiveFormsModule } from '@angular/forms';\r\nimport { catchError, EMPTY, exhaustMap, Subject, takeUntil, throttleTime } from 'rxjs';\r\nimport { IStepsObj, TBusinessTypes, EBusinessType } from '../kyc';\r\nimport { StepActionType } from '../types/global.type';\r\nimport { HttpErrorResponse } from '@angular/common/http';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\n\r\n@Component({\r\n  selector: 'app-kyc-two',\r\n  imports: [CommonModule, MatCheckboxModule, ReactiveFormsModule, TranslateModule],\r\n  templateUrl: './kyc-two.component.html',\r\n  styleUrl: './kyc-two.component.scss'\r\n})\r\nexport class KycTwoComponent {\r\n  componentDestroyed = new Subject<void>();\r\n  isLoading: boolean = false;\r\n  @Input() parentFormGroup!: FormGroup;\r\n  @Input() kycForm: any;\r\n  @Input() stepsObj!: IStepsObj;\r\n  @Output() nextStepEvent = new EventEmitter<StepActionType>();\r\n  emailSignUp$ = new Subject<string>();\r\n  privacyPolicyUrl: string = 'https://okoora.com/terms-of-service/';\r\n  termsOfUseUrl: string = 'https://okoora.com/terms-of-service/';\r\n  accountType!: TBusinessTypes;\r\n  EBusinessType = EBusinessType;\r\n  step_2!: FormGroup;\r\n\r\n  ngOnInit(): void {\r\n    this.step_2 = this.kycForm.get('step_2') as FormGroup;\r\n\r\n    // this.emailSignUp$\r\n    //   .pipe(\r\n    //     throttleTime(300),\r\n    //     exhaustMap((email) => this.kycS.sendMailVerification(email)),\r\n    //     catchError((e: HttpErrorResponse) => {\r\n    //       this.kycS.loading$.next(false);\r\n    //       return EMPTY;\r\n    //     })\r\n    //   )\r\n    //   .subscribe((res) => {\r\n    //     if (!Boolean(res)) {\r\n    //       console.warn(`res is falsy`);\r\n    //       this.kycS.loading$.next(false);\r\n    //       return;\r\n    //     }\r\n    //     if (res) {\r\n    //       this.nextStepEvent.next('NEXT');\r\n    //     }\r\n\r\n\r\n    //  else  {\r\n    //       // user passed the limit of sending verification code.\r\n    //       // this.kycS.verificationCodeStatus.next('PASSED_LIMIT');\r\n    //       this.nextStepEvent.next('NEXT');\r\n    //     }\r\n    //     // this.kycS.loading$.next(false);\r\n    //   });\r\n\r\n    // this.kycS.loading$\r\n    //   .pipe(\r\n    //     takeUntil(this.componentDestroyed)\r\n    //   )\r\n    //   .subscribe(loadingState => {\r\n    //     this.isLoading = loadingState;\r\n    //   });\r\n\r\n    // this.kycS.getAccountType$()\r\n    //   .subscribe(accountType => {\r\n    //     this.accountType = accountType;\r\n    //   });\r\n  }\r\n\r\n  handleSignUp(): void {\r\n    // Error handling\r\n    if (!this.kycForm.controls.step_2.get('email')?.valid) {\r\n      console.warn(`user was able to click submit even though the form is not valid `)\r\n      return;\r\n    }\r\n    const email = this.kycForm?.controls?.step_2.get('email')?.value;\r\n    if (!email) {\r\n      console.warn(`user was able to click submit even though email is falsy: ${email}`)\r\n      return;\r\n    }\r\n    // Error handling\r\n\r\n    // this.kycS.loading$.next(true);\r\n    // this.kycS.verificationCodeStatus.next('DEFAULT');\r\n    this.emailSignUp$.next(email);\r\n  }\r\n\r\n  disableSignUpBtn(): boolean {\r\n    return !this.kycForm.controls.step_2.valid || this.isLoading;\r\n  }\r\n\r\n  restrictSpecialCharacters(event: any) {\r\n    const invalidChars = ['<', '>', ';', '=', '+'];\r\n    if (event?.target?.value?.length === 0 && (event?.key === \"0\" || event?.key === \".\")) {\r\n      event?.preventDefault();\r\n    } else {\r\n      const dotOccurrences = (event?.target?.value.match(/\\./g) || []).length;\r\n      if (event?.key === \".\" && dotOccurrences >= 3) {\r\n        event?.preventDefault();\r\n      }\r\n\r\n      if (invalidChars.includes(event.key)) {\r\n        event.preventDefault();\r\n      }\r\n      // const allowedKeys = /^[a-zA-Z0-9.@\\u00C0-\\u017F]$/;\r\n      const allowedKeys = /^[a-zA-Z0-9._\\-@\\u00C0-\\u017F]$/; // Included - and _\r\n      if (!allowedKeys.test(event.key) && !['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {\r\n        event.preventDefault();\r\n      }\r\n    }\r\n  }\r\n\r\n  filterInvalidCharacters(event: any) {\r\n    const input = event.target;\r\n    const invalidChars = /[<>;=+]/g;\r\n    input.value = input.value.replace(invalidChars, '');\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.componentDestroyed.next();\r\n    this.componentDestroyed.complete();\r\n  }\r\n}\r\n",
+            "styleUrl": "./kyc-two.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<form [formGroup]=\"parentFormGroup\" class=\"form-group\">\r\n    <form [formGroup]=\"step_2\">\r\n        <section class=\"step-2 mx-auto\">\r\n            <div class=\"step-2__wrapper row\">\r\n                <div class=\"step-2__content col-12\">\r\n                    <div class=\"input-wrapper\">\r\n                        <span >Your email</span>\r\n\r\n                        <input type=\"email\" (keydown)=\"restrictSpecialCharacters($event)\" matInput formControlName=\"email\" class=\"form-control focusable old-input\" appOnlyEmail>\r\n                    </div>\r\n                    <button [disabled]=\"kycForm.get('step_2.email').invalid || !kycForm.get('step_2.agree').value\" [class.disabled]=\"kycForm.get('step_2.email').invalid|| !kycForm.get('step_2.agree').value\" type=\"button\" mat-raised-button\r\n                        color=\"primary\" id=\"signup_with_email_step_2\" class=\"continue-btn\" (click)=\"handleSignUp()\">\r\n                        {{ 'fields.signup_with_email' | translate }}\r\n                    </button>\r\n                    <mat-checkbox class=\"\" id=\"agree\" formControlName=\"agree\">\r\n                        <span>{{ 'fields.email_disclaimer_1' | translate }}</span>\r\n                        <a class=\"resend-code action-anchor\" [href]=\"termsOfUseUrl\" target=\"_blank\"\r\n                            rel=\"noreferrer noopener\" aria-label=\"This is an external link (opens in a new tab)\">\r\n                            {{ 'fields.email_disclaimer_2' | translate }}\r\n                        </a>\r\n                        {{ 'fields.email_disclaimer_3' | translate }}\r\n                        <a class=\"resend-code action-anchor\" [href]=\"privacyPolicyUrl\" target=\"_blank\"\r\n                            rel=\"noreferrer noopener\" aria-label=\"This is an external link (opens in a new tab)\">\r\n                            {{ 'fields.email_disclaimer_4' | translate }}\r\n                        </a>\r\n                    </mat-checkbox>\r\n                </div>\r\n            </div>\r\n        </section>\r\n    </form>\r\n</form>\r\n"
         },
         {
             "name": "MomentumIndicatorChartComponent",
@@ -15489,6 +15766,15 @@
                 "name": "KycOneComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/20",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc-two/kyc-two.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "KycTwoComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/19",
                 "status": "low"
             },
             {

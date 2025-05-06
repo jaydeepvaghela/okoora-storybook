@@ -138,12 +138,12 @@
                             </app-kyc-one>
                         </ng-container>
 
-                        <!-- <ng-container *ngSwitchCase="Esteps.email">
-                            <kyc-two [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                        <ng-container *ngSwitchCase="Esteps.email">
+                            <app-kyc-two [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)">
-                            </kyc-two>
+                            </app-kyc-two>
                         </ng-container>
-                        <ng-container *ngSwitchCase="Esteps.emailConfirmation">
+                        <!-- <ng-container *ngSwitchCase="Esteps.emailConfirmation">
                             <kyc-email-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)">
                             </kyc-email-confirm>

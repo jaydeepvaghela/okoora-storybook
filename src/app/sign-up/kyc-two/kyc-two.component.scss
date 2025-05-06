@@ -1,0 +1,67 @@
+@import "../../../assets/scss/mixins";
+
+::ng-deep {
+    .kyc-form-section {
+        width: 100%;
+    }
+
+}
+.step-2 {
+    @include respond(lg) {
+        max-width: 100%;
+    }
+}
+.old-input {
+    background-color: #fff;
+    border: 1px solid #01031c;
+    border-radius: 15px;
+    color: #01031c;
+    text-indent: 10px;
+    min-height: 50px;
+}
+
+.continue-btn {
+    margin: 20px 0px;
+    min-height: 20px;
+
+    .mat-button-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        mat-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+.step-2__wrapper {
+    max-width: 70%;
+    margin:0 auto;
+}
+.step-2 {
+    button {
+        background: linear-gradient(111.05deg, #444444 2.91%, #000000 96.88%);
+        border-radius: 40px;
+        font-size: 16px;
+        // line-height: 22px;
+        font-weight: 600;
+        color: #fff;
+        padding: 12px 0px;
+        height: auto;
+        transition: 0.3s;
+        position: relative;
+        width: 100% !important;
+        @media screen and (max-width: 1440px) {
+            // height: 25px;
+            width: 25px;
+        }
+
+        &.disabled {
+            background: #f5f5fa !important;
+            color: #c6c8cc !important;
+            cursor: not-allowed;
+        }
+    }
+}
