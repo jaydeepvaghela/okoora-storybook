@@ -67,6 +67,9 @@
             &-title {
                 margin-right : 0;
             }
+            &.mat-expanded{
+                height: auto;
+            }
 
             .mat-radio-container {
                 display : none;
