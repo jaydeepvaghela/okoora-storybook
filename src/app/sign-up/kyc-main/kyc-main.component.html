@@ -22,7 +22,7 @@
                 </button>
             
                 <ng-container [ngSwitch]="stepsObj.currentStep">
-                    <article class="kyc-headlines px-5 step--{{stepsObj.currentStep}}">
+                    <article class="kyc-headlines step--{{stepsObj.currentStep}}" [ngClass]="stepsObj.currentStep == 4 ? 'px-4' : 'px-5'">
                         <ng-container *ngSwitchCase="Esteps.typeOfBusiness">
                             <h1 class="title"> {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }} </h1>
                             <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
@@ -47,10 +47,10 @@
                                 {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
                             </h1>
                             <h3 class="kyc-h--3 email">{{emailValue()}}</h3>
-                            <p class="kyc-p--1 m-0">
+                            <p class="kyc-p--1 desc-m">
                                 {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}
                             </p>
-                            <p class="kyc-p--1 m-0">
+                            <p class="kyc-p--1 desc-m-2">
                                 {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}
                                 <a class="edit-email action-anchor" (click)="handleEditValue($event, 'EMAIL')">
                                     {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_email' | translate }}
@@ -62,7 +62,7 @@
                             <h1 class="title">
                                 {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
                             </h1>
-                            <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
+                            <p class="kyc-p--1 m-b-step4">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
                             <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>
                         </ng-container>
 

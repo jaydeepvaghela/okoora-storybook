@@ -17,15 +17,26 @@
 
     .masked-input {
         height        : 55px;
-        width         : 66px;
+        width         : 82px;
         border        : none;
-        border-bottom : 2.8px solid #334659;
+        border-bottom : 3px solid #111827;
         border-radius : 0;
         text-align    : center;
-        font-size     : 2.5rem;
+        font-size     : 2.25rem;
 
         &:not(:last-child) {
             margin-right : 30px;
+        }
+        &:focus {
+            outline : none;
+            box-shadow: none;
+        }
+        @media screen and (max-width:767px) {
+            width :50px;
+            height : 40px;
+            &:not(:last-child) {
+                margin-right :20px;
+            }
         }
     }
 

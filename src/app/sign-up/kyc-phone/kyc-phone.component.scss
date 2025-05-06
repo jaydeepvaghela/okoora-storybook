@@ -22,23 +22,26 @@
 }
 .kyc-phone-input {
     background-color: #fff;
-    border: 1px solid #01031c;
+    border: 1px solid #111827;
     border-radius: 15px;
-    color: #01031c;
+    color: #111827;
     text-indent: 10px;
     min-height: 50px;
     width: 100%;
     box-sizing: border-box;
     font-size: 16px;
     padding: 10px;
+    &::placeholder{
+        opacity: 0.5;
+    }
 }
 .mobile-num input {
     /* Add additional styles for the mobile-num input field */
     /* Example styles: */
     background-color: #fff;
-    border: 1px solid #01031c;
+    border: 1px solid #111827;
     border-radius: 15px;
-    color: #01031c;
+    color: #111827;
     text-indent: 10px;
     min-height: 50px;
     width: 100%;
@@ -48,7 +51,7 @@
 }
 
 .continue-btn {
-    background: linear-gradient(111.05deg, #444444 2.91%, #000000 96.88%);
+    background:#01031C;
     border-radius: 40px;
     font-size: 16px;
     // line-height: 22px;

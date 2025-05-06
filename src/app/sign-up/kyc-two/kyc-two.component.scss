@@ -4,24 +4,79 @@
     .kyc-form-section {
         width: 100%;
     }
-
+    
+    .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background{
+        border-color: #2947F2 !important;
+        background-color: #2947F2 !important;
+    }
+    
+    .mat-ripple,.mdc-checkbox__ripple{
+        display: none !important;
+    }
+    .condition-checkbox{
+        .mat-internal-form-field{
+            align-items: flex-start;
+        }
+        .mdc-checkbox{
+            padding: 0 !important;
+            margin: 5px 7px 0 0 !important;
+            .mdc-checkbox__background{
+                border:1px solid #6B7280 !important;
+                border-radius: 3px !important;
+                top:0;
+                left: 0;
+                svg{
+                    width: 12px;
+                    height: 12px;
+                    margin:2px;
+                }
+            }
+            @media screen and (max-width: 1440px) {
+                margin:0px 5px 0 0 !important;
+            }
+        }
+        .mdc-label{
+            color:#70747D;
+            font-size: 16px;
+            line-height: 27px;
+            font-weight: 300;
+            a{
+                color:#FF6805;
+            }
+            @media screen and (max-width: 1440px) {
+                font-size: 14px;
+                line-height:1.2;
+            }
+        }
+    }
 }
 .step-2 {
     @include respond(lg) {
         max-width: 100%;
     }
 }
+.input-wrapper{
+    span{
+        font-size: 14px;
+        color: #111827;
+        font-weight: 500;
+        line-height: 20px;
+        margin: 0 0 9px;
+        display: inline-block;
+    }
+}
 .old-input {
     background-color: #fff;
-    border: 1px solid #01031c;
+    border: 1px solid #111827;
     border-radius: 15px;
-    color: #01031c;
+    color: #111827;
     text-indent: 10px;
-    min-height: 50px;
+    min-height: 53px;
 }
 
+
 .continue-btn {
-    margin: 20px 0px;
+    margin: 26px 0px;
     min-height: 20px;
 
     .mat-button-wrapper {
@@ -35,14 +90,20 @@
             align-items: center;
         }
     }
+    @media screen and (max-width: 1440px) {
+        margin: 20px 0;
+    }
 }
 .step-2__wrapper {
     max-width: 75%;
     margin:0 auto;
+    @media screen and (max-width:767px) {
+        max-width: 100%;
+    }
 }
 .step-2 {
     button {
-        background: linear-gradient(111.05deg, #444444 2.91%, #000000 96.88%);
+        background: #01031C;
         border-radius: 40px;
         font-size: 16px;
         // line-height: 22px;

@@ -4,14 +4,14 @@
             <div class="step-2__wrapper row">
                 <div class="step-2__content col-12">
                     <div class="input-wrapper">
-                        <span >Your email</span>
+                        <span >Your Email</span>
                         <input type="email" (keydown)="restrictSpecialCharacters($event)" matInput formControlName="email" class="form-control focusable old-input" appOnlyEmail>
                     </div>
                     <button [disabled]="kycForm.get('step_2.email').invalid || !kycForm.get('step_2.agree').value" [class.disabled]="kycForm.get('step_2.email').invalid|| !kycForm.get('step_2.agree').value" type="button" mat-raised-button
                         color="primary" id="signup_with_email_step_2" class="continue-btn" (click)="handleSignUp()">
                         {{ 'fields.signup_with_email' | translate }}
                     </button>
-                    <mat-checkbox class="" id="agree" formControlName="agree">
+                    <mat-checkbox class="condition-checkbox" id="agree" formControlName="agree">
                         <span>{{ 'fields.email_disclaimer_1' | translate }}</span>
                         <a class="resend-code action-anchor" [href]="termsOfUseUrl" target="_blank"
                             rel="noreferrer noopener" aria-label="This is an external link (opens in a new tab)">

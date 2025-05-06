@@ -15,6 +15,7 @@
     background-position: center;
     background-size: cover;
     margin: 0;
+    color:#111827;
     font-family: $he_heebo;
 
     .kyc-language-wrapper {
@@ -218,8 +219,23 @@
             }
 
             & ::ng-deep .disclaimer {
-                margin-top: 4rem;
+                margin-top: 37px;
                 text-align: center;
+                .action-anchor{
+                    margin: 0 0 0 22px;
+                }
+                @media screen and (max-width: 1440px) {
+                    margin-top: 27px;
+                    .action-anchor{
+                        margin: 0 0 0 16px;
+                    }
+                }
+                @media screen and (max-width: 1024px) {
+                    margin-top: 17px;
+                    .action-anchor{
+                        margin: 0 0 0 10px;
+                    }
+                }
 
                 & .mat-checkbox-label {
                     @include respond(lg) {
@@ -283,13 +299,19 @@
 
 .kyc-p--1 {
     font-weight:300;
-    line-height:1;
+    line-height:normal;
     color: #111827;
     font-size:16px;
     opacity: 0.6;
     @media screen and (max-width: 1440px) {
         font-size: 14px;
     }
+}
+.desc-m{
+    margin: 0 0 4px;
+}
+.desc-m-2{
+    margin: 0 0 7px;
 }
 .m-b-step1{
     margin: 0 0 38px;
@@ -301,6 +323,18 @@
     }
     @media screen and (max-width: 768px) {
         margin: 0 0 8px;            
+    }
+}
+.m-b-step4{
+    margin: 0 0 35px;
+    @media screen and (max-width: 1440px) {
+        margin: 0 0 25px;
+    }
+    @media screen and (max-width: 1024px) {
+        margin: 0 0 15px;       
+    }
+    @media screen and (max-width: 768px) {
+        margin: 0 0 5px;            
     }
 }
 
