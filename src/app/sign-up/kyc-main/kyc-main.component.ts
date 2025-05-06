@@ -8,6 +8,9 @@ import { KycOneComponent } from '../kyc-one/kyc-one.component';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { StepActionType } from '../types/global.type';
 import { KycTwoComponent } from '../kyc-two/kyc-two.component';
+import { KycEmailConfirmComponent } from '../kyc-email-confirm/kyc-email-confirm.component';
+import { KycPhoneComponent } from '../kyc-phone/kyc-phone.component';
+import { KycCreatePasswordComponent } from '../kyc-create-password/kyc-create-password.component';
 
 @Component({
   selector: 'app-kyc-main',
@@ -18,7 +21,10 @@ import { KycTwoComponent } from '../kyc-two/kyc-two.component';
     TranslateModule,
     ReactiveFormsModule,
     KycOneComponent, 
-    KycTwoComponent
+    KycTwoComponent,
+    KycEmailConfirmComponent, 
+    KycPhoneComponent, 
+    KycCreatePasswordComponent
   ],
   templateUrl: './kyc-main.component.html',
   styleUrls: ['./kyc-main.component.scss']
@@ -213,9 +219,64 @@ export class KycMainComponent implements OnInit {
     }
   }// # stepHandler
   handleDetailToShow(bType: IKycData['businessTypes']) {
-    if (this.detailsToShow.step_1) {
-      this.detailsToShow.step_1.detailName = bType;
+    // if (this.detailsToShow.step_1) {
+    //   this.detailsToShow.step_1.detailName = bType;
+    // }
+  }
 
-    }
-}
+  nextStepIsValid(): boolean {
+    switch (this.stepsObj.currentStep) {
+        case EStepNumber.typeOfBusiness:
+            return this.step1IsValid();
+        case EStepNumber.email:
+            return this.step2IsValid();
+        case EStepNumber.emailConfirmation:
+            return this.step3IsValid();
+        case EStepNumber.phone:
+            return this.step4IsValid();
+        case EStepNumber.phoneConfirmation:
+            return this.step5IsValid();
+        case EStepNumber.createPassword:
+            return this.step6IsValid();
+        case EStepNumber.personalDetails:
+            return this.step7IsValid();
+        case EStepNumber.personalAddress:
+            return this.step8IsValid();
+        default:
+            console.warn(`stepIsValid() went to default in switch case in step ${this.stepsObj.currentStep}`);
+            return false;
+      }
+  } 
+  step1IsValid(): boolean {
+    const isBusiness = this.kycForm.controls.step_1.get('companyAcc').value;
+    return (isBusiness && this.kycForm.controls.step_1.get('companyAcc').valid) || (!isBusiness && this.kycForm.controls.step_1.get('privateAcc').valid);
+  }
+
+  step2IsValid(): boolean {
+    return this.step1IsValid() && this.kycForm.controls.step_2.touched && this.kycForm.controls.step_2.valid;
+  }
+
+  step3IsValid(): boolean {
+    return this.step2IsValid() && this.kycForm.controls.step_3.valid;
+  }
+
+  step4IsValid(): boolean {
+    return this.step3IsValid() && this.kycForm.controls.step_4.valid;
+  }
+
+  step5IsValid(): boolean {
+    return this.step4IsValid() && this.kycForm.controls.step_5.valid;
+  }
+
+  step6IsValid(): boolean {
+    return this.step4IsValid() && this.kycForm.controls.step_6.valid;
+  }
+
+  step7IsValid(): boolean {
+    return this.step6IsValid() && this.kycForm.controls.step_7.valid;
+  }
+
+  step8IsValid(): boolean {
+    return this.step7IsValid() && this.kycForm.controls.step_8.valid;
+  }
 }

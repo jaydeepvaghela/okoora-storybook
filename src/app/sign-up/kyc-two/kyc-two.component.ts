@@ -88,6 +88,7 @@ export class KycTwoComponent {
 
     // this.kycS.loading$.next(true);
     // this.kycS.verificationCodeStatus.next('DEFAULT');
+    this.nextStepEvent.next('NEXT');
     this.emailSignUp$.next(email);
   }
 

@@ -5,7 +5,6 @@
                 <div class="step-2__content col-12">
                     <div class="input-wrapper">
                         <span >Your email</span>
-
                         <input type="email" (keydown)="restrictSpecialCharacters($event)" matInput formControlName="email" class="form-control focusable old-input" appOnlyEmail>
                     </div>
                     <button [disabled]="kycForm.get('step_2.email').invalid || !kycForm.get('step_2.agree').value" [class.disabled]="kycForm.get('step_2.email').invalid|| !kycForm.get('step_2.agree').value" type="button" mat-raised-button

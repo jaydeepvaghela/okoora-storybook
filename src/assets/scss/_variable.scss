@@ -25,3 +25,115 @@ $font-14: 14px;
     --signature-hading-sub: #324ff3; // done
     --highlight-blue: #2563eb; // done
 }
+
+
+// variables to use for kyc
+//===BreakPoints===
+$xxs:375px;
+$xs:576px;
+$sm:768px;
+$md:992px;
+$lg:1024px;
+$xl: 1280px;
+$xxl:1800px;
+
+
+$color-white        : #fff;
+$color-black        : #000;
+$color-light-gray   : #f4f7fa;
+$color-light-gray-2   : #E2E2E2;
+$color-light-gray-3   : #f9f2f2;
+$color-1            : #fafafc;
+$color-2            : #1CBC95;
+$color-3            : #AEAEAE;
+$color-4            : #8e8e8e;
+$color-5            : #909090;
+$color-6            : #5A6885;
+$color-7            : #525252;
+$color-8            : #334659;
+$color-9            : #ED2854;
+$color-10           : #fba728;
+$color-11           : #396bb4;
+$color-12           : #58D9F9;
+$color-13           : #f5f7fb;
+$color-14           : #ff0000;
+$color-15               : #D4DAFD;
+$color-16: #1B1D33;
+$color-17: #f7fafc;
+$color-18: #DEE1E4;
+$color-19: #EEEEEE;
+
+// Okoora colors
+$color-blaze-orange     : #FF6805;
+$color-blue             : #2947F2;
+$color-bright-turquoise : #05F2F2;
+$color-stratos          : #01031C;
+$color-blue-royal          : #3F5AF3;
+
+// Bootstrap colors
+$color-primary: #007bff;
+$color-secondary: #6c757d;
+$color-success: #28a745;
+$color-info: #17a2b8;
+$color-warning: #ffc107;
+$color-danger: #dc3545;
+
+$btn-c-1                : rgba(212, 218, 253, 1);
+$btn-c-2                : rgba(204, 204, 209, 1);
+
+$color-blaze-orange-2: #ff68051a;
+$color-bright-turquoise-2: #05f2f217;
+$color-blue-2: #2947f21a;
+
+/**
+* FONTS
+*/
+$he_font: 'Rubik';
+$font-1                 : 'Manrope', $he_font, sans-serif; // << main font (for text elements)
+$font-2                 : 'Epilogue', $he_font, sans-serif; // << secondary font (for headings)
+$font-family-main       : $font-1, $he_font, sans-serif;
+
+/**
+* FONT WEIGHTS
+*/
+$fw-thin                : 100;
+$fw-extra-light         : 200;
+$fw-light               : 300;
+$fw-book                : 350;
+$fw-regular             : 400;
+$fw-medium              : 500;
+$fw-semi-bold           : 600;
+$fw-bold                : 700;
+$fw-extra-bold          : 800;
+$fw-black               : 900;
+
+/*
+    BORDERS
+*/
+$border--1              : 1px solid #E2E2E2;
+
+
+/**
+* SIZES
+*/
+$borderR--1             : 20px;
+$containers-mt          : 5rem;
+$logo-size--1: 20rem;
+
+//===Font Weights===
+$fw-thin: 100;
+$fw-extra-light: 200;
+$fw-light: 300;
+$fw-book: 350;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semi-bold: 600;
+$fw-bold: 700;
+$fw-extra-bold: 800;
+$fw-black: 900;
+
+//===Spaces===
+$fixed-items-unit: 3rem;
+
+//===Colors===
+$primary-color: rgb(6, 102, 235);

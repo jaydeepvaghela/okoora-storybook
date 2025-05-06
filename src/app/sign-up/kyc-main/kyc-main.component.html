@@ -143,7 +143,7 @@
                                 (nextStepEvent)="stepHandler($event)">
                             </app-kyc-two>
                         </ng-container>
-                        <!-- <ng-container *ngSwitchCase="Esteps.emailConfirmation">
+                        <ng-container *ngSwitchCase="Esteps.emailConfirmation">
                             <kyc-email-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)">
                             </kyc-email-confirm>
@@ -153,15 +153,16 @@
                                 (nextStepEvent)="stepHandler($event)" [nextStepIsValid]="nextStepIsValid">
                             </kyc-phone>
                         </ng-container>
-                        <ng-container *ngSwitchCase="Esteps.phoneConfirmation">
-                            <kyc-phone-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                                (nextStepEvent)="stepHandler($event)">
-                            </kyc-phone-confirm>
-                        </ng-container>
+                        
                         <ng-container *ngSwitchCase="Esteps.createPassword">
                             <kyc-create-password [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)" (loginEvent)="goToLogin()">
                             </kyc-create-password>
+                        </ng-container>
+                        <!-- <ng-container *ngSwitchCase="Esteps.phoneConfirmation">
+                            <kyc-phone-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
+                                (nextStepEvent)="stepHandler($event)">
+                            </kyc-phone-confirm>
                         </ng-container>
                         <ng-container *ngSwitchCase="Esteps.personalDetails">
                             <kyc-personal-details [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"

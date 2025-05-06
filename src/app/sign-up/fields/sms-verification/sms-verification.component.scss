@@ -1,0 +1,36 @@
+@import "../../../../assets/scss/variable";
+@import "../../../../assets/scss/components";
+
+.sms-ver-wrapper {
+
+    img {
+        margin-right : 6rem;
+    }
+
+    .ver-title {
+        font-size : 24px;
+    }
+
+    .ver-sub-title {
+        margin-bottom : 4.6rem;
+    }
+
+    .masked-input {
+        height        : 55px;
+        width         : 66px;
+        border        : none;
+        border-bottom : 2.8px solid #334659;
+        border-radius : 0;
+        text-align    : center;
+        font-size     : 2.5rem;
+
+        &:not(:last-child) {
+            margin-right : 30px;
+        }
+    }
+
+    .error-msg {
+      color: #dc3545;
+      font-weight: 900;
+    }
+}
