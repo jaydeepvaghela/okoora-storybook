@@ -148,7 +148,7 @@
                                 (nextStepEvent)="stepHandler($event)">
                             </kyc-email-confirm>
                         </ng-container>
-                        <!-- <ng-container *ngSwitchCase="Esteps.phone">
+                        <ng-container *ngSwitchCase="Esteps.phone">
                             <kyc-phone [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)" [nextStepIsValid]="nextStepIsValid">
                             </kyc-phone>
@@ -163,7 +163,7 @@
                             <kyc-personal-details [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)">
                             </kyc-personal-details>
-                        </ng-container> -->
+                        </ng-container>
                         <!-- <ng-container *ngSwitchCase="Esteps.personalAddress">
                             <kyc-address [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)" (loginEvent)="goToLogin()">
