@@ -16,6 +16,7 @@ import { KycOneComponent } from '../kyc-one/kyc-one.component';
 import { KycPhoneComponent } from '../kyc-phone/kyc-phone.component';
 import { KycTwoComponent } from '../kyc-two/kyc-two.component';
 import { KycPersonalDetailsComponent } from '../kyc-personal-details/kyc-personal-details.component';
+import { KycAddressComponent } from '../kyc-address/kyc-address.component';
 
 // import { select, Store } from "@ngrx/store";
 
@@ -31,7 +32,8 @@ import { KycPersonalDetailsComponent } from '../kyc-personal-details/kyc-persona
         KycEmailConfirmComponent,
         KycPhoneComponent,
         KycCreatePasswordComponent,
-        KycPersonalDetailsComponent
+        KycPersonalDetailsComponent,
+        KycAddressComponent
     ],
     templateUrl: './kyc-main.component.html',
     styleUrls: ['./kyc-main.component.scss'],

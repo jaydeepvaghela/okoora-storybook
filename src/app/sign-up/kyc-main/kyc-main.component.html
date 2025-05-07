@@ -104,10 +104,10 @@
 
                         <ng-container *ngSwitchDefault>
                             <h1 class="title">
-                                <button *ngIf="showPrevBtn()" class="action-btn in-title--mobile"
+                                <!-- <button *ngIf="showPrevBtn()" class="action-btn in-title--mobile"
                                     (click)="handlePreviousBtn()">
                                     <span class="fas fa-chevron-left"></span>
-                                </button>
+                                </button> -->
                                 {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
                             </h1>
                             <p class="kyc-p--1">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>
@@ -164,11 +164,11 @@
                                 (nextStepEvent)="stepHandler($event)">
                             </kyc-personal-details>
                         </ng-container>
-                        <!-- <ng-container *ngSwitchCase="Esteps.personalAddress">
+                        <ng-container *ngSwitchCase="Esteps.personalAddress">
                             <kyc-address [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)" (loginEvent)="goToLogin()">
                             </kyc-address>
-                        </ng-container> -->
+                        </ng-container>
                         <!-- <ng-container *ngSwitchCase="Esteps.phoneConfirmation">
                             <kyc-phone-confirm [parentFormGroup]="kycForm" [kycForm]="kycForm" [stepsObj]="stepsObj"
                                 (nextStepEvent)="stepHandler($event)">

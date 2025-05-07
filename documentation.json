@@ -9765,8 +9765,377 @@
             "templateData": "<div class=\"hedge-proposal-container loader-wrapper\">\r\n  <div class=\"hedge-header\">\r\n    <h3 class=\"hedge-heading\">Hedging proposal</h3>\r\n  </div>\r\n  <div class=\"hedge-details\">\r\n    <div class=\"hedge-type-section\">\r\n      <label class=\"hedge-label\">Hedge type</label>\r\n      <mat-select class=\"hedge-select\" panelClass=\"risk-proposal-hedge-sel\" [(value)]=\"selectedHedgeType\" (selectionChange)=\"changeSelectedHedgeType($event)\">\r\n        <mat-option *ngFor=\"let type of hedgeTypes\" [value]=\"type\">{{ HedgingTypeDisplayNames[type] }}</mat-option>\r\n      </mat-select>\r\n    </div>\r\n\r\n    <div class=\"hedge-details-inner\">\r\n      <div class=\"hedge-total-section values-wrapper\">\r\n        <label class=\"hedge-label\">Total hedge amount</label>\r\n        <div class=\"currency-info\">\r\n          <div class=\"amount-wrapper\">\r\n            <span class=\"hedge-currency\">{{ hedgedCurrencySign }}</span>\r\n            <span class=\"hedge-total-amount\">{{ commaseparate(hedgeDetails.totalHedgeAmount,2) || 0 }}</span>\r\n            <span class=\"hedge-percentage\">{{ selection.hasValue() ? commaseparate(hedgeDetails.totalHedgePercent,2) : 0 }}%</span>\r\n          </div>\r\n          <span class=\"hedge-period\">{{ getHedgeMonthsCount() }} months</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"hedge-rate-section values-wrapper\">\r\n        <label class=\"hedge-label\">Avg hedge rate</label>\r\n        <div class=\"currency-info\">\r\n          <span class=\"hedge-rate\">{{ commaseparate(hedgeDetails.avgHedgeRate,4) || 0 }}</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"hedge-collateral-section values-wrapper\">\r\n        <label class=\"hedge-label\">Required collateral</label>\r\n        <div class=\"currency-info\">\r\n          <span class=\"hedge-currency\">{{ hedgeDetails.collateralAndPriceCur.sign }}</span>\r\n          <span class=\"hedge-collateral\">{{ commaseparate(hedgeDetails.requiredCollateral, 2) || 0 }}</span>\r\n          <p \r\n            class=\"hedge-deposit-link\" \r\n            *ngIf=\"(selectedHedgeType !== 2) && (hedgeDetails.requiredCollateral > wallet_Amount)\" \r\n            (click)=\"onMakeDeposit()\">Make deposit</p>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"hedge-price-section values-wrapper\">\r\n        <label class=\"hedge-label\">Price</label>\r\n        <div class=\"currency-info\">\r\n          <span class=\"hedge-currency\">{{ hedgeDetails.collateralAndPriceCur.sign }}</span>\r\n          <span class=\"hedge-price\">{{ commaseparate(hedgeDetails.price, 2) || 0 }}</span>\r\n          <p \r\n            class=\"hedge-deposit-link\" \r\n            *ngIf=\"(selectedHedgeType !== 1) && (hedgeDetails.price > wallet_Amount)\" \r\n            (click)=\"onMakeDeposit()\">Make deposit</p>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"hedge-actions\">\r\n        <button class=\"hedge-all-button\" [disabled]=\"hedgeDetails.totalHedgeAmount == 0\" mat-raised-button color=\"primary\" \r\n          (click)=\"hedgeAllProposals()\">Hedge All</button>\r\n        <p class=\"hedge-proposal-refresh\" *ngIf=\"showHedgeProposalMessage && selection.hasValue()\">Click “Hedge All” for an updated proposal</p>\r\n        <span class=\"error-month\" *ngIf=\"!selection.hasValue() && !showLoader\">Please select months to hedge</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"hedge-table-section\">\r\n    <table mat-table [dataSource]=\"hedgedMonthsfromAPI\" class=\"hedge-table mat-elevation-z8\">\r\n      <!-- Checkbox Column -->\r\n      <ng-container matColumnDef=\"select\">\r\n        <th mat-header-cell *matHeaderCellDef>\r\n          <mat-checkbox class=\"filter-checkbox select-all\"\r\n            (change)=\"$event ? toggleAllRows() : null\"\r\n            [checked]=\"selection.hasValue() && isAllSelected()\"\r\n            [indeterminate]=\"selection.hasValue() && !isAllSelected()\"\r\n            [aria-label]=\"checkboxLabel()\"\r\n          ></mat-checkbox>\r\n        </th>\r\n\r\n        <td mat-cell *matCellDef=\"let row; let i = index\" >\r\n          <mat-checkbox class=\"filter-checkbox\"\r\n           (click)=\"$event.stopPropagation()\"\r\n            (change)=\"toggleRow(row)\"\r\n            [checked]=\"selection.isSelected(row)\"\r\n            [aria-label]=\"checkboxLabel(row)\"\r\n            [ngClass]=\"{'disabled-cell': hedgedMonthsfromAPI[i]?.status?.type == 3 || hedgedMonthsfromAPI[i]?.status?.type == 5}\"\r\n          ></mat-checkbox>\r\n        </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"expiryDate\" class=\"exposer-month\">\r\n        <th mat-header-cell *matHeaderCellDef>Expiry Date</th>\r\n        <td mat-cell *matCellDef=\"let element; let i = index\" [ngClass]=\"{'disabled-cell': hedgedMonthsfromAPI[i]?.status?.type == 3}\" style=\"position: relative;\">\r\n          <span class=\"date-expand\" (click)=\"openExpiryDateCalendar(element, i)\">\r\n            <span [ngClass]=\"{'err-status-two': hedgedMonthsfromAPI[i]?.status?.type == 2}\">{{element?.expiryDate}}</span>\r\n            <mat-icon>expand_more</mat-icon>\r\n            <mat-form-field class=\"monthly-date\">\r\n              <input matInput [matDatepicker]=\"datepicker\" [(ngModel)]=\"element.date\" />\r\n              <mat-datepicker-toggle matIconSuffix [for]=\"datepicker\"></mat-datepicker-toggle>\r\n              <mat-datepicker #datepicker panelClass=\"cashflow-date-calendar-cd\" (dateChange)=\"applyDate(i, element)\">\r\n                <mat-datepicker-actions>\r\n                  <button mat-button matDatepickerCancel class=\"cancel-cdc\">Cancel</button>\r\n                  <button mat-raised-button matDatepickerApply class=\"set-cdc\" (click)=\"applyDate(i, element)\">Set</button>\r\n                  <button mat-button matDatepickerCancel class=\"close-cdc\">\r\n                    <img src=\"images/close-btn-cashflow.svg\" />\r\n                  </button>\r\n                </mat-datepicker-actions>\r\n              </mat-datepicker>\r\n            </mat-form-field>\r\n          </span>\r\n        </td>\r\n      </ng-container>\r\n\r\n      <!-- Hedge rate Column -->\r\n      <ng-container matColumnDef=\"hedgeRate\">\r\n        <th mat-header-cell *matHeaderCellDef>Hedge rate</th>\r\n        <td mat-cell *matCellDef=\"let element; let i = index\" [ngClass]=\"{'disabled-cell': hedgedMonthsfromAPI[i]?.status?.type == 3}\"><span [ngClass]=\"{'err-status-two': hedgedMonthsfromAPI[i]?.status?.type == 2}\">{{ element.hedgeRate }}</span></td>\r\n      </ng-container>\r\n\r\n      <!-- Set hedge amount Column -->\r\n      <ng-container matColumnDef=\"setHedgeAmount\">\r\n        <th mat-header-cell *matHeaderCellDef>Set Hedge Amount</th>\r\n        <td mat-cell *matCellDef=\"let element; let i = index\">\r\n          <div class=\"amount-hedge-slider\">\r\n            <div class=\"sliders-inner\" [ngClass]=\"{ 'reset-applied': element.protectAmount == element.recommendedHedgeAmount }\">\r\n              <mat-slider\r\n                #slider\r\n                class=\"amount-hedge-slider-inner\"\r\n                (input)=\"onSliderInput($event, element)\"\r\n                min=\"0\"\r\n                max=\"{{element?.maxHedge_amount}}\"\r\n                [ngClass]=\"{'slider-input-disabled': element?.openEditForSelling || hedgedMonthsfromAPI[i]?.status?.type == 3}\"\r\n                [disabled]=\"element?.openEditForSelling\"\r\n              >\r\n              <input matSliderThumb [value]=\"element.protectAmount\" />\r\n              </mat-slider>\r\n              <img class=\"z-1 tool-tip-cs\" src=\"images/circle-help.svg\" [ngbTooltip]=\"setHedge\" container=\"body\" placement=\"top\" [tooltipClass]=\"'hedging-amount-ttp'\" />\r\n              <a [ngClass]=\"{'invisible': element.protectAmount == element.recommendedHedgeAmount}\" class=\"reset-link\" href=\"javascript:void(0)\" (click)=\"resetToCollateral(element, i)\">Reset</a>\r\n            </div>\r\n            <img\r\n              [ngbTooltip]=\"shieldSet\"\r\n              [tooltipClass]=\"'recommended-amount-ttp'\"\r\n              [ngClass]=\"{'invisible': element.protectAmount == element.recommendedHedgeAmount}\"\r\n              src=\"images/slider-custom.svg\"\r\n              alt=\"Slider Marker\"\r\n              class=\"recommended-slider-marker\"\r\n              [style.left.px]=\"calculateImagePosition(element.recommendedHedgeAmount, i)\"\r\n              [style.left.px]=\"calculateImagePosition(element.recommendedHedgeAmount, i)\"\r\n            />\r\n            <ng-template #setHedge>\r\n              <div class=\"amount-hedgetp-wrapper\">\r\n                <div class=\"values\">\r\n                  <span class=\"parent\">Total exposure is</span>\r\n                  <span class=\"subtext\">{{hedgedCurrencySign}}{{ commaseprate(element?.totalExposureAmount,2)}}</span>\r\n                </div>\r\n                <div class=\"values\">\r\n                  <span class=\"parent\">Already hedged</span>\r\n                  <span class=\"subtext\">{{hedgedCurrencySign}}{{ commaseprate(hedgeDetails.monthlyHedge[i].alreadyHedge,2)}}</span>\r\n                </div>\r\n                <div class=\"values max-hedge\">\r\n                  <span class=\"parent\">Maximum hedge amount</span>\r\n                  <span class=\"subtext\">{{hedgedCurrencySign}}{{  commaseprate(element?.maxHedge_amount,2) }}</span>\r\n                </div>\r\n              </div>\r\n            </ng-template>\r\n            <ng-template #shieldSet>\r\n              <div class=\"recommended-shield-ttp\">Additional recommended hedge <span class=\"amount\">{{hedgedCurrencySign}}{{commaseparate(element?.collateral,0)}}</span> </div>\r\n           </ng-template>\r\n          </div>\r\n        </td>\r\n      </ng-container>\r\n\r\n      <ng-container matColumnDef=\"hedgeAmount\" class=\"exposer-amount\">\r\n        <th mat-header-cell *matHeaderCellDef> Hedge amount </th>\r\n        <td mat-cell *matCellDef=\"let element; let i = index\" [ngClass]=\"{'disabled-cell': hedgedMonthsfromAPI[i]?.status?.type == 3}\">\r\n          <div class=\"buying-price\">\r\n            <label class=\"amount-text\" [ngClass]=\"{'err-status-two': hedgedMonthsfromAPI[i]?.status?.type == 2}\"><span [ngClass]=\"{'err-status-two weight': hedgedMonthsfromAPI[i]?.status?.type == 2}\">{{hedgedCurrencySign}}{{ commaseparate(element?.protectAmount,2) }}</span></label>\r\n            <button class=\"edit-exposer\" (click)=\"editSelling(element, i)\">\r\n              <img src=\"images/edit-exposure-hedge.svg\">\r\n            </button>\r\n          </div>\r\n          <div class=\"edit-exposer-wrap\" [ngClass]=\"{'with-error': errorMessage}\" *ngIf=\"element?.openEditForSelling && openEditSellingIndex === i\">\r\n            <div class=\"edit-inner\">\r\n              <div class=\"input-wrap\">\r\n                <span>{{hedgedCurrencySign}}</span>\r\n                  <input\r\n                    type=\"text\"\r\n                    [(ngModel)]=\"hedgeAmountForEdit\"\r\n                    class=\"edit-price\"\r\n                    (input)=\"checkMaximumValue(element,$event)\"\r\n                    appOnlyNumbers\r\n                    [maxLength]=\"14\">\r\n                <button class=\"clear-input\" (click)=\"clearInput(i)\">\r\n                  <img src=\"images/clear_input.svg\">\r\n                </button>\r\n              </div>\r\n              <div class=\"edit-e-option\">\r\n                <button class=\"cancel-btn\" (click)=\"cancelEditSelling(element, i)\">Cancel</button>\r\n                <button class=\"save-btn\" (click)=\"saveEditSelling(element, i)\" [class.disabled]=\"saveButtonDisable\" [disabled]=\"saveButtonDisable\">Save</button>\r\n              </div>\r\n            </div>\r\n            <span class=\"error-message\" *ngIf=\"errorMessage\">Please enter equal to max hedge amount</span>\r\n          </div>\r\n        </td>\r\n      </ng-container>\r\n\r\n      <!-- Hedged Column -->\r\n      <ng-container matColumnDef=\"hedged\">\r\n        <th mat-header-cell *matHeaderCellDef></th>\r\n        <td mat-cell *matCellDef=\"let element; let i = index\">\r\n          <!-- <pre>{{hedgedMonthsfromAPI[i] | json}}</pre> -->\r\n          <!-- try removing question mark that is before [i] -->\r\n          <button [ngClass]=\"{'save-activated': element?.saveActivate}\" [ngbTooltip]=\"saveTooltip\" placement=\"top\" tooltipClass=\"saveToolWrap\" class=\"save-row-btn\">Save</button>\r\n          <ng-template #saveTooltip>\r\n            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\">\r\n              <circle cx=\"6.68066\" cy=\"7.2627\" r=\"5.33301\" stroke=\"#F0F0F0\" stroke-width=\"2\"/>\r\n              <path d=\"M12.0392 7.2627C12.5774 7.2627 13.0213 6.82387 12.9388 6.29203C12.833 5.60948 12.6158 4.94663 12.294 4.33053C11.8212 3.42546 11.1366 2.64812 10.2985 2.06479C9.46042 1.48146 8.4937 1.10944 7.48077 0.980433C6.46784 0.851427 5.43873 0.969265 4.48118 1.3239C3.52363 1.67854 2.66603 2.25946 1.98149 3.01714C1.29695 3.77482 0.805769 4.68679 0.549824 5.67531C0.293879 6.66383 0.280758 7.69958 0.511579 8.69426C0.668702 9.37135 0.935688 10.0158 1.29996 10.6026C1.58379 11.0599 2.20649 11.1037 2.61485 10.7531C3.02321 10.4025 3.05846 9.79033 2.80654 9.31473C2.62971 8.98088 2.49613 8.62437 2.41012 8.2537C2.25033 7.56513 2.25941 6.84813 2.43659 6.16383C2.61377 5.47953 2.95379 4.84822 3.42766 4.32371C3.90153 3.79921 4.4952 3.39707 5.15807 3.15157C5.82093 2.90607 6.53333 2.8245 7.23454 2.9138C7.93574 3.0031 8.60495 3.26064 9.18512 3.66445C9.76529 4.06826 10.2392 4.60637 10.5665 5.23291C10.7427 5.57018 10.8735 5.9277 10.9568 6.2962C11.0755 6.82115 11.501 7.2627 12.0392 7.2627Z\" fill=\"#2947F2\"/>\r\n            </svg> Loading your new proposal\r\n          </ng-template>\r\n          <ng-container *ngIf=\"hedgedMonthsfromAPI[i]?.status?.type == 1 || hedgedMonthsfromAPI[i]?.status?.type == 5\">\r\n            <button mat-raised-button color=\"primary\" class=\"hedge-btn\" [disabled]=\"element.protectAmount == 0\" (click)=\"openQuickHedgeDrawer(element)\">Hedge</button>\r\n          </ng-container>\r\n          <ng-container *ngIf=\"hedgedMonthsfromAPI[i]?.status?.type == 3\">\r\n            <div class=\"d-inline cursor-pointer\"> <!-- (click)=\"openQuickHedgeDrawer(element)\" -->\r\n              <picture>\r\n                <img width=\"52px\" height=\"52px\" src=\"images/mass-payment/success.gif\" alt=\"success\">\r\n              </picture>\r\n              <label class=\"row-hedged\">Hedged</label>\r\n            </div>\r\n          </ng-container>\r\n          <div class=\"transaction-unavailable-wrapper\" *ngIf=\"shouldShowError(i)\">\r\n            <img src=\"images/error-outline.svg\" alt=\"error\">\r\n            <p class=\"transaction-unavailable-err\">\r\n              This transaction is currently unavailable. You can continue with other transactions or\r\n              <a (click)=\"refreshPageInError(element)\">refresh</a> the page\r\n              <span>(unsaved changes will be lost)</span>\r\n            </p>\r\n          </div>\r\n        </td>\r\n      </ng-container>\r\n\r\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n      <tr mat-row *matRowDef=\"let row; let i =index; columns: displayedColumns\" \r\n        [ngClass]=\"{ 'disabled-row': hedgedMonthsfromAPI[i]?.status?.type == 3, \r\n        'padding-for-error': (this.hedgeDetails.monthlyHedge[i].hedgeError == true) }\" \r\n        [hidden]=\"hedgedMonthsfromAPI[i]?.status?.type == 4 || (hedgedMonthsfromAPI[i]?.status?.type == 2)\">\r\n      </tr>\r\n\r\n       <!-- [hidden]=\"hedgedMonthsfromAPI[i]?.status?.type == 2\" -->\r\n    </table>\r\n    <!-- <div class=\"transaction-unavailable-wrapper\">\r\n      <img src=\"assets/images/error-outline.svg\" alt=\"error\">\r\n      <p class=\"transaction-unavailable-err\">This transaction is currently unavailable. You can continue with other transactions or <a href=\"\">refresh</a> the page <span>(unsaved changes will be lost)</span> </p>\r\n    </div> -->\r\n    <div class=\"hedge-actions\">\r\n      <button class=\"hedge-all-button\" mat-raised-button color=\"primary\" [disabled]=\"hedgeDetails.totalHedgeAmount == 0\" (click)=\"hedgeAllProposals()\">Hedge All</button>\r\n      <p class=\"hedge-proposal-refresh\" *ngIf=\"showHedgeProposalMessage\">Click “Hedge All” for an updated proposal</p>\r\n    </div>\r\n\r\n  </div>\r\n</div>\r\n"
         },
         {
+            "name": "KycAddressComponent",
+            "id": "component-KycAddressComponent-b43a6423d13291623ffac28f392fc6eca58fef6d7bca5d122181691a6cc066896dae63612a29b30362f0dc72dbd4b722a6efb2734d2d86e4677876c8ffc2e353",
+            "file": "src/app/sign-up/kyc-address/kyc-address.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "kyc-address",
+            "styleUrls": [
+                "./kyc-address.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./kyc-address.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "kycForm",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "FormGroup",
+                    "decorators": []
+                },
+                {
+                    "name": "parentFormGroup",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "FormGroup",
+                    "decorators": []
+                },
+                {
+                    "name": "stepsObj",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "IStepsObj",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "loginEvent",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 32,
+                    "type": "EventEmitter<void>"
+                },
+                {
+                    "name": "nextStepEvent",
+                    "defaultValue": "new EventEmitter<StepActionType>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "addressInHebrew",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "autoApproved",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "componentDestroyed",
+                    "defaultValue": "new Subject<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "countryArr",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "CountriesData[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "createUser$",
+                    "defaultValue": "new Subject<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
+                },
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                },
+                {
+                    "name": "showLoader",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "shuftiData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "step_6_passwords",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38
+                },
+                {
+                    "name": "step_8",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "callCreateNewUserAPI",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 111,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleNextStep",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 200,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "hendelEditHebrewFields",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 194,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 206,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TranslateModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ErrorComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "SelectCountryComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { HttpErrorResponse } from '@angular/common/http';\r\nimport { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';\r\nimport { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';\r\nimport { EMPTY, Subject } from 'rxjs';\r\nimport { catchError, skipWhile, switchMap, takeUntil, tap, throttleTime } from 'rxjs/operators';\r\n\r\nimport { ActivatedRoute, Router } from \"@angular/router\";\r\nimport { CommonModule, DOCUMENT } from \"@angular/common\";\r\nimport { CountriesData, EErrorMessages, IStepsObj } from '../kyc';\r\nimport { StepActionType } from '../types/global.type';\r\nimport { KycService } from '../services/kyc.service';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { ErrorComponent } from '../fields/error/error.component';\r\nimport { SelectCountryComponent } from '../fields/select-country/select-country.component';\r\n\r\n@Component({\r\n    selector: 'kyc-address',\r\n    imports: [CommonModule, ReactiveFormsModule, TranslateModule, ErrorComponent, SelectCountryComponent ],\r\n    templateUrl: './kyc-address.component.html',\r\n    styleUrls: ['./kyc-address.component.scss']\r\n})\r\n\r\nexport class KycAddressComponent implements OnInit, OnDestroy {\r\n    componentDestroyed = new Subject<any>();\r\n    @Input('parentFormGroup')\r\n    parentFormGroup!: FormGroup;\r\n    @Input('kycForm')\r\n    kycForm!: FormGroup;\r\n    @Input('stepsObj') stepsObj!: IStepsObj;\r\n    shuftiData: any;\r\n    @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();\r\n    @Output() loginEvent: EventEmitter<void> = new EventEmitter<void>();\r\n    countryArr!: CountriesData[];\r\n    showLoader: any = false;\r\n    autoApproved: boolean = true;\r\n    step_8!: FormGroup;\r\n    addressInHebrew!: FormGroup;\r\n    step_6_passwords!: FormGroup;\r\n    // createUser$ = new Subject();\r\n    createUser$ = new Subject<boolean>();\r\n    loading = false;\r\n\r\n    constructor(\r\n        private route: ActivatedRoute,\r\n        private KycS: KycService,\r\n        private cd: ChangeDetectorRef,\r\n        private router: Router,\r\n        private formBuilder: FormBuilder,\r\n        @Inject(DOCUMENT) private document: Document\r\n    ) {\r\n    }\r\n\r\n    ngOnInit(): void {\r\n        this.step_6_passwords = <FormGroup>this.kycForm.get('step_6')?.get('passwords');\r\n        this.step_8 = <FormGroup>this.kycForm.get('step_8');\r\n        // this.step_8.get('country').setValue('Israel');\r\n\r\n        this.KycS.allCountries$\r\n            .pipe(\r\n                skipWhile(countries => !Array.isArray(countries)),\r\n                takeUntil(this.componentDestroyed)\r\n            )\r\n            .subscribe(countries => {\r\n                this.countryArr = countries;\r\n            });\r\n\r\n        this.KycS.loading$.subscribe(loadingState => {\r\n            this.showLoader = loadingState;\r\n            this.cd.markForCheck();\r\n        })\r\n\r\n        this.addressInHebrew =\r\n            this.formBuilder.group({\r\n                city_he: new FormControl('', Validators.pattern(hebrewPattern)),\r\n                street_he: new FormControl('', Validators.pattern(hebrewPattern))\r\n            });\r\n\r\n        this.KycS.shuftiData.subscribe(shuftiData => {\r\n            this.shuftiData = shuftiData;\r\n            const address_data = this.shuftiData['addressData'];\r\n            this.addressInHebrew.get('street_he')?.setValue(address_data['Street']);\r\n            this.addressInHebrew.get('city_he')?.setValue(address_data['City']);\r\n\r\n            this.autoApproved = this.shuftiData['autoApproved'];\r\n\r\n            if (this.autoApproved) {\r\n                this.addressInHebrew.controls['street_he'].disable();\r\n                this.addressInHebrew.controls['city_he'].disable();\r\n            }\r\n            this.cd.markForCheck();\r\n        })\r\n\r\n        this.autoApproved = this.shuftiData['autoApproved'];\r\n\r\n        if (this.autoApproved) {\r\n            this.addressInHebrew.controls['street_he'].disable();\r\n            this.addressInHebrew.controls['city_he'].disable();\r\n        }\r\n        this.cd.markForCheck();\r\n        this.kycForm.valueChanges.subscribe(values => {\r\n            // console.log({ values })\r\n        })\r\n        this.callCreateNewUserAPI();\r\n        this.createUser$.subscribe(loadingState => {\r\n          if(loadingState) {\r\n            this.callCreateNewUserAPI();\r\n          }\r\n        });\r\n    };//#ngOnInit\r\n\r\n    callCreateNewUserAPI() {\r\n      this.createUser$\r\n            .pipe(\r\n                tap(() => {\r\n                    this.KycS.loading$.next(true);\r\n                    this.loading = true;\r\n                }),\r\n                throttleTime(500),\r\n                switchMap(() => {\r\n                    // console.log(this.kycForm.getRawValue());\r\n                    const oldData = this.kycForm.getRawValue();\r\n                    const isCompany = oldData.step_1.companyAcc.isActive\r\n                    const newData = {\r\n                        accountType: oldData.step_1.companyAcc.isActive ? 2 : 1,\r\n                        email: oldData.step_2.email,\r\n                        countryCode: isCompany ? oldData.step_1.companyAcc.countryCode : oldData.step_1.privateAcc.countryCode, // Assumes ISO 2 code is already being used\r\n                        phoneCode: oldData.step_4.phone_code?.toString().replaceAll('+', ''),\r\n                        phoneNumber: oldData.step_4.phone,\r\n                        passwords: oldData.step_6.passwords,\r\n                        role: 1, // Constant value, assuming user is always created as 'admin'\r\n                        firstName: oldData.step_7.first_name,\r\n                        lastName: oldData.step_7.last_name,\r\n                        idNumber: oldData.step_7.id_number,\r\n                        birthDate: oldData.step_7.birth_date,\r\n                        city: oldData.step_8.city,\r\n                        address: oldData.step_8.street_address,\r\n                        houseNumber: \"\", // Not available in the old data structure, might need to be provided\r\n                        zipCode: oldData.step_8.zipcode,\r\n                        applicantId: oldData.step_7.applicantId,\r\n                        autoApproved: this.autoApproved\r\n                    };\r\n                    const ref = localStorage.getItem('referal');\r\n                    if (ref != null) {\r\n                        const refAff = Number(ref);\r\n                        if (!isNaN(refAff)) {\r\n                            // return this.KycS.createUserWithReferal(newData ,refAff)\r\n\r\n                        }\r\n                    }\r\n                    return []\r\n                }),\r\n                catchError((e: HttpErrorResponse) => {\r\n                    this.KycS.loading$.next(false);\r\n                    this.loading = false;\r\n                    return EMPTY;\r\n                })\r\n            )\r\n            .subscribe(r => {\r\n\r\n                if (r) {\r\n                    localStorage.removeItem('step')\r\n                    localStorage.removeItem('kycForm')\r\n                    window.location.href = localStorage.getItem('subSite') ? localStorage.getItem('subSite') + 'login' : '/login'\r\n\r\n                    this.nextStepEvent.next('NEXT');\r\n\r\n                    // this.KycS.UpdateRegistrationPersonalDetails(this.kycForm.getRawValue(), this.autoApproved)\r\n                    //     .pipe(\r\n                    //         throttleTime(500),\r\n                    //         catchError((e: HttpErrorResponse) => {\r\n                    //             this.KycS.loading$.next(false);\r\n                    //             return EMPTY;\r\n                    //         })\r\n                    //     )\r\n                    //     .subscribe(r => {\r\n                    //         // this.nextStepEvent.next('NEXT');\r\n                    //         // redirect the user to okoora login url\r\n                    //         // window.location.href = environment.appLoginURL;\r\n                    //         this.document.querySelector('html').classList.remove('signup-kyc');\r\n                    //         this.router.navigate(['/login']);\r\n                    //         setTimeout(() => {\r\n                    //             window.location.reload();\r\n                    //         }, 10);\r\n                    //     });\r\n                    // this.nextStepEvent.next('NEXT');\r\n                } else {\r\n                    this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong })\r\n                }\r\n                this.KycS.loading$.next(false);\r\n                this.loading = false;\r\n            });\r\n    }\r\n\r\n    hendelEditHebrewFields() {\r\n        this.autoApproved = false;\r\n        this.addressInHebrew.controls['street_he'].enable();\r\n        this.addressInHebrew.controls['city_he'].enable();\r\n    }\r\n\r\n    handleNextStep() {\r\n        // this.KycS.loading$.next(true);\r\n        this.createUser$.next(true);\r\n\r\n    };\r\n\r\n    ngOnDestroy() {\r\n        this.componentDestroyed.next(null);\r\n        this.componentDestroyed.complete();\r\n    };\r\n}\r\n\r\nconst hebrewPattern = /^[\\'\\\"\\`\\.\\s\\u0590-\\u05fe]+$/i;\r\n\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\r\n::ng-deep app-select-country {\r\n    mat-form-field {\r\n        width: 100%;\r\n    }\r\n}\r\n.icon {\r\n    position   : absolute;\r\n    top        : 50%;\r\n    right      : 2rem;\r\n    transform  : translateY(-50%);\r\n    cursor     : pointer;\r\n    transition : color 0.3s ease-in-out;\r\n\r\n    &:hover {\r\n        color : rgb(112, 110, 110);\r\n    }\r\n}\r\n.continue-btn {\r\n    background: linear-gradient(111.05deg, #444444 2.91%, #000000 96.88%);\r\n    border-radius: 40px;\r\n    font-size: 16px;\r\n    // line-height: 22px;\r\n    font-weight: 600;\r\n    color: #fff;\r\n    padding: 12px 0px;\r\n    height: auto;\r\n    transition: 0.3s;\r\n    position: relative;\r\n    width: 100% !important;\r\n    @media screen and (max-width: 1440px) {\r\n        // height: 25px;\r\n        width: 25px;\r\n    }\r\n\r\n    &.disabled {\r\n        background: #f5f5fa !important;\r\n        color: #c6c8cc !important;\r\n        cursor: not-allowed;\r\n    }\r\n\r\n}\r\n.form-group {\r\n    position: relative;\r\n}\r\n.custom-input-icon {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 10px;\r\n    padding: 10px;\r\n    // pointer-events: none;\r\n}\r\n.inside-input {\r\n    position: absolute;\r\n    right: 8px;\r\n}\r\n.row {\r\n    margin-top: 14px !important;\r\n}",
+                    "styleUrl": "./kyc-address.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "KycS",
+                        "type": "KycService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "cd",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "formBuilder",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "document",
+                        "type": "Document",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 41,
+                "jsdoctags": [
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "KycS",
+                        "type": "KycService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "cd",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "formBuilder",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "document",
+                        "type": "Document",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "templateData": "<form [formGroup]=\"parentFormGroup\">\r\n    <form [formGroup]=\"step_8\">\r\n        <div class=\"form-control-wrapper\">\r\n            <app-select-country [formFieldType]=\"'CUSTOM-FORM-FIELD'\" specialClasses=\"country-field disabled\"\r\n                [kycForm]=\"kycForm\" [currentFormGroup]=\"step_8\" currentformControlName=\"country\" [disabled]=\"false\"\r\n                [matLabelTranslation]=\"'fields.country' | translate\">\r\n            </app-select-country>\r\n            <div class=\"row\">\r\n                <div class=\"col-12\">\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\"> {{ 'fields.street_address' | translate }}</label>\r\n                        <input matInput formControlName=\"street_address\" autocomplete=\"off\" class=\"form-control\" appRestrictSpecialCharacters>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-6\">\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\"> {{ 'fields.city' | translate }}</label>\r\n                        <input matInput formControlName=\"city\" autocomplete=\"off\" class=\"form-control\" appRestrictSpecialCharacters>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-6\">\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\"> {{'fields.zipcode'| translate }}</label>\r\n                        <input matInput formControlName=\"zipcode\" autocomplete=\"off\" class=\"form-control\" appRestrictSpecialCharacters>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n\r\n        </div>\r\n\r\n\r\n        <div class=\"form-control-wrapper\" [formGroup]=\"addressInHebrew\"\r\n            *ngIf=\"kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value\">\r\n            <div class=\"row\">\r\n                <div class=\"col-6\">\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\"> {{ 'fields.street_he' | translate }}</label>\r\n                        <div class=\"input-icon form-group\">\r\n\r\n                            <input class=\"w-100\" type=\"text\" formControlName=\"street_he\" autocomplete=\"off\" matInput\r\n                                [ngClass]=\"{'disabled': autoApproved === true} \" class=\"form-control\">\r\n                            <app-error [HTMLType]=\"'MATERIAL'\" [controlName]=\"addressInHebrew.get('street_he')!\">\r\n                            </app-error>\r\n\r\n                            <button class=\"bg-none border-0 icon inside-input\" matSuffix type=\"button\"\r\n                                (click)=\"hendelEditHebrewFields()\">\r\n                                <img class=\"menu-icons\" src=\"assets/images/edit-icon2.svg\" alt=\"edit-icon\">\r\n                            </button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-6\">\r\n                    <div class=\"form-group\">\r\n                        <label for=\"password\"> {{ 'fields.city_he' | translate }}</label>\r\n                        <div class=\"input-icon form-group\">\r\n\r\n                            <input class=\"w-100\" type=\"text\" formControlName=\"city_he\" autocomplete=\"off\" matInput\r\n                                [ngClass]=\"{'disabled': autoApproved === true} \" class=\"form-control\">\r\n                            <app-error [HTMLType]=\"'MATERIAL'\" [controlName]=\"addressInHebrew.get('city_he')!\">\r\n                            </app-error>\r\n                            <button class=\"bg-none border-0 icon inside-input\" matSuffix type=\"button\"\r\n                                (click)=\"hendelEditHebrewFields()\">\r\n                                <img class=\"menu-icons\" src=\"assets/images/edit-icon2.svg\" alt=\"edit-icon\">\r\n                            </button>\r\n\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-12\">\r\n                <div class=\"form-group\">\r\n                    <button\r\n                        [disabled]=\"(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value && addressInHebrew.invalid) || !step_8.valid || (step_8.get('street_address')?.value == '' ||  step_8.get('city')?.value == '' || step_8.get('zipcode')?.value == '') || showLoader||loading\"\r\n                        [class.disabled]=\"(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value && addressInHebrew.invalid) || !step_8.valid || (step_8.get('street_address')?.value == '' ||  step_8.get('city')?.value == '' || step_8.get('zipcode')?.value == '') || showLoader||loading\"\r\n                        type=\"button\" mat-raised-button color=\"primary\" class=\"continue-btn\" (click)=\"handleNextStep()\" id=\"kycaddress-continue-btn\">\r\n                        {{ 'KYC.ContinueLogin' | translate}}\r\n                    </button>\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n"
+        },
+        {
             "name": "KycCreatePasswordComponent",
-            "id": "component-KycCreatePasswordComponent-5f13da718b20c6b8e6263eb49f4e4b2e2e6a93b85a33a44564838b2913dbdd5cb6b2626ef55e0570f24a4ab7674dd2bed94af6701190f0b373fcc6d693db4ffd",
+            "id": "component-KycCreatePasswordComponent-0196812a6feca56e005114741a86f21865e5ea90ccdb8f97a3b505e989ded1e4906278d246a6213741d9f4cda4ec2c0bc3983c3b6ea3b344f0ccdffca98fe49f",
             "file": "src/app/sign-up/kyc-create-password/kyc-create-password.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -10070,7 +10439,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 126,
+                    "line": 127,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10100,7 +10469,7 @@
                     "optional": false,
                     "returnType": "AbstractControl | null",
                     "typeParameters": [],
-                    "line": 180,
+                    "line": 181,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10110,7 +10479,7 @@
                     "optional": false,
                     "returnType": "AbstractControl | null",
                     "typeParameters": [],
-                    "line": 176,
+                    "line": 177,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10120,7 +10489,7 @@
                     "optional": false,
                     "returnType": "FormGroup | null",
                     "typeParameters": [],
-                    "line": 172,
+                    "line": 173,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10140,7 +10509,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 220,
+                    "line": 221,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10167,7 +10536,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 211,
+                    "line": 212,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10195,7 +10564,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 185,
+                    "line": 186,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10253,7 +10622,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { BehaviorSubject, EMPTY, Subject } from 'rxjs';\r\nimport { AbstractControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms';\r\n\r\nimport { catchError, skip, switchMap, take, tap, throttleTime } from 'rxjs/operators';\r\nimport { HttpErrorResponse } from '@angular/common/http';\r\nimport { ActivatedRoute, ParamMap } from '@angular/router'\r\nimport { IStepsObj, EErrorMessages } from '../kyc';\r\nimport { StepActionType } from '../types/global.type';\r\nimport { CommonModule } from '@angular/common';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { KycService } from '../services/kyc.service';\r\n\r\nexport const pwdConfirming = (data: { key: string, confirmationKey: string }): ValidatorFn => {\r\n    const { key, confirmationKey } = data;\r\n\r\n    return (group: any) => {\r\n        const input = group.controls[key];\r\n        const confirmationInput = group.controls[confirmationKey];\r\n        return input.value !== confirmationInput.value ? { passwordNotEquivalent: true } : null\r\n    };\r\n}\r\n\r\n\r\n@Component({\r\n    selector: 'kyc-create-password',\r\n    imports: [CommonModule, ReactiveFormsModule, TranslateModule],\r\n    templateUrl: './kyc-create-password.component.html',\r\n    styleUrls: ['./kyc-create-password.component.scss'],\r\n})\r\nexport class KycCreatePasswordComponent implements OnInit {\r\n    hidePassword = true;\r\n    hideConfirmPassword = true;\r\n\r\n  componentDestroyed = new Subject<any>();\r\n  @Input('parentFormGroup')\r\n  parentFormGroup!: FormGroup;\r\n  @Input('kycForm') kycForm: any;\r\n  @Input('stepsObj') stepsObj!: IStepsObj;\r\n  @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();\r\n  foused = false;\r\n  minPasswordLength = 8;\r\n  _hasLowerCase = /[a-z]/;\r\n  _hasUpperCase = /[A-Z]/;\r\n  _hasDigit = /\\d/;\r\n  _hasSpecial = /[!@#$%^&*()\\[\\]{}\\\\\\-_+={}|\\\\:;'\",<>,.?/~`]/;\r\n  hasEightCharsListItem!: boolean;\r\n  hasSpecialListItem!: boolean;\r\n  hasDigitListItem!: boolean;\r\n  hasSpecial!: boolean;\r\n  hasUpper!: boolean;\r\n  hasDigit!: boolean;\r\n  hasLower!: boolean;\r\n  hasEight!: boolean;\r\n  illegally!: boolean;\r\n  isFromIsrael!: boolean;\r\n  showLoader: any = false;  \r\n  createUser$ = new BehaviorSubject<boolean>(false);\r\n  loading = false;\r\n  step_6_passwords!: FormGroup | any;\r\n\r\n    constructor(\r\n        private KycS: KycService,\r\n        private route: ActivatedRoute\r\n    ) {\r\n    }\r\n\r\n    ngOnInit(): void {\r\n        this.step_6_passwords = this.getPasswordsFormGroup()\r\n        console.log('this.kycForm?.value?.step_1',this.kycForm?.value?.step_1);\r\n        this.isFromIsrael = this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== null && this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== 'Israel' ? true : false;\r\n      this.checkStrength()\r\n    }\r\n\r\n    codeValidHandler() {\r\n        this.nextStepEvent.next('NEXT');\r\n    }\r\n    togglePasswordVisibility(): void {\r\n        this.hidePassword = !this.hidePassword;\r\n      }\r\n    toggleConfirmPasswordVisibility(): void {\r\n        this.hideConfirmPassword = !this.hideConfirmPassword;\r\n      }\r\n    checkStrength() {\r\n        this.illegally = false;\r\n        let pw = this.getPasswordControl()?.value;\r\n        this.hasEight = pw.length >= this.minPasswordLength;\r\n        this.hasDigit = this._hasDigit.test(pw);\r\n        this.hasSpecial = this._hasSpecial.test(pw);\r\n        this.hasLower = this._hasLowerCase.test(pw);\r\n        this.hasUpper = this._hasUpperCase.test(pw);\r\n        if (!this.hasEight || !this.hasDigit || !this.hasSpecial || !this.hasLower || !this.hasUpper) {\r\n            this.illegally = true;\r\n        }\r\n\r\n    }\r\n    handleNextStep() {\r\n        let pw = this.getPasswordControl()?.value;\r\n        if (!pw) {\r\n            console.error(`must enter password`);\r\n            return;\r\n        }\r\n        if (!this.kycForm.get('step_6').valid) {\r\n            console.error(`user was able to click continue even though button disabled.`);\r\n            return;\r\n        }\r\n        if (this.illegally) {\r\n            console.error(`user was able to click continue even though button disabled.`);\r\n            return;\r\n        }\r\n\r\n        if (this.isFromIsrael) {\r\n          console.log('isFromIsrael', this.isFromIsrael);\r\n          this.createUser$\r\n              .pipe(take(1))\r\n              .subscribe(() => {\r\n                  this.callCreateNewUserAPI();\r\n              });\r\n  \r\n          this.createUser$.next(true);\r\n        } else {\r\n          this.nextStepEvent.next('NEXT');\r\n        }\r\n    }\r\n\r\n    callCreateNewUserAPI() {\r\n      this.createUser$\r\n            .pipe(\r\n                tap(() => {\r\n                    this.KycS.loading$.next(true);\r\n                    this.loading = true;\r\n                }),\r\n                throttleTime(500),\r\n                switchMap(() => {\r\n                    // console.log(this.kycForm.getRawValue());\r\n                    const oldData = this.kycForm.getRawValue();\r\n                    const isCompany = oldData.step_1.companyAcc.isActive\r\n                    const newData = {\r\n                        accountType: oldData.step_1.companyAcc.isActive ? 2 : 1,\r\n                        email: oldData.step_2.email,\r\n                        countryCode: isCompany ? oldData.step_1.companyAcc.countryCode : oldData.step_1.privateAcc.countryCode, // Assumes ISO 2 code is already being used\r\n                        phoneCode: oldData.step_4.phone_code?.toString().replaceAll('+', ''),\r\n                        phoneNumber: oldData.step_4.phone,\r\n                        passwords: oldData.step_6.passwords,\r\n                        role: 1\r\n                    };\r\n                    return [];  \r\n                }),\r\n                catchError((e: HttpErrorResponse) => {\r\n                    this.KycS.loading$.next(false);\r\n                    this.loading = false;\r\n                    return EMPTY;\r\n                })\r\n            )\r\n            .subscribe(r => {\r\n\r\n                if (r) {\r\n                    localStorage.removeItem('step')\r\n                    localStorage.removeItem('kycForm')\r\n\r\n                      window.location.href = '/login';\r\n                      this.nextStepEvent.next('NEXT');\r\n\r\n                } else {\r\n                    this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong })\r\n                }\r\n                this.KycS.loading$.next(false);\r\n                this.loading = false;\r\n            });\r\n    }\r\n\r\n    getPasswordsFormGroup(): FormGroup | null {\r\n        return this.kycForm.get('step_6').get('passwords') as FormGroup | null;\r\n    }\r\n\r\n    getPasswordControl(): AbstractControl | null {\r\n        const passwordsFormGroup = this.getPasswordsFormGroup();\r\n        return passwordsFormGroup ? passwordsFormGroup.get('password') : null;\r\n    }\r\n    getConfirmPasswordControl(): AbstractControl | null {\r\n        const passwordsFormGroup = this.getPasswordsFormGroup();\r\n        return passwordsFormGroup ? passwordsFormGroup.get('confirmPassword') : null;\r\n    }\r\n\r\n  restrictSpecialCharacters(event: any) {\r\n    const disallowedKeys = /[<>:;+=]/;\r\n\r\n    if (event.type === 'paste') {\r\n      const clipboardData = event.clipboardData || (window as any).clipboardData;\r\n      const pastedData = clipboardData.getData('text');\r\n      if (disallowedKeys.test(pastedData)) {\r\n        event.preventDefault();\r\n      }\r\n    } else {\r\n      if (event?.target?.value?.length === 0 && (event?.key === '0' || event?.key === '.')) {\r\n        event?.preventDefault();\r\n      } else {\r\n        if (event?.key === '.' && event?.target?.value.includes('.')) {\r\n          event?.preventDefault();\r\n        }\r\n        const allowedKeys = /^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{}|\\\\,.<>\\/?~`'\"]$/;\r\n        if (!allowedKeys.test(event.key) || disallowedKeys.test(event.key)) {\r\n          if (!['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {\r\n            event.preventDefault();\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  restrictPaste(event: any) {\r\n    const clipboardData = event.clipboardData;\r\n    const pastedData = clipboardData.getData('Text');\r\n    const restrictedSymbols = /[<>=+]/;\r\n    if (restrictedSymbols.test(pastedData)) {\r\n      event.preventDefault();\r\n    }\r\n  }\r\n\r\n    ngOnDestroy() {\r\n        this.componentDestroyed.next(null);\r\n        this.componentDestroyed.complete();\r\n    }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { BehaviorSubject, EMPTY, Subject } from 'rxjs';\r\nimport { AbstractControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms';\r\n\r\nimport { catchError, skip, switchMap, take, tap, throttleTime } from 'rxjs/operators';\r\nimport { HttpErrorResponse } from '@angular/common/http';\r\nimport { ActivatedRoute, ParamMap } from '@angular/router'\r\nimport { IStepsObj, EErrorMessages } from '../kyc';\r\nimport { StepActionType } from '../types/global.type';\r\nimport { CommonModule } from '@angular/common';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { KycService } from '../services/kyc.service';\r\n\r\nexport const pwdConfirming = (data: { key: string, confirmationKey: string }): ValidatorFn => {\r\n    const { key, confirmationKey } = data;\r\n\r\n    return (group: any) => {\r\n        const input = group.controls[key];\r\n        const confirmationInput = group.controls[confirmationKey];\r\n        return input.value !== confirmationInput.value ? { passwordNotEquivalent: true } : null\r\n    };\r\n}\r\n\r\n\r\n@Component({\r\n    selector: 'kyc-create-password',\r\n    imports: [CommonModule, ReactiveFormsModule, TranslateModule],\r\n    templateUrl: './kyc-create-password.component.html',\r\n    styleUrls: ['./kyc-create-password.component.scss'],\r\n})\r\nexport class KycCreatePasswordComponent implements OnInit {\r\n    hidePassword = true;\r\n    hideConfirmPassword = true;\r\n\r\n  componentDestroyed = new Subject<any>();\r\n  @Input('parentFormGroup')\r\n  parentFormGroup!: FormGroup;\r\n  @Input('kycForm') kycForm: any;\r\n  @Input('stepsObj') stepsObj!: IStepsObj;\r\n  @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();\r\n  foused = false;\r\n  minPasswordLength = 8;\r\n  _hasLowerCase = /[a-z]/;\r\n  _hasUpperCase = /[A-Z]/;\r\n  _hasDigit = /\\d/;\r\n  _hasSpecial = /[!@#$%^&*()\\[\\]{}\\\\\\-_+={}|\\\\:;'\",<>,.?/~`]/;\r\n  hasEightCharsListItem!: boolean;\r\n  hasSpecialListItem!: boolean;\r\n  hasDigitListItem!: boolean;\r\n  hasSpecial!: boolean;\r\n  hasUpper!: boolean;\r\n  hasDigit!: boolean;\r\n  hasLower!: boolean;\r\n  hasEight!: boolean;\r\n  illegally!: boolean;\r\n  isFromIsrael!: boolean;\r\n  showLoader: any = false;  \r\n  createUser$ = new BehaviorSubject<boolean>(false);\r\n  loading = false;\r\n  step_6_passwords!: FormGroup | any;\r\n\r\n    constructor(\r\n        private KycS: KycService,\r\n        private route: ActivatedRoute\r\n    ) {\r\n    }\r\n\r\n    ngOnInit(): void {\r\n        this.step_6_passwords = this.getPasswordsFormGroup()\r\n        console.log('this.kycForm?.value?.step_1',this.kycForm?.value?.step_1);\r\n        this.isFromIsrael = this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== null && this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== 'Israel' ? true : false;\r\n      this.checkStrength()\r\n    }\r\n\r\n    codeValidHandler() {\r\n        this.nextStepEvent.next('NEXT');\r\n    }\r\n    togglePasswordVisibility(): void {\r\n        this.hidePassword = !this.hidePassword;\r\n      }\r\n    toggleConfirmPasswordVisibility(): void {\r\n        this.hideConfirmPassword = !this.hideConfirmPassword;\r\n      }\r\n    checkStrength() {\r\n        this.illegally = false;\r\n        let pw = this.getPasswordControl()?.value;\r\n        this.hasEight = pw.length >= this.minPasswordLength;\r\n        this.hasDigit = this._hasDigit.test(pw);\r\n        this.hasSpecial = this._hasSpecial.test(pw);\r\n        this.hasLower = this._hasLowerCase.test(pw);\r\n        this.hasUpper = this._hasUpperCase.test(pw);\r\n        if (!this.hasEight || !this.hasDigit || !this.hasSpecial || !this.hasLower || !this.hasUpper) {\r\n            this.illegally = true;\r\n        }\r\n\r\n    }\r\n    handleNextStep() {\r\n        let pw = this.getPasswordControl()?.value;\r\n        if (!pw) {\r\n            console.error(`must enter password`);\r\n            return;\r\n        }\r\n        if (!this.kycForm.get('step_6').valid) {\r\n            console.error(`user was able to click continue even though button disabled.`);\r\n            return;\r\n        }\r\n        if (this.illegally) {\r\n            console.error(`user was able to click continue even though button disabled.`);\r\n            return;\r\n        }\r\n\r\n        if (this.isFromIsrael) {\r\n          console.log('isFromIsrael', this.isFromIsrael);\r\n          this.createUser$\r\n              .pipe(take(1))\r\n              .subscribe(() => {\r\n                  this.callCreateNewUserAPI();\r\n              });\r\n  \r\n          this.createUser$.next(true);\r\n          this.nextStepEvent.next('NEXT');\r\n        } else {\r\n          this.nextStepEvent.next('NEXT');\r\n        }\r\n    }\r\n\r\n    callCreateNewUserAPI() {\r\n      this.createUser$\r\n            .pipe(\r\n                tap(() => {\r\n                    this.KycS.loading$.next(true);\r\n                    this.loading = true;\r\n                }),\r\n                throttleTime(500),\r\n                switchMap(() => {\r\n                    // console.log(this.kycForm.getRawValue());\r\n                    const oldData = this.kycForm.getRawValue();\r\n                    const isCompany = oldData.step_1.companyAcc.isActive\r\n                    const newData = {\r\n                        accountType: oldData.step_1.companyAcc.isActive ? 2 : 1,\r\n                        email: oldData.step_2.email,\r\n                        countryCode: isCompany ? oldData.step_1.companyAcc.countryCode : oldData.step_1.privateAcc.countryCode, // Assumes ISO 2 code is already being used\r\n                        phoneCode: oldData.step_4.phone_code?.toString().replaceAll('+', ''),\r\n                        phoneNumber: oldData.step_4.phone,\r\n                        passwords: oldData.step_6.passwords,\r\n                        role: 1\r\n                    };\r\n                    return [];  \r\n                }),\r\n                catchError((e: HttpErrorResponse) => {\r\n                    this.KycS.loading$.next(false);\r\n                    this.loading = false;\r\n                    return EMPTY;\r\n                })\r\n            )\r\n            .subscribe(r => {\r\n\r\n                if (r) {\r\n                    localStorage.removeItem('step')\r\n                    localStorage.removeItem('kycForm')\r\n\r\n                      window.location.href = '/login';\r\n                      this.nextStepEvent.next('NEXT');\r\n\r\n                } else {\r\n                    this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong })\r\n                }\r\n                this.KycS.loading$.next(false);\r\n                this.loading = false;\r\n            });\r\n    }\r\n\r\n    getPasswordsFormGroup(): FormGroup | null {\r\n        return this.kycForm.get('step_6').get('passwords') as FormGroup | null;\r\n    }\r\n\r\n    getPasswordControl(): AbstractControl | null {\r\n        const passwordsFormGroup = this.getPasswordsFormGroup();\r\n        return passwordsFormGroup ? passwordsFormGroup.get('password') : null;\r\n    }\r\n    getConfirmPasswordControl(): AbstractControl | null {\r\n        const passwordsFormGroup = this.getPasswordsFormGroup();\r\n        return passwordsFormGroup ? passwordsFormGroup.get('confirmPassword') : null;\r\n    }\r\n\r\n  restrictSpecialCharacters(event: any) {\r\n    const disallowedKeys = /[<>:;+=]/;\r\n\r\n    if (event.type === 'paste') {\r\n      const clipboardData = event.clipboardData || (window as any).clipboardData;\r\n      const pastedData = clipboardData.getData('text');\r\n      if (disallowedKeys.test(pastedData)) {\r\n        event.preventDefault();\r\n      }\r\n    } else {\r\n      if (event?.target?.value?.length === 0 && (event?.key === '0' || event?.key === '.')) {\r\n        event?.preventDefault();\r\n      } else {\r\n        if (event?.key === '.' && event?.target?.value.includes('.')) {\r\n          event?.preventDefault();\r\n        }\r\n        const allowedKeys = /^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{}|\\\\,.<>\\/?~`'\"]$/;\r\n        if (!allowedKeys.test(event.key) || disallowedKeys.test(event.key)) {\r\n          if (!['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {\r\n            event.preventDefault();\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  restrictPaste(event: any) {\r\n    const clipboardData = event.clipboardData;\r\n    const pastedData = clipboardData.getData('Text');\r\n    const restrictedSymbols = /[<>=+]/;\r\n    if (restrictedSymbols.test(pastedData)) {\r\n      event.preventDefault();\r\n    }\r\n  }\r\n\r\n    ngOnDestroy() {\r\n        this.componentDestroyed.next(null);\r\n        this.componentDestroyed.complete();\r\n    }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -10471,7 +10840,7 @@
         },
         {
             "name": "KycMainComponent",
-            "id": "component-KycMainComponent-b961de4bc1a9bf863730cf0f146ecf090069ec89f09a8516dd0abde85b22df41e7906cfbf4db2002af51343a445409383d4c8eb0db9dcde61ba62b34c985e06e",
+            "id": "component-KycMainComponent-2ea9800469df0ac97866730ed2e95b4cfd9d6ce791a28dab02a9cf7977419280529bad103cdb83c9e3ec962abb27d66ff31f61a79aaea9f8c1b92a6d279c8faa",
             "file": "src/app/sign-up/kyc-main/kyc-main.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -10499,7 +10868,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 58
+                    "line": 60
                 },
                 {
                     "name": "appLoginUrl",
@@ -10510,7 +10879,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 48
+                    "line": 50
                 },
                 {
                     "name": "assetsPath",
@@ -10521,7 +10890,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 57
+                    "line": 59
                 },
                 {
                     "name": "changeLogo",
@@ -10532,7 +10901,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 63
+                    "line": 65
                 },
                 {
                     "name": "codeStatus",
@@ -10543,7 +10912,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 56
+                    "line": 58
                 },
                 {
                     "name": "componentDestroyed",
@@ -10554,7 +10923,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 40
+                    "line": 42
                 },
                 {
                     "name": "detailsToShow",
@@ -10565,7 +10934,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 49
+                    "line": 51
                 },
                 {
                     "name": "EBusinessType",
@@ -10576,7 +10945,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 59
+                    "line": 61
                 },
                 {
                     "name": "error",
@@ -10587,7 +10956,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 50
+                    "line": 52
                 },
                 {
                     "name": "Esteps",
@@ -10598,7 +10967,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 55
+                    "line": 57
                 },
                 {
                     "name": "faqUrl",
@@ -10609,7 +10978,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 60
+                    "line": 62
                 },
                 {
                     "name": "handleValueChanges",
@@ -10620,20 +10989,20 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>fired when a value change in form</p>\n",
-                    "line": 517,
+                    "line": 519,
                     "rawdescription": "\n\nfired when a value change in form\n",
                     "jsdoctags": [
                         {
-                            "pos": 19463,
-                            "end": 19483,
+                            "pos": 19570,
+                            "end": 19590,
                             "kind": 341,
                             "id": 0,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "tagName": {
-                                "pos": 19464,
-                                "end": 19469,
+                                "pos": 19571,
+                                "end": 19576,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -10642,8 +11011,8 @@
                             },
                             "comment": "",
                             "name": {
-                                "pos": 19470,
-                                "end": 19476,
+                                "pos": 19577,
+                                "end": 19583,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -10663,7 +11032,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 41
+                    "line": 43
                 },
                 {
                     "name": "passwordMatchValidator",
@@ -10674,7 +11043,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 477
+                    "line": 479
                 },
                 {
                     "name": "showLoader",
@@ -10685,7 +11054,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 54
+                    "line": 56
                 },
                 {
                     "name": "stepCurrent",
@@ -10695,7 +11064,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 62
+                    "line": 64
                 },
                 {
                     "name": "stepsObj",
@@ -10706,7 +11075,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 42
+                    "line": 44
                 },
                 {
                     "name": "userType",
@@ -10716,7 +11085,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 61
+                    "line": 63
                 },
                 {
                     "name": "websiteUrl",
@@ -10726,7 +11095,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 47
+                    "line": 49
                 }
             ],
             "methodsClass": [
@@ -10736,7 +11105,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 440,
+                    "line": 442,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10746,7 +11115,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 470,
+                    "line": 472,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10763,7 +11132,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 408,
+                    "line": 410,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nhandles the content to be shown in the details component\n",
@@ -10771,8 +11140,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 15789,
-                                "end": 15794,
+                                "pos": 15896,
+                                "end": 15901,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -10783,8 +11152,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 15783,
-                                "end": 15788,
+                                "pos": 15890,
+                                "end": 15895,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -10814,7 +11183,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 454,
+                    "line": 456,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEND GET form Values\n",
@@ -10846,7 +11215,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 423,
+                    "line": 425,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10856,7 +11225,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 534,
+                    "line": 536,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nwhen form submitted this method occur\n",
@@ -10868,7 +11237,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 348,
+                    "line": 350,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nreturns true is the step is valid\n",
@@ -10880,7 +11249,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 538,
+                    "line": 540,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10890,7 +11259,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 143,
+                    "line": 145,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10900,7 +11269,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 444,
+                    "line": 446,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10910,7 +11279,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 507,
+                    "line": 509,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10927,7 +11296,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 412,
+                    "line": 414,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10948,7 +11317,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 503,
+                    "line": 505,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10958,7 +11327,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 493,
+                    "line": 495,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10968,7 +11337,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 371,
+                    "line": 373,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10978,7 +11347,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 376,
+                    "line": 378,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10988,7 +11357,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 380,
+                    "line": 382,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10998,7 +11367,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 384,
+                    "line": 386,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11008,7 +11377,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 388,
+                    "line": 390,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11018,7 +11387,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 392,
+                    "line": 394,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11028,7 +11397,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 396,
+                    "line": 398,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11038,7 +11407,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 400,
+                    "line": 402,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11055,7 +11424,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 303,
+                    "line": 305,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11076,7 +11445,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 526,
+                    "line": 528,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11086,7 +11455,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 543,
+                    "line": 545,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -11136,12 +11505,16 @@
                 {
                     "name": "KycPersonalDetailsComponent",
                     "type": "component"
+                },
+                {
+                    "name": "KycAddressComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectorRef, Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';\r\nimport { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';\r\nimport { Subject } from 'rxjs';\r\nimport { debounceTime, takeUntil } from 'rxjs/operators';\r\nimport { KycCreatePasswordComponent, pwdConfirming } from '../kyc-create-password/kyc-create-password.component';\r\nimport { ActivatedRoute, Router } from \"@angular/router\";\r\nimport { CommonModule, DecimalPipe, DOCUMENT } from \"@angular/common\";\r\nimport { IStepsObj, EStepNumber, TVerificationCodeStatus, TBusinessTypes, EBusinessType, IKycData, IKYCFormGroups } from '../kyc';\r\nimport { detailsToShow, passwordRgxPatternValidator } from '../models';\r\nimport { StepActionType } from '../types/global.type';\r\nimport { KycService } from '../services/kyc.service';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { KycEmailConfirmComponent } from '../kyc-email-confirm/kyc-email-confirm.component';\r\nimport { KycOneComponent } from '../kyc-one/kyc-one.component';\r\nimport { KycPhoneComponent } from '../kyc-phone/kyc-phone.component';\r\nimport { KycTwoComponent } from '../kyc-two/kyc-two.component';\r\nimport { KycPersonalDetailsComponent } from '../kyc-personal-details/kyc-personal-details.component';\r\n\r\n// import { select, Store } from \"@ngrx/store\";\r\n\r\n@Component({\r\n    selector: 'app-kyc-main',\r\n    imports: [\r\n        CommonModule,\r\n        MatIconModule,\r\n        TranslateModule,\r\n        ReactiveFormsModule,\r\n        KycOneComponent,\r\n        KycTwoComponent,\r\n        KycEmailConfirmComponent,\r\n        KycPhoneComponent,\r\n        KycCreatePasswordComponent,\r\n        KycPersonalDetailsComponent\r\n    ],\r\n    templateUrl: './kyc-main.component.html',\r\n    styleUrls: ['./kyc-main.component.scss'],\r\n})\r\nexport class KycMainComponent implements OnInit {\r\n    componentDestroyed = new Subject<any>();\r\n    kycForm: any;\r\n    stepsObj: IStepsObj = {\r\n        currentStep: EStepNumber.typeOfBusiness,\r\n        maxSteps: EStepNumber.personalAddress,\r\n        minSteps: EStepNumber.typeOfBusiness\r\n    };\r\n    websiteUrl!: string;\r\n    appLoginUrl = '';\r\n    detailsToShow = detailsToShow;\r\n    error: any = {\r\n        hasError: false,\r\n        msg: null\r\n    }\r\n    showLoader: boolean = false;\r\n    Esteps: typeof EStepNumber = EStepNumber;\r\n    codeStatus: TVerificationCodeStatus = 'DEFAULT';\r\n    assetsPath = '';\r\n    accountType!: TBusinessTypes;\r\n    EBusinessType = EBusinessType;\r\n    faqUrl: string = 'https://help.okoora.com/en-us/';\r\n    userType: any;\r\n    stepCurrent: any;\r\n    changeLogo: boolean = false;\r\n    constructor(\r\n        private fb: FormBuilder,\r\n        private cd: ChangeDetectorRef,\r\n        // private generalS: GeneralService,\r\n        private kycS: KycService,\r\n        private router: Router,\r\n        // private auth: AuthenticationService,\r\n\r\n        @Inject(DOCUMENT) private document: Document,\r\n        private route: ActivatedRoute\r\n    ) {\r\n        this.kycForm = this.fb.group({\r\n            // kyc-one\r\n            step_1: fb.group({\r\n                companyAcc: fb.group({\r\n                    isActive: [false],\r\n                    countrySelected: [''],\r\n                    countryCode: ['']\r\n                }),\r\n                privateAcc: fb.group({\r\n                    isActive: [false],\r\n                    countrySelected: [''],\r\n                    countryCode: ['']\r\n\r\n                }),\r\n            }),\r\n            // kyc-two\r\n            step_2: fb.group({\r\n                email: ['', [Validators.required, Validators.email,Validators.pattern('^(?!-)[a-z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,4}$')]],\r\n                agree: [false, [Validators.requiredTrue]]\r\n            }),\r\n\r\n\r\n            // kyc-email-confirm\r\n            step_3: fb.group({\r\n                email_code_sent: [''],\r\n                email_code_user_enter: [''],\r\n            }),\r\n            // kyc-phone\r\n            step_4: fb.group({\r\n                phone_code: ['', Validators.required],\r\n                phone: ['', Validators.required],\r\n            }),\r\n            // kyc-phone-confirm\r\n            step_5: fb.group({\r\n                phone_confirmation_sent: [''],\r\n                phone_confirmation_user_enter: [''],\r\n            }),\r\n            // kyc-create-password\r\n            step_6: fb.group({\r\n                passwords: new FormGroup(\r\n                    {\r\n                        password: new FormControl(\"\", [Validators.required, passwordRgxPatternValidator()]),\r\n                        confirmPassword: new FormControl(\"\", [Validators.required, passwordRgxPatternValidator()]),\r\n                    }, {\r\n                    validators: this.passwordMatchValidator()\r\n                }\r\n                )\r\n            }),\r\n\r\n            step_7: fb.group({\r\n                first_name: ['', [Validators.required]],\r\n                first_name_he: [''],\r\n                last_name: ['', [Validators.required,]],\r\n                last_name_he: [''],\r\n                id_number: ['', [Validators.required]],\r\n                birth_date: ['', [Validators.required]],\r\n                applicantId: [''],\r\n\r\n            }),\r\n            step_8: fb.group({\r\n                country: ['', Validators.required],\r\n                street_address: ['', [Validators.required]],\r\n                city: ['', [Validators.required,]],\r\n                zipcode: ['', [Validators.required]],\r\n            }),\r\n        });\r\n    }\r\n\r\n    ngOnInit(): void {\r\n        this.stepsObj.currentStep\r\n        // this.websiteUrl = this.generalS.websiteUrl;\r\n        this.kycForm.valueChanges.subscribe(this.handleValueChanges);\r\n        // this.kycS.loading$.subscribe(loadingState => {\r\n        //     this.showLoader = loadingState;\r\n        // })\r\n\r\n        // this.kycS.showError$\r\n        //     .pipe(\r\n        //         debounceTime(300),\r\n        //         takeUntil(this.componentDestroyed)\r\n        //     )\r\n        //     .subscribe(({ hasError, msg }) => {\r\n        //         if (!hasError) {\r\n        //             return\r\n        //         }\r\n\r\n        //         this.showError(msg);\r\n        //     });\r\n\r\n        // this.kycS.verificationCodeStatus\r\n        //     .pipe(\r\n        //         takeUntil(this.componentDestroyed)\r\n        //     )\r\n        //     .subscribe(codeStatus => {\r\n        //         this.codeStatus = codeStatus;\r\n        //     });\r\n\r\n\r\n        // this.kycS.getAccountType$()\r\n        //     .subscribe(accountType => {\r\n        //         this.accountType = accountType;\r\n        //     });\r\n\r\n\r\n        this.updatePackageBasketLastOffer();\r\n\r\n\r\n        if (localStorage?.getItem('step') == '2') {\r\n            this.stepsObj.currentStep = 2;\r\n            localStorage?.getItem('kycForm');\r\n            JSON.parse(localStorage?.getItem('kycForm')!);\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2']\r\n                });\r\n            }\r\n        }\r\n        if (localStorage?.getItem('step') == '3') {\r\n            this.stepsObj.currentStep = 3;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3']\r\n                });\r\n            }\r\n        }\r\n        if (localStorage?.getItem('step') == '4') {\r\n            this.stepsObj.currentStep = 4;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4']\r\n                });\r\n            }\r\n\r\n        }\r\n        if (localStorage?.getItem('step') == '5') {\r\n            this.stepsObj.currentStep = 5;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4'],\r\n                    step_5: form['step_5']\r\n                });\r\n            }\r\n        }\r\n        if (localStorage?.getItem('step') == '6') {\r\n            this.stepsObj.currentStep = 6;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4'],\r\n                    step_5: form['step_5'],\r\n                    step_6: form['step_6']\r\n                });\r\n            }\r\n        }\r\n        if (localStorage?.getItem('step') == '7') {\r\n            this.stepsObj.currentStep = 7;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4'],\r\n                    step_5: form['step_5'],\r\n                    step_6: form['step_6'],\r\n                    step_7: form['step_7']\r\n                });\r\n            }\r\n        }\r\n        if (this.route.snapshot.queryParams['upn']) {\r\n            // console.log(this.route.snapshot.queryParams['upn'])\r\n        }\r\n        if (localStorage?.getItem('step') == '8') {\r\n            this.stepsObj.currentStep = 7;\r\n            localStorage.setItem('step', JSON.stringify(this.stepsObj.currentStep));\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4'],\r\n                    step_5: form['step_5'],\r\n                    step_6: form['step_6'],\r\n                    step_7: form['step_7']\r\n                });\r\n\r\n            }\r\n        }\r\n        if (localStorage?.getItem('step') == '9') {\r\n            this.stepsObj.currentStep = 9;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4'],\r\n                    step_5: form['step_5'],\r\n                    step_6: form['step_6'],\r\n                    step_7: form['step_7'],\r\n                    step_8: form['step_8'],\r\n                    step_9: form['step_9'],\r\n                });\r\n\r\n            }\r\n        }\r\n        const url = window?.location?.href;\r\n        if (url.includes('/max')) {\r\n            this.changeLogo = true;\r\n        }\r\n    }\r\n    stepHandler(action: StepActionType) {\r\n        if (!action) {\r\n            console.warn(`action is not provided in stepHander`);\r\n            return;\r\n        }\r\n        if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== null && this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== 'Israel')\r\n            this.stepsObj.maxSteps = EStepNumber.createPassword;\r\n        \r\n        switch (action) {\r\n            case 'NEXT':\r\n                // console.log(this.kycForm)\r\n                if (this.stepsObj.currentStep >= this.stepsObj.maxSteps) {\r\n                    if (this.stepsObj.currentStep > this.stepsObj.maxSteps) {\r\n                        console.warn(`current step was greater than the max steps \\n currenct step given ${this.stepsObj.currentStep} \\n max steps: ${this.stepsObj.maxSteps}`);\r\n                    }\r\n                    this.stepsObj.currentStep = this.stepsObj.maxSteps;\r\n                } else {\r\n                    if (this.stepsObj.currentStep == this.Esteps.phone) {\r\n                      this.stepsObj.currentStep++;\r\n                    }\r\n                    this.stepCurrent = ++this.stepsObj.currentStep;\r\n                    localStorage.setItem('step', JSON.stringify(this.stepCurrent));\r\n                    localStorage.setItem('kycForm', JSON.stringify(this.kycForm.value));\r\n                }\r\n                break;\r\n            case 'PREV':\r\n                if (this.stepsObj.currentStep <= this.stepsObj.minSteps) {\r\n                    this.stepsObj.currentStep = this.stepsObj.minSteps;\r\n                } else {\r\n                    if (this.stepsObj.currentStep == this.Esteps.createPassword) {\r\n                      this.stepsObj.currentStep--;\r\n                    }\r\n                    this.stepsObj.currentStep--;\r\n                }\r\n                break;\r\n            default:\r\n                const exhaustiveCheck: never = action;\r\n                console.error(`unhandeled action occured. ${exhaustiveCheck}`);\r\n                break;\r\n        }\r\n    }// # stepHandler\r\n\r\n    /**\r\n     * returns true is the step is valid\r\n     */\r\n    nextStepIsValid(): boolean {\r\n        switch (this.stepsObj.currentStep) {\r\n            case EStepNumber.typeOfBusiness:\r\n                return this.step1IsValid();\r\n            case EStepNumber.email:\r\n                return this.step2IsValid();\r\n            case EStepNumber.emailConfirmation:\r\n                return this.step3IsValid();\r\n            case EStepNumber.phone:\r\n                return this.step4IsValid();\r\n            case EStepNumber.phoneConfirmation:\r\n                return this.step5IsValid();\r\n            case EStepNumber.createPassword:\r\n                return this.step6IsValid();\r\n            case EStepNumber.personalDetails:\r\n                return this.step7IsValid();\r\n            case EStepNumber.personalAddress:\r\n                return this.step8IsValid();\r\n            default:\r\n                console.warn(`stepIsValid() went to default in switch case in step ${this.stepsObj.currentStep}`);\r\n                return false;\r\n        }\r\n    }\r\n    step1IsValid(): boolean {\r\n        const isBusiness = this.kycForm.controls.step_1.get('companyAcc').value;\r\n        return (isBusiness && this.kycForm.controls.step_1.get('companyAcc').valid) || (!isBusiness && this.kycForm.controls.step_1.get('privateAcc').valid);\r\n    }\r\n\r\n    step2IsValid(): boolean {\r\n        return this.step1IsValid() && this.kycForm.controls.step_2.touched && this.kycForm.controls.step_2.valid;\r\n    }\r\n\r\n    step3IsValid(): boolean {\r\n        return this.step2IsValid() && this.kycForm.controls.step_3.valid;\r\n    }\r\n\r\n    step4IsValid(): boolean {\r\n        return this.step3IsValid() && this.kycForm.controls.step_4.valid;\r\n    }\r\n\r\n    step5IsValid(): boolean {\r\n        return this.step4IsValid() && this.kycForm.controls.step_5.valid;\r\n    }\r\n\r\n    step6IsValid(): boolean {\r\n        return this.step4IsValid() && this.kycForm.controls.step_6.valid;\r\n    }\r\n\r\n    step7IsValid(): boolean {\r\n        return this.step6IsValid() && this.kycForm.controls.step_7.valid;\r\n    }\r\n\r\n    step8IsValid(): boolean {\r\n        return this.step7IsValid() && this.kycForm.controls.step_8.valid;\r\n    }\r\n\r\n    /**\r\n     * handles the content to be shown in the details component\r\n     * @param bType\r\n     */\r\n    handleDetailToShow(bType: IKycData['businessTypes']) {\r\n        this.detailsToShow.step_1.detailName = bType;\r\n    }\r\n\r\n    showError(msg: string) {\r\n        this.error.hasError = true;\r\n        this.error.msg = msg;\r\n\r\n        setTimeout(() => {\r\n            this.error.hasError = false;\r\n            this.error.msg = null;\r\n            // this.kycS.showError$.next({ hasError: false, msg: null });\r\n        }, 3000);\r\n    }// # showError\r\n\r\n    handlePreviousBtn() {\r\n        switch (this.stepsObj.currentStep) {\r\n            case EStepNumber.typeOfBusiness:\r\n                // this.auth.logout();\r\n                // window.location.href = '/login';\r\n                // localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';\r\n                break;\r\n            case EStepNumber.createPassword:\r\n                this.stepsObj.currentStep = EStepNumber.phone;\r\n                break;\r\n            default:\r\n                this.stepHandler('PREV');\r\n                break;\r\n        }\r\n    }\r\n\r\n\r\n    emailValue(): string {\r\n        return this.kycForm?.controls?.step_2?.get('email')?.value\r\n    }\r\n\r\n    phoneValue(): string {\r\n        const phone = this.kycForm.controls.step_4.get('phone').value;\r\n        const phoneCode = this.kycForm.controls.step_4?.get('phone_code')?.value?.toString()?.replaceAll('+', '');\r\n        return `+${phoneCode}${phone}`;\r\n    }\r\n\r\n    /**\r\n     * END GET form Values\r\n     */\r\n\r\n    handleEditValue(e: Event, action: 'EMAIL' | 'PHONE') {\r\n        e.preventDefault();\r\n        switch (action) {\r\n            case 'EMAIL':\r\n                this.stepsObj.currentStep = EStepNumber.email;\r\n                break;\r\n            case 'PHONE':\r\n                this.stepsObj.currentStep = EStepNumber.phone;\r\n                break;\r\n            default:\r\n                const exhaustiveCheck: never = action;\r\n                console.error(`unhandled action occured ${exhaustiveCheck}`);\r\n                break;\r\n        }\r\n    }\r\n\r\n    goToLogin() {\r\n        // localStorage.removeItem('kycForm')\r\n        // localStorage.removeItem('step')\r\n        // this.router.navigate(['/login']);\r\n        // window.location.href = this.appLoginUrl;\r\n        // localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';\r\n    }\r\n    passwordMatchValidator = (): ValidatorFn => {\r\n        return (control: AbstractControl): ValidationErrors | null => {\r\n            const password = control.get('password');\r\n            const confirmPassword = control.get('confirmPassword');\r\n\r\n            if (!password || !confirmPassword) {\r\n                return null;\r\n            }\r\n\r\n            if (password.value !== confirmPassword.value) {\r\n                return { passwordMismatch: true };\r\n            }\r\n\r\n            return null;\r\n        };\r\n    };\r\n    showPrevBtn(): boolean {\r\n        return this.stepsObj.currentStep < EStepNumber.phone\r\n            ||\r\n            this.stepsObj.currentStep === EStepNumber.phoneConfirmation\r\n            ||\r\n            this.stepsObj.currentStep === EStepNumber.createPassword\r\n            ||\r\n            this.stepsObj.currentStep === EStepNumber.personalAddress\r\n    }\r\n\r\n    showLoginBtn(): boolean {\r\n        return this.stepsObj.currentStep < EStepNumber.createPassword\r\n    }\r\n\r\n    showCloseBtn(): boolean {\r\n        return this.stepsObj.currentStep === EStepNumber.phone\r\n            ||\r\n            this.stepsObj.currentStep === EStepNumber.createPassword\r\n    };\r\n\r\n    /**\r\n     * fired when a value change in form\r\n     * @param newVal\r\n     */\r\n    handleValueChanges = (newVal: IKYCFormGroups) => {\r\n        const selectedAccountType: TBusinessTypes | any = newVal.step_1?.companyAcc?.isActive ? EBusinessType.companyAccount : EBusinessType.privateAccount;\r\n        this.kycS.selectedAccountType$.next(selectedAccountType);\r\n        // Step #1 is valid validations\r\n            this.kycS.stepOneValidations(newVal, this.kycForm);\r\n        // END Step #1 is valid validations\r\n\r\n    };//#handleValueChanges\r\n\r\n    tryAgain() {\r\n        this.codeStatus = 'DEFAULT';\r\n        this.kycS.errorOverlayTryAgainClicked$.next(true);\r\n    }\r\n\r\n    /**\r\n     * when form submitted this method occur\r\n     */\r\n    handleSubmit() {\r\n        // console.log(`form submitted!`, this.kycForm);\r\n    };// #handleSubmit\r\n\r\n    ngOnDestroy() {\r\n        this.componentDestroyed.next(null);\r\n        this.componentDestroyed.complete();\r\n    }\r\n\r\n    updatePackageBasketLastOffer() {\r\n        // 1 get email + basketId from URL\r\n        // 2 update table in DB\r\n        let activatedRoute = this.route.snapshot.params;\r\n        if (activatedRoute['basketId']) {\r\n\r\n        }\r\n    }\r\n\r\n\r\n}\r\n",
+            "sourceCode": "import { ChangeDetectorRef, Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';\r\nimport { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';\r\nimport { Subject } from 'rxjs';\r\nimport { debounceTime, takeUntil } from 'rxjs/operators';\r\nimport { KycCreatePasswordComponent, pwdConfirming } from '../kyc-create-password/kyc-create-password.component';\r\nimport { ActivatedRoute, Router } from \"@angular/router\";\r\nimport { CommonModule, DecimalPipe, DOCUMENT } from \"@angular/common\";\r\nimport { IStepsObj, EStepNumber, TVerificationCodeStatus, TBusinessTypes, EBusinessType, IKycData, IKYCFormGroups } from '../kyc';\r\nimport { detailsToShow, passwordRgxPatternValidator } from '../models';\r\nimport { StepActionType } from '../types/global.type';\r\nimport { KycService } from '../services/kyc.service';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { KycEmailConfirmComponent } from '../kyc-email-confirm/kyc-email-confirm.component';\r\nimport { KycOneComponent } from '../kyc-one/kyc-one.component';\r\nimport { KycPhoneComponent } from '../kyc-phone/kyc-phone.component';\r\nimport { KycTwoComponent } from '../kyc-two/kyc-two.component';\r\nimport { KycPersonalDetailsComponent } from '../kyc-personal-details/kyc-personal-details.component';\r\nimport { KycAddressComponent } from '../kyc-address/kyc-address.component';\r\n\r\n// import { select, Store } from \"@ngrx/store\";\r\n\r\n@Component({\r\n    selector: 'app-kyc-main',\r\n    imports: [\r\n        CommonModule,\r\n        MatIconModule,\r\n        TranslateModule,\r\n        ReactiveFormsModule,\r\n        KycOneComponent,\r\n        KycTwoComponent,\r\n        KycEmailConfirmComponent,\r\n        KycPhoneComponent,\r\n        KycCreatePasswordComponent,\r\n        KycPersonalDetailsComponent,\r\n        KycAddressComponent\r\n    ],\r\n    templateUrl: './kyc-main.component.html',\r\n    styleUrls: ['./kyc-main.component.scss'],\r\n})\r\nexport class KycMainComponent implements OnInit {\r\n    componentDestroyed = new Subject<any>();\r\n    kycForm: any;\r\n    stepsObj: IStepsObj = {\r\n        currentStep: EStepNumber.typeOfBusiness,\r\n        maxSteps: EStepNumber.personalAddress,\r\n        minSteps: EStepNumber.typeOfBusiness\r\n    };\r\n    websiteUrl!: string;\r\n    appLoginUrl = '';\r\n    detailsToShow = detailsToShow;\r\n    error: any = {\r\n        hasError: false,\r\n        msg: null\r\n    }\r\n    showLoader: boolean = false;\r\n    Esteps: typeof EStepNumber = EStepNumber;\r\n    codeStatus: TVerificationCodeStatus = 'DEFAULT';\r\n    assetsPath = '';\r\n    accountType!: TBusinessTypes;\r\n    EBusinessType = EBusinessType;\r\n    faqUrl: string = 'https://help.okoora.com/en-us/';\r\n    userType: any;\r\n    stepCurrent: any;\r\n    changeLogo: boolean = false;\r\n    constructor(\r\n        private fb: FormBuilder,\r\n        private cd: ChangeDetectorRef,\r\n        // private generalS: GeneralService,\r\n        private kycS: KycService,\r\n        private router: Router,\r\n        // private auth: AuthenticationService,\r\n\r\n        @Inject(DOCUMENT) private document: Document,\r\n        private route: ActivatedRoute\r\n    ) {\r\n        this.kycForm = this.fb.group({\r\n            // kyc-one\r\n            step_1: fb.group({\r\n                companyAcc: fb.group({\r\n                    isActive: [false],\r\n                    countrySelected: [''],\r\n                    countryCode: ['']\r\n                }),\r\n                privateAcc: fb.group({\r\n                    isActive: [false],\r\n                    countrySelected: [''],\r\n                    countryCode: ['']\r\n\r\n                }),\r\n            }),\r\n            // kyc-two\r\n            step_2: fb.group({\r\n                email: ['', [Validators.required, Validators.email,Validators.pattern('^(?!-)[a-z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,4}$')]],\r\n                agree: [false, [Validators.requiredTrue]]\r\n            }),\r\n\r\n\r\n            // kyc-email-confirm\r\n            step_3: fb.group({\r\n                email_code_sent: [''],\r\n                email_code_user_enter: [''],\r\n            }),\r\n            // kyc-phone\r\n            step_4: fb.group({\r\n                phone_code: ['', Validators.required],\r\n                phone: ['', Validators.required],\r\n            }),\r\n            // kyc-phone-confirm\r\n            step_5: fb.group({\r\n                phone_confirmation_sent: [''],\r\n                phone_confirmation_user_enter: [''],\r\n            }),\r\n            // kyc-create-password\r\n            step_6: fb.group({\r\n                passwords: new FormGroup(\r\n                    {\r\n                        password: new FormControl(\"\", [Validators.required, passwordRgxPatternValidator()]),\r\n                        confirmPassword: new FormControl(\"\", [Validators.required, passwordRgxPatternValidator()]),\r\n                    }, {\r\n                    validators: this.passwordMatchValidator()\r\n                }\r\n                )\r\n            }),\r\n\r\n            step_7: fb.group({\r\n                first_name: ['', [Validators.required]],\r\n                first_name_he: [''],\r\n                last_name: ['', [Validators.required,]],\r\n                last_name_he: [''],\r\n                id_number: ['', [Validators.required]],\r\n                birth_date: ['', [Validators.required]],\r\n                applicantId: [''],\r\n\r\n            }),\r\n            step_8: fb.group({\r\n                country: ['', Validators.required],\r\n                street_address: ['', [Validators.required]],\r\n                city: ['', [Validators.required,]],\r\n                zipcode: ['', [Validators.required]],\r\n            }),\r\n        });\r\n    }\r\n\r\n    ngOnInit(): void {\r\n        this.stepsObj.currentStep\r\n        // this.websiteUrl = this.generalS.websiteUrl;\r\n        this.kycForm.valueChanges.subscribe(this.handleValueChanges);\r\n        // this.kycS.loading$.subscribe(loadingState => {\r\n        //     this.showLoader = loadingState;\r\n        // })\r\n\r\n        // this.kycS.showError$\r\n        //     .pipe(\r\n        //         debounceTime(300),\r\n        //         takeUntil(this.componentDestroyed)\r\n        //     )\r\n        //     .subscribe(({ hasError, msg }) => {\r\n        //         if (!hasError) {\r\n        //             return\r\n        //         }\r\n\r\n        //         this.showError(msg);\r\n        //     });\r\n\r\n        // this.kycS.verificationCodeStatus\r\n        //     .pipe(\r\n        //         takeUntil(this.componentDestroyed)\r\n        //     )\r\n        //     .subscribe(codeStatus => {\r\n        //         this.codeStatus = codeStatus;\r\n        //     });\r\n\r\n\r\n        // this.kycS.getAccountType$()\r\n        //     .subscribe(accountType => {\r\n        //         this.accountType = accountType;\r\n        //     });\r\n\r\n\r\n        this.updatePackageBasketLastOffer();\r\n\r\n\r\n        if (localStorage?.getItem('step') == '2') {\r\n            this.stepsObj.currentStep = 2;\r\n            localStorage?.getItem('kycForm');\r\n            JSON.parse(localStorage?.getItem('kycForm')!);\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2']\r\n                });\r\n            }\r\n        }\r\n        if (localStorage?.getItem('step') == '3') {\r\n            this.stepsObj.currentStep = 3;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3']\r\n                });\r\n            }\r\n        }\r\n        if (localStorage?.getItem('step') == '4') {\r\n            this.stepsObj.currentStep = 4;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4']\r\n                });\r\n            }\r\n\r\n        }\r\n        if (localStorage?.getItem('step') == '5') {\r\n            this.stepsObj.currentStep = 5;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4'],\r\n                    step_5: form['step_5']\r\n                });\r\n            }\r\n        }\r\n        if (localStorage?.getItem('step') == '6') {\r\n            this.stepsObj.currentStep = 6;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4'],\r\n                    step_5: form['step_5'],\r\n                    step_6: form['step_6']\r\n                });\r\n            }\r\n        }\r\n        if (localStorage?.getItem('step') == '7') {\r\n            this.stepsObj.currentStep = 7;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4'],\r\n                    step_5: form['step_5'],\r\n                    step_6: form['step_6'],\r\n                    step_7: form['step_7']\r\n                });\r\n            }\r\n        }\r\n        if (this.route.snapshot.queryParams['upn']) {\r\n            // console.log(this.route.snapshot.queryParams['upn'])\r\n        }\r\n        if (localStorage?.getItem('step') == '8') {\r\n            this.stepsObj.currentStep = 7;\r\n            localStorage.setItem('step', JSON.stringify(this.stepsObj.currentStep));\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4'],\r\n                    step_5: form['step_5'],\r\n                    step_6: form['step_6'],\r\n                    step_7: form['step_7']\r\n                });\r\n\r\n            }\r\n        }\r\n        if (localStorage?.getItem('step') == '9') {\r\n            this.stepsObj.currentStep = 9;\r\n            let form = JSON.parse(localStorage?.getItem('kycForm')!);\r\n            if (form != null) {\r\n                this.kycForm.patchValue({\r\n                    step_1: form['step_1'],\r\n                    step_2: form['step_2'],\r\n                    step_3: form['step_3'],\r\n                    step_4: form['step_4'],\r\n                    step_5: form['step_5'],\r\n                    step_6: form['step_6'],\r\n                    step_7: form['step_7'],\r\n                    step_8: form['step_8'],\r\n                    step_9: form['step_9'],\r\n                });\r\n\r\n            }\r\n        }\r\n        const url = window?.location?.href;\r\n        if (url.includes('/max')) {\r\n            this.changeLogo = true;\r\n        }\r\n    }\r\n    stepHandler(action: StepActionType) {\r\n        if (!action) {\r\n            console.warn(`action is not provided in stepHander`);\r\n            return;\r\n        }\r\n        if(this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== null && this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== 'Israel')\r\n            this.stepsObj.maxSteps = EStepNumber.createPassword;\r\n        \r\n        switch (action) {\r\n            case 'NEXT':\r\n                // console.log(this.kycForm)\r\n                if (this.stepsObj.currentStep >= this.stepsObj.maxSteps) {\r\n                    if (this.stepsObj.currentStep > this.stepsObj.maxSteps) {\r\n                        console.warn(`current step was greater than the max steps \\n currenct step given ${this.stepsObj.currentStep} \\n max steps: ${this.stepsObj.maxSteps}`);\r\n                    }\r\n                    this.stepsObj.currentStep = this.stepsObj.maxSteps;\r\n                } else {\r\n                    if (this.stepsObj.currentStep == this.Esteps.phone) {\r\n                      this.stepsObj.currentStep++;\r\n                    }\r\n                    this.stepCurrent = ++this.stepsObj.currentStep;\r\n                    localStorage.setItem('step', JSON.stringify(this.stepCurrent));\r\n                    localStorage.setItem('kycForm', JSON.stringify(this.kycForm.value));\r\n                }\r\n                break;\r\n            case 'PREV':\r\n                if (this.stepsObj.currentStep <= this.stepsObj.minSteps) {\r\n                    this.stepsObj.currentStep = this.stepsObj.minSteps;\r\n                } else {\r\n                    if (this.stepsObj.currentStep == this.Esteps.createPassword) {\r\n                      this.stepsObj.currentStep--;\r\n                    }\r\n                    this.stepsObj.currentStep--;\r\n                }\r\n                break;\r\n            default:\r\n                const exhaustiveCheck: never = action;\r\n                console.error(`unhandeled action occured. ${exhaustiveCheck}`);\r\n                break;\r\n        }\r\n    }// # stepHandler\r\n\r\n    /**\r\n     * returns true is the step is valid\r\n     */\r\n    nextStepIsValid(): boolean {\r\n        switch (this.stepsObj.currentStep) {\r\n            case EStepNumber.typeOfBusiness:\r\n                return this.step1IsValid();\r\n            case EStepNumber.email:\r\n                return this.step2IsValid();\r\n            case EStepNumber.emailConfirmation:\r\n                return this.step3IsValid();\r\n            case EStepNumber.phone:\r\n                return this.step4IsValid();\r\n            case EStepNumber.phoneConfirmation:\r\n                return this.step5IsValid();\r\n            case EStepNumber.createPassword:\r\n                return this.step6IsValid();\r\n            case EStepNumber.personalDetails:\r\n                return this.step7IsValid();\r\n            case EStepNumber.personalAddress:\r\n                return this.step8IsValid();\r\n            default:\r\n                console.warn(`stepIsValid() went to default in switch case in step ${this.stepsObj.currentStep}`);\r\n                return false;\r\n        }\r\n    }\r\n    step1IsValid(): boolean {\r\n        const isBusiness = this.kycForm.controls.step_1.get('companyAcc').value;\r\n        return (isBusiness && this.kycForm.controls.step_1.get('companyAcc').valid) || (!isBusiness && this.kycForm.controls.step_1.get('privateAcc').valid);\r\n    }\r\n\r\n    step2IsValid(): boolean {\r\n        return this.step1IsValid() && this.kycForm.controls.step_2.touched && this.kycForm.controls.step_2.valid;\r\n    }\r\n\r\n    step3IsValid(): boolean {\r\n        return this.step2IsValid() && this.kycForm.controls.step_3.valid;\r\n    }\r\n\r\n    step4IsValid(): boolean {\r\n        return this.step3IsValid() && this.kycForm.controls.step_4.valid;\r\n    }\r\n\r\n    step5IsValid(): boolean {\r\n        return this.step4IsValid() && this.kycForm.controls.step_5.valid;\r\n    }\r\n\r\n    step6IsValid(): boolean {\r\n        return this.step4IsValid() && this.kycForm.controls.step_6.valid;\r\n    }\r\n\r\n    step7IsValid(): boolean {\r\n        return this.step6IsValid() && this.kycForm.controls.step_7.valid;\r\n    }\r\n\r\n    step8IsValid(): boolean {\r\n        return this.step7IsValid() && this.kycForm.controls.step_8.valid;\r\n    }\r\n\r\n    /**\r\n     * handles the content to be shown in the details component\r\n     * @param bType\r\n     */\r\n    handleDetailToShow(bType: IKycData['businessTypes']) {\r\n        this.detailsToShow.step_1.detailName = bType;\r\n    }\r\n\r\n    showError(msg: string) {\r\n        this.error.hasError = true;\r\n        this.error.msg = msg;\r\n\r\n        setTimeout(() => {\r\n            this.error.hasError = false;\r\n            this.error.msg = null;\r\n            // this.kycS.showError$.next({ hasError: false, msg: null });\r\n        }, 3000);\r\n    }// # showError\r\n\r\n    handlePreviousBtn() {\r\n        switch (this.stepsObj.currentStep) {\r\n            case EStepNumber.typeOfBusiness:\r\n                // this.auth.logout();\r\n                // window.location.href = '/login';\r\n                // localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';\r\n                break;\r\n            case EStepNumber.createPassword:\r\n                this.stepsObj.currentStep = EStepNumber.phone;\r\n                break;\r\n            default:\r\n                this.stepHandler('PREV');\r\n                break;\r\n        }\r\n    }\r\n\r\n\r\n    emailValue(): string {\r\n        return this.kycForm?.controls?.step_2?.get('email')?.value\r\n    }\r\n\r\n    phoneValue(): string {\r\n        const phone = this.kycForm.controls.step_4.get('phone').value;\r\n        const phoneCode = this.kycForm.controls.step_4?.get('phone_code')?.value?.toString()?.replaceAll('+', '');\r\n        return `+${phoneCode}${phone}`;\r\n    }\r\n\r\n    /**\r\n     * END GET form Values\r\n     */\r\n\r\n    handleEditValue(e: Event, action: 'EMAIL' | 'PHONE') {\r\n        e.preventDefault();\r\n        switch (action) {\r\n            case 'EMAIL':\r\n                this.stepsObj.currentStep = EStepNumber.email;\r\n                break;\r\n            case 'PHONE':\r\n                this.stepsObj.currentStep = EStepNumber.phone;\r\n                break;\r\n            default:\r\n                const exhaustiveCheck: never = action;\r\n                console.error(`unhandled action occured ${exhaustiveCheck}`);\r\n                break;\r\n        }\r\n    }\r\n\r\n    goToLogin() {\r\n        // localStorage.removeItem('kycForm')\r\n        // localStorage.removeItem('step')\r\n        // this.router.navigate(['/login']);\r\n        // window.location.href = this.appLoginUrl;\r\n        // localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';\r\n    }\r\n    passwordMatchValidator = (): ValidatorFn => {\r\n        return (control: AbstractControl): ValidationErrors | null => {\r\n            const password = control.get('password');\r\n            const confirmPassword = control.get('confirmPassword');\r\n\r\n            if (!password || !confirmPassword) {\r\n                return null;\r\n            }\r\n\r\n            if (password.value !== confirmPassword.value) {\r\n                return { passwordMismatch: true };\r\n            }\r\n\r\n            return null;\r\n        };\r\n    };\r\n    showPrevBtn(): boolean {\r\n        return this.stepsObj.currentStep < EStepNumber.phone\r\n            ||\r\n            this.stepsObj.currentStep === EStepNumber.phoneConfirmation\r\n            ||\r\n            this.stepsObj.currentStep === EStepNumber.createPassword\r\n            ||\r\n            this.stepsObj.currentStep === EStepNumber.personalAddress\r\n    }\r\n\r\n    showLoginBtn(): boolean {\r\n        return this.stepsObj.currentStep < EStepNumber.createPassword\r\n    }\r\n\r\n    showCloseBtn(): boolean {\r\n        return this.stepsObj.currentStep === EStepNumber.phone\r\n            ||\r\n            this.stepsObj.currentStep === EStepNumber.createPassword\r\n    };\r\n\r\n    /**\r\n     * fired when a value change in form\r\n     * @param newVal\r\n     */\r\n    handleValueChanges = (newVal: IKYCFormGroups) => {\r\n        const selectedAccountType: TBusinessTypes | any = newVal.step_1?.companyAcc?.isActive ? EBusinessType.companyAccount : EBusinessType.privateAccount;\r\n        this.kycS.selectedAccountType$.next(selectedAccountType);\r\n        // Step #1 is valid validations\r\n            this.kycS.stepOneValidations(newVal, this.kycForm);\r\n        // END Step #1 is valid validations\r\n\r\n    };//#handleValueChanges\r\n\r\n    tryAgain() {\r\n        this.codeStatus = 'DEFAULT';\r\n        this.kycS.errorOverlayTryAgainClicked$.next(true);\r\n    }\r\n\r\n    /**\r\n     * when form submitted this method occur\r\n     */\r\n    handleSubmit() {\r\n        // console.log(`form submitted!`, this.kycForm);\r\n    };// #handleSubmit\r\n\r\n    ngOnDestroy() {\r\n        this.componentDestroyed.next(null);\r\n        this.componentDestroyed.complete();\r\n    }\r\n\r\n    updatePackageBasketLastOffer() {\r\n        // 1 get email + basketId from URL\r\n        // 2 update table in DB\r\n        let activatedRoute = this.route.snapshot.params;\r\n        if (activatedRoute['basketId']) {\r\n\r\n        }\r\n    }\r\n\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -11193,7 +11566,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 63,
+                "line": 65,
                 "jsdoctags": [
                     {
                         "name": "fb",
@@ -11255,7 +11628,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<main class=\"app-kyc-container\">\r\n\r\n    <section class=\"row kyc-wrapper\">\r\n        <div class=\"kyc-left\">\r\n\r\n            <div class=\"kyc-top\">\r\n                <img class=\"logo-img\" src=\"images/abcm-logo.svg\" alt=\"okooora logo\" />\r\n            </div>\r\n\r\n            <section class=\"kyc-form-section loader-wrapper\" [ngClass]=\"{\r\n                'typeOfBusiness': stepsObj.currentStep === Esteps.typeOfBusiness,\r\n                'email': stepsObj.currentStep === Esteps.email,\r\n                'emailConfirmation': stepsObj.currentStep === Esteps.emailConfirmation,\r\n                'phone': stepsObj.currentStep === Esteps.phone,\r\n                'phoneConfirmation': stepsObj.currentStep === Esteps.phoneConfirmation,\r\n                'createPassword': stepsObj.currentStep === Esteps.createPassword,\r\n                'personalDetails': stepsObj.currentStep === Esteps.personalDetails,\r\n                'personalAddress': stepsObj.currentStep === Esteps.personalAddress\r\n            }\">\r\n                <button (click)=\"handlePreviousBtn()\" id=\"back-to-website\">\r\n                    <img class=\"logo-img\" src=\"images/back-kyc.svg\" alt=\"back\" />\r\n                </button>\r\n            \r\n                <ng-container [ngSwitch]=\"stepsObj.currentStep\">\r\n                    <article class=\"kyc-headlines step--{{stepsObj.currentStep}}\" [ngClass]=\"stepsObj.currentStep == 4 ? 'px-4' : 'px-5'\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <h1 class=\"title\"> {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }} </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1 m-b-step1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + (accountType === EBusinessType.companyAccount ?\r\n                                '.titleCompany' : '.titlePrivate') | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1 m-b-step1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 email mb-2\">{{emailValue()}}</h3>\r\n                            <p class=\"kyc-p--1 desc-m\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 desc-m-2\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-email action-anchor\" (click)=\"handleEditValue($event, 'EMAIL')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_email' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1 m-b-step4\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 phone\">{{phoneValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-phone action-anchor\" (click)=\"handleEditValue($event, 'PHONE')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_phone' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1 m-b-step4\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchDefault>\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                    </article>\r\n                </ng-container>\r\n\r\n                <div>\r\n                    <div class=\"error-box alert alert-danger\" role=\"alert\" [ngClass]=\"{\r\n                        'd-none': !error.hasError && !error.msg,\r\n                        'd-block': error.hasError || error.msg\r\n                    }\" [ngStyle]=\"{'visibility': (!error.hasError && !error.msg) ? 'hidden' : 'visible'}\">\r\n                        <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-exclamation-triangle\"></mat-icon>\r\n                        {{error.msg}}\r\n                    </div>\r\n                </div>\r\n\r\n                <form #kycFormRef class=\"kyc-form\" [ngClass]=\"{\r\n                    'light-form': stepsObj.currentStep !== Esteps.typeOfBusiness\r\n                }\" [formGroup]=\"kycForm\" (keydown.enter)=\"$event.preventDefault()\"\r\n                    autocomplete=\"off\">\r\n                    <div [ngSwitch]=\"stepsObj.currentStep\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <app-kyc-one [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\"\r\n                                (activatedBusinessType)=\"handleDetailToShow($event)\">\r\n                            </app-kyc-one>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <app-kyc-two [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </app-kyc-two>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <kyc-email-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-email-confirm>\r\n                        </ng-container>\r\n                        <!-- <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <kyc-phone [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" [nextStepIsValid]=\"nextStepIsValid\">\r\n                            </kyc-phone>\r\n                        </ng-container>\r\n                        \r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <kyc-create-password [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" (loginEvent)=\"goToLogin()\">\r\n                            </kyc-create-password>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <kyc-personal-details [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-personal-details>\r\n                        </ng-container> -->\r\n                        <!-- <ng-container *ngSwitchCase=\"Esteps.personalAddress\">\r\n                            <kyc-address [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" (loginEvent)=\"goToLogin()\">\r\n                            </kyc-address>\r\n                        </ng-container> -->\r\n                        <!-- <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <kyc-phone-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-phone-confirm>\r\n                        </ng-container>\r\n                         -->\r\n                    </div>\r\n\r\n                </form>\r\n\r\n                <article class=\"login-wrapper\" *ngIf=\"showLoginBtn()\">\r\n                    <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' |\r\n                        translate}}</a>\r\n                    &nbsp;\r\n                    /\r\n                    &nbsp;\r\n                    <p class=\"login-p--1 m-0\">\r\n                        {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                        &nbsp;\r\n                        <a class=\"login-link\" (click)=\"goToLogin()\" id=\"login-btn\">{{ 'KYC.SignIn' | translate}}</a>\r\n                    </p>\r\n                </article>\r\n            </section>\r\n\r\n        </div>\r\n\r\n        <!-- <div class=\"kyc-right\">\r\n            <app-step-details [detailsToShow]=\"detailsToShow\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                [showLoginBtn]=\"showLoginBtn()\">\r\n            </app-step-details>\r\n            <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n                <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' | translate}}\r\n                    /</a>\r\n                &nbsp;\r\n                <p class=\"login-p--1\">\r\n                    {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                    &nbsp;\r\n                    <a class=\"login-link\" [href]=\"appLoginUrl\" id=\"login-btn-2\">{{ 'KYC.SignIn' | translate}}</a>\r\n                </p>\r\n            </article>\r\n            <img class=\"icon-bottom-right\" src=\"images/kyc/icons/blue-up-down-arrow.svg\"\r\n                alt=\"blue up and down arrow icon\" />\r\n        </div> -->\r\n\r\n\r\n    </section>\r\n\r\n    <!-- <div *ngIf=\"codeStatus !== 'DEFAULT' \" class=\"confirmation-incorrect\">\r\n        <button class=\"confirmation-incorrect__close action-btn\" (click)=\"tryAgain()\" mat-button>\r\n            <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-times\"></mat-icon>\r\n        </button>\r\n\r\n        <div class=\"container\">\r\n            <div class=\"confirmation-incorrect__wrapper\">\r\n                <mat-icon class=\"incorrect-icon text-danger mb-5\" fontSet=\"fontawesome\" fontIcon=\"fa-times-circle\">\r\n                </mat-icon>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'INCORRECT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.confirmation_incorrect' | translate}}</h3>\r\n                </ng-container>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'PASSED_LIMIT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.PassedLimitTitle' | translate}}</h3>\r\n                    <p class=\"confirmation-incorrect-p--1\">{{ 'KYC.PassedLimitParagraph' | translate}}</p>\r\n                </ng-container>\r\n\r\n                <button type=\"button\" mat-raised-button color=\"primary\" class=\"continue-btn mt-5\" (click)=\"tryAgain()\">\r\n                    {{ 'KYC.try_again' | translate}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div> -->\r\n\r\n</main>"
+            "templateData": "<main class=\"app-kyc-container\">\r\n\r\n    <section class=\"row kyc-wrapper\">\r\n        <div class=\"kyc-left\">\r\n\r\n            <div class=\"kyc-top\">\r\n                <img class=\"logo-img\" src=\"images/abcm-logo.svg\" alt=\"okooora logo\" />\r\n            </div>\r\n\r\n            <section class=\"kyc-form-section loader-wrapper\" [ngClass]=\"{\r\n                'typeOfBusiness': stepsObj.currentStep === Esteps.typeOfBusiness,\r\n                'email': stepsObj.currentStep === Esteps.email,\r\n                'emailConfirmation': stepsObj.currentStep === Esteps.emailConfirmation,\r\n                'phone': stepsObj.currentStep === Esteps.phone,\r\n                'phoneConfirmation': stepsObj.currentStep === Esteps.phoneConfirmation,\r\n                'createPassword': stepsObj.currentStep === Esteps.createPassword,\r\n                'personalDetails': stepsObj.currentStep === Esteps.personalDetails,\r\n                'personalAddress': stepsObj.currentStep === Esteps.personalAddress\r\n            }\">\r\n                <button (click)=\"handlePreviousBtn()\" id=\"back-to-website\">\r\n                    <img class=\"logo-img\" src=\"images/back-kyc.svg\" alt=\"back\" />\r\n                </button>\r\n            \r\n                <ng-container [ngSwitch]=\"stepsObj.currentStep\">\r\n                    <article class=\"kyc-headlines step--{{stepsObj.currentStep}}\" [ngClass]=\"stepsObj.currentStep == 4 ? 'px-4' : 'px-5'\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <h1 class=\"title\"> {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }} </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1 m-b-step1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + (accountType === EBusinessType.companyAccount ?\r\n                                '.titleCompany' : '.titlePrivate') | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1 m-b-step1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 email mb-2\">{{emailValue()}}</h3>\r\n                            <p class=\"kyc-p--1 desc-m\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 desc-m-2\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-email action-anchor\" (click)=\"handleEditValue($event, 'EMAIL')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_email' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1 m-b-step4\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <h3 class=\"kyc-h--3 phone\">{{phoneValue()}}</h3>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}\r\n                            </p>\r\n                            <p class=\"kyc-p--1 m-0\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}\r\n                                <a class=\"edit-phone action-anchor\" (click)=\"handleEditValue($event, 'PHONE')\">\r\n                                    {{ 'KYC_Step_' + stepsObj.currentStep + '.edit_phone' | translate }}\r\n                                </a>\r\n                            </p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1 m-b-step4\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <h1 class=\"title\">\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchDefault>\r\n                            <h1 class=\"title\">\r\n                                <button *ngIf=\"showPrevBtn()\" class=\"action-btn in-title--mobile\"\r\n                                    (click)=\"handlePreviousBtn()\">\r\n                                    <span class=\"fas fa-chevron-left\"></span>\r\n                                </button>\r\n                                {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}\r\n                            </h1>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}</p>\r\n                            <p class=\"kyc-p--1\">{{ 'KYC_Step_' + stepsObj.currentStep + '.p_2' | translate }}</p>\r\n                        </ng-container>\r\n                    </article>\r\n                </ng-container>\r\n\r\n                <div>\r\n                    <div class=\"error-box alert alert-danger\" role=\"alert\" [ngClass]=\"{\r\n                        'd-none': !error.hasError && !error.msg,\r\n                        'd-block': error.hasError || error.msg\r\n                    }\" [ngStyle]=\"{'visibility': (!error.hasError && !error.msg) ? 'hidden' : 'visible'}\">\r\n                        <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-exclamation-triangle\"></mat-icon>\r\n                        {{error.msg}}\r\n                    </div>\r\n                </div>\r\n\r\n                <form #kycFormRef class=\"kyc-form\" [ngClass]=\"{\r\n                    'light-form': stepsObj.currentStep !== Esteps.typeOfBusiness\r\n                }\" [formGroup]=\"kycForm\" (keydown.enter)=\"$event.preventDefault()\"\r\n                    autocomplete=\"off\">\r\n                    <div [ngSwitch]=\"stepsObj.currentStep\">\r\n                        <ng-container *ngSwitchCase=\"Esteps.typeOfBusiness\">\r\n                            <app-kyc-one [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\"\r\n                                (activatedBusinessType)=\"handleDetailToShow($event)\">\r\n                            </app-kyc-one>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngSwitchCase=\"Esteps.email\">\r\n                            <app-kyc-two [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </app-kyc-two>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.emailConfirmation\">\r\n                            <kyc-email-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-email-confirm>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.phone\">\r\n                            <kyc-phone [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" [nextStepIsValid]=\"nextStepIsValid\">\r\n                            </kyc-phone>\r\n                        </ng-container>\r\n                        \r\n                        <ng-container *ngSwitchCase=\"Esteps.createPassword\">\r\n                            <kyc-create-password [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" (loginEvent)=\"goToLogin()\">\r\n                            </kyc-create-password>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalDetails\">\r\n                            <kyc-personal-details [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-personal-details>\r\n                        </ng-container>\r\n                        <ng-container *ngSwitchCase=\"Esteps.personalAddress\">\r\n                            <kyc-address [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\" (loginEvent)=\"goToLogin()\">\r\n                            </kyc-address>\r\n                        </ng-container>\r\n                        <!-- <ng-container *ngSwitchCase=\"Esteps.phoneConfirmation\">\r\n                            <kyc-phone-confirm [parentFormGroup]=\"kycForm\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                                (nextStepEvent)=\"stepHandler($event)\">\r\n                            </kyc-phone-confirm>\r\n                        </ng-container>\r\n                         -->\r\n                    </div>\r\n\r\n                </form>\r\n\r\n                <article class=\"login-wrapper\" *ngIf=\"showLoginBtn()\">\r\n                    <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' |\r\n                        translate}}</a>\r\n                    &nbsp;\r\n                    /\r\n                    &nbsp;\r\n                    <p class=\"login-p--1 m-0\">\r\n                        {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                        &nbsp;\r\n                        <a class=\"login-link\" (click)=\"goToLogin()\" id=\"login-btn\">{{ 'KYC.SignIn' | translate}}</a>\r\n                    </p>\r\n                </article>\r\n            </section>\r\n\r\n        </div>\r\n\r\n        <!-- <div class=\"kyc-right\">\r\n            <app-step-details [detailsToShow]=\"detailsToShow\" [kycForm]=\"kycForm\" [stepsObj]=\"stepsObj\"\r\n                [showLoginBtn]=\"showLoginBtn()\">\r\n            </app-step-details>\r\n            <article *ngIf=\"showLoginBtn()\" class=\"login-wrapper\">\r\n                <a class=\"faq-p--1\" [href]=\"faqUrl\" target=\"_blank\" rel=\"noopener noreferrer\">{{ 'KYC.FAQ' | translate}}\r\n                    /</a>\r\n                &nbsp;\r\n                <p class=\"login-p--1\">\r\n                    {{ 'KYC.alreadyHaveAccount' | translate}}\r\n                    &nbsp;\r\n                    <a class=\"login-link\" [href]=\"appLoginUrl\" id=\"login-btn-2\">{{ 'KYC.SignIn' | translate}}</a>\r\n                </p>\r\n            </article>\r\n            <img class=\"icon-bottom-right\" src=\"images/kyc/icons/blue-up-down-arrow.svg\"\r\n                alt=\"blue up and down arrow icon\" />\r\n        </div> -->\r\n\r\n\r\n    </section>\r\n\r\n    <!-- <div *ngIf=\"codeStatus !== 'DEFAULT' \" class=\"confirmation-incorrect\">\r\n        <button class=\"confirmation-incorrect__close action-btn\" (click)=\"tryAgain()\" mat-button>\r\n            <mat-icon fontSet=\"fontawesome\" fontIcon=\"fa-times\"></mat-icon>\r\n        </button>\r\n\r\n        <div class=\"container\">\r\n            <div class=\"confirmation-incorrect__wrapper\">\r\n                <mat-icon class=\"incorrect-icon text-danger mb-5\" fontSet=\"fontawesome\" fontIcon=\"fa-times-circle\">\r\n                </mat-icon>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'INCORRECT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.confirmation_incorrect' | translate}}</h3>\r\n                </ng-container>\r\n\r\n                <ng-container *ngIf=\"codeStatus === 'PASSED_LIMIT'\">\r\n                    <h3 class=\"confirmation-incorrect-h--1\">{{ 'KYC.PassedLimitTitle' | translate}}</h3>\r\n                    <p class=\"confirmation-incorrect-p--1\">{{ 'KYC.PassedLimitParagraph' | translate}}</p>\r\n                </ng-container>\r\n\r\n                <button type=\"button\" mat-raised-button color=\"primary\" class=\"continue-btn mt-5\" (click)=\"tryAgain()\">\r\n                    {{ 'KYC.try_again' | translate}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div> -->\r\n\r\n</main>"
         },
         {
             "name": "KycOneComponent",
@@ -16086,6 +16459,16 @@
                 "defaultValue": "Validators.pattern(onlyEnglishAndNumbersAndSpaceRgx)"
             },
             {
+                "name": "hebrewPattern",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/sign-up/kyc-address/kyc-address.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "/^[\\'\\\"\\`\\.\\s\\u0590-\\u05fe]+$/i"
+            },
+            {
                 "name": "hedgeAllRows",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -17650,6 +18033,18 @@
                     "deprecationMessage": "",
                     "type": "IDetailsToShow",
                     "defaultValue": "{\r\n    step_1: {\r\n        detailName: EDetailsToShowNames.DEFAULT,\r\n    },\r\n    step_2: {\r\n        detailName: EDetailsToShowNames.email,\r\n    },\r\n    step_3: {\r\n        detailName: EDetailsToShowNames.emailConfirmation,\r\n    },\r\n    step_4:{\r\n        detailName: EDetailsToShowNames.phone,\r\n    },\r\n    step_5: {\r\n        detailName: EDetailsToShowNames.phoneConfirmation,\r\n    },\r\n    step_6: {\r\n        detailName: EDetailsToShowNames.createdPassword\r\n    },\r\n    step_7: {\r\n        detailName: EDetailsToShowNames.personalDetails\r\n    },\r\n    step_8: {\r\n        detailName: EDetailsToShowNames.personalAddress\r\n    },\r\n}"
+                }
+            ],
+            "src/app/sign-up/kyc-address/kyc-address.component.ts": [
+                {
+                    "name": "hebrewPattern",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/sign-up/kyc-address/kyc-address.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "/^[\\'\\\"\\`\\.\\s\\u0590-\\u05fe]+$/i"
                 }
             ],
             "src/app/risk-dashboard/components/hedging-proposal/hedging-static-data.ts": [
@@ -19336,6 +19731,25 @@
                 "name": "SmsVerificationComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/47",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc-address/kyc-address.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "KycAddressComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/22",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/kyc-address/kyc-address.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "hebrewPattern",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
