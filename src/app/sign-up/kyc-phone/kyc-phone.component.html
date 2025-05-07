@@ -21,7 +21,7 @@
                     type="tel" #telInputRef matInput (keydown)="restrictSpecialCharacters($event)" appOnlyNumbers>
             </div>
             <small *ngIf="apiErrorMessage" class="text-danger">{{ apiErrorMessage }}</small>
-            <button type="button" mat-raised-button color="primary" class="continue-btn mt-5 mx-auto d-block" id="kyc_phone_step_4"
+            <button type="button" mat-raised-button color="primary" class="continue-btn mx-auto d-block" id="kyc_phone_step_4"
                 (click)="handleNextStep()">
                 {{ 'KYC.Continue' | translate}}
             </button>

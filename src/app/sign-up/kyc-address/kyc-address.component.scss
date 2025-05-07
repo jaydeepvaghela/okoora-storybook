@@ -1,7 +1,51 @@
 
-::ng-deep app-select-country {
-    mat-form-field {
-        width: 100%;
+::ng-deep{
+    app-select-country {
+        mat-form-field {
+            width: 100%;
+            .mdc-text-field--filled:not(.mdc-text-field--disabled){
+                background-color: #fff;
+                border-radius: 15px;
+                border: 1px solid #E2E2E2;
+            }
+            .mdc-line-ripple,.mat-mdc-form-field-focus-overlay,.mat-mdc-form-field-subscript-wrapper{
+                display: none;
+            }
+            .mdc-text-field--filled .mat-mdc-floating-label{
+                display: none;
+            }
+            .mat-mdc-form-field-infix{
+                padding:14px 0;
+                min-height: auto;
+                app-error{
+                    display: none;
+                }
+                @media screen and (max-width: 1440px) {
+                    padding: 10px 0;
+                }
+            }
+            .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control{
+                font-size: 16px;
+                font-weight: 300;
+                color: #111827;
+                &::placeholder{
+                    opacity: 0.5;
+                }
+                @media screen and (max-width: 1440px) {
+                    font-size: 14px;
+                }
+            }
+            .mat-mdc-option .mdc-list-item__primary-text{
+                @media screen and (max-width: 1440px) {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .mdc-menu-surface .mat-mdc-option .mdc-list-item__primary-text{
+        @media screen and (max-width: 1440px) {
+            font-size: 14px;
+        }
     }
 }
 .icon {
@@ -16,8 +60,20 @@
         color : rgb(112, 110, 110);
     }
 }
+.step-8-address{
+    padding: 0 91px;
+    @media screen and (max-width: 1440px) {
+        padding: 0 40px;
+    }
+    @media screen and (max-width: 1024px) {
+        padding: 0 20px;
+    }
+    @media screen and (max-width: 768px) {
+        padding:0;
+    }
+}
 .continue-btn {
-    background: linear-gradient(111.05deg, #444444 2.91%, #000000 96.88%);
+    background: #01031C;
     border-radius: 40px;
     font-size: 16px;
     // line-height: 22px;
@@ -28,9 +84,12 @@
     transition: 0.3s;
     position: relative;
     width: 100% !important;
+    margin:9px 0 0;
     @media screen and (max-width: 1440px) {
         // height: 25px;
         width: 25px;
+        font-size: 14px;
+        padding: 10px 0;
     }
 
     &.disabled {
@@ -42,6 +101,32 @@
 }
 .form-group {
     position: relative;
+    margin: 0 0 17px;
+    label{
+        color:#111827;
+        font-weight: 300;
+        font-size: 16px;
+        margin: 0 0 7px;
+        @media screen and (max-width: 1440px) {
+            font-size: 14px;
+        }
+    }
+    .form-control{
+        border-color: #E2E2E2;
+        padding: 14px 16px;
+        color:#111827;
+        font-size: 16px;
+        font-weight: 300;
+        border-radius: 15px !important;
+        &:focus{
+            outline: none;
+            box-shadow: none;
+        }
+        @media screen and (max-width: 1440px) {
+            font-size: 14px;
+            padding: 10px;
+        }
+    }
 }
 .custom-input-icon {
     position: absolute;
@@ -53,7 +138,4 @@
 .inside-input {
     position: absolute;
     right: 8px;
-}
-.row {
-    margin-top: 14px !important;
 }

@@ -1,6 +1,6 @@
 <ng-container [formGroup]="parentFormGroup">
     <ng-container [formGroup]="step_7">
-        <div class="form-control-wrapper w-small-ns">
+        <div class="form-control-wrapper w-small-ns step-7-personal-details">
             <ng-container [formGroup]="parentFormGroup">
                 <div class="control-field"
                     *ngIf="kycForm.get('step_1')?.get(businessTypes.privateAccount)?.get('isActive')?.value">
@@ -144,7 +144,7 @@
             <button (click)="handleNextStep()"
                 [disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value &&(idValidation.value && !(validateID(kycForm.get('step_7')?.get('id_number')?.value) && kycForm.get('step_7')?.get('id_number')?.value.toString().length > 0))) || !(kycForm.get('step_7')?.get('first_name')?.value && kycForm.get('step_7')?.get('last_name')?.value && kycForm.get('step_7')?.get('birth_date')?.value)"
                 [class.disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value &&(idValidation.value && !(validateID(kycForm.get('step_7')?.get('id_number')?.value) && kycForm.get('step_7')?.get('id_number')?.value.toString().length > 0)) ) || !(kycForm.get('step_7')?.get('first_name')?.value && kycForm.get('step_7')?.get('last_name')?.value && kycForm.get('step_7')?.get('birth_date')?.value)"
-                class="continue-btn mt-5 mx-auto" color="primary" mat-raised-button type="button" id="pdetails-btn-continue">
+                class="continue-btn" color="primary" mat-raised-button type="button" id="pdetails-btn-continue">
                 {{ 'KYC.Continue' | translate}}
             </button>
         </div>
