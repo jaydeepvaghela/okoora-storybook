@@ -19,20 +19,27 @@
 .kyc-phone {
     max-width: 70%;
     margin: 0 auto;
+    @media screen and (max-width: 767px) {
+        max-width:100%;
+    }
 }
 .kyc-phone-input {
     background-color: #fff;
     border: 1px solid #111827;
     border-radius: 15px;
     color: #111827;
-    text-indent: 10px;
-    min-height: 50px;
+    // text-indent: 10px;
+    min-height: auto;
     width: 100%;
     box-sizing: border-box;
     font-size: 16px;
-    padding: 10px;
+    padding:14px 16px;
     &::placeholder{
         opacity: 0.5;
+    }
+    @media screen and (max-width: 1440px) {
+        font-size: 14px;
+        padding: 10px;
     }
 }
 .mobile-num input {
@@ -62,9 +69,13 @@
     transition: 0.3s;
     position: relative;
     width: 100% !important;
+    margin: 26px 0 0;
     @media screen and (max-width: 1440px) {
         // height: 25px;
         width: 25px;
+        margin: 16px 0 0;
+        font-size: 14px;
+        padding: 10px;
     }
 
     &.disabled {

@@ -13,15 +13,57 @@
     .identification-toggle-custom .mdc-switch:enabled .mdc-switch__track::before, .identification-toggle-custom .mdc-switch .mdc-switch__handle::before, .identification-toggle-custom .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__handle::after{
         background: #0052b4 !important;
     }
-    
+    .mat-mdc-icon-button{
+        width: 37px;
+        height: 37px;
+        .mat-mdc-button-ripple,.mdc-icon-button__ripple{
+            display: none !important;
+        }
+    }
    
+}
+.step-7-personal-details{
+    padding: 0 91px;
+    @media screen and (max-width: 1440px) {
+        padding: 0 40px;
+    }
+    @media screen and (max-width: 1024px) {
+        padding: 0 20px;
+    }
+    @media screen and (max-width: 768px) {
+        padding:0;
+    }
+    .form-group{
+        label{
+            color:#111827;
+            font-weight: 300;
+            font-size: 16px;
+            margin: 0 0 7px;
+            @media screen and (max-width: 1440px) {
+                font-size: 14px;
+            }
+        }
+        .form-control{
+            border-color: #E2E2E2;
+            padding: 14px 16px;
+            color:#111827;
+            font-size: 16px;
+            font-weight: 300;
+            border-radius: 15px !important;
+            &:focus{
+                outline: none;
+                box-shadow: none;
+            }
+            @media screen and (max-width: 1440px) {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    }
 }
 
 .continue-btn {
     // max-width: 33rem;
-    margin-top: 3rem;
-    margin-bottom: 5rem;
-
     @include respond(lg) {
         max-width: 100%;
     }
@@ -35,9 +77,12 @@
 .custom-input-icon {
     position: absolute;
     right: 0;
-    top: 10px;
-    padding: 10px;
+    top:34px;
+    padding: 0;
     // pointer-events: none;
+    @media screen and (max-width: 1440px) {
+        top:27px;
+    }
 }
 .icon {
     position: absolute;
@@ -59,14 +104,12 @@
     width: 800px;
 }
 .row {
-    padding-bottom: 15px;
+    padding-bottom: 17px;
 }
 .continue-btn {
-    background: linear-gradient(111.05deg, #444444 2.91%, #000000 96.88%);
+    background:#01031C;
     border-radius: 40px;
     font-size: 16px;
-    // line-height: 22px;
-    margin: auto;
     font-weight: 600;
     color: #fff;
     padding: 12px 0px;
@@ -74,9 +117,11 @@
     transition: 0.3s;
     position: relative;
     width: 100% !important;
+    margin: 9px 0 0;
     @media screen and (max-width: 1440px) {
-        // height: 25px;
         width: 25px;
+        font-size: 14px;
+        padding: 10px 0px;
     }
 
     &.disabled {

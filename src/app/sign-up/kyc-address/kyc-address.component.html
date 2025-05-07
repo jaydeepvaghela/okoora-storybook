@@ -1,86 +1,102 @@
 <form [formGroup]="parentFormGroup">
-    <form [formGroup]="step_8">
-        <div class="form-control-wrapper">
-            <app-select-country [formFieldType]="'CUSTOM-FORM-FIELD'" specialClasses="country-field disabled"
-                [kycForm]="kycForm" [currentFormGroup]="step_8" currentformControlName="country" [disabled]="false"
-                [matLabelTranslation]="'fields.country' | translate">
-            </app-select-country>
+    <div class="step-8-address">
+        <form [formGroup]="step_8">
+            <div class="form-control-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="password"> Country</label>
+                            <app-select-country [formFieldType]="'CUSTOM-FORM-FIELD'"
+                                specialClasses="country-field disabled" [kycForm]="kycForm" [currentFormGroup]="step_8"
+                                currentformControlName="country" [disabled]="false"
+                                [matLabelTranslation]="'fields.country' | translate">
+                            </app-select-country>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="password"> {{ 'fields.street_address' | translate }}</label>
+                            <input matInput formControlName="street_address" autocomplete="off" class="form-control"
+                                appRestrictSpecialCharacters>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="password"> {{ 'fields.city' | translate }}</label>
+                            <input matInput formControlName="city" autocomplete="off" class="form-control"
+                                appRestrictSpecialCharacters>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="password"> {{'fields.zipcode'| translate }}</label>
+                            <input matInput formControlName="zipcode" autocomplete="off" class="form-control"
+                                appRestrictSpecialCharacters>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="form-control-wrapper" [formGroup]="addressInHebrew"
+                *ngIf="kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="password"> {{ 'fields.street_he' | translate }}</label>
+                            <div class="input-icon form-group">
+
+                                <input class="w-100" type="text" formControlName="street_he" autocomplete="off" matInput
+                                    [ngClass]="{'disabled': autoApproved === true} " class="form-control">
+                                <app-error [HTMLType]="'MATERIAL'" [controlName]="addressInHebrew.get('street_he')!">
+                                </app-error>
+
+                                <button class="bg-none border-0 icon inside-input" matSuffix type="button"
+                                    (click)="hendelEditHebrewFields()">
+                                    <img class="menu-icons" src="assets/images/edit-icon2.svg" alt="edit-icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="password"> {{ 'fields.city_he' | translate }}</label>
+                            <div class="input-icon form-group">
+
+                                <input class="w-100" type="text" formControlName="city_he" autocomplete="off" matInput
+                                    [ngClass]="{'disabled': autoApproved === true} " class="form-control">
+                                <app-error [HTMLType]="'MATERIAL'" [controlName]="addressInHebrew.get('city_he')!">
+                                </app-error>
+                                <button class="bg-none border-0 icon inside-input" matSuffix type="button"
+                                    (click)="hendelEditHebrewFields()">
+                                    <img class="menu-icons" src="assets/images/edit-icon2.svg" alt="edit-icon">
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="password"> {{ 'fields.street_address' | translate }}</label>
-                        <input matInput formControlName="street_address" autocomplete="off" class="form-control" appRestrictSpecialCharacters>
+                        <button
+                            [disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value && addressInHebrew.invalid) || !step_8.valid || (step_8.get('street_address')?.value == '' ||  step_8.get('city')?.value == '' || step_8.get('zipcode')?.value == '') || showLoader||loading"
+                            [class.disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value && addressInHebrew.invalid) || !step_8.valid || (step_8.get('street_address')?.value == '' ||  step_8.get('city')?.value == '' || step_8.get('zipcode')?.value == '') || showLoader||loading"
+                            type="button" mat-raised-button color="primary" class="continue-btn"
+                            (click)="handleNextStep()" id="kycaddress-continue-btn">
+                            {{ 'KYC.ContinueLogin' | translate}}
+                        </button>
                     </div>
                 </div>
+
             </div>
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="password"> {{ 'fields.city' | translate }}</label>
-                        <input matInput formControlName="city" autocomplete="off" class="form-control" appRestrictSpecialCharacters>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="password"> {{'fields.zipcode'| translate }}</label>
-                        <input matInput formControlName="zipcode" autocomplete="off" class="form-control" appRestrictSpecialCharacters>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-
-
-        <div class="form-control-wrapper" [formGroup]="addressInHebrew"
-            *ngIf="kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value">
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="password"> {{ 'fields.street_he' | translate }}</label>
-                        <div class="input-icon form-group">
-
-                            <input class="w-100" type="text" formControlName="street_he" autocomplete="off" matInput
-                                [ngClass]="{'disabled': autoApproved === true} " class="form-control">
-                            <app-error [HTMLType]="'MATERIAL'" [controlName]="addressInHebrew.get('street_he')!">
-                            </app-error>
-
-                            <button class="bg-none border-0 icon inside-input" matSuffix type="button"
-                                (click)="hendelEditHebrewFields()">
-                                <img class="menu-icons" src="assets/images/edit-icon2.svg" alt="edit-icon">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="password"> {{ 'fields.city_he' | translate }}</label>
-                        <div class="input-icon form-group">
-
-                            <input class="w-100" type="text" formControlName="city_he" autocomplete="off" matInput
-                                [ngClass]="{'disabled': autoApproved === true} " class="form-control">
-                            <app-error [HTMLType]="'MATERIAL'" [controlName]="addressInHebrew.get('city_he')!">
-                            </app-error>
-                            <button class="bg-none border-0 icon inside-input" matSuffix type="button"
-                                (click)="hendelEditHebrewFields()">
-                                <img class="menu-icons" src="assets/images/edit-icon2.svg" alt="edit-icon">
-                            </button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="form-group">
-                    <button
-                        [disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value && addressInHebrew.invalid) || !step_8.valid || (step_8.get('street_address')?.value == '' ||  step_8.get('city')?.value == '' || step_8.get('zipcode')?.value == '') || showLoader||loading"
-                        [class.disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value && addressInHebrew.invalid) || !step_8.valid || (step_8.get('street_address')?.value == '' ||  step_8.get('city')?.value == '' || step_8.get('zipcode')?.value == '') || showLoader||loading"
-                        type="button" mat-raised-button color="primary" class="continue-btn" (click)="handleNextStep()" id="kycaddress-continue-btn">
-                        {{ 'KYC.ContinueLogin' | translate}}
-                    </button>
-                </div>
-            </div>
-
-        </div>
+        </form>
+    </div>
+</form>
