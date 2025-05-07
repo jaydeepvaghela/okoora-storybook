@@ -118,6 +118,7 @@ export class KycCreatePasswordComponent implements OnInit {
               });
   
           this.createUser$.next(true);
+          this.nextStepEvent.next('NEXT');
         } else {
           this.nextStepEvent.next('NEXT');
         }
