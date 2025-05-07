@@ -10,7 +10,7 @@ import { detailsToShow, passwordRgxPatternValidator } from '../models';
 import { StepActionType } from '../types/global.type';
 import { KycService } from '../services/kyc.service';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { KycEmailConfirmComponent } from '../kyc-email-confirm/kyc-email-confirm.component';
 import { KycOneComponent } from '../kyc-one/kyc-one.component';
 import { KycPhoneComponent } from '../kyc-phone/kyc-phone.component';
@@ -39,6 +39,7 @@ import { KycAddressComponent } from '../kyc-address/kyc-address.component';
     styleUrls: ['./kyc-main.component.scss'],
 })
 export class KycMainComponent implements OnInit {
+
     componentDestroyed = new Subject<any>();
     kycForm: any;
     stepsObj: IStepsObj = {
@@ -63,6 +64,7 @@ export class KycMainComponent implements OnInit {
     userType: any;
     stepCurrent: any;
     changeLogo: boolean = false;
+    translate?: TranslateService
     constructor(
         private fb: FormBuilder,
         private cd: ChangeDetectorRef,
@@ -146,38 +148,6 @@ export class KycMainComponent implements OnInit {
         this.stepsObj.currentStep
         // this.websiteUrl = this.generalS.websiteUrl;
         this.kycForm.valueChanges.subscribe(this.handleValueChanges);
-        // this.kycS.loading$.subscribe(loadingState => {
-        //     this.showLoader = loadingState;
-        // })
-
-        // this.kycS.showError$
-        //     .pipe(
-        //         debounceTime(300),
-        //         takeUntil(this.componentDestroyed)
-        //     )
-        //     .subscribe(({ hasError, msg }) => {
-        //         if (!hasError) {
-        //             return
-        //         }
-
-        //         this.showError(msg);
-        //     });
-
-        // this.kycS.verificationCodeStatus
-        //     .pipe(
-        //         takeUntil(this.componentDestroyed)
-        //     )
-        //     .subscribe(codeStatus => {
-        //         this.codeStatus = codeStatus;
-        //     });
-
-
-        // this.kycS.getAccountType$()
-        //     .subscribe(accountType => {
-        //         this.accountType = accountType;
-        //     });
-
-
         this.updatePackageBasketLastOffer();
 
 
@@ -302,6 +272,11 @@ export class KycMainComponent implements OnInit {
             this.changeLogo = true;
         }
     }
+
+    triggerChangeDetection() {
+        throw new Error("Method not implemented.");
+    }
+
     stepHandler(action: StepActionType) {
         if (!action) {
             console.warn(`action is not provided in stepHander`);
