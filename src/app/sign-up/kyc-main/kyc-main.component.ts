@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
@@ -42,7 +42,7 @@ export class KycMainComponent implements OnInit {
 
     componentDestroyed = new Subject<any>();
     kycForm: any;
-    stepsObj: IStepsObj = {
+    @Input() stepsObj: IStepsObj = {
         currentStep: EStepNumber.typeOfBusiness,
         maxSteps: EStepNumber.personalAddress,
         minSteps: EStepNumber.typeOfBusiness
