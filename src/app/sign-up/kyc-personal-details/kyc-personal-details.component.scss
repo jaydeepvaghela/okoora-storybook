@@ -24,7 +24,7 @@
 }
 .step-7-personal-details{
     padding: 0 91px;
-    @media screen and (max-width: 1440px) {
+    @media screen and (max-width: 1199px) {
         padding: 0 40px;
     }
     @media screen and (max-width: 1024px) {
@@ -58,6 +58,11 @@
                 font-size: 14px;
                 padding: 10px;
             }
+        }
+        app-error{
+            font-size: 14px;
+            color: #f44336;
+            margin-top: 5px;
         }
     }
 }
