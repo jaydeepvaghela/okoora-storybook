@@ -70,6 +70,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <app-error [HTMLType]="'MATERIAL'" [controlName]="kycForm.get('step_7')?.get('last_name')!">
+                            </app-error>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="row" *ngIf="hebrewDocument">
@@ -134,6 +140,12 @@
                                 </button>
                             </div>
                             <mat-datepicker #picker></mat-datepicker>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <app-error [HTMLType]="'MATERIAL'" [controlName]="kycForm.get('step_7')?.get('birth_date')!">
+                            </app-error>
                         </div>
                     </div>
 

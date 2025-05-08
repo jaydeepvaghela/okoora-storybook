@@ -44,7 +44,6 @@ export class KycOneComponent {
 
   handleBusinessTypeChange(panel: MatExpansionPanel, fgName: IKycData['businessTypes']) {
     // this.KycS.handleResetCountries$.next(true);
-
     if (fgName === EDetailsToShowNames.privateAcc) {
       this.kycForm.controls['step_7'].get('id_number').addValidators([Validators.required]);
     }
