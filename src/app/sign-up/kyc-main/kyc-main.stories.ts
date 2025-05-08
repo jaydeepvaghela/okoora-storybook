@@ -32,7 +32,7 @@ interface KycMainComponentWithCustomArgs extends KycMainComponent {
 }
 
 const meta: Meta<KycMainComponentWithCustomArgs> = {
-  title: 'KYC/KycMain',
+  title: 'User-authentication/Sign-up',
   component: KycMainComponent,
   decorators: [
     moduleMetadata({

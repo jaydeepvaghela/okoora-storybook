@@ -33,8 +33,7 @@ export class KycCreatePasswordComponent implements OnInit {
     hideConfirmPassword = true;
 
   componentDestroyed = new Subject<any>();
-  @Input('parentFormGroup')
-  parentFormGroup!: FormGroup;
+  @Input('parentFormGroup') parentFormGroup!: FormGroup;
   @Input('kycForm') kycForm: any;
   @Input('stepsObj') stepsObj!: IStepsObj;
   @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();
@@ -66,21 +65,30 @@ export class KycCreatePasswordComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.step_6_passwords = this.getPasswordsFormGroup()
-        console.log('this.kycForm?.value?.step_1',this.kycForm?.value?.step_1);
-        this.isFromIsrael = this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== null && this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== 'Israel' ? true : false;
-      this.checkStrength()
+        this.step_6_passwords = this.getPasswordsFormGroup();
+        this.updateIsFromIsraelFlag();
+        this.checkStrength();
+    }
+
+    // New method to update the isFromIsrael flag based on current form data
+    updateIsFromIsraelFlag(): void {
+        const countrySelected = this.kycForm?.value?.step_1?.companyAcc?.countrySelected;
+        this.isFromIsrael = countrySelected !== null && countrySelected !== 'Israel';
+        console.log('updateIsFromIsraelFlag:', this.isFromIsrael, 'country:', countrySelected);
     }
 
     codeValidHandler() {
         this.nextStepEvent.next('NEXT');
     }
+    
     togglePasswordVisibility(): void {
         this.hidePassword = !this.hidePassword;
-      }
+    }
+    
     toggleConfirmPasswordVisibility(): void {
         this.hideConfirmPassword = !this.hideConfirmPassword;
-      }
+    }
+    
     checkStrength() {
         this.illegally = false;
         let pw = this.getPasswordControl()?.value;
@@ -92,9 +100,12 @@ export class KycCreatePasswordComponent implements OnInit {
         if (!this.hasEight || !this.hasDigit || !this.hasSpecial || !this.hasLower || !this.hasUpper) {
             this.illegally = true;
         }
-
     }
+    
     handleNextStep() {
+        // Always update the isFromIsrael flag to ensure it's current
+        this.updateIsFromIsraelFlag();
+        
         let pw = this.getPasswordControl()?.value;
         if (!pw) {
             console.error(`must enter password`);
@@ -109,23 +120,24 @@ export class KycCreatePasswordComponent implements OnInit {
             return;
         }
 
-        if (this.isFromIsrael) {
-          console.log('isFromIsrael', this.isFromIsrael);
-          this.createUser$
-              .pipe(take(1))
-              .subscribe(() => {
-                  this.callCreateNewUserAPI();
-              });
-  
-          this.createUser$.next(true);
-          this.nextStepEvent.next('NEXT');
+        if (this.isFromIsrael) { 
+            console.log('isFromIsrael is TRUE, calling API');
+            this.createUser$
+                .pipe(take(1))
+                .subscribe(() => {
+                    this.callCreateNewUserAPI();
+                });
+    
+            this.createUser$.next(true);
+            // Don't navigate here - API callback will handle navigation if needed
         } else {
-          this.nextStepEvent.next('NEXT');
+            console.log('isFromIsrael is FALSE, moving to next step');
+            this.nextStepEvent.next('NEXT');
         }
     }
 
     callCreateNewUserAPI() {
-      this.createUser$
+        this.createUser$
             .pipe(
                 tap(() => {
                     this.KycS.loading$.next(true);
@@ -133,18 +145,7 @@ export class KycCreatePasswordComponent implements OnInit {
                 }),
                 throttleTime(500),
                 switchMap(() => {
-                    // console.log(this.kycForm.getRawValue());
-                    const oldData = this.kycForm.getRawValue();
-                    const isCompany = oldData.step_1.companyAcc.isActive
-                    const newData = {
-                        accountType: oldData.step_1.companyAcc.isActive ? 2 : 1,
-                        email: oldData.step_2.email,
-                        countryCode: isCompany ? oldData.step_1.companyAcc.countryCode : oldData.step_1.privateAcc.countryCode, // Assumes ISO 2 code is already being used
-                        phoneCode: oldData.step_4.phone_code?.toString().replaceAll('+', ''),
-                        phoneNumber: oldData.step_4.phone,
-                        passwords: oldData.step_6.passwords,
-                        role: 1
-                    };
+                    // API call would go here
                     return [];  
                 }),
                 catchError((e: HttpErrorResponse) => {
@@ -154,14 +155,10 @@ export class KycCreatePasswordComponent implements OnInit {
                 })
             )
             .subscribe(r => {
-
                 if (r) {
                     localStorage.removeItem('step')
                     localStorage.removeItem('kycForm')
-
-                      window.location.href = '/login';
-                      this.nextStepEvent.next('NEXT');
-
+                    window.location.href = '/login';
                 } else {
                     this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong })
                 }
@@ -178,45 +175,46 @@ export class KycCreatePasswordComponent implements OnInit {
         const passwordsFormGroup = this.getPasswordsFormGroup();
         return passwordsFormGroup ? passwordsFormGroup.get('password') : null;
     }
+    
     getConfirmPasswordControl(): AbstractControl | null {
         const passwordsFormGroup = this.getPasswordsFormGroup();
         return passwordsFormGroup ? passwordsFormGroup.get('confirmPassword') : null;
     }
 
-  restrictSpecialCharacters(event: any) {
-    const disallowedKeys = /[<>:;+=]/;
+    restrictSpecialCharacters(event: any) {
+        const disallowedKeys = /[<>:;+=]/;
 
-    if (event.type === 'paste') {
-      const clipboardData = event.clipboardData || (window as any).clipboardData;
-      const pastedData = clipboardData.getData('text');
-      if (disallowedKeys.test(pastedData)) {
-        event.preventDefault();
-      }
-    } else {
-      if (event?.target?.value?.length === 0 && (event?.key === '0' || event?.key === '.')) {
-        event?.preventDefault();
-      } else {
-        if (event?.key === '.' && event?.target?.value.includes('.')) {
-          event?.preventDefault();
+        if (event.type === 'paste') {
+            const clipboardData = event.clipboardData || (window as any).clipboardData;
+            const pastedData = clipboardData.getData('text');
+            if (disallowedKeys.test(pastedData)) {
+                event.preventDefault();
+            }
+        } else {
+            if (event?.target?.value?.length === 0 && (event?.key === '0' || event?.key === '.')) {
+                event?.preventDefault();
+            } else {
+                if (event?.key === '.' && event?.target?.value.includes('.')) {
+                    event?.preventDefault();
+                }
+                const allowedKeys = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{}|\\,.<>\/?~`'"]$/;
+                if (!allowedKeys.test(event.key) || disallowedKeys.test(event.key)) {
+                    if (!['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {
+                        event.preventDefault();
+                    }
+                }
+            }
         }
-        const allowedKeys = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{}|\\,.<>\/?~`'"]$/;
-        if (!allowedKeys.test(event.key) || disallowedKeys.test(event.key)) {
-          if (!['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {
+    }
+
+    restrictPaste(event: any) {
+        const clipboardData = event.clipboardData;
+        const pastedData = clipboardData.getData('Text');
+        const restrictedSymbols = /[<>=+]/;
+        if (restrictedSymbols.test(pastedData)) {
             event.preventDefault();
-          }
         }
-      }
     }
-  }
-
-  restrictPaste(event: any) {
-    const clipboardData = event.clipboardData;
-    const pastedData = clipboardData.getData('Text');
-    const restrictedSymbols = /[<>=+]/;
-    if (restrictedSymbols.test(pastedData)) {
-      event.preventDefault();
-    }
-  }
 
     ngOnDestroy() {
         this.componentDestroyed.next(null);

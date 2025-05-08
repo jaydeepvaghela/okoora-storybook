@@ -448,8 +448,6 @@ export class KycMainComponent implements OnInit {
         // localStorage.removeItem('kycForm')
         // localStorage.removeItem('step')
         // this.router.navigate(['/login']);
-        // window.location.href = this.appLoginUrl;
-        // localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';
     }
     passwordMatchValidator = (): ValidatorFn => {
         return (control: AbstractControl): ValidationErrors | null => {

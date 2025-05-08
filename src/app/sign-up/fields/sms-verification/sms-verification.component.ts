@@ -18,29 +18,34 @@ import { KycService } from '../../services/kyc.service';
 })
 export class SmsVerificationComponent implements OnInit, OnDestroy {
   componentDestroyed = new Subject<any>();
+  private _loadingFromParent = new BehaviorSubject<boolean>(false);
+
+  @Input() loadingFromParent(value: boolean) {
+    this._loadingFromParent.next(value);
+  }
+  @Input('kycForm') kycForm!: FormGroup;
+  @Input('stepsObj') stepsObj!: IStepsObj;
+  @Input('timerTooltip') timerTooltip!: string;
+  @Input('formControlNameToSetValue') formControlNameToSetValue!: string;
+  @Input('formControlNameToCompareValue') formControlNameToCompareValue!: string;
+
   @Output() enterEvent = new EventEmitter<string>();
   @Output() resend = new EventEmitter<string>();
   @Output() call = new EventEmitter();
   @Output() back = new EventEmitter();
-  callInProcess!: boolean;
-  private _loadingFromParent = new BehaviorSubject<boolean>(false);
-  @Input() loadingFromParent(value: boolean) {
-    this._loadingFromParent.next(value);
-  }
+  @Output('codeValidEvent') codeValidEvent = new EventEmitter<boolean>();
 
+  callInProcess!: boolean;
   digit1!: string;
   digit2!: string;
   digit3!: string;
   digit4!: string;
-
   mail!: string;
   code!: string;
   loading: boolean = false;
   codeIsValid: boolean = true;
   resendCode = false;
   refreshAPIError: boolean = false;
-  @Input('kycForm') kycForm!: FormGroup;
-  @Input('stepsObj') stepsObj!: IStepsObj;
   codeStatus: TVerificationCodeStatus = 'DEFAULT';
   timer: {
     minutes: string,
@@ -51,14 +56,11 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
       seconds: '00',
       active: false
     };
-  @Output('codeValidEvent') codeValidEvent = new EventEmitter<boolean>();
-  @Input('timerTooltip') timerTooltip!: string;
-  @Input('formControlNameToSetValue') formControlNameToSetValue!: string;
-  @Input('formControlNameToCompareValue') formControlNameToCompareValue!: string;
+ 
   smsReturnType = VerificationReturnType;
   performVerification$ = new Subject<IPerformVerification>();
 
-  constructor(private kycS: KycService) { }
+  constructor(private KycS: KycService) { }
 
   ngOnInit() {
     if (!this.formControlNameToSetValue) {
@@ -72,7 +74,7 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
       this.loading = loading;
     });
 
-    this.kycS.verificationCodeStatus.pipe(
+    this.KycS.verificationCodeStatus.pipe(
       takeUntil(this.componentDestroyed)
     ).subscribe(codeStatus => {
       this.codeStatus = codeStatus;
@@ -102,7 +104,7 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
     if (this.code === '1111') {
       this.refreshAPIError = true;
       this.codeIsValid = false;
-      this.kycS.loading$.next(false);
+      this.KycS.loading$.next(false);
       return;
     }
   
@@ -206,25 +208,24 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
             let response: TSendMailResponse = <TSendMailResponse>res;
             if (response?.Success === VerificationReturnType.Success) {
               this.startTimer();
-              this.kycS.loading$.next(false);
+              this.KycS.loading$.next(false);
             } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {
               this.startTimer('PASSED_LIMIT');
-              this.kycS.loading$.next(false);
+              this.KycS.loading$.next(false);
             } else {
-              this.kycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
+              this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
             }
             break;
           case 'CHECK':
             if (res) { 
-              console.log('res', res);
               this.codeStatus = 'VALID';
               this.codeValidEvent.next(true);
-              this.kycS.loading$.next(false);
+              this.KycS.loading$.next(false);
               this.refreshAPIError = false;
             } else {
               this.codeStatus = 'INCORRECT';
               this.codeIsValid = false;
-              this.kycS.loading$.next(false);
+              this.KycS.loading$.next(false);
             }
             break;
           default:
@@ -263,23 +264,23 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
           let response: TSendMailResponse = <TSendMailResponse>res;
           if (response?.Success === VerificationReturnType.Success) {
             this.startTimer();
-            this.kycS.loading$.next(false);
+            this.KycS.loading$.next(false);
           } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {
             this.startTimer('PASSED_LIMIT');
-            this.kycS.loading$.next(false);
+            this.KycS.loading$.next(false);
           } else {
-            this.kycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
+            this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
           }
           break;
         case 'CHECK':
           if (res) {
             this.codeStatus = 'VALID';
             this.codeValidEvent.next(true);
-            this.kycS.loading$.next(false);
+            this.KycS.loading$.next(false);
           } else {
             this.codeStatus = 'INCORRECT';
             this.codeIsValid = false;
-            this.kycS.loading$.next(false);
+            this.KycS.loading$.next(false);
           }
           break;
         default:
@@ -291,12 +292,12 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
     this.performVerification$.pipe(
       throttleTime(300),
       exhaustMap(({ action, payload }) => {
-        // this.KycS.loading$.next(true);
+        this.KycS.loading$.next(true);
         return request;
       }),
       catchError((e: HttpErrorResponse) => {
         console.error(e);
-        // this.KycS.loading$.next(false);
+        this.KycS.loading$.next(false);
         return EMPTY;
       })
     ).subscribe(([action, res]: any) => {
@@ -306,23 +307,23 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
 
           if (response?.Success === VerificationReturnType.Success) {
             this.startTimer();
-            // this.KycS.loading$.next(false);
+            this.KycS.loading$.next(false);
           } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {
             this.startTimer('PASSED_LIMIT');
-            // this.KycS.loading$.next(false);
+            this.KycS.loading$.next(false);
           } else {
-            // this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
+            this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
           }
           break;
         case 'CHECK':
           if (res) {
             this.codeStatus = 'VALID';
             this.codeValidEvent.next(true);
-            // this.KycS.loading$.next(false);
+            this.KycS.loading$.next(false);
           } else {
             this.codeStatus = 'INCORRECT';
             this.codeIsValid = false;
-            // this.KycS.loading$.next(false);
+            this.KycS.loading$.next(false);
           }
           break;
         default:

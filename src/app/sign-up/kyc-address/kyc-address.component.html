@@ -42,47 +42,6 @@
 
 
             </div>
-
-
-            <div class="form-control-wrapper" [formGroup]="addressInHebrew"
-                *ngIf="kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="password"> {{ 'fields.street_he' | translate }}</label>
-                            <div class="input-icon form-group">
-
-                                <input class="w-100" type="text" formControlName="street_he" autocomplete="off" matInput
-                                    [ngClass]="{'disabled': autoApproved === true} " class="form-control">
-                                <app-error [HTMLType]="'MATERIAL'" [controlName]="addressInHebrew.get('street_he')!">
-                                </app-error>
-
-                                <button class="bg-none border-0 icon inside-input" matSuffix type="button"
-                                    (click)="hendelEditHebrewFields()">
-                                    <img class="menu-icons" src="assets/images/edit-icon2.svg" alt="edit-icon">
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="password"> {{ 'fields.city_he' | translate }}</label>
-                            <div class="input-icon form-group">
-
-                                <input class="w-100" type="text" formControlName="city_he" autocomplete="off" matInput
-                                    [ngClass]="{'disabled': autoApproved === true} " class="form-control">
-                                <app-error [HTMLType]="'MATERIAL'" [controlName]="addressInHebrew.get('city_he')!">
-                                </app-error>
-                                <button class="bg-none border-0 icon inside-input" matSuffix type="button"
-                                    (click)="hendelEditHebrewFields()">
-                                    <img class="menu-icons" src="assets/images/edit-icon2.svg" alt="edit-icon">
-                                </button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
@@ -95,7 +54,6 @@
                         </button>
                     </div>
                 </div>
-
             </div>
         </form>
     </div>

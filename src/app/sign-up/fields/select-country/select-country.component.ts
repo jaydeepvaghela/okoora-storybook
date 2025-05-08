@@ -51,7 +51,6 @@ export class SelectCountryComponent implements OnInit {
               this.countryArr = allCountries;
               this.currentFormGroup.get(this.currentformControlName)!.setValue('');
           });
-      console.log(this.disabled);
       this.setDisabled();
   };//#ngOnInit
 

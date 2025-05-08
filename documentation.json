@@ -10135,7 +10135,7 @@
         },
         {
             "name": "KycCreatePasswordComponent",
-            "id": "component-KycCreatePasswordComponent-0196812a6feca56e005114741a86f21865e5ea90ccdb8f97a3b505e989ded1e4906278d246a6213741d9f4cda4ec2c0bc3983c3b6ea3b344f0ccdffca98fe49f",
+            "id": "component-KycCreatePasswordComponent-784c4823054c8dfd56fdb8fe8e7fa58f00677f49987e429b13e09e3bd0da27b645ceb9d2fa1e3ddee759db43a735b66581afae2c3e7f76f81c854d2832d32496",
             "file": "src/app/sign-up/kyc-create-password/kyc-create-password.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -10157,7 +10157,7 @@
                     "name": "kycForm",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 37,
                     "type": "any",
                     "decorators": []
                 },
@@ -10165,7 +10165,7 @@
                     "name": "parentFormGroup",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 36,
                     "type": "FormGroup",
                     "decorators": []
                 },
@@ -10173,7 +10173,7 @@
                     "name": "stepsObj",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39,
+                    "line": 38,
                     "type": "IStepsObj",
                     "decorators": []
                 }
@@ -10184,7 +10184,7 @@
                     "defaultValue": "new EventEmitter<StepActionType>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
+                    "line": 39,
                     "type": "EventEmitter"
                 }
             ],
@@ -10198,7 +10198,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 45
+                    "line": 44
                 },
                 {
                     "name": "_hasLowerCase",
@@ -10209,7 +10209,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 43
+                    "line": 42
                 },
                 {
                     "name": "_hasSpecial",
@@ -10220,7 +10220,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 46
+                    "line": 45
                 },
                 {
                     "name": "_hasUpperCase",
@@ -10231,7 +10231,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 44
+                    "line": 43
                 },
                 {
                     "name": "componentDestroyed",
@@ -10253,7 +10253,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 58
+                    "line": 57
                 },
                 {
                     "name": "foused",
@@ -10264,7 +10264,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 41
+                    "line": 40
                 },
                 {
                     "name": "hasDigit",
@@ -10274,7 +10274,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 52
+                    "line": 51
                 },
                 {
                     "name": "hasDigitListItem",
@@ -10284,7 +10284,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 49
+                    "line": 48
                 },
                 {
                     "name": "hasEight",
@@ -10294,7 +10294,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 54
+                    "line": 53
                 },
                 {
                     "name": "hasEightCharsListItem",
@@ -10304,7 +10304,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 47
+                    "line": 46
                 },
                 {
                     "name": "hasLower",
@@ -10314,7 +10314,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 53
+                    "line": 52
                 },
                 {
                     "name": "hasSpecial",
@@ -10324,7 +10324,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 50
+                    "line": 49
                 },
                 {
                     "name": "hasSpecialListItem",
@@ -10334,7 +10334,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 48
+                    "line": 47
                 },
                 {
                     "name": "hasUpper",
@@ -10344,7 +10344,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 51
+                    "line": 50
                 },
                 {
                     "name": "hideConfirmPassword",
@@ -10376,7 +10376,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 55
+                    "line": 54
                 },
                 {
                     "name": "isFromIsrael",
@@ -10386,7 +10386,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 56
+                    "line": 55
                 },
                 {
                     "name": "loading",
@@ -10397,7 +10397,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 59
+                    "line": 58
                 },
                 {
                     "name": "minPasswordLength",
@@ -10408,7 +10408,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 42
+                    "line": 41
                 },
                 {
                     "name": "showLoader",
@@ -10419,7 +10419,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 57
+                    "line": 56
                 },
                 {
                     "name": "step_6_passwords",
@@ -10429,7 +10429,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 60
+                    "line": 59
                 }
             ],
             "methodsClass": [
@@ -10439,7 +10439,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 127,
+                    "line": 126,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10449,7 +10449,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 84,
+                    "line": 83,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10459,7 +10459,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 75,
+                    "line": 74,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10469,7 +10469,7 @@
                     "optional": false,
                     "returnType": "AbstractControl | null",
                     "typeParameters": [],
-                    "line": 181,
+                    "line": 170,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10479,7 +10479,7 @@
                     "optional": false,
                     "returnType": "AbstractControl | null",
                     "typeParameters": [],
-                    "line": 177,
+                    "line": 166,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10489,7 +10489,7 @@
                     "optional": false,
                     "returnType": "FormGroup | null",
                     "typeParameters": [],
-                    "line": 173,
+                    "line": 162,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10499,7 +10499,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 97,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10509,7 +10509,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 221,
+                    "line": 210,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10519,7 +10519,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 68,
+                    "line": 67,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10536,7 +10536,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 212,
+                    "line": 201,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10564,7 +10564,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 186,
+                    "line": 175,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10585,7 +10585,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 81,
+                    "line": 80,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10595,7 +10595,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 78,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -10622,7 +10622,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { BehaviorSubject, EMPTY, Subject } from 'rxjs';\r\nimport { AbstractControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms';\r\n\r\nimport { catchError, skip, switchMap, take, tap, throttleTime } from 'rxjs/operators';\r\nimport { HttpErrorResponse } from '@angular/common/http';\r\nimport { ActivatedRoute, ParamMap } from '@angular/router'\r\nimport { IStepsObj, EErrorMessages } from '../kyc';\r\nimport { StepActionType } from '../types/global.type';\r\nimport { CommonModule } from '@angular/common';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { KycService } from '../services/kyc.service';\r\n\r\nexport const pwdConfirming = (data: { key: string, confirmationKey: string }): ValidatorFn => {\r\n    const { key, confirmationKey } = data;\r\n\r\n    return (group: any) => {\r\n        const input = group.controls[key];\r\n        const confirmationInput = group.controls[confirmationKey];\r\n        return input.value !== confirmationInput.value ? { passwordNotEquivalent: true } : null\r\n    };\r\n}\r\n\r\n\r\n@Component({\r\n    selector: 'kyc-create-password',\r\n    imports: [CommonModule, ReactiveFormsModule, TranslateModule],\r\n    templateUrl: './kyc-create-password.component.html',\r\n    styleUrls: ['./kyc-create-password.component.scss'],\r\n})\r\nexport class KycCreatePasswordComponent implements OnInit {\r\n    hidePassword = true;\r\n    hideConfirmPassword = true;\r\n\r\n  componentDestroyed = new Subject<any>();\r\n  @Input('parentFormGroup')\r\n  parentFormGroup!: FormGroup;\r\n  @Input('kycForm') kycForm: any;\r\n  @Input('stepsObj') stepsObj!: IStepsObj;\r\n  @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();\r\n  foused = false;\r\n  minPasswordLength = 8;\r\n  _hasLowerCase = /[a-z]/;\r\n  _hasUpperCase = /[A-Z]/;\r\n  _hasDigit = /\\d/;\r\n  _hasSpecial = /[!@#$%^&*()\\[\\]{}\\\\\\-_+={}|\\\\:;'\",<>,.?/~`]/;\r\n  hasEightCharsListItem!: boolean;\r\n  hasSpecialListItem!: boolean;\r\n  hasDigitListItem!: boolean;\r\n  hasSpecial!: boolean;\r\n  hasUpper!: boolean;\r\n  hasDigit!: boolean;\r\n  hasLower!: boolean;\r\n  hasEight!: boolean;\r\n  illegally!: boolean;\r\n  isFromIsrael!: boolean;\r\n  showLoader: any = false;  \r\n  createUser$ = new BehaviorSubject<boolean>(false);\r\n  loading = false;\r\n  step_6_passwords!: FormGroup | any;\r\n\r\n    constructor(\r\n        private KycS: KycService,\r\n        private route: ActivatedRoute\r\n    ) {\r\n    }\r\n\r\n    ngOnInit(): void {\r\n        this.step_6_passwords = this.getPasswordsFormGroup()\r\n        console.log('this.kycForm?.value?.step_1',this.kycForm?.value?.step_1);\r\n        this.isFromIsrael = this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== null && this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== 'Israel' ? true : false;\r\n      this.checkStrength()\r\n    }\r\n\r\n    codeValidHandler() {\r\n        this.nextStepEvent.next('NEXT');\r\n    }\r\n    togglePasswordVisibility(): void {\r\n        this.hidePassword = !this.hidePassword;\r\n      }\r\n    toggleConfirmPasswordVisibility(): void {\r\n        this.hideConfirmPassword = !this.hideConfirmPassword;\r\n      }\r\n    checkStrength() {\r\n        this.illegally = false;\r\n        let pw = this.getPasswordControl()?.value;\r\n        this.hasEight = pw.length >= this.minPasswordLength;\r\n        this.hasDigit = this._hasDigit.test(pw);\r\n        this.hasSpecial = this._hasSpecial.test(pw);\r\n        this.hasLower = this._hasLowerCase.test(pw);\r\n        this.hasUpper = this._hasUpperCase.test(pw);\r\n        if (!this.hasEight || !this.hasDigit || !this.hasSpecial || !this.hasLower || !this.hasUpper) {\r\n            this.illegally = true;\r\n        }\r\n\r\n    }\r\n    handleNextStep() {\r\n        let pw = this.getPasswordControl()?.value;\r\n        if (!pw) {\r\n            console.error(`must enter password`);\r\n            return;\r\n        }\r\n        if (!this.kycForm.get('step_6').valid) {\r\n            console.error(`user was able to click continue even though button disabled.`);\r\n            return;\r\n        }\r\n        if (this.illegally) {\r\n            console.error(`user was able to click continue even though button disabled.`);\r\n            return;\r\n        }\r\n\r\n        if (this.isFromIsrael) {\r\n          console.log('isFromIsrael', this.isFromIsrael);\r\n          this.createUser$\r\n              .pipe(take(1))\r\n              .subscribe(() => {\r\n                  this.callCreateNewUserAPI();\r\n              });\r\n  \r\n          this.createUser$.next(true);\r\n          this.nextStepEvent.next('NEXT');\r\n        } else {\r\n          this.nextStepEvent.next('NEXT');\r\n        }\r\n    }\r\n\r\n    callCreateNewUserAPI() {\r\n      this.createUser$\r\n            .pipe(\r\n                tap(() => {\r\n                    this.KycS.loading$.next(true);\r\n                    this.loading = true;\r\n                }),\r\n                throttleTime(500),\r\n                switchMap(() => {\r\n                    // console.log(this.kycForm.getRawValue());\r\n                    const oldData = this.kycForm.getRawValue();\r\n                    const isCompany = oldData.step_1.companyAcc.isActive\r\n                    const newData = {\r\n                        accountType: oldData.step_1.companyAcc.isActive ? 2 : 1,\r\n                        email: oldData.step_2.email,\r\n                        countryCode: isCompany ? oldData.step_1.companyAcc.countryCode : oldData.step_1.privateAcc.countryCode, // Assumes ISO 2 code is already being used\r\n                        phoneCode: oldData.step_4.phone_code?.toString().replaceAll('+', ''),\r\n                        phoneNumber: oldData.step_4.phone,\r\n                        passwords: oldData.step_6.passwords,\r\n                        role: 1\r\n                    };\r\n                    return [];  \r\n                }),\r\n                catchError((e: HttpErrorResponse) => {\r\n                    this.KycS.loading$.next(false);\r\n                    this.loading = false;\r\n                    return EMPTY;\r\n                })\r\n            )\r\n            .subscribe(r => {\r\n\r\n                if (r) {\r\n                    localStorage.removeItem('step')\r\n                    localStorage.removeItem('kycForm')\r\n\r\n                      window.location.href = '/login';\r\n                      this.nextStepEvent.next('NEXT');\r\n\r\n                } else {\r\n                    this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong })\r\n                }\r\n                this.KycS.loading$.next(false);\r\n                this.loading = false;\r\n            });\r\n    }\r\n\r\n    getPasswordsFormGroup(): FormGroup | null {\r\n        return this.kycForm.get('step_6').get('passwords') as FormGroup | null;\r\n    }\r\n\r\n    getPasswordControl(): AbstractControl | null {\r\n        const passwordsFormGroup = this.getPasswordsFormGroup();\r\n        return passwordsFormGroup ? passwordsFormGroup.get('password') : null;\r\n    }\r\n    getConfirmPasswordControl(): AbstractControl | null {\r\n        const passwordsFormGroup = this.getPasswordsFormGroup();\r\n        return passwordsFormGroup ? passwordsFormGroup.get('confirmPassword') : null;\r\n    }\r\n\r\n  restrictSpecialCharacters(event: any) {\r\n    const disallowedKeys = /[<>:;+=]/;\r\n\r\n    if (event.type === 'paste') {\r\n      const clipboardData = event.clipboardData || (window as any).clipboardData;\r\n      const pastedData = clipboardData.getData('text');\r\n      if (disallowedKeys.test(pastedData)) {\r\n        event.preventDefault();\r\n      }\r\n    } else {\r\n      if (event?.target?.value?.length === 0 && (event?.key === '0' || event?.key === '.')) {\r\n        event?.preventDefault();\r\n      } else {\r\n        if (event?.key === '.' && event?.target?.value.includes('.')) {\r\n          event?.preventDefault();\r\n        }\r\n        const allowedKeys = /^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{}|\\\\,.<>\\/?~`'\"]$/;\r\n        if (!allowedKeys.test(event.key) || disallowedKeys.test(event.key)) {\r\n          if (!['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {\r\n            event.preventDefault();\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  restrictPaste(event: any) {\r\n    const clipboardData = event.clipboardData;\r\n    const pastedData = clipboardData.getData('Text');\r\n    const restrictedSymbols = /[<>=+]/;\r\n    if (restrictedSymbols.test(pastedData)) {\r\n      event.preventDefault();\r\n    }\r\n  }\r\n\r\n    ngOnDestroy() {\r\n        this.componentDestroyed.next(null);\r\n        this.componentDestroyed.complete();\r\n    }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { BehaviorSubject, EMPTY, Subject } from 'rxjs';\r\nimport { AbstractControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms';\r\n\r\nimport { catchError, skip, switchMap, take, tap, throttleTime } from 'rxjs/operators';\r\nimport { HttpErrorResponse } from '@angular/common/http';\r\nimport { ActivatedRoute, ParamMap } from '@angular/router'\r\nimport { IStepsObj, EErrorMessages } from '../kyc';\r\nimport { StepActionType } from '../types/global.type';\r\nimport { CommonModule } from '@angular/common';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { KycService } from '../services/kyc.service';\r\n\r\nexport const pwdConfirming = (data: { key: string, confirmationKey: string }): ValidatorFn => {\r\n    const { key, confirmationKey } = data;\r\n\r\n    return (group: any) => {\r\n        const input = group.controls[key];\r\n        const confirmationInput = group.controls[confirmationKey];\r\n        return input.value !== confirmationInput.value ? { passwordNotEquivalent: true } : null\r\n    };\r\n}\r\n\r\n\r\n@Component({\r\n    selector: 'kyc-create-password',\r\n    imports: [CommonModule, ReactiveFormsModule, TranslateModule],\r\n    templateUrl: './kyc-create-password.component.html',\r\n    styleUrls: ['./kyc-create-password.component.scss'],\r\n})\r\nexport class KycCreatePasswordComponent implements OnInit {\r\n    hidePassword = true;\r\n    hideConfirmPassword = true;\r\n\r\n  componentDestroyed = new Subject<any>();\r\n  @Input('parentFormGroup') parentFormGroup!: FormGroup;\r\n  @Input('kycForm') kycForm: any;\r\n  @Input('stepsObj') stepsObj!: IStepsObj;\r\n  @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();\r\n  foused = false;\r\n  minPasswordLength = 8;\r\n  _hasLowerCase = /[a-z]/;\r\n  _hasUpperCase = /[A-Z]/;\r\n  _hasDigit = /\\d/;\r\n  _hasSpecial = /[!@#$%^&*()\\[\\]{}\\\\\\-_+={}|\\\\:;'\",<>,.?/~`]/;\r\n  hasEightCharsListItem!: boolean;\r\n  hasSpecialListItem!: boolean;\r\n  hasDigitListItem!: boolean;\r\n  hasSpecial!: boolean;\r\n  hasUpper!: boolean;\r\n  hasDigit!: boolean;\r\n  hasLower!: boolean;\r\n  hasEight!: boolean;\r\n  illegally!: boolean;\r\n  isFromIsrael!: boolean;\r\n  showLoader: any = false;  \r\n  createUser$ = new BehaviorSubject<boolean>(false);\r\n  loading = false;\r\n  step_6_passwords!: FormGroup | any;\r\n\r\n    constructor(\r\n        private KycS: KycService,\r\n        private route: ActivatedRoute\r\n    ) {\r\n    }\r\n\r\n    ngOnInit(): void {\r\n        this.step_6_passwords = this.getPasswordsFormGroup()\r\n        console.log('this.kycForm?.value?.step_1',this.kycForm?.value?.step_1);\r\n        this.isFromIsrael = this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== null && this.kycForm?.value?.step_1?.companyAcc?.countrySelected !== 'Israel' ? true : false;\r\n      this.checkStrength()\r\n    }\r\n\r\n    codeValidHandler() {\r\n        this.nextStepEvent.next('NEXT');\r\n    }\r\n    togglePasswordVisibility(): void {\r\n        this.hidePassword = !this.hidePassword;\r\n      }\r\n    toggleConfirmPasswordVisibility(): void {\r\n        this.hideConfirmPassword = !this.hideConfirmPassword;\r\n      }\r\n    checkStrength() {\r\n        this.illegally = false;\r\n        let pw = this.getPasswordControl()?.value;\r\n        this.hasEight = pw.length >= this.minPasswordLength;\r\n        this.hasDigit = this._hasDigit.test(pw);\r\n        this.hasSpecial = this._hasSpecial.test(pw);\r\n        this.hasLower = this._hasLowerCase.test(pw);\r\n        this.hasUpper = this._hasUpperCase.test(pw);\r\n        if (!this.hasEight || !this.hasDigit || !this.hasSpecial || !this.hasLower || !this.hasUpper) {\r\n            this.illegally = true;\r\n        }\r\n\r\n    }\r\n    handleNextStep() {\r\n        let pw = this.getPasswordControl()?.value;\r\n        if (!pw) {\r\n            console.error(`must enter password`);\r\n            return;\r\n        }\r\n        if (!this.kycForm.get('step_6').valid) {\r\n            console.error(`user was able to click continue even though button disabled.`);\r\n            return;\r\n        }\r\n        if (this.illegally) {\r\n            console.error(`user was able to click continue even though button disabled.`);\r\n            return;\r\n        }\r\n\r\n        if (this.isFromIsrael) {\r\n          console.log('isFromIsrael', this.isFromIsrael);\r\n          this.createUser$\r\n              .pipe(take(1))\r\n              .subscribe(() => {\r\n                  this.callCreateNewUserAPI();\r\n              });\r\n  \r\n          this.createUser$.next(true);\r\n          this.nextStepEvent.next('NEXT');\r\n        } else {\r\n          this.nextStepEvent.next('NEXT');\r\n        }\r\n    }\r\n\r\n    callCreateNewUserAPI() {\r\n      this.createUser$\r\n            .pipe(\r\n                tap(() => {\r\n                    this.KycS.loading$.next(true);\r\n                    this.loading = true;\r\n                }),\r\n                throttleTime(500),\r\n                switchMap(() => {\r\n                    // console.log(this.kycForm.getRawValue());\r\n                   \r\n                    return [];  \r\n                }),\r\n                catchError((e: HttpErrorResponse) => {\r\n                    this.KycS.loading$.next(false);\r\n                    this.loading = false;\r\n                    return EMPTY;\r\n                })\r\n            )\r\n            .subscribe(r => {\r\n\r\n                if (r) {\r\n                    localStorage.removeItem('step')\r\n                    localStorage.removeItem('kycForm')\r\n\r\n                      window.location.href = '/login';\r\n                      this.nextStepEvent.next('NEXT');\r\n\r\n                } else {\r\n                    this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong })\r\n                }\r\n                this.KycS.loading$.next(false);\r\n                this.loading = false;\r\n            });\r\n    }\r\n\r\n    getPasswordsFormGroup(): FormGroup | null {\r\n        return this.kycForm.get('step_6').get('passwords') as FormGroup | null;\r\n    }\r\n\r\n    getPasswordControl(): AbstractControl | null {\r\n        const passwordsFormGroup = this.getPasswordsFormGroup();\r\n        return passwordsFormGroup ? passwordsFormGroup.get('password') : null;\r\n    }\r\n    getConfirmPasswordControl(): AbstractControl | null {\r\n        const passwordsFormGroup = this.getPasswordsFormGroup();\r\n        return passwordsFormGroup ? passwordsFormGroup.get('confirmPassword') : null;\r\n    }\r\n\r\n  restrictSpecialCharacters(event: any) {\r\n    const disallowedKeys = /[<>:;+=]/;\r\n\r\n    if (event.type === 'paste') {\r\n      const clipboardData = event.clipboardData || (window as any).clipboardData;\r\n      const pastedData = clipboardData.getData('text');\r\n      if (disallowedKeys.test(pastedData)) {\r\n        event.preventDefault();\r\n      }\r\n    } else {\r\n      if (event?.target?.value?.length === 0 && (event?.key === '0' || event?.key === '.')) {\r\n        event?.preventDefault();\r\n      } else {\r\n        if (event?.key === '.' && event?.target?.value.includes('.')) {\r\n          event?.preventDefault();\r\n        }\r\n        const allowedKeys = /^[a-zA-Z0-9!@#$%^&*()_+\\-=\\[\\]{}|\\\\,.<>\\/?~`'\"]$/;\r\n        if (!allowedKeys.test(event.key) || disallowedKeys.test(event.key)) {\r\n          if (!['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {\r\n            event.preventDefault();\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  restrictPaste(event: any) {\r\n    const clipboardData = event.clipboardData;\r\n    const pastedData = clipboardData.getData('Text');\r\n    const restrictedSymbols = /[<>=+]/;\r\n    if (restrictedSymbols.test(pastedData)) {\r\n      event.preventDefault();\r\n    }\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.componentDestroyed.next(null);\r\n    this.componentDestroyed.complete();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -10650,7 +10650,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 60,
+                "line": 59,
                 "jsdoctags": [
                     {
                         "name": "KycS",
@@ -14725,7 +14725,7 @@
         },
         {
             "name": "SelectCountryComponent",
-            "id": "component-SelectCountryComponent-1f9147bea9d4da44e643ea8d8843ae83d47f033ddfa5006e6626565021ef3c6bb15b3a8c42c86712829998d556239b1292945c52c255b11c67116002664f7eea",
+            "id": "component-SelectCountryComponent-6e7b9568bf8088cc0fe17bb6e09938f22dfa1bf3cb10f4289d08472d407f8b292011f85920a4d49ff2cfa07d73d9223b70f490783a2e7b3e6fa8a3b7d291ada8",
             "file": "src/app/sign-up/fields/select-country/select-country.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -14846,7 +14846,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 58,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -14874,7 +14874,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 68,
+                    "line": 67,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -14895,7 +14895,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 120,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -14922,7 +14922,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 105,
+                    "line": 104,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -14943,7 +14943,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 98,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -14960,7 +14960,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 62,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -15014,7 +15014,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { FormGroup, ReactiveFormsModule } from '@angular/forms';\r\nimport { Subject, skipWhile, takeUntil, switchMap } from 'rxjs';\r\nimport { countryData } from '../country-data';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { KycService } from '../../services/kyc.service';\r\nimport { ErrorComponent } from \"../error/error.component\";\r\n\r\n@Component({\r\n  selector: 'app-select-country',\r\n  imports: [CommonModule, ReactiveFormsModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, ErrorComponent, ErrorComponent],\r\n  templateUrl: './select-country.component.html',\r\n  styleUrl: './select-country.component.scss'\r\n})\r\nexport class SelectCountryComponent implements OnInit {\r\n  componentDestroyed = new Subject<any>();\r\n  countryArr!: any[];\r\n  @Input(\"kycForm\") kycForm!: FormGroup;\r\n  @Input('disabled') disabled: boolean = false;\r\n  @Input(\"currentFormGroup\") currentFormGroup!: FormGroup;\r\n  @Input(\"currentformControlName\") currentformControlName!: string;\r\n  @Input(\"matLabelTranslation\") matLabelTranslation!: string;\r\n  @Input(\"handlerOnBlur\") handlerOnBlur?: () => void;\r\n  @Input(\"specialClasses\") specialClasses!: string;\r\n  @Input(\"formFieldType\") formFieldType: 'DEFAULT' | 'CUSTOM-FORM-FIELD' = 'DEFAULT';\r\n\r\n  constructor( private kycS: KycService\r\n  ) {\r\n  }\r\n\r\n  ngOnInit(): void {\r\n      this.kycS.allCountries$\r\n          .pipe(\r\n              skipWhile(countries => !Array.isArray(countries)),\r\n              takeUntil(this.componentDestroyed)\r\n          )\r\n          .subscribe(countries => {\r\n              this.countryArr = countries;\r\n        });\r\n\r\n      this.countryArr = countryData\r\n\r\n      this.kycS.handleResetCountries$\r\n          .pipe(\r\n              switchMap(() => this.kycS.allCountries$)\r\n          )\r\n          .subscribe(allCountries => {\r\n              this.countryArr = allCountries;\r\n              this.currentFormGroup.get(this.currentformControlName)!.setValue('');\r\n          });\r\n      console.log(this.disabled);\r\n      this.setDisabled();\r\n  };//#ngOnInit\r\n\r\n  handleCountryNameSearch(e: Event) {\r\n      this.countryArr = this.kycS.handleCountrySearch({event: e, action: 'NAME'})\r\n  }\r\n\r\n  trimLabel(label:any) {\r\n     const newLabel = label.replace(/\\s+/g, '');;\r\n     return newLabel\r\n  }\r\n\r\n\r\n  handleCountryNameSearchBlur(data: { event: Event, parentFormGroup: FormGroup, controlName: string }) {\r\n      const {event, parentFormGroup, controlName} = data;\r\n\r\n      if (!parentFormGroup) {\r\n          console.error(`you must provide a parentFormGroup, \\n given ${parentFormGroup}`);\r\n          return;\r\n      }\r\n      if (!controlName) {\r\n          console.error(`you must provide a controlName, \\n given ${controlName}`);\r\n          return;\r\n      }\r\n      if (!parentFormGroup.get(controlName)) {\r\n          console.error(`the control name (${controlName}) from parent form group is falsy`);\r\n          return;\r\n      }\r\n      let countrySearched = parentFormGroup.get(controlName)?.value?.toLowerCase();\r\n      let foundCountry = countryData.find(c => c.countryName.toLowerCase() === countrySearched || c.countryName.toLowerCase().includes(countrySearched));\r\n\r\n      if (!foundCountry) {\r\n          parentFormGroup.get(controlName)!.setValue('');\r\n          parentFormGroup.get(controlName)!.setErrors({ countryNotFound: true });\r\n          parentFormGroup.get(controlName)!.updateValueAndValidity();\r\n          this.countryArr = this.kycS.allCountries$.getValue();\r\n      } else {\r\n          parentFormGroup.get('countryCode')!.setValue(foundCountry.countryCode);\r\n      }\r\n      if (this.handlerOnBlur) {\r\n          this.handlerOnBlur();\r\n      }\r\n  }\r\n\r\n  setDisabled() {\r\n      if (this.disabled) {\r\n          this.currentFormGroup.controls[this.currentformControlName].disable();\r\n      }\r\n  }\r\n\r\n  restrictSpecialCharacters(event: any) {\r\n      if (event?.target?.value?.length === 0 && (event?.key === \"0\" || event?.key === \".\")) {\r\n        event?.preventDefault();\r\n      }\r\n      else {\r\n        if (event?.key == \".\" && event?.target?.value.includes(\".\")) {\r\n          event?.preventDefault();\r\n        }\r\n        const allowedKeys = /^[a-zA-Z0-9.]$/;\r\n        if (!allowedKeys.test(event.key) && !['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {\r\n          event.preventDefault();\r\n        }\r\n      }\r\n    }\r\n\r\n  ngOnDestroy() {\r\n      this.componentDestroyed.next(null);\r\n      this.componentDestroyed.complete();\r\n  };\r\n}\r\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { FormGroup, ReactiveFormsModule } from '@angular/forms';\r\nimport { Subject, skipWhile, takeUntil, switchMap } from 'rxjs';\r\nimport { countryData } from '../country-data';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { KycService } from '../../services/kyc.service';\r\nimport { ErrorComponent } from \"../error/error.component\";\r\n\r\n@Component({\r\n  selector: 'app-select-country',\r\n  imports: [CommonModule, ReactiveFormsModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, ErrorComponent, ErrorComponent],\r\n  templateUrl: './select-country.component.html',\r\n  styleUrl: './select-country.component.scss'\r\n})\r\nexport class SelectCountryComponent implements OnInit {\r\n  componentDestroyed = new Subject<any>();\r\n  countryArr!: any[];\r\n  @Input(\"kycForm\") kycForm!: FormGroup;\r\n  @Input('disabled') disabled: boolean = false;\r\n  @Input(\"currentFormGroup\") currentFormGroup!: FormGroup;\r\n  @Input(\"currentformControlName\") currentformControlName!: string;\r\n  @Input(\"matLabelTranslation\") matLabelTranslation!: string;\r\n  @Input(\"handlerOnBlur\") handlerOnBlur?: () => void;\r\n  @Input(\"specialClasses\") specialClasses!: string;\r\n  @Input(\"formFieldType\") formFieldType: 'DEFAULT' | 'CUSTOM-FORM-FIELD' = 'DEFAULT';\r\n\r\n  constructor( private kycS: KycService\r\n  ) {\r\n  }\r\n\r\n  ngOnInit(): void {\r\n      this.kycS.allCountries$\r\n          .pipe(\r\n              skipWhile(countries => !Array.isArray(countries)),\r\n              takeUntil(this.componentDestroyed)\r\n          )\r\n          .subscribe(countries => {\r\n              this.countryArr = countries;\r\n        });\r\n\r\n      this.countryArr = countryData\r\n\r\n      this.kycS.handleResetCountries$\r\n          .pipe(\r\n              switchMap(() => this.kycS.allCountries$)\r\n          )\r\n          .subscribe(allCountries => {\r\n              this.countryArr = allCountries;\r\n              this.currentFormGroup.get(this.currentformControlName)!.setValue('');\r\n          });\r\n      this.setDisabled();\r\n  };//#ngOnInit\r\n\r\n  handleCountryNameSearch(e: Event) {\r\n      this.countryArr = this.kycS.handleCountrySearch({event: e, action: 'NAME'})\r\n  }\r\n\r\n  trimLabel(label:any) {\r\n     const newLabel = label.replace(/\\s+/g, '');;\r\n     return newLabel\r\n  }\r\n\r\n\r\n  handleCountryNameSearchBlur(data: { event: Event, parentFormGroup: FormGroup, controlName: string }) {\r\n      const {event, parentFormGroup, controlName} = data;\r\n\r\n      if (!parentFormGroup) {\r\n          console.error(`you must provide a parentFormGroup, \\n given ${parentFormGroup}`);\r\n          return;\r\n      }\r\n      if (!controlName) {\r\n          console.error(`you must provide a controlName, \\n given ${controlName}`);\r\n          return;\r\n      }\r\n      if (!parentFormGroup.get(controlName)) {\r\n          console.error(`the control name (${controlName}) from parent form group is falsy`);\r\n          return;\r\n      }\r\n      let countrySearched = parentFormGroup.get(controlName)?.value?.toLowerCase();\r\n      let foundCountry = countryData.find(c => c.countryName.toLowerCase() === countrySearched || c.countryName.toLowerCase().includes(countrySearched));\r\n\r\n      if (!foundCountry) {\r\n          parentFormGroup.get(controlName)!.setValue('');\r\n          parentFormGroup.get(controlName)!.setErrors({ countryNotFound: true });\r\n          parentFormGroup.get(controlName)!.updateValueAndValidity();\r\n          this.countryArr = this.kycS.allCountries$.getValue();\r\n      } else {\r\n          parentFormGroup.get('countryCode')!.setValue(foundCountry.countryCode);\r\n      }\r\n      if (this.handlerOnBlur) {\r\n          this.handlerOnBlur();\r\n      }\r\n  }\r\n\r\n  setDisabled() {\r\n      if (this.disabled) {\r\n          this.currentFormGroup.controls[this.currentformControlName].disable();\r\n      }\r\n  }\r\n\r\n  restrictSpecialCharacters(event: any) {\r\n      if (event?.target?.value?.length === 0 && (event?.key === \"0\" || event?.key === \".\")) {\r\n        event?.preventDefault();\r\n      }\r\n      else {\r\n        if (event?.key == \".\" && event?.target?.value.includes(\".\")) {\r\n          event?.preventDefault();\r\n        }\r\n        const allowedKeys = /^[a-zA-Z0-9.]$/;\r\n        if (!allowedKeys.test(event.key) && !['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {\r\n          event.preventDefault();\r\n        }\r\n      }\r\n    }\r\n\r\n  ngOnDestroy() {\r\n      this.componentDestroyed.next(null);\r\n      this.componentDestroyed.complete();\r\n  };\r\n}\r\n",
             "styleUrl": "./select-country.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -15167,7 +15167,7 @@
         },
         {
             "name": "SmsVerificationComponent",
-            "id": "component-SmsVerificationComponent-7cc30562adfe5bb5102f2da4623ae9016062208d2c9f2efe48dc695788e3ad4d3c92fa233019e220f9d0700529a4f36878f6e8ff57a89821c6bab815654250b5",
+            "id": "component-SmsVerificationComponent-052dd7ca17a572bbd9a0d90ad62eb5a3ebe147d0b290d2a5378aa24cc0e9515551d2ec8b66f9750278f2acb6c98fb22c9a0ee8e1a46beb4297420c95d23a37d7",
             "file": "src/app/sign-up/fields/sms-verification/sms-verification.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -15189,7 +15189,7 @@
                     "name": "formControlNameToCompareValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 57,
+                    "line": 30,
                     "type": "string",
                     "decorators": []
                 },
@@ -15197,7 +15197,7 @@
                     "name": "formControlNameToSetValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 56,
+                    "line": 29,
                     "type": "string",
                     "decorators": []
                 },
@@ -15205,7 +15205,7 @@
                     "name": "kycForm",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 42,
+                    "line": 26,
                     "type": "FormGroup",
                     "decorators": []
                 },
@@ -15213,7 +15213,7 @@
                     "name": "loadingFromParent",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 23,
                     "type": "(value: boolean) => void",
                     "decorators": []
                 },
@@ -15221,7 +15221,7 @@
                     "name": "stepsObj",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 43,
+                    "line": 27,
                     "type": "IStepsObj",
                     "decorators": []
                 },
@@ -15229,7 +15229,7 @@
                     "name": "timerTooltip",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 55,
+                    "line": 28,
                     "type": "string",
                     "decorators": []
                 }
@@ -15240,7 +15240,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 35,
                     "type": "EventEmitter"
                 },
                 {
@@ -15248,7 +15248,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 34,
                     "type": "EventEmitter"
                 },
                 {
@@ -15256,7 +15256,7 @@
                     "defaultValue": "new EventEmitter<boolean>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 54,
+                    "line": 36,
                     "type": "EventEmitter"
                 },
                 {
@@ -15264,7 +15264,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 32,
                     "type": "EventEmitter"
                 },
                 {
@@ -15272,7 +15272,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 33,
                     "type": "EventEmitter"
                 }
             ],
@@ -15286,7 +15286,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 21,
                     "modifierKind": [
                         123
                     ]
@@ -15299,7 +15299,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 38
                 },
                 {
                     "name": "code",
@@ -15309,7 +15309,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 37
+                    "line": 44
                 },
                 {
                     "name": "codeIsValid",
@@ -15320,7 +15320,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 39
+                    "line": 46
                 },
                 {
                     "name": "codeStatus",
@@ -15331,7 +15331,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 44
+                    "line": 49
                 },
                 {
                     "name": "componentDestroyed",
@@ -15352,7 +15352,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 39
                 },
                 {
                     "name": "digit2",
@@ -15362,7 +15362,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 40
                 },
                 {
                     "name": "digit3",
@@ -15372,7 +15372,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33
+                    "line": 41
                 },
                 {
                     "name": "digit4",
@@ -15382,7 +15382,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 42
                 },
                 {
                     "name": "loading",
@@ -15393,7 +15393,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 38
+                    "line": 45
                 },
                 {
                     "name": "mail",
@@ -15403,7 +15403,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 36
+                    "line": 43
                 },
                 {
                     "name": "performVerification$",
@@ -15414,7 +15414,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 59
+                    "line": 61
                 },
                 {
                     "name": "refreshAPIError",
@@ -15425,7 +15425,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 41
+                    "line": 48
                 },
                 {
                     "name": "resendCode",
@@ -15436,7 +15436,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 40
+                    "line": 47
                 },
                 {
                     "name": "smsReturnType",
@@ -15447,7 +15447,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 58
+                    "line": 60
                 },
                 {
                     "name": "timer",
@@ -15458,7 +15458,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 45
+                    "line": 50
                 }
             ],
             "methodsClass": [
@@ -15468,7 +15468,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 94,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -15485,7 +15485,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 151,
+                    "line": 153,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -15506,7 +15506,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 334,
+                    "line": 336,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -15523,7 +15523,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 23,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -15553,7 +15553,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 402,
+                    "line": 404,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -15563,7 +15563,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 63,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -15573,7 +15573,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 347,
+                    "line": 349,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -15583,7 +15583,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 342,
+                    "line": 344,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -15593,7 +15593,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 87,
+                    "line": 89,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -15603,7 +15603,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 140,
+                    "line": 142,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -15626,7 +15626,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 184,
+                    "line": 186,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -15669,7 +15669,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 242,
+                    "line": 244,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -15706,7 +15706,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 290,
+                    "line": 292,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -15727,7 +15727,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 356,
+                    "line": 358,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -15744,7 +15744,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 407,
+                    "line": 409,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -15773,7 +15773,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 365,
+                    "line": 367,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -15795,7 +15795,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 351,
+                    "line": 353,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -15826,7 +15826,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';\r\nimport { catchError, exhaustMap, filter, finalize, scan, takeUntil, takeWhile, throttleTime } from 'rxjs/operators';\r\nimport { BehaviorSubject, combineLatest, EMPTY, Observable, of, Subject, timer } from 'rxjs';\r\nimport { FormGroup, FormsModule } from '@angular/forms';\r\nimport { HttpErrorResponse } from '@angular/common/http';\r\nimport { MatTooltipModule } from '@angular/material/tooltip';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { IStepsObj, TVerificationCodeStatus, VerificationReturnType, IPerformVerification, EStepNumber, TSendMailResponse, EErrorMessages } from '../../kyc';\r\nimport { KycService } from '../../services/kyc.service';\r\n\r\n@Component({\r\n  selector: 'sms-verification',\r\n  standalone: true,\r\n  imports: [CommonModule, FormsModule, TranslateModule, MatTooltipModule],\r\n  templateUrl: './sms-verification.component.html',\r\n  styleUrls: ['./sms-verification.component.scss']\r\n})\r\nexport class SmsVerificationComponent implements OnInit, OnDestroy {\r\n  componentDestroyed = new Subject<any>();\r\n  @Output() enterEvent = new EventEmitter<string>();\r\n  @Output() resend = new EventEmitter<string>();\r\n  @Output() call = new EventEmitter();\r\n  @Output() back = new EventEmitter();\r\n  callInProcess!: boolean;\r\n  private _loadingFromParent = new BehaviorSubject<boolean>(false);\r\n  @Input() loadingFromParent(value: boolean) {\r\n    this._loadingFromParent.next(value);\r\n  }\r\n\r\n  digit1!: string;\r\n  digit2!: string;\r\n  digit3!: string;\r\n  digit4!: string;\r\n\r\n  mail!: string;\r\n  code!: string;\r\n  loading: boolean = false;\r\n  codeIsValid: boolean = true;\r\n  resendCode = false;\r\n  refreshAPIError: boolean = false;\r\n  @Input('kycForm') kycForm!: FormGroup;\r\n  @Input('stepsObj') stepsObj!: IStepsObj;\r\n  codeStatus: TVerificationCodeStatus = 'DEFAULT';\r\n  timer: {\r\n    minutes: string,\r\n    seconds: string,\r\n    active: boolean\r\n  } = {\r\n      minutes: '0',\r\n      seconds: '00',\r\n      active: false\r\n    };\r\n  @Output('codeValidEvent') codeValidEvent = new EventEmitter<boolean>();\r\n  @Input('timerTooltip') timerTooltip!: string;\r\n  @Input('formControlNameToSetValue') formControlNameToSetValue!: string;\r\n  @Input('formControlNameToCompareValue') formControlNameToCompareValue!: string;\r\n  smsReturnType = VerificationReturnType;\r\n  performVerification$ = new Subject<IPerformVerification>();\r\n\r\n  constructor(private kycS: KycService) { }\r\n\r\n  ngOnInit() {\r\n    if (!this.formControlNameToSetValue) {\r\n      console.warn(`formControlNameToSetValue must be set! at step ${this.stepsObj.currentStep} \\n given \"${this.formControlNameToSetValue}\"`);\r\n    }\r\n    if (!this.formControlNameToCompareValue) {\r\n      console.warn(`formControlNameToCompareValue must be set! at step ${this.stepsObj.currentStep} \\n given \"${this.formControlNameToCompareValue}\"`);\r\n    }\r\n\r\n    this._loadingFromParent.subscribe(loading => {\r\n      this.loading = loading;\r\n    });\r\n\r\n    this.kycS.verificationCodeStatus.pipe(\r\n      takeUntil(this.componentDestroyed)\r\n    ).subscribe(codeStatus => {\r\n      this.codeStatus = codeStatus;\r\n      if (codeStatus === 'DEFAULT' || codeStatus === 'INCORRECT') {\r\n        this.startTimer();\r\n      } else {\r\n        this.startTimer(codeStatus);\r\n      }\r\n    });\r\n  }\r\n\r\n  onInputChange(): void {\r\n    if (this.refreshAPIError) {\r\n      this.refreshAPIError = false;\r\n    }\r\n  }\r\n  \r\n\r\n  checkVerification() {\r\n    if (!this.digit1 || !this.digit2 || !this.digit3 || !this.digit4) {\r\n      return;\r\n    }\r\n  \r\n    this.code = this.digit1 + this.digit2 + this.digit3 + this.digit4;\r\n  \r\n    // Custom check for code 1111\r\n    if (this.code === '1111') {\r\n      this.refreshAPIError = true;\r\n      this.codeIsValid = false;\r\n      this.kycS.loading$.next(false);\r\n      return;\r\n    }\r\n  \r\n    if (!this.formControlNameToSetValue) {\r\n      console.warn(`formControlNameToSetValue must be set! at step ${this.stepsObj.currentStep} \\n given \"${this.formControlNameToSetValue}\"`);\r\n      return;\r\n    }\r\n    if (!this.kycForm.controls[`step_${this.stepsObj.currentStep}`].get(this.formControlNameToSetValue)) {\r\n      console.error(`form control with the name ${this.formControlNameToSetValue} does not exist in step_${this.stepsObj.currentStep}`);\r\n      return;\r\n    }\r\n    if (!this.formControlNameToCompareValue) {\r\n      console.warn(`formControlNameToCompareValue must be set! at step ${this.stepsObj.currentStep} \\n given \"${this.formControlNameToCompareValue}\"`);\r\n      return;\r\n    }\r\n    if (!this.kycForm.controls[`step_${this.stepsObj.currentStep}`].get(this.formControlNameToCompareValue)) {\r\n      console.error(`form control with the name ${this.formControlNameToCompareValue} does not exist in step_${this.stepsObj.currentStep}`);\r\n      return;\r\n    }\r\n  \r\n    this.resendCode = false;\r\n    this.codeIsValid = true;\r\n    this.loading = true;\r\n  \r\n    const control = this.kycForm.controls[`step_${this.stepsObj.currentStep}`].get(this.formControlNameToSetValue);\r\n    if (control) {\r\n      control.setValue(this.code);\r\n    } else {\r\n      console.error(`Control with name ${this.formControlNameToSetValue} is null or undefined.`);\r\n    }\r\n  \r\n    this.handleActionByStep({ action: 'CHECK' });\r\n  }\r\n\r\n  onResend() {\r\n    if (this.timer.active) {\r\n      console.warn(`Resend code called even though the timer is active.`);\r\n      return;\r\n    }\r\n\r\n    this.resendCode = true;\r\n    this.resend.emit();\r\n    this.handleActionByStep({ action: 'SEND' });\r\n  }\r\n\r\n  handleActionByStep(data: { action: 'SEND' | 'CHECK' }): void {\r\n    const { action: dynamicAction } = data;\r\n    let payload: any;\r\n    let verificationAction: 'CHECK_EMAIL_VERIFICATION' | 'SEND_EMAIL_VERIFICATION' | 'CHECK_PHONE_VERIFICATION' | 'SEND_PHONE_VERIFICATION';\r\n\r\n    switch (this.stepsObj.currentStep) {\r\n      case EStepNumber.emailConfirmation:\r\n        const userEmail = this.kycForm.getRawValue()?.step_2?.email;\r\n        if (!userEmail) return;\r\n        payload = { email: userEmail };\r\n        verificationAction = dynamicAction === 'SEND' ? 'SEND_EMAIL_VERIFICATION' : 'CHECK_EMAIL_VERIFICATION';\r\n        break;\r\n      case EStepNumber.phoneConfirmation:\r\n        const { phone_code, phone } = this.kycForm.getRawValue().step_4;\r\n        if (!phone_code || !phone) {\r\n          console.error('phone or phone code must have a value.');\r\n          return;\r\n        }\r\n        const phoneGenerated = `${phone_code}${phone}`;\r\n        payload = { phone: phoneGenerated };\r\n        verificationAction = dynamicAction === 'SEND' ? 'SEND_PHONE_VERIFICATION' : 'CHECK_PHONE_VERIFICATION';\r\n        break;\r\n      default:\r\n        console.error(`unhandled action occurred for ${this.stepsObj.currentStep}`);\r\n        return;\r\n    }\r\n\r\n    if (verificationAction === 'CHECK_EMAIL_VERIFICATION' || verificationAction === 'SEND_EMAIL_VERIFICATION') {\r\n      this.performEmailVerification(dynamicAction, payload.email);\r\n    } else if (verificationAction === 'CHECK_PHONE_VERIFICATION' || verificationAction === 'SEND_PHONE_VERIFICATION') {\r\n      this.performPhoneVerification(dynamicAction, payload.phone);\r\n    }\r\n  }\r\n  performEmailVerification(action: 'SEND' | 'CHECK', email: string): void {\r\n    let request: Observable<[string, any]>;\r\n\r\n    if (action === 'SEND') {\r\n        request = combineLatest([\r\n          of('SEND'),\r\n          of({}) // Emit a valid object to match the expected type [string, any]\r\n        ]) as Observable<[string, any]>;\r\n      } else if (action === 'CHECK') {\r\n        request = combineLatest([\r\n          of('CHECK'),\r\n          of({}) // Emit a valid object to match the expected type [string, any]\r\n        ]) as Observable<[string, any]>;\r\n    } else {\r\n      console.error(`Unhandled action ${action}`);\r\n      return;\r\n    }\r\n\r\n    request.subscribe({\r\n      next: ([action, res]: [string, any]) => {\r\n        switch (action) {\r\n          case 'SEND':\r\n            let response: TSendMailResponse = <TSendMailResponse>res;\r\n            if (response?.Success === VerificationReturnType.Success) {\r\n              this.startTimer();\r\n              this.kycS.loading$.next(false);\r\n            } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {\r\n              this.startTimer('PASSED_LIMIT');\r\n              this.kycS.loading$.next(false);\r\n            } else {\r\n              this.kycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });\r\n            }\r\n            break;\r\n          case 'CHECK':\r\n            if (res) { \r\n              console.log('res', res);\r\n              this.codeStatus = 'VALID';\r\n              this.codeValidEvent.next(true);\r\n              this.kycS.loading$.next(false);\r\n              this.refreshAPIError = false;\r\n            } else {\r\n              this.codeStatus = 'INCORRECT';\r\n              this.codeIsValid = false;\r\n              this.kycS.loading$.next(false);\r\n            }\r\n            break;\r\n          default:\r\n            break;\r\n        }\r\n      },\r\n      error: (error) => {\r\n        if (error) {\r\n          this.refreshAPIError = true;\r\n        }\r\n      }\r\n    })\r\n  }\r\n\r\n  performPhoneVerification(action: 'SEND' | 'CHECK', phone: string): void {\r\n    let request: Observable<[string, any]> | null = null;\r\n\r\n    if (action === 'SEND') {\r\n      request = combineLatest([\r\n        of('SEND'),\r\n        of({}) // Replace with actual observable for sending SMS verification\r\n      ]);\r\n    } else if (action === 'CHECK') {\r\n      request = combineLatest([\r\n        of('CHECK'),\r\n        of({}) // Replace with actual observable for checking SMS verification\r\n      ]);\r\n    } else {\r\n      console.error(`Unhandled action ${action}`);\r\n      return;\r\n    }\r\n\r\n    request?.subscribe(([action, res]: [string, any]) => {\r\n      switch (action) {\r\n        case 'SEND':\r\n          let response: TSendMailResponse = <TSendMailResponse>res;\r\n          if (response?.Success === VerificationReturnType.Success) {\r\n            this.startTimer();\r\n            this.kycS.loading$.next(false);\r\n          } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {\r\n            this.startTimer('PASSED_LIMIT');\r\n            this.kycS.loading$.next(false);\r\n          } else {\r\n            this.kycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });\r\n          }\r\n          break;\r\n        case 'CHECK':\r\n          if (res) {\r\n            this.codeStatus = 'VALID';\r\n            this.codeValidEvent.next(true);\r\n            this.kycS.loading$.next(false);\r\n          } else {\r\n            this.codeStatus = 'INCORRECT';\r\n            this.codeIsValid = false;\r\n            this.kycS.loading$.next(false);\r\n          }\r\n          break;\r\n        default:\r\n          break;\r\n      }\r\n    });\r\n  }\r\n  processVerificationRequest(request: Observable<[string, any]>): void {\r\n    this.performVerification$.pipe(\r\n      throttleTime(300),\r\n      exhaustMap(({ action, payload }) => {\r\n        // this.KycS.loading$.next(true);\r\n        return request;\r\n      }),\r\n      catchError((e: HttpErrorResponse) => {\r\n        console.error(e);\r\n        // this.KycS.loading$.next(false);\r\n        return EMPTY;\r\n      })\r\n    ).subscribe(([action, res]: any) => {\r\n      switch (action) {\r\n        case 'SEND':\r\n          let response: TSendMailResponse = <TSendMailResponse>res;\r\n\r\n          if (response?.Success === VerificationReturnType.Success) {\r\n            this.startTimer();\r\n            // this.KycS.loading$.next(false);\r\n          } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {\r\n            this.startTimer('PASSED_LIMIT');\r\n            // this.KycS.loading$.next(false);\r\n          } else {\r\n            // this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });\r\n          }\r\n          break;\r\n        case 'CHECK':\r\n          if (res) {\r\n            this.codeStatus = 'VALID';\r\n            this.codeValidEvent.next(true);\r\n            // this.KycS.loading$.next(false);\r\n          } else {\r\n            this.codeStatus = 'INCORRECT';\r\n            this.codeIsValid = false;\r\n            // this.KycS.loading$.next(false);\r\n          }\r\n          break;\r\n        default:\r\n          break;\r\n      }\r\n    });\r\n  }\r\n\r\n  handleErrorOverlayTryAgainClicked(): void {\r\n    // this.KycS.errorOverlayTryAgainClicked$.pipe(\r\n    //   filter(r => !!r)\r\n    // ).subscribe(() => {\r\n    //   this.tryAgain();\r\n    // });\r\n  }\r\n\r\n  onCall() {\r\n    this.call.emit();\r\n    this.callInProcess = true;\r\n  }\r\n\r\n  onBack() {\r\n    this.back.emit();\r\n  }\r\n\r\n  tryAgain() {\r\n    this.codeIsValid = true;\r\n    this.reset();\r\n  }\r\n\r\n  reset() {\r\n    this.codeStatus = 'DEFAULT';\r\n    this.digit1 = '';\r\n    this.digit2 = '';\r\n    this.digit3 = '';\r\n    this.digit4 = '';\r\n    this.code = '';\r\n  }\r\n\r\n  startTimer(codeStatus: TVerificationCodeStatus = 'DEFAULT') {\r\n    this.timer.active = true;\r\n    let OneMinute: 60 = 60;\r\n    let tenMinutes: 600 = 600;\r\n\r\n    let timeToShow: typeof OneMinute | typeof tenMinutes | any; // 1min or 10 min\r\n    switch (codeStatus) {\r\n      case 'DEFAULT':\r\n      case 'INCORRECT':\r\n        timeToShow = OneMinute;\r\n        break;\r\n      case 'PASSED_LIMIT':\r\n        timeToShow = tenMinutes;\r\n        break;\r\n      default:\r\n        console.error(`Unhandled action in sms verification code status.\\n given: ${this.codeStatus}`);\r\n        break;\r\n    }\r\n\r\n    timer(0, 1000).pipe(\r\n      scan((acc: any) => {\r\n        const minutes: number = Math.floor(acc / 60);\r\n        const seconds: number = (minutes >= 1) ? acc - minutes * 60 : acc;\r\n        this.timer.minutes = minutes.toString();\r\n        this.timer.seconds = (seconds < 10) ? `0${seconds}` : seconds.toString();\r\n        return --acc;\r\n      }, timeToShow),\r\n      takeWhile(x => x >= 0),\r\n      takeUntil(this.componentDestroyed),\r\n      finalize(() => {\r\n        this.timer.minutes = `0`;\r\n        this.timer.seconds = `00`;\r\n        this.timer.active = false;\r\n      })\r\n    ).subscribe();\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.componentDestroyed.next(null);\r\n    this.componentDestroyed.complete();\r\n  }\r\n\r\n  restrictSpecialCharacters(event: KeyboardEvent | ClipboardEvent) {\r\n    const restrictedChars = ['<', '>', ';', ':', '=', '+', '(', ')'];\r\n\r\n    if (event instanceof KeyboardEvent) {\r\n      if (restrictedChars.includes(event.key)) {\r\n        event.preventDefault();\r\n      }\r\n    } else if (event instanceof ClipboardEvent) {\r\n      let pasteData = (event.clipboardData || (window as any).clipboardData).getData('text');\r\n      if (restrictedChars.some(char => pasteData.includes(char))) {\r\n        event.preventDefault();\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';\r\nimport { catchError, exhaustMap, filter, finalize, scan, takeUntil, takeWhile, throttleTime } from 'rxjs/operators';\r\nimport { BehaviorSubject, combineLatest, EMPTY, Observable, of, Subject, timer } from 'rxjs';\r\nimport { FormGroup, FormsModule } from '@angular/forms';\r\nimport { HttpErrorResponse } from '@angular/common/http';\r\nimport { MatTooltipModule } from '@angular/material/tooltip';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { IStepsObj, TVerificationCodeStatus, VerificationReturnType, IPerformVerification, EStepNumber, TSendMailResponse, EErrorMessages } from '../../kyc';\r\nimport { KycService } from '../../services/kyc.service';\r\n\r\n@Component({\r\n  selector: 'sms-verification',\r\n  standalone: true,\r\n  imports: [CommonModule, FormsModule, TranslateModule, MatTooltipModule],\r\n  templateUrl: './sms-verification.component.html',\r\n  styleUrls: ['./sms-verification.component.scss']\r\n})\r\nexport class SmsVerificationComponent implements OnInit, OnDestroy {\r\n  componentDestroyed = new Subject<any>();\r\n  private _loadingFromParent = new BehaviorSubject<boolean>(false);\r\n\r\n  @Input() loadingFromParent(value: boolean) {\r\n    this._loadingFromParent.next(value);\r\n  }\r\n  @Input('kycForm') kycForm!: FormGroup;\r\n  @Input('stepsObj') stepsObj!: IStepsObj;\r\n  @Input('timerTooltip') timerTooltip!: string;\r\n  @Input('formControlNameToSetValue') formControlNameToSetValue!: string;\r\n  @Input('formControlNameToCompareValue') formControlNameToCompareValue!: string;\r\n\r\n  @Output() enterEvent = new EventEmitter<string>();\r\n  @Output() resend = new EventEmitter<string>();\r\n  @Output() call = new EventEmitter();\r\n  @Output() back = new EventEmitter();\r\n  @Output('codeValidEvent') codeValidEvent = new EventEmitter<boolean>();\r\n\r\n  callInProcess!: boolean;\r\n  digit1!: string;\r\n  digit2!: string;\r\n  digit3!: string;\r\n  digit4!: string;\r\n  mail!: string;\r\n  code!: string;\r\n  loading: boolean = false;\r\n  codeIsValid: boolean = true;\r\n  resendCode = false;\r\n  refreshAPIError: boolean = false;\r\n  codeStatus: TVerificationCodeStatus = 'DEFAULT';\r\n  timer: {\r\n    minutes: string,\r\n    seconds: string,\r\n    active: boolean\r\n  } = {\r\n      minutes: '0',\r\n      seconds: '00',\r\n      active: false\r\n    };\r\n \r\n  smsReturnType = VerificationReturnType;\r\n  performVerification$ = new Subject<IPerformVerification>();\r\n\r\n  constructor(private KycS: KycService) { }\r\n\r\n  ngOnInit() {\r\n    if (!this.formControlNameToSetValue) {\r\n      console.warn(`formControlNameToSetValue must be set! at step ${this.stepsObj.currentStep} \\n given \"${this.formControlNameToSetValue}\"`);\r\n    }\r\n    if (!this.formControlNameToCompareValue) {\r\n      console.warn(`formControlNameToCompareValue must be set! at step ${this.stepsObj.currentStep} \\n given \"${this.formControlNameToCompareValue}\"`);\r\n    }\r\n\r\n    this._loadingFromParent.subscribe(loading => {\r\n      this.loading = loading;\r\n    });\r\n\r\n    this.KycS.verificationCodeStatus.pipe(\r\n      takeUntil(this.componentDestroyed)\r\n    ).subscribe(codeStatus => {\r\n      this.codeStatus = codeStatus;\r\n      if (codeStatus === 'DEFAULT' || codeStatus === 'INCORRECT') {\r\n        this.startTimer();\r\n      } else {\r\n        this.startTimer(codeStatus);\r\n      }\r\n    });\r\n  }\r\n\r\n  onInputChange(): void {\r\n    if (this.refreshAPIError) {\r\n      this.refreshAPIError = false;\r\n    }\r\n  }\r\n  \r\n\r\n  checkVerification() {\r\n    if (!this.digit1 || !this.digit2 || !this.digit3 || !this.digit4) {\r\n      return;\r\n    }\r\n  \r\n    this.code = this.digit1 + this.digit2 + this.digit3 + this.digit4;\r\n  \r\n    // Custom check for code 1111\r\n    if (this.code === '1111') {\r\n      this.refreshAPIError = true;\r\n      this.codeIsValid = false;\r\n      this.KycS.loading$.next(false);\r\n      return;\r\n    }\r\n  \r\n    if (!this.formControlNameToSetValue) {\r\n      console.warn(`formControlNameToSetValue must be set! at step ${this.stepsObj.currentStep} \\n given \"${this.formControlNameToSetValue}\"`);\r\n      return;\r\n    }\r\n    if (!this.kycForm.controls[`step_${this.stepsObj.currentStep}`].get(this.formControlNameToSetValue)) {\r\n      console.error(`form control with the name ${this.formControlNameToSetValue} does not exist in step_${this.stepsObj.currentStep}`);\r\n      return;\r\n    }\r\n    if (!this.formControlNameToCompareValue) {\r\n      console.warn(`formControlNameToCompareValue must be set! at step ${this.stepsObj.currentStep} \\n given \"${this.formControlNameToCompareValue}\"`);\r\n      return;\r\n    }\r\n    if (!this.kycForm.controls[`step_${this.stepsObj.currentStep}`].get(this.formControlNameToCompareValue)) {\r\n      console.error(`form control with the name ${this.formControlNameToCompareValue} does not exist in step_${this.stepsObj.currentStep}`);\r\n      return;\r\n    }\r\n  \r\n    this.resendCode = false;\r\n    this.codeIsValid = true;\r\n    this.loading = true;\r\n  \r\n    const control = this.kycForm.controls[`step_${this.stepsObj.currentStep}`].get(this.formControlNameToSetValue);\r\n    if (control) {\r\n      control.setValue(this.code);\r\n    } else {\r\n      console.error(`Control with name ${this.formControlNameToSetValue} is null or undefined.`);\r\n    }\r\n  \r\n    this.handleActionByStep({ action: 'CHECK' });\r\n  }\r\n\r\n  onResend() {\r\n    if (this.timer.active) {\r\n      console.warn(`Resend code called even though the timer is active.`);\r\n      return;\r\n    }\r\n\r\n    this.resendCode = true;\r\n    this.resend.emit();\r\n    this.handleActionByStep({ action: 'SEND' });\r\n  }\r\n\r\n  handleActionByStep(data: { action: 'SEND' | 'CHECK' }): void {\r\n    const { action: dynamicAction } = data;\r\n    let payload: any;\r\n    let verificationAction: 'CHECK_EMAIL_VERIFICATION' | 'SEND_EMAIL_VERIFICATION' | 'CHECK_PHONE_VERIFICATION' | 'SEND_PHONE_VERIFICATION';\r\n\r\n    switch (this.stepsObj.currentStep) {\r\n      case EStepNumber.emailConfirmation:\r\n        const userEmail = this.kycForm.getRawValue()?.step_2?.email;\r\n        if (!userEmail) return;\r\n        payload = { email: userEmail };\r\n        verificationAction = dynamicAction === 'SEND' ? 'SEND_EMAIL_VERIFICATION' : 'CHECK_EMAIL_VERIFICATION';\r\n        break;\r\n      case EStepNumber.phoneConfirmation:\r\n        const { phone_code, phone } = this.kycForm.getRawValue().step_4;\r\n        if (!phone_code || !phone) {\r\n          console.error('phone or phone code must have a value.');\r\n          return;\r\n        }\r\n        const phoneGenerated = `${phone_code}${phone}`;\r\n        payload = { phone: phoneGenerated };\r\n        verificationAction = dynamicAction === 'SEND' ? 'SEND_PHONE_VERIFICATION' : 'CHECK_PHONE_VERIFICATION';\r\n        break;\r\n      default:\r\n        console.error(`unhandled action occurred for ${this.stepsObj.currentStep}`);\r\n        return;\r\n    }\r\n\r\n    if (verificationAction === 'CHECK_EMAIL_VERIFICATION' || verificationAction === 'SEND_EMAIL_VERIFICATION') {\r\n      this.performEmailVerification(dynamicAction, payload.email);\r\n    } else if (verificationAction === 'CHECK_PHONE_VERIFICATION' || verificationAction === 'SEND_PHONE_VERIFICATION') {\r\n      this.performPhoneVerification(dynamicAction, payload.phone);\r\n    }\r\n  }\r\n  performEmailVerification(action: 'SEND' | 'CHECK', email: string): void {\r\n    let request: Observable<[string, any]>;\r\n\r\n    if (action === 'SEND') {\r\n        request = combineLatest([\r\n          of('SEND'),\r\n          of({}) // Emit a valid object to match the expected type [string, any]\r\n        ]) as Observable<[string, any]>;\r\n      } else if (action === 'CHECK') {\r\n        request = combineLatest([\r\n          of('CHECK'),\r\n          of({}) // Emit a valid object to match the expected type [string, any]\r\n        ]) as Observable<[string, any]>;\r\n    } else {\r\n      console.error(`Unhandled action ${action}`);\r\n      return;\r\n    }\r\n\r\n    request.subscribe({\r\n      next: ([action, res]: [string, any]) => {\r\n        switch (action) {\r\n          case 'SEND':\r\n            let response: TSendMailResponse = <TSendMailResponse>res;\r\n            if (response?.Success === VerificationReturnType.Success) {\r\n              this.startTimer();\r\n              this.KycS.loading$.next(false);\r\n            } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {\r\n              this.startTimer('PASSED_LIMIT');\r\n              this.KycS.loading$.next(false);\r\n            } else {\r\n              this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });\r\n            }\r\n            break;\r\n          case 'CHECK':\r\n            if (res) { \r\n              console.log('res', res);\r\n              this.codeStatus = 'VALID';\r\n              this.codeValidEvent.next(true);\r\n              this.KycS.loading$.next(false);\r\n              this.refreshAPIError = false;\r\n            } else {\r\n              this.codeStatus = 'INCORRECT';\r\n              this.codeIsValid = false;\r\n              this.KycS.loading$.next(false);\r\n            }\r\n            break;\r\n          default:\r\n            break;\r\n        }\r\n      },\r\n      error: (error) => {\r\n        if (error) {\r\n          this.refreshAPIError = true;\r\n        }\r\n      }\r\n    })\r\n  }\r\n\r\n  performPhoneVerification(action: 'SEND' | 'CHECK', phone: string): void {\r\n    let request: Observable<[string, any]> | null = null;\r\n\r\n    if (action === 'SEND') {\r\n      request = combineLatest([\r\n        of('SEND'),\r\n        of({}) // Replace with actual observable for sending SMS verification\r\n      ]);\r\n    } else if (action === 'CHECK') {\r\n      request = combineLatest([\r\n        of('CHECK'),\r\n        of({}) // Replace with actual observable for checking SMS verification\r\n      ]);\r\n    } else {\r\n      console.error(`Unhandled action ${action}`);\r\n      return;\r\n    }\r\n\r\n    request?.subscribe(([action, res]: [string, any]) => {\r\n      switch (action) {\r\n        case 'SEND':\r\n          let response: TSendMailResponse = <TSendMailResponse>res;\r\n          if (response?.Success === VerificationReturnType.Success) {\r\n            this.startTimer();\r\n            this.KycS.loading$.next(false);\r\n          } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {\r\n            this.startTimer('PASSED_LIMIT');\r\n            this.KycS.loading$.next(false);\r\n          } else {\r\n            this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });\r\n          }\r\n          break;\r\n        case 'CHECK':\r\n          if (res) {\r\n            this.codeStatus = 'VALID';\r\n            this.codeValidEvent.next(true);\r\n            this.KycS.loading$.next(false);\r\n          } else {\r\n            this.codeStatus = 'INCORRECT';\r\n            this.codeIsValid = false;\r\n            this.KycS.loading$.next(false);\r\n          }\r\n          break;\r\n        default:\r\n          break;\r\n      }\r\n    });\r\n  }\r\n  processVerificationRequest(request: Observable<[string, any]>): void {\r\n    this.performVerification$.pipe(\r\n      throttleTime(300),\r\n      exhaustMap(({ action, payload }) => {\r\n        this.KycS.loading$.next(true);\r\n        return request;\r\n      }),\r\n      catchError((e: HttpErrorResponse) => {\r\n        console.error(e);\r\n        this.KycS.loading$.next(false);\r\n        return EMPTY;\r\n      })\r\n    ).subscribe(([action, res]: any) => {\r\n      switch (action) {\r\n        case 'SEND':\r\n          let response: TSendMailResponse = <TSendMailResponse>res;\r\n\r\n          if (response?.Success === VerificationReturnType.Success) {\r\n            this.startTimer();\r\n            this.KycS.loading$.next(false);\r\n          } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {\r\n            this.startTimer('PASSED_LIMIT');\r\n            this.KycS.loading$.next(false);\r\n          } else {\r\n            this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });\r\n          }\r\n          break;\r\n        case 'CHECK':\r\n          if (res) {\r\n            this.codeStatus = 'VALID';\r\n            this.codeValidEvent.next(true);\r\n            this.KycS.loading$.next(false);\r\n          } else {\r\n            this.codeStatus = 'INCORRECT';\r\n            this.codeIsValid = false;\r\n            this.KycS.loading$.next(false);\r\n          }\r\n          break;\r\n        default:\r\n          break;\r\n      }\r\n    });\r\n  }\r\n\r\n  handleErrorOverlayTryAgainClicked(): void {\r\n    // this.KycS.errorOverlayTryAgainClicked$.pipe(\r\n    //   filter(r => !!r)\r\n    // ).subscribe(() => {\r\n    //   this.tryAgain();\r\n    // });\r\n  }\r\n\r\n  onCall() {\r\n    this.call.emit();\r\n    this.callInProcess = true;\r\n  }\r\n\r\n  onBack() {\r\n    this.back.emit();\r\n  }\r\n\r\n  tryAgain() {\r\n    this.codeIsValid = true;\r\n    this.reset();\r\n  }\r\n\r\n  reset() {\r\n    this.codeStatus = 'DEFAULT';\r\n    this.digit1 = '';\r\n    this.digit2 = '';\r\n    this.digit3 = '';\r\n    this.digit4 = '';\r\n    this.code = '';\r\n  }\r\n\r\n  startTimer(codeStatus: TVerificationCodeStatus = 'DEFAULT') {\r\n    this.timer.active = true;\r\n    let OneMinute: 60 = 60;\r\n    let tenMinutes: 600 = 600;\r\n\r\n    let timeToShow: typeof OneMinute | typeof tenMinutes | any; // 1min or 10 min\r\n    switch (codeStatus) {\r\n      case 'DEFAULT':\r\n      case 'INCORRECT':\r\n        timeToShow = OneMinute;\r\n        break;\r\n      case 'PASSED_LIMIT':\r\n        timeToShow = tenMinutes;\r\n        break;\r\n      default:\r\n        console.error(`Unhandled action in sms verification code status.\\n given: ${this.codeStatus}`);\r\n        break;\r\n    }\r\n\r\n    timer(0, 1000).pipe(\r\n      scan((acc: any) => {\r\n        const minutes: number = Math.floor(acc / 60);\r\n        const seconds: number = (minutes >= 1) ? acc - minutes * 60 : acc;\r\n        this.timer.minutes = minutes.toString();\r\n        this.timer.seconds = (seconds < 10) ? `0${seconds}` : seconds.toString();\r\n        return --acc;\r\n      }, timeToShow),\r\n      takeWhile(x => x >= 0),\r\n      takeUntil(this.componentDestroyed),\r\n      finalize(() => {\r\n        this.timer.minutes = `0`;\r\n        this.timer.seconds = `00`;\r\n        this.timer.active = false;\r\n      })\r\n    ).subscribe();\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.componentDestroyed.next(null);\r\n    this.componentDestroyed.complete();\r\n  }\r\n\r\n  restrictSpecialCharacters(event: KeyboardEvent | ClipboardEvent) {\r\n    const restrictedChars = ['<', '>', ';', ':', '=', '+', '(', ')'];\r\n\r\n    if (event instanceof KeyboardEvent) {\r\n      if (restrictedChars.includes(event.key)) {\r\n        event.preventDefault();\r\n      }\r\n    } else if (event instanceof ClipboardEvent) {\r\n      let pasteData = (event.clipboardData || (window as any).clipboardData).getData('text');\r\n      if (restrictedChars.some(char => pasteData.includes(char))) {\r\n        event.preventDefault();\r\n      }\r\n    }\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -15842,16 +15842,16 @@
                 "deprecationMessage": "",
                 "args": [
                     {
-                        "name": "kycS",
+                        "name": "KycS",
                         "type": "KycService",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 59,
+                "line": 61,
                 "jsdoctags": [
                     {
-                        "name": "kycS",
+                        "name": "KycS",
                         "type": "KycService",
                         "deprecated": false,
                         "deprecationMessage": "",

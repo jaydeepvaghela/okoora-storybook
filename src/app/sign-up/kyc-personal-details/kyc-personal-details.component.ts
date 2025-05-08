@@ -89,30 +89,9 @@ export class KycPersonalDetailsComponent implements OnInit, OnDestroy {
         this.minAge = this.kycS.calcMinAgeFromToday();
         this.idValidation = this.fb.control(SubjectService.idValidation);
         const isPrivate: boolean = this.kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value;
-        const hideShowFields: boolean = (this.kycS.shuftiData?.getValue() && isPrivate) || !isPrivate ? false : true;
+        const hideShowFields: boolean = !isPrivate ? false : true;
         this.hideFieldsAutomatically$.next(hideShowFields);
         this.listenTovAutoApprovedChange();
-
-        if (isPrivate) {
-            // this.setDisabledStatus('first_name', true);
-            // this.setDisabledStatus('last_name', true);
-            // this.setDisabledStatus('id_number', true);
-            // this.setDisabledStatus('birth_date', true);
-            // const oldData = this.kycForm.getRawValue();
-            // let username: string = oldData.step_2.email.split("@")[0];
-            // this.listenToSumsubResponse(username);
-
-            
-            //     this.kycS.launchWebSdk('_act-sbx-jwt-eyJhbGciOiJub25lIn0.eyJqdGkiOiJfYWN0LXNieC1hYmJlM2VjMi0yMTA5LTQxN2ItYTYxNS1kM2Y4NWFmZWNmN2ItdjIiLCJ1cmwiOiJodHRwczovL2FwaS5zdW1zdWIuY29tIn0.-v2', 
-            //         oldData.step_4.phone_code + oldData.step_4.phone ,oldData.step_2.email)
-              
-            //   err=>{
-            //     if(err.apiErrorCode = 3108) //for activate enable sumsub on server configuration
-            //     console.log('')
-            //   });
-
-        }
-
     }
 
     restrictSpecialCharacters(event: any) {
@@ -177,46 +156,7 @@ export class KycPersonalDetailsComponent implements OnInit, OnDestroy {
     }
 
     listenToSumsubResponse(ref: any = null) {
-        // this.pusherService.listen<any>(`${EPusherEvents.sumSubRequest}-${ref}`, EPusherChannels.sumSubCall).subscribe(res => {
-        //     if (!res) {
-        //         this.openSnackBar(this.translateService.instant('KYC_Step_7.unverified'), 'danger-class')
-        //         return;
-        //     }
-        //     const data = res?.result;
-        //     // console.log('Sumsub RES', data)
-        //     const dateOfBirth = data['dob'] ? new Date(data['dob']) : new Date();
-        //     this.sumsubResponseData = {
-        //         first_name: data.first_name,
-        //         last_name: data.last_name,
-        //         id_number: data.document_number,
-        //         birth_date: dateOfBirth,
-        //         applicantId: data.applicantId
-        //     };
-        //     this.sumsubVareficationResponse = data;
-
-        //     //update step 7 data
-        //     this.step_7.get('id_number').setValue(data['document_number'] ?? 0);
-        //     this.step_7.get('first_name').setValue(data['first_name'] ?? '');
-        //     this.step_7.get('last_name').setValue(data['last_name'] ?? '');
-        //     this.step_7.get('birth_date').setValue(dateOfBirth)
-        //     this.step_7.get('applicantId').setValue(data['applicantId'] ?? '')
-
-        //     this.canContinue$.next(true);
-        //     this.autoApproved = true;
-        //     this.autoApproved$.next(true);
-        //     this.checkIdDuplication({});
-        //     // console.log(this.canContinue$.getValue())
-        //     this.dialog.closeAll();
-        //     this.hideFieldsAutomatically$.next(false);
-        //     this.kycS.shuftiData.next({
-        //         addressData: data.AddressDetails,
-        //         autoApproved: this.autoApproved$.value,
-        //         canContinue: this.canContinue$.getValue(),
-
-        //     });
-        //     this.listenTovAutoApprovedChange();
-        //     this.openSnackBar(this.translateService.instant('KYC_Step_7.verified'), 'success-class')
-        // });
+        
     }
 
 

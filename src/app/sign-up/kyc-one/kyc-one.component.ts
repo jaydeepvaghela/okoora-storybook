@@ -11,6 +11,7 @@ import { MatError } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
 import { SelectCountryComponent } from '../fields/select-country/select-country.component';
 import { MatRadioGroup } from '@angular/material/radio';
+import { KycService } from '../services/kyc.service';
 
 @Component({
   selector: 'app-kyc-one',
@@ -33,7 +34,7 @@ export class KycOneComponent {
   privateCountryNotIsrael: boolean = false;
   countryName: any;
   constructor(
-    // private KycS: KycService,
+    private KycS: KycService,
   ) {
   }
   ngOnInit(): void {
@@ -43,7 +44,7 @@ export class KycOneComponent {
   }
 
   handleBusinessTypeChange(panel: MatExpansionPanel, fgName: IKycData['businessTypes']) {
-    // this.KycS.handleResetCountries$.next(true);
+    this.KycS.handleResetCountries$.next(true);
     if (fgName === EDetailsToShowNames.privateAcc) {
       this.kycForm.controls['step_7'].get('id_number').addValidators([Validators.required]);
     }
