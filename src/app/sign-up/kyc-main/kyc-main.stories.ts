@@ -213,21 +213,21 @@ export const Step4_Phone: Story = {
 //   }
 // };
 
-export const Step6_CreatePassword: Story = {
+export const Step5_CreatePassword: Story = {
   ...KycMainFlow,
   args: {
     initialStep: EStepNumber.createPassword
   }
 };
 
-export const Step7_PersonalDetails: Story = {
+export const Step6_PersonalDetails: Story = {
   ...KycMainFlow,
   args: {
     initialStep: EStepNumber.personalDetails
   }
 };
 
-export const Step8_PersonalAddress: Story = {
+export const Step7_PersonalAddress: Story = {
   ...KycMainFlow,
   args: {
     initialStep: EStepNumber.personalAddress
