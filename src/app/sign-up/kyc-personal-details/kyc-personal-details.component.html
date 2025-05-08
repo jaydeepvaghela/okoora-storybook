@@ -4,7 +4,7 @@
             <ng-container [formGroup]="parentFormGroup">
                 <div class="control-field"
                     *ngIf="kycForm.get('step_1')?.get(businessTypes.privateAccount)?.get('isActive')?.value">
-                    <div id="sumsub-websdk-container">
+                    <div id="sumsub-websdk-container" class="sumsub-wrapper">
                         <img src="images/sumsub-verification.svg" alt="sumsub-verification"
                             class="sumsub-verification">
                     </div>
