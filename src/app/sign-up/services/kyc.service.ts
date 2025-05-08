@@ -14,6 +14,7 @@ import {
     CountryData,
     CountryDataType,
     EBusinessType,
+    EStepNumber,
     IErrorData,
     IKYCFormGroups,
     SupportedCountries,
@@ -42,6 +43,7 @@ export class KycService {
     isClickOnRenewKYCDlg = new BehaviorSubject(false);
     removeDocumentVerificationDlg = new BehaviorSubject(false);
     refreshKycTooltip = new BehaviorSubject(false);
+
     constructor(
         private http: HttpClient,
         // private dataService: DataService,
@@ -284,6 +286,7 @@ export class KycService {
     getNewAccessToken(email: string): Promise<string> {
         throw new Error('Method not implemented.');
     }
+}
 
     //   getNewAccessToken(email: string) {
     //     return this.getSumSubAccessToken(email)
@@ -300,4 +303,4 @@ export class KycService {
     //             throw error;
     //         });
     // }
-}
+
