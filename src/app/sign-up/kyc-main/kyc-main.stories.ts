@@ -3,28 +3,29 @@ import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
 import { importProvidersFrom, inject } from "@angular/core";
-import { HttpClientModule, HttpClient } from "@angular/common/http";
-import { RouterTestingModule } from "@angular/router/testing";
+import { HttpClient, provideHttpClient } from "@angular/common/http";
 import { TranslateModule, TranslateLoader, TranslateService } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 import { KycMainComponent } from "./kyc-main.component";
 import { KycService } from "../services/kyc.service";
+import { provideRouter, withHashLocation } from "@angular/router";
+import { routes } from "../../app.routes";
 
 export enum EStepNumber {
   typeOfBusiness = 1,
   email = 2,
   emailConfirmation = 3,
   phone = 4,
-//   phoneConfirmation = 5,
+  //   phoneConfirmation = 5,
   createPassword = 6,
   personalDetails = 7,
   personalAddress = 8
 }
 
 export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, '/i18n', '.json');
-  }
+  return new TranslateHttpLoader(http, 'i18n/', '.json');
+}
 
 interface KycMainComponentWithCustomArgs extends KycMainComponent {
   initialStep?: EStepNumber;
@@ -39,31 +40,24 @@ const meta: Meta<KycMainComponentWithCustomArgs> = {
         CommonModule,
         ReactiveFormsModule,
         MatIconModule,
-        HttpClientModule,
-        RouterTestingModule,
-        TranslateModule.forRoot({
-          loader: {
-            provide: TranslateLoader,
-            useFactory: createTranslateLoader,
-            deps: [HttpClient],
-          }
-        }),
       ],
       providers: [KycService]
     }),
     applicationConfig({
       providers: [
-            importProvidersFrom(CommonModule, TranslateModule.forRoot({
-                loader: {
-                    provide: TranslateLoader,
-                    useFactory: (createTranslateLoader),
-                    deps: [HttpClient]
-                },
-                defaultLanguage: 'en',
-            }),)
-        ]
+        provideRouter(routes, withHashLocation()),
+        provideHttpClient(),
+        importProvidersFrom(CommonModule, TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: (createTranslateLoader),
+            deps: [HttpClient]
+          },
+          defaultLanguage: 'en',
+        }),)
+      ]
     })
-    ],
+  ],
   parameters: {
     layout: 'fullscreen',
   },
@@ -82,6 +76,9 @@ export default meta;
 type Story = StoryObj<KycMainComponentWithCustomArgs>;
 
 export const KycMainFlow: Story = {
+  args: {
+    initialStep: EStepNumber.typeOfBusiness
+  },
   render: (args) => {
     const currentStep = args.initialStep || EStepNumber.typeOfBusiness;
 
@@ -93,7 +90,7 @@ export const KycMainFlow: Story = {
           maxSteps: EStepNumber.personalAddress,
           minSteps: EStepNumber.typeOfBusiness
         },
-        onInit: async function(component: KycMainComponent) {
+        onInit: async function (component: KycMainComponent) {
           const translate = inject(TranslateService);
           if (translate) {
             await translate.use('en').toPromise();
@@ -162,7 +159,6 @@ export const KycMainFlow: Story = {
                 applicantId: '12345'
               });
             }
-0
             if (component.triggerChangeDetection) {
               component.triggerChangeDetection();
             }
@@ -184,7 +180,6 @@ export const KycMainFlow: Story = {
 export const Step1_TypeOfBusiness: Story = {
   ...KycMainFlow,
   args: {
-    ...KycMainFlow.args,
     initialStep: EStepNumber.typeOfBusiness
   }
 };
@@ -192,7 +187,6 @@ export const Step1_TypeOfBusiness: Story = {
 export const Step2_Email: Story = {
   ...KycMainFlow,
   args: {
-    ...KycMainFlow.args,
     initialStep: EStepNumber.email
   }
 };
@@ -200,7 +194,6 @@ export const Step2_Email: Story = {
 export const Step3_EmailConfirmation: Story = {
   ...KycMainFlow,
   args: {
-    ...KycMainFlow.args,
     initialStep: EStepNumber.emailConfirmation
   }
 };
@@ -208,7 +201,6 @@ export const Step3_EmailConfirmation: Story = {
 export const Step4_Phone: Story = {
   ...KycMainFlow,
   args: {
-    ...KycMainFlow.args,
     initialStep: EStepNumber.phone
   }
 };
@@ -224,7 +216,6 @@ export const Step4_Phone: Story = {
 export const Step6_CreatePassword: Story = {
   ...KycMainFlow,
   args: {
-    ...KycMainFlow.args,
     initialStep: EStepNumber.createPassword
   }
 };
@@ -232,7 +223,6 @@ export const Step6_CreatePassword: Story = {
 export const Step7_PersonalDetails: Story = {
   ...KycMainFlow,
   args: {
-    ...KycMainFlow.args,
     initialStep: EStepNumber.personalDetails
   }
 };
@@ -240,7 +230,6 @@ export const Step7_PersonalDetails: Story = {
 export const Step8_PersonalAddress: Story = {
   ...KycMainFlow,
   args: {
-    ...KycMainFlow.args,
     initialStep: EStepNumber.personalAddress
   }
 };
