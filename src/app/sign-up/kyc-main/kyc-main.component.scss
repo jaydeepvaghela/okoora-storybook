@@ -138,9 +138,14 @@
             }
 
             & .login-link {
+                margin-left: 20px;
                 font-weight: 500;
                 color: #111827;
                 text-decoration: none;
+
+                @media screen and (max-width: 1440px) {
+                    margin-left: 10px;
+                }
             }
         }
     }

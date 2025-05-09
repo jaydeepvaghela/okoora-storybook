@@ -46,7 +46,7 @@
                                 </button>
                                 {{ 'KYC_Step_' + stepsObj.currentStep + '.title' | translate }}
                             </h1>
-                            <h3 class="kyc-h--3 email mb-2">{{emailValue()}}</h3>
+                            <!-- <h3 class="kyc-h--3 email mb-2">{{emailValue()}}</h3> -->
                             <p class="kyc-p--1 desc-m">
                                 {{ 'KYC_Step_' + stepsObj.currentStep + '.p_1' | translate }}
                             </p>
@@ -187,7 +187,6 @@
                     &nbsp;
                     <p class="login-p--1 m-0">
                         {{ 'KYC.alreadyHaveAccount' | translate}}
-                        &nbsp;
                         <a class="login-link" (click)="goToLogin()" id="login-btn">{{ 'KYC.SignIn' | translate}}</a>
                     </p>
                 </article>

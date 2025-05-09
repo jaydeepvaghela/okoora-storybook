@@ -87,7 +87,7 @@
     "enter_code": "Enter code from email",
     "code_not_arrived": "Code hasn't arrived?",
     "resend_code": "Re-send code",
-    "you_can_retry": "You can retry in"
+    "you_can_retry": "You can retry"
   },
   "KYC_Step_4": {
     "title": "Enter your phone number",
@@ -128,6 +128,6 @@
     "enter_code": "Enter code from email",
     "code_not_arrived": "Code hasn't arrived?",
     "resend_code": "Re-send code",
-    "you_can_retry": "You can retry in"
+    "you_can_retry": "You can retry"
   }
 }

@@ -2,7 +2,7 @@
     <ng-container [formGroup]="step_4">
         <div class="kyc-phone">
             <div class="kyc-phone__fields d-flex align-items-center justify-content-center">
-                <input type="text" class="kyc-phone-input country-phone-code" aria-label="Code" matInput
+                <input maxlength="3" type="text" class="kyc-phone-input country-phone-code" aria-label="Code" matInput
                     [placeholder]="'fields.phone_code' | translate" (input)="handleCountryCodeSearch($event)"
                     formControlName="phone_code" [matAutocomplete]="auto" (keydown)="restrictSpecialCharacters($event)" appOnlyNumbers>
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -17,7 +17,7 @@
                         </div>
                     </mat-option>
                 </mat-autocomplete>
-                <input class="kyc-phone-input" formControlName="phone" [placeholder]="'fields.phone_num' | translate"
+                <input maxlength="15" class="kyc-phone-input" formControlName="phone" [placeholder]="'fields.phone_num' | translate"
                     type="tel" #telInputRef matInput (keydown)="restrictSpecialCharacters($event)" appOnlyNumbers>
             </div>
             <small *ngIf="apiErrorMessage" class="text-danger">{{ apiErrorMessage }}</small>

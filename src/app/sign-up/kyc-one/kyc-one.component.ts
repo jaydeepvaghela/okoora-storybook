@@ -71,9 +71,7 @@ export class KycOneComponent {
         currentBusiness.get('countrySelected').setValue(null);
       }
     });
-
     this.kycForm.controls.step_1.get(fgName).get('isActive').setValue(panel.expanded);
-
     this.activatedBusinessType.next(fgName)
   }
 

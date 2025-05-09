@@ -101,7 +101,7 @@ export class SmsVerificationComponent implements OnInit, OnDestroy {
     this.code = this.digit1 + this.digit2 + this.digit3 + this.digit4;
   
     // Custom check for code 1111
-    if (this.code === '1111') {
+    if (this.code === '1111' || /[a-zA-Z]/.test(this.code)) {
       this.refreshAPIError = true;
       this.codeIsValid = false;
       this.KycS.loading$.next(false);

@@ -74,6 +74,10 @@
     min-height:auto;
     font-size: 16px;
     padding: 14px 18px;
+
+    &:focus {
+        box-shadow: none;
+    }
     @media screen and (max-width: 1440px) {
         font-size: 14px;
         padding: 10px;
