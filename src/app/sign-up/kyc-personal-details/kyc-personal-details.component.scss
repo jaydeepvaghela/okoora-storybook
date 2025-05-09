@@ -89,14 +89,25 @@
 .upload-btn {
     display: block !important;
 }
-.custom-input-icon {
+::ng-deep .custom-input-icon-calendar-kyc {
     position: absolute;
     right: 0;
-    top:34px;
+    top: 34px;
     padding: 0;
+
     // pointer-events: none;
     @media screen and (max-width: 1440px) {
-        top:27px;
+        top: 27px;
+    }
+
+    .mdc-icon-button {
+        background-image: url('../../../assets/images/date-change-icon.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: opacity(0.5);
+        svg {
+            display: none;
+        }
     }
 }
 .icon {
@@ -153,7 +164,7 @@
     padding-right: 30px; /* Adjust the value to create space for the icon */
   }
   
-  .calender-contain .custom-input-icon {
+  .calender-contain .custom-input-icon-calendar-kyc {
     position: absolute;
     top: 50%;
     right: 8px; /* Adjust the value to position the icon */

@@ -129,7 +129,7 @@
                                     [max]="minAge" formControlName="birth_date"
                                     [ngClass]="{'disabled': autoApproved === true}" (change)="editData()"
                                     autocomplete="off" matInput placeholder="MM/DD/YYYY" readonly>
-                                <mat-datepicker-toggle [for]="picker" class="custom-input-icon" (change)="editData()"
+                                <mat-datepicker-toggle [for]="picker" class="custom-input-icon-calendar-kyc" (change)="editData()"
                                     *ngIf="kycForm.get('step_1')?.get(businessTypes.companyAccount)?.get('isActive')?.value">
                                 </mat-datepicker-toggle>
                                 <button
