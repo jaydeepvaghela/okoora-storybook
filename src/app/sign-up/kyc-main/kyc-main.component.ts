@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, HostListener, Inject, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
@@ -143,8 +143,9 @@ export class KycMainComponent implements OnInit {
             }),
         });
     }
-
-    ngOnInit(): void {
+ 
+    ngOnInit(): void { 
+        localStorage.removeItem('step');  
         this.stepsObj.currentStep
         // this.websiteUrl = this.generalS.websiteUrl;
         this.kycForm.valueChanges.subscribe(this.handleValueChanges);
@@ -288,7 +289,14 @@ export class KycMainComponent implements OnInit {
         switch (action) {
             case 'NEXT':
                 // console.log(this.kycForm)
-                if (this.stepsObj.currentStep >= this.stepsObj.maxSteps) {
+                const step1 = this.kycForm?.value?.step_1;
+                const companyCountry = step1?.companyAcc?.countrySelected;
+                const privateCountry = step1?.privateAcc?.countrySelected;
+                const isCompanyCountryValid = companyCountry !== null && companyCountry !== 'Israel';
+                const isPrivateCountryValid = privateCountry !== null && privateCountry !== 'Israel';
+                const isNonIsraeli = isCompanyCountryValid || isPrivateCountryValid;
+                
+                if (this.stepsObj.currentStep >= this.stepsObj.maxSteps && isNonIsraeli) {
                     if (this.stepsObj.currentStep > this.stepsObj.maxSteps) {
                         console.warn(`current step was greater than the max steps \n currenct step given ${this.stepsObj.currentStep} \n max steps: ${this.stepsObj.maxSteps}`);
                     }

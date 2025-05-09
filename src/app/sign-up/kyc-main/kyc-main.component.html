@@ -192,54 +192,6 @@
                     </p>
                 </article>
             </section>
-
         </div>
-
-        <!-- <div class="kyc-right">
-            <app-step-details [detailsToShow]="detailsToShow" [kycForm]="kycForm" [stepsObj]="stepsObj"
-                [showLoginBtn]="showLoginBtn()">
-            </app-step-details>
-            <article *ngIf="showLoginBtn()" class="login-wrapper">
-                <a class="faq-p--1" [href]="faqUrl" target="_blank" rel="noopener noreferrer">{{ 'KYC.FAQ' | translate}}
-                    /</a>
-                &nbsp;
-                <p class="login-p--1">
-                    {{ 'KYC.alreadyHaveAccount' | translate}}
-                    &nbsp;
-                    <a class="login-link" [href]="appLoginUrl" id="login-btn-2">{{ 'KYC.SignIn' | translate}}</a>
-                </p>
-            </article>
-            <img class="icon-bottom-right" src="images/kyc/icons/blue-up-down-arrow.svg"
-                alt="blue up and down arrow icon" />
-        </div> -->
-
-
     </section>
-
-    <!-- <div *ngIf="codeStatus !== 'DEFAULT' " class="confirmation-incorrect">
-        <button class="confirmation-incorrect__close action-btn" (click)="tryAgain()" mat-button>
-            <mat-icon fontSet="fontawesome" fontIcon="fa-times"></mat-icon>
-        </button>
-
-        <div class="container">
-            <div class="confirmation-incorrect__wrapper">
-                <mat-icon class="incorrect-icon text-danger mb-5" fontSet="fontawesome" fontIcon="fa-times-circle">
-                </mat-icon>
-
-                <ng-container *ngIf="codeStatus === 'INCORRECT'">
-                    <h3 class="confirmation-incorrect-h--1">{{ 'KYC.confirmation_incorrect' | translate}}</h3>
-                </ng-container>
-
-                <ng-container *ngIf="codeStatus === 'PASSED_LIMIT'">
-                    <h3 class="confirmation-incorrect-h--1">{{ 'KYC.PassedLimitTitle' | translate}}</h3>
-                    <p class="confirmation-incorrect-p--1">{{ 'KYC.PassedLimitParagraph' | translate}}</p>
-                </ng-container>
-
-                <button type="button" mat-raised-button color="primary" class="continue-btn mt-5" (click)="tryAgain()">
-                    {{ 'KYC.try_again' | translate}}
-                </button>
-            </div>
-        </div>
-    </div> -->
-
 </main>

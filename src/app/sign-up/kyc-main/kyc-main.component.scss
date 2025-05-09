@@ -145,48 +145,6 @@
         }
     }
 
-    // &-right {
-    //     min-height: 100vh;
-    //     flex: 40%;
-    //     @include respond(lg) {
-    //         background-color: $color-stratos;
-    //         min-height: 40vh;
-    //     }
-
-    //     & .login-wrapper {
-    //         display: none;
-
-    //         @include respond(lg) {
-    //             max-width: 100%;
-    //             width: 100%;
-    //             display: flex;
-    //             justify-content: center;
-    //             & * {
-    //                 font-weight: $fw-regular;
-    //                 color: #fff;
-    //                 text-decoration: none;
-    //             }
-    //             & .login-link {
-    //                 font-weight: $fw-bold;
-    //             }
-    //         }
-    //     }
-
-    //     & .icon-bottom-right {
-    //         display: none;
-    //         @include respond(lg) {
-    //             max-width: 9rem;
-    //             display: block;
-    //             position: absolute;
-    //             bottom: 0;
-    //             right: 0;
-    //         }
-    //         @include respond(md) {
-    //             max-width: 7rem;
-    //         }
-    //     }
-    // }
-
     &-form-section {
         width:700px;
         margin: 0 auto;

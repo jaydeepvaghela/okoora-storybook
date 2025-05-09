@@ -22,7 +22,7 @@ export class KycTwoComponent {
   @Input() stepsObj!: IStepsObj;
   @Output() nextStepEvent = new EventEmitter<StepActionType>();
   emailSignUp$ = new Subject<string>();
-  privacyPolicyUrl: string = 'https://okoora.com/terms-of-service/';
+  privacyPolicyUrl: string = 'https://okoora.com/privacy/';
   termsOfUseUrl: string = 'https://okoora.com/terms-of-service/';
   accountType!: TBusinessTypes;
   EBusinessType = EBusinessType;
@@ -30,47 +30,6 @@ export class KycTwoComponent {
 
   ngOnInit(): void {
     this.step_2 = this.kycForm.get('step_2') as FormGroup;
-
-    // this.emailSignUp$
-    //   .pipe(
-    //     throttleTime(300),
-    //     exhaustMap((email) => this.kycS.sendMailVerification(email)),
-    //     catchError((e: HttpErrorResponse) => {
-    //       this.kycS.loading$.next(false);
-    //       return EMPTY;
-    //     })
-    //   )
-    //   .subscribe((res) => {
-    //     if (!Boolean(res)) {
-    //       console.warn(`res is falsy`);
-    //       this.kycS.loading$.next(false);
-    //       return;
-    //     }
-    //     if (res) {
-    //       this.nextStepEvent.next('NEXT');
-    //     }
-
-
-    //  else  {
-    //       // user passed the limit of sending verification code.
-    //       // this.kycS.verificationCodeStatus.next('PASSED_LIMIT');
-    //       this.nextStepEvent.next('NEXT');
-    //     }
-    //     // this.kycS.loading$.next(false);
-    //   });
-
-    // this.kycS.loading$
-    //   .pipe(
-    //     takeUntil(this.componentDestroyed)
-    //   )
-    //   .subscribe(loadingState => {
-    //     this.isLoading = loadingState;
-    //   });
-
-    // this.kycS.getAccountType$()
-    //   .subscribe(accountType => {
-    //     this.accountType = accountType;
-    //   });
   }
 
   handleSignUp(): void {

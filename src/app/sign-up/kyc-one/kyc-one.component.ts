@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AbstractControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatExpansionModule, MatExpansionPanel} from '@angular/material/expansion';
 import {Subject} from 'rxjs';
@@ -27,12 +27,12 @@ export class KycOneComponent {
   @Output('nextStepEvent') nextStepEvent = new EventEmitter<StepActionType>();
   @Output('activatedBusinessType') activatedBusinessType = new EventEmitter<IKycData['businessTypes']>();
   businessTypes = EBusinessType;
-  assetsPath = 'environment.assetsPath';
   step_1!: FormGroup;
   businessTypesCompanyAccount!: FormGroup;
   businessTypesPrivateAccount!: FormGroup;
   privateCountryNotIsrael: boolean = false;
   countryName: any;
+
   constructor(
     private KycS: KycService,
   ) {
@@ -85,7 +85,6 @@ export class KycOneComponent {
       }else{
         localStorage.removeItem('kycForm')
         localStorage.setItem('step', JSON.stringify(1));
-        window.location.href = "https://onboarding-demo.paydirect.io/okoora/forms/corporate"
       }
     }else{    
       if(this.kycForm?.value?.step_1?.privateAcc?.countrySelected != null && this.kycForm?.value?.step_1?.privateAcc?.countrySelected !='Israel'){

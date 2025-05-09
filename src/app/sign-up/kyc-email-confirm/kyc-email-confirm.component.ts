@@ -31,8 +31,9 @@ export class KycEmailConfirmComponent implements OnInit, OnDestroy {
     }
 
     codeValidHandler() {
-        // console.log('codeValidHandler')
+        setTimeout(() => { 
         this.nextStepEvent.next('NEXT');
+        }, 500);
     }
 
     ngOnDestroy(){
