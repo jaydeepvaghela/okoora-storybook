@@ -30,9 +30,15 @@ export class AppComponent {
     return this.router.url === '/dashboard' || this.router.url === '/hedging' || this.router.url === '/cashflow' || this.router.url === '/advanced-policy';
   }
 
+  get isLoginRoute(): boolean {
+    return this.router.url === '/login';
+  }
+
   get isSignUpRoute(): boolean {
     return this.router.url === '/sign-up';
   }
+
+
   openSidebar() {
     this.sidebar.openSidebar();
   }

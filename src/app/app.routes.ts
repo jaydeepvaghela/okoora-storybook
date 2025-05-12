@@ -5,11 +5,13 @@ import { HedgingProposalComponent } from './risk-dashboard/components/hedging-pr
 import { CashflowExposureSteppersComponent } from './risk-dashboard/components/cashflow-exposure/cashflow-exposure-steppers/cashflow-exposure-steppers.component';
 import { AdvancedPolicyComponent } from './risk-dashboard/components/advanced-policy/advanced-policy.component';
 import { KycMainComponent } from './sign-up/kyc-main/kyc-main.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' as 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'sign-up', component: KycMainComponent },
+  { path: 'login', component: LoginComponent},
   { path: 'hedging', component: HedgingProposalComponent },
   { path: 'cashflow', component: CashflowExposureSteppersComponent },
   { path: 'advanced-policy', component: AdvancedPolicyComponent },

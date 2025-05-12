@@ -1,0 +1,422 @@
+@import "../../assets/scss/variable";
+@import "../../assets/scss/mixins";
+
+.auth-section {
+    @include flex(flex-start, flex-start, row);
+  
+    .left-side {
+      @include flex(center, center, row);
+      flex-basis: 40%;
+      background-color: var(--brand-primary-color);
+      min-height: 100vh;
+  
+      @media screen and (max-width: 991px) {
+        flex-basis: 100%;
+        padding: 20px 0;
+      }
+  
+      &::ng-deep {
+        .form-wrapper {
+          width: 65%;
+  
+          @media screen and (max-width: 1440px) {
+            width: 70%;
+          }
+  
+          @media screen and (max-width: 1024px) {
+            width: 85%;
+          }
+  
+          @media screen and (max-width: 991px) {
+            width: 70%;
+          }
+  
+          @media screen and (max-width: 767px) {
+            width: 75%;
+          }
+  
+          @media screen and (max-width: 480px) {
+            width: 90%;
+          }
+  
+          .heading {
+            color: $white;
+            font-size: 36px;
+            line-height: 44px;
+            margin-bottom: 48px;
+            font-weight: 700;
+  
+            @media screen and (max-width: 1440px) {
+              font-size: 28px;
+              line-height: 32px;
+              margin-bottom: 24px;
+            }
+  
+            @media screen and (max-width: 1024px) {
+              font-size: 34px;
+              line-height: 38px;
+              margin-bottom: 40px;
+            }
+  
+            @media screen and (max-width: 767px) {
+              font-size: 30px;
+              line-height: 34px;
+              margin-bottom: 34px;
+            }
+          }
+  
+          .form-group {
+            margin-bottom: 30px;
+  
+            @media screen and (max-width: 1440px) {
+              margin-bottom: 18px;
+            }
+  
+            @media screen and (max-width: 1024px) {
+              margin-bottom: 26px;
+            }
+  
+            @media screen and (max-width: 767px) {
+              margin-bottom: 20px;
+            }
+  
+            label {
+              font-size: 14px;
+              line-height: 20px;
+              font-weight: 500;
+              margin-bottom: 0.5rem;
+              color: $white;
+  
+              @media screen and (max-width: 1440px) {
+                font-size: 13px;
+                line-height: 18px;
+              }
+  
+              @media screen and (max-width: 1024px) {
+                font-size: 14px;
+              }
+            }
+  
+            input {
+              background-color: var(--auth-input-color);
+              border: 1px solid var(--auth-input-color);
+              border-radius: 15px;
+              color: $white;
+              padding: 0 20px;
+              height: 55px;
+              font-size: 18px;
+              font-weight: 300;
+              width: 100%;
+  
+              @media screen and (max-width: 1440px) {
+                font-size: 16px;
+                border-radius: 8px;
+                padding: 0 16px;
+                height: 44px;
+              }
+  
+              @media screen and (max-width: 1024px) {
+                font-size: 18px;
+                border-radius: 10px;
+                padding: 0 20px;
+                height: 52px;
+              }
+  
+              @media screen and (max-width: 767px) {
+                font-size: 16px;
+                border-radius: 8px;
+                height: 48px;
+              }
+  
+              &::placeholder {
+                color: #aeaeae;
+              }
+            }
+  
+            .input-wrapper {
+              position: relative;
+  
+              mat-icon {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 20px;
+                margin: auto 0;
+                color: $white;
+                font-size: 22px;
+                line-height: 26px;
+  
+                @media screen and (max-width: 1440px) {
+                  right: 14px;
+                  font-size: 20px;
+                  line-height: 26px;
+                }
+              }
+            }
+          }
+  
+          .remember-wrapper {
+            @include flex(space-between, center, row);
+            padding: 0 20px;
+            margin-bottom: 30px;
+  
+            .forgot-password {
+              color: $white;
+              font-size: 14px;
+              line-height: 20px;
+              font-weight: 400;
+            }
+  
+            @media screen and (max-width: 1440px) {
+              padding: 0 10px;
+            }
+  
+            @media screen and (max-width: 480px) {
+              padding: 0 4px;
+            }
+          }
+  
+          .submit-btn {
+            width: 100%;
+            border-radius: 25px;
+            font-weight: 700;
+            padding: 0.65rem 2.2rem;
+            transition: 0.3s;
+            border: 2px solid var(--brand-primary-color);
+            color: $white;
+            font-size: 16px;
+            background-color: $blue-black;
+            position: relative;
+  
+            &.disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+              pointer-events: none;
+            }
+          }
+        }
+  
+        .password-instruction {
+          margin-bottom: 16px;
+  
+          .message {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            color: $white;
+            margin-bottom: 0;
+          }
+  
+          .detail {
+            @include flex(flex-start, center, row);
+            display: inline-flex;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 400;
+            color: $white;
+            padding-left: 8px;
+  
+            mat-icon {
+              font-size: 14px;
+              line-height: 8px;
+              width: auto;
+              height: auto;
+              font-weight: 600;
+            }
+          }
+        }
+  
+        .back-btn {
+          @include flex(flex-start, center, row);
+          color: $white;
+          font-size: 16px;
+          line-height: 22px;
+          font-weight: 400;
+          margin-bottom: 60px;
+  
+          @media screen and (max-width: 1440px) {
+            margin-bottom: 40px;
+            font-size: 14px;
+          }
+  
+          @media screen and (max-width: 1024px) {
+            margin-bottom: 50px;
+            font-size: 16px;
+          }
+  
+          @media screen and (max-width: 767px) {
+            margin-bottom: 30px;
+          }
+        }
+      }
+    }
+  
+    .right-side {
+      @include flex(flex-start, normal, row);
+      flex-basis: 60%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center right;
+      padding: 3rem;
+      min-height: 100vh;
+      background-image: url(../../assets/images/login-light-v2.png);
+  
+      @media screen and (max-width: 1440px) {
+        padding: 2rem;
+      }
+  
+      @media screen and (max-width: 1024px) {
+        padding: 3rem;
+      }
+  
+      @media screen and (max-width: 991px) {
+        display: none;
+      }
+  
+      &.forgot-password {
+        // background-image: url(../assets/images/forgot-pass@2x.png);
+      }
+  
+      .content {
+        @include flex(center, flex-start, column);
+  
+        .logo {
+          max-width: 10.1rem;
+          width: 100%;
+          margin-bottom: auto;
+        }
+  
+        .main-heading {
+          font-size: 48px;
+          line-height: 58px;
+          font-weight: 900;
+          color: $blue-black;
+  
+          @media screen and (max-width: 1440px) {
+            font-size: 38px;
+            line-height: 44px;
+          }
+        }
+  
+        .sub-heading {
+          font-size: 24px;
+          line-height: 28px;
+          font-weight: 700;
+          color: $blue-black;
+  
+          @media screen and (max-width: 1440px) {
+            font-size: 20px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+}
+
+::ng-deep {
+    .remember-wrapper {
+
+        //   &::ng-deep {
+        .mdc-checkbox__native-control {
+            height: 16px !important;
+            width: 16px !important;
+        }
+
+        .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+        .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,
+        .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control[data-indeterminate="true"]:enabled~.mdc-checkbox__background {
+            border-color: $white !important;
+        }
+
+        .mdc-checkbox__background {
+            border: 1px solid $white !important;
+            height: 16px !important;
+            width: 16px !important;
+            border-radius: 0 !important;
+        }
+
+        .mat-mdc-checkbox.mat-accent .mdc-checkbox--selected~.mdc-checkbox__ripple {
+            background: $white !important;
+        }
+
+        .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark {
+            width: 100% !important;
+            color: $white !important;
+        }
+
+        .mdc-checkbox~label {
+            font-size: 14px !important;
+            line-height: 16px !important;
+            color: $white !important;
+            font-weight: 400 !important;
+        }
+
+        //   }
+    }
+}
+
+.submit-btn {
+  &::ng-deep {
+    .loader {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      right: 0;
+      left: 0;
+      justify-content: center;
+      border-radius: 20px;
+    }
+  }
+}
+
+.signup {
+  margin-top: 48px;
+  position: absolute;
+  font-size: 13px;
+
+  &-text {
+    color: white;
+  }
+  &-link {
+    color: white;
+    font-weight: 600;
+  }
+}
+.signup-link {
+  cursor: pointer;
+}
+
+.info-msg {
+  color: $white;
+  font-size: 16px;
+  line-height: 20px;
+  display: block;
+  margin-bottom: 15px;
+  a {
+    margin-left: 5px;
+    color: $white;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration: underline !important;
+    &:hover {
+      color: $brand-secondary-color;
+    }
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 100px var(--color-blue-royal) inset !important;
+  -webkit-text-fill-color: $white !important;
+}
+
+::ng-deep .auth-section .left-side.dark-mode {
+  background-color: #f5f7fa !important;
+}
+
+::ng-deep .auth-section .left-side.dark-mode .form-wrapper{
+  padding-bottom: 10rem;
+}

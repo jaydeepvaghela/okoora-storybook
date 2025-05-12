@@ -455,7 +455,7 @@ export class KycMainComponent implements OnInit {
     goToLogin() {
         // localStorage.removeItem('kycForm')
         // localStorage.removeItem('step')
-        // this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
     }
     passwordMatchValidator = (): ValidatorFn => {
         return (control: AbstractControl): ValidationErrors | null => {
