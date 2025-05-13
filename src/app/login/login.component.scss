@@ -3,7 +3,7 @@
 
 .auth-section {
     @include flex(flex-start, flex-start, row);
-  
+
     .left-side {
       @include flex(center, center, row);
       flex-basis: 40%;
@@ -157,7 +157,7 @@
   
           .remember-wrapper {
             @include flex(space-between, center, row);
-            padding: 0 20px;
+            padding: 0 20px 0 10px;  
             margin-bottom: 30px;
   
             .forgot-password {
@@ -310,6 +310,14 @@
           }
         }
       }
+    }
+
+    .error-msg {
+      color: #EF4444;
+      font-family: $he_heebo;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
     }
 }
 

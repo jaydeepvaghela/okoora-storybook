@@ -3,7 +3,7 @@
       <div class="form-wrapper">
         <ng-container>
             <h3 class="heading">Login</h3>
-            <form #loginFrm="ngForm" [formGroup]="loginForm" (ngSubmit)="login()">
+            <form #loginFrm="ngForm" [formGroup]="loginForm" (ngSubmit)="navigateToDashboard()">
               <div class="form-group">
                 <label for="username">Email</label>
                 <input type="email"  class="form-control" name="username" id="email_field" formControlName="username" email
@@ -31,7 +31,7 @@
               </div>
               <div class="remember-wrapper">
                 <mat-checkbox class="remember-check" formControlName="rememberMe" name="rememberMe"
-                  (change)="rememberValueChange(loginForm?.value?.rememberMe)" id="remember_me_checkbox">Remember me
+                  (change)="rememberValueChange(loginForm.value.rememberMe!)" id="remember_me_checkbox">Remember me
                 </mat-checkbox>
                 <a class="forgot-password" id="forgot_password" (click)="goToForgot()" >Forgot password?</a>
               </div>
@@ -54,8 +54,8 @@
               </p>
             </div>
           </ng-container>
-          <!-- <app-code-verification *ngIf="needVerification" [formData]="loginForm.value" [typeVerification]="typeVerificationCode" type="login"
-          (back)="handleKycCompletion($event)"></app-code-verification> -->
+          <app-code-verification *ngIf="needVerification" [formData]="loginForm.value" [typeVerification]="typeVerificationCode" type="login"
+          ></app-code-verification>
           
           
       </div>

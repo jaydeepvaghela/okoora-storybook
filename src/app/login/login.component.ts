@@ -1,55 +1,105 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CodeVerificationComponent } from './code-verification/code-verification.component';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatCheckboxModule],
+  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatCheckboxModule, CodeVerificationComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
-  isLoginRoute: any;
+
+export class LoginComponent implements OnInit {
+  hidePassword = true;
+  needVerification = false;
+  userNotExist = false;
+  invalidCredentials = false;
+  typeVerificationCode  = '';
+  showLoader = false;
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     rememberMe: new FormControl(''),
   });
-  needVerification: any;
-  typeVerificationCode: any;
-  hidePassword: any;
-  error: any;
-  showLoader: any;
+  planMsg: any;
+  error!: string;
+  loginData: boolean = false;
 
-  constructor(private router: Router) { }
-
-  login() {
-    throw new Error('Method not implemented.');
+  constructor(private router: Router, public dialog: MatDialog) {
   }
 
-  rememberValueChange(arg0: any) {
-    throw new Error('Method not implemented.');
+  ngOnInit() {
+    this.checkRemember();
+
+    this.loginForm.controls.username.valueChanges.subscribe((value) => {
+      if (!value) {
+        this.isloginFormHasError();
+      }
+    });
+    this.loginForm.controls.password.valueChanges.subscribe((value) => {
+      if (!value) {
+        this.isloginFormHasError();
+      }
+    });
   }
 
   goToForgot() {
-    throw new Error('Method not implemented.');
-  }
-  
-  goToSignUp() {
-    this.router.navigate(['/sign-up']);
+    this.router.navigate(['/reset-password']);
   }
 
-  navigateToDashboard() { 
-    if (this.loginForm.valid) {
-      this.router.navigate(['/dashboard']); 
+  navigateToDashboard() {
+  if (!this.loginForm.valid) {
+    this.isloginFormHasError();
+    return;
+  }
+
+  const enteredPassword = this.loginForm.value.password;
+  if (enteredPassword !== 'Okoora1!') {
+    this.error = 'Passwords do not match';
+    return;
+  }
+
+  this.router.navigate(['/dashboard']);
+  this.error = '';
+  this.rememberValueChange(this.loginForm?.value?.rememberMe!);
+}
+
+
+  goToSignUp() {
+    this.router.navigate(['sign-up']);
+  }
+
+  rememberValueChange(remember: string) {
+    if (remember) {
+      localStorage.setItem('remember_me', JSON.stringify(this.loginForm.value));
+    } else {
+      localStorage.removeItem('remember_me');
     }
   }
-  
-  handleKycCompletion($event: Event) {
-    throw new Error('Method not implemented.');
+
+  checkRemember() {
+    let rememberMe = localStorage.getItem('remember_me');
+    if (rememberMe) {
+      this.loginForm.patchValue(JSON.parse(rememberMe));
+    }
+  }
+
+  isloginFormHasError(errorMessage: string | null = null) {
+    console.log('errorMessage',errorMessage);
+    if (errorMessage && errorMessage.includes("Login Timeout")) {
+      this.error = errorMessage;
+    } else {
+      if (errorMessage && errorMessage.includes("Account is blocked. Please contact support")) {
+        this.error = errorMessage;
+      } else {
+        this.error = "User name or password are incorrect";
+      }
+    }
   }
 
 }

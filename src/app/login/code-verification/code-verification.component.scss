@@ -1,0 +1,169 @@
+@import "../../../assets/scss/variable";
+@import "../../../assets/scss/mixins";
+
+.submit-btn {
+  &::ng-deep {
+    .loader {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      right: 0;
+      left: 0;
+      justify-content: center;
+      border-radius: 20px;
+    }
+  }
+}
+
+.action-links {
+  @include flex(flex-start, flex-start, column);
+  a {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: $white;
+    cursor: pointer;
+
+    @media screen and (max-width: 1440px) {
+      font-size: 14px;
+      line-height: 22px;
+    }
+    @media screen and (max-width: 1024px) {
+      font-size: 16px;
+      line-height: 26px;
+    }
+  }
+}
+
+.text-group {
+  @include flex(flex-start, center, row);
+
+  input {
+    max-width: 46px;
+    margin-right: 15px;
+    padding: 0 10px !important;
+    text-align: center;
+  }
+}
+
+
+.reset-success-heading {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 500;
+  color: $white;
+  margin-bottom: 8px;
+}
+
+.reset-success-msg {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  color: $white;
+}
+/*************************************************************************************/
+.title {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.emailLoginVerification{
+  background-color: white;
+  line-height: 30px;
+  text-align: center;
+  height: 23rem;
+}
+.emailLoginVerification-back{
+  display: flex;
+}
+
+.masked-input {
+    all: unset !important;
+    height: 55px !important;
+    width: 66px !important;
+    border: none !important;
+    border-bottom: 2.8px solid #334659 !important;
+    border-radius: 0 !important;
+    text-align: center !important;
+    font-size: 2.5rem !important;
+
+    &:not(:last-child) {
+      margin-right : 30px !important;
+  }
+}
+
+
+
+::ng-deep {
+  .action-anchor {
+      font-weight     : 500;
+      cursor          : pointer;
+      text-decoration : none;
+      color           : $color-blaze-orange !important;
+
+      &:hover {
+          text-decoration : none;
+      }
+
+      &.edit-email, &.resend-code {
+          margin-inline-start : 2px;
+      }
+  }
+
+  // #.action-anchor
+}
+.old-input {
+  background-color: #fff;
+  border: 1px solid #01031c;
+  border-radius: 15px;
+  color: #01031c;
+  text-indent: 10px;
+  min-height: 50px;
+}
+
+.continue-btn {
+  margin: 20px 0px;
+  min-height: 20px;
+
+  .mat-button-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      mat-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+  }
+}
+.step-2__wrapper {
+  max-width: 70%;
+  margin:0 auto;
+}
+.step-2 {
+  button {
+      background: linear-gradient(111.05deg, #444444 2.91%, #000000 96.88%);
+      border-radius: 40px;
+      font-size: 16px;
+      // line-height: 22px;
+      font-weight: 600;
+      color: #fff;
+      padding: 12px 0px;
+      height: auto;
+      transition: 0.3s;
+      position: relative;
+      width: 100% !important;
+      @media screen and (max-width: 1440px) {
+          // height: 25px;
+          width: 25px;
+      }
+
+      &.disabled {
+          background: #f5f5fa !important;
+          color: #c6c8cc !important;
+          cursor: not-allowed;
+      }
+  }
+}
+/*************************************************************************************/
