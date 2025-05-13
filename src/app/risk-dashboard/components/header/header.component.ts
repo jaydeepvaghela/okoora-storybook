@@ -86,6 +86,6 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   }
   logout(){
     localStorage.setItem('isLoggedInUser', 'false');
-    this.router.navigate(['/sign-up']);
+    this.router.navigate(['/login']);
   }
 }

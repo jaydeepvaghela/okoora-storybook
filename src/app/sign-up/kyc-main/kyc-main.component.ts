@@ -410,6 +410,7 @@ export class KycMainComponent implements OnInit {
             case EStepNumber.typeOfBusiness:
                 // this.auth.logout();
                 // window.location.href = '/login';
+                this.router.navigate(['/login']);
                 // localStorage.getItem('subSite') ?  window.location.href = localStorage.getItem('subSite') +'login'  : window.location.href = '/login';
                 break;
             case EStepNumber.createPassword:

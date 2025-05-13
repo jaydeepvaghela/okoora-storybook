@@ -41,6 +41,12 @@ export class LoginComponent {
   goToSignUp() {
     this.router.navigate(['/sign-up']);
   }
+
+  navigateToDashboard() { 
+    if (this.loginForm.valid) {
+      this.router.navigate(['/dashboard']); 
+    }
+  }
   
   handleKycCompletion($event: Event) {
     throw new Error('Method not implemented.');

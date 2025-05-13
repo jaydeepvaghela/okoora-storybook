@@ -44,13 +44,13 @@
               <span class="error-msg" *ngIf="error">
                  {{error}}
               </span>
-              <button class="submit-btn" [class.disabled]="showLoader" [disabled]="showLoader" id="button_login">Log In
+              <button class="submit-btn" [class.disabled]="showLoader" [disabled]="showLoader" id="button_login" (click)="navigateToDashboard()">Log In
                 <!-- <app-page-loader classes="bg-white" *ngIf="showLoader"></app-page-loader> -->
               </button>
             </form>
             <div class="signup">
               <p class="signup-text">
-                  Don't have an account? <a class="signup-link d-inline" (click)="goToSignUp()"  >Sign up</a>
+                  Don't have an account? <a class="signup-link d-inline" (click)="goToSignUp()">Sign up</a>
               </p>
             </div>
           </ng-container>
