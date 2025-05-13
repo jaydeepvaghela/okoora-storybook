@@ -6,12 +6,14 @@ import { CashflowExposureSteppersComponent } from './risk-dashboard/components/c
 import { AdvancedPolicyComponent } from './risk-dashboard/components/advanced-policy/advanced-policy.component';
 import { KycMainComponent } from './sign-up/kyc-main/kyc-main.component';
 import { LoginComponent } from './login/login.component';
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' as 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'sign-up', component: KycMainComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'hedging', component: HedgingProposalComponent },
   { path: 'cashflow', component: CashflowExposureSteppersComponent },
   { path: 'advanced-policy', component: AdvancedPolicyComponent },

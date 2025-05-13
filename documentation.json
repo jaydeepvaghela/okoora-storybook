@@ -6632,6 +6632,627 @@
             "templateData": "<div class=\"monthly-analysis-charts\">\r\n    <div class=\"chart-head\">\r\n        <h4 class=\"info-title\"><img src=\"images/exposure-virtual.svg\" alt=\"exposure\" />Monthly\r\n            analysis</h4>\r\n            <div class=\"btn-right\">\r\n                <button class=\"edit-btn\" id=\"editexposureBtn__rmdb\">Edit</button>\r\n                <button class=\"hedge-btn\" id=\"quickHedge__rmdb\" (click)=\"showHedge()\">Quick Hedge</button>\r\n            </div>\r\n    </div>\r\n    <div class=\"tab-wrap\">\r\n        <mat-tab-group mat-stretch-tabs=\"false\" class=\"chart-tabs-group\" mat-align-tabs=\"center\" (selectedTabChange)=\"onTabChange($event)\">\r\n            <mat-tab label=\"Monthly exposure\" class=\"chart-tab\">\r\n                <app-monthly-exposure-chart *ngIf=\"loadMonthChart\"></app-monthly-exposure-chart>\r\n            </mat-tab>\r\n            <mat-tab label=\"Exposure & rates\" class=\"chart-tab\">\r\n                <app-exposure-rate-chart *ngIf=\"loadExposureChart\"></app-exposure-rate-chart>\r\n            </mat-tab>\r\n        </mat-tab-group>\r\n    </div>\r\n</div>"
         },
         {
+            "name": "CodeVerificationComponent",
+            "id": "component-CodeVerificationComponent-89e95847d67ad1c53fb220b489d155e0f5de8401c891c01a944aa45711eb809858f36a0bea8cf919c8a81381d60ecbba9ad42e09ceac562d2429a2ea223e2920",
+            "file": "src/app/login/code-verification/code-verification.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-code-verification",
+            "styleUrls": [
+                "./code-verification.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./code-verification.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "formData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "timerTooltip",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "typeVerification",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "back",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "EventEmitter<boolean>"
+                },
+                {
+                    "name": "codeValidEvent",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "code",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                },
+                {
+                    "name": "codeIsValid",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38
+                },
+                {
+                    "name": "codeResendSuccess",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 42
+                },
+                {
+                    "name": "codeStatus",
+                    "defaultValue": "'DEFAULT'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "componentDestroyed",
+                    "defaultValue": "new Subject<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "digit1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "digit2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "digit3",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "digit4",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "incorrectCode",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                },
+                {
+                    "name": "passwordResetSuccess",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
+                },
+                {
+                    "name": "privacyPolicyUrl",
+                    "defaultValue": "'https://okoora.com/terms-of-service/'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "refreshAPIError",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "router",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53
+                },
+                {
+                    "name": "showLoader",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                },
+                {
+                    "name": "termsOfUseUrl",
+                    "defaultValue": "'https://okoora.com/terms-of-service/'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "timer",
+                    "defaultValue": "{\r\n      minutes: '0',\r\n      seconds: '00',\r\n      active: false\r\n    }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 44
+                },
+                {
+                    "name": "verificationError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 43
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "backToLogin",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 72,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "checkVerification",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 314,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "emailValue",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 292,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleActionByStep",
+                    "args": [
+                        {
+                            "name": "data",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 320,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "data",
+                            "type": "literal type",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleEditValue",
+                    "args": [
+                        {
+                            "name": "e",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 286,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "e",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleSignUp",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 289,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onResend",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 216,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "performEmailVerification",
+                    "args": [
+                        {
+                            "name": "action",
+                            "type": "\"SEND\" | \"CHECK\"",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "action",
+                            "type": "\"SEND\" | \"CHECK\"",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "resendCode",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 196,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "resetFormErrors",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 69,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "resetPassword",
+                    "args": [
+                        {
+                            "name": "newPassword",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "validationId",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 265,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "newPassword",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "validationId",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "restrictSpecialCharacters",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 295,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "startTimer",
+                    "args": [
+                        {
+                            "name": "codeStatus",
+                            "type": "TVerificationCodeStatus",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "'DEFAULT'"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 227,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "codeStatus",
+                            "type": "TVerificationCodeStatus",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "'DEFAULT'",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "verifyCode",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 120,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TranslateModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatTooltipModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { HttpResponse } from '@angular/common/http';\r\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\nimport { Observable, Subject, catchError, combineLatest, finalize, of, scan, takeUntil, takeWhile, tap, timer } from 'rxjs';\r\nimport { KycService } from '../../sign-up/services/kyc.service';\r\nimport { TSendMailResponse, TVerificationCodeStatus } from '../../sign-up/kyc';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { CommonModule } from '@angular/common';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { MatTooltipModule } from '@angular/material/tooltip';\r\n\r\n@Component({\r\n  selector: 'app-code-verification',\r\n  templateUrl: './code-verification.component.html',\r\n  styleUrls: ['./code-verification.component.scss'],\r\n  imports: [CommonModule, FormsModule, TranslateModule, MatTooltipModule],\r\n})\r\nexport class CodeVerificationComponent {\r\n  @Input() formData: any;\r\n  @Input()\r\n  typeVerification!: string;\r\n  @Input()\r\n  type!: string;\r\n  @Input('timerTooltip')\r\n  timerTooltip!: string;\r\n  codeStatus = 'DEFAULT';\r\n  @Output('codeValidEvent') codeValidEvent = new EventEmitter<boolean>();\r\n  componentDestroyed = new Subject<any>();\r\n  @Output() back: EventEmitter<boolean> = new EventEmitter();\r\n  digit1!: number;\r\n  digit2!: number;\r\n  digit3!: number;\r\n  digit4!: number;\r\n  privacyPolicyUrl: string = 'https://okoora.com/terms-of-service/';\r\n  termsOfUseUrl: string = 'https://okoora.com/terms-of-service/';\r\n  code!: number;\r\n  refreshAPIError: boolean = false;\r\n  codeIsValid: boolean = true;\r\n  incorrectCode = false;\r\n  passwordResetSuccess = false;\r\n  showLoader = false;\r\n  codeResendSuccess = false;\r\n  verificationError = '';  \r\n  timer: {\r\n    minutes: string,\r\n    seconds: string,\r\n    active: boolean\r\n  } = {\r\n      minutes: '0',\r\n      seconds: '00',\r\n      active: false\r\n    };\r\n  router: any;\r\n\r\n  constructor(private KycS: KycService) {\r\n  }\r\n  ngOnInit() {\r\n    this.resetFormErrors();\r\n    if (this.formData.valueChanges) {\r\n      this.formData.valueChanges.subscribe(() => {\r\n        this.resetFormErrors();\r\n      });\r\n    }\r\n    if(this.typeVerification === 'Email')\r\n    this.startTimer();\r\n\r\n  }\r\n\r\n  resetFormErrors() {\r\n    this.verificationError = \"\";\r\n  }\r\n  backToLogin() {\r\n    return location.href = \"/login\";\r\n  }\r\n  performEmailVerification(action: 'SEND' | 'CHECK', email: string): void {\r\n    let request: Observable<[string, any]>;\r\n    this.incorrectCode = true;\r\n    this.showLoader = false;     \r\n\r\n    if (action === 'SEND') {\r\n      // request = combineLatest([\r\n      //   of('SEND'),\r\n      //   // this.KycS.SendEmailVerificationCode(email)\r\n      // ]);\r\n    } else if (action === 'CHECK'){\r\n\r\n    }\r\n    else {\r\n      console.error(`Unhandled action ${action}`);\r\n      return;\r\n    }\r\n\r\n    // request.subscribe({\r\n    //   next: ([action, res]: [string, any]) => {\r\n    //     switch (action) {\r\n    //       case 'SEND':\r\n    //         let response: TSendMailResponse = <TSendMailResponse>res;\r\n    //         if (response) {\r\n    //           this.startTimer();\r\n    //           this.KycS.loading$.next(false);\r\n    //         } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {\r\n    //           this.startTimer('PASSED_LIMIT');\r\n    //           this.KycS.loading$.next(false);\r\n    //         } else {\r\n    //           this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });\r\n    //         }\r\n    //         break;\r\n    //       default:\r\n    //         break;\r\n    //     }\r\n    //   },\r\n    //   error: (error) => {\r\n    //     if (error) {\r\n    //       this.refreshAPIError = true;\r\n    //     }\r\n    //   }\r\n    // })\r\n  }\r\n\r\n  verifyCode() {\r\n    this.showLoader = true;\r\n    this.refreshAPIError = false;\r\n    if(this.typeVerification === 'Email')\r\n    {\r\n      let request: Observable<[string, any]>;\r\n      this.code = this.digit1 + this.digit2 + this.digit3 + this.digit4;\r\n      // // this._authService.CheckMailVertification(this.code, this.formData)\r\n      // .pipe(\r\n      //   tap((response: any) => {\r\n      //     this.back.emit(true);\r\n      //   }),\r\n      //   catchError(error => {\r\n      //     this.verificationError = error.error.apiErrorCode.toString();\r\n      //     this.refreshAPIError = true;\r\n      //     this.showLoader = false;\r\n      //     return of(null);\r\n      //   }),        \r\n      // )\r\n      // .subscribe();\r\n    } \r\n    else {   \r\n      this.verificationError = '';\r\n      let verificationCode = this.digit1 + this.digit2 + this.digit3 + this.digit4;\r\n      this.codeResendSuccess = false;\r\n      if (this.type == 'login') {\r\n        let verificationRequest: any = {\r\n          email: this.formData.username,\r\n          verificationCode: verificationCode,\r\n          verificationType: 1\r\n        }\r\n        // this._authService.checkSmsVerification(verificationRequest, this.formData)\r\n        //   .pipe(\r\n        //     tap(response => {\r\n        //       this.incorrectCode = !response?.success;\r\n        //       this.showLoader = false;\r\n        //     }),\r\n        //     catchError(error => {\r\n        //       this.verificationError = error.error.apiErrorCode.toString();\r\n        //       this.showLoader = false\r\n        //       return of(null);\r\n  \r\n        //     })\r\n        //   )\r\n        //   .subscribe();\r\n      } else if (this.type == 'forgot-password') {\r\n        // let verificationRequest: SmsVerificationRequestModel = {\r\n        //   email: this.formData.email,\r\n        //   verificationCode: verificationCode,\r\n        //   verificationType: 2,\r\n        // }\r\n        // this._forgotPasswordService.checkSmsVerification(verificationRequest)\r\n        //   .pipe(\r\n        //     tap((response: any) => {\r\n        //       if (response.validateId) {\r\n        //         const newPassword = {\r\n        //           password: this.formData.newPassword,\r\n        //           confirmPassword: this.formData.confirmPassword\r\n        //         }\r\n        //         this.resetPassword(newPassword, response.validateId);\r\n        //       } else if (!response.validateId && response.message == ResponseMessages.WrongVerificationCode) {\r\n        //         this.incorrectCode = true;\r\n        //       }\r\n        //       this.showLoader = false;\r\n        //     }),\r\n        //     catchError(error => {\r\n        //       this.verificationError = error.error.apiErrorCode.toString();\r\n        //       this.showLoader = false;\r\n        //       return of(null);\r\n        //     })\r\n        //   )\r\n        //   .subscribe();\r\n      }\r\n    }\r\n  }\r\n\r\n  resendCode() {\r\n    if (this.type == 'login') {\r\n      // this._authService.sendSmsVerification(this.formData.username).subscribe((res: any) => {\r\n      //   if (res?.success) {\r\n      //     this.codeResendSuccess = true;\r\n      //   } else {\r\n      //     this.verificationError = res?.message;\r\n      //   }\r\n      // });\r\n    } else if (this.type == 'forgot-password') {\r\n      // this._forgotPasswordService.sendSmsVerification(this.formData.email).subscribe(res => {\r\n      //   this.codeResendSuccess = true;\r\n\r\n      //   setTimeout(() => {\r\n      //     this.codeResendSuccess = false;\r\n      //   }, 2000);\r\n      // });\r\n    }\r\n  }\r\n\r\n    onResend() {\r\n    if (this.timer.active) {\r\n      console.warn(`Resend code called even though the timer is active.`);\r\n      return;\r\n    }\r\n    this.refreshAPIError = false;\r\n    //this.resendCode = true;\r\n    //this.resend.emit();\r\n    this.handleActionByStep({ action: 'SEND' });\r\n  }\r\n\r\n  startTimer(codeStatus: TVerificationCodeStatus = 'DEFAULT') {\r\n    this.timer.active = true;\r\n    let OneMinute: 60 = 60;\r\n    let tenMinutes: 600 = 600;\r\nconsole.log('codeStatus',codeStatus);\r\n\r\n    let timeToShow: typeof OneMinute | typeof tenMinutes | any; // 1min or 10 min\r\n    console.log('timeToShow',codeStatus);\r\n    switch (codeStatus) {\r\n      case 'DEFAULT':\r\n      case 'INCORRECT':\r\n        timeToShow = OneMinute;\r\n        break;\r\n      case 'PASSED_LIMIT':\r\n        timeToShow = tenMinutes;\r\n        break;\r\n      default:\r\n        console.error(`Unhandled action in sms verification code status.\\n given: ${this.codeStatus}`);\r\n        break;\r\n    }\r\n    timer(0, 1000).pipe(\r\n      scan((acc: any) => {\r\n        const minutes: number = Math.floor(acc / 60);\r\n        const seconds: number = (minutes >= 1) ? acc - minutes * 60 : acc;\r\n        this.timer.minutes = minutes.toString();\r\n        this.timer.seconds = (seconds < 10) ? `0${seconds}` : seconds.toString();\r\n        return --acc;\r\n      }, timeToShow),\r\n      takeWhile(x => x >= 0),\r\n      takeUntil(this.componentDestroyed),\r\n      finalize(() => {\r\n        this.timer.minutes = `0`;\r\n        this.timer.seconds = `00`;\r\n        this.timer.active = false;\r\n      })\r\n    ).subscribe();\r\n  }\r\n  \r\n  resetPassword(newPassword: any, validationId: string) {\r\n    let request: any = {\r\n      newPassword: newPassword,\r\n      forgetPasswordValidationId: validationId\r\n    }\r\n\r\n    // this._forgotPasswordService.resetPassword(request)\r\n    //   .subscribe(\r\n    //     (response: any) => {\r\n    //       const statusCode = response.status;\r\n\r\n    //       if (statusCode) {\r\n    //         this.showLoader = false;\r\n    //         this.passwordResetSuccess = true;\r\n    //       }\r\n    //     },\r\n    //     (error: any) => {\r\n    //       console.error(error);\r\n    //     }\r\n    //   );\r\n  }\r\n  handleEditValue(e: Event) {\r\n    e.preventDefault();\r\n  }\r\n  handleSignUp(): void {\r\n    // Error handling \r\n  }\r\n  emailValue(): string {\r\n    return this.formData.username;\r\n}\r\n  restrictSpecialCharacters(event: any) {\r\n    const invalidChars = ['<', '>', ';', '=', '+'];\r\n    if (event?.target?.value?.length === 0 && event?.key === \".\") {\r\n      event?.preventDefault();\r\n    } else {\r\n      const dotOccurrences = (event?.target?.value.match(/\\./g) || []).length;\r\n      if (event?.key === \".\" && dotOccurrences >= 3) {\r\n        event?.preventDefault();\r\n      }\r\n\r\n      if (invalidChars.includes(event.key)) {\r\n        event.preventDefault();\r\n      }\r\n      const allowedKeys = /^[a-zA-Z0-9.@\\u00C0-\\u017F]$/;\r\n      if (!allowedKeys.test(event.key) && !['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)) {\r\n        event.preventDefault();\r\n      }\r\n    }\r\n  }\r\n  checkVerification() {\r\n    if (!this.digit1 || !this.digit2 || !this.digit3 || !this.digit4) {\r\n      return;\r\n    }\r\n    this.handleActionByStep({ action: 'CHECK' });\r\n  }\r\n  handleActionByStep(data: { action: 'SEND' | 'CHECK' }): void {\r\n    const { action: dynamicAction } = data;\r\n    let payload: any;\r\n    let verificationAction: 'CHECK_EMAIL_VERIFICATION' | 'SEND_EMAIL_VERIFICATION' | 'CHECK_PHONE_VERIFICATION' | 'SEND_PHONE_VERIFICATION';\r\n\r\n    const userEmail = this.formData.username;\r\n    if (!userEmail) return;\r\n    payload = { email: userEmail };\r\n    verificationAction = dynamicAction === 'SEND' ? 'SEND_EMAIL_VERIFICATION' : 'CHECK_EMAIL_VERIFICATION';\r\n\r\n    if (verificationAction === 'CHECK_EMAIL_VERIFICATION' || verificationAction === 'SEND_EMAIL_VERIFICATION') {\r\n      this.performEmailVerification(dynamicAction, payload.email);\r\n    } \r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../assets/scss/variable\";\r\n@import \"../../../assets/scss/mixins\";\r\n\r\n.submit-btn {\r\n  &::ng-deep {\r\n    .loader {\r\n      position: absolute;\r\n      top: 0;\r\n      bottom: 0;\r\n      margin: auto;\r\n      right: 0;\r\n      left: 0;\r\n      justify-content: center;\r\n      border-radius: 20px;\r\n    }\r\n  }\r\n}\r\n\r\n.action-links {\r\n  @include flex(flex-start, flex-start, column);\r\n  a {\r\n    font-size: 16px;\r\n    line-height: 24px;\r\n    font-weight: 400;\r\n    color: $white;\r\n    cursor: pointer;\r\n\r\n    @media screen and (max-width: 1440px) {\r\n      font-size: 14px;\r\n      line-height: 22px;\r\n    }\r\n    @media screen and (max-width: 1024px) {\r\n      font-size: 16px;\r\n      line-height: 26px;\r\n    }\r\n  }\r\n}\r\n\r\n.text-group {\r\n  @include flex(flex-start, center, row);\r\n\r\n  input {\r\n    max-width: 46px;\r\n    margin-right: 15px;\r\n    padding: 0 10px !important;\r\n    text-align: center;\r\n  }\r\n}\r\n\r\n\r\n.reset-success-heading {\r\n  font-size: 24px;\r\n  line-height: 36px;\r\n  font-weight: 500;\r\n  color: $white;\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.reset-success-msg {\r\n  font-size: 14px;\r\n  line-height: 22px;\r\n  font-weight: 400;\r\n  color: $white;\r\n}\r\n/*************************************************************************************/\r\n.title {\r\n  font-size: 1.4rem;\r\n  font-weight: 600;\r\n}\r\n.emailLoginVerification{\r\n  background-color: white;\r\n  line-height: 30px;\r\n  text-align: center;\r\n  height: 23rem;\r\n}\r\n.emailLoginVerification-back{\r\n  display: flex;\r\n}\r\n\r\n.masked-input {\r\n    all: unset !important;\r\n    height: 55px !important;\r\n    width: 66px !important;\r\n    border: none !important;\r\n    border-bottom: 2.8px solid #334659 !important;\r\n    border-radius: 0 !important;\r\n    text-align: center !important;\r\n    font-size: 2.5rem !important;\r\n\r\n    &:not(:last-child) {\r\n      margin-right : 30px !important;\r\n  }\r\n}\r\n\r\n\r\n\r\n::ng-deep {\r\n  .action-anchor {\r\n      font-weight     : 500;\r\n      cursor          : pointer;\r\n      text-decoration : none;\r\n      color           : $color-blaze-orange !important;\r\n\r\n      &:hover {\r\n          text-decoration : none;\r\n      }\r\n\r\n      &.edit-email, &.resend-code {\r\n          margin-inline-start : 2px;\r\n      }\r\n  }\r\n\r\n  // #.action-anchor\r\n}\r\n.old-input {\r\n  background-color: #fff;\r\n  border: 1px solid #01031c;\r\n  border-radius: 15px;\r\n  color: #01031c;\r\n  text-indent: 10px;\r\n  min-height: 50px;\r\n}\r\n\r\n.continue-btn {\r\n  margin: 20px 0px;\r\n  min-height: 20px;\r\n\r\n  .mat-button-wrapper {\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: center;\r\n\r\n      mat-icon {\r\n          display: flex;\r\n          justify-content: center;\r\n          align-items: center;\r\n      }\r\n  }\r\n}\r\n.step-2__wrapper {\r\n  max-width: 70%;\r\n  margin:0 auto;\r\n}\r\n.step-2 {\r\n  button {\r\n      background: linear-gradient(111.05deg, #444444 2.91%, #000000 96.88%);\r\n      border-radius: 40px;\r\n      font-size: 16px;\r\n      // line-height: 22px;\r\n      font-weight: 600;\r\n      color: #fff;\r\n      padding: 12px 0px;\r\n      height: auto;\r\n      transition: 0.3s;\r\n      position: relative;\r\n      width: 100% !important;\r\n      @media screen and (max-width: 1440px) {\r\n          // height: 25px;\r\n          width: 25px;\r\n      }\r\n\r\n      &.disabled {\r\n          background: #f5f5fa !important;\r\n          color: #c6c8cc !important;\r\n          cursor: not-allowed;\r\n      }\r\n  }\r\n}\r\n/*************************************************************************************/\r\n",
+                    "styleUrl": "./code-verification.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "KycS",
+                        "type": "KycService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 53,
+                "jsdoctags": [
+                    {
+                        "name": "KycS",
+                        "type": "KycService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<ng-container *ngIf=\"!passwordResetSuccess\">\r\n  <h3 class=\"heading\"  *ngIf=\"typeVerification === 'SMS'\">Code Verification</h3>\r\n  <form #frmSms=\"ngForm\" (ngSubmit)=\"frmSms.valid && verifyCode()\">\r\n    <div class=\"form-group\" *ngIf=\"typeVerification === 'SMS'\">\r\n      <label class=\"sub-heading\">Type a 4 digit code we send to your phone number</label>\r\n      <div class=\"text-group\">\r\n        <input type=\"text\" maxlength=\"1\" name=\"digit1\" [(ngModel)]=\"digit1\" #codeOne #digit1txt=\"ngModel\"\r\n          (focus)=\"codeOne.select()\" (input)=\"codeOne.value ? codeTwo.select() : codeOne.focus()\" required>\r\n        <input type=\"text\" maxlength=\"1\" name=\"digit2\" [(ngModel)]=\"digit2\" #codeTwo #digit2txt=\"ngModel\"\r\n          (focus)=\"codeTwo.select()\" (input)=\"codeTwo.value ? codeThree.select() : codeTwo.focus()\" required>\r\n        <input type=\"text\" maxlength=\"1\" name=\"digit3\" [(ngModel)]=\"digit3\" #codeThree #digit3txt=\"ngModel\"\r\n          (focus)=\"codeThree.select()\" (input)=\"codeThree.value ? codeFour.select() : codeThree.focus()\" required>\r\n        <input type=\"text\" maxlength=\"1\" name=\"digit4\" [(ngModel)]=\"digit4\" #codeFour #digit4txt=\"ngModel\"\r\n          (focus)=\"codeFour.select()\" (input)=\"codeFour.value ? codeFour.blur() : codeFour.focus()\" required>\r\n      </div>\r\n      <span\r\n        *ngIf=\"frmSms.submitted && !codeResendSuccess && (digit1txt.hasError('required') || digit2txt.hasError('required') || digit3txt.hasError('required') || digit4txt.hasError('required'))\"\r\n        class=\"error-msg\">Required</span>\r\n      <!-- <span *ngIf=\"frmSms.submitted && incorrectCode && !codeResendSuccess && (!digit1txt.hasError('required') && !digit2txt.hasError('required') && !digit3txt.hasError('required') && !digit4txt.hasError('required'))\" class=\"error-msg\">Verification code is Incorrect</span> -->\r\n      <span *ngIf=\"verificationError && (digit1txt.value && digit2txt.value && digit3txt.value && digit4txt.value)\" class=\"error-msg\">{{ 'AUTHENTICATION_SEND_VERIFICATION_ERRORS.' + verificationError | translate }}</span>\r\n      <span *ngIf=\"codeResendSuccess\" class=\"success-msg d-block\">Code resend successfully</span>\r\n    </div>\r\n    <div class=\"action-links mb-2\" *ngIf=\"typeVerification === 'SMS'\">\r\n      <a (click)=\"resendCode()\">Resend code</a>\r\n      <!-- <a>Call me</a> -->\r\n      <a *ngIf=\"type == 'login'\" (click)=\"backToLogin()\">Back to login</a>\r\n    </div>\r\n    <div class=\"emailLoginVerification\" *ngIf=\"typeVerification === 'Email'\">\r\n      <div class=\"emailLoginVerification-back mb-3\">\r\n        <button (click)=\"backToLogin()\" id=\"back-to-website\">\r\n        <img class=\"logo-img\" src=\"assets/images/back-kyc.svg\" alt=\"Back to login\" />\r\n        </button>\r\n      </div>\r\n      <article class=\"emailLoginVerification-article px-5\">\r\n          <ng-container>\r\n            <h1 class=\"title\">\r\n              <button class=\"action-btn in-title--mobile\">\r\n                  <span class=\"fas fa-chevron-left\"></span>\r\n              </button>\r\n              {{ 'EMAIL_VERIFICATION.title' | translate }}\r\n          </h1>\r\n          <h3 class=\"kyc-h--3 email\">{{emailValue()}}</h3>\r\n          <p class=\"kyc-p--1 m-0\">\r\n              {{ 'EMAIL_VERIFICATION.p_1' | translate }}\r\n          </p>\r\n          </ng-container>\r\n      </article>\r\n      <p class=\"at-title mail-conf-ah--1\">{{ 'EMAIL_VERIFICATION.enter_code' | translate }}</p>\r\n      <div class=\"mail-ver-wrapper\">\r\n            <div class=\"form-group mb-4\">\r\n\r\n                <div class=\"form-group form-group-input-wrapper d-flex justify-content-center\">\r\n                    <input type=\"text\" [(ngModel)]=\"digit1\" name=\"digit1\" class=\"form-control masked-input\" #dOne\r\n                        #digit1Txt=\"ngModel\" (focus)=\"dOne.select()\"\r\n                        (input)=\"dOne.value ? dTwo.select() : dOne.focus();\"\r\n                        required (paste)=\"restrictSpecialCharacters($event)\"\r\n                        (keydown)=\"restrictSpecialCharacters($event)\"\r\n                    >\r\n                    {{!digit1 ? dOne.focus() : null}}\r\n\r\n                    <input type=\"text\" [(ngModel)]=\"digit2\" name=\"digit2\" class=\"form-control masked-input\" #dTwo\r\n                        #digit2Txt=\"ngModel\" (focus)=\"dTwo.select()\"\r\n                        (input)=\"dTwo.value ? dThree.select() : dTwo.focus();\"\r\n                        (keydown.backspace)=\"dOne.select()\"\r\n                        required (paste)=\"restrictSpecialCharacters($event)\"\r\n                (keydown)=\"restrictSpecialCharacters($event)\"\r\n                    >\r\n\r\n                    <input type=\"text\" [(ngModel)]=\"digit3\" name=\"digit3\" class=\"form-control masked-input\" #dThree\r\n                        #digit3Txt=\"ngModel\" (focus)=\"dThree.select()\"\r\n                        (input)=\"dThree.value ? dFour.select() : dThree.focus();\"\r\n                        (keydown.backspace)=\"dTwo.select()\"\r\n                        required (paste)=\"restrictSpecialCharacters($event)\"\r\n                (keydown)=\"restrictSpecialCharacters($event)\"\r\n                    >\r\n\r\n                    <input type=\"text\" [(ngModel)]=\"digit4\" name=\"digit4\" class=\"form-control masked-input\" #dFour\r\n                        #digit4Txt=\"ngModel\" (focus)=\"dFour.select()\"\r\n                        (keydown.backspace)=\"dThree.select(); dFour.value = '';\"\r\n                        (input)=\"dFour.value ? dFour.blur() : dFour.focus();\"\r\n                        (blur)=\"checkVerification()\"\r\n                        required (paste)=\"restrictSpecialCharacters($event)\"\r\n                (keydown)=\"restrictSpecialCharacters($event)\"\r\n                    >\r\n                </div>\r\n            </div>\r\n      </div>\r\n      <div class=\"error-msg mb-2\" *ngIf=\"refreshAPIError\">\r\n        <span>\r\n            The code you have entered is invalid. Please try again.\r\n        </span>\r\n    </div>\r\n       <!-- Code hasn't arrived -->\r\n       <ng-container>\r\n        <p class=\"disclaimer disclaimer--2\">\r\n            {{ 'EMAIL_VERIFICATION.code_not_arrived' | translate }}\r\n            <!-- user passed the limit of resend codes -->\r\n\r\n            <!-- able to resend code -->\r\n            <ng-container *ngIf=\"!timer.active\">\r\n                <a class=\"resend-code action-anchor\" (click)=\"onResend()\">{{ 'EMAIL_VERIFICATION.resend_code' | translate }}</a>\r\n            </ng-container>\r\n            <!-- waiting to resend code -->\r\n            <ng-container *ngIf=\"timer.active\">\r\n                <a\r\n                    class=\"retry-in action-anchor\"\r\n                    [matTooltip]=\"timerTooltip\"\r\n                    matTooltipClass=\"custom-tooltip\"\r\n                    aria-label=\"Button that displays a tooltip that can be programmatically disabled\"\r\n                >\r\n                    {{ 'EMAIL_VERIFICATION.you_can_retry' | translate }}\r\n                    {{timer.minutes}}:{{timer.seconds}}\r\n                </a>\r\n            </ng-container>\r\n        </p>\r\n      </ng-container><!-- # Code hasn't arrived -->\r\n    </div>\r\n    <button class=\"submit-btn\" [class.disabled]=\"showLoader\" [disabled]=\"showLoader\">Verify & Log in\r\n        <!-- <app-page-loader classes=\"bg-white\" *ngIf=\"showLoader\"></app-page-loader> -->\r\n    </button>\r\n  </form>\r\n</ng-container>\r\n<ng-container *ngIf=\"passwordResetSuccess\">\r\n  <h4 class=\"reset-success-heading\">Successful password reset!</h4>\r\n  <p class=\"reset-success-msg\">You can now use your new password to log in to your account</p>\r\n</ng-container>\r\n\r\n\r\n\r\n"
+        },
+        {
             "name": "ConnectedTraderoomComponent",
             "id": "component-ConnectedTraderoomComponent-c0a05889efb5efdcbc0eca0f46cbc1fa2168317fcc0f5626ae399fe5df4d8f8ae2e55c8c49560d1b2511b74aa26b7ba0c5228de6add843b25f22b0457344d4b2",
             "file": "src/app/risk-dashboard/components/hedging-proposal/components/traderoom-components/connected-traderoom/connected-traderoom.component.ts",
@@ -13306,7 +13927,7 @@
         },
         {
             "name": "LoginComponent",
-            "id": "component-LoginComponent-36d382b75ef45ad30bd3e6518d0c21e91e5be224f4c11413874cfbb5bba4d9ab25e60fc358d9b81b19f160555de3752f1acf41cbf87e5eecc2faf22a1f74f911",
+            "id": "component-LoginComponent-7e94c7fe742072881154e5ae4276f5a9810dc0e5c37a05de523ee0fb63a630d093fc9c8ec283f877eee9924af5d36de67283680a98376983f3463b560d80bfac",
             "file": "src/app/login/login.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -13325,34 +13946,60 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "dialog",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatDialog",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
                     "name": "error",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
+                    "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 30
                 },
                 {
                     "name": "hidePassword",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
+                    "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 18
                 },
                 {
-                    "name": "isLoginRoute",
+                    "name": "invalidCredentials",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
+                    "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 21
+                },
+                {
+                    "name": "loginData",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
                 },
                 {
                     "name": "loginForm",
@@ -13363,47 +14010,81 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 24
                 },
                 {
                     "name": "needVerification",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "planMsg",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "any",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 29
                 },
                 {
                     "name": "showLoader",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
+                    "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 23
                 },
                 {
                     "name": "typeVerificationCode",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
+                    "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 22
+                },
+                {
+                    "name": "userNotExist",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "checkRemember",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 85,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "goToForgot",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -13413,32 +14094,34 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 73,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "handleKycCompletion",
+                    "name": "isloginFormHasError",
                     "args": [
                         {
-                            "name": "$event",
-                            "type": "Event",
+                            "name": "errorMessage",
+                            "type": "string | null",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "defaultValue": "null"
                         }
                     ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 92,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "$event",
-                            "type": "Event",
+                            "name": "errorMessage",
+                            "type": "string | null",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "defaultValue": "null",
                             "tagName": {
                                 "text": "param"
                             }
@@ -13446,22 +14129,22 @@
                     ]
                 },
                 {
-                    "name": "login",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 29,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
                     "name": "navigateToDashboard",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 45,
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -13469,8 +14152,8 @@
                     "name": "rememberValueChange",
                     "args": [
                         {
-                            "name": "arg0",
-                            "type": "any",
+                            "name": "remember",
+                            "type": "string",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -13478,13 +14161,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "arg0",
-                            "type": "any",
+                            "name": "remember",
+                            "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -13515,12 +14198,16 @@
                 {
                     "name": "MatCheckboxModule",
                     "type": "module"
+                },
+                {
+                    "name": "CodeVerificationComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-login',\r\n  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatCheckboxModule],\r\n  templateUrl: './login.component.html',\r\n  styleUrl: './login.component.scss'\r\n})\r\nexport class LoginComponent {\r\n  isLoginRoute: any;\r\n  loginForm = new FormGroup({\r\n    username: new FormControl('', [Validators.required]),\r\n    password: new FormControl('', [Validators.required]),\r\n    rememberMe: new FormControl(''),\r\n  });\r\n  needVerification: any;\r\n  typeVerificationCode: any;\r\n  hidePassword: any;\r\n  error: any;\r\n  showLoader: any;\r\n\r\n  constructor(private router: Router) { }\r\n\r\n  login() {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n\r\n  rememberValueChange(arg0: any) {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n\r\n  goToForgot() {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n  \r\n  goToSignUp() {\r\n    this.router.navigate(['/sign-up']);\r\n  }\r\n\r\n  navigateToDashboard() { \r\n    if (this.loginForm.valid) {\r\n      this.router.navigate(['/dashboard']); \r\n    }\r\n  }\r\n  \r\n  handleKycCompletion($event: Event) {\r\n    throw new Error('Method not implemented.');\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, OnDestroy, OnInit } from '@angular/core';\r\nimport { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { MatDialog } from '@angular/material/dialog';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { ActivatedRoute, Router } from '@angular/router';\r\nimport { CodeVerificationComponent } from './code-verification/code-verification.component';\r\n\r\n@Component({\r\n  selector: 'app-login',\r\n  imports: [CommonModule, ReactiveFormsModule, MatIconModule, MatCheckboxModule, CodeVerificationComponent],\r\n  templateUrl: './login.component.html',\r\n  styleUrl: './login.component.scss'\r\n})\r\n\r\nexport class LoginComponent implements OnInit {\r\n  hidePassword = true;\r\n  needVerification = false;\r\n  userNotExist = false;\r\n  invalidCredentials = false;\r\n  typeVerificationCode  = '';\r\n  showLoader = false;\r\n  loginForm = new FormGroup({\r\n    username: new FormControl('', [Validators.required]),\r\n    password: new FormControl('', [Validators.required]),\r\n    rememberMe: new FormControl(''),\r\n  });\r\n  planMsg: any;\r\n  error!: string;\r\n  loginData: boolean = false;\r\n\r\n  constructor(private router: Router, public dialog: MatDialog) {\r\n  }\r\n\r\n  ngOnInit() {\r\n    this.checkRemember();\r\n\r\n    this.loginForm.controls.username.valueChanges.subscribe((value) => {\r\n      if (!value) {\r\n        this.isloginFormHasError();\r\n      }\r\n    });\r\n    this.loginForm.controls.password.valueChanges.subscribe((value) => {\r\n      if (!value) {\r\n        this.isloginFormHasError();\r\n      }\r\n    });\r\n  }\r\n\r\n  goToForgot() {\r\n    this.router.navigate(['/reset-password']);\r\n  }\r\n\r\n  navigateToDashboard() {\r\n  if (!this.loginForm.valid) {\r\n    this.isloginFormHasError();\r\n    return;\r\n  }\r\n\r\n  const enteredPassword = this.loginForm.value.password;\r\n  if (enteredPassword !== 'Okoora1!') {\r\n    this.error = 'Passwords do not match';\r\n    return;\r\n  }\r\n\r\n  this.router.navigate(['/dashboard']);\r\n  this.error = '';\r\n  this.rememberValueChange(this.loginForm?.value?.rememberMe!);\r\n}\r\n\r\n\r\n  goToSignUp() {\r\n    this.router.navigate(['sign-up']);\r\n  }\r\n\r\n  rememberValueChange(remember: string) {\r\n    if (remember) {\r\n      localStorage.setItem('remember_me', JSON.stringify(this.loginForm.value));\r\n    } else {\r\n      localStorage.removeItem('remember_me');\r\n    }\r\n  }\r\n\r\n  checkRemember() {\r\n    let rememberMe = localStorage.getItem('remember_me');\r\n    if (rememberMe) {\r\n      this.loginForm.patchValue(JSON.parse(rememberMe));\r\n    }\r\n  }\r\n\r\n  isloginFormHasError(errorMessage: string | null = null) {\r\n    console.log('errorMessage',errorMessage);\r\n    if (errorMessage && errorMessage.includes(\"Login Timeout\")) {\r\n      this.error = errorMessage;\r\n    } else {\r\n      if (errorMessage && errorMessage.includes(\"Account is blocked. Please contact support\")) {\r\n        this.error = errorMessage;\r\n      } else {\r\n        this.error = \"User name or password are incorrect\";\r\n      }\r\n    }\r\n  }\r\n\r\n}\r\n",
             "styleUrl": "./login.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -13536,9 +14223,15 @@
                         "type": "Router",
                         "deprecated": false,
                         "deprecationMessage": ""
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog",
+                        "deprecated": false,
+                        "deprecationMessage": ""
                     }
                 ],
-                "line": 25,
+                "line": 31,
                 "jsdoctags": [
                     {
                         "name": "router",
@@ -13548,11 +14241,23 @@
                         "tagName": {
                             "text": "param"
                         }
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
                     }
                 ]
             },
             "extends": [],
-            "templateData": "<section class=\"auth-section\">\r\n    <div class=\"left-side\">\r\n      <div class=\"form-wrapper\">\r\n        <ng-container>\r\n            <h3 class=\"heading\">Login</h3>\r\n            <form #loginFrm=\"ngForm\" [formGroup]=\"loginForm\" (ngSubmit)=\"login()\">\r\n              <div class=\"form-group\">\r\n                <label for=\"username\">Email</label>\r\n                <input type=\"email\"  class=\"form-control\" name=\"username\" id=\"email_field\" formControlName=\"username\" email\r\n                  required>\r\n                <!-- <span *ngIf=\"loginFrm.submitted && loginForm.controls.username.hasError('required')\"\r\n                  class=\"error-msg\">Required</span>\r\n                <span *ngIf=\"loginFrm.submitted && loginForm.controls.username.hasError('email')\" class=\"error-msg\">Please enter\r\n                  valid email</span>\r\n                <span\r\n                  *ngIf=\"loginFrm.submitted && loginForm.controls.username.valid && !loginForm.controls.username.hasError('required') && !loginForm.controls.username.hasError('email') && userNotExist\"\r\n                  class=\"error-msg\">User does not exist</span> -->\r\n              </div>\r\n              <div class=\"form-group\">\r\n                <label for=\"password\">Password</label>\r\n                <div class=\"input-wrapper\">\r\n                  <input [type]=\"hidePassword ? 'password' : 'text'\" class=\"form-control\" name=\"password\" id=\"password_field\"\r\n                    formControlName=\"password\" required>\r\n                  <mat-icon class=\"eye-icon\" matSuffix (click)=\"hidePassword = !hidePassword\" id=\"show_hide_password\">\r\n                    {{hidePassword ? 'visibility_off' :\r\n                    'visibility'}}</mat-icon>\r\n                </div>\r\n                <!-- <span *ngIf=\"loginFrm.submitted && loginForm.controls.password.hasError('required')\"\r\n                  class=\"error-msg\">Required</span>\r\n                <span *ngIf=\"loginFrm.submitted && invalidCredentials\" class=\"error-msg\">Invalid email or password</span> -->\r\n              </div>\r\n              <div class=\"remember-wrapper\">\r\n                <mat-checkbox class=\"remember-check\" formControlName=\"rememberMe\" name=\"rememberMe\"\r\n                  (change)=\"rememberValueChange(loginForm?.value?.rememberMe)\" id=\"remember_me_checkbox\">Remember me\r\n                </mat-checkbox>\r\n                <a class=\"forgot-password\" id=\"forgot_password\" (click)=\"goToForgot()\" >Forgot password?</a>\r\n              </div>\r\n              <!-- <span class=\"info-msg\" *ngIf=\"planMsg\">\r\n                {{planMsg}}<a href=\"{{environment.oldFrontUrl}}\" target=\"_blank\"> click here</a>\r\n              </span> -->\r\n              <!-- <span class=\"info-msg\" *ngIf=\"error\">\r\n                User needs KYC <a href=\"{{oldLoginUrl}}\" target=\"_blank\">Click here</a>\r\n              </span> -->\r\n              <span class=\"error-msg\" *ngIf=\"error\">\r\n                 {{error}}\r\n              </span>\r\n              <button class=\"submit-btn\" [class.disabled]=\"showLoader\" [disabled]=\"showLoader\" id=\"button_login\" (click)=\"navigateToDashboard()\">Log In\r\n                <!-- <app-page-loader classes=\"bg-white\" *ngIf=\"showLoader\"></app-page-loader> -->\r\n              </button>\r\n            </form>\r\n            <div class=\"signup\">\r\n              <p class=\"signup-text\">\r\n                  Don't have an account? <a class=\"signup-link d-inline\" (click)=\"goToSignUp()\">Sign up</a>\r\n              </p>\r\n            </div>\r\n          </ng-container>\r\n          <!-- <app-code-verification *ngIf=\"needVerification\" [formData]=\"loginForm.value\" [typeVerification]=\"typeVerificationCode\" type=\"login\"\r\n          (back)=\"handleKycCompletion($event)\"></app-code-verification> -->\r\n          \r\n          \r\n      </div>\r\n    </div>\r\n    <div class=\"right-side\">\r\n      <div class=\"content\">\r\n        <img class=\"logo\" src=\"images/abcm-logo.svg\" alt=\"logo\" />\r\n        <h1 class=\"main-heading\">The World's First</h1>\r\n        <h2 class=\"sub-heading\">Automated business currency management</h2>\r\n      </div>\r\n    </div>\r\n  </section>"
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<section class=\"auth-section\">\r\n    <div class=\"left-side\">\r\n      <div class=\"form-wrapper\">\r\n        <ng-container>\r\n            <h3 class=\"heading\">Login</h3>\r\n            <form #loginFrm=\"ngForm\" [formGroup]=\"loginForm\" (ngSubmit)=\"navigateToDashboard()\">\r\n              <div class=\"form-group\">\r\n                <label for=\"username\">Email</label>\r\n                <input type=\"email\"  class=\"form-control\" name=\"username\" id=\"email_field\" formControlName=\"username\" email\r\n                  required>\r\n                <!-- <span *ngIf=\"loginFrm.submitted && loginForm.controls.username.hasError('required')\"\r\n                  class=\"error-msg\">Required</span>\r\n                <span *ngIf=\"loginFrm.submitted && loginForm.controls.username.hasError('email')\" class=\"error-msg\">Please enter\r\n                  valid email</span>\r\n                <span\r\n                  *ngIf=\"loginFrm.submitted && loginForm.controls.username.valid && !loginForm.controls.username.hasError('required') && !loginForm.controls.username.hasError('email') && userNotExist\"\r\n                  class=\"error-msg\">User does not exist</span> -->\r\n              </div>\r\n              <div class=\"form-group\">\r\n                <label for=\"password\">Password</label>\r\n                <div class=\"input-wrapper\">\r\n                  <input [type]=\"hidePassword ? 'password' : 'text'\" class=\"form-control\" name=\"password\" id=\"password_field\"\r\n                    formControlName=\"password\" required>\r\n                  <mat-icon class=\"eye-icon\" matSuffix (click)=\"hidePassword = !hidePassword\" id=\"show_hide_password\">\r\n                    {{hidePassword ? 'visibility_off' :\r\n                    'visibility'}}</mat-icon>\r\n                </div>\r\n                <!-- <span *ngIf=\"loginFrm.submitted && loginForm.controls.password.hasError('required')\"\r\n                  class=\"error-msg\">Required</span>\r\n                <span *ngIf=\"loginFrm.submitted && invalidCredentials\" class=\"error-msg\">Invalid email or password</span> -->\r\n              </div>\r\n              <div class=\"remember-wrapper\">\r\n                <mat-checkbox class=\"remember-check\" formControlName=\"rememberMe\" name=\"rememberMe\"\r\n                  (change)=\"rememberValueChange(loginForm.value.rememberMe!)\" id=\"remember_me_checkbox\">Remember me\r\n                </mat-checkbox>\r\n                <a class=\"forgot-password\" id=\"forgot_password\" (click)=\"goToForgot()\" >Forgot password?</a>\r\n              </div>\r\n              <!-- <span class=\"info-msg\" *ngIf=\"planMsg\">\r\n                {{planMsg}}<a href=\"{{environment.oldFrontUrl}}\" target=\"_blank\"> click here</a>\r\n              </span> -->\r\n              <!-- <span class=\"info-msg\" *ngIf=\"error\">\r\n                User needs KYC <a href=\"{{oldLoginUrl}}\" target=\"_blank\">Click here</a>\r\n              </span> -->\r\n              <span class=\"error-msg\" *ngIf=\"error\">\r\n                 {{error}}\r\n              </span>\r\n              <button class=\"submit-btn\" [class.disabled]=\"showLoader\" [disabled]=\"showLoader\" id=\"button_login\" (click)=\"navigateToDashboard()\">Log In\r\n                <!-- <app-page-loader classes=\"bg-white\" *ngIf=\"showLoader\"></app-page-loader> -->\r\n              </button>\r\n            </form>\r\n            <div class=\"signup\">\r\n              <p class=\"signup-text\">\r\n                  Don't have an account? <a class=\"signup-link d-inline\" (click)=\"goToSignUp()\">Sign up</a>\r\n              </p>\r\n            </div>\r\n          </ng-container>\r\n          <app-code-verification *ngIf=\"needVerification\" [formData]=\"loginForm.value\" [typeVerification]=\"typeVerificationCode\" type=\"login\"\r\n          ></app-code-verification>\r\n          \r\n          \r\n      </div>\r\n    </div>\r\n    <div class=\"right-side\">\r\n      <div class=\"content\">\r\n        <img class=\"logo\" src=\"images/abcm-logo.svg\" alt=\"logo\" />\r\n        <h1 class=\"main-heading\">The World's First</h1>\r\n        <h2 class=\"sub-heading\">Automated business currency management</h2>\r\n      </div>\r\n    </div>\r\n  </section>"
         },
         {
             "name": "MomentumIndicatorChartComponent",
@@ -14780,6 +15485,386 @@
             },
             "extends": [],
             "templateData": "<aside class=\"hedge-sidebar-container loader-wrapper\">\r\n    <!-- Close Button -->\r\n    <button class=\"close-btn\" aria-label=\"Close\" (click)=\"closeHedgeDrawer()\">\r\n      <img src=\"images/close-btn-cashflow.svg\" alt=\"Close\" />\r\n    </button>\r\n  \r\n    <!-- Title -->\r\n    <header class=\"hedge-header\">\r\n      <h2 class=\"hedge-title\">\r\n        Quick hedge\r\n      </h2>\r\n    </header>\r\n    <div class=\"bg-white section-loader\"></div>\r\n    <!-- Hedge Information -->\r\n    <section class=\"hedge-info\">\r\n      <div class=\"hedge-amount\">\r\n        <label for=\"hedge-amount-value\">Amount to hedge</label>\r\n        <span id=\"hedge-amount-value\">\r\n          {{selectedQuickHedgeData.hedge.notionalCurrencySign}}{{selectedQuickHedgeData.hedge.protectAmount}}\r\n        </span>\r\n      </div>\r\n      <button class=\"forward-btn\">Forward</button>\r\n    </section>\r\n  \r\n    <!-- Conditional Sections -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\">\r\n          <label>Expiry date</label>\r\n          <span class=\"content\">\r\n            {{ getFormattedDate(selectedQuickHedgeData.expiryDate) }}\r\n          </span>          \r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Currencies</label>\r\n          <span class=\"content\">{{selectedQuickHedgeData.hedge.notionalCurrency}}/{{selectedQuickHedgeData.hedge.secondCurrency}}</span>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  \r\n    <!-- Rates Information -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\">\r\n          <label>Hedge rate</label>\r\n          <div class=\"rate-content\">\r\n            <mat-progress-spinner *ngIf=\"showProgressbar\" [diameter]=\"50\" mode=\"indeterminate\" class=\"rate-update-spinner\"> </mat-progress-spinner>\r\n            <span class=\"content primary-value\">{{selectedQuickHedgeData.hedge.hedgeRate}}</span>\r\n          </div>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Liability rate</label>\r\n          <span class=\"content primary-value\">{{selectedQuickHedgeData.hedge.liabilityRate}}</span>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  \r\n    <!-- Collateral and Price Information -->\r\n    <section class=\"info-section\">\r\n      <div class=\"info-wrapper\">\r\n        <div class=\"sub-info\"> \r\n          <label>Required collateral <img class=\"z-1 tool-tip-cs\" [tooltipClass]=\"'collateral-amount-ttp'\" [ngbTooltip]=\"requiredCollateralttp\" src=\"images/circle-help.svg\" container=\"body\" placement=\"top\" />\r\n            <!-- <a class=\"hedge-deposit-link\">Make a deposit</a>  -->\r\n          </label>\r\n          <span class=\"content\">{{selectedQuickHedgeData.hedge.secondCurrencySign}}{{selectedQuickHedgeData.hedge.collateral}}</span>\r\n        </div>\r\n        <div class=\"sub-info\">\r\n          <label>Price \r\n            <!-- <a class=\"hedge-deposit-link\">Make a deposit</a> -->\r\n          </label> \r\n          <span class=\"content\">{{selectedQuickHedgeData.hedge.secondCurrencySign}}{{selectedQuickHedgeData.hedge.price}}</span>\r\n        </div>\r\n      </div>\r\n      <ng-template #requiredCollateralttp>\r\n        <div class=\"recommended-shield-ttp\">Assets pledged to cover hedging losses, based on risk.</div>\r\n     </ng-template>\r\n    </section>\r\n  \r\n    <!-- Conditions Acknowledgement -->\r\n    <section class=\"conditions-section\">\r\n      <p class=\"read-conditions\">\r\n        I am aware that during the transaction term, additional collateral requirements may be determined in accordance with market fluctuations and the company's requirements. If these requirements are not met promptly, the company may, at its discretion, take actions including but not limited to closing the transaction and forfeiting the collateral amount.\r\n      </p>\r\n    </section>\r\n  \r\n    <!-- Footer Actions -->\r\n    <footer class=\"action-footer\">\r\n      <mat-checkbox [checked]=\"tandcConfirmed\" [ngClass]=\"{'not-confirmed': !tandcConfirmed && onHedgeNowClicked}\" (change)=\"onCheckboxChange($event)\"\r\n        class=\"tick-condition\">\r\n        I confirm the general <button (click)=\"openConditionsDisclosure()\">conditions and disclosure</button> about the risk.\r\n      </mat-checkbox>\r\n      <button (click)=\"onHedgeNowBtnClick()\"\r\n        class=\"hedge-now single-hedge\">\r\n        Hedge now\r\n      </button>\r\n      <p class=\"refresh-in\" style=\"display: none;\">\r\n        <span>Insufficient funds in wallet. <a class=\"hedge-deposit-link\">Make a deposit</a></span>\r\n      </p>\r\n      <div class=\"transaction-unavailable-wrapper\" style=\"display: none;\">\r\n        <img src=\"images/error-outline.svg\" alt=\"error\">\r\n        <p class=\"transaction-unavailable-err\">Some transactions are unavailable and won't be included in the Hedge All action. You can continue with available transactions or <a>refresh</a> the page <span>(unsaved changes will be lost).</span> </p>\r\n      </div>\r\n    </footer>\r\n  </aside>"
+        },
+        {
+            "name": "ResetPasswordComponent",
+            "id": "component-ResetPasswordComponent-6765bf687466150d386c5abbb203ffa2b1f5efbe2860bac70e881b4f3388e656c2b1a67d37ad45e03f20f4a8d1501d01219a88d6270491482fb3495bfa0b24c9",
+            "file": "src/app/login/reset-password/reset-password.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-reset-password",
+            "styleUrls": [
+                "./reset-password.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./reset-password.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_hasDigit",
+                    "defaultValue": "this.Validation.hasDigit",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "_hasLowerCase",
+                    "defaultValue": "this.Validation.hasLowerCase",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "_hasSpecial",
+                    "defaultValue": "this.Validation.hasSpecial",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                },
+                {
+                    "name": "_hasUpperCase",
+                    "defaultValue": "this.Validation.hasUpperCase",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "error",
+                    "defaultValue": "\"\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                },
+                {
+                    "name": "hasDigit",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "hasEight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "hasLower",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "hasSpecial",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "hasUpper",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "hideConfPassword",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "hidePassword",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "illegall",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "invalidAccount",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38
+                },
+                {
+                    "name": "isPasswordNotMatch",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "minPasswordLength",
+                    "defaultValue": "8",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "needVerification",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                },
+                {
+                    "name": "resetPasswordForm",
+                    "defaultValue": "new FormGroup({\r\n    email: new FormControl('', [Validators.required]),\r\n    newPassword: new FormControl('', [Validators.required, this.passwordValidator()]),\r\n    confirmPassword: new FormControl('', [Validators.required])\r\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 44
+                },
+                {
+                    "name": "showLoader",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
+                },
+                {
+                    "name": "typeVerification",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "Validation",
+                    "defaultValue": "{\r\n    hasLowerCase: /[a-z]/,\r\n    hasUpperCase: /[A-Z]/,\r\n    hasDigit: /\\d/,\r\n    hasSpecial: /[!@#$%^&*\\(\\)\\_\\-\\[\\]\\{}\\\\=+|;':\",.\\/<>?]/,\r\n    minPasswordLength: 8\r\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "gotoBack",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 72,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "passwordValidator",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "ValidatorFn",
+                    "typeParameters": [],
+                    "line": 60,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "resetFormErrors",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "resetPassword",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "strongPasswordCheck",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 109,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CodeVerificationComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "TranslateModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';\r\nimport { Router } from '@angular/router';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { CommonModule } from '@angular/common';\r\nimport { CodeVerificationComponent } from '../code-verification/code-verification.component';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\n\r\n@Component({\r\n  selector: 'app-reset-password',\r\n  templateUrl: './reset-password.component.html',\r\n  styleUrls: ['./reset-password.component.scss'],\r\n  imports: [CommonModule, MatIconModule, ReactiveFormsModule, CodeVerificationComponent, TranslateModule],\r\n})\r\nexport class ResetPasswordComponent implements OnInit {\r\n  hidePassword = true;\r\n  hideConfPassword = true;\r\n  typeVerification!: string;\r\n  illegall!: boolean;\r\n  hasLower!: boolean;\r\n  minPasswordLength: number = 8;\r\n  hasEight!: boolean;\r\n  hasUpper!: boolean;\r\n  hasDigit!: boolean;\r\n  hasSpecial!: boolean;\r\n  Validation = {\r\n    hasLowerCase: /[a-z]/,\r\n    hasUpperCase: /[A-Z]/,\r\n    hasDigit: /\\d/,\r\n    hasSpecial: /[!@#$%^&*\\(\\)\\_\\-\\[\\]\\{}\\\\=+|;':\",.\\/<>?]/,\r\n    minPasswordLength: 8\r\n  }\r\n  _hasLowerCase = this.Validation.hasLowerCase;\r\n  _hasUpperCase = this.Validation.hasUpperCase;\r\n  _hasDigit = this.Validation.hasDigit;\r\n  _hasSpecial = this.Validation.hasSpecial;\r\n  isPasswordNotMatch = false;\r\n  invalidAccount = false;\r\n  needVerification = false;\r\n  showLoader = false;\r\n  error = \"\"\r\n \r\n\r\n  resetPasswordForm = new FormGroup({\r\n    email: new FormControl('', [Validators.required]),\r\n    newPassword: new FormControl('', [Validators.required, this.passwordValidator()]),\r\n    confirmPassword: new FormControl('', [Validators.required])\r\n  })\r\n\r\n  constructor(private router: Router) { }\r\n\r\n\r\n  ngOnInit() {\r\n    this.resetFormErrors();\r\n    this.resetPasswordForm.valueChanges.subscribe(() => {\r\n      this.resetFormErrors();\r\n    });\r\n  }\r\n\r\n  passwordValidator(): ValidatorFn {\r\n    const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*]*$/;\r\n\r\n    return (control: AbstractControl): { [key: string]: any } | null => {\r\n      const value = control.value;\r\n      if (!value || !passwordPattern.test(value)) {\r\n        return { 'invalidPassword': true };\r\n      }\r\n      return null;\r\n    };\r\n  }\r\n\r\n  gotoBack() {\r\n    this.router.navigate(['/login']);\r\n  }\r\n  resetFormErrors() {\r\n    this.error = \"\";\r\n    this.invalidAccount = false;\r\n  }\r\n  resetPassword() {\r\n    if (!this.illegall) {\r\n      this.resetPasswordForm.markAllAsTouched(); // Mark all form controls as touched to trigger validation messages\r\n      if (this.resetPasswordForm.valid) {\r\n        this.error = '';\r\n        this.showLoader = true;\r\n\r\n        // this._forgotPasswordService.sendSmsVerification(this.resetPasswordForm?.value?.email)\r\n        //   .pipe(\r\n        //     tap((response: any) => {\r\n        //       this.showLoader = false;\r\n        //       if (response.message === ResponseMessages.UserNotExist) {\r\n        //         this.invalidAccount = true;\r\n        //       } else {\r\n        //         this.needVerification = true;\r\n        //         this.typeVerification = 'SMS';\r\n        //       }\r\n        //     }),\r\n        //     catchError((error: any) => {\r\n        //       this.showLoader = false;\r\n        //       this.error = error.error.apiErrorCode.toString();\r\n        //       console.error(error);\r\n        //       return throwError(error);\r\n        //     })\r\n        //   )\r\n        //   .subscribe();\r\n      }\r\n    }\r\n  }\r\n\r\n  strongPasswordCheck() {\r\n    this.illegall = false;\r\n    let password = this.resetPasswordForm?.value?.newPassword;\r\n    this.hasEight = (password && password.length >= this.minPasswordLength) || false;\r\n    this.hasLower = this._hasLowerCase?.test(password!);\r\n    this.hasUpper = this._hasUpperCase?.test(password!);\r\n    this.hasDigit = this._hasDigit?.test(password!);\r\n    this.hasSpecial = this._hasSpecial?.test(password!);\r\n\r\n    if (\r\n      !this.hasEight ||\r\n      !this.hasDigit ||\r\n      !this.hasSpecial ||\r\n      !this.hasUpper ||\r\n      !this.hasLower\r\n    ) {\r\n      this.illegall = true;\r\n    } else {\r\n      this.illegall = false;\r\n    }\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import url(../login.component.scss);\r\n.submit-btn {\r\n  margin-top: 18px;\r\n  &::ng-deep {\r\n    .loader {\r\n      position: absolute;\r\n      top: 0;\r\n      bottom: 0;\r\n      margin: auto;\r\n      right: 0;\r\n      left: 0;\r\n      justify-content: center;\r\n      border-radius: 20px;\r\n    }\r\n  }\r\n}\r\n",
+                    "styleUrl": "./reset-password.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 48,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<a class=\"back-btn\" (click)=\"gotoBack()\" id=\"back_to_login\">\r\n  <mat-icon>chevron_left</mat-icon>\r\n  <span>Back to login</span>\r\n</a>\r\n<ng-container *ngIf=\"!needVerification\">\r\n  <h3 class=\"heading\">Forgot password</h3>\r\n  <form #resetForm=\"ngForm\" [formGroup]=\"resetPasswordForm\" (ngSubmit)=\"resetForm.form.valid && (resetPasswordForm.value.newPassword == resetPasswordForm.value.confirmPassword) && resetPassword()\">\r\n    <div class=\"form-group\">\r\n      <label for=\"email\">Enter the email address associated with your account</label>\r\n      <input type=\"email\" id=\"email\" name=\"email\" formControlName=\"email\" email required id=\"associated_email_field\">\r\n      <span *ngIf=\"resetForm.submitted && resetPasswordForm.controls.email.hasError('required')\"\r\n        class=\"error-msg\">required</span>\r\n      <span *ngIf=\"resetForm.submitted && resetPasswordForm.controls.email.hasError('email')\" class=\"error-msg\">Please enter valid email</span>\r\n      <span *ngIf=\"resetForm.submitted && invalidAccount\" class=\"error-msg\">Account does not exist</span>\r\n      <!-- <span *ngIf=\"resetForm.submitted && userNotExist\" class=\"error-msg\">User does not exist</span> -->\r\n    </div>\r\n    <div class=\"password-instruction\">\r\n      <p class=\"message\">Password must contain</p>\r\n      <span class=\"detail\">\r\n        <mat-icon *ngIf=\"hasEight\">check</mat-icon>\r\n        <mat-icon *ngIf=\"!hasEight && resetPasswordForm.value.newPassword\">close</mat-icon>\r\n        <span>8 Letters</span>\r\n      </span>\r\n      <span class=\"detail\">\r\n        <mat-icon *ngIf=\"hasLower\">check</mat-icon>\r\n        <mat-icon *ngIf=\"!hasLower && resetPasswordForm.value.newPassword\">close</mat-icon>\r\n        <span>Lowercase</span>\r\n      </span>\r\n      <span class=\"detail\">\r\n        <mat-icon *ngIf=\"hasUpper\">check</mat-icon>\r\n        <mat-icon *ngIf=\"!hasUpper && resetPasswordForm.value.newPassword\">close</mat-icon>\r\n        <span>Uppercase</span>\r\n      </span>\r\n      <span class=\"detail\">\r\n        <mat-icon *ngIf=\"hasDigit\">check</mat-icon>\r\n        <mat-icon *ngIf=\"!hasDigit && resetPasswordForm.value.newPassword\">close</mat-icon>\r\n        <span>Number</span>\r\n      </span>\r\n      <span class=\"detail\">\r\n        <mat-icon *ngIf=\"hasSpecial && !resetPasswordForm.get('newPassword')?.hasError('invalidPassword')\">check</mat-icon>\r\n        <mat-icon *ngIf=\"((!hasSpecial || resetPasswordForm.get('newPassword')?.hasError('invalidPassword')) && resetPasswordForm.value.newPassword)\">close</mat-icon>\r\n        <span>Special letter</span>\r\n      </span>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"newPassword\">New password</label>\r\n      <div class=\"input-wrapper\">\r\n        <input name=\"newPassword\" class=\"form-control\" [type]=\"hidePassword ? 'password' : 'text'\" id=\"new_password\"\r\n          (keyup)=\"strongPasswordCheck()\" formControlName=\"newPassword\" required />\r\n        <mat-icon class=\"eye-icon\" matSuffix (click)=\"hidePassword = !hidePassword\" id=\"show_hide_password\">{{hidePassword ? 'visibility_off' :\r\n          'visibility'}}</mat-icon>\r\n      </div>\r\n      <span *ngIf=\"resetForm.submitted && resetPasswordForm.controls.newPassword.hasError('required')\"\r\n        class=\"error-msg\">required</span>\r\n      <span *ngIf=\"resetForm.submitted && !resetPasswordForm.controls.newPassword.hasError('required') && illegall\"\r\n        class=\"error-msg\">\r\n        Password is not valid\r\n      </span>\r\n      <span class=\"error-msg\" *ngIf=\"hasSpecial && resetPasswordForm.get('newPassword')?.hasError('invalidPassword')\">\r\n        Special characters can be inserted !#$%^&*\r\n      </span>\r\n      <!-- <p *ngIf=\"illegall\">Illegal character</p> -->\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"confirmPassword\">Confirm password</label>\r\n      <div class=\"input-wrapper\">\r\n        <input name=\"newPassword\" class=\"form-control\" [type]=\"hideConfPassword ? 'password' : 'text'\"\r\n          name=\"confirmPassword\" formControlName=\"confirmPassword\"\r\n          id=\"confirm_password\" required />\r\n        <mat-icon class=\"eye-icon\" id=\"confirm_show_password\" matSuffix (click)=\"hideConfPassword = !hideConfPassword\">{{hideConfPassword ? 'visibility_off' :\r\n          'visibility'}}</mat-icon>\r\n      </div>\r\n\r\n      </div>\r\n      <span *ngIf=\"resetForm.submitted && resetPasswordForm.controls.confirmPassword.hasError('required') && !error\" class=\"error-msg\">Confirm password</span>\r\n      <span *ngIf=\"resetForm.submitted && (resetPasswordForm.value.confirmPassword != resetPasswordForm.value.newPassword) && resetPasswordForm.controls.confirmPassword.valid && !error\" class=\"error-msg\">Passwords do not match</span>\r\n      <span *ngIf=\"!(resetForm.submitted && (resetPasswordForm.value.confirmPassword != resetPasswordForm.value.newPassword) && resetPasswordForm.controls.confirmPassword.valid) && error\" class=\"error-msg\">{{ 'AUTHENTICATION_SEND_VERIFICATION_ERRORS.' + error | translate }}</span>\r\n\r\n    <button class=\"submit-btn\" [class.disabled]=\"showLoader||error\" [disabled]=\"showLoader\" id=\"button_send_email\">Send SMS\r\n    </button>\r\n  </form>\r\n</ng-container>\r\n<app-code-verification *ngIf=\"needVerification\" [typeVerification]=\"typeVerification\" [formData]=\"resetPasswordForm.value\" type=\"forgot-password\"\r\n  (back)=\"needVerification = false\"></app-code-verification>\r\n"
         },
         {
             "name": "RiskEstimateChartComponent",
@@ -16576,13 +17661,13 @@
     "modules": [
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-227926a5752796e240a06759daedb05894f16e96cd92dc157e66cf8e32b7734f96cc8515d6a60257ccaf7545ebea37ec7f3e3a545b08c3986e36e1fb872010b8",
+            "id": "module-AppRoutingModule-b3048cd5ec70fb11bdc4f4f0c58b71719f5a9dce0224f533ec3190e60e45d89ec1b1f8ad828feda128900676a742ac91786ad97ffe549c9dd6ba7cf0a2bab4b5",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.routes.ts",
             "methods": [],
-            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\nimport { CashflowExposureSteppersComponent } from './risk-dashboard/components/cashflow-exposure/cashflow-exposure-steppers/cashflow-exposure-steppers.component';\r\nimport { AdvancedPolicyComponent } from './risk-dashboard/components/advanced-policy/advanced-policy.component';\r\nimport { KycMainComponent } from './sign-up/kyc-main/kyc-main.component';\r\nimport { LoginComponent } from './login/login.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'dashboard', pathMatch: 'full' as 'full' },\r\n  { path: 'dashboard', component: DashboardComponent },\r\n  { path: 'sign-up', component: KycMainComponent },\r\n  { path: 'login', component: LoginComponent},\r\n  { path: 'hedging', component: HedgingProposalComponent },\r\n  { path: 'cashflow', component: CashflowExposureSteppersComponent },\r\n  { path: 'advanced-policy', component: AdvancedPolicyComponent },\r\n  { path: '**', redirectTo: 'dashboard' },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }",
+            "sourceCode": "import { RouterModule, Routes } from '@angular/router';\r\nimport { DashboardComponent } from './risk-dashboard/components/dashboard/dashboard.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { HedgingProposalComponent } from './risk-dashboard/components/hedging-proposal/hedging-proposal.component';\r\nimport { CashflowExposureSteppersComponent } from './risk-dashboard/components/cashflow-exposure/cashflow-exposure-steppers/cashflow-exposure-steppers.component';\r\nimport { AdvancedPolicyComponent } from './risk-dashboard/components/advanced-policy/advanced-policy.component';\r\nimport { KycMainComponent } from './sign-up/kyc-main/kyc-main.component';\r\nimport { LoginComponent } from './login/login.component';\r\nimport { ResetPasswordComponent } from './login/reset-password/reset-password.component';\r\n\r\nexport const routes: Routes = [\r\n  { path: '', redirectTo: 'dashboard', pathMatch: 'full' as 'full' },\r\n  { path: 'dashboard', component: DashboardComponent },\r\n  { path: 'sign-up', component: KycMainComponent },\r\n  { path: 'login', component: LoginComponent},\r\n  { path: 'reset-password', component: ResetPasswordComponent},\r\n  { path: 'hedging', component: HedgingProposalComponent },\r\n  { path: 'cashflow', component: CashflowExposureSteppersComponent },\r\n  { path: 'advanced-policy', component: AdvancedPolicyComponent },\r\n  { path: '**', redirectTo: 'dashboard' },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }",
             "children": [
                 {
                     "type": "providers",
@@ -19308,12 +20393,30 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/login/code-verification/code-verification.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CodeVerificationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/41",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/login/login.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "LoginComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/15",
+                "coverageCount": "0/20",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/login/reset-password/reset-password.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ResetPasswordComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/29",
                 "status": "low"
             },
             {
