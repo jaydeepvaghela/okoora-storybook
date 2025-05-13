@@ -40,7 +40,7 @@ export class CodeVerificationComponent {
   passwordResetSuccess = false;
   showLoader = false;
   codeResendSuccess = false;
-  verificationError = '';  
+  verificationError = '';
   timer: {
     minutes: string,
     seconds: string,
@@ -50,18 +50,17 @@ export class CodeVerificationComponent {
       seconds: '00',
       active: false
     };
-  router: any;
+  timerIntervalId: any;
 
-  constructor(private KycS: KycService) {
+  constructor(private KycS: KycService, private router: Router) {
   }
   ngOnInit() {
     this.resetFormErrors();
-    if (this.formData.valueChanges) {
-      this.formData.valueChanges.subscribe(() => {
-        this.resetFormErrors();
-      });
-    }
-    if(this.typeVerification === 'Email')
+    // if (this.formData.valueChanges) {
+    //   this.formData.valueChanges.subscribe(() => {
+    //     this.resetFormErrors();
+    //   });
+    // }
     this.startTimer();
 
   }
@@ -75,145 +74,27 @@ export class CodeVerificationComponent {
   performEmailVerification(action: 'SEND' | 'CHECK', email: string): void {
     let request: Observable<[string, any]>;
     this.incorrectCode = true;
-    this.showLoader = false;     
+    this.showLoader = false;
 
     if (action === 'SEND') {
       // request = combineLatest([
       //   of('SEND'),
       //   // this.KycS.SendEmailVerificationCode(email)
       // ]);
-    } else if (action === 'CHECK'){
+    } else if (action === 'CHECK') {
 
     }
     else {
       console.error(`Unhandled action ${action}`);
       return;
     }
-
-    // request.subscribe({
-    //   next: ([action, res]: [string, any]) => {
-    //     switch (action) {
-    //       case 'SEND':
-    //         let response: TSendMailResponse = <TSendMailResponse>res;
-    //         if (response) {
-    //           this.startTimer();
-    //           this.KycS.loading$.next(false);
-    //         } else if (response?.PassedLimitError === VerificationReturnType.PassedLimitError) {
-    //           this.startTimer('PASSED_LIMIT');
-    //           this.KycS.loading$.next(false);
-    //         } else {
-    //           this.KycS.showError$.next({ hasError: true, msg: EErrorMessages.SomethingWentWrong });
-    //         }
-    //         break;
-    //       default:
-    //         break;
-    //     }
-    //   },
-    //   error: (error) => {
-    //     if (error) {
-    //       this.refreshAPIError = true;
-    //     }
-    //   }
-    // })
   }
 
   verifyCode() {
-    this.showLoader = true;
-    this.refreshAPIError = false;
-    if(this.typeVerification === 'Email')
-    {
-      let request: Observable<[string, any]>;
-      this.code = this.digit1 + this.digit2 + this.digit3 + this.digit4;
-      // // this._authService.CheckMailVertification(this.code, this.formData)
-      // .pipe(
-      //   tap((response: any) => {
-      //     this.back.emit(true);
-      //   }),
-      //   catchError(error => {
-      //     this.verificationError = error.error.apiErrorCode.toString();
-      //     this.refreshAPIError = true;
-      //     this.showLoader = false;
-      //     return of(null);
-      //   }),        
-      // )
-      // .subscribe();
-    } 
-    else {   
-      this.verificationError = '';
-      let verificationCode = this.digit1 + this.digit2 + this.digit3 + this.digit4;
-      this.codeResendSuccess = false;
-      if (this.type == 'login') {
-        let verificationRequest: any = {
-          email: this.formData.username,
-          verificationCode: verificationCode,
-          verificationType: 1
-        }
-        // this._authService.checkSmsVerification(verificationRequest, this.formData)
-        //   .pipe(
-        //     tap(response => {
-        //       this.incorrectCode = !response?.success;
-        //       this.showLoader = false;
-        //     }),
-        //     catchError(error => {
-        //       this.verificationError = error.error.apiErrorCode.toString();
-        //       this.showLoader = false
-        //       return of(null);
-  
-        //     })
-        //   )
-        //   .subscribe();
-      } else if (this.type == 'forgot-password') {
-        // let verificationRequest: SmsVerificationRequestModel = {
-        //   email: this.formData.email,
-        //   verificationCode: verificationCode,
-        //   verificationType: 2,
-        // }
-        // this._forgotPasswordService.checkSmsVerification(verificationRequest)
-        //   .pipe(
-        //     tap((response: any) => {
-        //       if (response.validateId) {
-        //         const newPassword = {
-        //           password: this.formData.newPassword,
-        //           confirmPassword: this.formData.confirmPassword
-        //         }
-        //         this.resetPassword(newPassword, response.validateId);
-        //       } else if (!response.validateId && response.message == ResponseMessages.WrongVerificationCode) {
-        //         this.incorrectCode = true;
-        //       }
-        //       this.showLoader = false;
-        //     }),
-        //     catchError(error => {
-        //       this.verificationError = error.error.apiErrorCode.toString();
-        //       this.showLoader = false;
-        //       return of(null);
-        //     })
-        //   )
-        //   .subscribe();
-      }
-    }
+    this.router.navigate(['/change-password']);
   }
 
-  resendCode() {
-    if (this.type == 'login') {
-      // this._authService.sendSmsVerification(this.formData.username).subscribe((res: any) => {
-      //   if (res?.success) {
-      //     this.codeResendSuccess = true;
-      //   } else {
-      //     this.verificationError = res?.message;
-      //   }
-      // });
-    } else if (this.type == 'forgot-password') {
-      // this._forgotPasswordService.sendSmsVerification(this.formData.email).subscribe(res => {
-      //   this.codeResendSuccess = true;
-
-      //   setTimeout(() => {
-      //     this.codeResendSuccess = false;
-      //   }, 2000);
-      // });
-    }
-  }
-
-    onResend() {
+  onResend() {
     if (this.timer.active) {
       console.warn(`Resend code called even though the timer is active.`);
       return;
@@ -224,44 +105,38 @@ export class CodeVerificationComponent {
     this.handleActionByStep({ action: 'SEND' });
   }
 
-  startTimer(codeStatus: TVerificationCodeStatus = 'DEFAULT') {
-    this.timer.active = true;
-    let OneMinute: 60 = 60;
-    let tenMinutes: 600 = 600;
-console.log('codeStatus',codeStatus);
-
-    let timeToShow: typeof OneMinute | typeof tenMinutes | any; // 1min or 10 min
-    console.log('timeToShow',codeStatus);
-    switch (codeStatus) {
-      case 'DEFAULT':
-      case 'INCORRECT':
-        timeToShow = OneMinute;
-        break;
-      case 'PASSED_LIMIT':
-        timeToShow = tenMinutes;
-        break;
-      default:
-        console.error(`Unhandled action in sms verification code status.\n given: ${this.codeStatus}`);
-        break;
-    }
-    timer(0, 1000).pipe(
-      scan((acc: any) => {
-        const minutes: number = Math.floor(acc / 60);
-        const seconds: number = (minutes >= 1) ? acc - minutes * 60 : acc;
-        this.timer.minutes = minutes.toString();
-        this.timer.seconds = (seconds < 10) ? `0${seconds}` : seconds.toString();
-        return --acc;
-      }, timeToShow),
-      takeWhile(x => x >= 0),
-      takeUntil(this.componentDestroyed),
-      finalize(() => {
-        this.timer.minutes = `0`;
-        this.timer.seconds = `00`;
-        this.timer.active = false;
-      })
-    ).subscribe();
+  resendCode() {
+    this.startTimer();
   }
-  
+
+  startTimer(): void {
+    // Clear any existing timer
+    if (this.timerIntervalId) {
+      clearInterval(this.timerIntervalId);
+    }
+
+    const totalSeconds = 60;
+    let remainingSeconds = totalSeconds;
+
+    this.timer.active = true;
+
+    this.timerIntervalId = setInterval(() => {
+      const minutes = Math.floor(remainingSeconds / 60);
+      const seconds = remainingSeconds % 60;
+
+      this.timer.minutes = minutes.toString();
+      this.timer.seconds = seconds < 10 ? '0' + seconds : seconds.toString();
+
+      if (remainingSeconds === 0) {
+        clearInterval(this.timerIntervalId);
+        this.timer.active = false;
+      } else {
+        remainingSeconds--;
+      }
+    }, 1000);
+  }
+
+
   resetPassword(newPassword: any, validationId: string) {
     let request: any = {
       newPassword: newPassword,
@@ -291,7 +166,7 @@ console.log('codeStatus',codeStatus);
   }
   emailValue(): string {
     return this.formData.username;
-}
+  }
   restrictSpecialCharacters(event: any) {
     const invalidChars = ['<', '>', ';', '=', '+'];
     if (event?.target?.value?.length === 0 && event?.key === ".") {
@@ -329,6 +204,6 @@ console.log('codeStatus',codeStatus);
 
     if (verificationAction === 'CHECK_EMAIL_VERIFICATION' || verificationAction === 'SEND_EMAIL_VERIFICATION') {
       this.performEmailVerification(dynamicAction, payload.email);
-    } 
+    }
   }
 }

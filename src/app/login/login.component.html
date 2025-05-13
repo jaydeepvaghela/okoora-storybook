@@ -1,70 +1,69 @@
 <section class="auth-section">
-    <div class="left-side">
-      <div class="form-wrapper">
-        <ng-container>
-            <h3 class="heading">Login</h3>
-            <form #loginFrm="ngForm" [formGroup]="loginForm" (ngSubmit)="navigateToDashboard()">
-              <div class="form-group">
-                <label for="username">Email</label>
-                <input type="email"  class="form-control" name="username" id="email_field" formControlName="username" email
-                  required>
-                <!-- <span *ngIf="loginFrm.submitted && loginForm.controls.username.hasError('required')"
+  <div class="left-side">
+    <div class="form-wrapper">
+      <ng-container>
+        <h3 class="heading">Login</h3>
+        <form #loginFrm="ngForm" [formGroup]="loginForm" (ngSubmit)="navigateToDashboard()">
+          <div class="form-group">
+            <label for="username">Email</label>
+            <input type="email" class="form-control" name="username" id="email_field" formControlName="username" email
+              required>
+            <!-- <span *ngIf="loginFrm.submitted && loginForm.controls.username.hasError('required')"
                   class="error-msg">Required</span>
                 <span *ngIf="loginFrm.submitted && loginForm.controls.username.hasError('email')" class="error-msg">Please enter
                   valid email</span>
                 <span
                   *ngIf="loginFrm.submitted && loginForm.controls.username.valid && !loginForm.controls.username.hasError('required') && !loginForm.controls.username.hasError('email') && userNotExist"
                   class="error-msg">User does not exist</span> -->
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <div class="input-wrapper">
-                  <input [type]="hidePassword ? 'password' : 'text'" class="form-control" name="password" id="password_field"
-                    formControlName="password" required>
-                  <mat-icon class="eye-icon" matSuffix (click)="hidePassword = !hidePassword" id="show_hide_password">
-                    {{hidePassword ? 'visibility_off' :
-                    'visibility'}}</mat-icon>
-                </div>
-                <!-- <span *ngIf="loginFrm.submitted && loginForm.controls.password.hasError('required')"
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-wrapper">
+              <input [type]="hidePassword ? 'password' : 'text'" class="form-control" name="password"
+                id="password_field" formControlName="password" required>
+              <mat-icon class="eye-icon" matSuffix (click)="hidePassword = !hidePassword" id="show_hide_password">
+                {{hidePassword ? 'visibility_off' :
+                'visibility'}}</mat-icon>
+            </div>
+            <!-- <span *ngIf="loginFrm.submitted && loginForm.controls.password.hasError('required')"
                   class="error-msg">Required</span>
                 <span *ngIf="loginFrm.submitted && invalidCredentials" class="error-msg">Invalid email or password</span> -->
-              </div>
-              <div class="remember-wrapper">
-                <mat-checkbox class="remember-check" formControlName="rememberMe" name="rememberMe"
-                  (change)="rememberValueChange(loginForm.value.rememberMe!)" id="remember_me_checkbox">Remember me
-                </mat-checkbox>
-                <a class="forgot-password" id="forgot_password" (click)="goToForgot()" >Forgot password?</a>
-              </div>
-              <!-- <span class="info-msg" *ngIf="planMsg">
+          </div>
+          <div class="remember-wrapper">
+            <mat-checkbox class="remember-check" formControlName="rememberMe" name="rememberMe"
+              (change)="rememberValueChange(loginForm.value.rememberMe!)" id="remember_me_checkbox">Remember me
+            </mat-checkbox>
+            <a class="forgot-password" id="forgot_password" (click)="goToForgot()">Forgot password?</a>
+          </div>
+          <!-- <span class="info-msg" *ngIf="planMsg">
                 {{planMsg}}<a href="{{environment.oldFrontUrl}}" target="_blank"> click here</a>
               </span> -->
-              <!-- <span class="info-msg" *ngIf="error">
+          <!-- <span class="info-msg" *ngIf="error">
                 User needs KYC <a href="{{oldLoginUrl}}" target="_blank">Click here</a>
               </span> -->
-              <span class="error-msg" *ngIf="error">
-                 {{error}}
-              </span>
-              <button class="submit-btn" [class.disabled]="showLoader" [disabled]="showLoader" id="button_login" (click)="navigateToDashboard()">Log In
-                <!-- <app-page-loader classes="bg-white" *ngIf="showLoader"></app-page-loader> -->
-              </button>
-            </form>
-            <div class="signup">
-              <p class="signup-text">
-                  Don't have an account? <a class="signup-link d-inline" (click)="goToSignUp()">Sign up</a>
-              </p>
-            </div>
-          </ng-container>
-          <app-code-verification *ngIf="needVerification" [formData]="loginForm.value" [typeVerification]="typeVerificationCode" type="login"
-          ></app-code-verification>
-          
-          
-      </div>
+          <span class="error-msg" *ngIf="error">
+            {{error}}
+          </span>
+          <button class="submit-btn" [class.disabled]="showLoader" [disabled]="showLoader" id="button_login"
+            (click)="navigateToDashboard()">Log In
+            <!-- <app-page-loader classes="bg-white" *ngIf="showLoader"></app-page-loader> -->
+          </button>
+        </form>
+        <div class="signup">
+          <p class="signup-text">
+            Don't have an account? <a class="signup-link d-inline" (click)="goToSignUp()">Sign up</a>
+          </p>
+        </div>
+      </ng-container>
+      <app-code-verification *ngIf="needVerification" [formData]="loginForm.value"
+        [typeVerification]="typeVerificationCode" type="login"></app-code-verification>
     </div>
-    <div class="right-side">
-      <div class="content">
-        <img class="logo" src="images/abcm-logo.svg" alt="logo" />
-        <h1 class="main-heading">The World's First</h1>
-        <h2 class="sub-heading">Automated business currency management</h2>
-      </div>
+  </div>
+  <div class="right-side">
+    <div class="content">
+      <img class="logo" src="images/abcm-logo.svg" alt="logo" />
+      <h1 class="main-heading">The World's First</h1>
+      <h2 class="sub-heading">Automated business currency management</h2>
     </div>
-  </section>
+  </div>
+</section>

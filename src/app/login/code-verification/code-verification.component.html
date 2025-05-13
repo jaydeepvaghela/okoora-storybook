@@ -1,8 +1,8 @@
 <ng-container *ngIf="!passwordResetSuccess">
-  <h3 class="heading"  *ngIf="typeVerification === 'SMS'">Code Verification</h3>
+  <h3 class="heading code-verification-heading" *ngIf="typeVerification === 'SMS'">Code Verification</h3>
   <form #frmSms="ngForm" (ngSubmit)="frmSms.valid && verifyCode()">
-    <div class="form-group" *ngIf="typeVerification === 'SMS'">
-      <label class="sub-heading">Type a 4 digit code we send to your phone number</label>
+    <div class="form-group code-verification-wrapper" *ngIf="typeVerification === 'SMS'">
+      <label class="sub-heading">Enter 4 digit verification code sent to in your email address</label>
       <div class="text-group">
         <input type="text" maxlength="1" name="digit1" [(ngModel)]="digit1" #codeOne #digit1txt="ngModel"
           (focus)="codeOne.select()" (input)="codeOne.value ? codeTwo.select() : codeOne.focus()" required>
@@ -16,114 +16,29 @@
       <span
         *ngIf="frmSms.submitted && !codeResendSuccess && (digit1txt.hasError('required') || digit2txt.hasError('required') || digit3txt.hasError('required') || digit4txt.hasError('required'))"
         class="error-msg">Required</span>
-      <!-- <span *ngIf="frmSms.submitted && incorrectCode && !codeResendSuccess && (!digit1txt.hasError('required') && !digit2txt.hasError('required') && !digit3txt.hasError('required') && !digit4txt.hasError('required'))" class="error-msg">Verification code is Incorrect</span> -->
-      <span *ngIf="verificationError && (digit1txt.value && digit2txt.value && digit3txt.value && digit4txt.value)" class="error-msg">{{ 'AUTHENTICATION_SEND_VERIFICATION_ERRORS.' + verificationError | translate }}</span>
+      <span *ngIf="verificationError && (digit1txt.value && digit2txt.value && digit3txt.value && digit4txt.value)"
+        class="error-msg">{{ 'AUTHENTICATION_SEND_VERIFICATION_ERRORS.' + verificationError | translate }}</span>
       <span *ngIf="codeResendSuccess" class="success-msg d-block">Code resend successfully</span>
     </div>
-    <div class="action-links mb-2" *ngIf="typeVerification === 'SMS'">
-      <a (click)="resendCode()">Resend code</a>
-      <!-- <a>Call me</a> -->
-      <a *ngIf="type == 'login'" (click)="backToLogin()">Back to login</a>
+    <div class="action-links" *ngIf="typeVerification === 'SMS'">
+      Didn't received the code? <a (click)="resendCode()">Resend</a>
     </div>
-    <div class="emailLoginVerification" *ngIf="typeVerification === 'Email'">
-      <div class="emailLoginVerification-back mb-3">
-        <button (click)="backToLogin()" id="back-to-website">
-        <img class="logo-img" src="assets/images/back-kyc.svg" alt="Back to login" />
-        </button>
-      </div>
-      <article class="emailLoginVerification-article px-5">
-          <ng-container>
-            <h1 class="title">
-              <button class="action-btn in-title--mobile">
-                  <span class="fas fa-chevron-left"></span>
-              </button>
-              {{ 'EMAIL_VERIFICATION.title' | translate }}
-          </h1>
-          <h3 class="kyc-h--3 email">{{emailValue()}}</h3>
-          <p class="kyc-p--1 m-0">
-              {{ 'EMAIL_VERIFICATION.p_1' | translate }}
-          </p>
-          </ng-container>
-      </article>
-      <p class="at-title mail-conf-ah--1">{{ 'EMAIL_VERIFICATION.enter_code' | translate }}</p>
-      <div class="mail-ver-wrapper">
-            <div class="form-group mb-4">
-
-                <div class="form-group form-group-input-wrapper d-flex justify-content-center">
-                    <input type="text" [(ngModel)]="digit1" name="digit1" class="form-control masked-input" #dOne
-                        #digit1Txt="ngModel" (focus)="dOne.select()"
-                        (input)="dOne.value ? dTwo.select() : dOne.focus();"
-                        required (paste)="restrictSpecialCharacters($event)"
-                        (keydown)="restrictSpecialCharacters($event)"
-                    >
-                    {{!digit1 ? dOne.focus() : null}}
-
-                    <input type="text" [(ngModel)]="digit2" name="digit2" class="form-control masked-input" #dTwo
-                        #digit2Txt="ngModel" (focus)="dTwo.select()"
-                        (input)="dTwo.value ? dThree.select() : dTwo.focus();"
-                        (keydown.backspace)="dOne.select()"
-                        required (paste)="restrictSpecialCharacters($event)"
-                (keydown)="restrictSpecialCharacters($event)"
-                    >
-
-                    <input type="text" [(ngModel)]="digit3" name="digit3" class="form-control masked-input" #dThree
-                        #digit3Txt="ngModel" (focus)="dThree.select()"
-                        (input)="dThree.value ? dFour.select() : dThree.focus();"
-                        (keydown.backspace)="dTwo.select()"
-                        required (paste)="restrictSpecialCharacters($event)"
-                (keydown)="restrictSpecialCharacters($event)"
-                    >
-
-                    <input type="text" [(ngModel)]="digit4" name="digit4" class="form-control masked-input" #dFour
-                        #digit4Txt="ngModel" (focus)="dFour.select()"
-                        (keydown.backspace)="dThree.select(); dFour.value = '';"
-                        (input)="dFour.value ? dFour.blur() : dFour.focus();"
-                        (blur)="checkVerification()"
-                        required (paste)="restrictSpecialCharacters($event)"
-                (keydown)="restrictSpecialCharacters($event)"
-                    >
-                </div>
-            </div>
-      </div>
-      <div class="error-msg mb-2" *ngIf="refreshAPIError">
-        <span>
-            The code you have entered is invalid. Please try again.
-        </span>
+    <div class="not-arrived-code-wrapper">
+      Code hasn't arrived? <span>
+        <ng-container>
+          <a class="retry-in action-anchor" [matTooltip]="timerTooltip" matTooltipClass="custom-tooltip"
+            aria-label="Button that displays a tooltip that can be programmatically disabled">
+            {{ 'EMAIL_VERIFICATION.you_can_retry' | translate }}
+            {{timer.minutes}}:{{timer.seconds}}
+          </a>
+        </ng-container>
+      </span>
     </div>
-       <!-- Code hasn't arrived -->
-       <ng-container>
-        <p class="disclaimer disclaimer--2">
-            {{ 'EMAIL_VERIFICATION.code_not_arrived' | translate }}
-            <!-- user passed the limit of resend codes -->
 
-            <!-- able to resend code -->
-            <ng-container *ngIf="!timer.active">
-                <a class="resend-code action-anchor" (click)="onResend()">{{ 'EMAIL_VERIFICATION.resend_code' | translate }}</a>
-            </ng-container>
-            <!-- waiting to resend code -->
-            <ng-container *ngIf="timer.active">
-                <a
-                    class="retry-in action-anchor"
-                    [matTooltip]="timerTooltip"
-                    matTooltipClass="custom-tooltip"
-                    aria-label="Button that displays a tooltip that can be programmatically disabled"
-                >
-                    {{ 'EMAIL_VERIFICATION.you_can_retry' | translate }}
-                    {{timer.minutes}}:{{timer.seconds}}
-                </a>
-            </ng-container>
-        </p>
-      </ng-container><!-- # Code hasn't arrived -->
-    </div>
-    <button class="submit-btn" [class.disabled]="showLoader" [disabled]="showLoader">Verify & Log in
-        <!-- <app-page-loader classes="bg-white" *ngIf="showLoader"></app-page-loader> -->
-    </button>
+    <button class="submit-btn" [class.disabled]="showLoader" [disabled]="showLoader">Submit</button>
   </form>
 </ng-container>
 <ng-container *ngIf="passwordResetSuccess">
   <h4 class="reset-success-heading">Successful password reset!</h4>
   <p class="reset-success-msg">You can now use your new password to log in to your account</p>
 </ng-container>
-
-
-

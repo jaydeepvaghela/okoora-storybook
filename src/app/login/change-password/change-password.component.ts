@@ -7,12 +7,12 @@ import { CodeVerificationComponent } from '../code-verification/code-verificatio
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss'],
-  imports: [CommonModule, MatIconModule, ReactiveFormsModule, CodeVerificationComponent, TranslateModule],
+  selector: 'app-change-password',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.scss'],
+  imports: [CommonModule, MatIconModule, ReactiveFormsModule, TranslateModule],
 })
-export class ResetPasswordComponent implements OnInit {
+export class ChangePasswordComponent implements OnInit {
   hidePassword = true;
   hideConfPassword = true;
   typeVerification!: string;
@@ -42,7 +42,6 @@ export class ResetPasswordComponent implements OnInit {
  
 
   resetPasswordForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
     newPassword: new FormControl('', [Validators.required, this.passwordValidator()]),
     confirmPassword: new FormControl('', [Validators.required])
   })
@@ -51,9 +50,9 @@ export class ResetPasswordComponent implements OnInit {
 
 
   ngOnInit() {
-    this.resetFormErrors();
+    this.changeFormErrors();
     this.resetPasswordForm.valueChanges.subscribe(() => {
-      this.resetFormErrors();
+      this.changeFormErrors();
     });
   }
 
@@ -70,20 +69,19 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   navigateToLogin() {
-    if (this.needVerification) {
-      this.needVerification = false;
-    } else {
-      this.router.navigate(['/login']);
-    }
+    this.router.navigate(['/login']);
   }
-  resetFormErrors() {
+  changeFormErrors() {
     this.error = "";
     this.invalidAccount = false;
   }
-  resetPassword() {
-    this.resetPasswordForm.markAllAsTouched(); // Mark all form controls as touched to trigger validation messages
-    this.needVerification = true;
-    this.typeVerification = 'SMS';
+  changePassword() {
+    if (this.resetPasswordForm?.value?.newPassword == this.resetPasswordForm?.value?.confirmPassword &&
+      this.resetPasswordForm.controls.newPassword.valid && this.resetPasswordForm.controls.confirmPassword.valid
+    ) {
+      this.resetPasswordForm.markAllAsTouched();
+      this.router.navigate(['/login']);
+    }
   }
 
   strongPasswordCheck() {

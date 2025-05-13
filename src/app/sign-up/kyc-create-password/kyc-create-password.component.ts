@@ -4,7 +4,7 @@ import { AbstractControl, FormGroup, ReactiveFormsModule, ValidationErrors, Vali
 
 import { catchError, skip, switchMap, take, tap, throttleTime } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, ParamMap } from '@angular/router'
+import { ActivatedRoute, ParamMap, Router } from '@angular/router'
 import { IStepsObj, EErrorMessages } from '../kyc';
 import { StepActionType } from '../types/global.type';
 import { CommonModule } from '@angular/common';
@@ -60,7 +60,8 @@ export class KycCreatePasswordComponent implements OnInit {
 
     constructor(
         private KycS: KycService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router,
     ) {
     }
 
@@ -127,7 +128,9 @@ export class KycCreatePasswordComponent implements OnInit {
                 .subscribe(() => {
                     this.callCreateNewUserAPI();
                 });
-    
+            setTimeout(() => {
+                this.router.navigate(['/login']);
+            }, 1000);
             this.createUser$.next(true);
             // Don't navigate here - API callback will handle navigation if needed
         } else {

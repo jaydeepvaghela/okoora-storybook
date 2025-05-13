@@ -152,8 +152,20 @@
                 </div>
                 <!-- <mat-datepicker #picker></mat-datepicker> -->
             </div>
-            
-            <button (click)="handleNextStep()"
+
+            <!-- This Sumsub-specific button shows ONLY if fields are hidden -->
+            <button *ngIf="(hideFieldsAutomatically$ | async)"
+                (click)="handleSumsubStep()"
+                class="continue-btn"
+                color="primary"
+                mat-raised-button
+                type="button"
+                id="sumsub-btn-continue">
+                {{ 'KYC.Continue' | translate }}
+            </button>
+                        
+            <button *ngIf="!(hideFieldsAutomatically$ | async)" 
+                (click)="handleNextStep()"
                 [disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value &&(idValidation.value && !(validateID(kycForm.get('step_7')?.get('id_number')?.value) && kycForm.get('step_7')?.get('id_number')?.value.toString().length > 0))) || !(kycForm.get('step_7')?.get('first_name')?.value && kycForm.get('step_7')?.get('last_name')?.value && kycForm.get('step_7')?.get('birth_date')?.value)"
                 [class.disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value &&(idValidation.value && !(validateID(kycForm.get('step_7')?.get('id_number')?.value) && kycForm.get('step_7')?.get('id_number')?.value.toString().length > 0)) ) || !(kycForm.get('step_7')?.get('first_name')?.value && kycForm.get('step_7')?.get('last_name')?.value && kycForm.get('step_7')?.get('birth_date')?.value)"
                 class="continue-btn" color="primary" mat-raised-button type="button" id="pdetails-btn-continue">

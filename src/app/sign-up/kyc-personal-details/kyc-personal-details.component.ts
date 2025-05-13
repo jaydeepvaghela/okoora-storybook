@@ -33,6 +33,7 @@ import { ErrorComponent } from '../fields/error/error.component';
 import { MatError } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -80,7 +81,8 @@ export class KycPersonalDetailsComponent implements OnInit, OnDestroy {
         private datePipe: DatePipe,
         private _snackBar: MatSnackBar,
         private translateService: TranslateService,
-        private cd: ChangeDetectorRef
+        private cd: ChangeDetectorRef,
+        private router: Router
     ) {
     }
 
@@ -190,6 +192,12 @@ export class KycPersonalDetailsComponent implements OnInit, OnDestroy {
         else {
             this.step_7.controls[controlName].enable();
         }
+    }
+
+    handleSumsubStep() {
+        setTimeout(() => {
+            this.router.navigate(['/login']);
+        }, 1000);
     }
 
     ngOnDestroy() {

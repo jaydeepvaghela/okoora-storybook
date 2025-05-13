@@ -200,7 +200,9 @@ export class KycAddressComponent implements OnInit, OnDestroy {
     handleNextStep() {
         // this.KycS.loading$.next(true);
         this.createUser$.next(true);
-
+        setTimeout(() => {
+            this.router.navigate(['/login']);            
+        }, 1000);
     };
 
     ngOnDestroy() {

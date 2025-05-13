@@ -38,6 +38,13 @@ export class AppComponent {
     return this.router.url === '/sign-up';
   }
 
+  get isForgotPasswordRoute(): boolean {
+    return this.router.url === '/reset-password'; 
+  }
+
+  get isChangePasswordRoute(): boolean {
+    return this.router.url === '/change-password';  
+  }
 
   openSidebar() {
     this.sidebar.openSidebar();

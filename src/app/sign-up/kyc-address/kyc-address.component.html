@@ -46,8 +46,8 @@
                 <div class="col-12">
                     <div class="form-group">
                         <button
-                            [disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value && addressInHebrew.invalid) || !step_8.valid || (step_8.get('street_address')?.value == '' ||  step_8.get('city')?.value == '' || step_8.get('zipcode')?.value == '') || showLoader||loading"
-                            [class.disabled]="(kycForm.get('step_1')?.get('privateAcc')?.get('isActive')?.value && addressInHebrew.invalid) || !step_8.valid || (step_8.get('street_address')?.value == '' ||  step_8.get('city')?.value == '' || step_8.get('zipcode')?.value == '') || showLoader||loading"
+                            [disabled]="!step_8.valid || (step_8.get('street_address')?.value == '' ||  step_8.get('city')?.value == '' || step_8.get('zipcode')?.value == '')"
+                            [class.disabled]="!step_8.valid || (step_8.get('street_address')?.value == '' ||  step_8.get('city')?.value == '' || step_8.get('zipcode')?.value == '')"
                             type="button" mat-raised-button color="primary" class="continue-btn"
                             (click)="handleNextStep()" id="kycaddress-continue-btn">
                             {{ 'KYC.ContinueLogin' | translate}}

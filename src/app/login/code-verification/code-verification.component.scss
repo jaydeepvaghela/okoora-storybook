@@ -16,14 +16,98 @@
   }
 }
 
-.action-links {
-  @include flex(flex-start, flex-start, column);
-  a {
+.code-verification-wrapper {
+  margin-bottom: 40px !important;
+
+  @media screen and (max-width: 1440px) {
+      margin-bottom: 35px !important;
+  }
+  .sub-heading {
+    margin-bottom: 22px;
+
+    @media screen and (max-width: 1440px) {
+      margin-bottom: 20px;
+    }
+  }
+  .text-group {
+    input {
+              background-color: transparent !important;
+              border: none !important;
+              border-radius: 0 !important;
+              border-bottom: 3px solid white !important;
+              color: $white;
+              padding: 0 20px;
+              height: 63px !important;
+              font-size: 18px;
+              font-weight: 300;
+              width: 100%;
+              max-width: 82px !important;
+  
+              @media screen and (max-width: 1440px) {
+                font-size: 16px;
+                padding: 0 16px;
+                height: 63px;
+              }
+  
+              @media screen and (max-width: 1024px) {
+                font-size: 18px;
+                border-radius: 10px;
+                padding: 0 20px;
+                height: 52px;
+              }
+  
+              @media screen and (max-width: 767px) {
+                font-size: 16px;
+                border-radius: 8px;
+                height: 48px;
+              }
+  
+              &::placeholder {
+                color: #aeaeae;
+              }
+            }
+  }
+}
+
+.not-arrived-code-wrapper {
+  color: $white;
+  font-family: 'Heebo';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 38px;
+
+  .retry-in {
+    color: #05F2F2 !important;
+    font-family: 'Heebo';
     font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-    color: $white;
-    cursor: pointer;
+    font-weight: 500;
+    margin-left: 22px;
+    line-height: normal;
+  }
+}
+
+.action-links {
+  color: $white;
+  font-family: 'Heebo';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 23px;
+  @include flex(flex, flex-start, row);
+  a {
+    color: #05F2F2;
+    font-family: 'Heebo';
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    margin-left: 13px;
 
     @media screen and (max-width: 1440px) {
       font-size: 14px;
