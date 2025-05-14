@@ -3,7 +3,6 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validator
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { CodeVerificationComponent } from '../code-verification/code-verification.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -68,8 +67,8 @@ export class ChangePasswordComponent implements OnInit {
     };
   }
 
-  navigateToLogin() {
-    this.router.navigate(['/login']);
+  navigateBack() {
+    this.router.navigate(['/reset-password']);
   }
   changeFormErrors() {
     this.error = "";

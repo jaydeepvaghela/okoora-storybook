@@ -39,11 +39,15 @@ export class LoginComponent implements OnInit {
     this.loginForm.controls.username.valueChanges.subscribe((value) => {
       if (!value) {
         this.isloginFormHasError();
+      } else {
+        this.error = '';
       }
     });
     this.loginForm.controls.password.valueChanges.subscribe((value) => {
       if (!value) {
         this.isloginFormHasError();
+      } else {
+        this.error = '';
       }
     });
   }
@@ -53,21 +57,22 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToDashboard() {
-  if (!this.loginForm.valid) {
-    this.isloginFormHasError();
-    return;
-  }
+    if (!this.loginForm.valid) {
+      this.isloginFormHasError();
+      return;
+    }
 
-  const enteredPassword = this.loginForm.value.password;
-  if (enteredPassword !== 'Okoora1!') {
-    this.error = 'Passwords do not match';
-    return;
+    const enteredPassword = this.loginForm.value.password;
+    if (enteredPassword !== 'Okoora1!') {
+      this.error = 'Passwords do not match';
+      return;
+    }
+    setTimeout(() => {
+      this.router.navigate(['/dashboard']);
+    }, 1000);
+    this.error = '';
+    this.rememberValueChange(this.loginForm?.value?.rememberMe!);
   }
-
-  this.router.navigate(['/dashboard']);
-  this.error = '';
-  this.rememberValueChange(this.loginForm?.value?.rememberMe!);
-}
 
 
   goToSignUp() {

@@ -42,9 +42,7 @@ export class ResetPasswordComponent implements OnInit {
  
 
   resetPasswordForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    newPassword: new FormControl('', [Validators.required, this.passwordValidator()]),
-    confirmPassword: new FormControl('', [Validators.required])
+    email: new FormControl('', [Validators.required, Validators.email]),
   })
 
   constructor(private router: Router) { }
@@ -81,30 +79,15 @@ export class ResetPasswordComponent implements OnInit {
     this.invalidAccount = false;
   }
   resetPassword() {
-    this.resetPasswordForm.markAllAsTouched(); // Mark all form controls as touched to trigger validation messages
+    this.resetFormErrors();
+    this.resetPasswordForm.markAllAsTouched(); // trigger validation messages
+
+    if (this.resetPasswordForm.invalid) {
+      return; // prevent proceeding if form is invalid
+    }
+
+  // Proceed only if form is valid
     this.needVerification = true;
     this.typeVerification = 'SMS';
-  }
-
-  strongPasswordCheck() {
-    this.illegall = false;
-    let password = this.resetPasswordForm?.value?.newPassword;
-    this.hasEight = (password && password.length >= this.minPasswordLength) || false;
-    this.hasLower = this._hasLowerCase?.test(password!);
-    this.hasUpper = this._hasUpperCase?.test(password!);
-    this.hasDigit = this._hasDigit?.test(password!);
-    this.hasSpecial = this._hasSpecial?.test(password!);
-
-    if (
-      !this.hasEight ||
-      !this.hasDigit ||
-      !this.hasSpecial ||
-      !this.hasUpper ||
-      !this.hasLower
-    ) {
-      this.illegall = true;
-    } else {
-      this.illegall = false;
-    }
   }
 }

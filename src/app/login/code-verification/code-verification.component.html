@@ -1,41 +1,48 @@
 <ng-container *ngIf="!passwordResetSuccess">
-  <h3 class="heading code-verification-heading" *ngIf="typeVerification === 'SMS'">Code Verification</h3>
+  <h3 class="heading code-verification-heading" *ngIf="typeVerification === 'SMS'">Confirm OTP</h3>
   <form #frmSms="ngForm" (ngSubmit)="frmSms.valid && verifyCode()">
     <div class="form-group code-verification-wrapper" *ngIf="typeVerification === 'SMS'">
-      <label class="sub-heading">Enter 4 digit verification code sent to in your email address</label>
-      <div class="text-group">
-        <input type="text" maxlength="1" name="digit1" [(ngModel)]="digit1" #codeOne #digit1txt="ngModel"
+      <label class="sub-heading verification-code-heading">Enter 4 digit verification code sent to in your email address</label>
+      <div class="text-group verification-inputs">
+        <input type="text" maxlength="1" name="digit1" [(ngModel)]="digit1" #codeOne #digit1txt="ngModel" (ngModelChange)="onDigitChange()"
           (focus)="codeOne.select()" (input)="codeOne.value ? codeTwo.select() : codeOne.focus()" required>
-        <input type="text" maxlength="1" name="digit2" [(ngModel)]="digit2" #codeTwo #digit2txt="ngModel"
+        <input type="text" maxlength="1" name="digit2" [(ngModel)]="digit2" #codeTwo #digit2txt="ngModel" (ngModelChange)="onDigitChange()"
           (focus)="codeTwo.select()" (input)="codeTwo.value ? codeThree.select() : codeTwo.focus()" required>
-        <input type="text" maxlength="1" name="digit3" [(ngModel)]="digit3" #codeThree #digit3txt="ngModel"
+        <input type="text" maxlength="1" name="digit3" [(ngModel)]="digit3" #codeThree #digit3txt="ngModel" (ngModelChange)="onDigitChange()"
           (focus)="codeThree.select()" (input)="codeThree.value ? codeFour.select() : codeThree.focus()" required>
-        <input type="text" maxlength="1" name="digit4" [(ngModel)]="digit4" #codeFour #digit4txt="ngModel"
+        <input type="text" maxlength="1" name="digit4" [(ngModel)]="digit4" #codeFour #digit4txt="ngModel" (ngModelChange)="onDigitChange()"
           (focus)="codeFour.select()" (input)="codeFour.value ? codeFour.blur() : codeFour.focus()" required>
       </div>
-      <span
-        *ngIf="frmSms.submitted && !codeResendSuccess && (digit1txt.hasError('required') || digit2txt.hasError('required') || digit3txt.hasError('required') || digit4txt.hasError('required'))"
-        class="error-msg">Required</span>
-      <span *ngIf="verificationError && (digit1txt.value && digit2txt.value && digit3txt.value && digit4txt.value)"
-        class="error-msg">{{ 'AUTHENTICATION_SEND_VERIFICATION_ERRORS.' + verificationError | translate }}</span>
+      <div
+        *ngIf="frmSms.submitted && !codeResendSuccess &&
+          (digit1txt.hasError('required') || digit2txt.hasError('required') || digit3txt.hasError('required') || digit4txt.hasError('required'))"
+          class="error-msg code-require-error">Required</div>
+      
+      <div class="error-msg code-require-error invalid-code-added" *ngIf="verificationError && (digit1txt.value && digit2txt.value && digit3txt.value && digit4txt.value)"
+        >{{verificationError}}</div>
+      
       <span *ngIf="codeResendSuccess" class="success-msg d-block">Code resend successfully</span>
     </div>
-    <div class="action-links" *ngIf="typeVerification === 'SMS'">
-      Didn't received the code? <a (click)="resendCode()">Resend</a>
-    </div>
+    <ng-container *ngIf="!verificationError && (allDigitsFilled() || !allDigitsFilled())">
+      <div class="action-links" *ngIf="typeVerification === 'SMS'">
+        Didn't received the code? <a (click)="resendCode()">Resend</a>
+      </div>
+    </ng-container>
+    
     <div class="not-arrived-code-wrapper">
       Code hasn't arrived? <span>
         <ng-container>
           <a class="retry-in action-anchor" [matTooltip]="timerTooltip" matTooltipClass="custom-tooltip"
             aria-label="Button that displays a tooltip that can be programmatically disabled">
-            {{ 'EMAIL_VERIFICATION.you_can_retry' | translate }}
+            You can retry
             {{timer.minutes}}:{{timer.seconds}}
           </a>
         </ng-container>
       </span>
     </div>
 
-    <button class="submit-btn" [class.disabled]="showLoader" [disabled]="showLoader">Submit</button>
+    <button class="submit-btn" [disabled]="!allDigitsFilled()">Submit</button>
+
   </form>
 </ng-container>
 <ng-container *ngIf="passwordResetSuccess">

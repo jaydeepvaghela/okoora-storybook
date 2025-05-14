@@ -4,19 +4,12 @@
       <ng-container>
         <h3 class="heading">Login</h3>
         <form #loginFrm="ngForm" [formGroup]="loginForm" (ngSubmit)="navigateToDashboard()">
-          <div class="form-group">
+          <div class="form-group login-field">
             <label for="username">Email</label>
             <input type="email" class="form-control" name="username" id="email_field" formControlName="username" email
               required>
-            <!-- <span *ngIf="loginFrm.submitted && loginForm.controls.username.hasError('required')"
-                  class="error-msg">Required</span>
-                <span *ngIf="loginFrm.submitted && loginForm.controls.username.hasError('email')" class="error-msg">Please enter
-                  valid email</span>
-                <span
-                  *ngIf="loginFrm.submitted && loginForm.controls.username.valid && !loginForm.controls.username.hasError('required') && !loginForm.controls.username.hasError('email') && userNotExist"
-                  class="error-msg">User does not exist</span> -->
           </div>
-          <div class="form-group">
+          <div class="form-group login-field">
             <label for="password">Password</label>
             <div class="input-wrapper">
               <input [type]="hidePassword ? 'password' : 'text'" class="form-control" name="password"
@@ -25,9 +18,6 @@
                 {{hidePassword ? 'visibility_off' :
                 'visibility'}}</mat-icon>
             </div>
-            <!-- <span *ngIf="loginFrm.submitted && loginForm.controls.password.hasError('required')"
-                  class="error-msg">Required</span>
-                <span *ngIf="loginFrm.submitted && invalidCredentials" class="error-msg">Invalid email or password</span> -->
           </div>
           <div class="remember-wrapper">
             <mat-checkbox class="remember-check" formControlName="rememberMe" name="rememberMe"
@@ -35,18 +25,11 @@
             </mat-checkbox>
             <a class="forgot-password" id="forgot_password" (click)="goToForgot()">Forgot password?</a>
           </div>
-          <!-- <span class="info-msg" *ngIf="planMsg">
-                {{planMsg}}<a href="{{environment.oldFrontUrl}}" target="_blank"> click here</a>
-              </span> -->
-          <!-- <span class="info-msg" *ngIf="error">
-                User needs KYC <a href="{{oldLoginUrl}}" target="_blank">Click here</a>
-              </span> -->
           <div class="error-msg" *ngIf="error">
             {{error}}
           </div>
           <button class="submit-btn" [class.disabled]="showLoader" [disabled]="showLoader" id="button_login"
             (click)="navigateToDashboard()">Log In
-            <!-- <app-page-loader classes="bg-white" *ngIf="showLoader"></app-page-loader> -->
           </button>
         </form>
         <div class="signup">

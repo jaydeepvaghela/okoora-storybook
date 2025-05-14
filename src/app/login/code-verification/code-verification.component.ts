@@ -1,19 +1,15 @@
-import { HttpResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subject, catchError, combineLatest, finalize, of, scan, takeUntil, takeWhile, tap, timer } from 'rxjs';
-import { KycService } from '../../sign-up/services/kyc.service';
-import { TSendMailResponse, TVerificationCodeStatus } from '../../sign-up/kyc';
+import { Observable, Subject } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-code-verification',
   templateUrl: './code-verification.component.html',
   styleUrls: ['./code-verification.component.scss'],
-  imports: [CommonModule, FormsModule, TranslateModule, MatTooltipModule],
+  imports: [CommonModule, FormsModule, MatTooltipModule],
 })
 export class CodeVerificationComponent {
   @Input() formData: any;
@@ -27,10 +23,10 @@ export class CodeVerificationComponent {
   @Output('codeValidEvent') codeValidEvent = new EventEmitter<boolean>();
   componentDestroyed = new Subject<any>();
   @Output() back: EventEmitter<boolean> = new EventEmitter();
-  digit1!: number;
-  digit2!: number;
-  digit3!: number;
-  digit4!: number;
+  digit1: string = '';
+  digit2: string = '';
+  digit3: string = '';
+  digit4: string = '';
   privacyPolicyUrl: string = 'https://okoora.com/terms-of-service/';
   termsOfUseUrl: string = 'https://okoora.com/terms-of-service/';
   code!: number;
@@ -52,7 +48,7 @@ export class CodeVerificationComponent {
     };
   timerIntervalId: any;
 
-  constructor(private KycS: KycService, private router: Router) {
+  constructor(private router: Router) {
   }
   ngOnInit() {
     this.resetFormErrors();
@@ -68,9 +64,7 @@ export class CodeVerificationComponent {
   resetFormErrors() {
     this.verificationError = "";
   }
-  backToLogin() {
-    return location.href = "/login";
-  }
+
   performEmailVerification(action: 'SEND' | 'CHECK', email: string): void {
     let request: Observable<[string, any]>;
     this.incorrectCode = true;
@@ -90,9 +84,34 @@ export class CodeVerificationComponent {
     }
   }
 
+  onDigitChange(): void {
+    this.verificationError = '';
+  }
+
+  allDigitsFilled(): boolean {
+    return [this.digit1, this.digit2, this.digit3, this.digit4].every(d => d !== '');
+  }
+
   verifyCode() {
+    if (!this.allDigitsFilled()) {
+      this.verificationError = 'Please enter all 4 digits.';
+      return;
+    }
+
+    const enteredCode = `${this.digit1}${this.digit2}${this.digit3}${this.digit4}`;
+
+    if (enteredCode === '1111') {
+      this.incorrectCode = true;
+      this.verificationError = 'The code you have entered is invalid. Please try again.';
+      return;
+    }
+
+    this.incorrectCode = false;
+    this.verificationError = '';
     this.router.navigate(['/change-password']);
   }
+
+
 
   onResend() {
     if (this.timer.active) {
@@ -186,12 +205,7 @@ export class CodeVerificationComponent {
       }
     }
   }
-  checkVerification() {
-    if (!this.digit1 || !this.digit2 || !this.digit3 || !this.digit4) {
-      return;
-    }
-    this.handleActionByStep({ action: 'CHECK' });
-  }
+
   handleActionByStep(data: { action: 'SEND' | 'CHECK' }): void {
     const { action: dynamicAction } = data;
     let payload: any;

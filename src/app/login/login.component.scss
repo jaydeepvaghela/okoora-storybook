@@ -43,8 +43,20 @@
             color: $white;
             font-size: 36px;
             line-height: 44px;
-            margin-bottom: 48px;
+            margin-bottom: 51px;
             font-weight: 700;
+
+            &.forgot-password-heading {
+              margin-bottom: 52px;
+            }
+
+            &.code-verification-heading {
+              margin-bottom: 41px;
+            }
+
+            &.reset-password-heading {
+              margin-bottom: 23px;
+            }
   
             @media screen and (max-width: 1440px) {
               font-size: 28px;
@@ -66,7 +78,15 @@
           }
   
           .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+
+            &.login-field {
+              margin-bottom: 35px;
+            }
+
+            &:has(.fg-pass-err) {
+              margin-bottom: 0;
+            }
   
             @media screen and (max-width: 1440px) {
               margin-bottom: 18px;
@@ -84,8 +104,12 @@
               font-size: 14px;
               line-height: 20px;
               font-weight: 500;
-              margin-bottom: 0.5rem;
+              margin-bottom: 9px;
               color: $white;
+
+              &.verification-code-heading {
+                margin-bottom: 22px !important;
+              }
   
               @media screen and (max-width: 1440px) {
                 font-size: 13px;
@@ -102,10 +126,10 @@
               border: 1px solid var(--auth-input-color);
               border-radius: 15px;
               color: $white;
-              padding: 0 20px;
-              height: 55px;
-              font-size: 18px;
-              font-weight: 300;
+              padding: 0 20px 0 15px;
+              height: 53px;
+              font-size: 14px;
+              font-weight: 400;
               width: 100%;
   
               @media screen and (max-width: 1440px) {
@@ -158,7 +182,7 @@
           .remember-wrapper {
             @include flex(space-between, center, row);
             padding: 0 20px 0 10px;  
-            margin-bottom: 30px;
+            margin-bottom: 20px;
   
             .forgot-password {
               color: $white;
@@ -187,6 +211,10 @@
             font-size: 16px;
             background-color: $blue-black;
             position: relative;
+
+            &:hover {
+              opacity: 0.7;
+            }
   
             &.disabled {
               opacity: 0.5;
@@ -198,7 +226,6 @@
   
         .password-instruction {
           margin-bottom: 16px;
-  
           .message {
             font-size: 16px;
             line-height: 24px;
@@ -214,7 +241,21 @@
             line-height: 18px;
             font-weight: 400;
             color: $white;
-            padding-left: 8px;
+            padding-right: 10px;
+
+            &.verified {
+
+              mat-icon {
+                color: #05F2F2;
+              }
+              span {
+                color: #05F2F2;
+                font-family: 'Heebo';
+                font-size: 12px;
+                font-weight: 500;
+                line-height: normal;
+              }
+            }
   
             mat-icon {
               font-size: 14px;
@@ -222,6 +263,7 @@
               width: auto;
               height: auto;
               font-weight: 600;
+              padding-right: 6px;
             }
           }
         }
@@ -229,23 +271,18 @@
         .back-btn {
           @include flex(flex-start, center, row);
           color: $white;
-          font-size: 16px;
-          line-height: 22px;
-          font-weight: 400;
-          margin-bottom: 60px;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: 500;
+          margin-bottom: 27px;
   
           @media screen and (max-width: 1440px) {
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             font-size: 14px;
           }
   
           @media screen and (max-width: 1024px) {
-            margin-bottom: 50px;
             font-size: 16px;
-          }
-  
-          @media screen and (max-width: 767px) {
-            margin-bottom: 30px;
           }
         }
       }
@@ -287,7 +324,7 @@
         }
   
         .main-heading {
-          font-size: 48px;
+          font-size: 46px;
           line-height: 58px;
           font-weight: 900;
           color: $blue-black;
@@ -299,11 +336,12 @@
         }
   
         .sub-heading {
-          font-size: 24px;
+          font-size: 23px;
           line-height: 28px;
           font-weight: 700;
           color: $blue-black;
-  
+          margin-top: 8px;
+
           @media screen and (max-width: 1440px) {
             font-size: 20px;
             line-height: 22px;
@@ -319,12 +357,19 @@
       font-weight: 500;
       line-height: 20px;
       margin: 6px 0 26px 0;
+
+      &.fg-pass-err {
+        margin: 26px 0 8px 0;
+      }
+
+      &.not-match-password {
+        margin-bottom: 26px;
+      }
     }
 }
 
 ::ng-deep {
     .remember-wrapper {
-
           // &::ng-deep {
         .mdc-checkbox__native-control {
             height: 16px !important;
@@ -362,6 +407,7 @@
             line-height: 16px !important;
             color: $white !important;
             font-weight: 400 !important;
+            padding-left: 0 !important;
         }
 
           // }
@@ -398,6 +444,7 @@
 }
 .signup-link {
   cursor: pointer;
+  margin-left: 4px;
 }
 
 .info-msg {
