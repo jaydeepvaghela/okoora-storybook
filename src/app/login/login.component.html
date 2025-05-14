@@ -41,9 +41,9 @@
           <!-- <span class="info-msg" *ngIf="error">
                 User needs KYC <a href="{{oldLoginUrl}}" target="_blank">Click here</a>
               </span> -->
-          <span class="error-msg" *ngIf="error">
+          <div class="error-msg" *ngIf="error">
             {{error}}
-          </span>
+          </div>
           <button class="submit-btn" [class.disabled]="showLoader" [disabled]="showLoader" id="button_login"
             (click)="navigateToDashboard()">Log In
             <!-- <app-page-loader classes="bg-white" *ngIf="showLoader"></app-page-loader> -->

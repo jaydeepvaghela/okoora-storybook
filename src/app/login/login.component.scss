@@ -318,16 +318,21 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 20px;
+      margin: 6px 0 26px 0;
     }
 }
 
 ::ng-deep {
     .remember-wrapper {
 
-        //   &::ng-deep {
+          // &::ng-deep {
         .mdc-checkbox__native-control {
             height: 16px !important;
             width: 16px !important;
+        }
+
+        .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background {
+          background-color: transparent !important;
         }
 
         .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
@@ -359,7 +364,7 @@
             font-weight: 400 !important;
         }
 
-        //   }
+          // }
     }
 }
 
