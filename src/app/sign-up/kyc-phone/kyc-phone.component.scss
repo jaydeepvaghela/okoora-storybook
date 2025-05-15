@@ -32,10 +32,10 @@
     min-height: auto;
     width: 100%;
     box-sizing: border-box;
-    font-size: 16px;
-    padding:14px 16px;
+    font-size: 14px;
+    padding: 14px 16px;
     &::placeholder{
-        opacity: 0.5;
+        opacity: 0.7;
     }
     @media screen and (max-width: 1440px) {
         font-size: 14px;
