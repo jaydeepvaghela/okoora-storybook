@@ -4,7 +4,7 @@
         <app-sidebar></app-sidebar>
     </ng-container>
     
-    <div class="content-wrapper" [ngClass]="{'risk-manager': isRiskManagerRoute, 'authenticate-user': isLoggedInUser}">
+    <div class="content-wrapper" [ngClass]="{'risk-manager': isRiskManagerRoute, 'authenticate-user': isLoggedInUser === 'true' }">
         <router-outlet />
     </div>
 </div>
