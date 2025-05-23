@@ -1,0 +1,17 @@
+<mat-tab-group id="dashboardSideTabs" class="tab-group-sidetab" (selectedTabChange)="changeType($event)">
+  <mat-tab label="{{lockLabel}}">
+    <ng-template matTabContent>
+      <app-future-overview-lock-chart> </app-future-overview-lock-chart>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Exchange now">
+    <ng-template matTabContent>
+      <app-convert-now></app-convert-now>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Hedge">
+    <ng-template matTabContent>
+      <app-future-overview-hedge-chart></app-future-overview-hedge-chart>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,75 @@
+<!-- <mat-drawer #eventDrawer class="event-drawer" mode="side" position="end">
+  <div class="colse-back-white">
+    <button mat-icon-button (click)="eventDrawerClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+   <app-lock-payment-add-alert *ngIf="eventDrawer.opened"></app-lock-payment-add-alert>
+</mat-drawer> -->
+<div class="lock-next-payment-container">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="card lock-and-pay-card">
+          <div class="card-body d-flex flex-column align-items-center">
+            <label class="slide-badge">
+              <span [ngClass]="lastPaymentRateData?.direction == Directions.Up ? 'arrow-value-up' : 'arrow-value-down'">
+                {{ lastPaymentRateData?.currentPaymentRate | number : '1.0-4' }}
+                <img src="images/lock-up-arrow.svg"/>
+              </span>
+            </label>
+            <h5 class="card-title">Pay Now</h5>
+            <p class="card-text">Save more, Pay now and Maximize savings!</p>
+            <div class="mt-auto text-center">
+              <img class="pay-now-card-img" id="pay-now-img" src="images/pay-now-icon.svg" alt="pay-now" />
+            </div>
+            <div class="mt-2">
+              <!-- <button class="lock-and-pay-btn" (click)="createSendDialog()">Pay Now</button> -->
+              <button class="lock-and-pay-btn" id="pay-now-btn" (click)="onPayNowClick()">Pay Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="card lock-and-pay-card">
+          <div class="card-body d-flex flex-column align-items-center">
+            <label class="slide-badge">
+              <span id="current-lockPayRate" [ngClass]="lastPaymentRateData?.direction == Directions.Up ? 'arrow-value-up' : 'arrow-value-down'">
+                {{lastPaymentRateData?.currentPaymentRate | number : '1.0-4' }}
+                <img src="images/lock-up-arrow.svg" />
+              </span>
+            </label>
+            <h5 class="card-title">Lock & Pay later</h5>
+            <p class="card-text">Save more, Lock your rate and Maximize Savings!</p>
+            <div class="mt-auto text-center">
+              <img class="mb-3" src="images/lockandpay-later-icon.svg" alt="lock-and-pay-later" />
+            </div>
+            <div class="mt-2">
+              <button class="lock-and-pay-btn" id="lock-pay-slide-openDialog" (click)="CreateLockRateDialog()">Lock Rate</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="card lock-and-pay-card">
+          <div class="card-body d-flex flex-column align-items-center">
+            <label class="slide-badge">
+              <span  *ngIf="lastPaymentRateData?.currentPaymentRate" [ngClass]="lastPaymentRateData?.direction == Directions.Up ? 'arrow-value-up' : 'arrow-value-down'">
+                {{lastPaymentRateData?.currentPaymentRate | number : '1.0-4' }}
+                <img src="images/lock-up-arrow.svg" id="lock-up-arrow" />
+              </span>
+            </label>
+            <h5 class="card-title" id="card-title">Alert the Rate</h5>
+            <p class="card-text" id="card-text">Stay Ahead, Pay Less: Set Alerts for Better Rates!</p>
+            <div class="mt-auto text-center">
+              <img class="mb-3" id="rate-alert-img" src="images/alert-rate-icon.svg" alt="rate-alert" />
+            </div>
+            <div class="mt-2">
+              <button class="lock-and-pay-btn" id="alert-me-btn" (click)="CreateAlertDialog()">Alert Me</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

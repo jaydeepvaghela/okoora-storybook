@@ -1,0 +1,48 @@
+<div class="convert-wrapper">
+  <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+  <div class="label-wrapper">
+    <h3 class="label">Currency Exchanger</h3>
+    <span class="info-icon" htmlTooltip
+      tooltipBody="A currency future, also called an FX future, is a contract to exchange currencies on a future date at a fixed price (exchange rate)">i</span>
+  </div>
+  <div class="convert-label">
+    <div class="img-group">
+      <img [src]="activeCurrency?.wallet_Flag" alt="currency" />
+      <img [src]="currencyOfUser" alt="currency" />
+    </div>
+    <div class="label-group">
+      <h2 class="label">{{activeCurrency?.wallet_Currency?.code}}/{{activeCurrency?.wallet_Hedging?.exposureBaseCurrency}}</h2>
+      <!-- <span class="last-update">Last update: 22/08/2023</span> -->
+    </div>
+  </div>
+  <div class="convert-option-group">
+    <label class="convert-option" for="buyCurrency">
+      <div class="input-wrapper">
+        <input id="buyCurrency" type="radio" name="convert" value="buy" [(ngModel)]="selectedType" (change)="changeType($event)">
+        <span class="option-label">I want to Buy {{activeCurrency?.wallet_Currency?.code}}</span>
+      </div>
+      <img class="option-image" [src]="activeCurrency?.wallet_Flag" alt="currency">
+    </label>
+    <label class="convert-option" for="sellCurrency">
+      <div class="input-wrapper">
+        <input id="sellCurrency" type="radio" name="convert" value="sell" [(ngModel)]="selectedType" (change)="changeType($event)">
+        <span class="option-label">I want to Sell {{activeCurrency?.wallet_Currency?.code}}</span>
+      </div>
+      <img class="option-image" [src]="activeCurrency?.wallet_Flag" alt="currency">
+    </label>
+  </div>
+  <button class="convert-button">
+    <span class="rate-wrapper">1 {{activeCurrency?.wallet_Currency?.code}} =
+      <span class="convert-rate">{{currentCurrencyValue?.[activeCurrency?.wallet_Hedging?.exposureBaseCurrency]?.toFixed(4)}} {{activeCurrency?.wallet_Hedging?.exposureBaseCurrency}}</span>
+    </span>
+  </button>
+  <!-- <button *ngIf="this.selectedType === 'sell'" class="convert-button">
+    <span class="rate-wrapper"> 1 {{activeCurrency?.wallet_Hedging?.exposureBaseCurrency}} =
+      <span class="convert-rate"> {{currentCurrencyValue?.[activeCurrency?.wallet_Currency?.code]?.toFixed(2)}}  {{activeCurrency?.wallet_Currency?.code}} </span>
+    </span>
+  </button> -->
+  <div class="w-100 d-flex justify-content-center align-items-center">
+    <button id="buy_sell_btn_convert_now" class="buy-sell-btn mt-3" *ngIf="selectedType" (click)="openConvertComponent()" [disabled]="userRoleType !== 1">{{ buySellCurrency }}</button>
+  </div>
+
+</div>

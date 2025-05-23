@@ -1,11 +1,263 @@
 $white: #ffffff;
 $black: #000000;
-$he_heebo: 'Heebo', sans-serif;
+$white-button-text-color: #1d1d22;
+$white-gray: #f5f5fa;
+$general-border-color: #d9dadd;
+$general-border-color-second: #d8d9e9;
+$dark-border-color: rgba(29, 29, 34, 0.1);
+$brand-primary-color: #2947f2;
+$brand-secondary-color: #ff6805;
+$dialog-inner-heading-color: #030203;
+$light-gray: #c6c8cc;
+$dark-gray: #6f6f7b;
+$dark-gray-normal-ligh: #a5a5a5;
+$blue-black: #01031c;
+$form-label: #7e8088;
+$form-control-border: #b4b6bb;
+$form-control-text: #808080;
+$gradient-black-btn-primary: #000000;
+$gradient-black-btn-secondary: #444444;
+$aqua-dark: #05f2f2;
+$action-btn-color: #909199;
+$disabled-button: #d9d9d9;
+$success-text-color: #45ae4a;
+$unsuccess-text-color: #f04853;
+$add-new-wallet-border: #b7c2d3;
+$back-orange: #ffb687;
+$back-shine: #63aeae;
+$back-shine-font-color: #154954;
+$back-blue-text-color: #bac2ef;
+$signature-hading-sub: #324ff3;
+$primary-blue: #1d4ed8;
+$signature-first-text-color: #717386;
+$error-msg-text: #dc3545;
+$dark-black: #2C2C33;
+$profile-bg-color: #1D1D22;
+$white-light-gray: #EAEEF3;
+$text-protection-color:#212529;
+$disable-button-bg: #F5F7FA;
+$dark-new-blue: #1155CC;
+$new-whte-text: #e5e9fc;
+$light-success-color: #daefdb;
+$whitesmoke-new: #efefef;
+$white-smoke-has: #D9D9D9;
+$normal-gray: #cccccc;
+$sub-text-colot: #5b5b66;
+$pay-selectd: #ff5a4b;
+$pay-btn-text: #60221c;
+$span-color: #909099;
+$new-white: #f2f4ff;
+$new-white-background: #f0f1fe;
+$gray-border-color: #9d9d9d;
+$dark-gray-border-color: #74819d;
+$exchange-rate-fleg-background: #ECEEFE;
+$notification-blox-border: #F9B8BE;
+$notification-blox-background: #FEF6F6;
+$exchange-create-date: #A3A5AA;
+$app-store-text-color: #4B4B55;
+$calender-arrow-icon-color: #B7C1FB;
+$calender-header-color: #F5F7FE;
+$calendar-border-color: #AABBD5;
 $color-blue: #2947F2;
-$font-14: 14px;
 $brand-secondary-color: #ff6805;
 $brand-primary-color: #2947f2;
-$blue-black: #01031c;
+
+//Calendar event colors
+$cal-ev-red: #F04853;
+$cal-ev-blue: #2947F2;
+$cal-ev-black: #01031C;
+$cal-ev-orange: #FF6805;
+$week-day-gray: #848585;
+$month-day-font-color: #252525;
+// $calender-plush-icon-background: #0C41FF;
+
+
+
+// risk indication
+$high-risk-color:#FF7078;
+$mid-risk-color:#F6A474;
+$low-risk-color:#F4C344;
+$low-profit-color:#E8DE00;
+$mid-profit-color:#ACD33A;
+$opportunity-color:#59D089;
+
+/* setting Work flow Color */
+
+$sky-blue: #05F2F2;
+$orange: #FF6805;
+// $light-blue: #2947F2;
+
+
+
+//Font Family
+$poppins: 'Poppins', sans-serif;
+$he_font: "Rubik";
+$manrope: "Manrope",$he_font, sans-serif;
+$inter: "Inter",$he_font, sans-serif;
+$epilogue: "Epilogue","Rubik", sans-serif;
+$he_heebo: 'Heebo', sans-serif;
+
+//Font Sizes
+$font-10: 10px;
+$font-11: 11px;
+$font-12: 12px;
+$font-13: 13px;
+$font-14: 14px;
+$font-15: 15px;
+$font-16: 16px;
+$font-18: 18px;
+$font-20: 20px;
+$font-22: 22px;
+$font-23: 23px;
+$font-24: 24px;
+$font-26: 26px;
+$font-27: 27px;
+$font-28: 28px;
+$font-30: 30px;
+$font-32: 32px;
+$font-33: 33px;
+$font-35: 35px;
+$font-36: 36px;
+$font-37: 37px;
+$font-38: 38px;
+$font-48: 48px;
+
+$font-bold:bold;
+$font-600:600;
+
+//header
+$profile-btn-text-color: #01031c;
+$navbar-height: 74px;
+$navbar-height-lg: 58px;
+$navbar-height-sm: 74px;
+
+//Sidebar
+$sidebar-width: 6.928%;
+$sidebar-width-lg: 110px;
+$sidebar-active-menu-bg-color: #f5f7fa;
+$sidebar-menu-text-color: #1d1d22;
+
+//Content Wrapper
+$content-wrapper-bg-color: #f5f7fa;
+
+//Contacts
+$contact-header-label-font-size: 22px;
+// $account-detail-header-bg-color: #2947f2;
+
+//Tab colors
+$tab-color: #5b5b66;
+$active-tab-color: #6f6f7b;
+// $active-tab-border-color: #2947f2;
+
+//Dashboard lists
+$selected-list-item-color: #f5f7fa;
+$exchange-modal-border: #ececec;
+
+
+// duplicate from front V1 (after refactore kyc delete it )
+$color-white        : #fff;
+$color-black        : #000;
+$color-light-gray   : #f4f7fa;
+$color-light-gray-2   : #E2E2E2;
+$color-light-gray-3   : #f9f2f2;
+$color-1            : #fafafc;
+$color-2            : #1CBC95;
+$color-3            : #AEAEAE;
+$color-4            : #8e8e8e;
+$color-5            : #909090;
+$color-6            : #5A6885;
+$color-7            : #525252;
+$color-8            : #334659;
+$color-9            : #ED2854;
+$color-10           : #fba728;
+$color-11           : #396bb4;
+$color-12           : #58D9F9;
+$color-13           : #f5f7fb;
+$color-14           : #ff0000;
+$color-15               : #D4DAFD;
+$color-16: #1B1D33;
+$color-17: #f7fafc;
+$color-18: #DEE1E4;
+$color-19: #EEEEEE;
+$color-20: #4C4E5F;
+
+// Okoora colors
+$color-blaze-orange     : #FF6805;
+$color-blue             : #2947F2;
+$color-bright-turquoise : #05F2F2;
+$color-stratos          : #01031C;
+$color-blue-royal          : #3F5AF3;
+
+// Bootstrap colors
+$color-primary: #007bff;
+$color-secondary: #6c757d;
+$color-success: #28a745;
+$color-info: #17a2b8;
+$color-warning: #ffc107;
+$color-danger: #dc3545;
+
+$btn-c-1                : rgba(212, 218, 253, 1);
+$btn-c-2                : rgba(204, 204, 209, 1);
+
+$color-blaze-orange-2: #ff68051a;
+$color-bright-turquoise-2: #05f2f217;
+$color-blue-2: #2947f21a;
+/**
+* FONTS
+*/
+$font-1                 : 'Manrope', sans-serif; // << main font (for text elements)
+$font-2                 : 'Epilogue', sans-serif; // << secondary font (for headings)
+$font-family-main       : $font-1;
+
+/**
+* FONT WEIGHTS
+*/
+$fw-thin                : 100;
+$fw-extra-light         : 200;
+$fw-light               : 300;
+$fw-book                : 350;
+$fw-regular             : 400;
+$fw-medium              : 500;
+$fw-semi-bold           : 600;
+$fw-bold                : 700;
+$fw-extra-bold          : 800;
+$fw-black               : 900;
+
+/*
+    BORDERS
+*/
+$border--1              : 1px solid #E2E2E2;
+$border--2              : 2px solid #E2E2E2;
+
+
+/**
+* SIZES
+*/
+$borderR--1             : 20px;
+$borderR--2             : 25px;
+$containers-mt          : 5rem;
+$padding--1: 0.5rem 1rem;
+/**
+    root variables
+*/
+
+// %arrow-down {
+//     font-family    : "Font Awesome 5 Free", sans-serif;
+//     content        : "";
+//     font-weight    : 900;
+//     position       : absolute;
+//     right          : 0;
+//     pointer-events : none;
+// }
+
+//
+
+// Download APP text color
+$download_app: #1D4ED8;
+$currently_available_android: #BFDBFE;
+$ios_login: #60A5FA;
+
+
 
 // Primary theme colors conditional (non-max)
 :root {

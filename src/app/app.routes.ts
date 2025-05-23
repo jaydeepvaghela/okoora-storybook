@@ -9,9 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 import { CodeVerificationComponent } from './login/code-verification/code-verification.component';
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
+import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' as 'full' },
+  { path: '', redirectTo: 'main-dashboard', pathMatch: 'full' as 'full' },
+  { path: 'main-dashboard', component: MainDashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'sign-up', component: KycMainComponent },
   { path: 'login', component: LoginComponent},
@@ -21,7 +23,7 @@ export const routes: Routes = [
   { path: 'hedging', component: HedgingProposalComponent },
   { path: 'cashflow', component: CashflowExposureSteppersComponent },
   { path: 'advanced-policy', component: AdvancedPolicyComponent },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', redirectTo: 'main-dashboard' },
 ];
 
 @NgModule({

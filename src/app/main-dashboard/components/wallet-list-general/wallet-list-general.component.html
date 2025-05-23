@@ -1,0 +1,86 @@
+<div *ngIf="roles == '2' && isDashboardBody"
+  [ngClass]="roles == '1' ? 'wallet-main-desh-left' : 'wallet-main-desh-left business-users-list'">
+  <div class="loader-wrapper">
+    <div class="wallet-list-swiper-container d-flex align-items-center">
+      <div [ngClass]="{'prev-swiper': (walletList.length > 6),
+            'no-previous-position': (walletList.length <= 6 && screenWidth > 1365) || isFirstSlide}">
+        <img class="prev-btn-swiper" [ngClass]="{
+              'disable-btn-swiper': isFirstSlide,
+              'next-btn-swiper': !isLastSlide && !isFirstSlide,
+              'previous-btn-swiper': (!isLastSlide && !isFirstSlide) || isLastSlide
+            }" id="swiper-previous" (click)="goToPreviousSlide()" src="images/prev-btn-walletlist.svg" />
+      </div>
+      <mat-selection-list id="wallet-list-id" [multiple]="false" *ngIf="walletList" [disabled]="isReadOnly"
+        class="swiper-wrapper">
+        <mat-list-option *ngFor="let wallet of getModifiedWalletList(walletList) let i = index" placement="top"
+          container="body" tooltipClass="currency-unavailable-tooltip"
+          [class.optionDisabled]="isReadOnly || (router.url === '/main-dashboard' && wallet?.wallet_SupportBaseHedging == false)"
+          [disabled]="isReadOnly || (router.url === '/main-dashboard' && wallet?.wallet_SupportBaseHedging  == false)"
+          [ngbTooltip]="i === 0 ? 'This wallet is your main currency' : (isReadOnly || (router.url === '/main-dashboard' && wallet?.wallet_SupportBaseHedging == false) ? 'Currency unavailable' : '')"
+          (selectedChange)="!(router.url === '/main-dashboard' && wallet?.wallet_SupportBaseHedging  == false) && !isReadOnly && walletSelectionChange(wallet,i)"
+          [selected]="wallet?.wallet_Currency?.code == selectedWallet.wallet_Currency.code"
+          id="wallet-{{ wallet?.wallet_Currency?.code }}" class="swiper-slide" (click)="changeWalletForDashboard()">
+          <div class="wallet-desh-box"
+            (click)="!(router.url === '/main-dashboard' && wallet?.wallet_SupportBaseHedging  == false) && !isReadOnly &&selectedWalllet(wallet , i)"
+            tabindex="0">
+            <div class="back-new back-black-new">
+              <div class="wallet-box-left">
+                <div class="wallet-flg-icon" *ngIf="!(router.url === '/main-dashboard')">
+                  <img [src]="wallet?.wallet_Flag" [alt]="wallet?.wallet_Currency?.code"
+                    id="wallet-flag-{{ wallet?.wallet_Currency?.code }}" />
+                </div>
+                <div class="wallet-flg-icon" *ngIf="(router.url ===  '/main-dashboard')">
+                  <ng-container *ngIf="wallet?.wallet_Hedging">
+                    <img [src]="wallet?.wallet_Flag" [alt]="wallet?.wallet_Currency?.code"
+                      id="wallet-flag-{{ wallet?.wallet_Currency?.code }}" />
+                    <img [src]="wallet?.wallet_Hedging?.base_flag" [alt]="wallet?.wallet_Currency?.code"
+                      id="wallet-flag-{{ wallet?.wallet_Currency?.code }}" />
+                  </ng-container>
+                  <ng-container *ngIf="wallet?.wallet_Hedging == null">
+                    <img [src]="wallet?.wallet_Flag" [alt]="wallet?.wallet_Currency?.code"
+                      id="wallet-flag-{{ wallet?.wallet_Currency?.code }}" />
+                  </ng-container>
+                </div>
+                <p class="wallet-balance-text" id="wallet-balance">Wallet Balance</p>
+                <p class="wallet-balance-price" id="wallet-price">{{ wallet?.wallet_Currency?.sign }}{{
+                  wallet?.wallet_Amount|
+                  number:'1.2-2' }}</p>
+                <p class="primary-wallet-tag" id="primary-wallet-tag" *ngIf="i == 0">Primary Currency</p>
+              </div>
+            </div>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+      <div
+        [ngClass]="{'next-swiper': (walletList.length > 6), 'no-next-position': (walletList.length <= 6  && screenWidth > 1365) || isLastSlide}">
+        <img class="next-btn-swiper" id="swiper-next-button" [ngClass]="{ 'disable-btn-swiper': isLastSlide }"
+          (click)="goToNextSlide()" src="images/next-btn-walletlist.svg" />
+      </div>
+    </div>
+    
+  </div>
+  <div class="wallet-desh-box add-new-wallet" (click)="addWalletModal()" id="add-wallet-btn">
+    <div class="wallet-box-left add-new-wallet-inner">
+      <div class="wallet-flg-icon">
+        <img *ngIf="roles == '1'" src="images/add-new-wallet-icon.svg" alt="Add New Wallet" id="add-new-1" />
+        <div class="add-new-btn-wallet" *ngIf="roles == '2'">+</div>
+
+      </div>
+      <p class="add-new-wallet-text">Add new wallet</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="roles == '2' && walletList?.length && !isDashboardBody" class="wallet-list-business">
+  <div class="flag">
+    <img [src]="selectedWallet.wallet_Flag" id="wallet-flag" [alt]="selectedWallet.wallet_Currency.code">
+  </div>
+  <div class="currency-wrapper">
+    <div class="row-top">
+      <div class="wallet-amount">{{ selectedWallet.wallet_Amount | number:'1.2-2' }} <span class="currency">{{
+          selectedWallet.wallet_Currency.code }}</span></div>
+      <button class="wallet-list-btn" id="wallet-list-btn" mat-icon-button [disabled]="!walletList?.length"
+        (click)="openWalletListDialog()"></button>
+    </div>
+  </div>
+</div>

@@ -33,6 +33,19 @@
             padding: 48px 2.8% 80px;
             min-height: calc(100vh - 58px);
         }
+
+        &.authenticate-user {
+            @media screen and (max-width: 1440px) {
+                padding: 28px 2.8% 80px 2.8% !important;
+                min-height: calc(100vh - $navbar-height-lg);
+            }
+            @media screen and (max-width: 1024px) {
+                padding: 59px 2.8% 80px 2.8% !important;
+            }
+            @media screen and (max-width: 767px) {
+                padding: 18px 2.8% 80px 2.8% !important;
+            }
+        }
     }
     @media screen and (max-width:1440px) {
         padding:93px 0 0 124px;

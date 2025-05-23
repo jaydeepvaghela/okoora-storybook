@@ -2,6 +2,9 @@
 @import "bootstrap/scss/bootstrap";
 @import "assets/scss/variable";
 @import "assets/scss/fonts";
+// @import '~swiper/swiper-bundle.css';
+@import "@mobiscroll/angular/dist/css/mobiscroll.scss";
+@import '~swiper/swiper-bundle.css';
 
 // slim-scroll-scss
 ::-webkit-scrollbar {

@@ -1,0 +1,23 @@
+<svg width="24" height="12" viewBox="0 0 24 12" xmlns="http://www.w3.org/2000/svg">
+  <rect width="24" height="12" fill="none"/>
+  <g id="Dashboard / Pay later /">
+    <path d="M-4770 -3727C-4770 -3728.1 -4769.1 -3729 -4768 -3729H33808C33809.1 -3729 33810 -3728.1 33810 -3727V5512C33810 5513.1 33809.1 5514 33808 5514H-4768C-4769.1 5514 -4770 5513.1 -4770 5512V-3727Z" fill="white"/>
+    <g id="Dashboard / Pay later / banner">
+      <rect width="1920" height="1688" transform="translate(-1826 -1153)" fill="#F5F7FA"/>
+      <g id="primary" filter="url(#filter0_b_17441_5726)">
+        <path d="M22.5 6L1 6ZM6 11L1 6L6 1" fill="white"/>
+        <path d="M22.5 6L1 6M1 6L6 11M1 6L6 1" stroke="#2947F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    <path d="M-4768 -3728H33808V-3730H-4768V-3728ZM33809 -3727V5512H33811V-3727H33809ZM33808 5513H-4768V5515H33808V5513ZM-4769 5512V-3727H-4771V5512H-4769ZM-4768 5513C-4768.55 5513 -4769 5512.55 -4769 5512H-4771C-4771 5513.66 -4769.66 5515 -4768 5515V5513ZM33809 5512C33809 5512.55 33808.6 5513 33808 5513V5515C33809.7 5515 33811 5513.66 33811 5512H33809ZM33808 -3728C33808.6 -3728 33809 -3727.55 33809 -3727H33811C33811 -3728.66 33809.7 -3730 33808 -3730V-3728ZM-4768 -3730C-4769.66 -3730 -4771 -3728.66 -4771 -3727H-4769C-4769 -3727.55 -4768.55 -3728 -4768 -3728V-3730Z" fill="white" fill-opacity="0.1"/>
+  </g>
+  <defs>
+    <filter id="filter0_b_17441_5726" x="-4" y="-4" width="31.5" height="20" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+      <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_17441_5726"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_17441_5726" result="shape"/>
+    </filter>
+  </defs>
+</svg>
+

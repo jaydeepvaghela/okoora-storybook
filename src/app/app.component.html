@@ -1,10 +1,10 @@
-<div class="layout" [ngClass]="{'not-dashboard': isSignUpRoute || isLoginRoute || isForgotPasswordRoute || isChangePasswordRoute || isCodeVerificationRoute}">
+<div class="layout" [ngClass]="{'not-dashboard': isAuthRoute}">
     <ng-container *ngIf="!isSignUpRoute && !isLoginRoute && !isForgotPasswordRoute && !isChangePasswordRoute && !isCodeVerificationRoute">
         <app-header (openSidebar)="openSidebar()"></app-header>
         <app-sidebar></app-sidebar>
     </ng-container>
     
-    <div class="content-wrapper" [ngClass]="{'risk-manager': isRiskManagerRoute}">
+    <div class="content-wrapper" [ngClass]="{'risk-manager': isRiskManagerRoute, 'authenticate-user': isLoggedInUser}">
         <router-outlet />
     </div>
 </div>

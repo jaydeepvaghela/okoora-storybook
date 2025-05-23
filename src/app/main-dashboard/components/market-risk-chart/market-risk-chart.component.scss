@@ -1,0 +1,46 @@
+@import '../../../../assets/scss/variable';
+@import '../../../../assets/scss/mixins';
+
+.chart-container {
+  position: relative;
+  .chart-texts {
+    @include flex(center, center, column);
+    position: absolute;
+    bottom: 5px;
+    left: -10px;
+    right: 0;
+    margin: auto;
+    width: fit-content;
+
+    .info-icon {
+      @include flex(center, center, column);
+      width: 12px;
+      height: 12px;
+      border: 1px solid #000;
+      border-radius: 20px;
+      font-size: 12px;
+      position: absolute;
+      top: -3px;
+      right: -13px;
+    }
+
+    .risk {
+      text-align: center;
+      font-size: 16px;
+      line-height: 18px;
+      font-weight: 700;
+      color: #0e0d0d;
+      margin-bottom: 6px;
+      max-width: 111px;
+      width: 111px;
+      min-width: 111px;
+    }
+
+    .label {
+      font-size: $font-14;
+      line-height: 18px;
+      font-weight: 400;
+      color: var(--brand-primary-color);
+    }
+  }
+}

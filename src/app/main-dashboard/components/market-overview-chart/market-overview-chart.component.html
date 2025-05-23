@@ -1,0 +1,47 @@
+<div class="currency-payment-rate">
+  <div class="currency-payment-rate-head">
+    <div class="chart-header">
+      <div class="exchange-rate-currencies">
+        <div class="img-group">
+          <img [src]="currencyOfUser" alt="currency" class="active_currency_flag" />
+          <img [src]="activeCurrency?.wallet_Flag" alt="currency" class="user_currency_flag" />
+        </div>
+        <div class="label-group">
+          <h2 class="cpr-title">
+            {{ activeCurrency?.wallet_Currency?.code }}
+            /{{ activeCurrency?.wallet_Hedging?.exposureBaseCurrency }}
+          </h2>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="lastPaymentRateData" class="currency-payment-rate-data">
+      <label class="previous-payment-rate" *ngIf="lastPaymentRateData?.previousPaymentRate">
+        Previous payment rate
+        <span [ngClass]="{
+            percentageRed: lastPaymentRateData?.direction == Directions?.Down,
+            percentageGreen: lastPaymentRateData?.direction == Directions?.Up
+          }">{{
+          lastPaymentRateData?.previousPaymentRate | number : "1.0-4"
+          }}</span>
+      </label>
+
+      <div class="cpr-right-wrap">
+        <strong class="cpr-info-text"> {{lastPaymentRateData?.percentages ? "Current rate is higher by" : "Current rate is"}} </strong>
+        <span *ngIf="lastPaymentRateData?.percentages" class="last-pay-perc" [ngClass]="{
+            percentageRed: lastPaymentRateData?.direction == Directions?.Down,
+            percentageGreen: lastPaymentRateData?.direction == Directions?.Up
+          }">{{ lastPaymentRateData?.percentages }} %
+        </span>
+
+        <label [ngClass]="{
+            amountBackgroundRed: lastPaymentRateData?.direction == Directions?.Down,
+            amountBackgroundGreen: lastPaymentRateData?.direction == Directions?.Up
+          }">
+          {{ lastPaymentRateData?.currentPaymentRate | number : "1.0-4" }}
+        </label>
+      </div>
+    </div>
+  </div>
+  <div id="marketChart"></div>
+</div>

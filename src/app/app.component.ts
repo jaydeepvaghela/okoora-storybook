@@ -15,17 +15,32 @@ export class AppComponent {
   @Input() ShowDashboard: boolean = false;
   @Input() Showhedging: boolean = false;
   @Input() showCashflowExposure: boolean = false;
+  isLoggedInUser!: string | null;
+  
   constructor(private router: Router) {}
+  
   ngOnInit(): void {
     // Only navigate if it's the initial load (empty path)
-    if (this.router.url === '/') {
-      this.router.navigate(['/dashboard']);
-    }
-    const isLoggedInUser = localStorage.getItem('isLoggedInUser') === 'false'
-    if (isLoggedInUser) {
+    // if (this.router.url === '/') {
+    // }
+    this.isLoggedInUser = localStorage.getItem('isLoggedInUser')
+    if (!this.isLoggedInUser) {
       this.router.navigate(['/sign-up']);
+    } else {
+      this.router.navigate(['/main-dashboard']);
     }
   }
+
+  get isAuthRoute(): boolean {
+    return (
+      this.isSignUpRoute ||
+      this.isLoginRoute ||
+      this.isForgotPasswordRoute ||
+      this.isChangePasswordRoute ||
+      this.isCodeVerificationRoute
+    );
+  } 
+
   get isRiskManagerRoute(): boolean {
     return this.router.url === '/dashboard' || this.router.url === '/hedging' || this.router.url === '/cashflow' || this.router.url === '/advanced-policy';
   }
@@ -44,6 +59,10 @@ export class AppComponent {
 
   get isChangePasswordRoute(): boolean {
     return this.router.url === '/change-password';  
+  }
+
+  get isCodeVerificationRoute(): boolean {
+    return this.router.url === '/code-verification';  
   }
 
   openSidebar() {

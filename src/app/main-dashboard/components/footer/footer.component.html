@@ -1,0 +1,4 @@
+<div class="footer" [ngClass]="footerBottom == 'auto' ? 'footer-auto' : footerBottom == 'relative' ? 'footer-relative' : ''">
+  <p class="footer-text" *ngIf="!isPlanScreen">By using these payment services, you agree to T&Cs <a href="https://www.airwallex.com/terms/okoora-connected-account-terms" target="_blank">here</a></p>
+  <p class="footer-text" *ngIf="isPlanScreen">By using these payment services, you agree to Airwallex's T&Cs <a href="https://www.airwallex.com/terms/okoora-connected-account-terms" target="_blank">here</a></p>
+</div>

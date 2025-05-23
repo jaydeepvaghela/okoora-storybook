@@ -1,0 +1,93 @@
+@import "../../../../assets/scss/variable";
+@import "../../../../assets/scss/mixins";
+
+::ng-deep {
+  .tab-group-sidetab {
+    .mat-mdc-tab-header {
+      margin-bottom: 11px;
+      background-color: #f5f7fa;
+
+      @media only screen and (max-width: 1440px) {
+        padding-bottom: 11px;
+        margin-bottom: 0px;
+      }
+
+      .mdc-tab {
+        border-radius: 7px;
+        padding: 18px 35px;
+        height: auto !important;
+
+        @media only screen and (max-width: 1440px) {
+          padding: 13px 35px;
+        }
+
+        .mat-mdc-tab-ripple {
+          border-radius: 7px;
+        }
+
+        .mdc-tab__ripple {
+          &::before {
+            border-radius: 7px;
+          }
+        }
+
+        &.mdc-tab--active {
+          background-color: $white;
+
+          &:hover {
+            .mdc-tab__ripple {
+              &::before {
+                background-color: $white;
+              }
+            }
+          }
+
+          .mdc-tab__text-label {
+            font-weight: 700;
+            font-size: 14px;
+            font-style: normal;
+            color: var(--active-tab-border-color);
+          }
+        }
+
+        .mdc-tab__text-label {
+          font-family: $epilogue;
+          font-size: $font-14;
+          font-weight: 400;
+          color: $tab-color;
+        }
+
+        .mdc-tab-indicator {
+          display: none;
+        }
+      }
+
+      .mat-mdc-tab-labels {
+        column-gap: 8px;
+
+        @media screen and (max-width: 1440px) {
+          column-gap: 6px;
+        }
+      }
+
+      .mat-mdc-tab-header-pagination {
+        display: none;
+      }
+    }
+
+    .mat-mdc-tab-body-wrapper {
+      background-color: $white;
+      min-height: 599px;
+      border-radius: 3px;
+
+      @media only screen and (max-width: 1440px) {
+        min-height: 481px;
+        max-height: 481px;
+      }
+    }
+  }
+
+  .mat-mdc-tab-body-content {
+    overflow-x: hidden !important;
+  }
+}

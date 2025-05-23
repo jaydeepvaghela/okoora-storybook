@@ -1,0 +1,115 @@
+<div class="lock-up-wrapper loader-wrapper">
+  <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+
+  <div class="label-wrapper">
+    <h3 class="label">Future exchange rate</h3>
+    <span class="info-icon" htmlTooltip
+      tooltipBody="A currency future, also called an FX future, is a contract to exchange currencies on a future date at a fixed price (exchange rate)">i</span>
+  </div>
+  <div class="date-wrapper">
+    <mat-select id="timeframe_lock_chart" [ngClass]="{'inputClickedFlag': timeFrameClickedFlag , 'dateClickedErrorClass':errFlag }"
+      (click)="timeFrameClick()" class="select-timeframe" placeholder="Select time frame"
+      [(ngModel)]="selectedTimeFrame" (ngModelChange)="onTimeFrameChange()" disableRipple
+      panelClass="my-select-panel-class">
+      <mat-option class="timeframe-option" value="1 month">
+        <input class="timeframe-radio" type="radio" [checked]="selectedTimeFrame === '1 month'">
+        <span [ngClass]="{'bold-text': selectedTimeFrame === '1 month'}">1 Month</span>
+      </mat-option>
+      <mat-option class="timeframe-option" value="3 months">
+        <input class="timeframe-radio" type="radio" [checked]="selectedTimeFrame === '3 months'">
+        <span [ngClass]="{'bold-text': selectedTimeFrame === '3 months'}">3 Month</span>
+      </mat-option>
+      <mat-option class="timeframe-option" value="6 months">
+        <input class="timeframe-radio" type="radio" [checked]="selectedTimeFrame === '6 months'">
+        <span [ngClass]="{'bold-text': selectedTimeFrame === '6 months'}">6 Month</span>
+      </mat-option>
+      <mat-option class="timeframe-option" value="9 months">
+        <input class="timeframe-radio" type="radio" [checked]="selectedTimeFrame === '9 months'">
+        <span [ngClass]="{'bold-text': selectedTimeFrame === '9 months'}">9 Month</span>
+      </mat-option>
+      <mat-option class="timeframe-option" value="1 year">
+        <input class="timeframe-radio" type="radio" [checked]="selectedTimeFrame === '1 year'">
+        <span [ngClass]="{'bold-text': selectedTimeFrame === '1 year'}">1 Year</span>
+      </mat-option>
+    </mat-select>
+    <div class="date-picker lock-picker" (click)="dateClicked()"  [ngClass]="{'dateClickedErrorClass':errFlag }" >
+      <input matInput id="lockDate_lock_chart" [(ngModel)]="lockDateValue" [matDatepicker]="lockUpDatepicker"
+        (dateChange)="addEvent('input', $event)">
+      <mat-datepicker id="lockDate_datepicker_lock_chart" (click)="dateClicked()" #lockUpDatepicker panelClass="custom-datepicker">
+      </mat-datepicker>
+      <button id="lockDate_btn_lock_chart"  [ngClass]="{'inputClickedFlag':dateClickedFlag}" class="datepicker-toggle lock-up-datepicker-btn"  mat-icon-button (click)="lockUpDatepicker.open(); openLockDateCalendar();"
+        panelClass="date-tooltip" [ngbTooltip]="lockDate"
+        placement="top"></button>
+      <img class="checked-lock-date" id="lockDate_img_lock_chart"  (click)="lockUpDatepicker.open()" *ngIf="lockDate" src="images/lock-date-checked.svg"
+        alt="checked" />
+    </div>
+  </div>
+  <div *ngIf="timeFrameMsg || dateErrMsg">
+    <span id="lock_timeFrame_msg_lock_chart" class="timeFrame-error-msg">
+      {{timeFrameMsg}}
+    </span>
+  </div>
+  <div class="error-hedgedate" *ngIf="errorMsg">
+    <span class="error-msg" id="lock_err_lock_chart">
+      {{errorMsg}}
+    </span>
+  </div>
+  <div class="chart-header">
+    <div class="exchange-rate-currencies">
+      <div class="img-group">
+        <img [src]="activeCurrency?.wallet_Flag" alt="currency" />
+        <img [src]="currencyOfUser" alt="currency" />
+      </div>
+      <div class="label-group">
+        <h2 class="label">
+          {{activeCurrency?.wallet_Currency?.code}}/{{activeCurrency?.wallet_Hedging?.exposureBaseCurrency}}</h2>
+        <span id="lock_span_rateDiff_lock_chart" class="last-update">{{currentCurrencyValue?.[activeCurrency?.wallet_Currency?.code]}} {{activeCurrency?.wallet_Currency?.code}} =
+          {{ currentCurrencyValue?.[activeCurrency?.wallet_Hedging?.exposureBaseCurrency]?.toFixed(4)}}
+          ILS</span>
+      </div>
+    </div>
+    <div class="chart-indications">
+      <span class="indication-label risk">Risk</span>
+      <span class="indication-label opportunity">Opportunity</span>
+    </div>
+  </div>
+  <div class="apex-chart-container">
+    <div class="profit-loss-view" *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Down">
+      <img class="profit-view" src="images/lockChartProfit.svg" />
+      <img class="loss-view" src="images/lockChartLoss.svg" />
+    </div>
+    <div class="profit-loss-view" *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Up">
+      <img class="profit-view" src="images/lockChartLossUP.svg" />
+      <img class="loss-view" src="images/lockChartProfitDown.svg" />
+    </div>
+    <apx-chart id="exchangeRateChart" *ngIf="chartOptions" [series]="chartOptions?.series!" [chart]="chartOptions?.chart!"
+      [colors]="chartOptions?.colors" [xaxis]="chartOptions?.xaxis!" [yaxis]="chartOptions?.yaxis!"
+      [dataLabels]="chartOptions?.dataLabels!" [grid]="chartOptions?.grid!" [stroke]="chartOptions?.stroke!"
+      [title]="chartOptions?.title!" [labels]="chartOptions?.labels!" [annotations]="chartOptions?.annotations!"
+      [plotOptions]="chartOptions?.plotOptions!" [fill]="chartOptions?.fill!"></apx-chart>
+  </div>
+  <!-- <div class="future-lock-chart">
+    <img *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Up" src="images/lockUP100.svg" />
+    <img *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Down" src="images/lockDown101.svg" />
+    <span *ngIf="createdHedgeData?.strike"> {{ createdHedgeData?.strike.toFixed(2)}}</span>
+    <span class="none-strike" *ngIf="!createdHedgeData?.strike"> X </span>
+  </div> -->
+  <button id="lock_btn_execute_lock_chart" class="lock-up-btn" *ngIf="!selectedTimeFrame && !lockDateValue" (click)="showConfPopup()" [disabled]="userRoleType !== 1">
+    <!-- {{ (isCalendarEnable && lockDate) ? 'Execute' : activeCurrency?.wallet_Hedging?.direction == Directions?.Up ? 'Lock and Up' : 'Lock and Down' }} -->
+    Execute
+  </button>
+  <button id="lock_btn1_execute_lock_chart" class="lock-up-btn" *ngIf="selectedTimeFrame || lockDateValue"
+  (click)="showConfPopup()" [disabled]="userRoleType !== 1">Execute</button>
+
+  <div class="confirmation-popup" *ngIf="showConfirmation">
+    <button id="lock_btn_hide_lock_chart" class="close-icon" (click)="hideConfPopup()"></button>
+    <p class="message">I am aware that during the life of the transaction there may be an additional collateral
+      requirement that will be
+      determined in accordance with the change in market conditions and in accordance with the company's requirement. If
+      these are not passed on time, the company can, but does not have to, perform actions including closing the deal
+      and forfeiting the amount of collateral.</p>
+    <mat-checkbox id="lock_confirm_checkbox_lock_chart" (change)="onChange($event)" class="confirm-check">I confirm the general conditions and disclosure
+      about the risk.</mat-checkbox>
+    <button id="lock_btn_continue_lock_chart" class="continue" [disabled]="!confirmCondition" (click)="opneLockup(createdHedgeData)">Continue</button>
+  </div>
+</div>

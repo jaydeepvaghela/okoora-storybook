@@ -1,0 +1,450 @@
+<div class="loader-wrapper calendar-box-wrapper">
+<ng-container *ngIf="!showTable">
+  <div *ngIf="calendarView == 'month'" class="month-view-resources">
+    <div class="resource-header">
+      <span>
+        <img
+          class="all-currency"
+          src="images/all-currency-flag-new.svg"
+          alt="currency"
+        />
+      </span>
+    </div>
+    <div class="resource-body">
+      <div class="rs-alert">Alert</div>
+      <div class="rs-payment">Payment</div>
+      <div class="rs-convert">Exchange</div>
+      <div class="rs-hedge" *ngIf="user?.afiiliate?.currency != 'EUR'">Hedge</div>
+    </div>
+  </div>
+  <!-- <mbsc-eventcalendar
+    id="dashboardCalendar"
+    #eventCalendar
+    class="cust-event-calendar"
+    [class.month-calender-wrap]="calendarView == 'month'"
+    [options]="calendarOptions"
+    [scheduleEventTemplate]="scheduleEventTemplate"
+    [dayTemplate]="resourceHeader"
+    [resourceTemplate]="resourceTemplate"
+    [headerTemplate]="calendarHeaderTemplate"
+    [labelTemplate]="labelTemplate"
+    [resourceHeaderTemplate]="resourceHeaderTemplt"
+    [dayContentTemplate]="dayContentTemplate"
+    (onPageChange)="calendarPageChanged($event)"
+    (onSelectedDateChange)="calendarDateChanged($event)"
+  > -->
+    <ng-template #calendarHeaderTemplate>
+      <div class="header-wrapper">
+        <div class="calender-header-left">
+          <div class="date-change">
+            <!-- <mbsc-calendar-prev id="mbsc-date-prev" class="md-work-week-prev"></mbsc-calendar-prev>
+            <mbsc-calendar-nav id="mbsc-date-nav" class="md-work-week-nav"></mbsc-calendar-nav>
+            <mbsc-calendar-next id="mbsc-date-next" class="md-work-week-next"></mbsc-calendar-next> -->
+          </div>
+          <div class="md-work-week-picker">
+            <mat-select
+              id="calendar-view-opts"
+              [(ngModel)]="calendarView"
+              (valueChange)="changeView($event)"
+              panelClass="calender-view-option"
+            >
+              <!-- <mat-option value="day">Day</mat-option> -->
+              <mat-option id="calendar-week-view" value="week">Week</mat-option>
+              <mat-option id="calendar-month-view" value="month">Month</mat-option>
+            </mat-select>
+          </div>
+        </div>
+        <div class="calender-header-right">
+          <!-- <button class="clander-view-btn clander-view-btn-graph"></button> -->
+          <button id="calendarAddAction" class="clander-view-btn clander-view-btn-plush" [matMenuTriggerFor]="addEvent"></button>
+          <mat-menu #addEvent class="add-event-panel" xPosition="before">
+            <div class="add-event-menu-item">
+              <button id="calendar-add-alert" mat-menu-item (click)="alertDrawerOpen(true)">Alert</button>
+            </div>
+            <div class="add-event-menu-item">
+              <button id="calendar-add-payment" mat-menu-item (click)="openPaymentDialog(true)">Payment</button>
+            </div>
+            <div class="add-event-menu-item">
+              <button id="calendar-add-exchange" [disabled]="userRoleType != 1" mat-menu-item (click)="openConvertDialog(true)">Exchange</button>
+            </div>
+            <div class="add-event-menu-item" *ngIf="user?.afiiliate?.currency != 'EUR'">
+              <button id="calendar-add-hedge" [disabled]="userRoleType != 1" mat-menu-item (click)="openHedgeDialog(true)">Hedge</button>
+            </div>
+          </mat-menu>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #resourceHeaderTemplt>
+        <div class="all-currency-flag-new-wrap">
+          <img
+            class="all-currency"
+            *ngIf="selectedCurrencies?.includes('all')"
+            src="images/all-currency-flag-new.svg"
+            alt="currency"
+          />
+        </div>
+    </ng-template>
+  <!-- </mbsc-eventcalendar> -->
+  <ng-template #dayContentTemplate let-data>
+    <button
+      id="add-event-month-{{data?.date | date:'ddMM'}}"
+      [matMenuTriggerFor]="monthAddEventMenu"
+      mat-icon-button
+      class="month-add-event-btn"
+      (click)="$event.stopPropagation()"
+    ></button>
+    <mat-menu #monthAddEventMenu="matMenu" class="add-event-menu">
+      <div class="add-event-menu-item">
+        <button id="add-event-month-alert" mat-menu-item (click)="selectedCalendarDate = data.date;alertDrawerOpen(false, data?.original?.start);">+ Alert</button>
+      </div>
+      <div class="add-event-menu-item">
+        <button id="add-event-month-payment" mat-menu-item (click)="selectedCalendarDate = data.date;openPaymentDialog(false, data?.original?.start)">+ Payment</button>
+      </div>
+      <div class="add-event-menu-item">
+        <button id="add-event-month-convert" mat-menu-item [disabled]="userRoleType != 1" (click)="selectedCalendarDate = data.date;openConvertDialog(false, data?.original?.start)">+ Exchange</button>
+      </div>
+      <div class="add-event-menu-item" *ngIf="user?.afiiliate?.currency != 'EUR'">
+        <button id="add-event-month-hedge" mat-menu-item [disabled]="userRoleType != 1" (click)="selectedCalendarDate = data.date;openHedgeDialog(false, data?.original?.start)">+ Hedge</button>
+      </div>
+    </mat-menu>
+  </ng-template>
+  <ng-template #scheduleEventTemplate let-data>
+    <div class="cell-event">
+      <ng-container *ngIf="data?.original?.events?.length">
+        <div
+          id="week-event-lbl-{{data?.date | date:'ddMM'}}-{{data?.original?.resource}}"
+          class="cust-event-label ev-{{ data?.original?.resource }}"
+          [class.today]="data?.isActive"
+          [matMenuTriggerFor]="eventsMenu"
+          (click)="getData(data?.original)"
+          #menuTrigger="matMenuTrigger"
+        >
+          <span class="label" *ngIf="data?.original?.resource == 0">Alert</span>
+          <span class="label" *ngIf="data?.original?.resource == 1">Payment</span>
+          <span class="label" *ngIf="data?.original?.resource == 2">Exchange</span>
+          <span class="label" *ngIf="data?.original?.resource == 3">Hedge</span>
+          <span class="count">{{ data?.original?.events?.length }}</span>
+        </div>
+        <mat-menu
+          #eventsMenu="matMenu"
+          class="event-menu menu-{{ data?.original?.resource }}"
+        >
+          <!-- <button mat-menu-item *ngFor="let event of data?.original?.events">
+          <span>{{ event?.title }}</span>
+        </button> -->
+          <div
+            class="menu-wrapper menu-{{ data?.original?.resource }}"
+            mat-menu-item
+            (click)="$event.stopPropagation()"
+            disableRipple="true"
+          >
+            <div *ngIf="data?.original?.resource == 0" class="calendar-exchange-main">
+              <div class="calendar-exchange-upper">
+                <div class="title-with-icon-close">
+                  <div class="calendar-exchange-title">
+                    <h6>Alert on exchange rates</h6>
+                  </div>
+                  <div
+                    id="mbsc-aoer-close"
+                    class="calendar-exchange-modal-close"
+                    (click)="menuTrigger.closeMenu()"
+                  >
+                    <button class="close-btn"></button>
+                  </div>
+                </div>
+                <div class="calendar-exchange-tab">
+                  <ng-container *ngFor="let item of data?.original?.events; let i = index">
+                    <div class="radio-btn-tab" *ngIf="i < 3">
+                      <input id="mbsc-aoer-currency-change-{{i}}" type="radio" name="radio" [checked]="i == 0" (click)="GetAlertData(item)"/>
+                      <label class="exchange-rate-fleg img-group">
+                        <img [src]= "item?.sellCurrencyData?.flag" class="active_currency_flag"/>
+                        <img [src]= "item?.buyCurrencyData?.flag" class="user_currency_flag" />
+                      </label>
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="exchange-rates-graph" *ngIf="flagData">
+                  <!-- <app-calendar-view-alert [flag]="flagData"></app-calendar-view-alert> -->
+                </div>
+              </div>
+              <div class="calendar-exchange-below">
+                <div class="table-responsive">
+                  <table class="exchange-table table">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h6>
+                            Alert me if
+                            <span class="text-color-ch">{{flagData?.buyCurrency}}</span> rate reaches
+                          </h6>
+                        </td>
+                        <td class="notification-blox-pb-zero">
+                          <div class="notification-blox-flex">
+                            <div class="notification-blox">
+                              <img
+                                src="images/exchange-rates-notification.svg"
+                              />
+                              <span class="notification-text-new">{{flagData?.targetRate}}</span>
+                            </div>
+                            <!-- <div class="edit-note-after">
+                              <img
+                                src="/assets/images/exchange-rates-edit.svg"
+                              />
+                            </div> -->
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="boder-bn">
+                          <h6>Alert expiry date</h6>
+                        </td>
+                        <td class="tom-text-changes boder-bn">{{flagData?.dueDate}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="view-alerts-btn">
+                  <button id="mbsc-aoer-view-all" *ngIf="data?.original?.events?.length > 3" (click)="setTableVisibility(true);tabSelect(0)">View All Alerts</button>
+                </div>
+                <div class="exchange-rates-alert-btn">
+                  <button id="mbsc-aoer-delete-alert" [disabled]="flagData?.exposuresId == null" (click)="DeleteAlert(flagData?.exposuresId)">Delete this alert</button>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="data?.original?.resource == 1 || data?.original?.resource == 2 || data?.original?.resource == 3" class="menu-table">
+              <div class="table-header">
+                <h3 *ngIf="data?.original?.resource == 1">
+                  Payments <span class="badge">{{data?.original?.events?.length}}</span>
+                </h3>
+                <h3 *ngIf="data?.original?.resource == 2">
+                  Exchanges <span class="badge">{{data?.original?.events?.length}}</span>
+                </h3>
+                <h3 *ngIf="data?.original?.resource == 3">
+                  Hedges <span class="badge">{{data?.original?.events?.length}}</span>
+                </h3>
+                <button id="mbsc-evd-new-payment" [disabled]="oldDate" [class.disabled]="oldDate" *ngIf="data?.original?.resource == 1" class="new-paymnet-calender" (click)="openPaymentDialog(false, data?.date); menuTrigger.closeMenu()" >
+                  + New payment
+                </button>
+                <button id="mbsc-evd-new-exchange" [disabled]="oldDate" [class.disabled]="oldDate" *ngIf="data?.original?.resource == 2" class="new-paymnet-calender" (click)="openConvertDialog(false, data?.date); menuTrigger.closeMenu()">
+                  + New Exchange
+                </button>
+                <button id="mbsc-evd-new-hedge" [disabled]="oldDate" [class.disabled]="oldDate" *ngIf="data?.original?.resource == 3" class="new-paymnet-calender" (click)="openHedgeDialog(false, data?.date); menuTrigger.closeMenu()">
+                  + New Hedge
+                </button>
+              </div>
+              <!-- <app-table-menu [resource]="data?.original?.resource" [tableData]="data?.original?.events.slice(0, 3)"></app-table-menu> -->
+              <div class="view-all-payment">
+                <button id="mbsc-evd-view-all" *ngIf="data?.original?.events?.length > 3" (click)="setTableVisibility(true);tabSelect(data?.original?.resource)">View All</button>
+              </div>
+            </div>
+          </div>
+        </mat-menu>
+      </ng-container>
+      <div class="cell-actions">
+        <button *ngIf="checkHoliday(data.original.start)"
+          id="add-btn-when-event-{{data?.date | date:'ddMM'}}"
+          class="add-event-btn"
+          (click)="$event.stopPropagation(); generateCellMenu(data, $event)"
+        ></button>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #resourceTemplate let-data>
+    <div class="resource-wrapper">
+      <span class="resource-name rs-{{ data?.name.split(' ')[0] | lowercase }}">{{ data?.name }}</span>
+      <a id="calendar-view-all-{{data?.id}}" class="view-all" (click)="setTableVisibility(true); tabSelect(data.id)">View all</a>
+    </div>
+  </ng-template>
+
+  <ng-template #resourceHeader let-data>
+    <div class="date-label" [class.today]="data?.isActive" [class.has-event]="hasEvent(data?.date)" [class.disabled]="!isDayDisabled(data?.date)">
+      <span class="week-day" *ngIf="calendarView !== 'month'">{{
+        data?.date | date : "E"
+      }}</span>
+      <span class="month-day {{calendarView}}">{{ data?.date | date : "dd" }}</span>
+    </div>
+  </ng-template>
+
+  <ng-template #labelTemplate let-data>
+    <button
+      id="month-event-dot-{{data?.original?.start | date:'ddMM'}}-{{data?.original?.resource}}"
+      class="event-dot event-dot-{{ data?.original?.resource }}"
+      [matMenuTriggerFor]="eventMenu"
+      (click)="$event.stopPropagation(); getData(data?.original)"
+      #menuTrigger="matMenuTrigger"
+    ></button>
+    <mat-menu
+      #eventMenu="matMenu"
+      class="event-menu menu-{{ data?.original?.resource }}"
+    >
+      <div
+        class="menu-wrapper menu-{{ data?.original?.resource }}"
+        mat-menu-item
+        (click)="$event.stopPropagation()"
+        disableRipple="true"
+      >
+        <div
+          *ngIf="data?.original?.resource == 0"
+          class="calendar-exchange-main"
+        >
+          <div class="calendar-exchange-upper">
+            <div class="title-with-icon-close">
+              <div class="calendar-exchange-title">
+                <h6>Alert on exchange rates</h6>
+              </div>
+              <div
+                id="mbsc-aoer-close"
+                class="calendar-exchange-modal-close"
+                (click)="menuTrigger.closeMenu()"
+              >
+                <button class="close-btn"></button>
+              </div>
+            </div>
+            <div class="calendar-exchange-tab">
+              <ng-container *ngFor="let item of data?.original?.events; let i = index">
+                <div class="radio-btn-tab" *ngIf="i < 3">
+                  <input id="mbsc-aoer-currency-change-{{i}}" type="radio" name="radio" [checked]="i == 0" (click)="GetAlertData(item)"/>
+                  <label class="exchange-rate-fleg img-group">
+                    <img [src]= "item?.sellCurrencyData?.flag" class="active_currency_flag"/>
+                    <img [src]= "item?.buyCurrencyData?.flag" class="user_currency_flag" />
+                  </label>
+                </div>
+              </ng-container>
+            </div>
+            <div class="exchange-rates-graph" *ngIf="flagData">
+              <!-- <app-calendar-view-alert [flag]="flagData"></app-calendar-view-alert> -->
+            </div>
+          </div>
+          <div class="calendar-exchange-below">
+            <div class="table-responsive">
+              <table class="exchange-table table">
+                <tbody>
+                  <tr>
+                    <td>
+                      <h6>
+                        Alert me if
+                        <span class="text-color-ch">{{flagData?.buyCurrency}}</span> rate reaches
+                      </h6>
+                    </td>
+                    <td class="notification-blox-pb-zero">
+                      <div class="notification-blox-flex">
+                        <div class="notification-blox">
+                          <img
+                            src="images/exchange-rates-notification.svg"
+                          />
+                          <span class="notification-text-new">{{flagData?.targetRate}}</span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="boder-bn">
+                      <h6>Alert expiry date</h6>
+                    </td>
+                    <td class="tom-text-changes boder-bn">{{flagData?.dueDate}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="view-alerts-btn">
+              <button id="mbsc-aoer-view-all" *ngIf="data?.original?.events?.length > 3" (click)="setTableVisibility(true);tabSelect(0)">View All Alerts</button>
+            </div>
+            <div class="exchange-rates-alert-btn">
+              <button id="mbsc-aoer-delete-alert" [disabled]="flagData?.exposuresId == null" (click)="DeleteAlert(flagData?.exposuresId)">Delete this alert</button>
+            </div>
+          </div>
+        </div>
+        <div
+          *ngIf="data?.original?.resource == 1 || data?.original?.resource == 2 || data?.original?.resource == 3"
+          class="menu-table"
+        >
+          <div class="table-header">
+            <h3 *ngIf="data?.original?.resource == 1">
+              Payments <span class="badge">{{ data?.original?.events?.length }}</span>
+            </h3>
+            <h3 *ngIf="data?.original?.resource == 2">
+              Exchanges <span class="badge">{{ data?.original?.events?.length }}</span>
+            </h3>
+            <h3 *ngIf="data?.original?.resource == 3">
+              Hedges <span class="badge">{{ data?.original?.events?.length }}</span>
+            </h3>
+            <button
+              *ngIf="data?.original?.resource == 1"
+              id="mbsc-evd-new-payment"
+              class="new-paymnet-calender"
+              (click)="openPaymentDialog(false, data?.original?.start); menuTrigger.closeMenu()"
+            >
+              + New payment
+            </button>
+            <button
+              *ngIf="data?.original?.resource == 2"
+              id="mbsc-evd-new-exchange"
+              class="new-paymnet-calender"
+              (click)="openConvertDialog(false, data?.original?.start); menuTrigger.closeMenu()"
+            >
+              + New Exchange
+            </button>
+            <button
+              *ngIf="data?.original?.resource == 3"
+              id="mbsc-evd-new-hedge"
+              class="new-paymnet-calender"
+              (click)="openHedgeDialog(false, data?.date); menuTrigger.closeMenu()"
+            >
+              + New Hedge
+            </button>
+          </div>
+          <!-- <app-table-menu [resource]="data?.original?.resource"  [tableData]="data?.original?.events.slice(0, 3)"></app-table-menu> -->
+          <div class="view-all-payment">
+            <button *ngIf="data?.original?.events?.length > 3" id="mbsc-evd-view-all" (click)="setTableVisibility(true);tabSelect(data?.original?.resource)">View All</button>
+          </div>
+        </div>
+        <!-- <div *ngIf="data?.original?.resource == 3">Hedge data</div> -->
+      </div>
+    </mat-menu>
+  </ng-template>
+</ng-container>
+<!-- <mat-drawer #alertDrawer class="event-drawer" mode="side" position="end">
+  <div class="colse-back-white">
+    <button id="mbsc-add-alert-close" mat-icon-button (click)="alertDrawerClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <ng-container *ngIf="alertDrawer.opened">
+    <app-calender-add-alert [isMenu]="false" [selectedCalendarDate]="selectedCalendarDate"></app-calender-add-alert>
+  </ng-container> 
+</mat-drawer> -->
+<ng-container *ngIf="showTable">
+  <div class="table-view-header">
+    <div class="date-preview">
+    </div>
+    <div class="tv-header-right">
+      <button id="mbsc-calendar-back" (click)="setTableVisibility(false)" class="tv-back-btn">
+        <img
+          src="images/back-btn-calendar.svg"
+          alt="back-btn-arrow"
+        />
+        <span>Back</span>
+      </button>
+      <button id="mbsc-table-add" class="date-view-btn" [matMenuTriggerFor]="addEvent"></button>
+      <mat-menu #addEvent="matMenu" class="add-event-panel" xPosition="before">
+        <button id="mbsc-table-add-alert" mat-menu-item (click)="alertDrawerOpen(true)">Alert</button>
+        <button id="mbsc-table-add-payment" mat-menu-item (click)="openPaymentDialog(true)">Payment</button>
+        <button id="mbsc-table-add-exchange" mat-menu-item [disabled]="userRoleType != 1" (click)="openConvertDialog(true)">Exchange</button>
+        <button id="mbsc-table-add-hedge" mat-menu-item [disabled]="userRoleType != 1">Hedge</button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <!-- <mat-date-range-picker #picker></mat-date-range-picker> -->
+  <!-- <app-dashboard-table-view
+    [selectedTab]="selectedTab"
+    [showTable]="showTable"
+    (addAlertClick)="alertDrawerOpen(true)"
+    (addPaymentClick)="openPaymentDialog(true)"
+    (addConvertClick)="openConvertDialog(true)"
+  ></app-dashboard-table-view> -->
+</ng-container>
+<!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+</div>

@@ -1,0 +1,252 @@
+@import "../../../../assets/scss/variable";
+@import "../../../../assets/scss/mixins";
+
+.convert-wrapper {
+  height: 100%;
+  background-image: url(../../../../assets/images/convert-box-wave.svg);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 100%;
+  padding: 26px 56px;
+
+  @media only screen and (max-width: 1440px) {
+    padding: 34px 30px 25px;
+    min-height: 592px;
+  }
+
+  @media only screen and (max-width: 580px) {
+    padding: 15px;
+  }
+
+  .buy-sell-btn {
+    @include flex(center, center, row);
+    font-size: 18px;
+    color: $white;
+    background-color: var(--cal-ev-blue);
+    border-radius: 50px;
+    width: 75%;
+    height: 45px;
+    padding: 20px 0;
+    margin-top: 13px;
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #F3F4F6;
+      color: #000;
+    }
+
+    @media screen and (max-width: 1440px) {
+      font-size: 16px;
+    }
+  }
+}
+
+
+.label-wrapper {
+  @include flex(flex-start, center, row);
+  position: relative;
+  margin-bottom: 10px;
+  padding-right: 18px;
+  width: fit-content;
+
+  .label {
+    font-size: $font-16;
+    font-weight: 700;
+    color: $blue-black;
+    margin: 0px;
+    padding-right: 10px;
+  }
+
+  .info-icon {
+    @include flex(center, center, row);
+    height: 16px;
+    width: 16px;
+    border: 1px solid $form-label;
+    border-radius: 20px;
+    font-size: $font-12;
+    font-weight: bold;
+  }
+}
+
+.convert-label {
+  @include flex(flex-start, center, row);
+  margin-bottom: 22px;
+
+  @media only screen and (max-width: 1440px) {
+    margin-bottom: 6px;
+  }
+
+  .img-group {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    margin-right: 12px;
+
+    @media only screen and (max-width: 1440px) {
+      width: 40px;
+      height: 40px;
+    }
+
+    img {
+      width: 37px;
+      height: 37px;
+      position: absolute;
+
+      @media only screen and (max-width: 1440px) {
+        width: 28px;
+        height: 28px;
+      }
+
+      &:nth-child(1) {
+        top: 0;
+        left: 0;
+      }
+
+      &:nth-child(2) {
+        right: 7px;
+        bottom: 7px;
+
+        @media only screen and (max-width: 1440px) {
+          right: 0;
+          bottom: 4px;
+        }
+      }
+    }
+  }
+
+  .label-group {
+    .label {
+      font-size: $font-32;
+      line-height: 18px;
+      font-weight: 700;
+      color: $blue-black;
+      margin-bottom: 6px;
+
+      @media only screen and (max-width: 1440px) {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 0;
+      }
+    }
+
+    .last-update {
+      font-size: $font-12;
+      line-height: 18px;
+      font-weight: 400;
+      color: $form-control-border;
+
+      @media only screen and (max-width: 1440px) {
+        display: block;
+      }
+    }
+  }
+}
+
+.convert-option-group {
+  @include flex(flex-start, flex-start, column);
+  row-gap: 14px;
+  margin-bottom: 39px;
+
+  @media only screen and (max-width: 1440px) {
+    margin-bottom: 25px;
+  }
+
+  .convert-option {
+    @include flex(space-between, center, row);
+    padding: 13px 22px;
+    border: 1px solid $general-border-color;
+    border-radius: 10px;
+    width: 100%;
+
+    @media only screen and (max-width: 1440px) {
+      padding: 9px 15px;
+    }
+
+    .input-wrapper {
+      @include flex(center, center, row);
+      padding-right: 10px;
+
+      input[type="radio"] {
+        height: 22px;
+        width: 22px;
+        accent-color: var(--brand-primary-color);
+
+        @media only screen and (max-width: 1440px) {
+          height: 16px;
+          width: 16px;
+        }
+
+        @media only screen and (max-width: 580px) {
+          height: 18px;
+          width: 18px;
+        }
+      }
+
+      .option-label {
+        padding-left: 10px;
+        font-size: $font-14;
+        line-height: normal;
+        color: $blue-black;
+        font-weight: 700;
+
+        @media only screen and (max-width: 1440px) {
+          font-size: 12px;
+        }
+
+        @media only screen and (max-width: 580px) {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .option-image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50px;
+    }
+  }
+}
+
+.convert-button {
+  @include flex(center, center, row);
+  font-size: $font-18;
+  line-height: 18px;
+  font-weight: 400;
+  color: $blue-black;
+  border-radius: 50px;
+  width: 255px;
+  height: 44px;
+  margin: 0 auto;
+
+  .rate-wrapper {
+    @include flex(flex-start, center, row);
+
+    @media only screen and (max-width: 1440px) {
+      font-size: 14px;
+    }
+  }
+
+  .convert-rate {
+    font-weight: 700;
+  }
+
+  .chevron {
+    width: 20px;
+    height: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &.up {
+      background-image: url("../../../../assets/images/chevron-green.svg");
+    }
+
+    &.down {
+      background-image: url("../../../../assets/images/chevron-red.svg");
+      transform: rotateX(180deg);
+    }
+  }
+
+  .percentage {
+    font-size: $font-14;
+    font-weight: 500;
+  }
+}

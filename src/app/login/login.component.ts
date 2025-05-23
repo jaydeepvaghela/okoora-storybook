@@ -68,7 +68,8 @@ export class LoginComponent implements OnInit {
       return;
     }
     setTimeout(() => {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/main-dashboard']);
+      localStorage.setItem('isLoggedInUser', 'true');
     }, 1000);
     this.error = '';
     this.rememberValueChange(this.loginForm?.value?.rememberMe!);

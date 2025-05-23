@@ -1,0 +1,235 @@
+button {
+  background: #fff;
+  color: #222;
+  border: 1px solid #e7e7e7;
+  border-bottom: 2px solid #ddd;
+  border-radius: 2px;
+  padding: 4px 17px;
+}
+button.active {
+  color: #fff;
+  background: #008ffb;
+  border: 1px solid blue;
+  border-bottom: 2px solid blue;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.titleWrapper-l31H9iuA
+  .logoWrapper-l31H9iuA:not(.hidden-l31H9iuA)
+  ~ .title-l31H9iuA {
+  padding-left: 0px !important;
+}
+
+::ng-deep {
+  .currency-payment-rate {
+    padding: 25px 35px;
+
+    @media (max-width: 1600px) {
+      padding: 20px;
+    }
+
+    @media (max-width: 1279px) {
+      padding: 15px;
+    }
+
+    .currency-payment-rate-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+
+      @media (max-width: 1279px) {
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .chart-header {
+        .exchange-rate-currencies {
+          display: flex;
+          align-items: center;
+          column-gap: 15px;
+
+          @media (max-width: 1366px) {
+            column-gap: 10px;
+          }
+
+          .img-group {
+            position: relative;
+            padding-top: 10px;
+            padding-left: 10px;
+            z-index: 1;
+
+            .active_currency_flag {
+              width: 28px;
+              height: 28px;
+              border-radius: 28px;
+              position: relative;
+            }
+
+            .user_currency_flag {
+              width: 20px;
+              height: 20px;
+              border-radius: 20px;
+              position: absolute;
+              left: 0;
+              top: 0;
+              z-index: -1;
+            }
+          }
+
+          .label-group {
+            .cpr-title {
+              color: #01031c;
+              font-size: 18px;
+              font-weight: 700;
+              line-height: 24px;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+
+      .currency-payment-rate-data {
+        display: flex;
+        align-items: center;
+        column-gap: 30px;
+
+        @media (max-width: 1440px) {
+          column-gap: 20px;
+        }
+
+        @media (max-width: 1366px) {
+          column-gap: 15px;
+        }
+
+        @media (max-width: 1279px) {
+          column-gap: 10px;
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        @media (max-width: 767px) {
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .previous-payment-rate {
+          color: #1d1d22;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+          display: inline-block;
+
+          span {
+            display: inline-block;
+            margin-left: 2px;
+            font-weight: 700;
+
+            &.percentageRed {
+              color: #f04853 !important;
+            }
+            &.percentageGreen {
+              color: #45ae4a !important;
+            }
+          }
+        }
+
+        .cpr-right-wrap {
+          display: flex;
+          align-items: center;
+          background-color: #f5f7fe;
+          padding: 8px 15px;
+          border-radius: 5px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          -ms-border-radius: 5px;
+          -o-border-radius: 5px;
+
+          @media (max-width: 1366px) {
+            padding: 7px 10px;
+          }
+
+          .cpr-info-text {
+            color: #01031c;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            display: inline-block;
+            margin-right: 10px;
+
+            @media (max-width: 1279px) {
+              margin-right: 7px;
+            }
+          }
+
+          .last-pay-perc {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            display: inline-block;
+            margin-right: 10px;
+            min-width: max-content;
+
+            &.percentageRed {
+              color: #f04853 !important;
+            }
+            &.percentageGreen {
+              color: #45ae4a !important;
+            }
+
+            @media (max-width: 1279px) {
+              margin-right: 7px;
+            }
+          }
+
+          label {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            padding: 4px 10px;
+            border-radius: 3px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+
+            &.amountBackgroundRed {
+              background-color: #f04853;
+            }
+
+            &.amountBackgroundGreen {
+              background-color: #45ae4a;
+            }
+          }
+        }
+      }
+    }
+    #marketChart {
+      & > div {
+        width: 100% !important;
+        height: 100% !important;
+
+        & > iframe {
+          width: 100% !important;
+          height: 340px !important;
+
+          @media (max-width: 1279px) {
+            height: 306px !important;
+          }
+
+          @media (max-width: 1024px) {
+            height: 380px !important;
+          }
+
+          .js-widget-chart-info {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+}

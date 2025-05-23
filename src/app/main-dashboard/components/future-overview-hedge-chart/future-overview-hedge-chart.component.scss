@@ -1,0 +1,916 @@
+@import "../../../../assets/scss/variable";
+@import "../../../../assets/scss/mixins";
+
+.hedge-wrapper {
+  height: 100%;
+  padding: 34px 58px 25px;
+  position: relative;
+
+  @media (max-width: 1800px) {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+  @media (max-width: 1600px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  // .error-hedgedate {
+  //   margin-top: -25px;
+  // }
+
+  @media only screen and (max-width: 1440px) {
+    padding: 34px 30px 25px;
+    min-height: 592px;
+  }
+
+  @media only screen and (max-width: 580px) {
+    padding: 15px;
+  }
+
+  .hedge-chart {
+    width: 100%;
+    text-align: center;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+
+    .up-direction-strike-safeUp {
+      position: absolute;
+      top: auto;
+      left: 35%;
+      right: auto;
+      bottom: 18%;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      height: 22px;
+      padding: 10px 8px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      background: #45AE4A;
+      color: $white;
+      font-family: $manrope;
+      font-size: $font-12;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+      @media only screen and (max-width: 1440px) {
+        left: 36%;
+        bottom: 15%;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        bottom: 21%;
+      }
+
+      @media only screen and (max-width: 991px) {
+        bottom: 19%;
+      }
+
+      @media only screen and (max-width: 580px) {
+        bottom: 18%;
+      }
+
+      @media only screen and (max-width: 480px) {
+        bottom: 17%;
+      }
+
+      @media only screen and (max-width: 380px) {
+        bottom: 16%;
+      }
+    }
+
+    .down-direction-strike-safeUp {
+      position: absolute;
+      top: auto;
+      right: 9%;
+      left: auto;
+      bottom: 18%;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      height: 22px;
+      padding: 10px 8px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      background: #F04853;
+      color: #fff;
+      font-family: 'Manrope';
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+      @media only screen and (max-width: 1440px) {
+        right: 36%;
+        bottom: 15%;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        bottom: 32%;
+      }
+
+      @media only screen and (max-width: 991px) {
+        bottom: 19%;
+      }
+
+      @media only screen and (max-width: 580px) {
+        bottom: 18%;
+      }
+
+      @media only screen and (max-width: 480px) {
+        bottom: 17%;
+      }
+
+      @media only screen and (max-width: 380px) {
+        bottom: 16%;
+      }
+    }
+
+    .up-direction-strike {
+      position: absolute;
+      top: auto;
+      left: 45%;
+      right: auto;
+      bottom: 45%;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      height: 22px;
+      padding: 10px 8px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      background: #45AE4A;
+      color: $white;
+      font-family: $manrope;
+      font-size: $font-12;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+      @media only screen and (max-width: 1440px) {
+        left: 47%;
+        bottom: 46%;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        bottom: 48%;
+      }
+
+      @media only screen and (max-width: 991px) {
+        bottom: 48%;
+      }
+
+      @media only screen and (max-width: 580px) {
+        bottom: 46%;
+      }
+
+      @media only screen and (max-width: 480px) {
+        bottom: 45%;
+      }
+
+      @media only screen and (max-width: 380px) {
+        bottom: 45%;
+      }
+    }
+
+    .down-direction-strike {
+      position: absolute;
+      top: auto;
+      right: 9%;
+      left: auto;
+      bottom: 23%;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      height: 22px;
+      padding: 10px 8px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      background: #F04853;
+      color: #fff;
+      font-family: 'Manrope';
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+      @media only screen and (max-width: 1440px) {
+        right: 12%;
+        bottom: 24%;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        bottom: 34%;
+        right: 20%;
+      }
+
+      @media only screen and (max-width: 991px) {
+        bottom: 34%;
+      }
+
+      @media only screen and (max-width: 580px) {
+        bottom: 33%;
+      }
+
+      @media only screen and (max-width: 480px) {
+        bottom: 30%;
+        right: 17%;
+      }
+
+      @media only screen and (max-width: 380px) {
+        bottom: 25%;
+      }
+    }
+
+
+    .hedge-up-strike {
+      position: absolute;
+      top: auto;
+      left: 65%;
+      right: auto;
+      bottom: 44%;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      height: 22px;
+      padding: 10px 8px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      background: #45AE4A;
+      color: $white;
+      font-family: $manrope;
+      font-size: $font-12;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+      @media only screen and (max-width: 1440px) {
+        left: 67%;
+        bottom: 46%;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        bottom: 48%;
+      }
+
+      @media only screen and (max-width: 991px) {
+        bottom: 48%;
+      }
+
+      @media only screen and (max-width: 580px) {
+        bottom: 46%;
+      }
+
+      @media only screen and (max-width: 480px) {
+        bottom: 45%;
+      }
+
+      @media only screen and (max-width: 380px) {
+        bottom: 45%;
+      }
+    }
+
+
+    .hedge-down-strike {
+      position: absolute;
+      top: auto;
+      right: 48%;
+      left: auto;
+      bottom: 24%;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      height: 22px;
+      padding: 10px 8px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      background: #F04853;
+      color: #fff;
+      font-family: 'Manrope';
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+      @media only screen and (max-width: 1440px) {
+        right: 48%;
+        bottom: 23%;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        bottom: 34%;
+        right: 56%;
+      }
+
+      @media only screen and (max-width: 991px) {
+        bottom: 33%;
+      }
+
+      @media only screen and (max-width: 580px) {
+        bottom: 30%;
+      }
+
+      @media only screen and (max-width: 480px) {
+        bottom: 30%;
+      }
+
+      @media only screen and (max-width: 380px) {
+        bottom: 24%;
+      }
+    }
+    .initial-strike {
+      font-size: 11px;
+      position: absolute;
+      bottom: 4%;
+      left: 60%;
+      transform: translate(-50%, -50%);
+    }
+
+    .second-direction-strike {
+      font-size: 11px;
+      position: absolute;
+      bottom: 5%;
+      left: 60%;
+      transform: translate(-50%, -50%);
+    }
+
+    .first-direction-strike {
+      font-size: 11px;
+      position: absolute;
+      bottom: 5%;
+      left: 38%;
+      transform: translate(-50%, -50%);
+    }
+
+    .first-direction-range-strike-one {
+      font-size: 11px;
+      position: absolute;
+      bottom: 26%;
+      left: 49%;
+      transform: translate(-50%, -50%);
+    }
+
+    .first-direction-range-strike-two {
+      font-size: 11px;
+      position: absolute;
+      bottom: 26%;
+      left: 33%;
+      transform: translate(-50%, -50%);
+    }
+
+    .second-direction-range-strike-one {
+      font-size: 11px;
+      position: absolute;
+      bottom: 12%;
+      left: 73%;
+      transform: translate(-50%, -50%);
+    }
+
+    .second-direction-range-strike-two {
+      font-size: 11px;
+      position: absolute;
+      bottom: 12%;
+      left: 56%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+::ng-deep {
+  .custom-datepicker {
+    width: 361px !important;
+
+    @media screen and (max-width:1440px) {
+      width: 300px!important;
+    }
+    .mat-calendar-body.mat-calendar-body {
+      font-family: $manrope;
+      font-size: 14px;
+    }
+
+    .mat-calendar-table-header {
+      font-size: 14px;
+    }
+
+    .mat-calendar-table-header-divider {
+      display: none;
+    }
+
+    .mat-calendar-content {
+      padding: 0 40px 15px;
+      @media screen and (max-width:1440px) {
+        padding: 0 25px 10px;
+      }
+    }
+
+    .mat-calendar-body-label {
+      visibility: hidden;
+      padding-top: 0!important;
+      padding-bottom: 0!important;
+    }
+
+    .mat-calendar-body-cell-content {
+      padding: 5px;
+      height: unset;
+    }
+  }
+}
+
+.label-wrapper {
+  @include flex(flex-start, center, row);
+  position: relative;
+  margin-bottom: 10px;
+  padding-right: 18px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+
+  .label {
+    font-size: $font-16;
+    font-weight: 700;
+    color: $blue-black;
+    margin: 0px;
+    padding-right: 10px;
+  }
+
+  .info-icon {
+    @include flex(center, center, row);
+    height: 16px;
+    width: 16px;
+    border: 1px solid $form-label;
+    border-radius: 20px;
+    font-size: $font-12;
+    font-weight: bold;
+  }
+}
+
+.protect-options {
+  @include flex(flex-start, center, row);
+  margin-bottom: 15px;
+  border-bottom: 1px dashed;
+  padding-bottom: 15px;
+
+  .radio-wrapper {
+    @include flex(flex-start, center, row);
+
+    &:first-child {
+      padding-right: 39px;
+    }
+
+    .radio-option {
+      font-size: $font-16;
+      font-weight: 700;
+    }
+
+    input[type="radio"] {
+      accent-color: var(--light-blue);
+      height: 16px;
+      width: 16px;
+      margin-right: 6px;
+
+      &:checked+label {
+        color: var(--light-blue);
+      }
+    }
+  }
+}
+
+.date-amount-wrapper {
+  @include flex(flex-start, flex-start, row);
+  position: relative;
+  margin-bottom: 6px;
+
+  @media only screen and (max-width: 1440px) {
+    margin-bottom: 25px;
+  }
+
+  @media (min-width: 1025px) and (max-width: 1199px) {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: start;
+  }
+
+  .date-amount-wrapper-main {
+    .date-selector {
+      @include flex(flex-start, center, row);
+      border: 1px solid $light-gray;
+      border-radius: 5px;
+      padding: 17px 14px;
+      height: 50px;
+      margin-right: 8px;
+      // padding-left: 0;
+      min-width: 150px;
+
+      &.dateClickedFlag {
+        border-color: var(--brand-primary-color);
+      }
+
+      &.selectedDateError {
+        border-color: #F04853;
+
+        &.dateClickedFlag {
+          border-color: var(--brand-primary-color);
+        }
+      }
+
+      @media only screen and (max-width: 1440px) {
+        min-width: 130px;
+        padding: 9px 6px;
+        height: 40px;
+      }
+
+      @media (min-width: 1025px) and (max-width: 1199px) {
+        margin-right: 0;
+      }
+
+      @media only screen and (max-width: 580px) {
+        max-width: 160px;
+      }
+
+      @media only screen and (max-width: 480px) {
+        max-width: 90%;
+        min-width: 90%;
+        margin-right: 0;
+      }
+
+      mat-datepicker-toggle {
+        &::ng-deep {
+          button.mdc-icon-button {
+            width: 21px !important;
+            height: 44px !important;
+            margin-right: 4px;
+            background-image: url(../../../../assets/images/date-picker-icon-black.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+      }
+
+      input {
+        padding: 0;
+        height: 40px;
+        border: 0;
+        width: 100%;
+
+        @media only screen and (max-width: 1440px) {
+          height: 30px;
+
+          &::-webkit-input-placeholder {
+            font-size: 14px;
+            line-height: 20px;
+            color: $black;
+          }
+
+          &:-ms-input-placeholder {
+            font-size: 14px;
+            line-height: 20px;
+            color: $black;
+          }
+
+          &::placeholder {
+            font-size: 14px;
+            line-height: 20px;
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+
+
+  .amountBackgroundRed {
+    background-color: #F04853 !important
+  }
+
+  .amount-wrapper {
+    .input-wrapper-main {
+      @include flex(flex-start, center, row);
+      border: 1px solid $light-gray;
+      border-radius: 5px;
+      padding: 17px 14px;
+      height: 50px;
+      min-width: 231px;
+
+      &.dateClickedFlag {
+        border-color: var(--brand-primary-color);
+      }
+
+      &.typedHedgeAmountError {
+        border-color: #F04853;
+
+        &.dateClickedFlag {
+          border-color: var(--brand-primary-color);
+        }
+      }
+
+      @media only screen and (max-width: 1800px) {
+        min-width: 180px;
+      }
+
+      @media only screen and (max-width: 1600px) {
+        min-width: 160px;
+      }
+
+      @media only screen and (max-width: 1440px) {
+        height: 40px;
+      }
+
+      @media only screen and (max-width: 1280px) {
+        min-width: 130px;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        max-width: 160px;
+      }
+
+      @media only screen and (max-width: 480px) {
+        max-width: 90%;
+        min-width: 90%;
+        justify-content: space-between;
+      }
+
+      .input-wrapper {
+        position: relative;
+
+        .currency {
+          position: relative;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          display: inline-block;
+          max-height: fit-content;
+        }
+
+        .amount {
+          border: 0;
+          height: 40px;
+          padding-left: 6px;
+          width: 100%;
+
+          @media only screen and (max-width: 1440px) {
+            height: 30px;
+
+            &::-webkit-input-placeholder {
+              font-size: 14px;
+              line-height: 20px;
+            }
+
+            &:-ms-input-placeholder {
+              font-size: 14px;
+              line-height: 20px;
+            }
+
+            &::placeholder {
+              font-size: 14px;
+              line-height: 20px;
+            }
+          }
+        }
+      }
+
+      .amount-select {
+        @include flex(flex-start, center, row);
+        border-radius: 50px;
+        padding: 3px 8px;
+        height: 22px;
+        width: 70px;
+        background-color: $success-text-color;
+        color: $white;
+        font-weight: 800;
+        font-size: $font-12;
+      }
+    }
+  }
+
+  .info-icon {
+    @include flex(center, center, row);
+    position: absolute;
+    right: -20px;
+    border: 1px solid $form-label;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 20px;
+    height: 16px;
+    width: 16px;
+    font-size: 11px;
+
+    @media (min-width: 1025px) and (max-width: 1199px) {
+      top: auto;
+      bottom: 14px;
+      margin-top: 0;
+    }
+    @media only screen and (max-width: 1024px) {
+      position: inherit;
+      right: 0;
+      margin: auto auto auto 10px;
+    }
+
+    @media only screen and (max-width: 480px) {
+      position: absolute;
+      top: auto;
+      bottom: 10%;
+      right: 3%;
+    }
+  }
+}
+
+.total-cost {
+  font-size: $font-12;
+  font-weight: 500;
+  color: $black;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.execute-btn {
+  @include flex(center, center, row);
+  font-size: $font-14;
+  font-weight: 500;
+  color: $white;
+  background-color: var(--cal-ev-blue);
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+  padding: 10px 16px;
+  margin-top: 13px;
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #F3F4F6;
+    color: #000;
+  }
+}
+
+.execute-btn-initial {
+  @include flex(center, center, row);
+  font-size: $font-14;
+  font-weight: 500;
+  color: gray;
+  background-color: $disable-button-bg;
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+  padding: 10px 16px;
+  margin-top: 13px;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+// .execute-btn[disabled] {
+//   background-color: $disable-button-bg;
+//   color: $action-btn-color;
+//   cursor: default;
+// }
+#chart {
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+.confirmation-popup {
+  padding: 34px 32px 16px;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0px 14px 74px 0px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  width: auto;
+
+  @media only screen and (max-width: 1440px) {
+    padding: 15px;
+  }
+
+  .close-icon {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    height: 10px;
+    width: 10px;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      background-color: $black;
+      top: 0;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .message {
+    font-size: $font-14;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.42px;
+    color: $black;
+    margin-bottom: 26px;
+  }
+
+  .continue[disabled] {
+    background-color: $disable-button-bg;
+    color: $action-btn-color;
+    cursor: default;
+  }
+
+  .continue {
+    @include flex(center, center, row);
+    background-color: var(--cal-ev-blue);
+    border-radius: 10px;
+    margin-top: 23px;
+    padding: 10px 16px;
+    font-size: $font-14;
+    font-weight: 700;
+    color: $white;
+    width: 100%;
+  }
+}
+
+::ng-deep {
+  .amount-select {
+    .mat-mdc-select-value {
+      color: $white;
+      padding-right: 4px;
+    }
+
+    .mat-mdc-select-arrow-wrapper {
+      height: 5px;
+      width: 5px;
+      border-left: 1px solid $white;
+      border-bottom: 1px solid $white;
+      transform: rotate(-45deg);
+
+      svg {
+        display: none;
+      }
+    }
+  }
+
+  .amount-dropdown {
+    padding: 0 !important;
+    background: transparent;
+    box-shadow: none;
+    background-color: transparent;
+    min-width: 70px;
+
+    .mat-mdc-option {
+      padding: 3px 8px;
+      height: 22px;
+      width: 70px;
+      background: $white !important;
+      color: $blue-black;
+      font-weight: 800;
+      font-size: $font-12;
+      min-height: auto;
+      margin-bottom: 5px;
+      border-radius: 20px;
+    }
+  }
+
+  .datepicker-apply {
+    width: 100%;
+    border-radius: 20px;
+    background-color: $disable-button-bg;
+    color: var(--light-blue);
+    height: 38px;
+    font-weight: 700;
+
+    &:hover {
+      background-color: $black;
+      color: $white;
+    }
+  }
+
+  .confirm-check {
+    .mdc-form-field {
+      label {
+        font-size: $font-14;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: 0.42px;
+        color: $dialog-inner-heading-color;
+      }
+    }
+  }
+}
