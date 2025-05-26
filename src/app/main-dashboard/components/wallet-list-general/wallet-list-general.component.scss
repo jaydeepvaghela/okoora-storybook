@@ -251,28 +251,33 @@
             justify-content: center;
             align-items: center;
             position: absolute;
-            right: 65px;
+            right: 150px;
             color: #fff;
             width: 44px;
             height: 44px;
             padding: 10px;
             font-size: 35px;
             z-index: 2;
+            font-weight: 200;
             border-radius: 30px;
-            margin-top: 35px;
+            margin-top: 38px;
             background-color: var(--input-blue-border);
             box-shadow: 0px 8px 24px 0px rgba(41, 71, 242, 0.2);
 
             @media screen and (max-width: 1440px) {
               width: 35px;
               height: 35px;
-              right: 50px;
+              right: 100px;
             }
 
             @media screen and (max-width: 480px) {
               width: 30px;
               height: 30px;
               font-size: 30px;
+            }
+
+            @media screen and (max-width: 768px) {
+              right: 60px;
             }
           }
 
@@ -489,8 +494,16 @@
 
   .prev-swiper {
     position: absolute;
-    left: 10px;
+    left: 65px;
     z-index: 99;
+
+    @media screen and (max-width: 1440px) {
+      left: 50px;
+    }
+
+    @media screen and (max-width: 1024px) {
+      left: 25px;
+    }
 
     img {
       cursor: pointer;
@@ -538,43 +551,23 @@
 
   .next-swiper {
     position: absolute;
-    right: 150px;
+    right: 100px;;
     z-index: 99;
 
     @media screen and (max-width: 1600px) {
-      right: 125px;
-    }
-
-    @media screen and (max-width: 1440px) {
-      right: 95px;
-    }
-
-    @media screen and (max-width: 1280px) {
-      right: 85px;
-    }
-
-    @media screen and (max-width: 1024px) {
-      right: 125px;
-    }
-
-    @media screen and (max-width: 912px) {
-      right: 115px;
-    }
-
-    @media screen and (max-width: 768px) {
-      right: 100px;
-    }
-
-    @media screen and (max-width: 540px) {
       right: 80px;
     }
 
-    @media screen and (max-width: 480px) {
-      right: 75px;
+    @media screen and (max-width: 1440px) {
+      right: 55px;
     }
 
-    @media screen and (max-width: 360px) {
-      right: 70px;
+    @media screen and (max-width: 1280px) {
+      right: 30px;
+    }
+
+    @media screen and (max-width: 480px) {
+      right: 25px;
     }
 
     img {

@@ -37,7 +37,7 @@
             <span class="errormsg" id="error-msg" *ngIf="errormsg">{{errormsg}}</span>
           </div>
         </div>
-        <div class="box-with-error-msg" *ngIf="user?.afiiliate?.currency != 'EUR'">
+        <div class="box-with-error-msg">
           <div class="summary-box current-hedge">
             <div class="box-content">
               <span class="box-label">Current Hedge</span>
@@ -64,18 +64,18 @@
           </div>
         </div>
       </div>
-      <!-- <div *ngIf="item.index == 2" class="drag-item second-row" cdkDrag>
+      <div *ngIf="item.index == 2" class="drag-item second-row" cdkDrag>
         <div class="drag-handle" cdkDragHandle>
           <img src="images/drag-haldle.svg" alt="drag-haldle">
         </div>
         <mat-card class="calendar-box">
-          <app-calendar [showTable]="showTable" (tableVisibilityChange)="changeTableVisibility($event)"
-            [resourceId]="resourceId"></app-calendar>
+          <!-- <app-calendar [showTable]="showTable" (tableVisibilityChange)="changeTableVisibility($event)"
+            [resourceId]="resourceId"></app-calendar> -->
         </mat-card>
         <mat-card class="side-tab-box">
           <app-side-tabs></app-side-tabs>
         </mat-card>
-      </div> -->
+      </div>
       <div *ngIf="item.index == 3" class="drag-item third-row" cdkDrag>
         <div class="drag-handle" cdkDragHandle>
           <img src="images/drag-haldle.svg" alt="drag-haldle">

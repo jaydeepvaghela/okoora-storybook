@@ -17,19 +17,21 @@ import {
   NgApexchartsModule
 } from "ng-apexcharts";
 import { MatDialog } from '@angular/material/dialog';
-import { MatDatepicker, MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
-import { pairwise } from 'rxjs';
+import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
 import moment from 'moment';
+import { addMonths, isAfter, isBefore } from 'date-fns';  
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { WalletsService } from '../../services/wallets.service';
 import DateFormat, { Direction } from '../../enums/riskProfitLoss.enum';
-import { addMonths } from '@mobiscroll/angular/dist/js/core/util/datetime.js';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardService } from '../../services/dashboard.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CustomCalendarHeader } from '../shared/custom-calendar-header/custom-calendar-header.component';
+import { getCurrentExplosureRate, getLockHedgeGrafhData } from '../../dashboard-data/chart-data';
+import { of } from 'rxjs';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -80,7 +82,7 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   currencyOfUser: any;
   lockDate: any;
   myHolidayDates!: Date[];
-  customCalendar: any;
+  customCalendar = CustomCalendarHeader;
   selectedTimeFrame!: string;
   isCalendarEnable: boolean = false;
   selectedDate!: Date;
@@ -132,7 +134,7 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   public chartOptions!: Partial<ChartOptions>;
 
   async ngOnInit() {
-    // this.activeCurrency = JSON.parse(localStorage.getItem('activeWallet') || '');
+    this.activeCurrency = JSON.parse(localStorage.getItem('activeWallet') || '');
     this.showLoader = true;
     this.Directions = Direction
     const currentDate = new Date();
@@ -147,10 +149,10 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
     await this._walletService.activeCurrentWallet.subscribe((wallet) => {
       this.activeCurrency = wallet;
       if (this.activeCurrency?.wallet_Currency?.code) {
-        // this.dashboardService.getCurrentExplosureRate(this.activeCurrency?.wallet_Currency?.code).subscribe((data: any) => {
-        //   this.currentCurrencyValue = data;
-        //   this.cd.detectChanges()
-        // })
+        of(getCurrentExplosureRate).subscribe((data: any) => {
+          this.currentCurrencyValue = data;
+          this.cd.detectChanges()
+        })
       }
       // this.selectedTimeFrame = '3 months';
       this.updateDateFilter();
@@ -201,12 +203,12 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   getExpoureRate(code: any) {
     if (code) {
       this.rate = true
-      // this.dashboardService.getCurrentExplosureRate(code).subscribe((data: any) => {
-      //   // console.log("rate", this.currentCurrencyValue?.[this.activeCurrency?.wallet_Currency?.code]);
-      //   this.currentCurrencyValue = data;
-      //   localStorage.setItem('currentCurrencyValue', this.currentCurrencyValue?.[this.activeCurrency?.wallet_Currency?.code])
-      //   this.cd.detectChanges()
-      // })
+      of(getCurrentExplosureRate).subscribe((data: any) => {
+        // console.log("rate", this.currentCurrencyValue?.[this.activeCurrency?.wallet_Currency?.code]);
+        this.currentCurrencyValue = data;
+        localStorage.setItem('currentCurrencyValue', this.currentCurrencyValue?.[this.activeCurrency?.wallet_Currency?.code])
+        this.cd.detectChanges()
+      })
     }
   }
 
@@ -253,79 +255,77 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
 
     const currentDate = new Date();
     let endDate: Date;
-    // switch (this.selectedTimeFrame) {
-    //   case '1 month':
-    //     // endDate = addMonths(currentDate, 1);
-    //     // this.endDateValue = endDate
-    //     // this.lockDateValue = endDate
-    //     // this.lockDate = endDate
-    //     this.getNotradeList(this.endDateValue)
-    //     // this.getDateValue(this.endDateValue)
-    //     break;
-    //   case '3 months':
-    //     endDate = addMonths(currentDate, 3);
-    //     this.endDateValue = endDate
-    //     this.lockDateValue = endDate
-    //     this.lockDate = endDate
-    //     this.getNotradeList(this.endDateValue)
-    //     // this.getDateValue(this.endDateValue)
-    //     break;
-    //   case '6 months':
-    //     endDate = addMonths(currentDate, 6);
-    //     this.endDateValue = endDate
-    //     this.lockDateValue = endDate
-    //     this.lockDate = endDate
-    //     this.getNotradeList(this.endDateValue)
-    //     // this.getDateValue(this.endDateValue)
+    switch (this.selectedTimeFrame) {
+      case '1 month':
+        endDate = addMonths(currentDate, 1);
+        this.endDateValue = endDate
+        this.lockDateValue = endDate
+        this.lockDate = endDate
+        this.getNotradeList(this.endDateValue)
+        this.getDateValue(this.endDateValue)
+        break;
+      case '3 months':
+        endDate = addMonths(currentDate, 3);
+        this.endDateValue = endDate
+        this.lockDateValue = endDate
+        this.lockDate = endDate
+        this.getNotradeList(this.endDateValue)
+        this.getDateValue(this.endDateValue)
+        break;
+      case '6 months':
+        endDate = addMonths(currentDate, 6);
+        this.endDateValue = endDate
+        this.lockDateValue = endDate
+        this.lockDate = endDate
+        this.getNotradeList(this.endDateValue)
+        this.getDateValue(this.endDateValue)
 
-    //     break;
-    //   case '9 months':
-    //     endDate = addMonths(currentDate, 9);
-    //     this.endDateValue = endDate
-    //     this.lockDateValue = endDate
-    //     this.lockDate = endDate
-    //     this.getNotradeList(this.endDateValue)
-    //     // this.getDateValue(this.endDateValue)
+        break;
+      case '9 months':
+        endDate = addMonths(currentDate, 9);
+        this.endDateValue = endDate
+        this.lockDateValue = endDate
+        this.lockDate = endDate
+        this.getNotradeList(this.endDateValue)
+        this.getDateValue(this.endDateValue)
 
-    //     break;
-    //   case '1 year':
-    //     endDate = addMonths(currentDate, 12);
-    //     this.endDateValue = endDate
-    //     this.lockDateValue = endDate
-    //     this.lockDate = endDate
-    //     this.getNotradeList(this.endDateValue)
-    //     // this.getDateValue(this.endDateValue)
+        break;
+      case '1 year':
+        endDate = addMonths(currentDate, 12);
+        this.endDateValue = endDate
+        this.lockDateValue = endDate
+        this.lockDate = endDate
+        this.getNotradeList(this.endDateValue)
+        this.getDateValue(this.endDateValue)
 
-    //     break;
-    //   default:
-    //     endDate = currentDate;
+        break;
+      default:
+        endDate = currentDate;
 
-    //   // this.getNotradeList(this.endDateValue)
-    //   // this.getDateValue(this.endDateValue)
+      this.getNotradeList(this.endDateValue)
+      this.getDateValue(this.endDateValue)
 
-    // }
+    }
 
-
-
-    // this.lockUpDatepickerFilter = (date: Date | null) => {
-    //   if (date === null || date === undefined) {
-    //     return true;
-    //   } else {
-    //     const parsedDate = new Date(date);
-    //     const nextYearDate = new Date(currentDate.getFullYear() + 1, currentDate.getMonth(), currentDate.getDate());
-    //     const day = parsedDate.getDay();
-    //     const time = parsedDate.getTime();
-    //     const isWeekend = day === 0 || day === 6;
-    //     const isHoliday = this.myHolidayDates.some((holidayDate: Date) => holidayDate.getTime() === time);
-    //     const isCurrentDate = parsedDate.toDateString() === currentDate.toDateString();
-    //     if (this.selectedTimeFrame) {
-    //       return ((!isWeekend && !isHoliday && isAfter(parsedDate, currentDate) && isBefore(parsedDate, endDate)));
-    //     }
-    //     else {
-    //       return ((!isWeekend && !isHoliday && parsedDate <= nextYearDate && isAfter(parsedDate, currentDate)));
-    //     }
-    //   }
-    // };
+    this.lockUpDatepickerFilter = (date: Date | null) => {
+      if (date === null || date === undefined) {
+        return true;
+      } else {
+        const parsedDate = new Date(date);
+        const nextYearDate = new Date(currentDate.getFullYear() + 1, currentDate.getMonth(), currentDate.getDate());
+        const day = parsedDate.getDay();
+        const time = parsedDate.getTime();
+        const isWeekend = day === 0 || day === 6;
+        const isHoliday = this.myHolidayDates.some((holidayDate: Date) => holidayDate.getTime() === time);
+        const isCurrentDate = parsedDate.toDateString() === currentDate.toDateString();
+        if (this.selectedTimeFrame) {
+          return ((!isWeekend && !isHoliday && isAfter(parsedDate, currentDate) && isBefore(parsedDate, endDate)));
+        }
+        else {
+          return ((!isWeekend && !isHoliday && parsedDate <= nextYearDate && isAfter(parsedDate, currentDate)));
+        }
+      }
+    };
 
   }
 
@@ -338,182 +338,182 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
     if (direction && currencyPair && !this.isCallHegeGraphData) {
       this.isCallHegeGraphData = true;
 
-      // this.dashboardService.getLockHedgeGrafhData(direction, currencyPair).subscribe((data: any) => {
-      //   this.seriesData = data
+      of(getLockHedgeGrafhData).subscribe((data: any) => {
+        this.seriesData = data
 
-      //   for (var i = 0; i < this.seriesData?.spotPoints?.length; i++) {
-      //     if (this.seriesData?.spotPoints[i + 1] != undefined && this.activeCurrency?.wallet_Hedging?.direction == this.Directions?.Up) {
-      //       if (this.seriesData?.spotPoints[0] > this.seriesData?.spotPoints[i + 1]) {
-      //         this.colorForstrock = "#29CC6A"
-      //       }
-      //       else if (this.seriesData?.spotPoints[0] < this.seriesData?.spotPoints[i + 1]) {
-      //         this.colorForstrock = "#F04853"
-      //       }
-      //       else {
-      //         this.colorForstrock = "#01031C"
-      //         break
-      //       }
-      //     }
+        for (var i = 0; i < this.seriesData?.spotPoints?.length; i++) {
+          if (this.seriesData?.spotPoints[i + 1] != undefined && this.activeCurrency?.wallet_Hedging?.direction == this.Directions?.Up) {
+            if (this.seriesData?.spotPoints[0] > this.seriesData?.spotPoints[i + 1]) {
+              this.colorForstrock = "#29CC6A"
+            }
+            else if (this.seriesData?.spotPoints[0] < this.seriesData?.spotPoints[i + 1]) {
+              this.colorForstrock = "#F04853"
+            }
+            else {
+              this.colorForstrock = "#01031C"
+              break
+            }
+          }
 
-      //     if (this.seriesData?.spotPoints[i + 1] != undefined && this.activeCurrency?.wallet_Hedging?.direction == this.Directions?.Down) {
-      //       if (this.seriesData?.spotPoints[0] < this.seriesData?.spotPoints[i + 1]) {
-      //         this.colorForstrock = "#29CC6A"
-      //       }
-      //       else if (this.seriesData?.spotPoints[0] > this.seriesData?.spotPoints[i + 1]) {
-      //         this.colorForstrock = "#F04853"
-      //       }
-      //       else {
-      //         this.colorForstrock = "#01031C"
-      //         break
-      //       }
-      //     }
+          if (this.seriesData?.spotPoints[i + 1] != undefined && this.activeCurrency?.wallet_Hedging?.direction == this.Directions?.Down) {
+            if (this.seriesData?.spotPoints[0] < this.seriesData?.spotPoints[i + 1]) {
+              this.colorForstrock = "#29CC6A"
+            }
+            else if (this.seriesData?.spotPoints[0] > this.seriesData?.spotPoints[i + 1]) {
+              this.colorForstrock = "#F04853"
+            }
+            else {
+              this.colorForstrock = "#01031C"
+              break
+            }
+          }
 
-      //   }
-      //   // console.log(this.colorForstrock);
+        }
+        // console.log(this.colorForstrock);
 
-      //   let min = Math.min(...this.seriesData?.spotPoints)
-      //   let max = Math.max(...this.seriesData?.spotPoints)
-      //   let ratio = max - min
-      //   this.chartOptions = {
-      //     series: [
-      //       {
-      //         name: "Rate",
-      //         type: 'line',
-      //         data: this.seriesData?.spotPoints
-      //       },
+        let min = Math.min(...this.seriesData?.spotPoints)
+        let max = Math.max(...this.seriesData?.spotPoints)
+        let ratio = max - min
+        this.chartOptions = {
+          series: [
+            {
+              name: "Rate",
+              type: 'line',
+              data: this.seriesData?.spotPoints
+            },
 
-      //     ],
-      //     chart: {
-      //       height: 300,
-      //       type: "line",
-      //       toolbar: {
-      //         show: false
-      //       },
-      //       zoom: {
-      //         enabled: false
-      //       }
-      //     },
-      //     annotations: {
-      //       yaxis: [
-      //         {
-      //           y: this.seriesData?.spotPoints[0],
-      //           borderColor: "#000000",
-      //           label: {
-      //             borderColor: "#000000",
-      //             position: "top",
-      //             // offsetX: 18,
-      //             offsetX: 25,
-      //             offsetY: 7,
-      //             borderRadius: 8,
+          ],
+          chart: {
+            height: 300,
+            type: "line",
+            toolbar: {
+              show: false
+            },
+            zoom: {
+              enabled: false
+            }
+          },
+          annotations: {
+            yaxis: [
+              {
+                y: this.seriesData?.spotPoints[0],
+                borderColor: "#000000",
+                label: {
+                  borderColor: "#000000",
+                  position: "top",
+                  // offsetX: 18,
+                  offsetX: 25,
+                  offsetY: 7,
+                  borderRadius: 8,
 
-      //             style: {
-      //               color: "#FFF",
-      //               background: "#000000"
-      //             },
+                  style: {
+                    color: "#FFF",
+                    background: "#000000"
+                  },
 
-      //             // text: this.seriesData?.spotPoints[0]?.toFixed(2).toString(),
-      //             text: this.seriesData?.spotPoints[0]?.toFixed(4).toString(),
+                  // text: this.seriesData?.spotPoints[0]?.toFixed(2).toString(),
+                  text: this.seriesData?.spotPoints[0]?.toFixed(4).toString(),
 
-      //           }
-      //         },
-      //         {
-      //           y: this.seriesData?.spotPoints[0] < this.seriesData?.spotPoints[1] ? Math.min(...this.seriesData?.spotPoints) - ratio : Math.min(...this.seriesData?.spotPoints),
-      //           y2: this.seriesData?.spotPoints[0] > this.seriesData?.spotPoints[1] ? Math.max(...this.seriesData?.spotPoints) + ratio : Math.max(...this.seriesData?.spotPoints),
-      //           strokeDashArray: 1,
-      //           fillColor: "white",
-      //           borderColor: 'white',
-      //           opacity: 0,
-      //           // label: {
-      //           //   style: {
-      //           //     fontSize: "10px",
-      //           //     background: "rgba(240, 72, 83, 0.05)",
-      //           //   },
-      //           // }
-      //         },
-      //       ],
+                }
+              },
+              {
+                y: this.seriesData?.spotPoints[0] < this.seriesData?.spotPoints[1] ? Math.min(...this.seriesData?.spotPoints) - ratio : Math.min(...this.seriesData?.spotPoints),
+                y2: this.seriesData?.spotPoints[0] > this.seriesData?.spotPoints[1] ? Math.max(...this.seriesData?.spotPoints) + ratio : Math.max(...this.seriesData?.spotPoints),
+                strokeDashArray: 1,
+                fillColor: "white",
+                borderColor: 'white',
+                opacity: 0,
+                // label: {
+                //   style: {
+                //     fontSize: "10px",
+                //     background: "rgba(240, 72, 83, 0.05)",
+                //   },
+                // }
+              },
+            ],
 
-      //       points: points,
+            points: points,
 
-      //       xaxis: this.seriesData?.timesPoints?.map((month: any) => {
-      //         return {
-      //           x: month,
-      //           borderColor: '#D9DADD',
-      //           strokeDashArray: 2,
-      //         };
-      //       }),
+            xaxis: this.seriesData?.timesPoints?.map((month: any) => {
+              return {
+                x: month,
+                borderColor: '#D9DADD',
+                strokeDashArray: 2,
+              };
+            }),
 
-      //     },
-      //     dataLabels: {
-      //       enabled: false
-      //     },
-      //     stroke: {
-      //       curve: "straight",
-      //       colors: [this.colorForstrock],
-      //       width: 3,
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: "straight",
+            colors: [this.colorForstrock],
+            width: 3,
 
-      //     },
-      //     colors: [this.colorForstrock],
-      //     grid: {
+          },
+          colors: [this.colorForstrock],
+          grid: {
 
-      //       yaxis: {
-      //         lines: {
-      //           offsetX: 0,
-      //           show: false  //or just here to disable only y axis
-      //         }
-      //       },
+            yaxis: {
+              lines: {
+                offsetX: 0,
+                show: false  //or just here to disable only y axis
+              }
+            },
 
-      //       xaxis: {
-      //         lines: {
-      //           offsetX: 0,
-      //           show: false  //or just here to disable only x axis
-      //         }
-      //       },
-      //     },
-      //     title: {
-      //       // text: "Line with Annotations",
-      //       align: "left"
-      //     },
-      //     labels: this.seriesData?.timesPoints,
-      //     xaxis: {
-      //       // type: "numeric",
-      //       axisBorder: {
-      //         show: true,
-      //         color: 'false',
+            xaxis: {
+              lines: {
+                offsetX: 0,
+                show: false  //or just here to disable only x axis
+              }
+            },
+          },
+          title: {
+            // text: "Line with Annotations",
+            align: "left"
+          },
+          labels: this.seriesData?.timesPoints,
+          xaxis: {
+            // type: "numeric",
+            axisBorder: {
+              show: true,
+              color: 'false',
 
-      //       },
-      //       axisTicks: {
-      //         show: false
-      //       },
-      //       labels: {
-      //         style: {
-      //           fontSize: '12px',
-      //           colors: ['#909199', '#909199', '#909199', '#909199', '#909199', '#909199'],
-      //         }
-      //       }
-      //     },
-      //     yaxis: {
-      //       min: this.seriesData?.spotPoints[0] < this.seriesData?.spotPoints[2] ? Math.min(...this.seriesData?.spotPoints) - ratio > 0 ? Math.min(...this.seriesData?.spotPoints) - ratio : 0 : Math.min(...this.seriesData?.spotPoints),
-      //       max: this.seriesData?.spotPoints[0] > this.seriesData?.spotPoints[2] ? Math.max(...this.seriesData?.spotPoints) + ratio : Math.max(...this.seriesData?.spotPoints),
+            },
+            axisTicks: {
+              show: false
+            },
+            labels: {
+              style: {
+                fontSize: '12px',
+                colors: ['#909199', '#909199', '#909199', '#909199', '#909199', '#909199'],
+              }
+            }
+          },
+          yaxis: {
+            min: this.seriesData?.spotPoints[0] < this.seriesData?.spotPoints[2] ? Math.min(...this.seriesData?.spotPoints) - ratio > 0 ? Math.min(...this.seriesData?.spotPoints) - ratio : 0 : Math.min(...this.seriesData?.spotPoints),
+            max: this.seriesData?.spotPoints[0] > this.seriesData?.spotPoints[2] ? Math.max(...this.seriesData?.spotPoints) + ratio : Math.max(...this.seriesData?.spotPoints),
 
-      //       opposite: true,
-      //       tickAmount: 5,
-      //       axisBorder: {
-      //         show: true,
-      //         color: '#78909C',
-      //         offsetX: 0,
-      //         offsetY: 0
-      //       },
-      //       labels: {
-      //         style: {
-      //           fontSize: '12px',
-      //           colors: ['#909199'],
-      //         }
-      //       }
-      //     }
-      //   };
-      //   this.showLoader = false;
-      //   this.cd.detectChanges();
-      // })
+            opposite: true,
+            tickAmount: 5,
+            axisBorder: {
+              show: true,
+              color: '#78909C',
+              offsetX: 0,
+              offsetY: 0
+            },
+            labels: {
+              style: {
+                fontSize: '12px',
+                colors: ['#909199'],
+              }
+            }
+          }
+        };
+        this.showLoader = false;
+        this.cd.detectChanges();
+      })
     }
   }
 

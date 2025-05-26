@@ -211,8 +211,23 @@ export class WalletsService {
   private currentCurrencyValue: any;
   private isCompleteSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public alertListRefresh$: BehaviorSubject<any> = new BehaviorSubject(false);
+
+  private activeWalletSubject = new BehaviorSubject<WalletBalanceListModal | null>(
+    JSON.parse(localStorage.getItem('activeWallet') || 'null')
+  );
+
+  activeWallet$ = this.activeWalletSubject.asObservable();
   
   constructor(public router: Router) { }
+
+  setActiveWallet(wallet: WalletBalanceListModal) {
+    localStorage.setItem('activeWallet', JSON.stringify(wallet));
+    this.activeWalletSubject.next(wallet);
+  }
+
+  getActiveWallet(): WalletBalanceListModal | null {
+    return this.activeWalletSubject.value;
+  }
 
   SetRefreshValuePayment(alert: any) {
     this.getRefreshValuePayment.next(alert);

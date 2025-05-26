@@ -14,11 +14,11 @@
 
       .mdc-tab {
         border-radius: 7px;
-        padding: 18px 35px;
+        padding: 18px 0;
         height: auto !important;
 
         @media only screen and (max-width: 1440px) {
-          padding: 13px 35px;
+          padding: 13px 0;
         }
 
         .mat-mdc-tab-ripple {
@@ -46,7 +46,7 @@
             font-weight: 700;
             font-size: 14px;
             font-style: normal;
-            color: var(--active-tab-border-color);
+            color: #2947F2;
           }
         }
 
@@ -54,6 +54,7 @@
           font-family: $epilogue;
           font-size: $font-14;
           font-weight: 400;
+          letter-spacing: 0;
           color: $tab-color;
         }
 
