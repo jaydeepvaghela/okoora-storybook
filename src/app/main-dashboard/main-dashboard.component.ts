@@ -79,56 +79,56 @@ export class MainDashboardComponent {
   ) { }
 
   ngOnInit() {
-    this.activeCurrency = JSON.parse(
-      localStorage.getItem('activeWallet') || ''
-    );
+    this._walletService.activeWallet$.subscribe((wallet) => {
+      this.activeCurrency = wallet;
+    });
     this.user = JSON.parse(localStorage.getItem('user')!);
     // const tokenString = localStorage.getItem('token');
     // if (tokenString) {
 
       this.Loader = true;
-      // this.balanceListSubscription = this._walletService.getAllBalanceList().pipe(takeUntil(this.unSubScribe$)).subscribe(
-      //   {
-      //     next:(res) => {
-      //       this.Loader = false;
-      //       res.sort(function (a: any, b: any) {
-      //         return b.wallet_Amount - a.wallet_Amount;
-      //       });
-      //       let selectedWallet;
-      //       let index = res.findIndex((x: any) => x.wallet_SupportBaseHedging == true && x.wallet_Hedging != null);
-      //       let j = res.findIndex((x: any) => x.wallet_SupportBaseHedging == true);
-      //       if (index != -1) {
-      //         selectedWallet = res[index];
-      //       } else if (j != -1) {
-      //         selectedWallet = res[j];
-      //       }
-      //       this._walletService.setCurrentCurrencyData(selectedWallet);
-      //       this._walletService.setwalletObs(selectedWallet);
-      //       let firsttimePopup = res?.find((x: any) => x?.wallet_Hedging != null && x?.wallet_SupportBaseHedging === true);
-      //       const userPlan = JSON.parse(localStorage.getItem('user') || '');
-      //       if (firsttimePopup) {
-      //         // console.log('pair is there');
-      //       } else if (userPlan?.plan != null && this.user.type == 'Business' && !this.isQuestionaireOpened) {
-      //         const ilsUser = JSON.parse(localStorage.getItem('user')!)['afiiliate'];
-      //         if(ilsUser?.country !== 'il') {
-      //           this.authGuard.isUserCompleteKybAndApprovedByAirWallex().subscribe(isKYBCompleted => {
-      //             if(isKYBCompleted) {
-      //             this.dialog.closeAll();
-      //             this.isQuestionaireOpened = true;
-      //             this.openQuestionnaireDialog()
-      //             }
-      //            })
-      //         } else {
-      //           this.isQuestionaireOpened = true;
-      //           this.openQuestionnaireDialog()
-      //         }
-      //       }
-      //     },
-      //     error:(err) => {
-      //       this.Loader = false;
-      //     }
-      //   }
-      // );
+      this.balanceListSubscription = this._walletService.getAllBalanceList().pipe(takeUntil(this.unSubScribe$)).subscribe(
+        {
+          next:(res) => {
+            this.Loader = false;
+            res.sort(function (a: any, b: any) {
+              return b.wallet_Amount - a.wallet_Amount;
+            });
+            let selectedWallet;
+            let index = res.findIndex((x: any) => x.wallet_SupportBaseHedging == true && x.wallet_Hedging != null);
+            let j = res.findIndex((x: any) => x.wallet_SupportBaseHedging == true);
+            if (index != -1) {
+              selectedWallet = res[index];
+            } else if (j != -1) {
+              selectedWallet = res[j];
+            }
+            this._walletService.setCurrentCurrencyData(selectedWallet);
+            this._walletService.setwalletObs(selectedWallet);
+            let firsttimePopup = res?.find((x: any) => x?.wallet_Hedging != null && x?.wallet_SupportBaseHedging === true);
+            const userPlan = JSON.parse(localStorage.getItem('user') || '');
+            if (firsttimePopup) {
+              // console.log('pair is there');
+            } else if (userPlan?.plan != null && this.user.type == 'Business' && !this.isQuestionaireOpened) {
+              const ilsUser = JSON.parse(localStorage.getItem('user')!)['afiiliate'];
+              // if(ilsUser?.country !== 'il') {
+                // this.authGuard.isUserCompleteKybAndApprovedByAirWallex().subscribe(isKYBCompleted => {
+                  // if(isKYBCompleted) {
+                  this.dialog.closeAll();
+                  this.isQuestionaireOpened = true;
+                  this.openQuestionnaireDialog()
+                  // }
+                //  })
+              // } else {
+              //   this.isQuestionaireOpened = true;
+              //   this.openQuestionnaireDialog()
+              // }
+            }
+          },
+          error:(err) => {
+            this.Loader = false;
+          }
+        }
+      );
 
       this.currencyOfUser = 'https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png';
       this._walletService.activeCurrentWallet
@@ -208,7 +208,7 @@ export class MainDashboardComponent {
     // );
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: any) {
     // console.log('Drag event: ', event);
     moveItemInArray(this.dashboardItems, event.previousIndex, event.currentIndex);
   }

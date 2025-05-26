@@ -129,5 +129,19 @@
     "code_not_arrived": "Code hasn't arrived?",
     "resend_code": "Re-send code",
     "you_can_retry": "You can retry"
+  },
+  "MONTH_SELECTION": {
+    "MONTH_0": "January",
+    "MONTH_1": "February",
+    "MONTH_2": "March",
+    "MONTH_3": "April",
+    "MONTH_4": "May",
+    "MONTH_5": "June",
+    "MONTH_6": "July",
+    "MONTH_7": "August",
+    "MONTH_8": "September",
+    "MONTH_9": "October",
+    "MONTH_10": "November",
+    "MONTH_11": "December"
   }
 }

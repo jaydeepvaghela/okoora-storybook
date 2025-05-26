@@ -1,0 +1,176 @@
+@import "../../../../assets/scss/variable";
+@import "../../../../assets/scss/mixins";
+
+::ng-deep {
+  .add-wallet {
+    width: 668px !important;
+    height: 560px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: var(--greyscale-ffffff, #FFF);
+    box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.05);
+
+    @media only screen and (max-width: 1440px) {
+      width: 520px !important;
+      height: 460px;
+    }
+
+    @media only screen and (max-width: 776px) {
+      height: auto;
+    }
+
+    @media only screen and (max-width: 580px) {
+      width: 100% !important;
+      max-width: 95vw !important;
+    }
+
+    .mat-mdc-dialog-surface {
+      border-radius: 5px;
+      box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.05);
+      background: linear-gradient(180deg, rgba(41, 71, 242, 0.20) 0%, rgba(245, 247, 250, 0.00) 100%);
+    }
+
+    form {
+      border-radius: 5px;
+      padding: 83px 23px;
+      height: 100%;
+
+      h6.add-walletform-title {
+        color: var(--brand-primary-color);
+        text-align: center;
+        font-family: $epilogue;
+        font-size: $font-26;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        text-transform: uppercase;
+        margin-bottom: 36px;
+
+        @media only screen and (max-width: 1440px) {
+          font-size: 22px;
+          margin-bottom: 25px;
+        }
+        @media only screen and (max-width: 580px) {
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
+      }
+
+      mat-select.mat-mdc-select {
+        width: 360px;
+        height: 51px;
+        padding: 0px 10px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+
+        @media only screen and (max-width: 1440px) {
+          height: 40px;
+          font-size: 14px;
+        }
+
+        @media only screen and (max-width: 580px) {
+          width: 100%;
+        }
+
+        &::ng-deep {
+          .mat-mdc-select-arrow-wrapper {
+            position: relative;
+
+            .mat-mdc-select-arrow {
+              svg {
+                background-image: url(../../../../assets/images/drop-down-arrow-calender.svg);
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 12px;
+
+                path {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .action-buttons {
+        margin-top: 40px;
+        text-align: center;
+
+        @media only screen and (max-width: 580px){
+          margin-top: 20px;
+        }
+
+        button.close {
+          border: 2px solid $general-border-color;
+          border-radius: 20px;
+          padding: 8px 32px;
+          font-weight: 600;
+          font-size: $font-16;
+          line-height: 22px;
+          text-align: center;
+          color: var(--brand-primary-color);
+          background: $white;
+        }
+
+        button.add {
+          background: linear-gradient(191deg, var(--brand-primary-color) 2.35%, #2320E6 99.12%);
+          border-radius: 20px;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 20px;
+          color: #ffffff;
+          margin-left: 12px;
+          width: 125px;
+          height: 40px;
+          padding: 0px 10px 0px 14px;
+        }
+      }
+
+      .currency-icon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        user-select: none;
+      }
+    }
+  }
+}
+
+.action-buttons {
+  .add.disabled {
+    background: $white-gray !important;
+    color: $light-gray !important;
+    cursor: not-allowed;
+  }
+}
+.wallet-code-container {
+  .currency-image {
+    width: 30px;
+  }
+}
+
+::ng-deep {
+  mat-option {
+    .mdc-list-item__primary-text {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 30px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.close-wallet-container {
+  position: absolute;
+  right: 0;
+  img {
+    width: 25px;
+    @media screen and (max-width: 480px) {
+      width: 22px;
+    }
+  }
+}

@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { WalletsService } from '../../services/wallets.service';
+import { AddWalletComponent } from '../add-wallet/add-wallet.component';
 SwiperCore.use([Navigation, Pagination]);
 
 @Component({
@@ -281,6 +282,9 @@ export class WalletListGeneralComponent implements OnInit {
   }
   walletSelectionChange(wallet: WalletBalanceListModal, i: any) {
     this.activeWallet = wallet;
+    this._walletService.setActiveWallet(wallet);
+  
+
     localStorage.setItem("activeWallet", JSON.stringify(this.selectedWallet));
     localStorage.setItem("activeWalletForRefresh", i);
     localStorage.setItem("selectedForRefresh", i);
@@ -308,32 +312,32 @@ export class WalletListGeneralComponent implements OnInit {
   // }
 
   addWalletModal() {
-    // const dialogRef = this.dialog.open(AddWalletComponent, {
-    //   width: '520px',
-    //   height: '200',
-    //   panelClass: 'add-wallet'
-    // });
+    const dialogRef = this.dialog.open(AddWalletComponent, {
+      width: '520px',
+      height: '200',
+      panelClass: 'add-wallet'
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     // this._walletService.availableWalletsData.pipe(takeUntil(this.unSubScribe$)).subscribe((data: any) => {
-    //     //   this.walletList = data || [];
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // this._walletService.availableWalletsData.pipe(takeUntil(this.unSubScribe$)).subscribe((data: any) => {
+        //   this.walletList = data || [];
 
-    //     //   if (this.walletList.length) {
-    //     //     this.cdr.detectChanges();
+        //   if (this.walletList.length) {
+        //     this.cdr.detectChanges();
 
-    //     //     setTimeout(() => {
-    //     //       if (this.mySwiper && this.mySwiper.slides && this.mySwiper.slides.length) {
-    //     //         this.mySwiper.update();
-    //     //         this.loadWalletListSlider();
-    //     //       }
-    //     //     }, 300);
-    //     //   }
-    //     // });
-    //     this.getAllBalanceData();
-    //   }
+        //     setTimeout(() => {
+        //       if (this.mySwiper && this.mySwiper.slides && this.mySwiper.slides.length) {
+        //         this.mySwiper.update();
+        //         this.loadWalletListSlider();
+        //       }
+        //     }, 300);
+        //   }
+        // });
+        this.getAllBalanceData();
+      }
 
-    // });
+    });
   }
 
 

@@ -1,0 +1,37 @@
+<div class="m-3 close-wallet-container">
+    <img class="close-wallet-btn" id="close-wallet-btn" mat-raised-button [mat-dialog-close]="false" src="images/close-icon-two.svg">
+</div>
+<form id="wallet-add-form" [formGroup]="addWalletForm">
+  <h6 class="add-walletform-title" id="add-walletform-title">Add new wallet</h6>
+  <div class="form-group wallet-code-container">
+    <mat-select class="form-control" id="currency" name="currency" formControlName="currency" placeholder="Select currency"
+      (selectionChange)="errorMsg = ''">
+      <mat-select-trigger>
+        <ng-container *ngFor="let currency of activeCurrency">
+          <span *ngIf="currency?.currency?.code == addWalletForm.value.currency">
+            <img class="currency-image" [src]="currency?.currency_Flag" alt="currency_flag">
+            {{ currency?.currency?.code }}
+          </span>
+        </ng-container>
+      </mat-select-trigger>
+      <ng-container *ngFor="let currency of activeCurrency">
+        <mat-option id="currency?.currency?.code" [value]="currency?.currency?.code"><img class="currency-image" [src]="currency?.currency_Flag"
+            alt="currency_flag"> {{ currency?.currency?.code }}</mat-option>
+      </ng-container>
+    </mat-select>
+    <div class="w-100 text-center">
+      <span class="error-msg" *ngIf="errorMsg">{{ errorMsg }}</span>
+    </div>
+    <div class="w-100 text-center">
+      <span class="error-msg" *ngIf="activeCurrency?.length == 0">There's no more available currency to select.</span>
+    </div>
+  </div>
+  
+  <div class="action-buttons">
+    <!-- <button class="close" mat-button mat-dialog-close>{{'WALLET.CLOSE' | translate}}</button> -->
+    <button id="add-btn" class="add" mat-button (click)="addWallet()">Continue</button>
+  </div>
+  <div _ngcontent-ekr-c273="" class="currency-icon-container"><img _ngcontent-ekr-c273="" id="currency-img"
+      src="images/currency-coin-icon.svg" class="currency-icon">
+    </div>
+</form>

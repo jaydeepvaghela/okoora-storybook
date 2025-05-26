@@ -34,8 +34,8 @@
     </mat-select>
     <div class="date-picker lock-picker" (click)="dateClicked()"  [ngClass]="{'dateClickedErrorClass':errFlag }" >
       <input matInput id="lockDate_lock_chart" [(ngModel)]="lockDateValue" [matDatepicker]="lockUpDatepicker"
-        (dateChange)="addEvent('input', $event)">
-      <mat-datepicker id="lockDate_datepicker_lock_chart" (click)="dateClicked()" #lockUpDatepicker panelClass="custom-datepicker">
+        (dateChange)="addEvent('input', $event)" [matDatepickerFilter]="lockUpDatepickerFilter">
+      <mat-datepicker id="lockDate_datepicker_lock_chart" (click)="dateClicked()" #lockUpDatepicker [calendarHeaderComponent]="customCalendar" panelClass="custom-datepicker">
       </mat-datepicker>
       <button id="lockDate_btn_lock_chart"  [ngClass]="{'inputClickedFlag':dateClickedFlag}" class="datepicker-toggle lock-up-datepicker-btn"  mat-icon-button (click)="lockUpDatepicker.open(); openLockDateCalendar();"
         panelClass="date-tooltip" [ngbTooltip]="lockDate"
