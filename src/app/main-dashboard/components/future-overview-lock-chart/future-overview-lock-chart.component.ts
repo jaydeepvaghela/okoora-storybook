@@ -248,7 +248,7 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
     this.timeFrameClickedFlag = false;
     this.dateClickedFlag = true;
 
-    this.lockUpDatepicker.close();
+    // this.lockUpDatepicker.close();
   }
 
   updateDateFilter() {

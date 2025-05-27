@@ -16,6 +16,7 @@ import { LockNextPaymentComponent } from './components/lock-next-payment/lock-ne
 import { lastPaymentRateData } from './dashboard-data/balanceList-data';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { SideTabsContainerComponent } from './components/side-tabs-container/side-tabs-container.component';
+import { HtmlTooltipDirective } from '../directives/html-tooltip.directive';
 // import { AuthenticationService } from 'src/app/auth/services/authentication.service';
 // import { WalletBalanceListModal } from 'src/app/common/models/WalletBalanceListModal';
 // import { OnboardingService } from 'src/app/common/services/onboarding.service';
@@ -31,7 +32,7 @@ import { SideTabsContainerComponent } from './components/side-tabs-container/sid
   selector: 'app-main-dashboard',
   templateUrl: './main-dashboard.component.html',
   styleUrls: ['./main-dashboard.component.scss'],
-  imports: [CommonModule, WalletListGeneralComponent, MarketRiskChartComponent, SideTabsContainerComponent, CalendarComponent, FooterComponent, LockNextPaymentComponent, CdkDrag, MatCardModule, MarketOverviewChartComponent]
+  imports: [CommonModule, HtmlTooltipDirective, WalletListGeneralComponent, MarketRiskChartComponent, SideTabsContainerComponent, CalendarComponent, FooterComponent, LockNextPaymentComponent, CdkDrag, MatCardModule, MarketOverviewChartComponent]
 })
 export class MainDashboardComponent {
   @ViewChild('notificationDrawer') notificationDrawer: MatDrawer | undefined;
@@ -105,11 +106,10 @@ export class MainDashboardComponent {
             this._walletService.setCurrentCurrencyData(selectedWallet);
             this._walletService.setwalletObs(selectedWallet);
             let firsttimePopup = res?.find((x: any) => x?.wallet_Hedging != null && x?.wallet_SupportBaseHedging === true);
-            const userPlan = JSON.parse(localStorage.getItem('user') || '');
+            // const userPlan = JSON.parse(localStorage.getItem('user') || '');
             if (firsttimePopup) {
               // console.log('pair is there');
-            } else if (userPlan?.plan != null && this.user.type == 'Business' && !this.isQuestionaireOpened) {
-              const ilsUser = JSON.parse(localStorage.getItem('user')!)['afiiliate'];
+            } else if (this.user.type == 'Business' && !this.isQuestionaireOpened) {
               // if(ilsUser?.country !== 'il') {
                 // this.authGuard.isUserCompleteKybAndApprovedByAirWallex().subscribe(isKYBCompleted => {
                   // if(isKYBCompleted) {

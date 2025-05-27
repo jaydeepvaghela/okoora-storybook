@@ -4,6 +4,7 @@
 .lock-up-wrapper {
   height: 100%;
   padding: 36px 58px 47px;
+  position: relative;
 
   @media only screen and (max-width: 1600px) {
     padding: 34px 30px 25px;
@@ -511,8 +512,8 @@
   .my-select-panel-class mat-option:hover>span .timeframe-radio:before {
     border-color: var(--brand-primary-color);
   }
-}
-.confirmation-popup {
+
+  .confirmation-popup {
   padding: 34px 32px 16px;
   background-color: $white;
   border-radius: 10px;
@@ -525,6 +526,18 @@
 
   @media only screen and (max-width: 1440px) {
     padding: 15px;
+  }
+
+  .confirm-check {
+    .mdc-form-field {
+      label {
+        font-size: $font-14;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: 0.42px;
+        color: $dialog-inner-heading-color;
+      }
+    }
   }
 
   .close-icon {
@@ -553,12 +566,15 @@
     }
   }
 
+  
+
   .message {
     font-size: $font-14;
     font-weight: 400;
     line-height: 28px;
     letter-spacing: 0.42px;
     color: $black;
+    font-family: 'Manrope';
     margin-bottom: 26px;
   }
 
@@ -580,3 +596,5 @@
     width: 100%;
   }
 }
+}
+

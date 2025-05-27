@@ -27,6 +27,8 @@ import moment from 'moment';
 import DateFormat, { Direction } from '../../enums/riskProfitLoss.enum';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
+import { createHedgeByCategory, getHedgeGrafhData } from '../../dashboard-data/balanceList-data';
+import { of } from 'rxjs';
 // import { ApprovalProtectiveFormComponent } from 'src/app/purchase-orders/components/approval-protective-form/approval-protective-form.component';
 // import { CustomCalendarHeader } from 'src/app/shared/components/custom-calendar-header/custom-calendar-header.component';
 // import { WalletsService } from 'src/app/wallets/services/wallets.service';
@@ -142,12 +144,10 @@ export class FutureOverviewHedgeChartComponent {
   }
 
   getGraphData() {
-    let direction = this.activeCurrency?.wallet_Hedging?.direction
-    let currencyPair = this.activeCurrency?.wallet_Hedging?.pair
-    // this.dashboardService.getHedgeGrafhData(direction, currencyPair).subscribe((data) => {
-    //   this.hedgeAmount = data
-    //   this.selectedHedgeAmount = this.hedgeAmount[0]
-    // })
+    of(getHedgeGrafhData).subscribe((data:any) => {
+      this.hedgeAmount = data
+      this.selectedHedgeAmount = this.hedgeAmount[0]
+    })
   }
 
   dateClicked() {
@@ -207,8 +207,8 @@ export class FutureOverviewHedgeChartComponent {
   }
 
   createHedge() {
-    // this.showLoader = true;
-    // // this.lockDate = moment(event.value).format(DateFormat.dateInput);
+    this.showLoader = true;
+    // this.lockDate = moment(event.value).format(DateFormat.dateInput);
     // let createHedgeObject = {
     //   amount: this.typedHedgeAmount?.replace(/\,/g, ''),
     //   productType: this.hedgeType == 'safeUp' ? "2" : "3",
@@ -219,25 +219,25 @@ export class FutureOverviewHedgeChartComponent {
     //   // Strike: "",
     //   direction: this.activeCurrency?.wallet_Hedging?.direction
     // }
-    // await this.dashboardService?.createHedgeByCategory(createHedgeObject).subscribe((data: any) => {
-    //   this.createdHedgeData = data
-    //   let splitCost = this.createdHedgeData?.feeCost?.split(" ");
-    //   this.hedgeCost = this.currencyPipe?.transform(splitCost[0], splitCost[1], true)
-    //   this.showLoader = false;
-    //   delete this.errorMsg
-    //   this.cd.detectChanges();
-    //   // this.hedgeType == 'rangeUp' ? this.showConfirmation = true : this.openLockup(this.createdHedgeData);
+    of(createHedgeByCategory).subscribe((data: any) => {
+      this.createdHedgeData = data
+      let splitCost = this.createdHedgeData?.feeCost?.split(" ");
+      this.hedgeCost = this.currencyPipe?.transform(splitCost[0], splitCost[1], true)
+      this.showLoader = false;
+      delete this.errorMsg
+      this.cd.detectChanges();
+      // this.hedgeType == 'rangeUp' ? this.showConfirmation = true : this.openLockup(this.createdHedgeData);
 
 
-    // }, (err: { error: { apiErrorMessage: string; }; }) => {
-    //   if (err.error.apiErrorMessage == 'Expiry Date Not Valid') {
-    //     this.selectedDateMsg = err.error.apiErrorMessage;
-    //   }
-    //   if (err.error.apiErrorMessage != 'Expiry Date Not Valid') {
-    //     this.errorMsg = err.error.apiErrorMessage
-    //   }
-    //   this.showLoader = false
-    // })
+    }, (err: { error: { apiErrorMessage: string; }; }) => {
+      if (err.error.apiErrorMessage == 'Expiry Date Not Valid') {
+        this.selectedDateMsg = err.error.apiErrorMessage;
+      }
+      if (err.error.apiErrorMessage != 'Expiry Date Not Valid') {
+        this.errorMsg = err.error.apiErrorMessage
+      }
+      this.showLoader = false
+    })
   }
 
   typeChange(event: any) {

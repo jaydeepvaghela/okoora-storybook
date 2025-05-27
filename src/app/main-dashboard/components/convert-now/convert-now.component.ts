@@ -22,7 +22,7 @@ export class ConvertNowComponent {
   currencyOfUser: any;
   selectedType: any;
   buySellCurrency: string = 'Buy';
-  currentCurrencyValue: any;
+  currentCurrencyValue= {"AUD":1.0,"ILS":2.3128};
   userRoleType!: number;
   walletList: any;
   baseCurrencyListFilter: any;
@@ -47,7 +47,7 @@ export class ConvertNowComponent {
       this.buySellCurrency = this.selectedType === 'buy' ? 'Buy' : 'Sell';
       let buyValue = this.selectedType === 'buy' ? this.activeCurrency?.wallet_Currency?.code : this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency
       let sellValue = this.selectedType === 'buy' ? this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency : this.activeCurrency?.wallet_Currency?.code
-   
+    
       // this._commonService.getCurrentRate(buyValue, sellValue).subscribe((data: any) => {
       //   this.showLoader = false
       //   this.currentCurrencyValue = data;

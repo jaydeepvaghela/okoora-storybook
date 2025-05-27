@@ -24,6 +24,13 @@ button:focus {
 }
 
 ::ng-deep {
+
+  #marketChart {
+    .js-widget-chart-tabs, .js-widget-chart-info {
+      display: none !important;
+    }
+  }
+
   .currency-payment-rate {
     padding: 25px 35px;
 

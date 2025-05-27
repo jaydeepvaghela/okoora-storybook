@@ -129,17 +129,17 @@
       createdHedgeData?.strike.toFixed(1) : "X" }}</span> -->
   </div>
   <button id="execute_btn_hedge_chart" class="execute-btn-initial" *ngIf="errorMsg || !typedHedgeAmount || !selectedDate || typedHedgeAmountMsg"
-    (click)="executeHedge()" [disabled]="userRoleType !== 1">Execute</button>
+    (click)="executeHedge()" >Execute</button>
   <div *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Up">
     <button id="safe_range_up_btn_hedge_chart" class="execute-btn" *ngIf="!errorMsg && typedHedgeAmount && selectedDate && !typedHedgeAmountMsg"
-      (click)="showConfPopup()" [disabled]="userRoleType !== 1">
+      (click)="showConfPopup()" >
       {{ this.hedgeType == 'safeUp' ? "Safe UP" : "Range UP"}}
     </button>
   </div>
 
   <div *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Down">
     <button id="safe_range_down_btn_hedge_chart" class="execute-btn" *ngIf="!errorMsg && typedHedgeAmount && selectedDate && !typedHedgeAmountMsg"
-      (click)="showConfPopup()" [disabled]="userRoleType !== 1">
+      (click)="showConfPopup()" >
       {{ this.hedgeType == 'safeUp' ? "Safe Down" : "Range Down"}}
     </button>
   </div>

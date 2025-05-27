@@ -39,7 +39,7 @@ export type ChartOptions = {
 import { Direction, tradingSource } from '../../enums/riskProfitLoss.enum';
 import { WalletsService } from '../../services/wallets.service';
 import { data, data1 } from '../../dashboard-data/market-overview-chartSeries';
-
+declare const TradingView: any;
 @Component({
   selector: 'app-market-overview-chart',
   imports: [CommonModule],
@@ -144,6 +144,11 @@ export class MarketOverviewChartComponent implements AfterViewInit {
           "dateRanges": [
             "1m|30"
           ],
+          hide_top_toolbar: true,       // hides the top toolbar
+          hide_legend: true,            // hides the legend at the bottom
+          hide_side_toolbar: true,      // hides the side toolbar
+          withdateranges: false,        // disables date range selector
+          allow_symbol_change: false,
           "lineColor": "rgba(49, 121, 245, 1)",
           "topColor": "rgba(144, 191, 249, 1)",
           "bottomColor": "rgba(187, 217, 251, 0)",

@@ -99,7 +99,7 @@
     Execute
   </button>
   <button id="lock_btn1_execute_lock_chart" class="lock-up-btn" *ngIf="selectedTimeFrame || lockDateValue"
-  (click)="showConfPopup()" [disabled]="userRoleType !== 1">Execute</button>
+  (click)="showConfPopup()">Execute</button>
 
   <div class="confirmation-popup" *ngIf="showConfirmation">
     <button id="lock_btn_hide_lock_chart" class="close-icon" (click)="hideConfPopup()"></button>

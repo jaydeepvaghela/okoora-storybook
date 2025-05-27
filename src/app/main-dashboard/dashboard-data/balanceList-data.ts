@@ -593,6 +593,35 @@ export const lastPaymentRateData = {
     "buySell": 1
 }
 
+export const getHedgeGrafhData = [2.3323,2.3672845,2.4139305];
+
+export const createHedgeByCategory = {
+    "strike": 2.3359,
+    "obligationRate": 2.1966,
+    "catalogDetails": {
+        "catalogNumber": 104,
+        "catalogName": "RANGE UP",
+        "catalogDetails": "הגנה מלאה בטווח שערים, מאפשרת גמישות ומרחב אדישות",
+        "catalogDetailsProfit": "רווח בלתי מוגבל אם שע\"ח במועד סיום העסקה גבוה משער ההגנה",
+        "catalogDetailsLoss": "הפסד בלתי מוגבל אם שע\"ח ביום סיום העסקה נמוך משער ההתחייבות"
+    },
+    "strategyId": 133835,
+    "premiumAmount": 2584.0,
+    "feeCost": " ILS",
+    "collateral": 51295.504,
+    "protectAmount": 222222.0,
+    "status": "Create hedge successfully.",
+    "secondCurrency": "ILS",
+    "secondCurrencySign": "₪",
+    "collateralCur": "ILS",
+    "collateralSign": "₪",
+    "notionalCurrency": "AUD",
+    "notionalCurrencySign": "$",
+    "expiryDate": "27/05/2025",
+    "purchaseGroupId": "a87f83db-2460-4794-89bd-12f072671479",
+    "createAt": "26/05/2025"
+}
+
 export const getCurrenciesNotInWallet = [
     {
         "currency_Id": 15,
