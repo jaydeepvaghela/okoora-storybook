@@ -1,0 +1,426 @@
+@import "../../../../assets/scss/full-screen-modal.scss";
+@import '../../../../assets/scss/variable';
+::ng-deep {
+    .questionnaire-container {
+        .mdc-tab__text-label {
+            font-size: 16px;
+            font-weight: 400 !important;
+            font-family: 'Manrope';
+            font-style: normal;
+            color: #6F6F7B;
+        }
+
+        .mdc-tab--active .mdc-tab__text-label {
+            color: var(--brand-primary-color) !important;
+            font-weight: 700 !important;
+        }
+    }
+}
+
+.questionnaire-step2-wrapper {
+  min-height: 708px;
+  @media only screen and (max-width: 1440px){
+    min-height: 510px;
+  }
+}
+
+.currency-icon-container {
+    display: flex;
+    justify-content: space-between;
+
+    .btn-back-icon {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-size: 12px;
+        margin: 25px;
+        background: transparent;
+
+        @media only screen and (max-width: 1440px){
+          margin: 6px 25px 25px;
+        }
+
+        img {
+            margin-right: 5px;
+        }
+    }
+}
+
+.questionnaire-container {
+    padding: 10px 45px;
+    @media screen and (max-width: 1600px) {
+        margin-top: -20px;
+    }
+
+    @media screen and (max-width: 580px) {
+        margin-top: 15px;
+    }
+
+    .questionnare-title {
+        color: var(--brand-primary-color);
+        text-transform: uppercase;
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 800;
+        text-align: center;
+        font-family: 'Epilogue';
+
+        @media only screen and (max-width: 767px) {
+            font-size: 24px;
+          }
+        @media only screen and (max-width: 480px) {
+            font-size: 20px;
+            padding: 0;
+        }
+    }
+
+    .questionnare-subtitle {
+        text-align: center;
+        font-size: 14px;
+        padding: 0 10px;
+        font-style: normal;
+        line-height: 22px;
+        font-weight: 500;
+        color: #5B5B66;
+        font-family: 'Epilogue';
+
+        @media only screen and (max-width: 1440px) {
+            line-height: 18px;
+        }
+
+        @media only screen and (max-width: 480px) {
+            font-size: 12px;
+        }
+
+        span {
+            white-space: nowrap;
+            font-weight: 700;
+            color: #5B5B66;
+        }
+    }
+
+    .tab-content {
+        .buy-sell-currency-title {
+            width: 100%;
+
+            h4 {
+                font-family: 'Manrope';
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                color: #030203;
+            }
+        }
+    }
+
+    .currency-buy-input {
+        .country-dropdown {
+            mat-select {
+                font-size: 14px!important;
+                color: #000;
+                font-family: 'Manrope';
+                font-style: normal;
+                font-weight: 500;
+
+                @media screen and (max-width: 1440px) {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+
+    .tab-info {
+        color: #A3A5AA;
+        text-align: center;
+        font-family: 'Manrope';
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin: 15px 0;
+
+        @media screen and (max-width: 1600px) {
+            margin: 12px 0;
+            font-size: 13px;
+        }
+    }
+
+    .currency-btn {
+        .dashboard-btn {
+            border: none;
+            color: $white;
+            background-color: var(--brand-primary-color);
+            padding: 0 30px;
+        }
+    }
+
+    .buy-sell-currency-title {
+        font-weight: 700;
+
+        h4 {
+            color: $black;
+
+        }
+
+        .ils-color {
+            color: var(--brand-primary-color);
+        }
+    }
+
+    .currency-btn {
+        width: 100%;
+        text-align: center;
+
+        .continue {
+            border: none;
+            color: $white;
+            padding: 0 80px;
+            background-color: var(--brand-primary-color);
+        }
+
+        .continue[disabled] {
+            background-color: $disable-button-bg;
+            color: $action-btn-color;
+            cursor: default;
+        }
+
+        .add-currency {
+            color: var(--brand-primary-color);
+            position: absolute;
+            font-size: 14px;
+            margin: -35px -80px;
+            border: 1px solid var(--brand-primary-color);
+            background-color: #ffffff;
+            height: 30px;
+            padding: 0 15px;
+        }
+    }
+
+    .risk-rate-container {
+        border-radius: 10px;
+        padding: 30px 25px 40px 25px;
+        border: 1px solid #D9DADD;
+        background: var(--content-wrapper-bg-color);
+        @media screen and (max-width: 1600px) {
+            padding: 15px 20px;
+        }
+
+        .risk-updown {
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: #030203;
+            font-family: 'Manrope';
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        label {
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: #5B5B66;
+            font-weight: 600;
+        }
+
+        .avg-label {
+            font-size: 12px;
+            margin-left: 30px;
+            position: absolute;
+            margin-top: 5px;
+            right: 45px;
+        }
+
+        .risk-measurement {
+            width: 35%;
+            min-width: 30%;
+
+            @media screen and (max-width: 480px) {
+                min-width: 45%;
+            }
+        }
+    }
+
+    .currency-alert {
+      @media screen and (max-width: 1440px) {
+        margin-top: 16px !important;
+      }
+        img {
+            margin-right: 5px;
+        }
+        span {
+            text-align: center;
+            font-family: 'Manrope';
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            color: #1D1D22;
+            font-size: 12px;
+        }
+    }
+
+    .currency-pair-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+
+        @media screen and (max-width:480px) {
+            display: block;
+        }
+
+        .operation-pair {
+            margin: 20px 0 0 10px;
+            cursor: pointer;
+        }
+    }
+
+    .currency-buy-input {
+        flex: 1.5;
+        margin-right: 10px;
+    }
+
+    .currency-amount-input {
+        flex: 2;
+
+        .form-currency-wrap {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            width: 100%;
+
+            .amount-prefix {
+                font-family: 'Manrope';
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 22px;
+                color: #5B5B66;
+                margin-left: 10px;
+                margin-right: 5px;
+
+                @media only screen and (max-width: 1440px) {
+                    font-size: 14px;
+                    margin-top: 1px;
+                }
+            }
+
+            .form-control {
+                padding-left: 0px;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 0px solid #ced4da;
+
+                &:focus {
+                    outline: 0;
+                    box-shadow: inherit;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+
+    .currency-icon-container {
+        display: flex;
+        justify-content: space-between;
+
+        .btn-back-icon {
+            margin: 25px;
+        }
+    }
+
+    .questionnaire-container {
+        padding: 0 35px;
+
+
+        .country-dropdown {
+            @media screen and (max-width: 480px) {
+                width: 108%;
+            }
+
+            .mat-select-note {
+                font-size: 10px;
+            }
+        }
+
+        .risk-rate-container {
+
+            .avg-label {
+                font-size: 10px;
+            }
+        }
+
+        .currency-btn {
+            button {
+                max-width: fit-content !important;
+            }
+
+            .add-currency {
+                font-size: 12px;
+                margin: -20px -75px;
+                @media screen and (max-width: 1440px) {
+                  margin: -26px -75px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .currency-icon-container {
+        display: flex;
+        justify-content: space-between;
+
+        .btn-back-icon {
+            margin: 25px;
+        }
+    }
+
+    .questionnaire-container {
+
+        .risk-rate-container {
+            padding: 15px 15px 25px 15px;
+
+            label {
+                font-size: 9px;
+            }
+
+            .avg-label {
+                font-size: 8px;
+                right: 40px;
+
+                @media screen and (max-width: 480px) {
+                    right: 18px;
+                }
+            }
+        }
+
+        .currency-pair-container {
+            .operation-pair {
+                margin: 20px 0 0 5px;
+
+                @media screen and (max-width: 480px) {
+                    margin: 20px 0 0;
+                }
+            }
+        }
+    }
+}
+
+.errorMsg {
+    color: red;
+}
+
+.disable {
+    pointer-events: none !important;
+}
+
+form {
+    padding-bottom: 0 !important;
+}
