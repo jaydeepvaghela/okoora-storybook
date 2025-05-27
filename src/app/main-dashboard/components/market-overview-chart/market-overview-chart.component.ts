@@ -144,14 +144,9 @@ export class MarketOverviewChartComponent implements AfterViewInit {
           "dateRanges": [
             "1m|30"
           ],
-          hide_top_toolbar: true,       // hides the top toolbar
-          hide_legend: true,            // hides the legend at the bottom
-          hide_side_toolbar: true,      // hides the side toolbar
-          withdateranges: false,        // disables date range selector
-          allow_symbol_change: false,
           "lineColor": "rgba(49, 121, 245, 1)",
           "topColor": "rgba(144, 191, 249, 1)",
-          "bottomColor": "rgba(187, 217, 251, 0)",
+          "bottomColor": "rgba(187, 217, 251, 0)"
         }`;
     let marChartContainer = document.getElementById("marketChart")
     this._renderer2?.appendChild(marChartContainer, script)
