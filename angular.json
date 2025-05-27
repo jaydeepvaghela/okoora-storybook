@@ -64,6 +64,7 @@
             "styles": [
               "node_modules/swiper/swiper-bundle.min.css",
               "@angular/material/prebuilt-themes/azure-blue.css",
+              "node_modules/@mobiscroll/angular/dist/css/mobiscroll.min.css",
               "src/styles.scss"
             ],
             "scripts": []

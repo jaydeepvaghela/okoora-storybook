@@ -1,4 +1,4 @@
-import { CdkDrag, CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDrawer } from '@angular/material/sidenav';
@@ -32,13 +32,14 @@ import { HtmlTooltipDirective } from '../directives/html-tooltip.directive';
   selector: 'app-main-dashboard',
   templateUrl: './main-dashboard.component.html',
   styleUrls: ['./main-dashboard.component.scss'],
-  imports: [CommonModule, HtmlTooltipDirective, WalletListGeneralComponent, MarketRiskChartComponent, SideTabsContainerComponent, CalendarComponent, FooterComponent, LockNextPaymentComponent, CdkDrag, MatCardModule, MarketOverviewChartComponent]
+  imports: [CommonModule, HtmlTooltipDirective, WalletListGeneralComponent, MarketRiskChartComponent, SideTabsContainerComponent, CalendarComponent, FooterComponent, LockNextPaymentComponent, MatCardModule, MarketOverviewChartComponent, DragDropModule ]
 })
 export class MainDashboardComponent {
   @ViewChild('notificationDrawer') notificationDrawer: MatDrawer | undefined;
-  // @ViewChild(LockNextPaymentComponent)
-  // lockNextPaymentComponent: LockNextPaymentComponent;
-  // @ViewChild(MarketRiskChartComponent) child: MarketRiskChartComponent;
+  @ViewChild(LockNextPaymentComponent)
+  lockNextPaymentComponent!: LockNextPaymentComponent;
+  @ViewChild(MarketRiskChartComponent)
+  child!: MarketRiskChartComponent;
   activeCurrency: any;
   currencyOfUser: any;
   dashboardpanelData: any;
@@ -223,15 +224,16 @@ export class MainDashboardComponent {
   }
 
   goToPreviousSlide() {
-    // if (this.lockNextPaymentComponent && this.lockNextPaymentComponent.mySwiper) {
-    //   this.lockNextPaymentComponent.mySwiper.slidePrev();
-    // }
+    debugger
+    if (this.lockNextPaymentComponent && this.lockNextPaymentComponent.mySwiper) {
+      this.lockNextPaymentComponent.mySwiper.slidePrev();
+    }
   }
 
   goToNextSlide() {
-    // if (this.lockNextPaymentComponent && this.lockNextPaymentComponent.mySwiper) {
-    //   this.lockNextPaymentComponent.mySwiper.slideNext();
-    // }
+    if (this.lockNextPaymentComponent && this.lockNextPaymentComponent.mySwiper) {
+      this.lockNextPaymentComponent.mySwiper.slideNext();
+    }
   }
 
   openQuestionnaireDialog() {

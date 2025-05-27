@@ -1,7 +1,18 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy } from '@angular/core';
-import { DateAdapter, MAT_DATE_FORMATS, MatDateFormats, MatOptionModule } from '@angular/material/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MatDateFormats,
+  MatOptionModule,
+} from '@angular/material/core';
 import { MatCalendar } from '@angular/material/datepicker';
-import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 import { DashboardService } from '../../../services/dashboard.service';
 import { MatSelectModule } from '@angular/material/select';
@@ -15,36 +26,34 @@ import { CommonModule } from '@angular/common';
   imports: [MatSelectModule, FormsModule, CommonModule, MatOptionModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomCalendarHeader<D> implements OnDestroy {
+export class CustomCalendarHeader<D> implements OnDestroy, OnInit {
   private _destroyed = new Subject<void>();
   selectedMonth: number;
   selectedYear: number;
   selectedDate: any;
+
   months: { value: number; viewValue: string }[] = [];
   years: number[] = [];
-  translateTexts: any;
+
   constructor(
     private _calendar: MatCalendar<D>,
     private _dateAdapter: DateAdapter<D>,
     private dashboardService: DashboardService,
-    private translateService: TranslateService,
     @Inject(MAT_DATE_FORMATS) private _dateFormats: MatDateFormats,
     cdr: ChangeDetectorRef
   ) {
     _calendar.stateChanges
       .pipe(takeUntil(this._destroyed))
       .subscribe(() => cdr.markForCheck());
+
     const currentDate = new Date();
     this.selectedMonth = currentDate.getMonth();
     this.selectedYear = currentDate.getFullYear();
-    // this.initializeMonthAndYear();
+    this.initializeMonthAndYear();
   }
 
   ngOnInit(): void {
-    this.translateService.onLangChange.subscribe(ev => {
-      this.getTranslations();
-    });
-    this.getTranslations();
+    this.initializeMonthAndYear();
   }
 
   private initializeMonthAndYear() {
@@ -52,27 +61,30 @@ export class CustomCalendarHeader<D> implements OnDestroy {
     this.selectedMonth = this._dateAdapter.getMonth(activeDate);
     this.selectedYear = this._dateAdapter.getYear(activeDate);
 
-    this.months = Array.from({ length: 12 }, (_, i) => ({
-      value: i,
-      viewValue: this.translateTexts[`MONTH_SELECTION.MONTH_${i}`]
-    }));
+    this.months = [
+      { value: 0, viewValue: 'January' },
+      { value: 1, viewValue: 'February' },
+      { value: 2, viewValue: 'March' },
+      { value: 3, viewValue: 'April' },
+      { value: 4, viewValue: 'May' },
+      { value: 5, viewValue: 'June' },
+      { value: 6, viewValue: 'July' },
+      { value: 7, viewValue: 'August' },
+      { value: 8, viewValue: 'September' },
+      { value: 9, viewValue: 'October' },
+      { value: 10, viewValue: 'November' },
+      { value: 11, viewValue: 'December' },
+    ];
 
     const currentYear = new Date().getFullYear();
-    this.dashboardService.currentSideTabType.subscribe((data)=> {
-      if(data == 2 || data == 0) {
-        this.years = [];
-        for (let i = currentYear; i <= currentYear + 1; i++) {
-          this.years.push(i);
-        }
+    this.dashboardService.currentSideTabType.subscribe((data) => {
+      this.years = [];
+      for (let i = currentYear; i <= currentYear + 1; i++) {
+        this.years.push(i);
       }
-      else {
-        this.years = [];
-        for (let i = currentYear; i <= currentYear + 1; i++) {
-          this.years.push(i);
-        }
-      }
-    })
+    });
   }
+
   monthChanged(event: number) {
     this.selectedMonth = event;
     this.updateCalendar();
@@ -82,22 +94,17 @@ export class CustomCalendarHeader<D> implements OnDestroy {
     this.selectedYear = event;
     this.updateCalendar();
   }
+
   private updateCalendar() {
-    const newDate = this._dateAdapter.createDate(
-      this.selectedYear,
-      this.selectedMonth,
-      1
-    );    
+    const newDate = this._dateAdapter.createDate(this.selectedYear, this.selectedMonth, 1);
     this._calendar.activeDate = newDate;
     this.selectedDate = newDate;
     this._calendar.selectedChange.emit(newDate);
   }
+
   get periodLabel() {
     return this._dateAdapter
-      .format(
-        this._calendar.activeDate,
-        this._dateFormats.display.monthYearLabel
-      )
+      .format(this._calendar.activeDate, this._dateFormats.display.monthYearLabel)
       .toLocaleUpperCase();
   }
 
@@ -106,6 +113,7 @@ export class CustomCalendarHeader<D> implements OnDestroy {
       mode === 'month'
         ? this._dateAdapter.addCalendarMonths(this._calendar.activeDate, -1)
         : this._dateAdapter.addCalendarYears(this._calendar.activeDate, -1);
+
     if (mode === 'month') {
       this.selectedMonth -= 1;
       if (this.selectedMonth < 0) {
@@ -115,6 +123,7 @@ export class CustomCalendarHeader<D> implements OnDestroy {
     } else if (mode === 'year') {
       this.selectedYear -= 1;
     }
+
     this.updateCalendar();
   }
 
@@ -124,37 +133,17 @@ export class CustomCalendarHeader<D> implements OnDestroy {
         ? this._dateAdapter.addCalendarMonths(this._calendar.activeDate, 1)
         : this._dateAdapter.addCalendarYears(this._calendar.activeDate, 1);
 
-        if (mode === 'month') {
-          this.selectedMonth += 1;
-          if (this.selectedMonth > 11) {
-            this.selectedMonth = 0; 
-            this.selectedYear += 1;
-          }
-        } else if (mode === 'year') {
-          this.selectedYear += 1;
-        }
-        this.updateCalendar();
-  }
+    if (mode === 'month') {
+      this.selectedMonth += 1;
+      if (this.selectedMonth > 11) {
+        this.selectedMonth = 0;
+        this.selectedYear += 1;
+      }
+    } else if (mode === 'year') {
+      this.selectedYear += 1;
+    }
 
-  getTranslations() {
-    this.translateService.get([
-      'MONTH_SELECTION.MONTH_0',
-      'MONTH_SELECTION.MONTH_1',
-      'MONTH_SELECTION.MONTH_2',
-      'MONTH_SELECTION.MONTH_3',
-      'MONTH_SELECTION.MONTH_4',
-      'MONTH_SELECTION.MONTH_5',
-      'MONTH_SELECTION.MONTH_6',
-      'MONTH_SELECTION.MONTH_7',
-      'MONTH_SELECTION.MONTH_8',
-      'MONTH_SELECTION.MONTH_9',
-      'MONTH_SELECTION.MONTH_10',
-      'MONTH_SELECTION.MONTH_11'
-    ]).subscribe(res => {
-      this.translateTexts = res;
-      console.log('Translations:', this.translateTexts);
-      this.initializeMonthAndYear();
-    })
+    this.updateCalendar();
   }
 
   ngOnDestroy() {

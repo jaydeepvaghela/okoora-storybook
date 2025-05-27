@@ -29,6 +29,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { createHedgeByCategory, getHedgeGrafhData } from '../../dashboard-data/balanceList-data';
 import { of } from 'rxjs';
+import { CustomCalendarHeader } from '../shared/custom-calendar-header/custom-calendar-header.component';
 // import { ApprovalProtectiveFormComponent } from 'src/app/purchase-orders/components/approval-protective-form/approval-protective-form.component';
 // import { CustomCalendarHeader } from 'src/app/shared/components/custom-calendar-header/custom-calendar-header.component';
 // import { WalletsService } from 'src/app/wallets/services/wallets.service';
@@ -72,7 +73,7 @@ export class FutureOverviewHedgeChartComponent {
   hedgeType = 'safeUp';
   selectedDate: any;
   minimumDate: any = new Date();
-  // customCalendar = CustomCalendarHeader;
+  customCalendar = CustomCalendarHeader;
   activeCurrency: any;
   hedgeAmount: any;
   selectedHedgeAmount: any;

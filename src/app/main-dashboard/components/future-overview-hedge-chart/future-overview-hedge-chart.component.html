@@ -30,7 +30,7 @@
         <input type="text" id="date_picker_input_hedge_chart" matInput placeholder="Date" [matDatepicker]="picker" [(ngModel)]="selectedDate"
           (dateChange)="addEvent('input', $event)">
         <mat-datepicker id="date_picker_open_hedge_chart" (click)="dateClicked()" #picker
-          panelClass="custom-datepicker"></mat-datepicker>
+          panelClass="custom-datepicker" [calendarHeaderComponent]="customCalendar"></mat-datepicker>
       </div>
       <!-- <div class="error-msg">
         <span *ngIf="errorMsg">{{errorMsg}}</span>

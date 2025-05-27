@@ -5,6 +5,7 @@
 // @import '~swiper/swiper-bundle.css';
 @import "@mobiscroll/angular/dist/css/mobiscroll.scss";
 @import '~swiper/swiper-bundle.css';
+@import "~@mobiscroll/angular/dist/css/mobiscroll.min.css";
 
 // slim-scroll-scss
 ::-webkit-scrollbar {
@@ -71,4 +72,64 @@ button{
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
+}
+
+.custom-tooltip {
+  &.message-wrapper {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    width: 294px;
+    background-color: #01031c;
+    border-radius: 13px;
+    color: #fff;
+    font-size: $font-14;
+    font-weight: 400;
+    line-height: normal;
+    z-index: 9;
+    .tooltip-message {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      display: inline-block;
+      padding: 18px 10px 18px 24px;
+      &::before {
+        content: "";
+        position: absolute;
+        height: 8px;
+        width: 8px;
+        background-color: #01031c;
+        top: -4px;
+        bottom: auto;
+        left: 0;
+        right: 0;
+        transform: rotate(45deg);
+        margin: auto;
+      }
+      &.top {
+        &::before {
+          top: auto;
+          bottom: -4px;
+        }
+      }
+      &.left {
+        &::before {
+          top: 0;
+          bottom: 0;
+          left: -4px;
+          right: auto;
+        }
+      }
+      &.right {
+        &::before {
+          top: 0;
+          bottom: 0;
+          left: auto;
+          right: -4px;
+        }
+      }
+    }
+  }
 }

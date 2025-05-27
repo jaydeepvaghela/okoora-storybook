@@ -17,7 +17,7 @@
       <div class="rs-hedge" *ngIf="user?.afiiliate?.currency != 'EUR'">Hedge</div>
     </div>
   </div>
-  <!-- <mbsc-eventcalendar
+  <mbsc-eventcalendar
     id="dashboardCalendar"
     #eventCalendar
     class="cust-event-calendar"
@@ -32,14 +32,14 @@
     [dayContentTemplate]="dayContentTemplate"
     (onPageChange)="calendarPageChanged($event)"
     (onSelectedDateChange)="calendarDateChanged($event)"
-  > -->
+  >
     <ng-template #calendarHeaderTemplate>
       <div class="header-wrapper">
         <div class="calender-header-left">
           <div class="date-change">
-            <!-- <mbsc-calendar-prev id="mbsc-date-prev" class="md-work-week-prev"></mbsc-calendar-prev>
+            <mbsc-calendar-prev id="mbsc-date-prev" class="md-work-week-prev"></mbsc-calendar-prev>
             <mbsc-calendar-nav id="mbsc-date-nav" class="md-work-week-nav"></mbsc-calendar-nav>
-            <mbsc-calendar-next id="mbsc-date-next" class="md-work-week-next"></mbsc-calendar-next> -->
+            <mbsc-calendar-next id="mbsc-date-next" class="md-work-week-next"></mbsc-calendar-next>
           </div>
           <div class="md-work-week-picker">
             <mat-select
@@ -85,7 +85,7 @@
           />
         </div>
     </ng-template>
-  <!-- </mbsc-eventcalendar> -->
+  </mbsc-eventcalendar>
   <ng-template #dayContentTemplate let-data>
     <button
       id="add-event-month-{{data?.date | date:'ddMM'}}"

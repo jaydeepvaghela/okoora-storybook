@@ -8,12 +8,8 @@ import { CalendarDayObjModel } from '../../models/CalendarDayObjModel';
 import { CalendarEventsModel } from '../../models/CalendarEventsModel';
 import { CalendarNotesModel } from '../../models/CalendarNotesModel';
 import { MatDrawer } from '@angular/material/sidenav';
-import { EMPTY, Observable, Subject, catchError, map, startWith, takeUntil, tap } from 'rxjs';
-// import { CommonDialogService } from 'src/app/shared/services/common-dialog.service';
+import { EMPTY, Observable, Subject, catchError, map, of, startWith, takeUntil, tap } from 'rxjs';
 import { DashboardService } from '../../services/dashboard.service';
-// import { CommonService } from 'src/app/common/services/common.service';
-// import { CompareHedgeComponent } from '../hedge/hedge-popup/compare-hedge.component';
-// import { PaymentsDashboardComponent } from 'src/app/payments/components/payments-dashboard/payments-dashboard.component';
 import { Router } from '@angular/router';
 import { FormControl, FormsModule } from '@angular/forms';
 import { WalletsService } from '../../services/wallets.service';
@@ -23,10 +19,7 @@ import { MbscModule } from '@mobiscroll/angular';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDateRangePicker } from '@angular/material/datepicker';
-// import { ExchangeMainComponent } from 'src/app/exchange/components/exchange-main/exchange-main.component';
-// import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-// import { PlanConversionComponent } from 'src/app/plan-conversion/components/plan-conversion.component';
+import { getCalendarDataByDate } from '../../dashboard-data/calendar-data';
 
 const calendarResources: MbscResource[] = [
   {
@@ -80,19 +73,7 @@ export class CalendarComponent {
   oldDate!: boolean;
   unSubScribe$ = new Subject<void>();
   affiliateCountry: any;
-  // @HostListener('document:click', ['$event']) onDocumentClick(event: MouseEvent) {
-  //   const targetElement = event.target as HTMLElement;
-  //   if (!targetElement.classList.contains('mbsc-timeline-column')) {
-  //     document.querySelectorAll('#createEventCustMenu').forEach((item) => {
-  //       item?.remove();
-  //     });
-  //     if (document.querySelector('.driver-popover.onboarding-popup') == null) {
-  //       document.querySelector('body')!.style.overflowY = 'auto';
-  //     }
-  //   }
-  // }
   @ViewChild('eventCalendar') eventCalendar!: MbscEventcalendar;
-  // @ViewChild('createEventPopup', { static: false }) createEventPopup!: MbscPopup;
   @ViewChild('alertDrawer')
   alertDrawer!: MatDrawer;
   calendarData: CalendarDayObjModel[] = [];
@@ -103,28 +84,6 @@ export class CalendarComponent {
   tempNotesObj!: CalendarNotesModel;
   popupHeader!: string;
   isEdit = false;
-  // popupAddButtons = [
-  //   'cancel',
-  //   {
-  //     handler: () => {
-  //       this.saveEvent();
-  //     },
-  //     keyCode: 'enter',
-  //     text: 'Convert',
-  //     cssClass: 'event-save-btn',
-  //   },
-  // ];
-  // popupOptions: MbscPopupOptions = {
-  //   display: 'bottom',
-  //   contentPadding: false,
-  //   fullScreen: true,
-  //   onClose: () => {
-  //     if (!this.isEdit) {
-  //       this.calendarData = [...Object.values(this.calendarData)];
-  //       this.calendarOptions = this.getCalendarOptions();
-  //     }
-  //   },
-  // };
   popupButtons: any = [];
   calendarOptions!: MbscEventcalendarOptions;
   resources = calendarResources;
@@ -161,39 +120,24 @@ export class CalendarComponent {
     private renderer: Renderer2,
     private _walletService: WalletsService,
     private dashboardService: DashboardService,
-    // private _commonService: CommonService,
-    // private _authService: AuthenticationService,
     private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    const userAffiliate = JSON.parse(localStorage.getItem('user')!)['afiiliate'];
-    this.affiliateCountry = userAffiliate?.country;
-    // this.userRoleType = this._authService.getRoleType();
     this.activeCurrency = JSON.parse(localStorage.getItem('activeWallet')!);
-    // this.dashboardService.currentCalendarData.subscribe((result => {
-    //   this.loadCalendarDataOnChange(new Date());
-    // }))
     this.loadCalendarDataOnChange(new Date());
 
-    // this.calendarOptions = this.getCalendarOptions();
+    this.calendarOptions = this.getCalendarOptions();
     this.currencyData$ = this._walletService.getAllBalanceList().pipe(
       tap((res) => {
         this.walletCurrencies = res;
         this.changeSearch();
       })
     );
-
-    // this.dashboardService.currentdashboardDrawerType.subscribe((res) => {
-    //   if (res) {
-    //     this.alertDrawerClose();
-    //   }
-    // });
     localStorage.setItem('calendarSelectedDate', moment().format('YYYY-MM-DD'));
   }
 
   ngDoCheck(){
-    // this.userRoleType = this._authService?.getRoleType();
     this.cdr?.detectChanges();
   }
 
@@ -268,66 +212,8 @@ export class CalendarComponent {
   }
 
   createNote(date: string, resource: number) {
-    // this.tempDayObj = {
-    //   id: 1,
-    //   start: moment(date).format('YYYY-MM-DD'),
-    //   resource: resource,
-    //   title: this.resources[resource]?.name,
-    // };
-    // this.dialog
-    //   .open(NoteCreateDialogComponent, {
-    //     disableClose: false,
-    //     panelClass: 'create-note-dialog',
-    //   })
-    //   .afterClosed()
-    //   .subscribe((res) => {
-    //     let noteObj = {
-    //       text: res,
-    //     };
-    //     if (res) {
-    //       const foundObject = this.calendarData.find((obj) => {
-    //         if (obj.start == this.tempDayObj.start) {
-    //           obj['notes']?.push(noteObj);
-    //           return true;
-    //         } else {
-    //           return false;
-    //         }
-    //       });
-    //       if (!foundObject) {
-    //         this.tempDayObj['notes'] = [];
-    //         this.tempDayObj['notes']?.push(noteObj);
-    //         this.calendarData = [...this.calendarData, this.tempDayObj];
-    //       }
-    //       setTimeout(() => {
-    //         this.calendarOptions = this.getCalendarOptions();
-    //       });
-    //     }
-    //   });
   }
 
-  // addEvent(date: any, resource: number) {
-  //   this.loadPopupForm(date, resource);
-  //   this.popupButtons = this.popupAddButtons;
-  //   this.popupHeader = '<div>New event</div>';
-  //   this.createEventPopup.open();
-  // }
-
-  // saveEvent(): void {
-  //   const foundObject = this.calendarData.find((obj) => {
-  //     if (obj.start == this.tempDayObj.start) {
-  //       obj['events']?.push(this.tempEventObj);
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   });
-  //   if (!foundObject) {
-  //     this.tempDayObj['events'] = [];
-  //     this.tempDayObj['events']?.push(this.tempEventObj);
-  //     this.calendarData = [...this.calendarData, this.tempDayObj];
-  //   }
-  //   this.createEventPopup.close();
-  // }
 
   loadPopupForm(startDate: any, resource: number): void {
     this.tempEventObj = <CalendarEventsModel>{};
@@ -371,11 +257,7 @@ export class CalendarComponent {
     }
     noteButton.innerText = 'Add note';
     this.renderer.appendChild(customMenu, eventButton);
-    // this.renderer.appendChild(customMenu, noteButton);
     this.renderer.listen(eventButton, 'click', (ev) => {
-      // let selectedDate = moment(args.date).format('YYYY-MM-DD');
-      // localStorage.setItem('calendarSelectedDate', selectedDate);
-
       if (args.resource == 0) {
         this.alertDrawerOpen(false, args?.date);
       } else if (args.resource == 1) {
@@ -385,9 +267,6 @@ export class CalendarComponent {
       } else if (args.resource == 3) {
         this.openHedgeDialog(false, args?.date);
       }
-      // const date = ev.currentTarget.getAttribute('data-date');
-      // const resource = ev.currentTarget.getAttribute('data-resource');
-      // this.addEvent(date, resource);
     });
     this.renderer.listen(noteButton, 'click', (ev) => {
       const date = ev.currentTarget.getAttribute('data-date');
@@ -443,83 +322,23 @@ export class CalendarComponent {
     if (date) {
       this.selectedCalendarDate = moment(date).format('YYYY-MM-DD');
     }
-    // if (moment(this.selectedCalendarDate).isAfter(currentDate, 'day')) {
-    //     let activeWallet: any = localStorage.getItem('activeWallet');
-    //     let currency = JSON.parse(activeWallet);
-    //     this.dialog
-    //       .open(SendComponent, {
-    //         width: '100vw',
-    //         maxWidth: '100vw',
-    //         data: {
-    //           selectedwalletInfo: currency,
-    //           type: true,
-    //           payment: false,
-    //           transaction: true,
-    //         },
-    //         disableClose: true,
-    //       })
-    //       .afterClosed()
-    //       // .subscribe((shouldReload: any) => {
-    //       //   this.child?.getAllData();
-    //       // });
-    // } else {
-    //   this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + `${AppPages.Payments}` : `${AppPages.Payments}`]);
-    // }
+
   }
 
   openConvertDialog(isMenu?: boolean, date?: any) {
-    let activeWallet: any = JSON.parse(localStorage.getItem('activeWallet') || '');
     if (isMenu) {
       this.selectedCalendarDate = this.getSelectedDate();
     }
     if (date) {
       this.selectedCalendarDate = moment(date).format('YYYY-MM-DD');
     }
-    const currentDate = moment();
-    const selectedCalendarDateMoment = moment(this.selectedCalendarDate, "YYYY-MM-DD");
-    // const exchangeToOpen: any = selectedCalendarDateMoment.isAfter(currentDate) ? PlanConversionComponent : ExchangeMainComponent;
-    //   this.dialog.open(exchangeToOpen, {
-    //     width: '100vw',
-    //     maxWidth: '100vw',
-    //     data: {
-    //       selectedwalletInfo: activeWallet,
-    //       selectedCalendarDate: this.selectedCalendarDate
-    //     },
-    //     disableClose: true,
-    //   })
-    //   .afterClosed()
-    //   .subscribe((shouldReload: any) => {
-    //     this.loadCalendarDataOnChange(new Date());
-    //   });
+
   }
 
   openHedgeDialog(isMenu?: boolean, date?: any) {
-    // const dialogRef = this.dialog
-    //   .open(CompareHedgeComponent, {
-    //     width: '70vw',
-    //     maxWidth: '95vw',
-    //     maxHeight: '95vh',
-    //     height: '650px',
-    //     panelClass: 'hedge-dialog',
-    //   })
-    //   .afterClosed()
-    //   .subscribe((shouldReload: any) => {
-    //     this.loadCalendarDataOnChange(new Date());
-    //   });
   }
 
   confirmAlertDelete() {
-    // this._commonDialogService
-    //   .confirmDialog({
-    //     message: 'Are you sure you want to delete?',
-    //     confirmText: 'Yes, Delete',
-    //     cancelText: 'No, Keep it',
-    //     modalClass: 'confirm-delete',
-    //   })
-    //   .subscribe((isConfirmed) => {
-    //     if (isConfirmed) {
-    //     }
-    //   });
   }
 
   onSelectionChange(ev: any) {
@@ -554,34 +373,6 @@ export class CalendarComponent {
     let ToDate = moment().add(1, 'year').format(DateFormat?.dateInput);
     let currency = this.activeCurrency?.wallet_Currency?.code;
     this.showLoader = true;
-    // this._commonService.noTradeList(FromDate, ToDate, currency).pipe(takeUntil(this.unSubScribe$)).subscribe((data: any) => {
-    //   for (var i = 0; i < data.length; i++) {
-    //     this.holidays.push(moment(data[i]?.date).format('YYYY-MM-DD'));
-    //   }
-    //   localStorage.setItem('holidays', JSON.stringify(this.holidays));
-    //   this.calendarLoad = true;
-    //   this.calendarOptions = this.getCalendarOptions();
-    //   setTimeout(() => {
-    //     document.querySelectorAll('.mbsc-timeline-header .mbsc-timeline-header-bg .mbsc-timeline-day').forEach((dayItem, index) => {
-    //       dayItem?.setAttribute('id', `mbsc-day-${index}`);
-    //       dayItem.addEventListener('click', (ev) => {
-    //         let currentTarget = ev?.currentTarget as HTMLElement;
-    //         let dateElement = currentTarget.querySelector('.mbsc-hidden-content');
-    //         let selectedDate = moment(dateElement?.innerHTML).format('YYYY-MM-DD');
-    //         let holidays = JSON.parse(localStorage.getItem('holidays'));
-    //         const isWeekend = moment(selectedDate).day() === 0 || moment(selectedDate).day() === 6;
-    //         if (!holidays.includes(selectedDate) && !isWeekend && this.isDayDisabled(dateElement?.innerHTML)) {
-    //           localStorage.setItem('calendarSelectedDate', selectedDate);
-    //           document.querySelectorAll('.mbsc-timeline-header .mbsc-timeline-header-bg .mbsc-timeline-day .mbsc-timeline-header-date .date-label').forEach((item) => {
-    //             item.classList.remove('today');
-    //             currentTarget.querySelector('.date-label').classList.add('today');
-    //           });
-    //         }
-    //       });
-    //     });
-    //     this.showLoader = false;
-    //   }, 500);
-    // });
   }
 
   getSelectedDate() {
@@ -595,20 +386,20 @@ export class CalendarComponent {
 
   getCalendarData(fromDate: string, toDate: string) {
     this.showLoader = true;
-    // this.dashboardService.getCalendarDataByDate(fromDate, toDate).pipe(takeUntil(this.unSubScribe$)).subscribe((result) => {
-    //   if (result) {
-    //     this.showLoader = false;
-    //     // this.changeCalendarDataFormat(result);
-    //     this.calendarData = result.map((item: any) => {
-    //       let changedFormatDate = item.start.split('/').reverse().join('/');
-    //       item.start = moment(changedFormatDate).format('YYYY-MM-DD');
-    //       item.events = item.events.filter((event: any) => event.status !== 'Deleted');
-    //       return item;
-    //     }).filter((item: any) => item?.events?.length);
-    //     this.calendarData.sort(this.sortByDate);
-    //     this.getHolidays();
-    //   }
-    // });
+    of(getCalendarDataByDate).pipe(takeUntil(this.unSubScribe$)).subscribe((result) => {
+      if (result) {
+        this.showLoader = false;
+        // this.changeCalendarDataFormat(result);
+        this.calendarData = result.map((item: any) => {
+          let changedFormatDate = item.start.split('/').reverse().join('/');
+          item.start = moment(changedFormatDate).format('YYYY-MM-DD');
+          item.events = item.events.filter((event: any) => event.status !== 'Deleted');
+          return item;
+        }).filter((item: any) => item?.events?.length);
+        this.calendarData.sort(this.sortByDate);
+        this.getHolidays();
+      }
+    });
   }
 
   sortByDate(aDate: any, bDate: any) {
@@ -661,29 +452,7 @@ export class CalendarComponent {
   }
 
   DeleteAlert(id: any) {
-    // this._commonDialogService
-    //   .confirmDialog({
-    //     title: 'Please confirm action',
-    //     message: 'Are you sure want to remove?',
-    //     confirmText: 'Confirm',
-    //     cancelText: 'Cancel',
-    //   })
-    //   .subscribe((isConfirmed) => {
-    //     if (isConfirmed) {
-    //       // this.showLoader = true
-    //       this._walletService.deleteExposure(id).subscribe(
-    //         (res) => {
-    //           if (res) {
-    //             this.loadCalendarDataOnChange(new Date());
-    //             // this.showLoader = false;
-    //           }
-    //         },
-    //         (err) => {
-    //           // this.showLoader = false;
-    //         }
-    //       );
-    //     }
-    //   });
+
   }
 
   checkHoliday(date: any) {
