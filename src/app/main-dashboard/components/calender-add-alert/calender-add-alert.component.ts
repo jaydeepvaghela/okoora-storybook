@@ -4,6 +4,7 @@ import { Direction, tradingSource } from '../../enums/riskProfitLoss.enum';
 import { WalletsService } from '../../services/wallets.service';
 import { CommonModule } from '@angular/common';
 import { AlertExchangeRateFormComponent } from '../alert-exchange-rate-form/alert-exchange-rate-form.component';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-calender-add-alert',
@@ -14,6 +15,8 @@ import { AlertExchangeRateFormComponent } from '../alert-exchange-rate-form/aler
 export class CalenderAddAlertComponent {
   @Input() selectedCalendarDate!: string;
   @Input() isMenu!: boolean;
+  @Input() drawer!: MatDrawer;
+
   private _renderer2: Renderer2;
   activeCurrency: any;
   visible = true;

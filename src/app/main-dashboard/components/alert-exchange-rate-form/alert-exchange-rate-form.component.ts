@@ -19,6 +19,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DialogModule } from '@angular/cdk/dialog';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-alert-exchange-rate-form',
@@ -28,6 +29,7 @@ import { DialogModule } from '@angular/cdk/dialog';
 })
 export class AlertExchangeRateFormComponent {
   buy_sell_code!: any | null;
+  @Input() drawer!: MatDrawer;
   // @ViewChild(CalendarComponent)
   // child!: CalendarComponent;
   @Input() selectedCalendarDate!: string;
@@ -269,5 +271,9 @@ export class AlertExchangeRateFormComponent {
 
   backToDashboard(){
     this.dashboardService.setDashboardDrawerType(true)
+  }
+
+  closePopup(){
+    this.drawer.close();
   }
 }

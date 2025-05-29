@@ -412,7 +412,7 @@
     </button>
   </div>
   <ng-container *ngIf="alertDrawer.opened">
-    <app-calender-add-alert [isMenu]="false" [selectedCalendarDate]="selectedCalendarDate"></app-calender-add-alert>
+    <app-calender-add-alert [drawer]="alertDrawer" [isMenu]="false" [selectedCalendarDate]="selectedCalendarDate"></app-calender-add-alert>
   </ng-container> 
 </mat-drawer>
 <ng-container *ngIf="showTable">
