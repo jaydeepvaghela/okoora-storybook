@@ -34,6 +34,7 @@ import { getCurrentExplosureRate, getLockHedgeGrafhData } from '../../dashboard-
 import { of } from 'rxjs';
 import { HtmlTooltipDirective } from '../../../directives/html-tooltip.directive';
 import { FutureOverviewLockUpdownComponent } from '../future-overview-lock-updown/future-overview-lock-updown.component';
+import { createHedgeByCategory } from '../../dashboard-data/balanceList-data';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -569,84 +570,84 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
       Strike: "",
       direction: this.activeCurrency?.wallet_Hedging?.direction
     }
-    // if (this.DateClickedFlagForAPI == true) {
-    //   this.DateClickedFlagForAPI = false
-    //   await this.dashboardService.createHedgeByCategory(createHedgeObject).subscribe((data: any) => {
-    //     this.createdHedgeData = data
-    //     this.showLoader = false;
-    //     this.isCalendarEnable = true
-    //     delete this.timeFrameMsg
-    //     delete this.dateErrMsg
-    //     this.errFlag = false
-    //     let points = [
-    //       {
-    //         x: this.selectedTimeFrame == '1 month' ? '1M' : this.selectedTimeFrame == '3 months' ? '3M' : this.selectedTimeFrame == '6 months' ? '6M' : this.selectedTimeFrame == '9 months' ? '9M' : this.selectedTimeFrame == '1 year' ? '1Y' : '',
-    //         y: Math.max(...this.seriesData?.spotPoints),
-    //         image: {
-    //           path: '../../../../assets/images/lockChartGradient.svg',
-    //           width: 120,
-    //           height: 120,
-    //           offsetX: 0,
-    //           offsetY: 50,
-    //         },
-    //         marker: {
-    //           size: 0,
-    //           fillColor: "#fff",
-    //           strokeColor: "#333",
-    //           strokeWidth: 3,
-    //           shape: "",
-    //           radius: 2,
-    //         },
+    if (this.DateClickedFlagForAPI == true) {
+      this.DateClickedFlagForAPI = false
+      await of(createHedgeByCategory).subscribe((data: any) => {
+        this.createdHedgeData = data
+        this.showLoader = false;
+        this.isCalendarEnable = true
+        delete this.timeFrameMsg
+        delete this.dateErrMsg
+        this.errFlag = false
+        let points = [
+          {
+            x: this.selectedTimeFrame == '1 month' ? '1M' : this.selectedTimeFrame == '3 months' ? '3M' : this.selectedTimeFrame == '6 months' ? '6M' : this.selectedTimeFrame == '9 months' ? '9M' : this.selectedTimeFrame == '1 year' ? '1Y' : '',
+            y: Math.max(...this.seriesData?.spotPoints),
+            image: {
+              path: '../../../../assets/images/lockChartGradient.svg',
+              width: 120,
+              height: 120,
+              offsetX: 0,
+              offsetY: 50,
+            },
+            marker: {
+              size: 0,
+              fillColor: "#fff",
+              strokeColor: "#333",
+              strokeWidth: 3,
+              shape: "",
+              radius: 2,
+            },
 
-    //       },
-    //       {
-    //         x: this.selectedTimeFrame == '1 month' ? '1M' : this.selectedTimeFrame == '3 months' ? '3M' : this.selectedTimeFrame == '6 months' ? '6M' : this.selectedTimeFrame == '9 months' ? '9M' : this.selectedTimeFrame == '1 year' ? '1Y' : '',
-    //         y: data?.strike,
-    //         marker: {
-    //           size: 0,
-    //           fillColor: "#fff",
-    //           strokeColor: "#333",
-    //           strokeWidth: 3,
-    //           shape: "",
-    //           radius: 2,
-    //         },
-    //         image: {
-    //           path: '../../../../assets/images/pointCircleForlock.svg',
-    //           width: 20,
-    //           height: 20,
-    //           offsetX: 0,
-    //           offsetY: 0,
-    //         },
-    //         label: {
+          },
+          {
+            x: this.selectedTimeFrame == '1 month' ? '1M' : this.selectedTimeFrame == '3 months' ? '3M' : this.selectedTimeFrame == '6 months' ? '6M' : this.selectedTimeFrame == '9 months' ? '9M' : this.selectedTimeFrame == '1 year' ? '1Y' : '',
+            y: data?.strike,
+            marker: {
+              size: 0,
+              fillColor: "#fff",
+              strokeColor: "#333",
+              strokeWidth: 3,
+              shape: "",
+              radius: 2,
+            },
+            image: {
+              path: '../../../../assets/images/pointCircleForlock.svg',
+              width: 20,
+              height: 20,
+              offsetX: 0,
+              offsetY: 0,
+            },
+            label: {
 
-    //           borderColor: "white",
-    //           borderRadius: 5,
-    //           borderWidth: 10,
-    //           offsetY: -30,
+              borderColor: "white",
+              borderRadius: 5,
+              borderWidth: 10,
+              offsetY: -30,
 
-    //           style: {
-    //             color: "blue",
-    //             background: "white",
-    //             cssClass: "futurOverview_chart",
+              style: {
+                color: "blue",
+                background: "white",
+                cssClass: "futurOverview_chart",
 
-    //           },
-    //           // text: data?.strike?.toFixed(2)
-    //           text: data?.strike
+              },
+              // text: data?.strike?.toFixed(2)
+              text: data?.strike
 
-    //         },
-    //       }
-    //     ]
-    //     this.getGraphData(this.activeCurrency?.wallet_Currency?.code, points)
-    //     this.cd.detectChanges()
-    //     delete this.errorMsg;
-    //   },
-    //     (        err: { error: { apiErrorMessage: any; }; }) => {
-    //       this.showLoader = false;
-    //       this.errorMsg = err.error.apiErrorMessage;
-    //       // this.DateClickedFlagForAPI = false
+            },
+          }
+        ]
+        this.getGraphData(this.activeCurrency?.wallet_Currency?.code, points)
+        this.cd.detectChanges()
+        delete this.errorMsg;
+      },
+        (        err: { error: { apiErrorMessage: any; }; }) => {
+          this.showLoader = false;
+          this.errorMsg = err.error.apiErrorMessage;
+          // this.DateClickedFlagForAPI = false
 
-    //     })
-    // }
+        })
+    }
   }
   onTimeFrameChange() {
     this.isCalendarEnable = true;

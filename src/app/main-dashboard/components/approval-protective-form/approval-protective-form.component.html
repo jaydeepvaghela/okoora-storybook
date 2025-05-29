@@ -1,0 +1,103 @@
+<div class="approval-modal-sec">
+  <div class="approval-close-btn">
+    <button id="apf-dialog-close" mat-icon-button="" mat-dialog-close="" class="colse-btn mdc-icon-button mat-mdc-icon-button mat-unthemed mat-mdc-button-base" type="button">
+      <img src="images/rate-popup-close-icon.svg">
+      <span class="mat-mdc-button-touch-target"></span>
+    </button>
+  </div>
+
+  <div class="title-approval">
+    <h3>Hedging Operation Confirmation</h3>
+    <p>Date: {{currentDate | date:'dd/MM/yyyy'}}</p>
+    <p class="text-right">Below are the details of your request to perform a hedging operation</p>
+  </div>
+
+  <div class="box-approval">
+    <div class="box-row">
+      <span class="app-label">Hedging Rate</span>
+      <span class="app-value">3.6568</span>
+    </div>
+    <div class="box-row">
+      <span class="app-label">Purchase Amount and Currency</span>
+      <span class="app-value">
+        {{ data?.buyCurrency?.sign }}
+        {{ data?.type == 'protect' ? (data?.invoiceDetailResult?.youBuy?.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})) :
+         data?.type == 'lockUP' ? (data?.lockAmount | currency: data?.HedgeData == null ? '' : data?.HedgeData?.notionalCurrencySign) :
+        (data?.protectAllData?.totalYouBuy?.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})) }}
+      </span>
+    </div>
+    <div class="box-row" *ngIf="data?.type != 'lockUP'">
+      <span class="app-label">Hedging Expiration Date</span>
+      <span class="app-value">
+        {{ data?.sellCurrency?.sign }}{{ sellAmount?.toFixed(2) | number }} {{data?.type == 'lockUP' ? (data?.HedgeData.sellAmount  | currency: data?.HedgeData == null ? '' : data?.HedgeData?.sellCurrency:'symbol' : '1.0-0') : ""}}
+      </span>
+    </div>
+    <div class="box-row">
+      <span class="app-label">Representative rate of the Bank of Israel on the hedging closing date</span>
+      <span class="app-value">
+        {{ data?.type == 'protect' ? (data?.invoiceDetailResult?.paymentDate | date: ' dd/MM/YYYY') : data?.type == 'lockUP'? data?.expiryDate :  (data?.protectAllData?.paymentDate | date: ' dd/MM/YYYY') }}
+      </span>
+    </div>
+    <!-- <div class="box-row">
+      <span class="app-label">{{'Approve_Hedge.determiningRateForSettlement' | translate}}</span>
+      <span class="app-value">{{'Approve_Hedge.determiningRateForSettlement' | translate}}</span>
+    </div> -->
+    <div class="box-row">
+      <span class="app-label">Amount Required as Collateral</span>
+      <span class="app-value">
+        ₪73.97
+      </span>
+    </div>
+    <div class="box-row">
+      <span class="app-label">Operation Cost</span>
+      <span class="app-value"> ₪0</span>
+    </div>
+    <div class="box-row">
+      <span class="app-label">Exchange Fee</span>
+      <span class="app-value">Exempt</span>
+    </div>
+    <!-- <div class="box-row" *ngIf="data?.hedgeType == 3">
+      <span class="app-label">{{'Approve_Hedge.commitmentRate' | translate}}</span>
+      <span class="app-value">{{data?.HedgeData?.obligationRate}}</span>
+    </div> -->
+  </div>
+
+  <div class="approval-scroll-area">
+    <ul>
+      <li><h5>Hedging Conditions</h5></li>
+      <li>After the operation is approved, the transaction cannot be canceled and/or changed by the client.</li>
+      <li>During the life of the transaction, additional collateral may be required, which will be determined according to changes in market conditions and according to the company's requirements. If these are not transferred by the company's deadline, the company can, but is not obligated to perform.</li>
+      <!-- The following lines are additional conditions not included in the JSON file -->
+      <li>Once the transaction has been approved, the client may not cancel or amend it except with the Company’s prior written consent, granted at the Company’s sole discretion and subject to the fees set out in the agreement.</li>
+      <li>The Company itself is entitled to cancel or modify the transaction in accordance with the terms of the agreement.</li>
+      <li>Settlement adjustment:
+If, on the settlement date, the official representative exchange rate (“Fixing Rate”) is higher than the contract rate, your account will be credited in the secondary currency with an amount equal to the difference between the two rates multiplied by the notional amount in the primary currency.
+If the Fixing Rate is lower than the contract rate, your account will be debited in the secondary currency by the same calculation.</li>
+      <li>The hedge transaction automatically terminates on the maturity date at the time the representative rate is published.</li>
+      <li>All transactions are subject to statutory tax withholding.</li>
+    </ul>
+  </div>
+
+  <div class="t-last-text terms-count-down">
+    <div class="d-inline-block">
+      <span>In 04:58 the transaction conditions will be updated and you will return to the previous page.</span>
+    </div>
+  </div>
+
+  <div class="t-checkbox">
+    <mat-checkbox id="apf-conf-check" class="example-margin" (change)="onChange($event)"> </mat-checkbox>
+    <span class="disclosure-link" (click)="RiskInfoDialog()">
+      Risk Disclosure</span>
+  </div>
+
+  <span class="hedge-err-msg">{{ errorMessage }}</span>
+
+  <div class="approve-btn-wrape">
+    <button id="apf-dialog-continue" [disabled]="!confirmCondition" (click)="continueClick()">
+      Continue
+    </button>
+    <button id="apf-dialog-cancel" mat-dialog-close>Cancel</button>
+  </div>
+
+  <!-- <app-page-loader classes="bg-white" *ngIf="showLoader"></app-page-loader> -->
+</div>

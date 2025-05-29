@@ -7,6 +7,9 @@ import { WalletsService } from '../../services/wallets.service';
 import { Direction } from '../../enums/riskProfitLoss.enum';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { createHedgeByCategory } from '../../dashboard-data/balanceList-data';
+import { of } from 'rxjs';
+import { ApprovalProtectiveFormComponent } from '../approval-protective-form/approval-protective-form.component';
 @Component({
   selector: 'app-future-overview-lock-updown',
   templateUrl: './future-overview-lock-updown.component.html',
@@ -68,15 +71,15 @@ export class FutureOverviewLockUpdownComponent {
     }
 
     // console.log("createHedgeObjectd", createHedgeObject);
-    // this.dashboardService.createHedgeByCategory(createHedgeObject).subscribe((data: any) => {
-    //   this.hedgeData = data
-    //   this.cd.detectChanges()
-    // },
-    // err => {
-    //   this.errorMsg = err.error.apiErrorMessage;
-    //   // this.DateClickedFlagForAPI = false
+    of(createHedgeByCategory).subscribe((data: any) => {
+      this.hedgeData = data
+      this.cd.detectChanges()
+    },
+    err => {
+      this.errorMsg = err.error.apiErrorMessage;
+      // this.DateClickedFlagForAPI = false
 
-    // })
+    })
 
   }
   keyupvalue(e: any) {
@@ -105,20 +108,20 @@ export class FutureOverviewLockUpdownComponent {
     // console.log("createHedgeObject", createHedgeObject);
     // this.dashboardService.createHedgeByCategory(createHedgeObject).subscribe((data: any) => {
       this.lockUpDialogRef.close();
-      // const dialogRef = this.dialog.open(ApprovalProtectiveFormComponent, {
-      //   width: '600px',
-      //   disableClose: true,
-      //   panelClass: 'approval-protective-dialog',
-      //   data: {
-      //     type: 'lockUP',
-      //     fromNewdashboard: true,
-      //     expiryDate: this.data?.hedgeData?.expiryDate,
-      //     buyCurrency: this.data?.hedgeData?.buyCurrency,
-      //     sellCurrency: this.data?.hedgeData?.sellCurrency,
-      //     HedgeData: data,
-      //     lockAmount: lockAmount.replace(/\,/g, '')
-      //   }
-      // })
+      this.dialog.open(ApprovalProtectiveFormComponent, {
+        width: '600px',
+        disableClose: true,
+        panelClass: 'approval-protective-dialog',
+        data: {
+          type: 'lockUP',
+          fromNewdashboard: true,
+          expiryDate: this.data?.hedgeData?.expiryDate,
+          buyCurrency: this.data?.hedgeData?.buyCurrency,
+          sellCurrency: this.data?.hedgeData?.sellCurrency,
+          // HedgeData: data,
+          lockAmount: lockAmount.replace(/\,/g, '')
+        }
+      })
     // })
   }
 

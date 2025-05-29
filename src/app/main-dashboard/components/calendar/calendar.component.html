@@ -14,7 +14,7 @@
       <div class="rs-alert">Alert</div>
       <div class="rs-payment">Payment</div>
       <div class="rs-convert">Exchange</div>
-      <div class="rs-hedge" *ngIf="user?.afiiliate?.currency != 'EUR'">Hedge</div>
+      <div class="rs-hedge">Hedge</div>
     </div>
   </div>
   <mbsc-eventcalendar
@@ -104,7 +104,7 @@
       <div class="add-event-menu-item">
         <button id="add-event-month-convert" mat-menu-item [disabled]="userRoleType != 1" (click)="selectedCalendarDate = data.date;openConvertDialog(false, data?.original?.start)">+ Exchange</button>
       </div>
-      <div class="add-event-menu-item" *ngIf="user?.afiiliate?.currency != 'EUR'">
+      <div class="add-event-menu-item">
         <button id="add-event-month-hedge" mat-menu-item [disabled]="userRoleType != 1" (click)="selectedCalendarDate = data.date;openHedgeDialog(false, data?.original?.start)">+ Hedge</button>
       </div>
     </mat-menu>
@@ -431,8 +431,8 @@
       <mat-menu #addEvent="matMenu" class="add-event-panel" xPosition="before">
         <button id="mbsc-table-add-alert" mat-menu-item (click)="alertDrawerOpen(true)">Alert</button>
         <button id="mbsc-table-add-payment" mat-menu-item (click)="openPaymentDialog(true)">Payment</button>
-        <button id="mbsc-table-add-exchange" mat-menu-item [disabled]="userRoleType != 1" (click)="openConvertDialog(true)">Exchange</button>
-        <button id="mbsc-table-add-hedge" mat-menu-item [disabled]="userRoleType != 1">Hedge</button>
+        <button id="mbsc-table-add-exchange" mat-menu-item (click)="openConvertDialog(true)">Exchange</button>
+        <button id="mbsc-table-add-hedge" mat-menu-item>Hedge</button>
       </mat-menu>
     </div>
   </div>

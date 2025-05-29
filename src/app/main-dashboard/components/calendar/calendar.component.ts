@@ -80,6 +80,19 @@ export class CalendarComponent {
   oldDate!: boolean;
   unSubScribe$ = new Subject<void>();
   affiliateCountry: any;
+
+  @HostListener('document:click', ['$event']) onDocumentClick(event: MouseEvent) {
+    const targetElement = event.target as HTMLElement;
+    if (!targetElement.classList.contains('mbsc-timeline-column')) {
+      document.querySelectorAll('#createEventCustMenu').forEach((item) => {
+        item?.remove();
+      });
+      if (document.querySelector('.driver-popover.onboarding-popup') == null) {
+        document.querySelector('body')!.style.overflowY = 'auto';
+      }
+    }
+  }
+
   @ViewChild('eventCalendar') eventCalendar!: MbscEventcalendar;
   @ViewChild('alertDrawer')
   alertDrawer!: MatDrawer;
@@ -271,8 +284,11 @@ export class CalendarComponent {
         this.openPaymentDialog(false, args?.date);
       } else if (args.resource == 2) {
         this.openConvertDialog(false, args?.date);
+        
       } else if (args.resource == 3) {
-        this.openHedgeDialog(false, args?.date);
+        this.router.navigate(['/cashflow']);
+        document.querySelector('body')!.style.overflowY = 'auto';
+        window.scrollTo(0, 0);
       }
     });
     this.renderer.listen(noteButton, 'click', (ev) => {
@@ -297,9 +313,9 @@ export class CalendarComponent {
     if(!this.oldDate) {
       document.querySelector('body')!.style.overflowY = 'hidden';
     }
-    if(this.userRoleType !== 1 && (args.resource == 3 || args.resource == 2)){
-      this.renderer.setProperty(eventButton, 'disabled', true);
-    }
+    // if(this.userRoleType !== 1 && (args.resource == 3 || args.resource == 2)){
+    //   this.renderer.setProperty(eventButton, 'disabled', true);
+    // }
   }
 
   alertDrawerOpen(isMenu?: boolean, date?: any) {

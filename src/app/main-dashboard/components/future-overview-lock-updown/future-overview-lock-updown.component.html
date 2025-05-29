@@ -75,11 +75,6 @@
         <img src="images/warning-lock-rate.svg">
         <p>This action can’t be undone for the selected amount</p>
     </div>
-    <div *ngIf="errorMsg"> 
-        <span  class="error-msg">
-            {{errorMsg}}ghfghf
-        </span>
-    </div>
     <div class="lock-up-popup-btn-group">
         <button id="lock_cancel_btn_lock_updown" class="popup-close-btn lock-popup-btn-group-inner" mat-dialog-close>Cancel</button>
         <button id="lock_continue_btn_lock_updown" class="popup-continue-btn lock-popup-btn-group-inner" [disabled]="!lockAmount"
