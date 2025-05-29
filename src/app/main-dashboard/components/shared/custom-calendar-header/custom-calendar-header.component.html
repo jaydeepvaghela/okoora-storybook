@@ -5,10 +5,10 @@
   <button (click)="nextClicked('month')" class="btn-prev-next">
     <img src="images/custom-calendar-next-btn.svg" alt="next">
   </button>
-  <mat-select class="month-select custom-select-arrow" [(ngModel)]="selectedMonth" (ngModelChange)="monthChanged($event)">
+  <mat-select panelClass="monyr-custom-select" class="month-select custom-select-arrow" [(ngModel)]="selectedMonth" (ngModelChange)="monthChanged($event)">
     <mat-option *ngFor="let month of months" [value]="month.value">{{ month.viewValue }}</mat-option>
   </mat-select>
-  <mat-select class="year-select custom-select-arrow" [(ngModel)]="selectedYear" (ngModelChange)="yearChanged($event)">
+  <mat-select panelClass="monyr-custom-select" class="year-select custom-select-arrow" [(ngModel)]="selectedYear" (ngModelChange)="yearChanged($event)">
     <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
   </mat-select>
 </div>

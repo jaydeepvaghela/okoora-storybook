@@ -6,6 +6,7 @@ import { DashboardService } from '../../services/dashboard.service';
 import { BuySell } from '../../enums/riskProfitLoss.enum';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HtmlTooltipDirective } from '../../../directives/html-tooltip.directive';
 // import { CommonService } from 'src/app/common/services/common.service';
 // import { ExchangeMainComponent } from 'src/app/exchange/components/exchange-main/exchange-main.component';
 // import { ConvertComponent } from 'src/app/wallets/components/convert/convert.component';
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 // import { AuthenticationService } from 'src/app/auth/services/authentication.service';
 @Component({
   selector: 'app-convert-now',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HtmlTooltipDirective],
   templateUrl: './convert-now.component.html',
   styleUrls: ['./convert-now.component.scss']
 })

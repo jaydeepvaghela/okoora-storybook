@@ -9,11 +9,17 @@ export class DashboardService {
   private getlastPaymentRateData = new BehaviorSubject<any>({});
   private dashboardSideTabesType = new BehaviorSubject<any>({});
   currentSideTabType = this.dashboardSideTabesType.asObservable();
-  
+  private dashboardSide = new BehaviorSubject<any>({});
+
   constructor() { }
 
   setDashboardSideTabesType(type: any) {
     this.dashboardSideTabesType.next(type)
+  }
+
+  
+  setDashboardSideTabesTypes(type: any) {
+    this.dashboardSide.next(type)
   }
 
   setSlidePosition(position: number) {

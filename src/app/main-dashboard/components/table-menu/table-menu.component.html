@@ -1,0 +1,175 @@
+<div *ngIf="resource == 1" class="payment-table-wrap">
+  <table mat-table [dataSource]="tableData" class="payment-menu-table">
+    <ng-container matColumnDef="createdDate">
+      <th mat-header-cell *matHeaderCellDef>Create Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{element?.createDate}}
+        <span *ngIf="!element?.createDate">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let element" class="fw-strong">
+        <span *ngIf="element?.createDate" class="target-date-text" class="fw-strong">
+          <span class="bold-texts">{{ element?.type }}</span>
+        </span>
+        <span *ngIf="!element?.type">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rate">
+      <th mat-header-cell *matHeaderCellDef>Rate</th>
+      <td mat-cell *matCellDef="let element" class="fw-strong">
+        <span *ngIf="element?.rate" class="target-rate">{{ element?.rate }}</span>
+        <span *ngIf="!element?.rate">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="beneficiary">
+      <th mat-header-cell *matHeaderCellDef>Beneficiary</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element?.beneficiary }}
+        <span *ngIf="!element?.beneficiary">-</span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="targetDate">
+      <th mat-header-cell *matHeaderCellDef>Target Date</th>
+      <td mat-cell *matCellDef="let element" class="fw-strong">
+        <span *ngIf="element?.targetDate">{{ element?.targetDate }}</span>
+        <span *ngIf="!element?.targetDate">-</span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element" class="payment-status">
+        <span *ngIf="element?.status && !element?.needToCompleteDetails?.needFile" class="status-text {{ strTrim(element?.status) }}">{{ element?.status }}</span>
+        <span *ngIf="element?.needToCompleteDetails?.needFile" class="status-text {{ strTrim(element?.status) }}" [matMenuTriggerFor]="statusMenu">Recheck</span>
+        <span *ngIf="!element?.status">-</span>
+        <mat-menu #statusMenu="matMenu">
+          <button mat-menu-item (click)="recheckInvoice(element?.paymentRequestId)" [disabled]="element?.paymentRequestId == null">Fix invoice</button>
+        </mat-menu>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsForPayment"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsForPayment"></tr>
+  </table>
+</div>
+
+<div *ngIf="resource == 2" class="convert-table-wrap">
+  <table mat-table [dataSource]="tableData" class="convert-menu-table">
+    <ng-container matColumnDef="createdDate">
+      <th mat-header-cell *matHeaderCellDef>Create Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{element?.createDate}}
+        <span *ngIf="!element?.createDate">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="element?.type" class="target-date-text">{{ element?.type }}</span>
+        <span *ngIf="!element?.type">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="buy">
+      <th mat-header-cell *matHeaderCellDef>Buy</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element?.buy }}
+        <span *ngIf="!element?.buy">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sell">
+      <th mat-header-cell *matHeaderCellDef>Sell</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element?.sell }}
+        <span *ngIf="!element?.sell">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rate">
+      <th mat-header-cell *matHeaderCellDef>Rate</th>
+      <td mat-cell *matCellDef="let element" class="fw-strong">
+        <span *ngIf="element?.rate" class="target-rate">{{ element?.rate }}</span>
+        <span *ngIf="!element?.rate">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="targetDate">
+      <th mat-header-cell *matHeaderCellDef>Target Date</th>
+      <td mat-cell *matCellDef="let element" class="fw-strong">
+        <span *ngIf="element?.targetDate" class="bold-texts">{{ element?.targetDate }}</span>
+        <span *ngIf="!element?.targetDate">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="element?.status" class="status-text {{ strTrim(element?.status) }}">{{ element?.status }}</span>
+        <span *ngIf="!element?.status">-</span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsForConvert"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsForConvert"></tr>
+  </table>
+</div>
+
+<div *ngIf="resource == 3" class="convert-table-wrap">
+  <table mat-table [dataSource]="tableData" class="convert-menu-table">
+    <ng-container matColumnDef="createDate">
+      <th mat-header-cell *matHeaderCellDef>Create Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{element?.createDate}}
+        <span *ngIf="!element?.createDate">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="element?.type" class="target-date-text">{{ element?.type }}</span>
+        <span *ngIf="!element?.type">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="currencyPair">
+      <th mat-header-cell *matHeaderCellDef>Currency pair</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element?.currencyPair }}
+        <span *ngIf="!element?.currencyPair">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="hedgeAmount">
+      <th mat-header-cell *matHeaderCellDef>Hedge amount</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element?.hedgeAmount }}
+        <span *ngIf="!element?.hedgeAmount">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rate">
+      <th mat-header-cell *matHeaderCellDef>Hedge rate</th>
+      <td mat-cell *matCellDef="let element" class="fw-strong">
+        <span *ngIf="element?.rate" class="target-rate">{{ element?.rate }}</span>
+        <span *ngIf="!element?.rate">-</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expiryDate">
+      <th mat-header-cell *matHeaderCellDef>Expiry date</th>
+      <td mat-cell *matCellDef="let element" class="fw-strong">
+        <span *ngIf="element?.expiryDate" class="bold-texts">{{ element?.expiryDate }}</span>
+        <span *ngIf="!element?.expiryDate">-</span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsForHedge"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsForHedge"></tr>
+  </table>
+</div>

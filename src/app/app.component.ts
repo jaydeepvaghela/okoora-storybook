@@ -25,7 +25,7 @@ export class AppComponent {
     // }
     this.isLoggedInUser = localStorage.getItem('isLoggedInUser')
     if (!this.isLoggedInUser) {
-      this.router.navigate(['/sign-up']);
+      this.router.navigate(['/login']);
     } else {
       this.router.navigate(['/main-dashboard']);
     }

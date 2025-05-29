@@ -8,12 +8,13 @@ import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { GetActiveHedgingCurrency } from '../../dashboard-data/all-currency-data';
 import { of } from 'rxjs';
+import { HtmlTooltipDirective } from '../../../directives/html-tooltip.directive';
 
 @Component({
   selector: 'app-questionnaire-step2',
   templateUrl: './questionnaire-step2.component.html',
   styleUrls: ['./questionnaire-step2.component.scss'],
-  imports: [MatTabsModule, MatSelectModule, ReactiveFormsModule, CommonModule]
+  imports: [MatTabsModule, MatSelectModule, ReactiveFormsModule, CommonModule, HtmlTooltipDirective]
 })
 export class QuestionnaireStep2Component implements DoCheck  {
   @Input('formStepper') formStepper?: any;

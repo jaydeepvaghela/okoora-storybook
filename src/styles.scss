@@ -74,6 +74,25 @@ button{
   direction: ltr;
 }
 
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background,
+.mat-mdc-checkbox
+  .mdc-checkbox
+  .mdc-checkbox__native-control[data-indeterminate="true"]:enabled
+  ~ .mdc-checkbox__background {
+  border-color: var(--brand-primary-color) !important;
+  background-color: transparent !important;
+}
+
+.mat-mdc-checkbox
+  .mdc-checkbox
+  .mdc-checkbox__native-control:enabled
+  ~ .mdc-checkbox__background
+  .mdc-checkbox__checkmark {
+  color: var(--brand-primary-color) !important;
+}
+
+
 .custom-tooltip {
   &.message-wrapper {
     position: fixed;

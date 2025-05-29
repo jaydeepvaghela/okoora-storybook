@@ -24,6 +24,27 @@ export const getCalendarDataByDate = [
                     "currencyName": null
                 },
                 "status": "Close"
+            },
+            {
+                "exposuresId": 2716,
+                "targetRate": 1.2335,
+                "createDate": "28/05/2025",
+                "dueDate": "30/05/2025",
+                "buyCurrency": "EUR",
+                "sellCurrency": "USD",
+                "buyCurrencyData": {
+                    "code": "EUR",
+                    "sign": "€",
+                    "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
+                    "currencyName": null
+                },
+                "sellCurrencyData": {
+                    "code": "USD",
+                    "sign": "$",
+                    "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+                    "currencyName": null
+                },
+                "status": "Open"
             }
         ]
     },
@@ -33,7 +54,7 @@ export const getCalendarDataByDate = [
         "resource": 0,
         "events": [
             {
-                "exposuresId": 2699,
+                "exposuresId": null,
                 "targetRate": 1.0031,
                 "createDate": "26/05/2025",
                 "dueDate": "28/05/2025",
@@ -51,7 +72,7 @@ export const getCalendarDataByDate = [
                     "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
                     "currencyName": null
                 },
-                "status": "Open"
+                "status": "Expired"
             },
             {
                 "exposuresId": null,
@@ -96,7 +117,7 @@ export const getCalendarDataByDate = [
                 "status": "Close"
             },
             {
-                "exposuresId": 2704,
+                "exposuresId": null,
                 "targetRate": 1.0025,
                 "createDate": "26/05/2025",
                 "dueDate": "28/05/2025",
@@ -114,10 +135,10 @@ export const getCalendarDataByDate = [
                     "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
                     "currencyName": null
                 },
-                "status": "Open"
+                "status": "Expired"
             },
             {
-                "exposuresId": 2705,
+                "exposuresId": null,
                 "targetRate": 1.1168,
                 "createDate": "27/05/2025",
                 "dueDate": "28/05/2025",
@@ -135,7 +156,7 @@ export const getCalendarDataByDate = [
                     "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
                     "currencyName": null
                 },
-                "status": "Open"
+                "status": "Expired"
             }
         ]
     },
@@ -173,7 +194,7 @@ export const getCalendarDataByDate = [
         "resource": 0,
         "events": [
             {
-                "exposuresId": 2702,
+                "exposuresId": null,
                 "targetRate": 2.2207,
                 "createDate": "26/05/2025",
                 "dueDate": "29/05/2025",
@@ -191,7 +212,7 @@ export const getCalendarDataByDate = [
                     "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png",
                     "currencyName": null
                 },
-                "status": "Open"
+                "status": "Expired"
             }
         ]
     },
@@ -217,9 +238,107 @@ export const getCalendarDataByDate = [
     },
     {
         "id": 5,
+        "start": "27/05/2025",
+        "resource": 1,
+        "events": [
+            {
+                "paymentRequestId": null,
+                "rate": 2.27566,
+                "beneficiary": "Goha",
+                "createDate": "27/05/2025",
+                "targetDate": "27/05/2025",
+                "status": "payment ready to send",
+                "type": "Payment",
+                "buy": "₪100",
+                "sell": "$43.94",
+                "needToCompleteDetails": null,
+                "exposureId": null
+            }
+        ]
+    },
+    {
+        "id": 6,
         "start": "28/05/2025",
         "resource": 1,
         "events": [
+            {
+                "paymentRequestId": null,
+                "rate": 2.20122,
+                "beneficiary": "Goha",
+                "createDate": "28/05/2025",
+                "targetDate": "28/05/2025",
+                "status": "payment ready to send",
+                "type": "Payment",
+                "buy": "₪1000",
+                "sell": "$454.29",
+                "needToCompleteDetails": null,
+                "exposureId": null
+            },
+            {
+                "paymentRequestId": null,
+                "rate": 2.26899,
+                "beneficiary": "Goha",
+                "createDate": "28/05/2025",
+                "targetDate": "28/05/2025",
+                "status": "payment ready to send",
+                "type": "Payment",
+                "buy": "₪100",
+                "sell": "$44.07",
+                "needToCompleteDetails": null,
+                "exposureId": null
+            },
+            {
+                "paymentRequestId": null,
+                "rate": 2.26919,
+                "beneficiary": "Goha",
+                "createDate": "28/05/2025",
+                "targetDate": "28/05/2025",
+                "status": "payment ready to send",
+                "type": "Payment",
+                "buy": "₪100",
+                "sell": "$44.06",
+                "needToCompleteDetails": null,
+                "exposureId": null
+            },
+            {
+                "paymentRequestId": null,
+                "rate": 2.26839,
+                "beneficiary": "Goha",
+                "createDate": "28/05/2025",
+                "targetDate": "28/05/2025",
+                "status": "payment ready to send",
+                "type": "Payment",
+                "buy": "₪100",
+                "sell": "$44.08",
+                "needToCompleteDetails": null,
+                "exposureId": null
+            },
+            {
+                "paymentRequestId": null,
+                "rate": 2.26909,
+                "beneficiary": "Goha",
+                "createDate": "28/05/2025",
+                "targetDate": "28/05/2025",
+                "status": "payment ready to send",
+                "type": "Payment",
+                "buy": "₪100",
+                "sell": "$44.07",
+                "needToCompleteDetails": null,
+                "exposureId": null
+            },
+            {
+                "paymentRequestId": null,
+                "rate": 3.38492,
+                "beneficiary": "Goha",
+                "createDate": "28/05/2025",
+                "targetDate": "28/05/2025",
+                "status": "payment ready to send",
+                "type": "Payment",
+                "buy": "₪100",
+                "sell": "$29.54",
+                "needToCompleteDetails": null,
+                "exposureId": null
+            },
             {
                 "paymentRequestId": "3a4fdfb2-6904-46e7-afe5-08c1da06b3a4",
                 "rate": 2.215,
@@ -308,7 +427,7 @@ export const getCalendarDataByDate = [
         ]
     },
     {
-        "id": 6,
+        "id": 7,
         "start": "29/05/2025",
         "resource": 1,
         "events": [
@@ -551,6 +670,23 @@ export const getCalendarDataByDate = [
                 "exposureId": null
             },
             {
+                "paymentRequestId": "0a04efe5-9baa-45b3-92c0-e8a2e133b509",
+                "rate": 3.3829,
+                "beneficiary": "Goha",
+                "createDate": "29/05/2025",
+                "targetDate": "29/05/2025",
+                "status": "Future Payment",
+                "type": "Future payment",
+                "buy": "₪100",
+                "sell": "$29.6",
+                "needToCompleteDetails": {
+                    "needSign": false,
+                    "needFile": false,
+                    "needStamp": false
+                },
+                "exposureId": null
+            },
+            {
                 "paymentRequestId": "3822adf3-9c59-4469-820f-b35ed7ded6c6",
                 "rate": 2.2139,
                 "beneficiary": "Goha",
@@ -604,7 +740,7 @@ export const getCalendarDataByDate = [
         ]
     },
     {
-        "id": 7,
+        "id": 8,
         "start": "29/05/2025",
         "resource": 3,
         "events": [
@@ -612,7 +748,7 @@ export const getCalendarDataByDate = [
                 "createDate": "15/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.39220000,
+                "rate": 3.3922,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$100"
             },
@@ -620,7 +756,7 @@ export const getCalendarDataByDate = [
                 "createDate": "16/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.39040000,
+                "rate": 3.3904,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$100"
             },
@@ -628,7 +764,7 @@ export const getCalendarDataByDate = [
                 "createDate": "19/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.38330000,
+                "rate": 3.3833,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$100"
             },
@@ -636,7 +772,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Safe Up",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.32940000,
+                "rate": 2.3294,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$10000"
             },
@@ -644,7 +780,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.21390000,
+                "rate": 2.2139,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$200"
             },
@@ -652,7 +788,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.21730000,
+                "rate": 2.2173,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$2000"
             },
@@ -660,7 +796,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.29200000,
+                "rate": 3.292,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$200"
             },
@@ -668,7 +804,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.29130000,
+                "rate": 3.2913,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$200"
             },
@@ -676,7 +812,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.21730000,
+                "rate": 2.2173,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$200"
             },
@@ -684,7 +820,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "EUR/ILS",
-                "rate": 3.75080000,
+                "rate": 3.7508,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "€2000"
             },
@@ -692,7 +828,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.29600000,
+                "rate": 3.296,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$200"
             },
@@ -700,7 +836,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "EUR/ILS",
-                "rate": 3.75980000,
+                "rate": 3.7598,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "€366"
             },
@@ -708,7 +844,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.22240000,
+                "rate": 2.2224,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$100"
             },
@@ -716,7 +852,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.22550000,
+                "rate": 2.2255,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$200"
             },
@@ -724,7 +860,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.29800000,
+                "rate": 3.298,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$100"
             },
@@ -732,7 +868,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.22250000,
+                "rate": 2.2225,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$100"
             },
@@ -740,7 +876,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.21880000,
+                "rate": 2.2188,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$321"
             },
@@ -748,7 +884,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.22240000,
+                "rate": 2.2224,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$200"
             },
@@ -756,7 +892,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.30690000,
+                "rate": 3.3069,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$100"
             },
@@ -764,14 +900,30 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.30690000,
+                "rate": 3.3069,
                 "expiryDate": "29/05/2025",
                 "hedgeAmount": "$100"
+            },
+            {
+                "createDate": "27/05/2025",
+                "type": "Safe Down",
+                "currencyPair": "USD/ILS",
+                "rate": 3.3829,
+                "expiryDate": "29/05/2025",
+                "hedgeAmount": "$100"
+            },
+            {
+                "createDate": "28/05/2025",
+                "type": "Safe Up",
+                "currencyPair": "AUD/ILS",
+                "rate": 2.2891,
+                "expiryDate": "29/05/2025",
+                "hedgeAmount": "$222222"
             }
         ]
     },
     {
-        "id": 8,
+        "id": 9,
         "start": "28/05/2025",
         "resource": 3,
         "events": [
@@ -779,7 +931,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.21500000,
+                "rate": 2.215,
                 "expiryDate": "28/05/2025",
                 "hedgeAmount": "$200"
             },
@@ -787,7 +939,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.29200000,
+                "rate": 3.292,
                 "expiryDate": "28/05/2025",
                 "hedgeAmount": "$200"
             },
@@ -795,7 +947,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.29270000,
+                "rate": 3.2927,
                 "expiryDate": "28/05/2025",
                 "hedgeAmount": "$100"
             },
@@ -803,7 +955,7 @@ export const getCalendarDataByDate = [
                 "createDate": "23/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "AUD/ILS",
-                "rate": 2.21820000,
+                "rate": 2.2182,
                 "expiryDate": "28/05/2025",
                 "hedgeAmount": "$2000"
             },
@@ -811,7 +963,7 @@ export const getCalendarDataByDate = [
                 "createDate": "26/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "USD/ILS",
-                "rate": 3.31870000,
+                "rate": 3.3187,
                 "expiryDate": "28/05/2025",
                 "hedgeAmount": "$45"
             },
@@ -819,14 +971,29 @@ export const getCalendarDataByDate = [
                 "createDate": "26/05/2025",
                 "type": "Lock Down",
                 "currencyPair": "EUR/USD",
-                "rate": 1.05710000,
+                "rate": 1.0571,
                 "expiryDate": "28/05/2025",
                 "hedgeAmount": "€100"
             }
         ]
     },
     {
-        "id": 9,
+        "id": 10,
+        "start": "30/05/2025",
+        "resource": 3,
+        "events": [
+            {
+                "createDate": "28/05/2025",
+                "type": "Safe Up",
+                "currencyPair": "AUD/ILS",
+                "rate": 2.2919,
+                "expiryDate": "30/05/2025",
+                "hedgeAmount": "$1212121"
+            }
+        ]
+    },
+    {
+        "id": 11,
         "start": "26/05/2025",
         "resource": 2,
         "events": [
@@ -843,47 +1010,131 @@ export const getCalendarDataByDate = [
         ]
     },
     {
-        "id": 10,
-        "start": "29/05/2025",
+        "id": 12,
+        "start": "27/05/2025",
         "resource": 2,
         "events": [
             {
-                "rate": 0.6,
+                "rate": 0.67296,
                 "beneficiary": null,
-                "createDate": "23/05/2025",
-                "targetDate": "29/05/2025",
-                "status": "Open",
-                "type": "Convert Own Rate",
-                "buy": "$200",
-                "sell": "$333.33"
-            },
-            {
-                "rate": 0.6,
-                "beneficiary": null,
-                "createDate": "23/05/2025",
-                "targetDate": "29/05/2025",
-                "status": "Open",
-                "type": "Convert Own Rate",
-                "buy": "$184",
-                "sell": "$306.66"
-            },
-            {
-                "rate": 0.6,
-                "beneficiary": null,
-                "createDate": "23/05/2025",
-                "targetDate": "29/05/2025",
-                "status": "Open",
-                "type": "Convert Own Rate",
-                "buy": "$322",
-                "sell": "$536.66"
+                "createDate": "27/05/2025",
+                "targetDate": "27/05/2025",
+                "status": "Payment completed",
+                "type": "Convert",
+                "buy": "$674.52",
+                "sell": "$453.92"
             }
         ]
     },
     {
-        "id": 11,
+        "id": 13,
+        "start": "28/05/2025",
+        "resource": 2,
+        "events": [
+            {
+                "rate": 0.69007,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "28/05/2025",
+                "status": "Payment completed",
+                "type": "Convert",
+                "buy": "$173.89",
+                "sell": "$120"
+            },
+            {
+                "rate": 0.67223,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "28/05/2025",
+                "status": "Payment completed",
+                "type": "Convert",
+                "buy": "$148.75",
+                "sell": "$99.99"
+            },
+            {
+                "rate": 0.67223,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "28/05/2025",
+                "status": "Payment completed",
+                "type": "Convert",
+                "buy": "$371.89",
+                "sell": "$250"
+            },
+            {
+                "rate": 0.67202,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "28/05/2025",
+                "status": "Payment completed",
+                "type": "Convert",
+                "buy": "$229.15",
+                "sell": "$154"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "start": "31/05/2025",
+        "resource": 2,
+        "events": [
+            {
+                "rate": 1.7369,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "31/05/2025",
+                "status": "Open",
+                "type": "Convert Own Rate",
+                "buy": "€1000",
+                "sell": "$1736.9"
+            },
+            {
+                "rate": 1.9983,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "31/05/2025",
+                "status": "Open",
+                "type": "Convert Own Rate",
+                "buy": "£1000",
+                "sell": "$1998.3"
+            }
+        ]
+    },
+    {
+        "id": 15,
         "start": "30/05/2025",
         "resource": 2,
         "events": [
+            {
+                "rate": 1.9987,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "30/05/2025",
+                "status": "Open",
+                "type": "Convert Own Rate",
+                "buy": "£200",
+                "sell": "$399.74"
+            },
+            {
+                "rate": 1.9987,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "30/05/2025",
+                "status": "Open",
+                "type": "Convert Own Rate",
+                "buy": "£1000",
+                "sell": "$1998.7"
+            },
+            {
+                "rate": 2.12,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "30/05/2025",
+                "status": "Open",
+                "type": "Convert Own Rate",
+                "buy": "£120",
+                "sell": "$254.4"
+            },
             {
                 "rate": 0.644,
                 "beneficiary": null,
@@ -905,5 +1156,863 @@ export const getCalendarDataByDate = [
                 "sell": "$15.87"
             }
         ]
+    },
+    {
+        "id": 16,
+        "start": "29/05/2025",
+        "resource": 2,
+        "events": [
+            {
+                "rate": 2.1,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "29/05/2025",
+                "status": "HitAndFailed",
+                "type": "Convert Own Rate",
+                "buy": "£100",
+                "sell": "$210"
+            },
+            {
+                "rate": 100,
+                "beneficiary": null,
+                "createDate": "28/05/2025",
+                "targetDate": "29/05/2025",
+                "status": "Expired",
+                "type": "Convert Own Rate",
+                "buy": "€100",
+                "sell": "$10000"
+            },
+            {
+                "rate": 1.75,
+                "beneficiary": null,
+                "createDate": "27/05/2025",
+                "targetDate": "29/05/2025",
+                "status": "Expired",
+                "type": "Convert Own Rate",
+                "buy": "€1000",
+                "sell": "$1750"
+            },
+            {
+                "rate": 0.6,
+                "beneficiary": null,
+                "createDate": "23/05/2025",
+                "targetDate": "29/05/2025",
+                "status": "Expired",
+                "type": "Convert Own Rate",
+                "buy": "$200",
+                "sell": "$333.33"
+            },
+            {
+                "rate": 0.6,
+                "beneficiary": null,
+                "createDate": "23/05/2025",
+                "targetDate": "29/05/2025",
+                "status": "Expired",
+                "type": "Convert Own Rate",
+                "buy": "$184",
+                "sell": "$306.66"
+            },
+            {
+                "rate": 0.6,
+                "beneficiary": null,
+                "createDate": "23/05/2025",
+                "targetDate": "29/05/2025",
+                "status": "Expired",
+                "type": "Convert Own Rate",
+                "buy": "$322",
+                "sell": "$536.66"
+            }
+        ]
     }
 ]
+
+export const getCalendarDataTableByDate = {
+    "alert": [
+        {
+            "exposuresId": null,
+            "targetRate": 2.29,
+            "createDate": "19/05/2025",
+            "dueDate": "30/05/2025",
+            "buyCurrency": "AUD",
+            "sellCurrency": "ILS",
+            "buyCurrencyData": {
+                "code": "AUD",
+                "sign": "$",
+                "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/AUD.png",
+                "currencyName": null
+            },
+            "sellCurrencyData": {
+                "code": "ILS",
+                "sign": "₪",
+                "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png",
+                "currencyName": null
+            },
+            "status": "Close"
+        },
+        {
+            "exposuresId": null,
+            "targetRate": 2.2207,
+            "createDate": "26/05/2025",
+            "dueDate": "29/05/2025",
+            "buyCurrency": "AUD",
+            "sellCurrency": "ILS",
+            "buyCurrencyData": {
+                "code": "AUD",
+                "sign": "$",
+                "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/AUD.png",
+                "currencyName": null
+            },
+            "sellCurrencyData": {
+                "code": "ILS",
+                "sign": "₪",
+                "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png",
+                "currencyName": null
+            },
+            "status": "Expired"
+        },
+        {
+            "exposuresId": 2716,
+            "targetRate": 1.2335,
+            "createDate": "28/05/2025",
+            "dueDate": "30/05/2025",
+            "buyCurrency": "EUR",
+            "sellCurrency": "USD",
+            "buyCurrencyData": {
+                "code": "EUR",
+                "sign": "€",
+                "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
+                "currencyName": null
+            },
+            "sellCurrencyData": {
+                "code": "USD",
+                "sign": "$",
+                "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+                "currencyName": null
+            },
+            "status": "Open"
+        }
+    ],
+    "payment": [
+        {
+            "paymentRequestId": "f4000bf0-cd04-4a44-aa3b-acca7749cf04",
+            "rate": 2.2255,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪200",
+            "sell": "$89.86",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "5bf7bd42-0f26-4e22-8791-d732c316c173",
+            "rate": 3.3904,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪100",
+            "sell": "$29.49",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "ce1e4ae2-8778-4173-91ce-f829a8b52a21",
+            "rate": 2.2173,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪2000",
+            "sell": "$901.99",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "ae52eb06-3659-4c63-bea7-b6a135e4aad5",
+            "rate": 2.2224,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪200",
+            "sell": "$89.99",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "c64289e2-ad1e-472c-937f-3c1e5a664f3e",
+            "rate": 3.3069,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪100",
+            "sell": "$30.23",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "0794ad1e-20c6-4136-8451-6956d65d2058",
+            "rate": 3.3069,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪100",
+            "sell": "$30.23",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "356f11c8-40b1-47b7-b701-d2844d6c4de7",
+            "rate": 2.2225,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪100",
+            "sell": "$44.99",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "37c1e7ca-7ad2-428e-bee2-f3162d04d574",
+            "rate": 3.3833,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪100",
+            "sell": "$29.55",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "f91fd13d-c31f-4e0c-bdc2-9fb434937bf7",
+            "rate": 2.2173,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪200",
+            "sell": "$90.19",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "9ee52357-1fc4-4c24-a31c-3a97868bc31e",
+            "rate": 3.296,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪200",
+            "sell": "$60.67",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "c1cbaf92-e926-4e43-bd91-6f671f99a32f",
+            "rate": 3.298,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪100",
+            "sell": "$30.32",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "212e2134-4518-426c-bcee-1b15c89a735c",
+            "rate": 2.2188,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪321",
+            "sell": "$144.56",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "c537095a-65d2-41f5-95bc-61e9b82ed238",
+            "rate": 3.2913,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪200",
+            "sell": "$60.76",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "0dc15ff2-72c1-4200-982f-fefdf59aa4d9",
+            "rate": 3.292,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪200",
+            "sell": "$60.75",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "0a04efe5-9baa-45b3-92c0-e8a2e133b509",
+            "rate": 3.3829,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪100",
+            "sell": "$29.6",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "3822adf3-9c59-4469-820f-b35ed7ded6c6",
+            "rate": 2.2139,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪200",
+            "sell": "$90.33",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "c32ff89a-2980-4314-a0e3-938587b3edd1",
+            "rate": 2.2224,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪100",
+            "sell": "$44.99",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        },
+        {
+            "paymentRequestId": "f2e27984-6690-461b-a68c-34aebbaefe86",
+            "rate": 3.3922,
+            "beneficiary": "Goha",
+            "createDate": "29/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Future Payment",
+            "type": "Future payment",
+            "buy": "₪100",
+            "sell": "$29.47",
+            "needToCompleteDetails": {
+                "needSign": false,
+                "needFile": false,
+                "needStamp": false
+            },
+            "exposureId": null
+        }
+    ],
+    "convert": [
+        {
+            "rate": 1.7369,
+            "beneficiary": null,
+            "createDate": "28/05/2025",
+            "targetDate": "31/05/2025",
+            "status": "Open",
+            "type": "Convert Own Rate",
+            "buy": "€1000",
+            "sell": "$1736.9"
+        },
+        {
+            "rate": 1.9987,
+            "beneficiary": null,
+            "createDate": "28/05/2025",
+            "targetDate": "30/05/2025",
+            "status": "Open",
+            "type": "Convert Own Rate",
+            "buy": "£200",
+            "sell": "$399.74"
+        },
+        {
+            "rate": 1.9987,
+            "beneficiary": null,
+            "createDate": "28/05/2025",
+            "targetDate": "30/05/2025",
+            "status": "Open",
+            "type": "Convert Own Rate",
+            "buy": "£1000",
+            "sell": "$1998.7"
+        },
+        {
+            "rate": 1.9983,
+            "beneficiary": null,
+            "createDate": "28/05/2025",
+            "targetDate": "31/05/2025",
+            "status": "Open",
+            "type": "Convert Own Rate",
+            "buy": "£1000",
+            "sell": "$1998.3"
+        },
+        {
+            "rate": 2.1,
+            "beneficiary": null,
+            "createDate": "28/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "HitAndFailed",
+            "type": "Convert Own Rate",
+            "buy": "£100",
+            "sell": "$210"
+        },
+        {
+            "rate": 100,
+            "beneficiary": null,
+            "createDate": "28/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Expired",
+            "type": "Convert Own Rate",
+            "buy": "€100",
+            "sell": "$10000"
+        },
+        {
+            "rate": 2.12,
+            "beneficiary": null,
+            "createDate": "28/05/2025",
+            "targetDate": "30/05/2025",
+            "status": "Open",
+            "type": "Convert Own Rate",
+            "buy": "£120",
+            "sell": "$254.4"
+        },
+        {
+            "rate": 1.75,
+            "beneficiary": null,
+            "createDate": "27/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Expired",
+            "type": "Convert Own Rate",
+            "buy": "€1000",
+            "sell": "$1750"
+        },
+        {
+            "rate": 0.6,
+            "beneficiary": null,
+            "createDate": "23/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Expired",
+            "type": "Convert Own Rate",
+            "buy": "$200",
+            "sell": "$333.33"
+        },
+        {
+            "rate": 0.6,
+            "beneficiary": null,
+            "createDate": "23/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Expired",
+            "type": "Convert Own Rate",
+            "buy": "$184",
+            "sell": "$306.66"
+        },
+        {
+            "rate": 0.6,
+            "beneficiary": null,
+            "createDate": "23/05/2025",
+            "targetDate": "29/05/2025",
+            "status": "Expired",
+            "type": "Convert Own Rate",
+            "buy": "$322",
+            "sell": "$536.66"
+        },
+        {
+            "rate": 0.644,
+            "beneficiary": null,
+            "createDate": "16/05/2025",
+            "targetDate": "30/05/2025",
+            "status": "Open",
+            "type": "Convert Own Rate",
+            "buy": "$100",
+            "sell": "$64.4"
+        },
+        {
+            "rate": 0.63,
+            "beneficiary": null,
+            "createDate": "15/05/2025",
+            "targetDate": "30/05/2025",
+            "status": "Open",
+            "type": "Convert Own Rate",
+            "buy": "$10",
+            "sell": "$15.87"
+        }
+    ],
+    "hedge": [
+        {
+            "createDate": "23/01/2025",
+            "type": "Lock Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2368,
+            "expiryDate": "16/06/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "05/02/2025",
+            "type": "Lock Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2329,
+            "expiryDate": "05/11/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "06/02/2025",
+            "type": "Lock Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.238,
+            "expiryDate": "15/07/2025",
+            "hedgeAmount": "$70"
+        },
+        {
+            "createDate": "07/02/2025",
+            "type": "Lock Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2386,
+            "expiryDate": "07/08/2025",
+            "hedgeAmount": "$265"
+        },
+        {
+            "createDate": "07/02/2025",
+            "type": "Lock Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.33,
+            "expiryDate": "15/09/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "13/02/2025",
+            "type": "Lock Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.263,
+            "expiryDate": "15/10/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "13/02/2025",
+            "type": "Lock Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2653,
+            "expiryDate": "15/07/2025",
+            "hedgeAmount": "$20"
+        },
+        {
+            "createDate": "13/02/2025",
+            "type": "Lock Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2441,
+            "expiryDate": "31/07/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "14/05/2025",
+            "type": "Lock Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.3097,
+            "expiryDate": "16/02/2026",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "15/05/2025",
+            "type": "Lock Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.3605,
+            "expiryDate": "16/06/2025",
+            "hedgeAmount": "$200"
+        },
+        {
+            "createDate": "15/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "USD/ILS",
+            "rate": 3.3922,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "15/05/2025",
+            "type": "Lock Up",
+            "currencyPair": "USD/ILS",
+            "rate": 3.6896,
+            "expiryDate": "15/08/2025",
+            "hedgeAmount": "$200"
+        },
+        {
+            "createDate": "16/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "USD/ILS",
+            "rate": 3.3904,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "19/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "USD/ILS",
+            "rate": 3.3833,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Safe Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.3294,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$10000"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2139,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$200"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2173,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$2000"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "USD/ILS",
+            "rate": 3.292,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$200"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "USD/ILS",
+            "rate": 3.2913,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$200"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2173,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$200"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "EUR/ILS",
+            "rate": 3.7508,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "€2000"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "USD/ILS",
+            "rate": 3.296,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$200"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "EUR/ILS",
+            "rate": 3.7598,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "€366"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2224,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2255,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$200"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "USD/ILS",
+            "rate": 3.298,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2225,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2188,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$321"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2224,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$200"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "USD/ILS",
+            "rate": 3.3069,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "23/05/2025",
+            "type": "Lock Down",
+            "currencyPair": "USD/ILS",
+            "rate": 3.3069,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "27/05/2025",
+            "type": "Safe Down",
+            "currencyPair": "USD/ILS",
+            "rate": 3.3829,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$100"
+        },
+        {
+            "createDate": "28/05/2025",
+            "type": "Safe Up",
+            "currencyPair": "USD/ILS",
+            "rate": 3.6982,
+            "expiryDate": "30/06/2025",
+            "hedgeAmount": "$100000"
+        },
+        {
+            "createDate": "28/05/2025",
+            "type": "Safe Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2891,
+            "expiryDate": "29/05/2025",
+            "hedgeAmount": "$222222"
+        },
+        {
+            "createDate": "28/05/2025",
+            "type": "Safe Up",
+            "currencyPair": "AUD/ILS",
+            "rate": 2.2919,
+            "expiryDate": "30/05/2025",
+            "hedgeAmount": "$1212121"
+        }
+    ]
+}
+    

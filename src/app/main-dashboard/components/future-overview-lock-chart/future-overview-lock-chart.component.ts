@@ -32,6 +32,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CustomCalendarHeader } from '../shared/custom-calendar-header/custom-calendar-header.component';
 import { getCurrentExplosureRate, getLockHedgeGrafhData } from '../../dashboard-data/chart-data';
 import { of } from 'rxjs';
+import { HtmlTooltipDirective } from '../../../directives/html-tooltip.directive';
+import { FutureOverviewLockUpdownComponent } from '../future-overview-lock-updown/future-overview-lock-updown.component';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -54,7 +56,7 @@ export type ChartOptions = {
   selector: 'app-future-overview-lock-chart',
   templateUrl: './future-overview-lock-chart.component.html',
   styleUrls: ['./future-overview-lock-chart.component.scss'],
-  imports: [MatSelectModule, CommonModule, FormsModule, MatDatepickerModule, NgbTooltipModule, NgApexchartsModule, MatCheckboxModule, MatNativeDateModule],
+  imports: [MatSelectModule, CommonModule, FormsModule, MatDatepickerModule, NgbTooltipModule, NgApexchartsModule, MatCheckboxModule, MatNativeDateModule, HtmlTooltipDirective],
   providers: [
     {
       provide: MAT_DATE_FORMATS,
@@ -654,26 +656,26 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
 
   opneLockup(createdHedgeData: any) {
 
-    // if (this.isCalendarEnable || this.lockDate) {
-    //   const dialogRef = this.dialog.open(FutureOverviewLockUpdownComponent, {
-    //     width: '50vw',
-    //     maxWidth: '50vw',
-    //     panelClass: 'lock-up-popup',
-    //     data: {
-    //       hedgeData: createdHedgeData,
-    //     }
+    if (this.isCalendarEnable || this.lockDate) {
+      const dialogRef = this.dialog.open(FutureOverviewLockUpdownComponent, {
+        width: '50vw',
+        maxWidth: '50vw',
+        panelClass: 'lock-up-popup',
+        data: {
+          hedgeData: createdHedgeData,
+        }
 
-    //   }).afterClosed()
-    //     .subscribe((shouldReload: any) => {
-    //     });
-    // }
-    // else {
+      }).afterClosed()
+        .subscribe((shouldReload: any) => {
+        });
+    }
+    else {
 
-    //   this.errFlag = true;
-    //   this.timeFrameMsg = "Please select time frame"
-    //   this.dateErrMsg = "Please select date"
+      this.errFlag = true;
+      this.timeFrameMsg = "Please select time frame"
+      this.dateErrMsg = "Please select date"
 
-    // }
+    }
 
 
   }
