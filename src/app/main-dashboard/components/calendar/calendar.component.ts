@@ -77,6 +77,19 @@ export class CalendarComponent {
   oldDate!: boolean;
   unSubScribe$ = new Subject<void>();
   affiliateCountry: any;
+
+  @HostListener('document:click', ['$event']) onDocumentClick(event: MouseEvent) {
+    const targetElement = event.target as HTMLElement;
+    if (!targetElement.classList.contains('mbsc-timeline-column')) {
+      document.querySelectorAll('#createEventCustMenu').forEach((item) => {
+        item?.remove();
+      });
+      if (document.querySelector('.driver-popover.onboarding-popup') == null) {
+        document.querySelector('body')!.style.overflowY = 'auto';
+      }
+    }
+  }
+
   @ViewChild('eventCalendar') eventCalendar!: MbscEventcalendar;
   @ViewChild('alertDrawer')
   alertDrawer!: MatDrawer;

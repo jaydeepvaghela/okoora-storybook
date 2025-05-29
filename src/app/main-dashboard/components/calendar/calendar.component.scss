@@ -1419,7 +1419,7 @@
     }
   }
 
-  .mdc-menu-surface {
+  // .mdc-menu-surface {
     &.add-event-menu {
       border-radius: 10px;
 
@@ -1458,7 +1458,7 @@
         }
       }
     }
-    &.add-event-panel {
+    .add-event-panel {
       .mat-mdc-menu-content {
         .add-event-menu-item {
           border-bottom: 1px dashed rgba(29, 29, 34, 0.1);
@@ -1490,7 +1490,7 @@
         }
       }
     }
-  }
+  // }
 
   .mbsc-calendar-header {
     .mbsc-calendar-week-days {
@@ -3312,8 +3312,8 @@
     }
   }
 
-  .mat-mdc-menu-panel {
-    &.add-event-panel {
+  // .mat-mdc-menu-panel {
+    .add-event-panel {
       width: 243px;
       min-width: 100%;
       max-width: 100%;
@@ -3381,7 +3381,7 @@
               margin-bottom: 5px;
             }
 
-            &::before {
+            ::before {
               content: "";
               width: 23px;
               height: 23px;
@@ -3414,7 +3414,7 @@
         }
       }
     }
-  }
+  // }
   .mbsc-calendar-picker-slide.mbsc-calendar-slide{
     position: absolute !important;
   }
