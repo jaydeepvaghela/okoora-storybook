@@ -165,7 +165,7 @@ export class MainDashboardComponent {
           }
         });
 
-      this.openQuestionnaireDialog();
+      // this.openQuestionnaireDialog();  // commented out to avoid opening on every init
     
       // const dialogRef = this.dialog.open(ApprovalProtectiveFormComponent, {
       //   width: '600px',

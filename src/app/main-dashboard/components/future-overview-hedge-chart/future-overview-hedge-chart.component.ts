@@ -31,6 +31,7 @@ import { createHedgeByCategory, getHedgeGrafhData } from '../../dashboard-data/b
 import { of } from 'rxjs';
 import { CustomCalendarHeader } from '../shared/custom-calendar-header/custom-calendar-header.component';
 import { HtmlTooltipDirective } from '../../../directives/html-tooltip.directive';
+import { ApprovalProtectiveFormComponent } from '../approval-protective-form/approval-protective-form.component';
 // import { ApprovalProtectiveFormComponent } from 'src/app/purchase-orders/components/approval-protective-form/approval-protective-form.component';
 // import { CustomCalendarHeader } from 'src/app/shared/components/custom-calendar-header/custom-calendar-header.component';
 // import { WalletsService } from 'src/app/wallets/services/wallets.service';
@@ -297,25 +298,25 @@ export class FutureOverviewHedgeChartComponent {
   }
   openLockup(createdHedgeData: any) {
     this.showConfirmation = false;
-    // const dialogRef = this.dialog.open(ApprovalProtectiveFormComponent, {
-    //   width: '600px',
-    //   disableClose: true,
-    //   panelClass: 'approval-protective-dialog',
-    //   data: {
-    //     type: 'lockUP',
-    //     fromNewdashboard: true,
-    //     expiryDate: this.createdHedgeData?.expiryDate,
-    //     buyCurrency: this.createdHedgeData?.buyCurrency,
-    //     sellCurrency: this.createdHedgeData?.sellCurrency,
-    //     HedgeData: this.createdHedgeData,
-    //     lockAmount: this.typedHedgeAmount.replace(/\,/g, ''),
-    //     hedgeType: this.hedgeType == 'safeUp' ? "2" : "3",
-    //   }
-    // }).afterClosed().subscribe((shouldReload: any) => {
-    //   delete this.selectedDate
-    //   delete this.typedHedgeAmount
-    //   delete this.createdHedgeData
-    // })
+    this.dialog.open(ApprovalProtectiveFormComponent, {
+      width: '600px',
+      disableClose: true,
+      panelClass: 'approval-protective-dialog',
+      data: {
+        type: 'lockUP',
+        fromNewdashboard: true,
+        expiryDate: this.createdHedgeData?.expiryDate,
+        buyCurrency: this.createdHedgeData?.buyCurrency,
+        sellCurrency: this.createdHedgeData?.sellCurrency,
+        HedgeData: this.createdHedgeData,
+        lockAmount: this.typedHedgeAmount.replace(/\,/g, ''),
+        hedgeType: this.hedgeType == 'safeUp' ? "2" : "3",
+      }
+    }).afterClosed().subscribe((shouldReload: any) => {
+      delete this.selectedDate
+      delete this.typedHedgeAmount
+      delete this.createdHedgeData
+    })
   }
 
   onChange(ev: any) {
