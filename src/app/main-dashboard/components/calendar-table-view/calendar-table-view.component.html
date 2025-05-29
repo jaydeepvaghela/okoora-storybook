@@ -1,0 +1,351 @@
+<div class="cashflow-table-wrap">
+  <div class="cashflow-table-inner-wrap">
+    <table id="mbsc-tbl-alert" *ngIf="selectedTab == 0 && alertDataSource?.data?.length > 0" mat-table
+      [dataSource]="alertDataSource?.data  | paginate: { itemsPerPage: size, currentPage: p, totalItems: alertDataSource?.data?.length }"
+      class="mat-elevation-z8 cashflow-data-table loader-wrapper">
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef>Create Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{element?.createDate}}
+          <span *ngIf="!element?.createDate">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="buy">
+        <th mat-header-cell *matHeaderCellDef>Buy</th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element?.buyCurrency" class="d-flex align-items-center currency-field">
+            <img class="flag" [src]="element?.buyCurrencyData?.flag" [alt]="element?.buyCurrencyData?.code">
+            <span class="target-date-text bold-texts margin-icon">{{ element?.buyCurrency }}</span>
+          </div>
+          <span *ngIf="!element?.buyCurrency">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="arrow">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <div class="d-flex align-items-center">
+            <img src="images/right-arrow-calendar.svg">
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sell">
+        <th mat-header-cell *matHeaderCellDef>Sell</th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="element?.sellCurrency" class="d-flex align-items-center currency-field">
+            <img class="flag" [src]="element?.sellCurrencyData?.flag" [alt]="element?.sellCurrencyData?.flag">
+            <span class="bold-texts margin-icon">{{ element?.sellCurrency }}</span>
+          </div>
+          <span *ngIf="!element?.sellCurrency">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rate">
+        <th mat-header-cell *matHeaderCellDef class="target-rate-header">Target Rate</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.targetRate" class="target-rate bold-texts">{{ element?.targetRate }}</span>
+          <span *ngIf="!element?.targetRate">-</span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="dueDate">
+        <th mat-header-cell *matHeaderCellDef>Due Date</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.dueDate" class="bold-texts">{{ element?.dueDate }}</span>
+          <span *ngIf="!element?.dueDate">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="alert-status">Status</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.status" class="status-text {{ strTrim(element?.status) }}">{{ element?.status }}</span>
+          <span *ngIf="!element?.status">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element; let rowIndex = index">
+          <button id="mbsc-table-action-{{rowIndex}}" type="button" [matMenuTriggerFor]="calendarMenu" class="tv_action_btn"
+            (click)="$event.stopPropagation()">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <div class="calendar-table-actions">
+            <mat-menu #calendarMenu="matMenu">
+              <button id="mbsc-table-action-delete" mat-menu-item [disabled]="element?.exposuresId == null"
+                (click)="DeleteAlert(element?.exposuresId)">
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <!-- <app-page-loader classes="bg-white" *ngIf="visibleLoader"></app-page-loader> -->
+    </table>
+    <div id="mbsc-table-paginator-0" *ngIf="selectedTab == 0 && alertDataSource?.data?.length > 0">
+      <pagination-controls (pageChange)="p = $event;" previousLabel="" nextLabel="" [autoHide]="true"
+        class="table-pagination"></pagination-controls>
+    </div>
+  </div>
+
+  <div class="cashflow-table-inner-wrap">
+    <table id="mbsc-tbl-payment" *ngIf="selectedTab == 1 && paymentDataSource?.data?.length > 0" mat-table
+      [dataSource]="paymentDataSource?.data | paginate: { itemsPerPage: size, currentPage: p, totalItems: paymentDataSource?.data?.length }"
+      class="mat-elevation-z8 cashflow-data-table">
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef>Create Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{element?.createDate}}
+          <span *ngIf="!element?.createDate">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.type" class="target-date-text">
+            <span class="bold-texts">{{ element?.type }}</span>
+          </span>
+          <span *ngIf="!element?.type">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="buy">
+        <th mat-header-cell *matHeaderCellDef>Buy</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.buy }}
+          <span *ngIf="!element?.buy">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sell">
+        <th mat-header-cell *matHeaderCellDef>Sell</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.sell }}
+          <span *ngIf="!element?.sell">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rate">
+        <th mat-header-cell *matHeaderCellDef>Rate</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.rate" class="target-rate">{{ element?.rate }}</span>
+          <span *ngIf="!element?.rate">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="beneficiary">
+        <th mat-header-cell *matHeaderCellDef>Beneficiary</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.beneficiary }}
+          <span *ngIf="!element?.beneficiary">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="targetDate">
+        <th mat-header-cell *matHeaderCellDef>Target Date</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.targetDate" class="bold-texts">{{ element?.targetDate }}</span>
+          <span *ngIf="!element?.targetDate">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.status && !element?.needToCompleteDetails?.needFile"
+            class="status-text {{ strTrim(element?.status) }}">{{ element?.status }}</span>
+          <span *ngIf="element?.needToCompleteDetails?.needFile" id="mbsc-table-reckeck-invoice" class="status-text {{ strTrim(element?.status) }}"
+            [matMenuTriggerFor]="statusMenu">Recheck</span>
+          <span *ngIf="!element?.status">-</span>
+          <mat-menu #statusMenu="matMenu" class="fix-invoice-drop">
+            <button id="mbsc-table-fix-invoice" mat-menu-item>Fix invoice</button>
+            <!-- <button mat-menu-item (click)="recheckInvoice(element?.paymentRequestId)" >Fix invoice</button> -->
+          </mat-menu>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsPayment"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsPayment"></tr>
+    </table>
+    <div id="mbsc-table-paginator-1" *ngIf="selectedTab == 1 && paymentDataSource?.data?.length > 0">
+      <pagination-controls (pageChange)="p = $event;" previousLabel="" nextLabel="" [autoHide]="true"
+        class="table-pagination"></pagination-controls>
+    </div>
+  </div>
+
+  <div class="cashflow-table-inner-wrap">
+    <table id="mbsc-tbl-exchange" *ngIf="selectedTab == 2 && convertDataSource?.data?.length > 0" mat-table
+      [dataSource]="convertDataSource?.data | paginate: { itemsPerPage: size, currentPage: p, totalItems: convertDataSource?.data?.length }"
+      class="mat-elevation-z8 cashflow-data-table">
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef>Create Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{element?.createDate}}
+          <span *ngIf="!element?.createDate">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.type" class="target-date-text">{{ element?.type }}</span>
+          <span *ngIf="!element?.type">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="buy">
+        <th mat-header-cell *matHeaderCellDef>Buy</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.buy }}
+          <span *ngIf="!element?.buy">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sell">
+        <th mat-header-cell *matHeaderCellDef>Sell</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.sell }}
+          <span *ngIf="!element?.sell">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rate">
+        <th mat-header-cell *matHeaderCellDef>Rate</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.rate" class="target-rate">{{ element?.rate }}</span>
+          <span *ngIf="!element?.rate">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="targetDate">
+        <th mat-header-cell *matHeaderCellDef>Target Date</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.targetDate" class="bold-texts">{{ element?.targetDate }}</span>
+          <span *ngIf="!element?.targetDate">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.status" class="status-text {{ strTrim(element?.status) }}">{{ element?.status }}</span>
+          <span *ngIf="!element?.status">-</span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsConvert"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsConvert"></tr>
+    </table>
+    <div id="mbsc-table-paginator-2" *ngIf="selectedTab == 2 && convertDataSource?.data?.length > 0">
+      <pagination-controls (pageChange)="p = $event;" previousLabel="" nextLabel="" [autoHide]="true"
+        class="table-pagination"></pagination-controls>
+    </div>
+  </div>
+
+  <div class="cashflow-table-inner-wrap">
+    <table id="mbsc-tbl-hedge" *ngIf="selectedTab == 3 && hedgeDataSource?.data?.length > 0" mat-table
+      [dataSource]="hedgeDataSource?.data | paginate: {itemsPerPage: size, currentPage: p, totalItems: hedgeDataSource?.data?.length }"
+      class="mat-elevation-z8 cashflow-data-table">
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef>Create Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{element?.createDate}}
+          <span *ngIf="!element?.createDate">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.type" class="target-date-text">
+            <span class="bold-texts">{{ element?.type }}</span>
+          </span>
+          <span *ngIf="!element?.type">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currencyPair">
+        <th mat-header-cell *matHeaderCellDef>Currency Pair</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.currencyPair }}
+          <span *ngIf="!element?.currencyPair">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hedgeAmount">
+        <th mat-header-cell *matHeaderCellDef>Hedge Amount</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.hedgeAmount }}
+          <span *ngIf="!element?.hedgeAmount">-</span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="hedgeRate">
+        <th mat-header-cell *matHeaderCellDef>Hedge Rate</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.rate" class="target-rate">{{ element?.rate }}</span>
+          <span *ngIf="!element?.rate">-</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expiryDate">
+        <th mat-header-cell *matHeaderCellDef>Expiry Date</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element?.expiryDate" class="bold-texts">{{ element?.expiryDate }}</span>
+          <span *ngIf="!element?.expiryDate">-</span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsHedge"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsHedge"></tr>
+    </table>
+    <div id="mbsc-table-paginator-3" *ngIf="selectedTab == 3 && hedgeDataSource?.data?.length > 0">
+      <pagination-controls (pageChange)="p = $event;" previousLabel="" nextLabel="" [autoHide]="true"
+        class="table-pagination"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="selectedTab == 0 && !alertDataSource?.data?.length" class="empty-table-message">
+  <div class="no-entry-img text-center">
+    <img src="images/no-alert-data-found.svg">
+  </div>
+  <p class="text-center">MAKE YOUR FIRST ALERT</p>
+  <div class="text-center">
+    <button id="mbsc-table-nda-alert" class="continue" (click)="addNewAlert()">+ New Alert</button>
+  </div>
+</div>
+
+<div *ngIf="selectedTab == 1 && !paymentDataSource?.data?.length" class="empty-table-message">
+  <div class="no-entry-img text-center">
+    <img src="images/no-payment-data-found.svg">
+  </div>
+  <p class="text-center">MAKE YOUR FIRST PAYMENT</p>
+  <div class="text-center">
+    <button id="mbsc-table-nda-payment" class="continue" (click)="addNewPayment()">+ New payment</button>
+  </div>
+</div>
+
+<div *ngIf="selectedTab == 2 && !convertDataSource?.data?.length" class="empty-table-message">
+  <div class="no-entry-img text-center">
+    <img src="images/no-payment-data-found.svg">
+  </div>
+  <p class="text-center">MAKE YOUR FIRST EXCHANGE</p>
+  <div class="text-center">
+    <button id="mbsc-table-nda-exchange" class="continue" (click)="addNewConvert()" [disabled]="userRoleType !== 1">+ New Exchange</button>
+  </div>
+</div>
+
+<div *ngIf="selectedTab == 3 && !hedgeDataSource?.data?.length" class="empty-table-message">
+  <div class="no-entry-img text-center">
+    <img src="images/no-payment-data-found.svg">
+  </div>
+  <p class="text-center">MAKE YOUR FIRST HEDGE</p>
+  <div class="text-center">
+    <!-- <button id="mbsc-table-nda-hedge" (click)="openHedgeDialog(false, data?.date);" class="continue" [disabled]="userRoleType !== 1">+ New Hedge</button> -->
+  </div>
+</div>

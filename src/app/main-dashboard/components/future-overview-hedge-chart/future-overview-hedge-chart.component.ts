@@ -30,6 +30,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { createHedgeByCategory, getHedgeGrafhData } from '../../dashboard-data/balanceList-data';
 import { of } from 'rxjs';
 import { CustomCalendarHeader } from '../shared/custom-calendar-header/custom-calendar-header.component';
+import { HtmlTooltipDirective } from '../../../directives/html-tooltip.directive';
 // import { ApprovalProtectiveFormComponent } from 'src/app/purchase-orders/components/approval-protective-form/approval-protective-form.component';
 // import { CustomCalendarHeader } from 'src/app/shared/components/custom-calendar-header/custom-calendar-header.component';
 // import { WalletsService } from 'src/app/wallets/services/wallets.service';
@@ -64,7 +65,7 @@ export type ChartOptions = {
   templateUrl: './future-overview-hedge-chart.component.html',
   styleUrls: ['./future-overview-hedge-chart.component.scss'],
   providers: [CurrencyPipe],
-  imports: [CommonModule, FormsModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, MatCheckboxModule]
+  imports: [CommonModule, FormsModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, MatCheckboxModule, HtmlTooltipDirective]
 })
 
 export class FutureOverviewHedgeChartComponent {

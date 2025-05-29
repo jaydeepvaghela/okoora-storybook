@@ -407,6 +407,7 @@
       font-family: $manrope;
       font-size: 14px;
     }
+    
 
     .mat-calendar-table-header {
       font-size: 14px;
@@ -430,9 +431,17 @@
       padding-bottom: 0!important;
     }
 
+    .mat-calendar-body-cell {
+      font-family: $manrope;
+    }
+
     .mat-calendar-body-cell-content {
       padding: 5px;
       height: unset;
+
+      &.mat-calendar-body-selected {
+        background-color: #2947f2 !important;
+      }
     }
   }
 }

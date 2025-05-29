@@ -1,0 +1,89 @@
+<div class="lock-up-popup-main">
+    <div class="lock-up-popup-header">
+        <div class="lock-up-popup-title">
+            <h6 *ngIf="this.activeCurrency?.wallet_Hedging?.direction == Directions?.Up">Lock & up</h6>
+            <h6 *ngIf="this.activeCurrency?.wallet_Hedging?.direction == Directions?.Down">Lock & down</h6>
+
+        </div>
+        <div class="lock-up-popup-close-btn">
+            <div class="approval-close-btn">
+                <button id="lock_close_btn_lock_updown" mat-icon-button="" mat-dialog-close=""
+                    class="colse-btn mdc-icon-button mat-mdc-icon-button mat-unthemed mat-mdc-button-base"
+                    type="button">
+                    <img src="images/rate-popup-close-icon.svg">
+                    <span class="mat-mdc-button-touch-target"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="lock-up-popup-upper-sr">
+        <div class="lock-up-upper-one lock-up-same-text">
+            <div class="out-side-label">
+                <label>Set amount to lock</label>
+            </div>
+            <div class="inside-input-text">
+                <div class="lock-icon">
+                    <img src="images/loock-up-lock.svg">
+                </div>
+                <input  id="lock_amount_lock_updown" type="text" #dealid (keyup)="keyupvalue(dealid.value)" [(ngModel)]="lockAmount"
+                    (blur)="getHedgeData()" class="pd-left-icon">
+                <div class="in-input-text"><label> {{data?.hedgeData?.notionalCurrency}}</label></div>
+            </div>
+        </div>
+        <div class="lock-up-upper-two lock-up-same-text">
+            <div class="out-side-label">
+                <label>Required collateral</label>
+            </div>
+            <div class="inside-input-text">
+                <!-- <input type="text" readonly class="disable-input" placeholder={{data?.hedgeData?.collateral?.toLocaleString()}}>
+                <div class="in-input-text"><label> {{data?.hedgeData?.collateralCur}}</label></div> -->
+
+                <input  id="lock_collateral_amount_lock_updown" type="text" readonly class="disable-input"
+                    placeholder={{hedgeData?.collateral?.toLocaleString()}}>
+                <div *ngIf="hedgeData?.collateralCur" class="in-input-text"><label> {{hedgeData?.collateralCur}}</label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- <div class="lock-up-popup-below-pdd">
+        <div class="lock-up-date">
+            <div class="date-picker">
+                <input type="text" class="form-control" matInput placeholder="Select date" 
+                    [matDatepicker]="picker" [min]="minDate" (dateInput)="addEvent('input', $event)">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </div>
+            <div class="date-picker-text">
+                <label>Protection due date:</label>
+                <span>{{ formattedDate ? (formattedDate | date: 'MMM d, y') : 'N/A' }}</span>
+            </div>
+        </div>
+    </div> -->
+    <div class="lock-up-invoice-main">
+        <label class="lock-up-invoice-title">Invoice rate:{{data?.hedgeData?.strike.toFixed(4)}} </label>
+        <div class="lock-up-invoice-img">
+            <span class="strike-rate">{{data?.hedgeData?.strike.toFixed(4)}} </span>
+            <img *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Up"
+                src="images/hedgeLockUp.svg">
+            <img *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Down"
+                src="images/hedgeLockDown.svg">
+
+        </div>
+    </div>
+    <div class="lock-up-warrning-msg">
+        <img src="images/warning-lock-rate.svg">
+        <p>This action can’t be undone for the selected amount</p>
+    </div>
+    <div *ngIf="errorMsg"> 
+        <span  class="error-msg">
+            {{errorMsg}}ghfghf
+        </span>
+    </div>
+    <div class="lock-up-popup-btn-group">
+        <button id="lock_cancel_btn_lock_updown" class="popup-close-btn lock-popup-btn-group-inner" mat-dialog-close>Cancel</button>
+        <button id="lock_continue_btn_lock_updown" class="popup-continue-btn lock-popup-btn-group-inner" [disabled]="!lockAmount"
+            (click)="opneLockup(lockAmount)">Continue</button>
+
+    </div>
+</div>

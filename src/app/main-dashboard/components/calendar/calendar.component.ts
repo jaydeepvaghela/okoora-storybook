@@ -21,6 +21,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { getCalendarDataByDate } from '../../dashboard-data/calendar-data';
 import { CalenderAddAlertComponent } from '../calender-add-alert/calender-add-alert.component';
+import { DashboardTableViewComponent } from '../dashboard-table-view/dashboard-table-view.component';
+import { TableMenuComponent } from '../table-menu/table-menu.component';
 
 const calendarResources: MbscResource[] = [
   {
@@ -55,7 +57,9 @@ const calendarResources: MbscResource[] = [
     MatIconModule,
     MbscModule,
     MatDrawer,
-    CalenderAddAlertComponent
+    CalenderAddAlertComponent,
+    TableMenuComponent,
+    DashboardTableViewComponent
   ],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],

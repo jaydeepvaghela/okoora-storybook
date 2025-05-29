@@ -1,0 +1,24 @@
+<div class="table-view dashboard-table-container">
+  <mat-tab-group class="side-tab-group" [selectedIndex]="selectedTab" (selectedTabChange)="changeType($event)">
+    <mat-tab id="mbsc-table-tab-0" label="Alert">
+      <ng-template matTabContent>
+        <app-calendar-table-view (calendarData)="getCalendarData()" [selectedTab]="0" [data]="tableData" (addAlertClick)="addNewAlert()"></app-calendar-table-view>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Payments">
+      <ng-template matTabContent>
+        <app-calendar-table-view [selectedTab]="1" [data]="tableData" (addPaymentClick)="addNewPayment()"></app-calendar-table-view>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Exchange" selectedIndex="1">
+      <ng-template matTabContent>
+        <app-calendar-table-view [selectedTab]="2" [data]="tableData" (addConvertClick)="addNewConvert()"></app-calendar-table-view>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Hedging">
+        <ng-template matTabContent>
+          <app-calendar-table-view [selectedTab]="3" [data]="tableData"></app-calendar-table-view>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+</div>

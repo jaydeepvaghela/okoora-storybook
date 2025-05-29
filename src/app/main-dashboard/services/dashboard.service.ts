@@ -12,10 +12,17 @@ export class DashboardService {
   private dashboardDrawer = new BehaviorSubject<any>({});
   currentdashboardDrawerType = this.dashboardDrawer.asObservable();
   
+  private dashboardSide = new BehaviorSubject<any>({});
+
   constructor() { }
 
   setDashboardSideTabesType(type: any) {
     this.dashboardSideTabesType.next(type)
+  }
+
+  
+  setDashboardSideTabesTypes(type: any) {
+    this.dashboardSide.next(type)
   }
 
   setSlidePosition(position: number) {

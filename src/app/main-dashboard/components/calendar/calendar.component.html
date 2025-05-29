@@ -67,7 +67,7 @@
             <div class="add-event-menu-item">
               <button id="calendar-add-exchange" [disabled]="userRoleType != 1" mat-menu-item (click)="openConvertDialog(true)">Exchange</button>
             </div>
-            <div class="add-event-menu-item" *ngIf="user?.afiiliate?.currency != 'EUR'">
+            <div class="add-event-menu-item">
               <button id="calendar-add-hedge" [disabled]="userRoleType != 1" mat-menu-item (click)="openHedgeDialog(true)">Hedge</button>
             </div>
           </mat-menu>
@@ -233,7 +233,7 @@
                   + New Hedge
                 </button>
               </div>
-              <!-- <app-table-menu [resource]="data?.original?.resource" [tableData]="data?.original?.events.slice(0, 3)"></app-table-menu> -->
+              <app-table-menu [resource]="data?.original?.resource" [tableData]="data?.original?.events.slice(0, 3)"></app-table-menu>
               <div class="view-all-payment">
                 <button id="mbsc-evd-view-all" *ngIf="data?.original?.events?.length > 3" (click)="setTableVisibility(true);tabSelect(data?.original?.resource)">View All</button>
               </div>
@@ -438,13 +438,13 @@
   </div>
 
   <!-- <mat-date-range-picker #picker></mat-date-range-picker> -->
-  <!-- <app-dashboard-table-view
+  <app-dashboard-table-view
     [selectedTab]="selectedTab"
     [showTable]="showTable"
     (addAlertClick)="alertDrawerOpen(true)"
     (addPaymentClick)="openPaymentDialog(true)"
     (addConvertClick)="openConvertDialog(true)"
-  ></app-dashboard-table-view> -->
+  ></app-dashboard-table-view>
 </ng-container>
 <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
 </div>

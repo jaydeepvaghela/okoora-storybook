@@ -1,0 +1,28 @@
+<div class="stepper-questionaire-container loader-wrapper">
+  <mat-dialog-content class="mat-typography dialog-body">
+    <mat-stepper #formStepper class="form-stepper" (animationDone)="stepChange(formStepper)">
+      <mat-step>
+        <ng-template matStepContent>
+          <app-questionnaire-step1 [formStepper]="formStepper" [currencyList]="currencyList" [defaultCurrency]="questionaryForm.get('defaultCurrency')"></app-questionnaire-step1>
+        </ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepContent>
+          <app-questionnaire-step2 [formStepper]="formStepper"
+          [defaultCurrency]="questionaryForm.get('defaultCurrency')"
+          [addMoreCurrency]="questionaryForm.get('addMoreCurrency')"
+          [currencyList] = "currencyList" [data]="data"></app-questionnaire-step2>
+        </ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepContent>
+          <app-questionnaire-step3 
+          [defaultCurrency]="questionaryForm.get('defaultCurrency')"
+          [addMoreCurrency]="questionaryForm.get('addMoreCurrency')"
+           [formStepper]="formStepper"></app-questionnaire-step3>
+        </ng-template>
+      </mat-step>
+    </mat-stepper>
+  </mat-dialog-content>
+  <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+</div>

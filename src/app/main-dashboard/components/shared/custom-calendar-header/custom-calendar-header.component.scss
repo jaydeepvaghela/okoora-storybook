@@ -1,51 +1,64 @@
 @import "../../../../../assets/scss/variable";
 
-::ng-deep .custom-calendar-header {
-    display: flex;
-    align-items: center;
-    padding: 35px 40px 10px 40px;
-    text-align: center;
-    @media screen and (max-width:1440px) {
-        padding: 28px 25px 10px 25px; 
+::ng-deep {
+    .monyr-custom-select {
+        min-width: max-content;
+        max-width: fit-content;
+
+        .mat-mdc-option {
+            font-size: 14px;
+            min-height: 40px;
+        }
     }
+    .custom-calendar-header {
+        display: flex;
+        align-items: center;
+        padding: 35px 40px 10px 40px;
+        text-align: center;
 
-    .mat-mdc-select-trigger {
-        align-items: unset;
-    }
+        @media screen and (max-width: 1440px) {
+            padding: 28px 25px 10px 25px;
+        }
 
-    .btn-prev-next {
-        margin-left: 5px;
-        background-color: var(--content-wrapper-bg-color);
-        padding: 3px 8px;
-        border-radius: 50px;
+        .mat-mdc-select-trigger {
+            align-items: unset;
+        }
 
-        img {
-            width: 14px;
-            @media screen and (max-width: 1440px) {
-                width: 12px; 
+        .btn-prev-next {
+            margin-left: 5px;
+            background-color: var(--content-wrapper-bg-color);
+            padding: 3px 8px;
+            border-radius: 50px;
+
+            img {
+                width: 14px;
+
+                @media screen and (max-width: 1440px) {
+                    width: 12px;
+                }
             }
         }
-    }
 
-    .mat-mdc-select-min-line {
-        font-weight: 600;
-        margin-left: -13px;
-    }
-
-    .custom-select-arrow .mat-mdc-select-arrow {
-        display: none;
-    }
-
-    .mat-mdc-select-value {
-        @media screen and (max-width: 1440px) {
-            font-size: 14px;  
+        .mat-mdc-select-min-line {
+            font-weight: 600;
+            margin-left: -13px;
         }
-    }
 
-    .custom-select-arrow {
-        background-image: url('../../../../../assets/images/dropdown-down-custom.svg');
-        background-size: 20px 20px;
-        background-repeat: no-repeat;
-        background-position: right center;
+        .custom-select-arrow .mat-mdc-select-arrow {
+            display: none;
+        }
+
+        .mat-mdc-select-value {
+            @media screen and (max-width: 1440px) {
+                font-size: 14px;
+            }
+        }
+
+        .custom-select-arrow {
+            background-image: url('../../../../../assets/images/dropdown-down-custom.svg');
+            background-size: 20px 20px;
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
     }
 }
