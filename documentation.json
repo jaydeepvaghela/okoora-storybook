@@ -2213,6 +2213,17 @@
             "file": "src/app/main-dashboard/services/dashboard.service.ts",
             "properties": [
                 {
+                    "name": "currentdashboardDrawerType",
+                    "defaultValue": "this.dashboardDrawer.asObservable()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
                     "name": "currentSideTabType",
                     "defaultValue": "this.dashboardSideTabesType.asObservable()",
                     "deprecated": false,
@@ -2290,6 +2301,34 @@
                     "line": 29,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "setDashboardDrawerType",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "type",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "setDashboardSideTabesType",
@@ -6503,6 +6542,561 @@
             "templateData": "<div class=\"agents-busy-wrapper\">\r\n    <picture>\r\n        <img src=\"/images/logo-icon-white.svg\" alt=\"phone\" />\r\n    </picture>\r\n\r\n    <p class=\"title traderoom-connect-title\">Oh no!</p>\r\n    <p class=\"title traderoom-connect-title\">All agents are currently busy.<br /> Please try again in a few minutes</p>\r\n</div>"
         },
         {
+            "name": "AlertExchangeRateFormComponent",
+            "id": "component-AlertExchangeRateFormComponent-1e62cd689de42020c3ee399f0be0c023694c96589059dda134b95e613896f571d8a67904fe02fbf0d4a91162174297d9288dc3d0bec4d2c4601e6b013f6a656d",
+            "file": "src/app/main-dashboard/components/alert-exchange-rate-form/alert-exchange-rate-form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-alert-exchange-rate-form",
+            "styleUrls": [
+                "./alert-exchange-rate-form.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./alert-exchange-rate-form.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "isMenu",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "selectedCalendarDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "activeCurrency",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 50
+                },
+                {
+                    "name": "activeCurrencyList",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "alertExchangeRateForm",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "alertForm",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 48
+                },
+                {
+                    "name": "buy_sell_code",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "currencyPair",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 45
+                },
+                {
+                    "name": "DateFormat",
+                    "defaultValue": "{\r\n  dateFormat: 'dd mmm yyyy',\r\n  dateInput: 'DD/MM/YYYY',\r\n  dateTimeInput: 'DD/MM/YYYY hh:mm',\r\n  exportCSVFormat: 'DD/MM/YYYY hh:mm:ss a',\r\n  orderFormate:\"YYYY-MM-DD hh:mm:ss\",\r\n  paymentDateFormat: \"YYYY-MM-DD\",\r\n  parse: {\r\n    dateInput: 'MM/DD/YYYY',\r\n  },\r\n  display: {\r\n    dateInput: 'DD/MM/YYYY',\r\n    monthYearLabel: 'MMM YYYY',\r\n    dateA11yLabel: 'LL',\r\n    monthYearA11yLabel: 'MMMM YYYY',\r\n    monthLabel: 'MMM',\r\n    yearLabel: 'YYYY'\r\n  },\r\n}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 53
+                },
+                {
+                    "name": "dialog",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatDialog",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 79,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "highestTargetRate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38
+                },
+                {
+                    "name": "lowestTargetRate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                },
+                {
+                    "name": "maxDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                },
+                {
+                    "name": "minDate",
+                    "defaultValue": "new Date()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46
+                },
+                {
+                    "name": "note",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 49
+                },
+                {
+                    "name": "showLoader",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 47
+                },
+                {
+                    "name": "spotRate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                },
+                {
+                    "name": "submitted",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 42
+                },
+                {
+                    "name": "successMessage",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 43
+                },
+                {
+                    "name": "targateRateRange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 44
+                },
+                {
+                    "name": "validForm",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "AddNote",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 247,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "AlertSpotAndRate",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 138,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "backToDashboard",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 265,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "closeDrawer",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 251,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getData",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 109,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getForm",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 127,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 103,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 87,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onSubmit",
+                    "args": [
+                        {
+                            "name": "arg",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 202,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "arg",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "TargetRateRange",
+                    "args": [
+                        {
+                            "name": "arg",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 171,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "arg",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatTooltipModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatSelectModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatDatepickerModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatDialogModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectorRef, Component, Inject , Input, Renderer2, RendererFactory2, ViewChild,} from '@angular/core';\r\nimport { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';\r\nimport { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';\r\nimport moment from 'moment';\r\n\r\n\r\n\r\n// import { GeneratMsgForBusinessComponent } from 'src/app/wallets/components/generat-msg-for-business/generat-msg-for-business.component';\r\n// import { WalletsService } from 'src/app/wallets/services/wallets.service';\r\nimport { CalendarComponent } from '../calendar/calendar.component';\r\nimport { DashboardService } from '../../services/dashboard.service';\r\n// import { AlertListComponent } from 'src/app/alerts/components/alert-list/alert-list.component';\r\nimport { Router } from '@angular/router';\r\n\r\nimport { Direction } from '../../../shared/constants/alertWallet.enum';\r\nimport { WalletsService } from '../../services/wallets.service';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatTooltipModule } from '@angular/material/tooltip';\r\nimport { MatSelectModule } from '@angular/material/select';\r\nimport { MatDatepickerModule } from '@angular/material/datepicker';\r\nimport { DialogModule } from '@angular/cdk/dialog';\r\n\r\n@Component({\r\n  selector: 'app-alert-exchange-rate-form',\r\n  templateUrl: './alert-exchange-rate-form.component.html',\r\n  styleUrls: ['./alert-exchange-rate-form.component.scss'],\r\n  imports: [ReactiveFormsModule, CommonModule, MatTooltipModule, MatSelectModule, MatDatepickerModule,MatDialogModule]\r\n})\r\nexport class AlertExchangeRateFormComponent {\r\n  buy_sell_code!: any | null;\r\n  // @ViewChild(CalendarComponent)\r\n  // child!: CalendarComponent;\r\n  @Input() selectedCalendarDate!: string;\r\n  @Input() isMenu!: boolean;\r\n  alertExchangeRateForm!: FormGroup;\r\n  maxDate: any\r\n  activeCurrencyList: any;\r\n  highestTargetRate: any\r\n  lowestTargetRate: any;\r\n  validForm: boolean = false;\r\n  spotRate: any;\r\n  submitted = false;\r\n  successMessage = false;\r\n  targateRateRange!: string;\r\n  currencyPair:any\r\n  minDate = new Date();\r\n  showLoader = false;\r\n  alertForm = true\r\n  note = false;\r\n  activeCurrency:any;\r\n\r\n\r\n  DateFormat = {\r\n  dateFormat: 'dd mmm yyyy',\r\n  dateInput: 'DD/MM/YYYY',\r\n  dateTimeInput: 'DD/MM/YYYY hh:mm',\r\n  exportCSVFormat: 'DD/MM/YYYY hh:mm:ss a',\r\n  orderFormate:\"YYYY-MM-DD hh:mm:ss\",\r\n  paymentDateFormat: \"YYYY-MM-DD\",\r\n  parse: {\r\n    dateInput: 'MM/DD/YYYY',\r\n  },\r\n  display: {\r\n    dateInput: 'DD/MM/YYYY',\r\n    monthYearLabel: 'MMM YYYY',\r\n    dateA11yLabel: 'LL',\r\n    monthYearA11yLabel: 'MMMM YYYY',\r\n    monthLabel: 'MMM',\r\n    yearLabel: 'YYYY'\r\n  },\r\n};\r\n  \r\n\r\n  constructor(\r\n    // @Inject(MAT_DIALOG_DATA) public data: any,\r\n    // public dialogRef: MatDialogRef<AlertExchangeRateFormComponent>,\r\n    private fb: FormBuilder,\r\n    // private _commonService: CommonService,\r\n    public dialog: MatDialog,\r\n    private _walletService: WalletsService,\r\n    private cd: ChangeDetectorRef,\r\n    private dashboardService: DashboardService,\r\n    private router: Router,\r\n\r\n  ) {}\r\n\r\n  ngOnInit() {\r\n    this._walletService.AlertExposure.subscribe((res:any)=>{\r\n      if(res?.form){\r\n        this.alertForm = true;\r\n        // this.alertExchangeRateForm.reset();\r\n      }\r\n      this.cd?.detectChanges();\r\n    })\r\n    this.getData();\r\n    if (this.selectedCalendarDate) {\r\n      this.alertExchangeRateForm?.get('dueDate')?.setValue(this.selectedCalendarDate);\r\n    }\r\n    this.buy_sell_code = localStorage.getItem('activeWallet');\r\n    \r\n  }\r\n\r\n  ngOnChanges(changes: any) {\r\n    if (this.selectedCalendarDate) {\r\n      this.alertExchangeRateForm?.get('dueDate')?.setValue(this.selectedCalendarDate);\r\n    }\r\n  }\r\n\r\n  getData(){\r\n    this._walletService.activeCurrentWallet?.subscribe((wallet) => {\r\n      this.activeCurrency = wallet;\r\n      this.getForm();\r\n    })\r\n    \r\n\r\n    // this._commonService.getAllActiveCurrency().subscribe(res => {\r\n    //   this.activeCurrencyList = res;\r\n    // })\r\n\r\n    this.maxDate = moment().add(3, 'months');\r\n  }\r\n\r\n  get alertExchangeRateFormControl() {\r\n    return this.alertExchangeRateForm.controls;\r\n  }\r\n\r\n  getForm(){\r\n    this.alertExchangeRateForm = this.fb.group({\r\n      buy: new FormControl(this.activeCurrency?.wallet_Currency?.code, [Validators.required]),\r\n      sell: new FormControl(this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency ? this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency :'ILS', [Validators.required]),\r\n      targetRate: new FormControl({ value: '', disabled: false }, [Validators.required, Validators.pattern('^[0-9]{0,4}(?:.[0-9]{0,4}$)')]),\r\n      dueDate: new FormControl('', [Validators.required]),\r\n      note: new FormControl(''),\r\n    });\r\n    this.AlertSpotAndRate()\r\n  }\r\n\r\n  AlertSpotAndRate() {\r\n    if (this.alertExchangeRateForm.value.buy && this.alertExchangeRateForm.value.sell) {\r\n      // this._walletService.GetPair(this.alertExchangeRateForm.value.buy.toLowerCase(), this.alertExchangeRateForm.value.sell.toLowerCase()).subscribe((res: any) => {\r\n      //   this.currencyPair = res.pair;\r\n      //   if (this.currencyPair) {\r\n      //     var direction;\r\n      //     const strongCurrency: string = this.currencyPair?.slice(0, 3);\r\n      //     const weakCurrency: string = this.currencyPair?.slice(3);\r\n      //     if (strongCurrency == this.alertExchangeRateForm.value.sell) {\r\n      //       direction = Direction.Down;\r\n      //     } else if (weakCurrency == this.alertExchangeRateForm.value.sell) {\r\n      //       direction = Direction.Up;\r\n      //     }\r\n      //     var pair = {\r\n      //       pair: this.currencyPair,\r\n      //       direction: direction\r\n      //     }\r\n      //     this._walletService.AlertSpotAndRate(pair).subscribe((res) => {\r\n      //       if (res) {\r\n      //         this.spotRate = res;\r\n      //         this.highestTargetRate = this.spotRate * 1.05;\r\n      //         this.lowestTargetRate = this.spotRate * 0.95;\r\n      //         this.targateRateRange = this.lowestTargetRate.toFixed(4) + '-' + this.highestTargetRate.toFixed(4);\r\n      //         if (this.alertExchangeRateForm.value.buy && this.alertExchangeRateForm.value.sell) {\r\n      //           this.alertExchangeRateForm?.get('targetRate')?.enable()\r\n      //         }\r\n      //       }\r\n      //     })\r\n      //   }\r\n      // })\r\n    }\r\n  }\r\n\r\n  TargetRateRange(arg: any) {\r\n    this.dialog.closeAll();\r\n     this.spotRate = this.spotRate.toString()\r\n    if(this.spotRate.includes(arg.target.value)){\r\n      // this.dialog.open(GeneratMsgForBusinessComponent, {\r\n      //   disableClose: false,\r\n      //   panelClass: ['mat-dialog-sm', 'invite-company-modal'],\r\n      //   data: {\r\n      //     title: 'Target rate',\r\n      //     message: `Current rate and Target rate is not same please change the target rate`,\r\n      //     buttonText: 'ok',\r\n      //   }\r\n      // });\r\n      this.validForm = true\r\n    }\r\n    else if (arg.target.value > this.highestTargetRate || arg.target.value < this.lowestTargetRate) {\r\n      // this.dialog.open(GeneratMsgForBusinessComponent, {\r\n      //   disableClose: false,\r\n      //   panelClass: ['mat-dialog-sm', 'invite-company-modal'],\r\n      //   data: {\r\n      //     title: 'Target rate',\r\n      //     message: `You can enter a value at range of 5% up / down from your platform rate   ${this.lowestTargetRate.toFixed(4)} - ${this.highestTargetRate.toFixed(4)}`,\r\n      //     buttonText: 'ok',\r\n      //   }\r\n      // });\r\n      this.validForm = true\r\n    } else {\r\n      this.validForm = false\r\n    }\r\n  }\r\n\r\n  onSubmit(arg: any) {\r\n    this.submitted = true;\r\n    this.showLoader = true\r\n    var direction;\r\n    if (this.alertExchangeRateForm.value.targetRate && this.spotRate) {\r\n      if (this.alertExchangeRateForm.value.targetRate > this.spotRate) {\r\n        direction = Direction.Up\r\n\r\n      } else {\r\n        direction = Direction.Down\r\n      }\r\n    }\r\n    if (arg.valid) {\r\n      let data = {\r\n        'buy': arg?.value?.buy,\r\n        'sell': arg?.value?.sell,\r\n        'targetRate': arg?.value?.targetRate,\r\n        'expiry': arg?.value?.dueDate ? moment(arg?.value?.dueDate).format(this.DateFormat.orderFormate) : '',\r\n        'action': 1,\r\n        'pair': this.currencyPair,\r\n        'amount': '',\r\n        \"boardID\": '',\r\n        \"exposureID\": '',\r\n        \"remarks\": \"\",\r\n        \"direction\": direction,\r\n        \"creationSpot\": this.spotRate\r\n      }\r\n      // this._walletService.CreateExposure(data).subscribe((res: any) => {\r\n      //   if (res) {\r\n      //     this.alertForm = !this.alertForm;\r\n      //     this._walletService.setAlertData({show: true});\r\n      //     let needStamp = res[0]?.code == 831;\r\n      //     if (needStamp) {\r\n      //       // this.stampUpload();\r\n      //     }\r\n      //     this.successMessage = true;\r\n      //     this.showLoader = false;\r\n      //     // this.alertExchangeRateForm.reset();\r\n      //   }\r\n      // },err => {\r\n      //   this.showLoader = false;\r\n      // })\r\n    }\r\n  }\r\n\r\n  AddNote(){\r\n    this.note = true\r\n  }\r\n\r\n  closeDrawer(){\r\n    document.querySelector('body')!.style.overflowY = 'auto';\r\n    // this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + `${AppPages.Alerts}` : `${AppPages.Alerts}`]);\r\n      // this.dialog.open(AlertListComponent, {\r\n      //   width: '100vw',\r\n      //   maxWidth: '100vw',\r\n      //   minHeight: '100vh',\r\n      //   maxHeight: '100vh'\r\n      // }).afterClosed()\r\n      //   .subscribe((shouldReload: any) => {\r\n      //   });\r\n  \r\n  }\r\n\r\n  backToDashboard(){\r\n    this.dashboardService.setDashboardDrawerType(true)\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../../assets/scss/variable\";\r\n@import \"../../../../assets/scss/mixins\";\r\n\r\n.create-an-alert-main {\r\n  .create-an-alert-upper {\r\n    padding: 0 44px 48px;\r\n    background: linear-gradient(180deg, #fff 52.8%, var(--content-wrapper-bg-color) 100%);\r\n\r\n    @media only screen and (max-width: 1440px) {\r\n      padding: 0 20px 20px;\r\n    }\r\n\r\n    .create-an-alert-title {\r\n      margin-bottom: 29px;\r\n\r\n      h5 {\r\n        color: $blue-black;\r\n        font-family: $epilogue;\r\n        font-size: $font-27;\r\n        font-style: normal;\r\n        font-weight: 800;\r\n        line-height: normal;\r\n        text-transform: uppercase;\r\n        margin-bottom: 29px;\r\n\r\n        @media (max-width: 479px) {\r\n          font-size: $font-22;\r\n          margin-bottom: 15px;\r\n        }\r\n      }\r\n    }\r\n\r\n    .graph-img-bottom {\r\n      .create-an-alert-graph {\r\n        img {\r\n          width: 100%;\r\n        }\r\n      }\r\n    }\r\n\r\n    .create-an-alert-graph-main {\r\n      .graph-upper-title {\r\n        @include flex(space-between, center, row);\r\n\r\n        .graph-title-flex {\r\n          @include flex(flex-start, center, row);\r\n          column-gap: 6px;\r\n\r\n          .count-fleg {\r\n            width: 27px;\r\n            height: 27px;\r\n\r\n            img {\r\n              width: 100%;\r\n            }\r\n          }\r\n\r\n          .title-fw {\r\n            span {\r\n              color: $black;\r\n              font-family: $manrope;\r\n              font-size: $font-16;\r\n              font-style: normal;\r\n              line-height: normal;\r\n\r\n              &.fw-normal {\r\n                font-weight: 600;\r\n              }\r\n\r\n              &.fw-thik {\r\n                font-weight: 700;\r\n              }\r\n\r\n              &.fw-normal {\r\n                font-weight: 400;\r\n              }\r\n            }\r\n          }\r\n        }\r\n\r\n        .graph-title-dropdown {\r\n          display: flex;\r\n          width: 83px;\r\n          height: 32px;\r\n          padding: 0px 14px;\r\n          justify-content: center;\r\n          align-items: center;\r\n          gap: 40px;\r\n          border-radius: 130px;\r\n          background: var(--brand-primary-color);\r\n\r\n          .dropdown-view {\r\n            color: $white;\r\n            font-family: $inter;\r\n            font-size: $font-12;\r\n            font-style: normal;\r\n            font-weight: 700;\r\n            line-height: normal;\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  .create-an-alert-form {\r\n    padding: 36px 57px;\r\n\r\n    @media only screen and (max-width: 1440px) {\r\n      padding: 30px;\r\n    }\r\n\r\n    @media (max-width: 479px) {\r\n      padding: 20px;\r\n    }\r\n\r\n    form {\r\n      .wbl-upper-box {\r\n        .wbl-box-inner {\r\n          .form-group {\r\n            margin-bottom: 28px;\r\n            position: relative;\r\n\r\n            @media only screen and (max-width: 1440px) {\r\n              margin-bottom: 15px;\r\n            }\r\n\r\n            label {\r\n              color: $app-store-text-color;\r\n              font-family: $inter;\r\n              font-size: $font-14;\r\n              font-style: normal;\r\n              font-weight: 500;\r\n              line-height: normal;\r\n\r\n              .blue-text-thin {\r\n                font-weight: 700;\r\n              }\r\n            }\r\n\r\n            input.form-control,\r\n            mat-select {\r\n              height: 50px;\r\n              padding: 0px 10px 0px 14px;\r\n              vertical-align: middle;\r\n              display: flex;\r\n              align-items: center;\r\n              border-radius: 4px;\r\n              border: 1px solid #c3c6d4;\r\n              background: $white;\r\n\r\n              @media only screen and (max-width: 14440px) {\r\n                height: 40px;\r\n                font-size: 14px;\r\n              }\r\n            }\r\n\r\n            .date-picker {\r\n              mat-datepicker-toggle {\r\n                position: absolute;\r\n                top: 65%;\r\n                left: auto;\r\n                right: 3px;\r\n                bottom: auto;\r\n                transform: translateY(-50%);\r\n              }\r\n            }\r\n\r\n            &.add-not-text-area {\r\n              margin-bottom: 69px;\r\n\r\n              @media only screen and (max-width: 1440px) {\r\n                margin-bottom: 30px;\r\n              }\r\n\r\n              .note {\r\n                margin-top: 10px;\r\n\r\n                .form-control {\r\n                  min-height: 253px;\r\n                  font-size: 14px;\r\n\r\n                  @media only screen and (max-width: 1440px) {\r\n                    min-height: 180px;\r\n                  }\r\n                }\r\n              }\r\n\r\n              .note-save-btn {\r\n                margin-top: 8px;\r\n                text-align: right;\r\n\r\n                .note-save {\r\n                  background: transparent;\r\n                  padding: 0;\r\n                  color: var(--brand-primary-color);\r\n                  font-family: $manrope;\r\n                  font-size: $font-12;\r\n                  font-style: normal;\r\n                  font-weight: 500;\r\n                  line-height: normal;\r\n                }\r\n              }\r\n            }\r\n\r\n            &.thired-child-new-width-btn {\r\n              @include flex(center, center, column);\r\n              row-gap: 22px;\r\n\r\n              @media (max-width: 479px) {\r\n                row-gap: 15px;\r\n              }\r\n\r\n              button.add-note-btn {\r\n                @include flex(center, center, row);\r\n                width: 218px;\r\n                height: 50px;\r\n                padding: 15px;\r\n                border-radius: 40px;\r\n                border: 1px solid $black;\r\n                background: $disable-button-bg;\r\n                column-gap: 5px;\r\n                color: $black;\r\n                font-family: $manrope;\r\n                font-size: $font-12;\r\n                font-style: normal;\r\n                font-weight: 500;\r\n                line-height: normal;\r\n\r\n                @media only screen and (max-width: 1440px) {\r\n                  width: 110px;\r\n                  height: 35px;\r\n                  padding: 10px;\r\n                }\r\n              }\r\n\r\n              button.wbr-btn-new {\r\n                @include flex(center, center, row);\r\n                width: 218px;\r\n                padding: 14px 32px;\r\n                border-radius: 40px;\r\n                background: linear-gradient(111deg, #444 2.91%, #000 96.88%);\r\n                color: $white;\r\n                font-family: $manrope;\r\n                font-size: $font-16;\r\n                font-style: normal;\r\n                font-weight: 600;\r\n                line-height: normal;\r\n                border: none;\r\n                &:disabled {\r\n                  background: $disable-button-bg;\r\n                  color: $light-gray;\r\n                }\r\n\r\n                @media only screen and (max-width: 1440px) {\r\n                  width: 110px;\r\n                  height: 35px;\r\n                  font-size: 12px;\r\n                  padding: 10px;\r\n                }\r\n              }\r\n            }\r\n          }\r\n\r\n          .form-group-d-flex {\r\n            @include flex(flex-start, center, row);\r\n            column-gap: 40px;\r\n\r\n            @media (max-width: 479px) {\r\n              column-gap: 15px;\r\n            }\r\n\r\n            .form-group {\r\n              &.create-form-iw-half {\r\n                width: 100%;\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.successfull-drawer {\r\n  .calendar-exchange-below {\r\n    padding: 85px 45px 0;\r\n    background: linear-gradient(\r\n      180deg,\r\n      rgba(41, 71, 242, 0.07) 0%,\r\n      rgba(245, 247, 250, 0) 100%\r\n    );\r\n\r\n    @media only screen and (max-width: 1440px) {\r\n      padding: 30px 15px 0;\r\n    }\r\n\r\n    .aler-success {\r\n      margin-bottom: 39px;\r\n\r\n      @media only screen and (max-width: 1440px) {\r\n        margin-bottom: 15px;\r\n      }\r\n\r\n      h5 {\r\n        color: $blue-black;\r\n        font-family: $epilogue;\r\n        font-size: $font-22;\r\n        font-style: normal;\r\n        font-weight: 800;\r\n        line-height: normal;\r\n        text-transform: uppercase;\r\n        text-align: center;\r\n        padding-bottom: 21px;\r\n        border-bottom: 1px dashed $light-gray;\r\n\r\n        @media only screen and (max-width: 1440px) {\r\n          font-size: 16px;\r\n          padding-bottom: 15px;\r\n        }\r\n      }\r\n    }\r\n\r\n    .table-responsive {\r\n      table.exchange-table {\r\n        margin-bottom: 0px;\r\n\r\n        tbody {\r\n          tr {\r\n            td {\r\n              border-bottom: 1px dashed $light-gray;\r\n              padding: 18px 0;\r\n              vertical-align: middle;\r\n              background: transparent;\r\n\r\n              @media only screen and (max-width: 1440px) {\r\n                padding: 8px;\r\n              }\r\n\r\n              h6 {\r\n                font-family: $inter;\r\n                font-size: $font-14;\r\n                font-style: normal;\r\n                font-weight: 700;\r\n                line-height: normal;\r\n                margin-bottom: 0;\r\n\r\n                @media only screen and (max-width: 1440px) {\r\n                  font-size: 12px;\r\n                }\r\n              }\r\n\r\n              &.notification-blox-pb-zero {\r\n                .notification-blox-flex {\r\n                  @include flex(flex-end, flex-start, row);\r\n                  column-gap: 10px;\r\n\r\n                  .notification-blox {\r\n                    display: flex;\r\n                    justify-content: center;\r\n                    align-items: center;\r\n                    width: 102px;\r\n                    padding: 8px 10px 8px 14px;\r\n                    gap: 9px;\r\n                    border-radius: 130px;\r\n                    border: 1px solid $notification-blox-border;\r\n                    background: $notification-blox-background;\r\n\r\n                    @media only screen and (max-width: 1440px) {\r\n                      width: 80px;\r\n                    }\r\n\r\n                    img {\r\n                      max-width: 18px;\r\n                      width: 100%;\r\n\r\n                      @media only screen and (max-width: 1440px) {\r\n                        max-width: 14px;\r\n                      }\r\n                    }\r\n\r\n                    span.notification-text-new {\r\n                      font-family: $inter;\r\n                      font-size: $font-16;\r\n                      font-style: normal;\r\n                      font-weight: 700;\r\n                      line-height: normal;\r\n                      color: $cal-ev-red;\r\n\r\n                      @media only screen and (max-width: 1440px) {\r\n                        font-size: 14px;\r\n                      }\r\n                    }\r\n                  }\r\n\r\n                  .edit-note-after {\r\n                    img {\r\n                      width: 100%;\r\n\r\n                      @media only screen and (max-width: 1440px) {\r\n                        max-width: 14px;\r\n                      }\r\n                    }\r\n                  }\r\n                }\r\n              }\r\n\r\n              &.boder-bn {\r\n                padding-bottom: 30px;\r\n\r\n                @media only screen and (max-width: 1440px) {\r\n                  padding-bottom: 18px;\r\n                }\r\n              }\r\n\r\n              &.tom-text-changes {\r\n                color: var(--cal-ev-blue);\r\n                font-family: $inter;\r\n                font-size: $font-14;\r\n                font-style: normal;\r\n                font-weight: 700;\r\n                line-height: normal;\r\n                text-align: right;\r\n                text-indent: 49px;\r\n\r\n                @media only screen and (max-width: 1440px) {\r\n                  font-size: 12px;\r\n                }\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n\r\n    .view-alerts-btn {\r\n      text-align: center;\r\n      margin-bottom: 24px;\r\n      margin-top: 38px;\r\n\r\n      @media only screen and (max-width: 1440px) {\r\n        margin-bottom: 15px;\r\n        margin-top: 20px;\r\n      }\r\n\r\n      a {\r\n        color: var(--cal-ev-blue);\r\n        text-align: right;\r\n        font-family: $inter;\r\n        font-size: $font-14;\r\n        font-style: normal;\r\n        font-weight: 400;\r\n        line-height: normal;\r\n\r\n        @media only screen and (max-width: 1440px) {\r\n          font-size: 12px;\r\n        }\r\n      }\r\n    }\r\n\r\n    .currency-btn {\r\n      width: 100%;\r\n      text-align: center;\r\n\r\n      .dashboard-btn {\r\n        border: none;\r\n        color: #ffffff;\r\n        padding: 20px;\r\n        width: 50%;\r\n        font-size: 18px;\r\n        border-radius: 40px;\r\n        background-color: var(--brand-primary-color);\r\n\r\n        @media only screen and (max-width: 1440px) {\r\n          padding: 10px;\r\n          width: 60%;\r\n          font-size: 14px;\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  .play-store-app {\r\n    @include flex(flex-start, center, row);\r\n    padding: 0 45px;\r\n    margin: 330px 45px 50px;\r\n    background: $white;\r\n\r\n    @media only screen and (max-width: 1440px) {\r\n      margin: 150px 15px 50px;\r\n      padding: 0 15px;\r\n    }\r\n\r\n    .play-store-text {\r\n      h4 {\r\n        color: $app-store-text-color;\r\n        font-family: $inter;\r\n        font-size: $font-24;\r\n        font-style: normal;\r\n        font-weight: 800;\r\n        line-height: 27px;\r\n        text-transform: uppercase;\r\n        margin-bottom: 21px;\r\n        padding-top: 5px;\r\n\r\n        @media only screen and (max-width: 1440px) {\r\n          font-size: 16px;\r\n          line-height: 26px;\r\n          margin-bottom: 14px;\r\n        }\r\n      }\r\n\r\n      .play-sote-app-btn {\r\n        @media only screen and (max-width: 1440px) {\r\n          width: 100px;\r\n        }\r\n\r\n        img {\r\n          width: 100%;\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.alert-success-btn{\r\n  width: 100%;\r\n  text-align: center;\r\n  button {\r\n    border: none;\r\n    color: $white;\r\n    background-color: var(--brand-primary-color);\r\n    padding: 14px;\r\n    width: 292px;\r\n    border-radius: 100px;\r\n\r\n    @media screen and (max-width: 1440px) {\r\n      width: 250px;\r\n      padding: 8px 14px;\r\n      font-size: 13px;\r\n    }\r\n  }\r\n}\r\n\r\n.disable {\r\n  pointer-events: none !important;\r\n}\r\n",
+                    "styleUrl": "./alert-exchange-rate-form.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "_walletService",
+                        "type": "WalletsService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "cd",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "dashboardService",
+                        "type": "DashboardService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 71,
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "_walletService",
+                        "type": "WalletsService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "cd",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dashboardService",
+                        "type": "DashboardService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "accessors": {
+                "alertExchangeRateFormControl": {
+                    "name": "alertExchangeRateFormControl",
+                    "getSignature": {
+                        "name": "alertExchangeRateFormControl",
+                        "type": "",
+                        "returnType": "",
+                        "line": 123
+                    }
+                }
+            },
+            "templateData": "<div class=\"create-an-alert-main loader-wrapper\" *ngIf=\"alertForm\">\r\n  <!-- <div class=\"create-an-alert-upper\">\r\n    <div class=\"create-an-alert-title\">\r\n      <h5>Create an Rate Alert</h5>\r\n    </div>\r\n    <div class=\"create-an-alert-graph-main\">\r\n      <div class=\"graph-img-bottom\">\r\n        <div class=\"create-an-alert-graph\">\r\n          <div id=\"marketChart1\"></div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div> -->\r\n  <div class=\"create-an-alert-form\">\r\n    <form id=\"alert-exchange-rate-form\" [formGroup]=\"alertExchangeRateForm\" *ngIf=\"alertExchangeRateForm\">\r\n      <div class=\"wbl-upper-box\">\r\n        <div class=\"wbl-box-inner\">\r\n          <div class=\"form-group create-form-iw-full\">\r\n            <label for=\"classification\">Alert me if <span class=\"blue-text-thin\">{{activeCurrency?.wallet_Currency?.code}}</span>  rate reaches</label>\r\n            <span class=\"information-icon\">\r\n              <img src=\"images/info-icon.svg\" id=\"info-icon\" [matTooltip]=\"'2.1267-2.4012'\"  matTooltipClass=\"view-alert-exrate-tooltip\">\r\n            </span>\r\n            <input type=\"textbox\" appOnlyNumbers class=\"form-control\" formControlName=\"targetRate\"\r\n              appFourDigitDecimaNumber placeholder=\"Target Rate\"\r\n              (change)=\"TargetRateRange($event)\" id=\"targetRateInputField\"/>\r\n            <span class=\"text-danger\" id=\"requiredErrMsg\"\r\n              *ngIf=\"(alertExchangeRateFormControl['targetRate'].touched || submitted) && alertExchangeRateForm.get('targetRate')?.hasError('required')\">\r\n              Target Rate is required\r\n            </span>\r\n            <span class=\"text-danger\" id=\"rangeErrMsg\"\r\n              *ngIf=\"(alertExchangeRateFormControl['targetRate'].touched || submitted) && alertExchangeRateForm.get('targetRate')?.hasError('pattern')\">\r\n              Target Rate is upto 4 decimal places.\r\n            </span>\r\n          </div>\r\n          <div class=\"form-group-d-flex\">\r\n            <div class=\"form-group create-form-iw-half\">\r\n              <label for=\"classification\">I want to Buy</label>\r\n              <mat-select class=\"form-control disable\" id=\"buy\" placeholder=\"Please select\" formControlName=\"buy\"\r\n                name=\"beneficiaryAccountType \" >\r\n                <mat-option *ngFor=\"let currency of activeCurrencyList\"\r\n                  [disabled]=\"alertExchangeRateForm.value.sell == currency.currency.code\" id=\"{{currency.id}}\"\r\n                  value=\"AUD\">AUD</mat-option>\r\n              </mat-select>\r\n              <span class=\"text-danger\" id=\"reqAccTypeErrMsg\"\r\n                *ngIf=\"(alertExchangeRateFormControl['buy'].touched || submitted) && alertExchangeRateFormControl['buy'].errors\">\r\n                Buy is required\r\n              </span>\r\n            </div>\r\n            <div class=\"form-group create-form-iw-half\">\r\n              <label for=\"classification\">I want to Sell</label>\r\n              <mat-select class=\"form-control disable\" id=\"sell\" placeholder=\"Please select\" formControlName=\"sell\"\r\n                name=\"beneficiaryAccountType\">\r\n                <mat-option *ngFor=\"let currency of activeCurrencyList\"\r\n                  [disabled]=\"alertExchangeRateForm.value.buy == currency.currency.code\"\r\n                  value=\"{{currency.currency.code}}\" id=\"{{buy_sell_code.wallet_Hedging.exposureBaseCurrency}}\">{{buy_sell_code.wallet_Hedging.exposureBaseCurrency}}</mat-option>\r\n              </mat-select>\r\n              <span class=\"text-danger\" id=\"SellErrMsg\"\r\n                *ngIf=\"(alertExchangeRateFormControl['sell'].touched || submitted) && alertExchangeRateFormControl['sell'].errors\">\r\n                Sell is required\r\n              </span>\r\n            </div>\r\n          </div>\r\n          <div class=\"form-group create-form-iw-full\">\r\n            <label for=\"classification\">Alert Expiry Date</label>\r\n            <div class=\"date-picker\" tabindex=\"0\">\r\n              <input type=\"text\" class=\"form-control\" matInput [matDatepicker]=\"picker\"\r\n                [min]=\"minDate\" [max]=\"maxDate\" formControlName=\"dueDate\" id=\"dueDate\">\r\n              <mat-datepicker-toggle matIconSuffix [for]=\"picker\" ></mat-datepicker-toggle>\r\n              <mat-datepicker #picker></mat-datepicker>\r\n            </div>\r\n            <span class=\"text-danger\"  id=\"expireDateErrMsg\"\r\n              *ngIf=\"(alertExchangeRateFormControl['dueDate'].touched || submitted) && alertExchangeRateFormControl['dueDate'].errors\">\r\n              Due date is required\r\n            </span>\r\n            <span class=\"text-danger\" id=\"validDateErrMsg\" *ngIf=\"alertExchangeRateFormControl['dueDate'].status == 'INVALID' && alertExchangeRateFormControl['dueDate'].value != ''\" >\r\n              Please enter a valid date\r\n            </span>\r\n          </div>\r\n\r\n          <!-- <div class=\"form-group add-not-text-area\" *ngIf=\"note\">\r\n            <label for=\"note\"><img src=\"images/comment-add-svgrepo.svg\"> Add note</label>\r\n            <div class=\"note\" tabindex=\"0\">\r\n              <textarea class=\"form-control\" matInput placeholder=\"\" formControlName=\"note\"></textarea>\r\n            </div>\r\n            <div class=\"note-save-btn\">\r\n              <button class=\"note-save\">Save</button>\r\n            </div>\r\n          </div> -->\r\n\r\n          <div class=\"form-group thired-child-new-width-btn\">\r\n            <!-- <button class=\"add-note-btn\" (click)=\"AddNote()\"><img src=\"images/comment-add-svgrepo.svg\"> Add Note</button> -->\r\n            <button class=\"btn btn-secondary wbr-btn-new\" type=\"submit\" id=\"alertBtn\" (click)=\"onSubmit(alertExchangeRateForm)\"\r\n              [disabled]=\"alertExchangeRateForm.invalid || validForm\">Create an alert</button>\r\n            <!-- <a [mat-dialog-close]=\"false\" routerLink=\"/wallets/alertExchangeRate\">View all alerts</a> -->\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </form>\r\n  </div>\r\n  <!-- <app-page-loader id=\"loader\" classes=\"bg-white section-loader\" *ngIf=\"showLoader\"></app-page-loader> -->\r\n</div>\r\n\r\n<div *ngIf=\"!alertForm\" class=\"successfull-drawer\">\r\n  <div class=\"calendar-exchange-below\">\r\n    <div class=\"aler-success\">\r\n      <h5>Due date is required</h5>\r\n    </div>\r\n    <div class=\"table-responsive\">\r\n      <table class=\"exchange-table table\" id=\"exchangeTable\">\r\n        <tbody id=\"exchangetablebody\">\r\n          <tr id=\"currencyRow\">\r\n            <td id=\"firstCol\">\r\n              <h6>Alert me if <span class=\"text-color-ch\">{{activeCurrency?.wallet_Currency?.code}}</span> rate reaches</h6>\r\n            </td>\r\n            <td class=\"notification-blox-pb-zero\" id=\"secondCol\">\r\n              <div class=\"notification-blox-flex\">\r\n                <div class=\"notification-blox\">\r\n                  <!-- <img src=\"/images/exchange-rates-notification.svg\" id=\"notificationIcon\"/> -->\r\n                  <span class=\"notification-text-new\">{{alertExchangeRateForm?.value?.targetRate}}</span>\r\n                </div>\r\n                <!-- <div class=\"edit-note-after\">\r\n                  <img src=\"/images/exchange-rates-edit.svg\">\r\n                </div> -->\r\n              </div>\r\n            </td>\r\n          </tr>\r\n          <tr id=\"dateTimeRow\">\r\n            <td id=\"dateTimeColumn\" class=\"boder-bn\">\r\n              <h6>Alert expiry date</h6>\r\n            </td>\r\n            <td id=\"dueDate\" class=\"tom-text-changes boder-bn\">{{alertExchangeRateForm?.value?.dueDate  | date:'dd/MM/yyyy'}}</td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n    <div class=\"view-alerts-btn\">\r\n      <a id=\"viewAllLink\" [mat-dialog-close]=\"false\"  (click)=\"closeDrawer()\">View all alerts</a>\r\n    </div>\r\n    <div class=\"alert-success-btn\">\r\n      <button id=\"alert-success-btn\" class=\"alert-success-btn\" (click)=\"backToDashboard()\">Back to dashboard</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"play-store-app\">\r\n    <div class=\"play-store-text\">\r\n      <h4>All the alerts in our app</h4>\r\n      <button class=\"play-sote-app-btn\" id=\"openPlayStoreBtn\">\r\n        <img src=\"images/play-store-btn.svg\" id=\"playStoreImg\"/>\r\n      </button>\r\n    </div>\r\n    <div class=\"play-store-img\">\r\n      <!-- <img src=\"images/app-store-img.png\" id=\"appStoreImg\"/> -->\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
             "name": "AnnualExposureDetailsComponent",
             "id": "component-AnnualExposureDetailsComponent-a0d96da3947e355b3e4d77421d2324cf67b78e80298454c2358315897e7243192065dd21686ad19133dda2da8d638a93b56de09a2629fc27d2e358c8863027d1",
             "file": "src/app/risk-dashboard/components/dashboard/components/annual-exposure-details/annual-exposure-details.component.ts",
@@ -7250,7 +7844,7 @@
                     "name": "selectedCalendarDate",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string | null",
+                    "type": "any",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -30079,6 +30673,16 @@
                 "defaultValue": "{\r\n  dateFormat: 'dd mmm yyyy',\r\n  dateInput: 'DD/MM/YYYY',\r\n  dateTimeInput: 'DD/MM/YYYY hh:mm',\r\n  exportCSVFormat: 'DD/MM/YYYY hh:mm:ss a',\r\n  orderFormate:\"YYYY-MM-DD hh:mm:ss\",\r\n  paymentDateFormat: \"YYYY-MM-DD\",\r\n  parse: {\r\n    dateInput: 'MM/DD/YYYY',\r\n  },\r\n  display: {\r\n    dateInput: 'DD/MM/YYYY',\r\n    monthYearLabel: 'MMM YYYY',\r\n    dateA11yLabel: 'LL',\r\n    monthYearA11yLabel: 'MMMM YYYY',\r\n    monthLabel: 'MMM',\r\n    yearLabel: 'YYYY'\r\n  },\r\n}"
             },
             {
+                "name": "DateFormat",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/constants/DateFormat.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  dateFormat: 'dd mmm yyyy',\r\n  dateInput: 'DD/MM/YYYY',\r\n  dateTimeInput: 'DD/MM/YYYY hh:mm',\r\n  exportCSVFormat: 'DD/MM/YYYY hh:mm:ss a',\r\n  orderFormate:\"YYYY-MM-DD hh:mm:ss\",\r\n  paymentDateFormat: \"YYYY-MM-DD\",\r\n  parse: {\r\n    dateInput: 'MM/DD/YYYY',\r\n  },\r\n  display: {\r\n    dateInput: 'DD/MM/YYYY',\r\n    monthYearLabel: 'MMM YYYY',\r\n    dateA11yLabel: 'LL',\r\n    monthYearA11yLabel: 'MMMM YYYY',\r\n    monthLabel: 'MMM',\r\n    yearLabel: 'YYYY'\r\n  },\r\n}"
+            },
+            {
                 "name": "detailsToShow",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -30696,6 +31300,17 @@
                 "kind": 192
             },
             {
+                "name": "TGeneralMsgPopupData",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/shared/constants/alertWallet.enum.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
                 "name": "TSendMailResponse",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -30797,6 +31412,35 @@
         ],
         "enumerations": [
             {
+                "name": "ActionNameType",
+                "childs": [
+                    {
+                        "name": "Notify",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "Notify"
+                    },
+                    {
+                        "name": "Convert",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "Smart Convert"
+                    },
+                    {
+                        "name": "Pay",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "Payment Request"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
+            },
+            {
                 "name": "AdvancePolicyQuestions",
                 "childs": [
                     {
@@ -30836,6 +31480,207 @@
                 "deprecationMessage": "",
                 "description": "",
                 "file": "src/app/risk-dashboard/components/enums/advancePolicyQuestions.ts"
+            },
+            {
+                "name": "AmountType",
+                "childs": [
+                    {
+                        "name": "Email",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "SMS",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
+            },
+            {
+                "name": "BalanceInOutMainTypeName",
+                "childs": [
+                    {
+                        "name": "Commit Payment",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "Convert",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "Deposit",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    },
+                    {
+                        "name": "Withdrawal airport cash",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 4
+                    },
+                    {
+                        "name": "Withdrawal Deal Loss",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 5
+                    },
+                    {
+                        "name": "Package plan",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 6
+                    },
+                    {
+                        "name": "Create Global Account",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 7
+                    },
+                    {
+                        "name": "Refund",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 8
+                    },
+                    {
+                        "name": "Deposit Into Saving",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 9
+                    },
+                    {
+                        "name": "Future Payment",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 10
+                    },
+                    {
+                        "name": "Buy Option NDF",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 11
+                    },
+                    {
+                        "name": "Sell Option NDF",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 12
+                    },
+                    {
+                        "name": "Buy Option Delivery",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 13
+                    },
+                    {
+                        "name": "Sell Option Delivery",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 14
+                    },
+                    {
+                        "name": "Buy Forward NDF",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 15
+                    },
+                    {
+                        "name": "Sell Forward NDF",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 16
+                    },
+                    {
+                        "name": "Buy Forward Delivery",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 17
+                    },
+                    {
+                        "name": "Sell Forward Delivery",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 18
+                    },
+                    {
+                        "name": "Hedging",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 19
+                    },
+                    {
+                        "name": "Withdrawal",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 20
+                    },
+                    {
+                        "name": "Saving",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 21
+                    },
+                    {
+                        "name": "Deposit Credit Collateral",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 22
+                    },
+                    {
+                        "name": "Bank Account",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 23
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
+            },
+            {
+                "name": "BusinessMainType",
+                "childs": [
+                    {
+                        "name": "Payment Request",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "Smart Convert",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "Future Outgoing",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
             },
             {
                 "name": "BuySell",
@@ -30884,6 +31729,29 @@
                 "file": "src/app/risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-step2/cashflow-exposure-step2.component.ts"
             },
             {
+                "name": "Condition",
+                "childs": [
+                    {
+                        "name": "<",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": ">",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
+            },
+            {
                 "name": "Direction",
                 "childs": [
                     {
@@ -30907,6 +31775,29 @@
                 "file": "src/app/main-dashboard/enums/riskProfitLoss.enum.ts"
             },
             {
+                "name": "Direction",
+                "childs": [
+                    {
+                        "name": "Down",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "Up",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
+            },
+            {
                 "name": "EBusinessType",
                 "childs": [
                     {
@@ -31339,6 +32230,41 @@
                 "deprecationMessage": "",
                 "description": "",
                 "file": "src/app/sign-up/models/kyc.ts"
+            },
+            {
+                "name": "ExposureStatus",
+                "childs": [
+                    {
+                        "name": "Closed",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "Active",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "Expired",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    },
+                    {
+                        "name": "OutOfBalance",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 4
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
             },
             {
                 "name": "HedgingType",
@@ -31368,6 +32294,134 @@
                 "deprecationMessage": "",
                 "description": "",
                 "file": "src/app/risk-dashboard/components/enums/hedgingData.ts"
+            },
+            {
+                "name": "iconFutureActivity",
+                "childs": [
+                    {
+                        "name": "assets/images/activity-fund-icon.svg",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "assets/images/activity-up-down-arrow.svg",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "assets/images/activity-down-arrow.svg",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
+            },
+            {
+                "name": "NotificationRuleStatus",
+                "childs": [
+                    {
+                        "name": "Active",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "Pending Activition",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "Cancelled",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    },
+                    {
+                        "name": "Expired",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 4
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
+            },
+            {
+                "name": "NotificationSentStatus",
+                "childs": [
+                    {
+                        "name": "Success",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "Fail",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "Queued",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    },
+                    {
+                        "name": "Created",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 4
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
+            },
+            {
+                "name": "notifyMeList",
+                "childs": [
+                    {
+                        "name": "on total wallet balance",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "on available wallet balance",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    },
+                    {
+                        "name": "on balance line usage",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
             },
             {
                 "name": "RiskProfitloss",
@@ -31644,6 +32698,35 @@
                 "deprecationMessage": "",
                 "description": "",
                 "file": "src/app/sign-up/models/kyc.ts"
+            },
+            {
+                "name": "wiconFutureActivity",
+                "childs": [
+                    {
+                        "name": "assets/images/activity-fund-icon-white.svg",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 1
+                    },
+                    {
+                        "name": "assets/images/activity-up-down-arrow-white.svg",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 2
+                    },
+                    {
+                        "name": "assets/images/activity-down-arrow-white.svg",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 3
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/constants/alertWallet.enum.ts"
             }
         ],
         "groupedVariables": {
@@ -32141,6 +33224,18 @@
                     "defaultValue": "{\r\n  dateFormat: 'dd mmm yyyy',\r\n  dateInput: 'DD/MM/YYYY',\r\n  dateTimeInput: 'DD/MM/YYYY hh:mm',\r\n  exportCSVFormat: 'DD/MM/YYYY hh:mm:ss a',\r\n  orderFormate:\"YYYY-MM-DD hh:mm:ss\",\r\n  paymentDateFormat: \"YYYY-MM-DD\",\r\n  parse: {\r\n    dateInput: 'MM/DD/YYYY',\r\n  },\r\n  display: {\r\n    dateInput: 'DD/MM/YYYY',\r\n    monthYearLabel: 'MMM YYYY',\r\n    dateA11yLabel: 'LL',\r\n    monthYearA11yLabel: 'MMMM YYYY',\r\n    monthLabel: 'MMM',\r\n    yearLabel: 'YYYY'\r\n  },\r\n}"
                 }
             ],
+            "src/app/shared/constants/DateFormat.ts": [
+                {
+                    "name": "DateFormat",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/constants/DateFormat.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  dateFormat: 'dd mmm yyyy',\r\n  dateInput: 'DD/MM/YYYY',\r\n  dateTimeInput: 'DD/MM/YYYY hh:mm',\r\n  exportCSVFormat: 'DD/MM/YYYY hh:mm:ss a',\r\n  orderFormate:\"YYYY-MM-DD hh:mm:ss\",\r\n  paymentDateFormat: \"YYYY-MM-DD\",\r\n  parse: {\r\n    dateInput: 'MM/DD/YYYY',\r\n  },\r\n  display: {\r\n    dateInput: 'DD/MM/YYYY',\r\n    monthYearLabel: 'MMM YYYY',\r\n    dateA11yLabel: 'LL',\r\n    monthYearA11yLabel: 'MMMM YYYY',\r\n    monthLabel: 'MMM',\r\n    yearLabel: 'YYYY'\r\n  },\r\n}"
+                }
+            ],
             "src/app/sign-up/models/kyc.ts": [
                 {
                     "name": "detailsToShow",
@@ -32339,6 +33434,476 @@
             ]
         },
         "groupedEnumerations": {
+            "src/app/shared/constants/alertWallet.enum.ts": [
+                {
+                    "name": "ActionNameType",
+                    "childs": [
+                        {
+                            "name": "Notify",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "Notify"
+                        },
+                        {
+                            "name": "Convert",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "Smart Convert"
+                        },
+                        {
+                            "name": "Pay",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "Payment Request"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "AmountType",
+                    "childs": [
+                        {
+                            "name": "Email",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "SMS",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "BalanceInOutMainTypeName",
+                    "childs": [
+                        {
+                            "name": "Commit Payment",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "Convert",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "Deposit",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        },
+                        {
+                            "name": "Withdrawal airport cash",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 4
+                        },
+                        {
+                            "name": "Withdrawal Deal Loss",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 5
+                        },
+                        {
+                            "name": "Package plan",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 6
+                        },
+                        {
+                            "name": "Create Global Account",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 7
+                        },
+                        {
+                            "name": "Refund",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 8
+                        },
+                        {
+                            "name": "Deposit Into Saving",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 9
+                        },
+                        {
+                            "name": "Future Payment",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 10
+                        },
+                        {
+                            "name": "Buy Option NDF",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 11
+                        },
+                        {
+                            "name": "Sell Option NDF",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 12
+                        },
+                        {
+                            "name": "Buy Option Delivery",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 13
+                        },
+                        {
+                            "name": "Sell Option Delivery",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 14
+                        },
+                        {
+                            "name": "Buy Forward NDF",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 15
+                        },
+                        {
+                            "name": "Sell Forward NDF",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 16
+                        },
+                        {
+                            "name": "Buy Forward Delivery",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 17
+                        },
+                        {
+                            "name": "Sell Forward Delivery",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 18
+                        },
+                        {
+                            "name": "Hedging",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 19
+                        },
+                        {
+                            "name": "Withdrawal",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 20
+                        },
+                        {
+                            "name": "Saving",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 21
+                        },
+                        {
+                            "name": "Deposit Credit Collateral",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 22
+                        },
+                        {
+                            "name": "Bank Account",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 23
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "BusinessMainType",
+                    "childs": [
+                        {
+                            "name": "Payment Request",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "Smart Convert",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "Future Outgoing",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "Condition",
+                    "childs": [
+                        {
+                            "name": "<",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": ">",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "Direction",
+                    "childs": [
+                        {
+                            "name": "Down",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "Up",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "ExposureStatus",
+                    "childs": [
+                        {
+                            "name": "Closed",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "Active",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "Expired",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        },
+                        {
+                            "name": "OutOfBalance",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 4
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "iconFutureActivity",
+                    "childs": [
+                        {
+                            "name": "assets/images/activity-fund-icon.svg",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "assets/images/activity-up-down-arrow.svg",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "assets/images/activity-down-arrow.svg",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "NotificationRuleStatus",
+                    "childs": [
+                        {
+                            "name": "Active",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "Pending Activition",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "Cancelled",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        },
+                        {
+                            "name": "Expired",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 4
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "NotificationSentStatus",
+                    "childs": [
+                        {
+                            "name": "Success",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "Fail",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "Queued",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        },
+                        {
+                            "name": "Created",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 4
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "notifyMeList",
+                    "childs": [
+                        {
+                            "name": "on total wallet balance",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "on available wallet balance",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        },
+                        {
+                            "name": "on balance line usage",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                },
+                {
+                    "name": "wiconFutureActivity",
+                    "childs": [
+                        {
+                            "name": "assets/images/activity-fund-icon-white.svg",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 1
+                        },
+                        {
+                            "name": "assets/images/activity-up-down-arrow-white.svg",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 2
+                        },
+                        {
+                            "name": "assets/images/activity-down-arrow-white.svg",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 3
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts"
+                }
+            ],
             "src/app/risk-dashboard/components/enums/advancePolicyQuestions.ts": [
                 {
                     "name": "AdvancePolicyQuestions",
@@ -33449,6 +35014,19 @@
                     "kind": 199
                 }
             ],
+            "src/app/shared/constants/alertWallet.enum.ts": [
+                {
+                    "name": "TGeneralMsgPopupData",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/shared/constants/alertWallet.enum.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ],
             "src/app/shared/custom-validators.ts": [
                 {
                     "name": "ValidationErrors",
@@ -33568,6 +35146,15 @@
                 "name": "calendarResources",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/main-dashboard/components/calender-add-alert/calender-add-alert.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CalenderAddAlertComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -34490,6 +36077,26 @@
                 "name": "MenuItem",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/constants/DateFormat.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DateFormat",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/constants/alertWallet.enum.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TGeneralMsgPopupData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

@@ -9,6 +9,9 @@ export class DashboardService {
   private getlastPaymentRateData = new BehaviorSubject<any>({});
   private dashboardSideTabesType = new BehaviorSubject<any>({});
   currentSideTabType = this.dashboardSideTabesType.asObservable();
+  private dashboardDrawer = new BehaviorSubject<any>({});
+  currentdashboardDrawerType = this.dashboardDrawer.asObservable();
+  
   private dashboardSide = new BehaviorSubject<any>({});
 
   constructor() { }
@@ -32,5 +35,9 @@ export class DashboardService {
 
   setlastPaymentRateData(type: any) {
     this.getlastPaymentRateData.next(type)
+  }
+
+  setDashboardDrawerType(type: any) {
+    this.dashboardDrawer.next(type)
   }
 }

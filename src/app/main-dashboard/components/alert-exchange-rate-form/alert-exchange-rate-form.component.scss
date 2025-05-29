@@ -1,0 +1,546 @@
+@import "../../../../assets/scss/variable";
+@import "../../../../assets/scss/mixins";
+
+.create-an-alert-main {
+  .create-an-alert-upper {
+    padding: 0 44px 48px;
+    background: linear-gradient(180deg, #fff 52.8%, var(--content-wrapper-bg-color) 100%);
+
+    @media only screen and (max-width: 1440px) {
+      padding: 0 20px 20px;
+    }
+
+    .create-an-alert-title {
+      margin-bottom: 29px;
+
+      h5 {
+        color: $blue-black;
+        font-family: $epilogue;
+        font-size: $font-27;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        text-transform: uppercase;
+        margin-bottom: 29px;
+
+        @media (max-width: 479px) {
+          font-size: $font-22;
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    .graph-img-bottom {
+      .create-an-alert-graph {
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .create-an-alert-graph-main {
+      .graph-upper-title {
+        @include flex(space-between, center, row);
+
+        .graph-title-flex {
+          @include flex(flex-start, center, row);
+          column-gap: 6px;
+
+          .count-fleg {
+            width: 27px;
+            height: 27px;
+
+            img {
+              width: 100%;
+            }
+          }
+
+          .title-fw {
+            span {
+              color: $black;
+              font-family: $manrope;
+              font-size: $font-16;
+              font-style: normal;
+              line-height: normal;
+
+              &.fw-normal {
+                font-weight: 600;
+              }
+
+              &.fw-thik {
+                font-weight: 700;
+              }
+
+              &.fw-normal {
+                font-weight: 400;
+              }
+            }
+          }
+        }
+
+        .graph-title-dropdown {
+          display: flex;
+          width: 83px;
+          height: 32px;
+          padding: 0px 14px;
+          justify-content: center;
+          align-items: center;
+          gap: 40px;
+          border-radius: 130px;
+          background: var(--brand-primary-color);
+
+          .dropdown-view {
+            color: $white;
+            font-family: $inter;
+            font-size: $font-12;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+          }
+        }
+      }
+    }
+  }
+
+  .create-an-alert-form {
+    padding: 36px 57px;
+
+    @media only screen and (max-width: 1440px) {
+      padding: 30px;
+    }
+
+    @media (max-width: 479px) {
+      padding: 20px;
+    }
+
+    form {
+      .wbl-upper-box {
+        .wbl-box-inner {
+          .form-group {
+            margin-bottom: 28px;
+            position: relative;
+
+            @media only screen and (max-width: 1440px) {
+              margin-bottom: 15px;
+            }
+
+            label {
+              color: $app-store-text-color;
+              font-family: $inter;
+              font-size: $font-14;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+
+              .blue-text-thin {
+                font-weight: 700;
+              }
+            }
+
+            input.form-control,
+            mat-select {
+              height: 50px;
+              padding: 0px 10px 0px 14px;
+              vertical-align: middle;
+              display: flex;
+              align-items: center;
+              border-radius: 4px;
+              border: 1px solid #c3c6d4;
+              background: $white;
+
+              @media only screen and (max-width: 14440px) {
+                height: 40px;
+                font-size: 14px;
+              }
+            }
+
+            .date-picker {
+              mat-datepicker-toggle {
+                position: absolute;
+                top: 65%;
+                left: auto;
+                right: 3px;
+                bottom: auto;
+                transform: translateY(-50%);
+              }
+            }
+
+            &.add-not-text-area {
+              margin-bottom: 69px;
+
+              @media only screen and (max-width: 1440px) {
+                margin-bottom: 30px;
+              }
+
+              .note {
+                margin-top: 10px;
+
+                .form-control {
+                  min-height: 253px;
+                  font-size: 14px;
+
+                  @media only screen and (max-width: 1440px) {
+                    min-height: 180px;
+                  }
+                }
+              }
+
+              .note-save-btn {
+                margin-top: 8px;
+                text-align: right;
+
+                .note-save {
+                  background: transparent;
+                  padding: 0;
+                  color: var(--brand-primary-color);
+                  font-family: $manrope;
+                  font-size: $font-12;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: normal;
+                }
+              }
+            }
+
+            &.thired-child-new-width-btn {
+              @include flex(center, center, column);
+              row-gap: 22px;
+
+              @media (max-width: 479px) {
+                row-gap: 15px;
+              }
+
+              button.add-note-btn {
+                @include flex(center, center, row);
+                width: 218px;
+                height: 50px;
+                padding: 15px;
+                border-radius: 40px;
+                border: 1px solid $black;
+                background: $disable-button-bg;
+                column-gap: 5px;
+                color: $black;
+                font-family: $manrope;
+                font-size: $font-12;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+
+                @media only screen and (max-width: 1440px) {
+                  width: 110px;
+                  height: 35px;
+                  padding: 10px;
+                }
+              }
+
+              button.wbr-btn-new {
+                @include flex(center, center, row);
+                width: 218px;
+                padding: 14px 32px;
+                border-radius: 40px;
+                background: linear-gradient(111deg, #444 2.91%, #000 96.88%);
+                color: $white;
+                font-family: $manrope;
+                font-size: $font-16;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                border: none;
+                &:disabled {
+                  background: $disable-button-bg;
+                  color: $light-gray;
+                }
+
+                @media only screen and (max-width: 1440px) {
+                  width: 110px;
+                  height: 35px;
+                  font-size: 12px;
+                  padding: 10px;
+                }
+              }
+            }
+          }
+
+          .form-group-d-flex {
+            @include flex(flex-start, center, row);
+            column-gap: 40px;
+
+            @media (max-width: 479px) {
+              column-gap: 15px;
+            }
+
+            .form-group {
+              &.create-form-iw-half {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.successfull-drawer {
+  .calendar-exchange-below {
+    padding: 85px 45px 0;
+    background: linear-gradient(
+      180deg,
+      rgba(41, 71, 242, 0.07) 0%,
+      rgba(245, 247, 250, 0) 100%
+    );
+
+    @media only screen and (max-width: 1440px) {
+      padding: 30px 15px 0;
+    }
+
+    .aler-success {
+      margin-bottom: 39px;
+
+      @media only screen and (max-width: 1440px) {
+        margin-bottom: 15px;
+      }
+
+      h5 {
+        color: $blue-black;
+        font-family: $epilogue;
+        font-size: $font-22;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        text-transform: uppercase;
+        text-align: center;
+        padding-bottom: 21px;
+        border-bottom: 1px dashed $light-gray;
+
+        @media only screen and (max-width: 1440px) {
+          font-size: 16px;
+          padding-bottom: 15px;
+        }
+      }
+    }
+
+    .table-responsive {
+      table.exchange-table {
+        margin-bottom: 0px;
+
+        tbody {
+          tr {
+            td {
+              border-bottom: 1px dashed $light-gray;
+              padding: 18px 0;
+              vertical-align: middle;
+              background: transparent;
+
+              @media only screen and (max-width: 1440px) {
+                padding: 8px;
+              }
+
+              h6 {
+                font-family: $inter;
+                font-size: $font-14;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                margin-bottom: 0;
+
+                @media only screen and (max-width: 1440px) {
+                  font-size: 12px;
+                }
+              }
+
+              &.notification-blox-pb-zero {
+                .notification-blox-flex {
+                  @include flex(flex-end, flex-start, row);
+                  column-gap: 10px;
+
+                  .notification-blox {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 102px;
+                    padding: 8px 10px 8px 14px;
+                    gap: 9px;
+                    border-radius: 130px;
+                    border: 1px solid $notification-blox-border;
+                    background: $notification-blox-background;
+
+                    @media only screen and (max-width: 1440px) {
+                      width: 80px;
+                    }
+
+                    img {
+                      max-width: 18px;
+                      width: 100%;
+
+                      @media only screen and (max-width: 1440px) {
+                        max-width: 14px;
+                      }
+                    }
+
+                    span.notification-text-new {
+                      font-family: $inter;
+                      font-size: $font-16;
+                      font-style: normal;
+                      font-weight: 700;
+                      line-height: normal;
+                      color: $cal-ev-red;
+
+                      @media only screen and (max-width: 1440px) {
+                        font-size: 14px;
+                      }
+                    }
+                  }
+
+                  .edit-note-after {
+                    img {
+                      width: 100%;
+
+                      @media only screen and (max-width: 1440px) {
+                        max-width: 14px;
+                      }
+                    }
+                  }
+                }
+              }
+
+              &.boder-bn {
+                padding-bottom: 30px;
+
+                @media only screen and (max-width: 1440px) {
+                  padding-bottom: 18px;
+                }
+              }
+
+              &.tom-text-changes {
+                color: var(--cal-ev-blue);
+                font-family: $inter;
+                font-size: $font-14;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                text-align: right;
+                text-indent: 49px;
+
+                @media only screen and (max-width: 1440px) {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .view-alerts-btn {
+      text-align: center;
+      margin-bottom: 24px;
+      margin-top: 38px;
+
+      @media only screen and (max-width: 1440px) {
+        margin-bottom: 15px;
+        margin-top: 20px;
+      }
+
+      a {
+        color: var(--cal-ev-blue);
+        text-align: right;
+        font-family: $inter;
+        font-size: $font-14;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        @media only screen and (max-width: 1440px) {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .currency-btn {
+      width: 100%;
+      text-align: center;
+
+      .dashboard-btn {
+        border: none;
+        color: #ffffff;
+        padding: 20px;
+        width: 50%;
+        font-size: 18px;
+        border-radius: 40px;
+        background-color: var(--brand-primary-color);
+
+        @media only screen and (max-width: 1440px) {
+          padding: 10px;
+          width: 60%;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .play-store-app {
+    @include flex(flex-start, center, row);
+    padding: 0 45px;
+    margin: 330px 45px 50px;
+    background: $white;
+
+    @media only screen and (max-width: 1440px) {
+      margin: 150px 15px 50px;
+      padding: 0 15px;
+    }
+
+    .play-store-text {
+      h4 {
+        color: $app-store-text-color;
+        font-family: $inter;
+        font-size: $font-24;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 27px;
+        text-transform: uppercase;
+        margin-bottom: 21px;
+        padding-top: 5px;
+
+        @media only screen and (max-width: 1440px) {
+          font-size: 16px;
+          line-height: 26px;
+          margin-bottom: 14px;
+        }
+      }
+
+      .play-sote-app-btn {
+        @media only screen and (max-width: 1440px) {
+          width: 100px;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.alert-success-btn{
+  width: 100%;
+  text-align: center;
+  button {
+    border: none;
+    color: $white;
+    background-color: var(--brand-primary-color);
+    padding: 14px;
+    width: 292px;
+    border-radius: 100px;
+
+    @media screen and (max-width: 1440px) {
+      width: 250px;
+      padding: 8px 14px;
+      font-size: 13px;
+    }
+  }
+}
+
+.disable {
+  pointer-events: none !important;
+}

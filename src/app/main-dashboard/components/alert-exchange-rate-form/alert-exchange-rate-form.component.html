@@ -1,0 +1,152 @@
+<div class="create-an-alert-main loader-wrapper" *ngIf="alertForm">
+  <!-- <div class="create-an-alert-upper">
+    <div class="create-an-alert-title">
+      <h5>Create an Rate Alert</h5>
+    </div>
+    <div class="create-an-alert-graph-main">
+      <div class="graph-img-bottom">
+        <div class="create-an-alert-graph">
+          <div id="marketChart1"></div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="create-an-alert-form">
+    <form id="alert-exchange-rate-form" [formGroup]="alertExchangeRateForm" *ngIf="alertExchangeRateForm">
+      <div class="wbl-upper-box">
+        <div class="wbl-box-inner">
+          <div class="form-group create-form-iw-full">
+            <label for="classification">Alert me if <span class="blue-text-thin">{{activeCurrency?.wallet_Currency?.code}}</span>  rate reaches</label>
+            <span class="information-icon">
+              <img src="images/info-icon.svg" id="info-icon" [matTooltip]="'2.1267-2.4012'"  matTooltipClass="view-alert-exrate-tooltip">
+            </span>
+            <input type="textbox" appOnlyNumbers class="form-control" formControlName="targetRate"
+              appFourDigitDecimaNumber placeholder="Target Rate"
+              (change)="TargetRateRange($event)" id="targetRateInputField"/>
+            <span class="text-danger" id="requiredErrMsg"
+              *ngIf="(alertExchangeRateFormControl['targetRate'].touched || submitted) && alertExchangeRateForm.get('targetRate')?.hasError('required')">
+              Target Rate is required
+            </span>
+            <span class="text-danger" id="rangeErrMsg"
+              *ngIf="(alertExchangeRateFormControl['targetRate'].touched || submitted) && alertExchangeRateForm.get('targetRate')?.hasError('pattern')">
+              Target Rate is upto 4 decimal places.
+            </span>
+          </div>
+          <div class="form-group-d-flex">
+            <div class="form-group create-form-iw-half">
+              <label for="classification">I want to Buy</label>
+              <mat-select class="form-control disable" id="buy" placeholder="Please select" formControlName="buy"
+                name="beneficiaryAccountType " >
+                <mat-option value="{{ buy_currency_code }}">{{ buy_currency_code }}</mat-option>
+              </mat-select>
+              <span class="text-danger" id="reqAccTypeErrMsg"
+                *ngIf="(alertExchangeRateFormControl['buy'].touched || submitted) && alertExchangeRateFormControl['buy'].errors">
+                Buy is required
+              </span>
+            </div>
+            <div class="form-group create-form-iw-half">
+              <label for="classification">I want to Sell </label>
+              <mat-select class="form-control disable" id="sell" placeholder="Please select" formControlName="sell"
+                name="beneficiaryAccountType">
+                <mat-option 
+                  
+                  value="{{ sell_currency_code }}" >{{ sell_currency_code  }}</mat-option>
+              </mat-select>
+              <span class="text-danger" id="SellErrMsg"
+                *ngIf="(alertExchangeRateFormControl['sell'].touched || submitted) && alertExchangeRateFormControl['sell'].errors">
+                Sell is required
+              </span>
+            </div>
+          </div>
+          <div class="form-group create-form-iw-full">
+            <label for="classification">Alert Expiry Date</label>
+            <div class="date-picker" tabindex="0">
+              <input type="text" class="form-control" matInput [matDatepicker]="picker"
+                [min]="minDate" [max]="maxDate" formControlName="dueDate" id="dueDate">
+              <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </div>
+            <span class="text-danger"  id="expireDateErrMsg"
+              *ngIf="(alertExchangeRateFormControl['dueDate'].touched || submitted) && alertExchangeRateFormControl['dueDate'].errors">
+              Due date is required
+            </span>
+            <span class="text-danger" id="validDateErrMsg" *ngIf="alertExchangeRateFormControl['dueDate'].status == 'INVALID' && alertExchangeRateFormControl['dueDate'].value != ''" >
+              Please enter a valid date
+            </span>
+          </div>
+
+          <!-- <div class="form-group add-not-text-area" *ngIf="note">
+            <label for="note"><img src="images/comment-add-svgrepo.svg"> Add note</label>
+            <div class="note" tabindex="0">
+              <textarea class="form-control" matInput placeholder="" formControlName="note"></textarea>
+            </div>
+            <div class="note-save-btn">
+              <button class="note-save">Save</button>
+            </div>
+          </div> -->
+
+          <div class="form-group thired-child-new-width-btn">
+            <!-- <button class="add-note-btn" (click)="AddNote()"><img src="images/comment-add-svgrepo.svg"> Add Note</button> -->
+            <button class="btn btn-secondary wbr-btn-new" type="submit" id="alertBtn" (click)="backToDashboard()"
+              [disabled]="alertExchangeRateForm.invalid || validForm">Create an alert</button>
+            <!-- <a [mat-dialog-close]="false" routerLink="/wallets/alertExchangeRate">View all alerts</a> -->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- <app-page-loader id="loader" classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+</div>
+
+<div *ngIf="!alertForm" class="successfull-drawer">
+  <div class="calendar-exchange-below">
+    <div class="aler-success">
+      <h5>Due date is required</h5>
+    </div>
+    <div class="table-responsive">
+      <table class="exchange-table table" id="exchangeTable">
+        <tbody id="exchangetablebody">
+          <tr id="currencyRow">
+            <td id="firstCol">
+              <h6>Alert me if <span class="text-color-ch">{{activeCurrency?.wallet_Currency?.code}}</span> rate reaches</h6>
+            </td>
+            <td class="notification-blox-pb-zero" id="secondCol">
+              <div class="notification-blox-flex">
+                <div class="notification-blox">
+                  <!-- <img src="/images/exchange-rates-notification.svg" id="notificationIcon"/> -->
+                  <span class="notification-text-new">{{alertExchangeRateForm?.value?.targetRate}}</span>
+                </div>
+                <!-- <div class="edit-note-after">
+                  <img src="/images/exchange-rates-edit.svg">
+                </div> -->
+              </div>
+            </td>
+          </tr>
+          <tr id="dateTimeRow">
+            <td id="dateTimeColumn" class="boder-bn">
+              <h6>Alert expiry date</h6>
+            </td>
+            <td id="dueDate" class="tom-text-changes boder-bn">{{alertExchangeRateForm?.value?.dueDate  | date:'dd/MM/yyyy'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="view-alerts-btn">
+      <a id="viewAllLink" [mat-dialog-close]="false"  (click)="closeDrawer()">View all alerts</a>
+    </div>
+    <div class="alert-success-btn">
+      <button id="alert-success-btn" class="alert-success-btn" (click)="backToDashboard()">Back to dashboard</button>
+    </div>
+  </div>
+  <div class="play-store-app">
+    <div class="play-store-text">
+      <h4>All the alerts in our app</h4>
+      <button class="play-sote-app-btn" id="openPlayStoreBtn">
+        <img src="images/play-store-btn.svg" id="playStoreImg"/>
+      </button>
+    </div>
+    <div class="play-store-img">
+      <!-- <img src="images/app-store-img.png" id="appStoreImg"/> -->
+    </div>
+  </div>
+</div>
