@@ -20,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { getCalendarDataByDate } from '../../dashboard-data/calendar-data';
+import { CalenderAddAlertComponent } from '../calender-add-alert/calender-add-alert.component';
 
 const calendarResources: MbscResource[] = [
   {
@@ -52,7 +53,9 @@ const calendarResources: MbscResource[] = [
     MatSelectModule, 
     FormsModule, 
     MatIconModule,
-    MbscModule, 
+    MbscModule,
+    MatDrawer,
+    CalenderAddAlertComponent
   ],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
@@ -67,7 +70,7 @@ export class CalendarComponent {
   flagData: any;
   data: any;
   selectedTab: any;
-  selectedCalendarDate!: string | null;
+  selectedCalendarDate!: any;
   calendarMenu!: string;
   isMenu!: boolean;
   oldDate!: boolean;
