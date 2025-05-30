@@ -1,55 +1,42 @@
-<div class="container questionnaire-container step-1 loader-wrapper">
-  <h3 class="questionnare-title">Choose your main currency</h3>
-  <p class="questionnare-subtitle">The currency which you report to the financial statements, <span>it will be the main system currency</span></p>
-  <div class="content-wrapper">
-    <div class="country-dropdown">
-      <!-- <mat-select class="form-control country-selection" name="currency" [value]="defaultCurrencyValue"
-      [disabled]="true" placeholder="Select" panelClass="cus-dropconvert">
-        <mat-select-trigger class="select-trigger">
-          <ng-container *ngFor="let currency of currencyList">
-            <span class="currency-name-code" *ngIf="currency?.wallet_Currency?.code ==  defaultCurrencyValue">
-              <img class="currency-image" [src]="currency?.wallet_Flag" alt="currency_flag">
-              {{ translateIfExists('CURRENCY.' + currency?.wallet_Currency?.code,currency?.wallet_Currency?.code) }}
-            </span>
-          </ng-container>
-        </mat-select-trigger>
-        <ng-container *ngFor="let currency of currencyList">
-          <mat-option class="option-cus" [value]="currency?.wallet_Currency?.code">
-            <img class="currency-image" [src]="currency?.wallet_Flag" alt="currency_flag">
-            {{ translateIfExists('CURRENCY.' + currency?.wallet_Currency?.code,currency?.wallet_Currency?.code) }}
-          </mat-option>
-        </ng-container>
-      </mat-select> -->
-      <mat-select class="form-control country-selection" name="currency" [value]="defaultCurrencyValue"
-        placeholder="Select" panelClass="cus-dropconvert"
-        (selectionChange)="changeCurrency($event)">
-        <mat-select-trigger class="select-trigger">
-          <ng-container *ngFor="let currencyObj of activeHedgeCurrencyList">
-            <span class="currency-name-code" *ngIf="currencyObj?.currency?.code ==  defaultCurrencyValue">
-              <img class="currency-image" [src]="currencyObj?.currency?.flag" alt="currency_flag">
-              <!-- {{ translateIfExists('CURRENCY.' + currencyObj?.currency?.code,currencyObj?.currency?.code) }} -->
-              {{ currencyObj?.currency?.code }}
-            </span>
-          </ng-container>
-        </mat-select-trigger>
-        <ng-container *ngFor="let currencyObj of activeHedgeCurrencyList">
-          <mat-option class="option-cus" [value]="currencyObj?.currency?.code">
-            <img class="currency-image" [src]="currencyObj?.currency?.flag" alt="currency_flag">
-            <!-- {{ translateIfExists('CURRENCY.' + currencyObj?.currency?.code,currencyObj?.currency?.code) }} -->
-            {{ currencyObj?.currency?.code }}
-          </mat-option>
-        </ng-container>
-      </mat-select>
-      <p class="mt-2 mb-2 d-flex justify-content-end mat-select-note">it will be the main system currency</p>
-    </div>
-    <p *ngIf="updateMainCurrencyError" class="error-msg">
-      <img class="country-image" src="images/red-warning-icon.svg"> {{updateMainCurrencyError}}
-    </p>
-    <div class="currency-btn mt-5">
-      <button type="submit" class="continue" (click)="nextStep()" [disabled]="!defaultCurrencyValue">Continue</button>
+<div class="specific-questionare-dialog">
+  <div class="mat-mdc-dialog-container">
+    <div class="container questionnaire-container step-1 loader-wrapper">
+      <h3 class="questionnare-title">Choose your main currency</h3>
+      <p class="questionnare-subtitle">The currency which you report to the financial statements, <span>it will be the
+          main system currency</span></p>
+      <div class="content-wrapper">
+        <div class="country-dropdown step-one-questionnaire-dropdown">
+          <mat-select class="form-control country-selection" name="currency" [value]="defaultCurrencyValue"
+            placeholder="Select" panelClass="cus-dropconvert" (selectionChange)="changeCurrency($event)">
+            <mat-select-trigger class="select-trigger">
+              <ng-container *ngFor="let currencyObj of activeHedgeCurrencyList">
+                <span class="currency-name-code" *ngIf="currencyObj?.currency?.code ==  defaultCurrencyValue">
+                  <img class="currency-image" [src]="currencyObj?.currency?.flag" alt="currency_flag">
+                  {{ currencyObj?.currency?.code }}
+                </span>
+              </ng-container>
+            </mat-select-trigger>
+            <ng-container *ngFor="let currencyObj of activeHedgeCurrencyList">
+              <mat-option class="option-cus" [value]="currencyObj?.currency?.code">
+                <img class="currency-image" [src]="currencyObj?.currency?.flag" alt="currency_flag">
+                {{ currencyObj?.currency?.code }}
+              </mat-option>
+            </ng-container>
+          </mat-select>
+          <p class="mt-2 mb-2 d-flex justify-content-end mat-select-note">it will be the main system currency</p>
+        </div>
+        <p *ngIf="updateMainCurrencyError" class="error-msg">
+          <img class="country-image" src="images/red-warning-icon.svg"> {{updateMainCurrencyError}}
+        </p>
+        <div class="currency-btn mt-5">
+          <button type="submit" class="continue" (click)="nextStep()"
+            [disabled]="!defaultCurrencyValue">Continue</button>
+        </div>
+      </div>
+      <div class="currency-icon-container">
+        <img class="currency-icon" src="images/currency-coin-icon.svg" />
+      </div>
     </div>
   </div>
-  <div class="currency-icon-container">
-    <img class="currency-icon" src="images/currency-coin-icon.svg" />
-  </div>
+
 </div>

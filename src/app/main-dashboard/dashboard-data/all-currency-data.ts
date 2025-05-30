@@ -1748,10 +1748,6 @@ export const GetDefaultCurrencyData = {
             "pair": "AEDILS"
         },
         {
-            "currency": "JOD",
-            "pair": "JODILS"
-        },
-        {
             "currency": "GBP",
             "pair": "GBPILS"
         },

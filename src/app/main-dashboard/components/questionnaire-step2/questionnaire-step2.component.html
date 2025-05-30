@@ -1,188 +1,192 @@
-<div class="questionnaire-step2-wrapper">
-  <div class="currency-icon-container">
-    <button class="btn-back-icon" (click)="previousStep()">
-      <img class="mr-2" src="images/back-questionaire.svg">Back
-    </button>
-    <img class="currency-icon" src="images/currency-coin-top-icon.svg" alt="currency-coin-icon" />
-  </div>
-  <div class="container questionnaire-container">
-    <h3 class="questionnare-title">Add more currencies</h3>
-    <p class="questionnare-subtitle">
-      "The currencies used for payments to suppliers, receiving from customers, purchases, various expenses, and different invoices."
-    </p>
-    <mat-tab-group animationDuration="0ms" (selectedTabChange)="onTabChange($event)"
-      [(selectedIndex)]="tab">
-      <mat-tab class="questionnare-tab" label="I am Buying" >
-        <div class="tab-content">
-          <form [formGroup]="addMoreCurrency" *ngIf="addMoreCurrency">
-            <h4 class="text-center tab-info">You can buy or sell currency</h4>
-            <div class="buy-sell-currency-title">
-              <h4>Buy currency - Sell <span class="ils-color">{{defaultCurrency?.value?.currency}}</span></h4>
-            </div>
-            <div class="risk-rate-container d-flex">
-              <div class="risk-measurement">
-                <label>Risk when the rate</label>
-                <div class="d-flex align-items-center mt-2">
-                  <img class="risk-up-btn" src="images/risk-up-icon.svg" />
-                  <label class="risk-updown">Goes up</label>
+<div class="specific-questionare-dialog">
+  <div class="mat-mdc-dialog-container">
+    <div class="questionnaire-step2-wrapper">
+      <div class="currency-icon-container">
+        <button class="btn-back-icon" (click)="previousStep()">
+          <img class="mr-2" src="images/back-questionaire.svg">Back
+        </button>
+        <img class="currency-icon" src="images/currency-coin-top-icon.svg" alt="currency-coin-icon" />
+      </div>
+      <div class="container questionnaire-container">
+        <h3 class="questionnare-title">Add more currencies</h3>
+        <p class="questionnare-subtitle">
+          "The currencies used for payments to suppliers, receiving from customers, purchases, various expenses, and
+          different invoices."
+        </p>
+        <mat-tab-group animationDuration="0ms" (selectedTabChange)="onTabChange($event)" [(selectedIndex)]="tab">
+          <mat-tab class="questionnare-tab" label="I am Buying">
+            <div class="tab-content">
+              <form [formGroup]="addMoreCurrency" *ngIf="addMoreCurrency">
+                <h4 class="text-center tab-info">You can buy or sell currency</h4>
+                <div class="buy-sell-currency-title">
+                  <h4>Buy currency - Sell <span class="ils-color">{{defaultCurrency?.value?.currency}}</span></h4>
                 </div>
-              </div>
+                <div class="risk-rate-container d-flex">
+                  <div class="risk-measurement">
+                    <label>Risk when the rate</label>
+                    <div class="d-flex align-items-center mt-2">
+                      <img class="risk-up-btn" src="images/risk-up-icon.svg" />
+                      <label class="risk-updown">Goes up</label>
+                    </div>
+                  </div>
 
-              <div class="currency-pair-rows" formArrayName="currencyPair">
-                <div *ngFor="let pair of currencyPairs().controls; let i = index" class="currency-pair-row">
-                  <div class="currency-pair-container" [formGroupName]="i">
-                    <div class="currency-buy-input">
-                      <div class="country-dropdown">
-                        <label for="currency">I am Buying</label>
-                        <mat-select
-                          [ngClass]="(addMoreCurrency.value.currencyPair[i].direction !== null || i === 0) && balanceList  ? 'disable form-control country-selection' : 'form-control country-selection'"
-                          name="currency" formControlName="buy"
-                          (selectionChange)="getSign(addMoreCurrency.value.currencyPair[i].buy,i)" placeholder="Select"
-                          panelClass="cus-dropconvert">
-                          <mat-select-trigger class="select-trigger">
-                            <ng-container *ngFor="let currency of supportedHedge">
-                              <span *ngIf="currency?.currency?.code ==  addMoreCurrency.value.currencyPair[i].buy">
-                                <img class="currency-image" [src]="currency?.flag" alt="currency_flag" />
-                                {{ currency?.currency?.code }}
-                              </span>
-                            </ng-container>
-                          </mat-select-trigger>
-                          <ng-container *ngFor="let currency of supportedHedge">
-                            <mat-option class="option-cus" [value]="currency?.currency?.code">
-                              <img class="currency-image" [src]="currency?.flag" alt="currency_flag" />
-                              {{ currency?.currency?.code }}
-                            </mat-option>
-                          </ng-container>
-                        </mat-select>
+                  <div class="currency-pair-rows" formArrayName="currencyPair">
+                    <div *ngFor="let pair of currencyPairs().controls; let i = index" class="currency-pair-row">
+                      <div class="currency-pair-container" [formGroupName]="i">
+                        <div class="currency-buy-input">
+                          <div class="country-dropdown">
+                            <label for="currency">I am Buying</label>
+                            <mat-select
+                              [ngClass]="(addMoreCurrency.value.currencyPair[i].direction !== null || i === 0) && balanceList  ? 'disable form-control country-selection' : 'form-control country-selection'"
+                              name="currency" formControlName="buy"
+                              (selectionChange)="getSign(addMoreCurrency.value.currencyPair[i].buy,i)"
+                              placeholder="Select" panelClass="cus-dropconvert">
+                              <mat-select-trigger class="select-trigger">
+                                <ng-container *ngFor="let currency of supportedHedge">
+                                  <span *ngIf="currency?.currency?.code ==  addMoreCurrency.value.currencyPair[i].buy">
+                                    <img class="currency-image" [src]="currency?.flag" alt="currency_flag" />
+                                    {{ currency?.currency?.code }}
+                                  </span>
+                                </ng-container>
+                              </mat-select-trigger>
+                              <ng-container *ngFor="let currency of supportedHedge">
+                                <mat-option class="option-cus" [value]="currency?.currency?.code">
+                                  <img class="currency-image" [src]="currency?.flag" alt="currency_flag" />
+                                  {{ currency?.currency?.code }}
+                                </mat-option>
+                              </ng-container>
+                            </mat-select>
+                          </div>
+                        </div>
+                        <div class="currency-amount-input">
+                          <label>Amount</label>
+                          <div class="form-currency-wrap">
+                            <span class="amount-prefix">{{addMoreCurrency?.value?.currencyPair[i]?.sign}}</span>
+                            <input placeholder="0.00" appOnlyNumbers appThousandsSeparator class="form-control"
+                              type="text" formControlName="amount" />
+                          </div>
+                          <label class="avg-label">Average per month</label>
+                        </div>
+                        <ng-container *ngIf="i !== initialPairIndex; else otherSvg">
+                          <img src="images/delete-currency-pair.svg" class="operation-pair"
+                            (click)="removeCurrencyPair(i)" />
+                        </ng-container>
+                        <ng-template #otherSvg>
+                          <span class="info-icon" htmlTooltip
+                            tooltipBody="A currency future, also called an FX future,is a contract to exchange currencies on a future date at a fixed price (exchange rate)">
+                            <img src="images/information-circle.svg" class="operation-pair" />
+                          </span>
+                        </ng-template>
                       </div>
                     </div>
-                    <div class="currency-amount-input">
-                      <label>Amount</label>
-                      <div class="form-currency-wrap">
-                        <span class="amount-prefix">{{addMoreCurrency?.value?.currencyPair[i]?.sign}}</span>
-                        <input placeholder="0.00" appOnlyNumbers appThousandsSeparator class="form-control" type="text"
-                          formControlName="amount" />
-                      </div>
-                      <label class="avg-label">Average per month</label>
-                    </div>
-                    <ng-container *ngIf="i !== initialPairIndex; else otherSvg">
-                      <img src="images/delete-currency-pair.svg" class="operation-pair"
-                        (click)="removeCurrencyPair(i)" />
-                    </ng-container>
-                    <ng-template #otherSvg>
-                      <span class="info-icon" htmlTooltip
-                        tooltipBody="A currency future, also called an FX future,is a contract to exchange currencies on a future date at a fixed price (exchange rate)">
-                        <img src="images/information-circle.svg" class="operation-pair" />
-                      </span>
-                    </ng-template>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="currency-btn">
-              <button type="submit" class="add-currency" (click)="addCurrencyPair()">+ Add currency pair</button>
-            </div>
-            <div class="currency-alert mt-4 justify-content-center align-items-center text-center">
-              <p class="errorMsg" *ngIf="errorMessage">Please fill the above row</p>
-              <p class="errorMsg" *ngIf="apiError">{{apiError}}</p>
-              <div class="d-flex justify-content-center align-items-center">
-                <img src="images/alert-circle-error.svg">
-                <span>Each currency will open a new wallet</span>
-              </div>
-            </div>
-            <div class="currency-btn mt-4 mb-3">
-              <button type="submit" class="continue" [disabled]="addMoreCurrency.invalid"
-                (click)="nextStep()">Next</button>
-            </div>
-          </form>
-        </div>
-      </mat-tab>
-
-      <mat-tab class="questionnare-tab" label="I am Selling">
-        <div class="tab-content">
-          <form [formGroup]="addMoreCurrency" *ngIf="addMoreCurrency">
-            <h4 class="text-center tab-info">You can buy or sell currency</h4>
-            <div class="buy-sell-currency-title">
-              <h4>Sell currency - Buy <span class="ils-color">{{defaultCurrency?.value?.currency}}</span></h4>
-            </div>
-            <div class="risk-rate-container d-flex">
-              <div class="risk-measurement">
-                <label>Risk when the rate</label>
-                <div class="d-flex align-items-center mt-2">
-                  <img class="risk-up-btn" src="images/risk-down-icon.svg" />
-                  <label class="risk-updown">Goes down</label>
+                <div class="currency-btn">
+                  <button type="submit" class="add-currency" (click)="addCurrencyPair()">+ Add currency pair</button>
                 </div>
-              </div>
-              <div class="currency-pair-rows" formArrayName="currencyPair">
-                <div *ngFor="let pair of currencyPairs().controls; let i = index" class="currency-pair-row">
-                  <div class="currency-pair-container" [formGroupName]="i">
-                    <div class="currency-buy-input">
-                      <div class="country-dropdown">
-                        <label for="currency">I am Buying</label>
-                        <mat-select
-                          [ngClass]="(addMoreCurrency.value.currencyPair[i].direction !== null || i === 0)  && balanceList  ? 'disable form-control country-selection' : 'form-control country-selection'"
-                          name="currency" formControlName="buy"
-                          (selectionChange)="getSign(addMoreCurrency.value.currencyPair[i].buy,i)" placeholder="Select"
-                          panelClass="cus-dropconvert">
-                          <mat-select-trigger class="select-trigger">
-                            <ng-container *ngFor="let currency of supportedHedge">
-                              <span *ngIf="currency?.currency?.code ==  addMoreCurrency.value.currencyPair[i].buy">
-                                <img class="currency-image" [src]="currency?.flag" alt="currency_flag" />
-                                {{ currency?.currency?.code }}
-                              </span>
-                            </ng-container>
-                          </mat-select-trigger>
-                          <ng-container *ngFor="let currency of supportedHedge">
-                            <mat-option class="option-cus" [value]="currency?.currency?.code">
-                              <img class="currency-image" [src]="currency?.flag" alt="currency_flag" />
-                              {{ currency?.currency?.code }}
-                            </mat-option>
-                          </ng-container>
-                        </mat-select>
-                      </div>
-                    </div>
-                    <div class="currency-amount-input">
-                      <label>Amount</label>
-                      <div class="form-currency-wrap">
-                        <span class="amount-prefix">{{addMoreCurrency?.value?.currencyPair[i]?.sign}}</span>
-                        <input placeholder="0.00" appOnlyNumbers appThousandsSeparator class="form-control" type="text"
-                          formControlName="amount" />
-                      </div>
-                      <label class="avg-label">Average per month</label>
-                    </div>
-                    <ng-container *ngIf="i !== initialPairIndex; else otherSvg">
-                      <img src="images/delete-currency-pair.svg" class="operation-pair"
-                        (click)="removeCurrencyPair(i)" />
-                    </ng-container>
-                    <ng-template #otherSvg>
-                      <span class="info-icon" htmlTooltip
-                        tooltipBody="A currency future, also called an FX future,is a contract to exchange currencies on a future date at a fixed price (exchange rate)">
-                        <img src="images/information-circle.svg" class="operation-pair" />
-                      </span>
-                    </ng-template>
+                <div class="currency-alert mt-4 justify-content-center align-items-center text-center">
+                  <p class="errorMsg" *ngIf="errorMessage">Please fill the above row</p>
+                  <p class="errorMsg" *ngIf="apiError">{{apiError}}</p>
+                  <div class="d-flex justify-content-center align-items-center">
+                    <img src="images/alert-circle-error.svg">
+                    <span>Each currency will open a new wallet</span>
                   </div>
                 </div>
-              </div>
+                <div class="currency-btn mt-4 mb-3">
+                  <button type="submit" class="continue" [disabled]="addMoreCurrency.invalid"
+                    (click)="nextStep()">Next</button>
+                </div>
+              </form>
             </div>
+          </mat-tab>
 
-            <div class="currency-btn">
-              <button type="submit" class="add-currency" (click)="addCurrencyPair()">+ Add currency pair</button>
+          <mat-tab class="questionnare-tab" label="I am Selling">
+            <div class="tab-content">
+              <form [formGroup]="addMoreCurrency" *ngIf="addMoreCurrency">
+                <h4 class="text-center tab-info">You can buy or sell currency</h4>
+                <div class="buy-sell-currency-title">
+                  <h4>Sell currency - Buy <span class="ils-color">{{defaultCurrency?.value?.currency}}</span></h4>
+                </div>
+                <div class="risk-rate-container d-flex">
+                  <div class="risk-measurement">
+                    <label>Risk when the rate</label>
+                    <div class="d-flex align-items-center mt-2">
+                      <img class="risk-up-btn" src="images/risk-down-icon.svg" />
+                      <label class="risk-updown">Goes down</label>
+                    </div>
+                  </div>
+                  <div class="currency-pair-rows" formArrayName="currencyPair">
+                    <div *ngFor="let pair of currencyPairs().controls; let i = index" class="currency-pair-row">
+                      <div class="currency-pair-container" [formGroupName]="i">
+                        <div class="currency-buy-input">
+                          <div class="country-dropdown">
+                            <label for="currency">I am Buying</label>
+                            <mat-select
+                              [ngClass]="(addMoreCurrency.value.currencyPair[i].direction !== null || i === 0)  && balanceList  ? 'disable form-control country-selection' : 'form-control country-selection'"
+                              name="currency" formControlName="buy"
+                              (selectionChange)="getSign(addMoreCurrency.value.currencyPair[i].buy,i)"
+                              placeholder="Select" panelClass="cus-dropconvert">
+                              <mat-select-trigger class="select-trigger">
+                                <ng-container *ngFor="let currency of supportedHedge">
+                                  <span *ngIf="currency?.currency?.code ==  addMoreCurrency.value.currencyPair[i].buy">
+                                    <img class="currency-image" [src]="currency?.flag" alt="currency_flag" />
+                                    {{ currency?.currency?.code }}
+                                  </span>
+                                </ng-container>
+                              </mat-select-trigger>
+                              <ng-container *ngFor="let currency of supportedHedge">
+                                <mat-option class="option-cus" [value]="currency?.currency?.code">
+                                  <img class="currency-image" [src]="currency?.flag" alt="currency_flag" />
+                                  {{ currency?.currency?.code }}
+                                </mat-option>
+                              </ng-container>
+                            </mat-select>
+                          </div>
+                        </div>
+                        <div class="currency-amount-input">
+                          <label>Amount</label>
+                          <div class="form-currency-wrap">
+                            <span class="amount-prefix">{{addMoreCurrency?.value?.currencyPair[i]?.sign}}</span>
+                            <input placeholder="0.00" appOnlyNumbers appThousandsSeparator class="form-control"
+                              type="text" formControlName="amount" />
+                          </div>
+                          <label class="avg-label">Average per month</label>
+                        </div>
+                        <ng-container *ngIf="i !== initialPairIndex; else otherSvg">
+                          <img src="images/delete-currency-pair.svg" class="operation-pair"
+                            (click)="removeCurrencyPair(i)" />
+                        </ng-container>
+                        <ng-template #otherSvg>
+                          <span class="info-icon" htmlTooltip
+                            tooltipBody="A currency future, also called an FX future,is a contract to exchange currencies on a future date at a fixed price (exchange rate)">
+                            <img src="images/information-circle.svg" class="operation-pair" />
+                          </span>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="currency-btn">
+                  <button type="submit" class="add-currency" (click)="addCurrencyPair()">+ Add currency pair</button>
+                </div>
+                <div class="currency-alert mt-4 justify-content-center align-items-center text-center">
+                  <p class="errorMsg" *ngIf="errorMessage">Please fill the above row</p>
+                  <p class="errorMsg" *ngIf="apiError">{{apiError}}</p>
+                  <div class="d-flex justify-content-center align-items-center warning-wallet">
+                    <img src="images/alert-circle-error.svg">
+                    <span>Each currency will open a new wallet</span>
+                  </div>
+                </div>
+                <div class="currency-btn mt-4 mb-3">
+                  <button type="submit" class="continue" [disabled]="addMoreCurrency.invalid"
+                    (click)="nextStep()">Next</button>
+                </div>
+              </form>
             </div>
-            <div class="currency-alert mt-4 justify-content-center align-items-center text-center">
-              <p class="errorMsg" *ngIf="errorMessage">Please fill the above row</p>
-              <p class="errorMsg" *ngIf="apiError">{{apiError}}</p>
-              <div class="d-flex justify-content-center align-items-center warning-wallet">
-                <img src="images/alert-circle-error.svg">
-                <span>Each currency will open a new wallet</span>
-              </div>
-            </div>
-            <div class="currency-btn mt-4 mb-3">
-              <button type="submit" class="continue" [disabled]="addMoreCurrency.invalid"
-                (click)="nextStep()">Next</button>
-            </div>
-          </form>
-        </div>
-      </mat-tab>
-    </mat-tab-group>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
   </div>
 </div>

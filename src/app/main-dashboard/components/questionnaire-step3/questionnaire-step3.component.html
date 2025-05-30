@@ -1,47 +1,49 @@
-<div class="questionnaire-step3-wrapper">
-  <div class="currency-icon-container">
-    <button class="btn-back-icon" (click)="previousStep()">
-      <img class="mr-2" src="images/back-questionaire.svg">Back
-    </button>
-  </div>
-  <div class="container questionnaire-container">
-    <h3 class="questionnare-title">Thank you</h3>
-    <p class="questionnare-subtitle">You have set your new wallet</p>
-    <div class="currency-wrapper">
-      <div class="country-img-container d-flex">
-        <div class="img-group default-img-group">
-          <div class="w-image">
-            <img
-              src="https://okoora-stage-api2023.azurewebsites.net/Images/Flags/{{defaultCurrency?.value?.currency}}.png"
-              alt="currency" />
-            <span class="main-currency">Main</span>
+<div class="specific-questionare-dialog">
+  <div class="mat-mdc-dialog-container">
+    <div class="questionnaire-step3-wrapper">
+      <div class="currency-icon-container">
+        <button class="btn-back-icon" (click)="previousStep()">
+          <img class="mr-2" src="images/back-questionaire.svg">Back
+        </button>
+      </div>
+      <div class="container questionnaire-container">
+        <h3 class="questionnare-title">Thank you</h3>
+        <p class="questionnare-subtitle">You have set your new wallet</p>
+        <div class="currency-wrapper">
+          <div class="country-img-container d-flex">
+            <div class="img-group default-img-group">
+              <div class="w-image">
+                <img
+                  src="https://okoora-stage-api2023.azurewebsites.net/Images/Flags/{{defaultCurrency?.value?.currency}}.png"
+                  alt="currency" />
+                <span class="main-currency">Main</span>
+              </div>
+              <h6 class="default-currency d-flex justify-content-center gap-2">
+                <span>{{defaultCurrency?.value?.currency}}</span>
+              </h6>
+            </div>
+            <div class="img-group" *ngFor="let data of exposureList">
+              <div class="w-image">
+                <img src="https://okoora-stage-api2023.azurewebsites.net/Images/Flags/{{data?.currency}}.png"
+                  alt="currency" />
+                <img
+                  src="https://okoora-stage-api2023.azurewebsites.net/Images/Flags/{{defaultCurrency?.value?.currency}}.png"
+                  alt="currency" />
+              </div>
+              <h6 class="default-currency d-flex justify-content-center gap-1">
+                <span>{{data?.currency}}</span><label>/{{defaultCurrency?.value?.currency}}</label>
+                <button class="edit-pair-btn" (click)="editQuestionary(data?.currency)"><img class="edit-currency-pair"
+                    src="images/edit-currency-pair-icon.svg"></button>
+              </h6>
+            </div>
           </div>
-          <h6 class="default-currency d-flex justify-content-center gap-2">
-            <span>{{defaultCurrency?.value?.currency}}</span>
-          </h6>
         </div>
-        <div class="img-group" *ngFor="let data of exposureList">
-          <div class="w-image">
-            <img src="https://okoora-stage-api2023.azurewebsites.net/Images/Flags/{{data?.currency}}.png"
-              alt="currency" />
-            <img
-              src="https://okoora-stage-api2023.azurewebsites.net/Images/Flags/{{defaultCurrency?.value?.currency}}.png"
-              alt="currency" />
-          </div>
-          <h6 class="default-currency d-flex justify-content-center gap-1">
-            <span>{{data?.currency}}</span><label>/{{defaultCurrency?.value?.currency}}</label>
-            <button class="edit-pair-btn" (click)="editQuestionary(data?.currency)"><img class="edit-currency-pair"
-                src="images/edit-currency-pair-icon.svg"></button>
-          </h6>
+        <div class="currency-btn">
+          <button type="submit" class="dashboard-btn" mat-dialog-close="true"
+            (click)="closeAlldialog()">Dashboard</button>
+          <p class="mt-3">You can edit, in the settings page</p>
         </div>
       </div>
     </div>
-    <div class="currency-btn">
-      <button type="submit" class="dashboard-btn" mat-dialog-close="true" (click)="closeAlldialog()">Dashboard</button>
-      <p class="mt-3">You can edit, in the settings page</p>
-    </div>
-    <!-- <button class="btn-back-icon" (click)="previousStep()">
-    <img src="../../../../assets/images/back-questionaire.svg">Back
-  </button> -->
   </div>
 </div>

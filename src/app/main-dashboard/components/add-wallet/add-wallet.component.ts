@@ -32,11 +32,6 @@ export class AddWalletComponent {
     });
    of(getCurrenciesNotInWallet).subscribe(res=>{
       this.activeCurrency = res;
-      // let user = JSON.parse(localStorage.getItem('user'));
-      // if(user?.afiiliate?.currency != 'ILS'){
-      //  let index =  this.activeCurrency.findIndex((item:any) => item.currency.code === "ILS") 
-      //  this.activeCurrency.splice(index,1)
-      // }
     });
   }
 

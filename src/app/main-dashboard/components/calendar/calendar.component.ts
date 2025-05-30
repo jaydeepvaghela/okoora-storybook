@@ -439,9 +439,8 @@ export class CalendarComponent {
           let currentTarget = ev?.currentTarget as HTMLElement;
           let dateElement = currentTarget.querySelector('.mbsc-hidden-content');
           let selectedDate = moment(dateElement?.innerHTML).format('YYYY-MM-DD');
-          let holidays = JSON.parse(localStorage.getItem('holidays')!);
           const isWeekend = moment(selectedDate).day() === 0 || moment(selectedDate).day() === 6;
-          if (!holidays.includes(selectedDate) && !isWeekend && this.isDayDisabled(dateElement?.innerHTML)) {
+          if (!isWeekend && this.isDayDisabled(dateElement?.innerHTML)) {
             localStorage.setItem('calendarSelectedDate', selectedDate);
             document.querySelectorAll('.mbsc-timeline-header .mbsc-timeline-header-bg .mbsc-timeline-day .mbsc-timeline-header-date .date-label').forEach((item) => {
               item.classList.remove('today');

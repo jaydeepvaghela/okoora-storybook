@@ -82,7 +82,6 @@ export class MainDashboardComponent {
   ) { }
 
   ngOnInit() {
-    
     this._walletService.activeWallet$.subscribe((wallet) => {
       this.activeCurrency = wallet;
     });
@@ -90,7 +89,7 @@ export class MainDashboardComponent {
     this._walletService.walletDataForLock.subscribe((walletData: any) => {
       if (walletData) {
           const currenciesRequiringHedging = ['HKD', 'SGD', 'THB', 'SEK'];
-          if (currenciesRequiringHedging.includes(walletData.wallet_Currency.code) && walletData.wallet_Hedging == null) {
+          if (currenciesRequiringHedging.includes(walletData?.wallet_Currency?.code) && walletData?.wallet_Hedging == null) {
             this.openQuestionnaireDialog();
           }
       }

@@ -218,7 +218,7 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.rateAfterDestroy = false
     // this.rate = true
-     this._walletService.setwalletwalletDataForLock([])
+    //  this._walletService.setwalletwalletDataForLock([])
 
   }
 

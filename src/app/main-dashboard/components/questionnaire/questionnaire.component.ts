@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { of, Subject } from 'rxjs';
@@ -23,6 +23,7 @@ export class QuestionnaireComponent {
   visiblePopup: any;
   step2BackClicked: boolean = false;
   unSubscribe$ = new Subject<void>();
+  @Input() currentStep = 0;
 
   constructor(private fb: FormBuilder,
     private _walletService: WalletsService,

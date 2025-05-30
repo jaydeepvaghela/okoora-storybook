@@ -1,4 +1,4 @@
-<mat-tab-group id="dashboardSideTabs" class="tab-group-sidetab" (selectedTabChange)="changeType($event)">
+<mat-tab-group id="dashboardSideTabs" class="tab-group-sidetab" (selectedTabChange)="changeType($event)" [selectedIndex]="selectedIndex">
   <mat-tab label="{{lockLabel}}">
     <ng-template matTabContent>
       <app-future-overview-lock-chart> </app-future-overview-lock-chart>

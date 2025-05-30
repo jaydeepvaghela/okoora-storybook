@@ -3,6 +3,7 @@
 
 ::ng-deep {
   .add-wallet {
+    position: relative;
     width: 668px !important;
     height: 560px;
     flex-shrink: 0;
@@ -135,22 +136,20 @@
       }
     }
   }
-}
 
-.action-buttons {
-  .add.disabled {
-    background: $white-gray !important;
-    color: $light-gray !important;
-    cursor: not-allowed;
+  .action-buttons {
+    .add.disabled {
+      background: $white-gray !important;
+      color: $light-gray !important;
+      cursor: not-allowed;
+    }
   }
-}
-.wallet-code-container {
-  .currency-image {
-    width: 30px;
+  .wallet-code-container {
+    .currency-image {
+      width: 30px;
+    }
   }
-}
 
-::ng-deep {
   mat-option {
     .mdc-list-item__primary-text {
       display: flex;
@@ -162,15 +161,15 @@
       }
     }
   }
-}
 
-.close-wallet-container {
-  position: absolute;
-  right: 0;
-  img {
-    width: 25px;
-    @media screen and (max-width: 480px) {
-      width: 22px;
+  .close-wallet-container {
+    position: absolute;
+    right: 0;
+    img {
+      width: 25px;
+      @media screen and (max-width: 480px) {
+        width: 22px;
+      }
     }
   }
 }

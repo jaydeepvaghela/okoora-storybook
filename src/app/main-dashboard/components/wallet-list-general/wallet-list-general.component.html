@@ -1,5 +1,4 @@
-<div *ngIf="roles == '2' && isDashboardBody"
-  [ngClass]="roles == '1' ? 'wallet-main-desh-left' : 'wallet-main-desh-left business-users-list'">
+<div class="wallet-main-desh-left business-users-list">
   <div class="loader-wrapper">
     <div class="wallet-list-swiper-container d-flex align-items-center">
       <div [ngClass]="{'prev-swiper': (walletList.length > 6),
@@ -67,20 +66,6 @@
 
       </div>
       <p class="add-new-wallet-text">Add new wallet</p>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="roles == '2' && walletList?.length && !isDashboardBody" class="wallet-list-business">
-  <div class="flag">
-    <img [src]="selectedWallet.wallet_Flag" id="wallet-flag" [alt]="selectedWallet.wallet_Currency.code">
-  </div>
-  <div class="currency-wrapper">
-    <div class="row-top">
-      <div class="wallet-amount">{{ selectedWallet.wallet_Amount | number:'1.2-2' }} <span class="currency">{{
-          selectedWallet.wallet_Currency.code }}</span></div>
-      <button class="wallet-list-btn" id="wallet-list-btn" mat-icon-button [disabled]="!walletList?.length"
-        (click)="openWalletListDialog()"></button>
     </div>
   </div>
 </div>

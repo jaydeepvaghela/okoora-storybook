@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { DashboardService } from '../../services/dashboard.service';
-import { TranslateService } from '@ngx-translate/core';
 import { getAllCurrencies } from '../../dashboard-data/all-currency-data';
 import { of } from 'rxjs';
 import { MatSelectModule } from '@angular/material/select';
@@ -21,19 +19,10 @@ export class QuestionnaireStep1Component {
   activeHedgeCurrencyList: any = [];
   updateMainCurrencyError!: string;
 
-  constructor(
-    private dashboardService: DashboardService,
-    private translateService: TranslateService) {
+  constructor() {
   }
   ngOnInit() {
     this.showLoader = true
-    // this.dashboardService.GetDefaultCurrency().subscribe(res => {
-    //   this.showLoader = false
-    //   this.defaultCurrencyValue = res?.baseCurency;
-    //   this.defaultCurrency?.patchValue({ 'currency': this.defaultCurrencyValue });
-    // }, (err) => {
-    //   this.showLoader = false
-    // })
     this.getAllCurrencies();
 
   }
@@ -53,26 +42,8 @@ export class QuestionnaireStep1Component {
     this.defaultCurrency?.patchValue({ 'currency': event?.value });
   }
 
-  translateIfExists(trancurrency: string, currency: string): string {
-    return this.translateService.instant(trancurrency) !== trancurrency ? this.translateService.instant(trancurrency) : currency;
-  }
-
   nextStep() {
     this.showLoader = true;
-    let params = {
-      currency: this.defaultCurrencyValue,
-    };
-    // this.dataService.getRequest<{ result: any }>(ApiMap.updateMainCurrency.url, params)
-    //   .subscribe({
-    //     next: (response) => {
-    //       this.updateMainCurrencyError = ''
-    //       this.showLoader = false;
-          this.formStepper.next();
-    //     },
-    //     error: (err) => {
-    //       this.showLoader = false;
-    //       this.updateMainCurrencyError = err?.error?.apiErrorMessage || err?.error?.message;
-    //     }
-    //   });
+    this.formStepper.next();
   }
 }

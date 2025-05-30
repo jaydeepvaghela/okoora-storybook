@@ -21,7 +21,7 @@ export class SideTabsContainerComponent {
   minDate: string;
   activeCurrency: any;
   lockLabel!: string;
-
+  selectedIndex = 0;
   // Highcharts: typeof Highcharts = Highcharts;
   // chartOptions: Highcharts.Options;
 
@@ -43,6 +43,7 @@ export class SideTabsContainerComponent {
 
   
   changeType(event: any) {
+    this.selectedIndex = event.index;
     this.dashboardService.setDashboardSideTabesType(event?.index)
   }
 }
