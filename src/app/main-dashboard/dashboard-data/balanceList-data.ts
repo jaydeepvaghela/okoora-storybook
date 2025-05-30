@@ -14,7 +14,7 @@ export const balanceList = [
         "wallet_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/SGD.png",
         "wallet_Collateral": null,
         "wallet_CreditCollateral": null,
-        "wallet_SupportBaseHedging": false,
+        "wallet_SupportBaseHedging": true,
         "wallet_Hedging": null
     },
     {
@@ -32,7 +32,7 @@ export const balanceList = [
         "wallet_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/THB.png",
         "wallet_Collateral": null,
         "wallet_CreditCollateral": null,
-        "wallet_SupportBaseHedging": false,
+        "wallet_SupportBaseHedging": true,
         "wallet_Hedging": null
     },
     {
@@ -96,7 +96,7 @@ export const balanceList = [
         "wallet_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/SEK.png",
         "wallet_Collateral": null,
         "wallet_CreditCollateral": null,
-        "wallet_SupportBaseHedging": false,
+        "wallet_SupportBaseHedging": true,
         "wallet_Hedging": null
     },
     {

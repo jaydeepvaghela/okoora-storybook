@@ -57,6 +57,8 @@
 
     h3 {
       font-style: normal;
+      font-family: sans-serif;
+      margin-bottom: 0.5rem;
       font-weight: 700;
       font-size: $font-32;
       line-height: 33px;
@@ -74,10 +76,20 @@
       }
     }
 
-    // .text-right {
-    //   text-align: right;
-    //   margin: 6px 0;
-    // }
+    .sub-text {
+      text-align: right;
+      margin: 6px 0;
+    }
+
+    .date {
+      color: $black;
+      margin-bottom: 1rem;
+
+      @media only screen and (max-width: 1440px) {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
   }
 
   p {
@@ -173,7 +185,6 @@
         font-weight: 700;
         font-size: 14px;
         line-height: 19px;
-        text-align: right;
         color: #6f6f7b;
       }
 
@@ -183,14 +194,13 @@
         font-weight: 500;
         font-size: 12px;
         line-height: 16px;
-        text-align: right;
         color: #6f6f7b;
-        padding-right: 25px;
+        padding-left: 25px;
 
         &:after {
           content: "";
           position: absolute;
-          right: 12px;
+          left: 12px;
           top: 5px;
           background: #6f6f7b;
           width: 5px;

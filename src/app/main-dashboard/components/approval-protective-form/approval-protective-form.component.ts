@@ -196,7 +196,9 @@ export class ApprovalProtectiveFormComponent {
   }
 
   continueClick() {
-    this.approvalDialogRef.close();
+    setTimeout(() => {
+      this.approvalDialogRef.close();    
+    }, 1000);
   }
   completeLockup() {
     // this._purchaseHedgeService.completeQuickHedge(this.data?.HedgeData?.strategyId)

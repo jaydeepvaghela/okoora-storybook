@@ -283,8 +283,6 @@ export class WalletListGeneralComponent implements OnInit {
   walletSelectionChange(wallet: WalletBalanceListModal, i: any) {
     this.activeWallet = wallet;
     this._walletService.setActiveWallet(wallet);
-  
-
     localStorage.setItem("activeWallet", JSON.stringify(this.selectedWallet));
     localStorage.setItem("activeWalletForRefresh", i);
     localStorage.setItem("selectedForRefresh", i);

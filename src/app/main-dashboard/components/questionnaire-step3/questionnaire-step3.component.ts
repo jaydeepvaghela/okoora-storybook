@@ -62,7 +62,7 @@ export class QuestionnaireStep3Component {
   getBalanceList(currency:any){
     this._walletService.getAllBalanceList().subscribe((result: any) => {
       this.showLoader = false
-      if(this.addMoreCurrency.value.currencyPair.length == 0){
+      if (this.addMoreCurrency.value.currencyPair.length == 0) {
         this.addMoreCurrency.get('currencyPair').push(this.getCurrencyPair());
 
       }

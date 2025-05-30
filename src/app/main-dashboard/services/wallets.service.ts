@@ -190,7 +190,7 @@ export class WalletsService {
   availableBeneficiary = this.beneficiaryList.asObservable();
 
 
-  private walletDataForLock = new BehaviorSubject<WalletBalanceListModal[]>([]);
+  walletDataForLock = new BehaviorSubject<WalletBalanceListModal[]>([]);
   availableWalletsDataForLock = this.walletDataForLock.asObservable();
 
   public getRefreshValuePayment = new BehaviorSubject<any>({});

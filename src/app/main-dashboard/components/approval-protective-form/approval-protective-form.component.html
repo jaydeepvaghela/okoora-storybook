@@ -8,8 +8,8 @@
 
   <div class="title-approval">
     <h3>Hedging Operation Confirmation</h3>
-    <p>Date: {{currentDate | date:'dd/MM/yyyy'}}</p>
-    <p class="text-right">Below are the details of your request to perform a hedging operation</p>
+    <p class="date">Date: {{currentDate | date:'dd/MM/yyyy'}}</p>
+    <p class="sub-text">Below are the details of your request to perform a hedging operation</p>
   </div>
 
   <div class="box-approval">
@@ -26,10 +26,10 @@
         (data?.protectAllData?.totalYouBuy?.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})) }}
       </span>
     </div>
-    <div class="box-row" *ngIf="data?.type != 'lockUP'">
+    <div class="box-row">
       <span class="app-label">Hedging Expiration Date</span>
       <span class="app-value">
-        {{ data?.sellCurrency?.sign }}{{ sellAmount?.toFixed(2) | number }} {{data?.type == 'lockUP' ? (data?.HedgeData.sellAmount  | currency: data?.HedgeData == null ? '' : data?.HedgeData?.sellCurrency:'symbol' : '1.0-0') : ""}}
+        26/07/2025
       </span>
     </div>
     <div class="box-row">
@@ -70,9 +70,7 @@
       <!-- The following lines are additional conditions not included in the JSON file -->
       <li>Once the transaction has been approved, the client may not cancel or amend it except with the Company’s prior written consent, granted at the Company’s sole discretion and subject to the fees set out in the agreement.</li>
       <li>The Company itself is entitled to cancel or modify the transaction in accordance with the terms of the agreement.</li>
-      <li>Settlement adjustment:
-If, on the settlement date, the official representative exchange rate (“Fixing Rate”) is higher than the contract rate, your account will be credited in the secondary currency with an amount equal to the difference between the two rates multiplied by the notional amount in the primary currency.
-If the Fixing Rate is lower than the contract rate, your account will be debited in the secondary currency by the same calculation.</li>
+      <li>Settlement adjustment: If, on the settlement date, the official representative exchange rate (“Fixing Rate”) is higher than the contract rate, your account will be credited in the secondary currency with an amount equal to the difference between the two rates multiplied by the notional amount in the primary currency. If the Fixing Rate is lower than the contract rate, your account will be debited in the secondary currency by the same calculation.</li>
       <li>The hedge transaction automatically terminates on the maturity date at the time the representative rate is published.</li>
       <li>All transactions are subject to statutory tax withholding.</li>
     </ul>
