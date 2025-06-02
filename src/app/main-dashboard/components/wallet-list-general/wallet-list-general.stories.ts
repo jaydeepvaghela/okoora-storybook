@@ -9,7 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 export default {
-    title: 'Main dashboard/Wallet-list-header',
+    title: 'Main dashboard/First Row Sections/Wallet List Slider',
     component: WalletListGeneralComponent,
     decorators: [
         moduleMetadata({

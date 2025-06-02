@@ -1,7 +1,5 @@
 <div class="hedge-wrapper loader-wrapper">
-  <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
-
-  <div class="label-wrapper">
+   <div class="label-wrapper">
     <h3 class="label">Protect your funds</h3>
     <span class="info-icon" htmlTooltip
       tooltipBody="<b>Safe</b> (up\down):  Protect your funds by purchasing currency insurance. There is no risk except
@@ -32,9 +30,6 @@
         <mat-datepicker id="date_picker_open_hedge_chart" (click)="dateClicked()" #picker
           panelClass="custom-datepicker" [calendarHeaderComponent]="customCalendar"></mat-datepicker>
       </div>
-      <!-- <div class="error-msg">
-        <span *ngIf="errorMsg">{{errorMsg}}</span>
-      </div> -->
       <div class="error-msg">
         <span>{{selectedDateMsg}}</span>
       </div>
@@ -65,27 +60,12 @@
       You pay only the fee cost">i</span>
   </div>
   <div class="total-cost" *ngIf="createdHedgeData && !errorMsg">Total cost:{{hedgeCost}} </div>
-  <!-- <div *ngIf="createdHedgeData && !errorMsg && hedgeType == 'rangeUp'">
-  <label> This rate is valid for</label>
-  <countdown  #cd  [config]="config" (event)="handleEvent($event)"></countdown>
-</div> -->
-  <!-- <div class="error-hedgedate" *ngIf="errorMsg">
-    <span class="error-msg">
-      {{errorMsg}}
-    </span>
-  </div> -->
   <div class="hedge-chart" *ngIf="!errorMsg">
-    <!-- <apx-chart id="hedgeChart" [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
-      [stroke]="chartOptions.stroke" [tooltip]="chartOptions.tooltip" [dataLabels]="chartOptions.dataLabels"
-      [fill]="chartOptions.fill" [yaxis]="chartOptions.yaxis" [title]="chartOptions.title"
-      [annotations]="chartOptions.annotations" [legend]="chartOptions.legend"></apx-chart> -->
 
     <img *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Up"
       [src]=" hedgeType == 'safeUp' ? 'images/hedgeChartSafeUp.svg' : 'images/range-up-hedge.svg'" />
     <img *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Down"
       [src]=" hedgeType == 'safeUp' ? 'images/hedgeChartSafeDown.svg' : 'images/range-down-hedge.svg'" />
-    <!-- <span [ngClass]="{'first-direction-strike': activeCurrency?.wallet_Hedging?.direction == Directions?.Up}"
-      *ngIf="hedgeType == 'safeUp' && !createdHedgeData?.strike" class="initial-strike"> X </span> -->
     <span *ngIf="hedgeType == 'safeUp'"
       [ngClass]="{'up-direction-strike-safeUp': activeCurrency?.wallet_Hedging?.direction == Directions?.Up, 'down-direction-strike-safeUp': activeCurrency?.wallet_Hedging?.direction == Directions?.Down }">
       {{selectedHedgeAmount?.toFixed(4)}}
@@ -110,23 +90,6 @@
         {{createdHedgeData?.obligationRate.toFixed(4)}}
       </span>
     </div>
-
-    <!-- <span
-      [ngClass]="{'second-direction-strike': activeCurrency?.wallet_Hedging?.direction == Directions?.Down,'first-direction-strike': activeCurrency?.wallet_Hedging?.direction == Directions?.Up}"
-      *ngIf="hedgeType == 'safeUp' && createdHedgeData?.strike" class="none-strike">
-      {{createdHedgeData?.strike.toFixed(1)}} </span> -->
-    <!-- <span
-      [ngClass]="{'first-direction-range-strike-one': activeCurrency?.wallet_Hedging?.direction == Directions?.Up, 'second-direction-range-strike-one': activeCurrency?.wallet_Hedging?.direction == Directions?.Down}"
-      *ngIf="hedgeType == 'rangeUp'" class="none-strike">{{ activeCurrency?.wallet_Hedging?.direction == Directions?.Up
-      ? createdHedgeData?.strike ?
-      createdHedgeData?.strike.toFixed(1) : "X" : createdHedgeData?.obligationRate ?
-      createdHedgeData?.obligationRate.toFixed(1) : "Y" }}</span>
-    <span
-      [ngClass]="{'first-direction-range-strike-two': activeCurrency?.wallet_Hedging?.direction == Directions?.Up, 'second-direction-range-strike-two': activeCurrency?.wallet_Hedging?.direction == Directions?.Down}"
-      *ngIf="hedgeType == 'rangeUp'" class="none-strike">{{ activeCurrency?.wallet_Hedging?.direction == Directions?.Up
-      ? createdHedgeData?.obligationRate ?
-      createdHedgeData?.obligationRate.toFixed(1) : "Y" : createdHedgeData?.strike ?
-      createdHedgeData?.strike.toFixed(1) : "X" }}</span> -->
   </div>
   <button id="execute_btn_hedge_chart" class="execute-btn-initial" *ngIf="errorMsg || !typedHedgeAmount || !selectedDate || typedHedgeAmountMsg"
     (click)="executeHedge()" >Execute</button>

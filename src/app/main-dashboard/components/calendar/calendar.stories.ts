@@ -14,7 +14,7 @@ import { TableMenuComponent } from '../table-menu/table-menu.component';
 import { DashboardTableViewComponent } from '../dashboard-table-view/dashboard-table-view.component';
 
 export default {
-  title: 'Main dashboard/Calendar',
+  title: 'Main Dashboard/Third Row Sections/Dashboard Calendar',
   component: CalendarComponent,
   decorators: [
     moduleMetadata({

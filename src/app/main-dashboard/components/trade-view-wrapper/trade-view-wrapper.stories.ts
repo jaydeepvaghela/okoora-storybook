@@ -6,7 +6,7 @@ import { MarketOverviewChartComponent } from '../market-overview-chart/market-ov
 import { HtmlTooltipDirective } from '../../../directives/html-tooltip.directive';
 
 export default {
-  title: 'Main Dashboard/Trade View Wrapper',
+  title: 'Main Dashboard/Fourth Row Sections/Trade View Wrapper',
   component: TradeViewWrapperComponent,
   decorators: [
     moduleMetadata({

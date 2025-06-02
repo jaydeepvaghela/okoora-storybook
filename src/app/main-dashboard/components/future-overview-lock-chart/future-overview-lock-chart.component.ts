@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnDestroy, ViewChild } from '@angular/core';
 
 import {
-  ChartComponent,
   ApexAxisChartSeries,
   ApexChart,
   ApexXAxis,
@@ -120,13 +119,12 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   rateAfterDestroy: boolean = true;
   isCallHegeGraphData = false;
   @Input('getLockHedgeGrafhData') getLockHedgeGrafhData: any;
+  @Input() currentExposureRate!: { [key: string]: number };
   constructor(
     public dialog: MatDialog,
     private _walletService: WalletsService,
-    private dashboardService: DashboardService,
     private cd: ChangeDetectorRef,
     @Inject(MAT_DATE_LOCALE) private dateLocale: string,
-    private dateAdapter: DateAdapter<Date>,
   ) {
     this.dateLocale = 'en-US';
     const today = new Date();
@@ -145,8 +143,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
 
     const nextYearDate = new Date(currentDate.getFullYear() + 1, currentDate.getMonth(), currentDate.getDate());
     this.getNotradeList(nextYearDate)
-
-    // this.currencyOfUser = 'https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png';
     this._walletService.availableWalletsData.subscribe((data: any) => {
       this.walletList = data
     })
@@ -158,11 +154,9 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
           this.cd.detectChanges()
         })
       }
-      // this.selectedTimeFrame = '3 months';
       this.updateDateFilter();
 
       this.currencyOfUser = this.walletList?.find((x: any) => x.wallet_Currency?.code === this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency)?.wallet_Flag
-      // console.log(" base_currency", this.currencyOfUser);
       delete this.createdHedgeData;
       delete this.errorMsg;
       this.lockDateValue = null;
@@ -182,10 +176,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
     this._walletService?.availableWalletsData.subscribe((data: any) => {
       if (data.length != 0) {
         this.filteredCurrencyOfUser = this.walletList?.find((x: any) => x.wallet_Currency?.code.toLowerCase() === this.activeCurrency?.wallet_Currency?.code.toLowerCase())
-        // console.log("data", data);
-        // console.log("currencyOfUser", this.filteredCurrencyOfUser)
-        // console.log(this.currentCurrencyValue);
-        // console.log("SON.parse(localStorage.getItem('currentCurrencyValue'))", localStorage.getItem('currentCurrencyValue'))
          if (!this.rate) {
           this.getExpoureRate(this.filteredCurrencyOfUser?.wallet_Currency?.code)
          }
@@ -195,20 +185,17 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
 
     this._walletService.availableWalletsDataForLock.subscribe((data: any) => {
       if (data.length != 0 && this.rateAfterDestroy) {
-        // console.log("lock....", data);
         this.getExpoureRate(data?.wallet_Currency?.code)
       }
     })
 
     this.myHolidayDates = [];
-    // this.userRoleType = this._authService.getRoleType();
   }
 
   getExpoureRate(code: any) {
     if (code) {
       this.rate = true
       of(getCurrentExplosureRate).subscribe((data: any) => {
-        // console.log("rate", this.currentCurrencyValue?.[this.activeCurrency?.wallet_Currency?.code]);
         this.currentCurrencyValue = data;
         localStorage.setItem('currentCurrencyValue', this.currentCurrencyValue?.[this.activeCurrency?.wallet_Currency?.code])
         this.cd.detectChanges()
@@ -218,13 +205,9 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.rateAfterDestroy = false
-    // this.rate = true
-    //  this._walletService.setwalletwalletDataForLock([])
-
   }
 
   ngDoCheck() {
-    // this.userRoleType = this._authService.getRoleType();
     this.cd.detectChanges()
   }
 
@@ -251,8 +234,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
     this.DateClickedFlagForAPI = true;
     this.timeFrameClickedFlag = false;
     this.dateClickedFlag = true;
-
-    // this.lockUpDatepicker.close();
   }
 
   updateDateFilter() {
@@ -282,7 +263,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
         this.lockDate = endDate
         this.getNotradeList(this.endDateValue)
         this.getDateValue(this.endDateValue)
-
         break;
       case '9 months':
         endDate = addMonths(currentDate, 9);
@@ -291,7 +271,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
         this.lockDate = endDate
         this.getNotradeList(this.endDateValue)
         this.getDateValue(this.endDateValue)
-
         break;
       case '1 year':
         endDate = addMonths(currentDate, 12);
@@ -300,14 +279,12 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
         this.lockDate = endDate
         this.getNotradeList(this.endDateValue)
         this.getDateValue(this.endDateValue)
-
         break;
       default:
         endDate = currentDate;
 
       this.getNotradeList(this.endDateValue)
       this.getDateValue(this.endDateValue)
-
     }
 
     this.lockUpDatepickerFilter = (date: Date | null) => {
@@ -320,7 +297,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
         const time = parsedDate.getTime();
         const isWeekend = day === 0 || day === 6;
         const isHoliday = this.myHolidayDates.some((holidayDate: Date) => holidayDate.getTime() === time);
-        const isCurrentDate = parsedDate.toDateString() === currentDate.toDateString();
         if (this.selectedTimeFrame) {
           return ((!isWeekend && !isHoliday && isAfter(parsedDate, currentDate) && isBefore(parsedDate, endDate)));
         }
@@ -334,14 +310,12 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
 
 
   getGraphData(pair: any, points: any) {
-    // console.log("pair", pair + "ILS");
-
     let direction = this.activeCurrency?.wallet_Hedging?.direction
     let currencyPair = this.activeCurrency?.wallet_Hedging?.pair
     if (direction && currencyPair && !this.isCallHegeGraphData) {
       this.isCallHegeGraphData = true;
 
-      of(getLockHedgeGrafhData || this.getLockHedgeGrafhData).subscribe((data: any) => {
+      of(getLockHedgeGrafhData).subscribe((data: any) => {
         this.seriesData = data
 
         for (var i = 0; i < this.seriesData?.spotPoints?.length; i++) {
@@ -372,7 +346,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
           }
 
         }
-        // console.log(this.colorForstrock);
 
         let min = Math.min(...this.seriesData?.spotPoints)
         let max = Math.max(...this.seriesData?.spotPoints)
@@ -413,8 +386,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
                     color: "#FFF",
                     background: "#000000"
                   },
-
-                  // text: this.seriesData?.spotPoints[0]?.toFixed(2).toString(),
                   text: this.seriesData?.spotPoints[0]?.toFixed(4).toString(),
 
                 }
@@ -426,12 +397,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
                 fillColor: "white",
                 borderColor: 'white',
                 opacity: 0,
-                // label: {
-                //   style: {
-                //     fontSize: "10px",
-                //     background: "rgba(240, 72, 83, 0.05)",
-                //   },
-                // }
               },
             ],
 
@@ -473,7 +438,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
             },
           },
           title: {
-            // text: "Line with Annotations",
             align: "left"
           },
           labels: this.seriesData?.timesPoints,
@@ -523,18 +487,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
 
   getNotradeList(endDate: any) {
     this.myHolidayDates = [];
-    let ToDate = moment(endDate).format(DateFormat?.dateInput)
-    let FromDate = moment(new Date()).format(DateFormat?.dateInput)
-    let currency = this.activeCurrency?.wallet_Currency?.code + "," + this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency;
-    // this._commonService.noTradeList(FromDate, ToDate, currency).subscribe((data: any) => {
-    //   this.noTradeListData = data
-    //   // console.log(data);
-    //   for (var i = 0; i < data.length; i++) {
-    //     this.myHolidayDates.push(new Date(moment(data[i]?.date).format(DateFormat.parse?.dateInput)))
-    //   }
-    //   this.getDateValue(endDate)
-    //   // console.log("after this.myHolidayDates", this.myHolidayDates.length);
-    // })
   }
 
   getDateValue(endDate: any) {
@@ -671,11 +623,9 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
         });
     }
     else {
-
       this.errFlag = true;
       this.timeFrameMsg = "Please select time frame"
       this.dateErrMsg = "Please select date"
-
     }
 
 
@@ -711,32 +661,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   }
 
   getTimeframe(value: any, date: any) {
-    const currentDate = new Date();
-
-    let lockDate = moment(date).format(DateFormat.dateInput);
-
-    // let endDate = addMonths(currentDate, value);
-    let startDateValue = moment(currentDate).format(DateFormat.dateInput)
-    // let endDateValue = moment(endDate).format(DateFormat.dateInput);
-
-
-    var d1: any = startDateValue.split("/");
-    // var d2: any = endDateValue.split("/");
-    var c: any = lockDate.split("/");
-
-    var from = new Date(d1[2], parseInt(d1[1]) - 1, d1[0]);
-    // var to = new Date(d2[2], parseInt(d2[1]) - 1, d2[0]);
-    var check = new Date(c[2], parseInt(c[1]) - 1, c[0]);
-
-    // console.log(check > from && check < to)
-    // if (check > from && check < to) {
-    //   this.selectedTimeFrame = value == '1' ? value + ' month' : value == '12' ? '1 year' : value + ' months'
-    //   this.updateDateFilter()
-    // }
-    // else {
-    //   value == '1' ? this.getTimeframe(3, date) : value == '3' ? this.getTimeframe(6, date) : value == '6' ? this.getTimeframe(9, date) : this.getTimeframe(12, date)
-    // }
-
   }
 
   myHolidayFilter = (d: Date): boolean => {

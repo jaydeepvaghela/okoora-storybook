@@ -10,8 +10,6 @@ import { QuestionnaireStep2Component } from '../questionnaire-step2/questionnair
 import { QuestionnaireStep3Component } from '../questionnaire-step3/questionnaire-step3.component';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
-
-
 const mockCurrencies = [
     {
         "id": 1,
@@ -254,7 +252,7 @@ const mockCurrencies = [
 ]
 
 export default {
-  title: 'Main dashboard/Wallet-list-header/Questionnaire-popups',
+  title: 'Main dashboard/First Row Sections/Questionnaire Popups',
   component: QuestionnaireComponent,
   decorators: [
     moduleMetadata({

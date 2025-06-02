@@ -102,7 +102,7 @@ const mockCurrencies = [
 ];
 
 export default {
-  title: 'Main dashboard/Wallet-list-header/Add-wallet',
+  title: 'Main dashboard/First Row Sections/Add Wallet Popup',
   component: AddWalletComponent,
   decorators: [
     moduleMetadata({

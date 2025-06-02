@@ -32,19 +32,6 @@ import { of } from 'rxjs';
 import { CustomCalendarHeader } from '../shared/custom-calendar-header/custom-calendar-header.component';
 import { HtmlTooltipDirective } from '../../../directives/html-tooltip.directive';
 import { ApprovalProtectiveFormComponent } from '../approval-protective-form/approval-protective-form.component';
-// import { ApprovalProtectiveFormComponent } from 'src/app/purchase-orders/components/approval-protective-form/approval-protective-form.component';
-// import { CustomCalendarHeader } from 'src/app/shared/components/custom-calendar-header/custom-calendar-header.component';
-// import { WalletsService } from 'src/app/wallets/services/wallets.service';
-// import { DashboardService } from '../../../../../../OkooraFront2023/src/app/dashboard/services/dashboard.service';
-// import DateFormat from 'src/app/common/constants/DateFormat';
-// import * as moment from 'moment';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { PurchaseHedgeService } from 'src/app/purchase-orders/services/purchase-hedge.service';
-// import { CurrencyPipe } from '@angular/common';
-// import { CommonService } from 'src/app/common/services/common.service';
-// import { Direction } from 'src/app/contacts/enums/alertWallet.enum';
-// import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -129,18 +116,13 @@ export class FutureOverviewHedgeChartComponent {
       delete this.createdHedgeData;
       delete this.typedHedgeAmount;
       delete this.errorMsg;
-      // this.selectedDate = new Date()
       this.lockDate = moment(this.selectedDate).format(DateFormat.dateInput);
       this.activeCurrency = wallet;
       this.getGraphData()
     })
     this.myHolidayDates = [];
-    // this.userRoleType = this._authService.getRoleType();
   }
   
-  ngDoCheck(){
-    // this.userRoleType = this._authService.getRoleType();
-  }
 
   ngAfterViewInit() {
     this.getNotradeList(this.maxAllowedDateValue)
@@ -211,17 +193,6 @@ export class FutureOverviewHedgeChartComponent {
 
   createHedge() {
     this.showLoader = true;
-    // this.lockDate = moment(event.value).format(DateFormat.dateInput);
-    // let createHedgeObject = {
-    //   amount: this.typedHedgeAmount?.replace(/\,/g, ''),
-    //   productType: this.hedgeType == 'safeUp' ? "2" : "3",
-    //   // productType: "1",
-    //   expiryDate: this.lockDate,
-    //   currencyPair: this.activeCurrency?.wallet_Hedging?.pair,
-    //   Strike: this.hedgeType == 'safeUp' ? this.selectedHedgeAmount : "",
-    //   // Strike: "",
-    //   direction: this.activeCurrency?.wallet_Hedging?.direction
-    // }
     of(createHedgeByCategory).subscribe((data: any) => {
       this.createdHedgeData = data
       let splitCost = this.createdHedgeData?.feeCost?.split(" ");
@@ -229,9 +200,6 @@ export class FutureOverviewHedgeChartComponent {
       this.showLoader = false;
       delete this.errorMsg
       this.cd.detectChanges();
-      // this.hedgeType == 'rangeUp' ? this.showConfirmation = true : this.openLockup(this.createdHedgeData);
-
-
     }, (err: { error: { apiErrorMessage: string; }; }) => {
       if (err.error.apiErrorMessage == 'Expiry Date Not Valid') {
         this.selectedDateMsg = err.error.apiErrorMessage;
@@ -255,21 +223,7 @@ export class FutureOverviewHedgeChartComponent {
     this.showLoader = false;
     if (e.action == 'done') {
       this.showLoader = true;
-
-      // if (this.hedgeType == 'rangeUp') {
-      //   this._purchaseHedgeService
-      //     .refreshlockHedge(this.createdHedgeData?.strategyId)
-      //     .subscribe((result: any) => {
-      //       if (result) {
-      //         this.showLoader = false;
-      //         this.createdHedgeData['strike'] == result?.result?.strike
-      //         // this.strike = result?.result?.strike;
-      //         // this.sellAmount = result?.items[0]?.sellAmount?.toFixed(2);
-      //       }
-      //     });
-      // }
       this.config = { leftTime: 20, format: 'mm:ss' };
-
     }
   }
 
@@ -286,15 +240,6 @@ export class FutureOverviewHedgeChartComponent {
   }
 
   getNotradeList(endDate: any) {
-    // this.myHolidayDates = [];
-    // let ToDate = moment(endDate).format(DateFormat?.dateInput)
-    // let FromDate = moment(new Date()).format(DateFormat?.dateInput)
-    // let currency = this.activeCurrency?.wallet_Currency?.code + "," + this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency
-    // // this._commonService.noTradeList(FromDate, ToDate, currency).subscribe((data: any) => {
-    // //   for (var i = 0; i < data.length; i++) {
-    // //     this.myHolidayDates.push(new Date(moment(data[i]?.date).format(DateFormat.parse?.dateInput)))
-    // //   }
-    // // })
   }
   openLockup(createdHedgeData: any) {
     this.showConfirmation = false;
@@ -333,6 +278,4 @@ export class FutureOverviewHedgeChartComponent {
   hideConfPopup() {
     this.showConfirmation = false;
   }
-
-
 }

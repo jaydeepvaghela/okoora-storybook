@@ -1,12 +1,13 @@
 @import "../../../../assets/scss/variable";
 @import "../../../../assets/scss/mixins";
 
-
 ::ng-deep {
   .hedge-wrapper {
     height: 100%;
     padding: 34px 58px 25px;
     position: relative;
+    max-width: 536px;
+    box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
 
     @media (max-width: 1800px) {
       padding-left: 35px;

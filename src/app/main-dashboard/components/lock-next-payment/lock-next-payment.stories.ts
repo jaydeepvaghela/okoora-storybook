@@ -17,7 +17,7 @@ const Directions = {
 } 
 
 export default {
-  title: 'Main Dashboard/Lock Next Payment',
+  title: 'Main Dashboard/Fourth Row Sections/Lock Next Payment Slides',
   component: LockNextPaymentComponent,
   decorators: [
     moduleMetadata({
