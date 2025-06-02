@@ -19,7 +19,7 @@
               <form [formGroup]="addMoreCurrency" *ngIf="addMoreCurrency">
                 <h4 class="text-center tab-info">You can buy or sell currency</h4>
                 <div class="buy-sell-currency-title">
-                  <h4>Buy currency - Sell <span class="ils-color">{{defaultCurrency?.value?.currency}}</span></h4>
+                  <h4>Buy currency - Sell <span class="ils-color">{{defaultCurrency?.value?.currency || defaultCurrencyValue }}</span></h4>
                 </div>
                 <div class="risk-rate-container d-flex">
                   <div class="risk-measurement">
@@ -37,7 +37,7 @@
                           <div class="country-dropdown">
                             <label for="currency">I am Buying</label>
                             <mat-select
-                              [ngClass]="(addMoreCurrency.value.currencyPair[i].direction !== null || i === 0) && balanceList  ? 'disable form-control country-selection' : 'form-control country-selection'"
+                              [ngClass]="(addMoreCurrency.value.currencyPair[i].direction !== null || i === 0) && balanceList ? 'form-control country-selection' : 'form-control country-selection'"
                               name="currency" formControlName="buy"
                               (selectionChange)="getSign(addMoreCurrency.value.currencyPair[i].buy,i)"
                               placeholder="Select" panelClass="cus-dropconvert">
@@ -120,9 +120,9 @@
                       <div class="currency-pair-container" [formGroupName]="i">
                         <div class="currency-buy-input">
                           <div class="country-dropdown">
-                            <label for="currency">I am Buying</label>
+                            <label for="currency">I am Selling</label>
                             <mat-select
-                              [ngClass]="(addMoreCurrency.value.currencyPair[i].direction !== null || i === 0)  && balanceList  ? 'disable form-control country-selection' : 'form-control country-selection'"
+                              [ngClass]="(addMoreCurrency.value.currencyPair[i].direction !== null || i === 0)  && balanceList  ? 'form-control country-selection' : 'form-control country-selection'"
                               name="currency" formControlName="buy"
                               (selectionChange)="getSign(addMoreCurrency.value.currencyPair[i].buy,i)"
                               placeholder="Select" panelClass="cus-dropconvert">

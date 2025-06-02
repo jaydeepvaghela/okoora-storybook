@@ -1,0 +1,72 @@
+@import "../../../../assets/scss/variable";
+@import "../../../../assets/scss/mixins";
+
+// .third-row {
+//   @include flex(flex-start, flex-start, row);
+//   gap: 21px;
+//   margin-top: 74px;
+//   margin-bottom: 30px;
+
+//   @media only screen and (max-width: 1024px) {
+//     flex-direction: column;
+//     margin-bottom: 30px;
+//   }
+
+//   .trading-view-box {
+//     border-radius: 10px;
+//     width: 65%;
+//     box-shadow: none;
+
+//     @media only screen and (max-width: 1024px) {
+//       width: 100%;
+//       margin-top: 0px;
+//     }
+
+    .section-title {
+      @include flex(flex-start, flex-start, row);
+
+      @media only screen and (max-width: 1440px) {
+        font-size: $font-18;
+      }
+
+      font-size: $font-22;
+      line-height: normal;
+      font-weight: 700;
+      color: $dialog-inner-heading-color;
+      margin-bottom: 10px;
+
+      .info-icon {
+        @include flex(center, center, row);
+        height: 16px;
+        width: 16px;
+        border: 1px solid $form-label;
+        border-radius: 20px;
+        font-size: $font-12;
+        font-weight: bold;
+      }
+    }
+
+    .box-card {
+      box-shadow: none;
+    }
+//   }
+
+//   .lock-payment-box {
+//     border-radius: 10px;
+//     width: 35%;
+//     box-shadow: none;
+
+//     @media only screen and (max-width: 1440px) {
+//       width: 33% !important;
+//     }
+
+//     @media only screen and (max-width: 1024px) {
+//       width: 100% !important;
+//       margin-top: 0 !important;
+//     }
+
+//     @media only screen and (max-width: 1121px) {
+//       margin-top: -20px;
+//     }
+//   }
+// }

@@ -1,0 +1,20 @@
+<div class="box-with-error-msg">
+    <div class="summary-box current-hedge">
+        <div class="box-content">
+            <span class="box-label">Current Hedge</span>
+            <span class="box-value box-value-clamp-current-hedge">{{activeCurrency?.wallet_Hedging &&
+                activeCurrency?.wallet_Hedging?.percentage != null && activeCurrency?.wallet_Hedging?.percentage ?
+                ((activeCurrency?.wallet_Hedging?.percentage | number:'1.2-2') + '%') : '-'}}</span>
+        </div>
+        <div class="hedge-amount">
+            <span class="total-amount">{{activeCurrency?.wallet_Hedging &&
+                activeCurrency?.wallet_Hedging?.totalHedging != null && activeCurrency?.wallet_Hedging?.totalHedging ?
+                (activeCurrency?.wallet_Currency?.sign + (activeCurrency?.wallet_Hedging?.totalHedging |
+                number:'1.2-2')) : '-'}}</span>/
+            <span class="available-amount">{{activeCurrency?.wallet_Hedging &&
+                activeCurrency?.wallet_Hedging?.exposureAmount != null && activeCurrency?.wallet_Hedging?.exposureAmount
+                ? (activeCurrency?.wallet_Currency?.sign + (activeCurrency?.wallet_Hedging?.exposureAmount |
+                number:'1.2-2')) : '-'}}</span>
+        </div>
+    </div>
+</div>

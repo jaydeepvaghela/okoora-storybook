@@ -10,58 +10,16 @@
           <img src="images/drag-haldle.svg" alt="drag-haldle" id="deag-handle">
         </div>
         <div class="box-with-error-msg">
-          <div class="summary-box free-balance">
-            <div class="box-content">
-              <span class="box-label" id="free-balance-label">Free Balance</span> 
-              <span
-                class="box-value box-value-clamp"><span class="currency-icon">{{activeCurrency?.wallet_Currency?.sign}}</span>{{activeCurrency?.wallet_Available
-                | number:'1.2-2' }}</span>
-            </div>
-          </div>
+          <app-free-balance-box [activeCurrency]="activeCurrency"></app-free-balance-box>
         </div>
         <div class="box-with-error-msg">
-          <div class="summary-box open-invoices loader-wrapper">
-            <div class="box-content">
-              <span class="box-label">Open Invoices</span>
-              <span class="box-value box-value-clamp-open-invoices">{{dashboardpanelData?.openInvoices ?
-                (dashboardpanelData?.openInvoices) : '-'}}</span>
-            </div>
-            <div class="invoices-status">
-              <span class="status at-risk">At Risk({{dashboardpanelData?.invoicesAtRisk ?
-                dashboardpanelData?.invoicesAtRisk : '-'}})</span>
-              <span class="status at-opportunity">At Opportunity({{dashboardpanelData?.invoicesAtOpportunity ?
-                dashboardpanelData?.invoicesAtOpportunity : '-'}})</span>
-            </div>
-          </div>
-          <div class="error-msg-dashbord">
-            <span class="errormsg" id="error-msg" *ngIf="errormsg">{{errormsg}}</span>
-          </div>
+          <app-open-invoices-box></app-open-invoices-box>
         </div>
         <div class="box-with-error-msg">
-          <div class="summary-box current-hedge">
-            <div class="box-content">
-              <span class="box-label">Current Hedge</span>
-              <span class="box-value box-value-clamp-current-hedge">{{activeCurrency?.wallet_Hedging &&
-                activeCurrency?.wallet_Hedging?.percentage != null && activeCurrency?.wallet_Hedging?.percentage ?
-                ((activeCurrency?.wallet_Hedging?.percentage | number:'1.2-2') + '%') : '-'}}</span>
-            </div>
-            <div class="hedge-amount">
-              <span class="total-amount">{{activeCurrency?.wallet_Hedging &&
-                activeCurrency?.wallet_Hedging?.totalHedging != null && activeCurrency?.wallet_Hedging?.totalHedging ?
-                (activeCurrency?.wallet_Currency?.sign + (activeCurrency?.wallet_Hedging?.totalHedging | number:'1.2-2')) : '-'}}</span>/
-              <span class="available-amount">{{activeCurrency?.wallet_Hedging &&
-                activeCurrency?.wallet_Hedging?.exposureAmount != null && activeCurrency?.wallet_Hedging?.exposureAmount
-                ? (activeCurrency?.wallet_Currency?.sign + (activeCurrency?.wallet_Hedging?.exposureAmount | number:'1.2-2')) : '-'}}</span>
-            </div>
-          </div>
+          <app-current-hedge-box [activeCurrency]="activeCurrency"></app-current-hedge-box>
         </div>
         <div class="box-with-error-msg">
-          <div class="summary-box risk-chart loader-wrapper">
-            <app-market-risk-chart [marketRisk]="dashboardpanelData?.marketRisk"></app-market-risk-chart>
-          </div>
-          <div class="error-msg-dashbord">
-            <span class="errormsg" id="error-msg" *ngIf="errormsg">{{errormsg}}</span>
-          </div>
+          <app-market-risk-box></app-market-risk-box>
         </div>
       </div>
       <div *ngIf="item.index == 2" class="drag-item second-row" cdkDrag>
@@ -80,14 +38,16 @@
         <div class="drag-handle" cdkDragHandle>
           <img src="images/drag-haldle.svg" alt="drag-haldle">
         </div>
+        <!-- <app-trade-view-wrapper [lastPaymentRateData]="lastPaymentRateData"></app-trade-view-wrapper> -->
         <div id="tradingViewChart" class="trading-view-box">
-          <h2 class="section-title">Last payment rate<span class="info-icon" htmlTooltip
+          <!-- <h2 class="section-title">Last payment rate<span class="info-icon" htmlTooltip
               tooltipBody="Refers to the rate at which a payment was made. Monitoring the last payment rate can be essential for future payment and managing cash flow.">i</span>
           </h2>
           <mat-card class="box-card">
             <app-market-overview-chart [lastPaymentRateData]="lastPaymentRateData"></app-market-overview-chart>
-          </mat-card>
-        </div>
+          </mat-card> -->
+          <app-trade-view-wrapper [lastPaymentRateData]="lastPaymentRateData"></app-trade-view-wrapper>
+        </div> 
         <div class="lock-payment-box">
           <div class="section-title">
             <h2>Lock your next payment</h2>

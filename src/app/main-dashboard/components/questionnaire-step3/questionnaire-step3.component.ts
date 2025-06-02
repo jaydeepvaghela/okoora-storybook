@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 export class QuestionnaireStep3Component {
   @Input('formStepper') formStepper?: any;
   @Input('defaultCurrency') defaultCurrency: any;
+  @Input('defaultCurrencyValue') defaultCurrencyValue: any;
   @Input('addMoreCurrency') addMoreCurrency: any;
   showLoader: boolean = false;
   exposureList:any;
@@ -29,7 +30,7 @@ export class QuestionnaireStep3Component {
   }
 
   ngOnInit() {
-    this.showLoader = true
+    console.log("defaultCurrencyValue", this.defaultCurrencyValue);
     of(GetDefaultCurrencyData).subscribe((res:any) => {
       this.showLoader = false
       this.exposureList = res?.exposers

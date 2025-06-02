@@ -303,20 +303,23 @@ type Story = StoryObj<QuestionnaireComponent>;
 export const Step1: Story = {
   args: {
     currentStep: 0,
-    currencyList: mockCurrencies
+    currencyList: mockCurrencies,
+    defaultCurrency: 'ILS'
   }
 };
 
 export const Step2: Story = {
   args: {
     currentStep: 1,
-    currencyList: mockCurrencies
+    currencyList: mockCurrencies,
+    defaultCurrency: 'ILS'
   }
 };
 
 export const Step3: Story = {
   args: {
     currentStep: 2,
-    currencyList: mockCurrencies
+    currencyList: mockCurrencies,
+    defaultCurrency: 'ILS'
   }
 };

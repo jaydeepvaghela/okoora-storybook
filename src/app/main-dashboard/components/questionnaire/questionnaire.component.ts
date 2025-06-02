@@ -24,9 +24,8 @@ export class QuestionnaireComponent {
   step2BackClicked: boolean = false;
   unSubscribe$ = new Subject<void>();
   @Input() currentStep = 0;
-
+  @Input() defaultCurrency!: any;
   constructor(private fb: FormBuilder,
-    private _walletService: WalletsService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {

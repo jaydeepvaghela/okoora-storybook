@@ -14,7 +14,7 @@ export class QuestionnaireStep1Component {
   @Input('formStepper') formStepper?: any;
   @Input('defaultCurrency') defaultCurrency: any;
   @Input('currencyList') currencyList: any;
-  defaultCurrencyValue: any;
+  @Input('defaultCurrencyValue') defaultCurrencyValue: any;
   showLoader: boolean = false;
   activeHedgeCurrencyList: any = [];
   updateMainCurrencyError!: string;
@@ -22,6 +22,7 @@ export class QuestionnaireStep1Component {
   constructor() {
   }
   ngOnInit() {
+    console.log('defaultCurrency', this.defaultCurrencyValue);
     this.showLoader = true
     this.getAllCurrencies();
 

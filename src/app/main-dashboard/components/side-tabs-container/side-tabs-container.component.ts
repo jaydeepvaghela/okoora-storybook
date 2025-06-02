@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import {
   ChartComponent,
 } from "ng-apexcharts";
@@ -22,6 +22,8 @@ export class SideTabsContainerComponent {
   activeCurrency: any;
   lockLabel!: string;
   selectedIndex = 0;
+  @Input('getLockHedgeGrafhData') getLockHedgeGrafhData: any;
+
   // Highcharts: typeof Highcharts = Highcharts;
   // chartOptions: Highcharts.Options;
 

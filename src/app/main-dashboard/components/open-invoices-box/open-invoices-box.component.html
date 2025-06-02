@@ -1,0 +1,18 @@
+<div class="box-with-error-msg">
+    <div class="summary-box open-invoices loader-wrapper">
+        <div class="box-content">
+            <span class="box-label">Open Invoices</span>
+            <span class="box-value box-value-clamp-open-invoices">{{dashboardpanelData?.openInvoices ?
+                (dashboardpanelData?.openInvoices) : '-'}}</span>
+        </div>
+        <div class="invoices-status">
+            <span class="status at-risk">At Risk({{dashboardpanelData?.invoicesAtRisk ?
+                dashboardpanelData?.invoicesAtRisk : '-'}})</span>
+            <span class="status at-opportunity">At Opportunity({{dashboardpanelData?.invoicesAtOpportunity ?
+                dashboardpanelData?.invoicesAtOpportunity : '-'}})</span>
+        </div>
+    </div>
+    <!-- <div class="error-msg-dashbord">
+        <span class="errormsg" id="error-msg" *ngIf="errormsg">{{errormsg}}</span>
+    </div> -->
+</div>

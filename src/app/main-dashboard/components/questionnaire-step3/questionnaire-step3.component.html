@@ -14,12 +14,13 @@
             <div class="img-group default-img-group">
               <div class="w-image">
                 <img
-                  src="https://okoora-stage-api2023.azurewebsites.net/Images/Flags/{{defaultCurrency?.value?.currency}}.png"
-                  alt="currency" />
+                  [src]="'https://okoora-stage-api2023.azurewebsites.net/Images/Flags/' + (defaultCurrency?.value?.currency || defaultCurrencyValue) + '.png'"
+                  alt="Currency Flag"
+                >
                 <span class="main-currency">Main</span>
               </div>
               <h6 class="default-currency d-flex justify-content-center gap-2">
-                <span>{{defaultCurrency?.value?.currency}}</span>
+                <span>{{defaultCurrency?.value?.currency || defaultCurrencyValue}}</span>
               </h6>
             </div>
             <div class="img-group" *ngFor="let data of exposureList">
@@ -27,11 +28,13 @@
                 <img src="https://okoora-stage-api2023.azurewebsites.net/Images/Flags/{{data?.currency}}.png"
                   alt="currency" />
                 <img
-                  src="https://okoora-stage-api2023.azurewebsites.net/Images/Flags/{{defaultCurrency?.value?.currency}}.png"
-                  alt="currency" />
+                  [src]="'https://okoora-stage-api2023.azurewebsites.net/Images/Flags/' + (defaultCurrency?.value?.currency || defaultCurrencyValue) + '.png'"
+                  alt="Currency Flag"
+                >
               </div>
               <h6 class="default-currency d-flex justify-content-center gap-1">
-                <span>{{data?.currency}}</span><label>/{{defaultCurrency?.value?.currency}}</label>
+                <span>{{ data?.currency }}</span><label>/{{ defaultCurrency?.value?.currency || defaultCurrencyValue }}</label>
+
                 <button class="edit-pair-btn" (click)="editQuestionary(data?.currency)"><img class="edit-currency-pair"
                     src="images/edit-currency-pair-icon.svg"></button>
               </h6>

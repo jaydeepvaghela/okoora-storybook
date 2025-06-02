@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, OnDestroy, ViewChild } from '@angular/core';
 
 import {
   ChartComponent,
@@ -119,7 +119,7 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   rate = false
   rateAfterDestroy: boolean = true;
   isCallHegeGraphData = false;
-
+  @Input('getLockHedgeGrafhData') getLockHedgeGrafhData: any;
   constructor(
     public dialog: MatDialog,
     private _walletService: WalletsService,
@@ -137,6 +137,7 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   public chartOptions!: Partial<ChartOptions>;
 
   async ngOnInit() {
+    console.log('FutureOverviewLockChartComponent initialized', this.getLockHedgeGrafhData);
     this.activeCurrency = JSON.parse(localStorage.getItem('activeWallet') || '');
     this.showLoader = true;
     this.Directions = Direction
@@ -255,7 +256,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   }
 
   updateDateFilter() {
-
     const currentDate = new Date();
     let endDate: Date;
     switch (this.selectedTimeFrame) {
@@ -341,7 +341,7 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
     if (direction && currencyPair && !this.isCallHegeGraphData) {
       this.isCallHegeGraphData = true;
 
-      of(getLockHedgeGrafhData).subscribe((data: any) => {
+      of(getLockHedgeGrafhData || this.getLockHedgeGrafhData).subscribe((data: any) => {
         this.seriesData = data
 
         for (var i = 0; i < this.seriesData?.spotPoints?.length; i++) {

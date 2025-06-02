@@ -5,12 +5,12 @@
       <p class="questionnare-subtitle">The currency which you report to the financial statements, <span>it will be the
           main system currency</span></p>
       <div class="content-wrapper">
-        <div class="country-dropdown step-one-questionnaire-dropdown">
+        <div class="country-dropdown step-one-questionnaire-dropdown"> 
           <mat-select class="form-control country-selection" name="currency" [value]="defaultCurrencyValue"
             placeholder="Select" panelClass="cus-dropconvert" (selectionChange)="changeCurrency($event)">
             <mat-select-trigger class="select-trigger">
               <ng-container *ngFor="let currencyObj of activeHedgeCurrencyList">
-                <span class="currency-name-code" *ngIf="currencyObj?.currency?.code ==  defaultCurrencyValue">
+                <span class="currency-name-code" *ngIf="currencyObj?.currency?.code == defaultCurrencyValue">
                   <img class="currency-image" [src]="currencyObj?.currency?.flag" alt="currency_flag">
                   {{ currencyObj?.currency?.code }}
                 </span>

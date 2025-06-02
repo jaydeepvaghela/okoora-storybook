@@ -55,8 +55,8 @@ export class MarketOverviewChartComponent implements AfterViewInit {
   public chartOptions!: Partial<ChartOptions>;
   public activeOptionButton = "all";
   updateOptionsData: any;
-  activeCurrency: any;
-  currencyOfUser: any;
+  @Input() activeCurrency!: any;
+  currencyOfUser!: any;
   currentExchangeRate: any;
   Directions: any
   walletList: any;
@@ -73,17 +73,15 @@ export class MarketOverviewChartComponent implements AfterViewInit {
 
   }
 
-
   ngOnInit() {
     this.Directions = Direction;
     this.tradingSource = tradingSource
     console.log("lastPaymentRateData", this.lastPaymentRateData);
 
-    this.currencyOfUser = 'https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png';
     this._walletService.activeCurrentWallet.subscribe((wallet) => {
 
       this.activeCurrency = wallet;
-      let currencyPair = this.activeCurrency?.wallet_Currency?.code + this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency;
+      let currencyPair = this.activeCurrency?.wallet_Currency?.code + this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency || "USDILS";
       document.getElementById("marketChart")!.outerHTML = "<div id=\"marketChart\"></div>"
       this.loadScripts(currencyPair);
       this.cd.detectChanges();

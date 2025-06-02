@@ -1748,12 +1748,12 @@ export const GetDefaultCurrencyData = {
             "pair": "AEDILS"
         },
         {
-            "currency": "GBP",
-            "pair": "GBPILS"
+            "currency": "CNY",
+            "pair": "CNYILS"
         },
         {
-            "currency": "USD",
-            "pair": "USDILS"
+            "currency": "IDR",
+            "pair": "IDRILS"
         },
         {
             "currency": "JPY",

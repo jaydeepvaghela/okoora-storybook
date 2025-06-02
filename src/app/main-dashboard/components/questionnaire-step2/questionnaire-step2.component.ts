@@ -20,6 +20,7 @@ export class QuestionnaireStep2Component implements DoCheck  {
   @Input('formStepper') formStepper?: any;
   @Input('defaultCurrency') defaultCurrency: any;
   @Input('addMoreCurrency') addMoreCurrency: any;
+  @Input('defaultCurrencyValue') defaultCurrencyValue: any;
   @Input('currencyList') currencyList: any;
   @Input('data') data: any;
   supportedHedge:any;
@@ -63,6 +64,7 @@ export class QuestionnaireStep2Component implements DoCheck  {
 }
 
   ngOnInit() {
+    console.log("defaultCurrency", this.defaultCurrency);
     this._walletService.getAllBalanceList().subscribe((res) => {
       this.firsttimePopup = res?.find((x:any)=> x.wallet_Hedging != null && x.wallet_SupportBaseHedging === true) 
       // const userPlan = JSON.parse(localStorage.getItem('user') || '');

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import * as d3 from 'd3';
 import { RiskProfitloss } from '../../enums/riskProfitLoss.enum';
 
@@ -11,11 +11,17 @@ export class MarketRiskChartComponent implements OnInit {
   @Input('marketRisk') marketRisks: any;
   RiskProfitloss = RiskProfitloss;
   needleData: any;
-  defaultRisk = 7;
+  @Input() defaultRisk: any = 7;
   constructor() { }
 
   ngOnInit() {
     this.getData(this.defaultRisk)
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['defaultRisk']) {
+      this.getData(this.defaultRisk); // or whatever logic you need
+    }
   }
 
   getData(marketRisk: any) {

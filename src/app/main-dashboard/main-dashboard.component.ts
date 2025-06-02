@@ -9,7 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DashboardService } from './services/dashboard.service';
 import { CommonModule } from '@angular/common';
 import { WalletsService } from './services/wallets.service';
-import { MarketRiskChartComponent } from './components/market-risk-chart/market-risk-chart.component';
+// import { MarketRiskChartComponent } from './components/market-risk-chart/market-risk-chart.component';
 import { MarketOverviewChartComponent } from './components/market-overview-chart/market-overview-chart.component';
 import { MatCardModule } from '@angular/material/card';
 import { LockNextPaymentComponent } from './components/lock-next-payment/lock-next-payment.component';
@@ -18,6 +18,11 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { SideTabsContainerComponent } from './components/side-tabs-container/side-tabs-container.component';
 import { HtmlTooltipDirective } from '../directives/html-tooltip.directive';
 import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
+import { FreeBalanceBoxComponent } from "./components/free-balance-box/free-balance-box.component";
+import { OpenInvoicesBoxComponent } from './components/open-invoices-box/open-invoices-box.component';
+import { CurrentHedgeBoxComponent } from './components/current-hedge-box/current-hedge-box.component';
+import { MarketRiskBoxComponent } from "./components/market-risk-box/market-risk-box.component";
+import { TradeViewWrapperComponent } from "./components/trade-view-wrapper/trade-view-wrapper.component";
 // import { AuthenticationService } from 'src/app/auth/services/authentication.service';
 // import { WalletBalanceListModal } from 'src/app/common/models/WalletBalanceListModal';
 // import { OnboardingService } from 'src/app/common/services/onboarding.service';
@@ -33,14 +38,12 @@ import { QuestionnaireComponent } from './components/questionnaire/questionnaire
   selector: 'app-main-dashboard',
   templateUrl: './main-dashboard.component.html',
   styleUrls: ['./main-dashboard.component.scss'],
-  imports: [CommonModule, HtmlTooltipDirective, WalletListGeneralComponent, MarketRiskChartComponent, SideTabsContainerComponent, CalendarComponent, FooterComponent, LockNextPaymentComponent, MatCardModule, MarketOverviewChartComponent, DragDropModule ]
+  imports: [CommonModule, HtmlTooltipDirective, WalletListGeneralComponent, SideTabsContainerComponent, CalendarComponent, FooterComponent, LockNextPaymentComponent, MatCardModule, MarketOverviewChartComponent, DragDropModule, FreeBalanceBoxComponent, OpenInvoicesBoxComponent, CurrentHedgeBoxComponent, MarketRiskBoxComponent, TradeViewWrapperComponent]
 })
 export class MainDashboardComponent {
   @ViewChild('notificationDrawer') notificationDrawer: MatDrawer | undefined;
   @ViewChild(LockNextPaymentComponent)
   lockNextPaymentComponent!: LockNextPaymentComponent;
-  @ViewChild(MarketRiskChartComponent)
-  child!: MarketRiskChartComponent;
   activeCurrency: any;
   currencyOfUser: any;
   dashboardpanelData: any;

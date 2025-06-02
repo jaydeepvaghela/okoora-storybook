@@ -4,13 +4,14 @@
       <mat-step>
         <ng-template matStepContent>
           <app-questionnaire-step1 [formStepper]="formStepper" [currencyList]="currencyList"
-           [defaultCurrency]="questionaryForm.get('defaultCurrency')"></app-questionnaire-step1>
+           [defaultCurrency]="questionaryForm.get('defaultCurrency')" [defaultCurrencyValue]="defaultCurrency"></app-questionnaire-step1>
         </ng-template>
       </mat-step>
       <mat-step>
         <ng-template matStepContent>
           <app-questionnaire-step2 [formStepper]="formStepper"
           [defaultCurrency]="questionaryForm.get('defaultCurrency')"
+          [defaultCurrencyValue]="defaultCurrency"
           [addMoreCurrency]="questionaryForm.get('addMoreCurrency')"
           [currencyList] = "currencyList" [data]="data"></app-questionnaire-step2>
         </ng-template>
@@ -19,8 +20,10 @@
         <ng-template matStepContent>
           <app-questionnaire-step3 
           [defaultCurrency]="questionaryForm.get('defaultCurrency')"
+          [defaultCurrencyValue]="defaultCurrency"
           [addMoreCurrency]="questionaryForm.get('addMoreCurrency')"
-           [formStepper]="formStepper"></app-questionnaire-step3>
+          [formStepper]="formStepper">
+        </app-questionnaire-step3>
         </ng-template>
       </mat-step>
     </mat-stepper>
