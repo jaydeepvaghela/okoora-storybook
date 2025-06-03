@@ -942,11 +942,19 @@
       .mdc-form-field {
         label {
           font-size: $font-14;
-          font-weight: 700;
-          line-height: 20px;
-          letter-spacing: 0.42px;
-          color: $dialog-inner-heading-color;
+          line-height: 19px;
+          font-weight: 400;
+          color: #03020380;
+          padding-left: 0 !important;
         }
+      }
+
+      .mdc-checkbox__background {
+        border: 1px solid #c6c8cc!important;
+      }
+
+      .mdc-checkbox__native-control:focus:checked+.mdc-checkbox__ripple {
+        background-color: transparent;
       }
     }
   // }

@@ -77,10 +77,10 @@
   </div>
 
   <div class="t-last-text terms-count-down">
-    <div class="d-inline-block">
-      <span>In 04:58 the transaction conditions will be updated and you will return to the previous page.</span>
-    </div>
+  <div class="d-inline-block">
+    <span>In {{ countdownMinutes }}:{{ countdownSeconds }} the transaction conditions will be updated and you will return to the previous page.</span>
   </div>
+</div>
 
   <div class="t-checkbox">
     <mat-checkbox id="apf-conf-check" class="example-margin" (change)="onChange($event)"> </mat-checkbox>

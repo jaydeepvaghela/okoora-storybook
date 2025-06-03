@@ -312,7 +312,7 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   getGraphData(pair: any, points: any) {
     let direction = this.activeCurrency?.wallet_Hedging?.direction
     let currencyPair = this.activeCurrency?.wallet_Hedging?.pair
-    if (direction && currencyPair && !this.isCallHegeGraphData) {
+    // if (direction && currencyPair && !this.isCallHegeGraphData) {
       this.isCallHegeGraphData = true;
 
       of(getLockHedgeGrafhData).subscribe((data: any) => {
@@ -481,7 +481,7 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
         this.showLoader = false;
         this.cd.detectChanges();
       })
-    }
+    // }
   }
 
 
@@ -535,13 +535,13 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
           {
             x: this.selectedTimeFrame == '1 month' ? '1M' : this.selectedTimeFrame == '3 months' ? '3M' : this.selectedTimeFrame == '6 months' ? '6M' : this.selectedTimeFrame == '9 months' ? '9M' : this.selectedTimeFrame == '1 year' ? '1Y' : '',
             y: Math.max(...this.seriesData?.spotPoints),
-            image: {
-              path: '../../../../assets/images/lockChartGradient.svg',
-              width: 120,
-              height: 120,
-              offsetX: 0,
-              offsetY: 50,
-            },
+            // image: {
+            //   // path: 'images/lockChartGradient.svg',
+            //   width: 120,
+            //   height: 120,
+            //   offsetX: 0,
+            //   offsetY: 50,
+            // },
             marker: {
               size: 0,
               fillColor: "#fff",

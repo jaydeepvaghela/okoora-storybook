@@ -56,7 +56,7 @@ export const PayNowSlide: Story = {
             padding: 20px 0;
             max-width: 356px;
             min-height: 450px;
-            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+            // box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
             
         }
         @media screen and (max-width: 1440px) {
@@ -223,7 +223,7 @@ export const LockAndPayLaterSlide: Story = {
             padding: 20px 0;
             max-width: 356px;
             min-height: 450px;
-            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+            // box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
         }
         @media screen and (max-width: 1440px) {
             .lock-and-pay-card {
@@ -387,7 +387,7 @@ export const AlertRateSlide: Story = {
             padding: 20px 0;
             max-width: 356px;
             min-height: 450px;
-            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+            // box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
             
         }
         @media screen and (max-width: 1440px) {
