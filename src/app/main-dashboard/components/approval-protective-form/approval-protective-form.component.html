@@ -1,6 +1,6 @@
 <div class="approval-modal-sec">
   <div class="approval-close-btn">
-    <button id="apf-dialog-close" mat-icon-button="" mat-dialog-close="" class="colse-btn mdc-icon-button mat-mdc-icon-button mat-unthemed mat-mdc-button-base" type="button">
+    <button id="apf-dialog-close" mat-dialog-close (click)="closeForm()" class="colse-btn mdc-icon-button mat-mdc-icon-button mat-unthemed mat-mdc-button-base" type="button">
       <img src="images/rate-popup-close-icon.svg">
       <span class="mat-mdc-button-touch-target"></span>
     </button>
@@ -94,7 +94,7 @@
     <button id="apf-dialog-continue" [disabled]="!confirmCondition" (click)="continueClick()">
       Continue
     </button>
-    <button id="apf-dialog-cancel" mat-dialog-close>Cancel</button>
+    <button id="apf-dialog-cancel" mat-dialog-close (click)="closeForm()">Cancel</button>
   </div>
 
   <!-- <app-page-loader classes="bg-white" *ngIf="showLoader"></app-page-loader> -->

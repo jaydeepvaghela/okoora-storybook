@@ -141,6 +141,10 @@ onCountdownEnd() {
       this.approvalDialogRef.close();    
     }, 1000);
   }
+
+  closeForm() {
+    this.approvalDialogRef.close();
+  }
   completeLockup() {
   }
   parseExpiryDate(dateString: string): Date {

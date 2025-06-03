@@ -23,6 +23,11 @@
             }
         }
     }
+
+    .cdk-global-scrollblock:has(.lock-up-popup-main) {
+        top: 0 !important;
+        overflow: hidden;
+    }
 }
 
 .lock-up-popup-main {

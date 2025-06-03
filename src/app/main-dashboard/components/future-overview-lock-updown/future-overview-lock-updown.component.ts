@@ -30,7 +30,7 @@ export class FutureOverviewLockUpdownComponent {
 
   constructor(
     public dialog: MatDialog,
-    private lockUpDialogRef: MatDialogRef<FutureOverviewLockUpdownComponent>,
+    public lockUpDialogRef: MatDialogRef<FutureOverviewLockUpdownComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _walletService: WalletsService,
     private dashboardService: DashboardService,

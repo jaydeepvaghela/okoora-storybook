@@ -7,7 +7,7 @@
         </div>
         <div class="lock-up-popup-close-btn">
             <div class="approval-close-btn">
-                <button id="lock_close_btn_lock_updown" mat-icon-button="" mat-dialog-close=""
+                <button id="lock_close_btn_lock_updown" mat-icon-button="" (click)="lockUpDialogRef.close();"
                     class="colse-btn mdc-icon-button mat-mdc-icon-button mat-unthemed mat-mdc-button-base"
                     type="button">
                     <img src="images/rate-popup-close-icon.svg">
@@ -76,7 +76,7 @@
         <p>This action can’t be undone for the selected amount</p>
     </div>
     <div class="lock-up-popup-btn-group">
-        <button id="lock_cancel_btn_lock_updown" class="popup-close-btn lock-popup-btn-group-inner" mat-dialog-close>Cancel</button>
+        <button id="lock_cancel_btn_lock_updown" class="popup-close-btn lock-popup-btn-group-inner" (click)="lockUpDialogRef.close();">Cancel</button>
         <button id="lock_continue_btn_lock_updown" class="popup-continue-btn lock-popup-btn-group-inner" [disabled]="!lockAmount"
             (click)="opneLockup(lockAmount)">Continue</button>
 
