@@ -286,7 +286,7 @@ export class CalendarComponent {
         this.openConvertDialog(false, args?.date);
         
       } else if (args.resource == 3) {
-        this.router.navigate(['/cashflow']);
+        this.router.navigate(['/dashboard']);
         document.querySelector('body')!.style.overflowY = 'auto';
         window.scrollTo(0, 0);
       }
@@ -359,6 +359,8 @@ export class CalendarComponent {
   }
 
   openHedgeDialog(isMenu?: boolean, date?: any) {
+    this.router.navigate(['/dashboard']);
+    window.scrollTo(0, 0);
   }
 
   confirmAlertDelete() {
