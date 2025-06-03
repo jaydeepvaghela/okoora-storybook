@@ -39,7 +39,7 @@ export const PayNowSlide: Story = {
         <style>
         .swiper-slide {
             height: initial !important;
-            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+            // box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
         }
         @media screen and (max-width: 1440px) {
           .swiper-slide {
@@ -54,8 +54,10 @@ export const PayNowSlide: Story = {
         .lock-and-pay-card {
             border: none;
             padding: 20px 0;
-            max-width: 100%;
+            max-width: 356px;
             min-height: 450px;
+            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+            
         }
         @media screen and (max-width: 1440px) {
             .lock-and-pay-card {
@@ -204,7 +206,7 @@ export const LockAndPayLaterSlide: Story = {
     <style>
         .swiper-slide {
             height: initial !important;
-            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+            // box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
         }
         @media screen and (max-width: 1440px) {
           .swiper-slide {
@@ -219,8 +221,9 @@ export const LockAndPayLaterSlide: Story = {
         .lock-and-pay-card {
             border: none;
             padding: 20px 0;
-            max-width: 100%;
+            max-width: 356px;
             min-height: 450px;
+            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
         }
         @media screen and (max-width: 1440px) {
             .lock-and-pay-card {
@@ -367,7 +370,7 @@ export const AlertRateSlide: Story = {
     <style>
         .swiper-slide {
             height: initial !important;
-            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+            // box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
         }
         @media screen and (max-width: 1440px) {
           .swiper-slide {
@@ -382,8 +385,10 @@ export const AlertRateSlide: Story = {
         .lock-and-pay-card {
             border: none;
             padding: 20px 0;
-            max-width: 100%;
+            max-width: 356px;
             min-height: 450px;
+            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+            
         }
         @media screen and (max-width: 1440px) {
             .lock-and-pay-card {

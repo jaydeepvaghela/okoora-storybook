@@ -5,6 +5,7 @@
     flex-basis: calc(25% - 10px);
     background-color: #f8f9fd;
     flex-grow: 1;
+    max-width: 378px;
 
     @media (min-width: 1600px) and (max-width: 1919px){
       flex-basis: calc(25% - 13px);
