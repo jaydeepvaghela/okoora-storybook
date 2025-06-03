@@ -7,7 +7,7 @@
     padding: 34px 58px 25px;
     position: relative;
     max-width: 536px;
-    box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+    // box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
 
     @media (max-width: 1800px) {
       padding-left: 35px;
@@ -26,6 +26,7 @@
     @media only screen and (max-width: 1440px) {
       padding: 34px 30px 25px;
       min-height: 592px;
+      max-width: 440px;
     }
 
     @media only screen and (max-width: 580px) {
@@ -489,7 +490,9 @@
   .date-amount-wrapper {
     @include flex(flex-start, flex-start, row);
     position: relative;
+    width: 100%;
     margin-bottom: 6px;
+    gap: 8px;
 
     @media only screen and (max-width: 1440px) {
       margin-bottom: 25px;
@@ -497,16 +500,17 @@
 
     @media (min-width: 1025px) and (max-width: 1199px) {
       flex-wrap: wrap;
-      gap: 8px;
     }
 
     @media only screen and (max-width: 480px) {
-      flex-direction: column;
+      // flex-direction: column;
       row-gap: 10px;
       align-items: start;
     }
 
     .date-amount-wrapper-main {
+      width: 40%;
+      position: relative;
       .date-selector {
         @include flex(flex-start, center, row);
         border: 1px solid $light-gray;
@@ -515,7 +519,8 @@
         height: 50px;
         margin-right: 8px;
         // padding-left: 0;
-        min-width: 150px;
+        // min-width: 150px;
+        width: 100%;
 
         .mat-datepicker-toggle {
           .mat-datepicker-toggle-default-icon {
@@ -536,7 +541,7 @@
         }
 
         @media only screen and (max-width: 1440px) {
-          min-width: 130px;
+          // min-width: 130px;
           padding: 9px 6px;
           height: 40px;
         }
@@ -545,15 +550,15 @@
           margin-right: 0;
         }
 
-        @media only screen and (max-width: 580px) {
-          max-width: 160px;
-        }
+        // @media only screen and (max-width: 580px) {
+        //   max-width: 160px;
+        // }
 
-        @media only screen and (max-width: 480px) {
-          max-width: 90%;
-          min-width: 90%;
-          margin-right: 0;
-        }
+        // @media only screen and (max-width: 480px) {
+        //   max-width: 90%;
+        //   min-width: 90%;
+        //   margin-right: 0;
+        // }
 
         mat-datepicker-toggle {
           // &::ng-deep {
@@ -605,13 +610,18 @@
     }
 
     .amount-wrapper {
+      width: 55%;
       .input-wrapper-main {
         @include flex(flex-start, center, row);
         border: 1px solid $light-gray;
         border-radius: 5px;
         padding: 17px 14px;
         height: 50px;
-        min-width: 231px;
+        width: 100%;
+
+        @media screen and (max-width: 1440px) {
+          height: 40px;
+        }
 
         &.dateClickedFlag {
           border-color: var(--brand-primary-color);
@@ -625,31 +635,31 @@
           }
         }
 
-        @media only screen and (max-width: 1800px) {
-          min-width: 180px;
-        }
+        // @media only screen and (max-width: 1800px) {
+        //   min-width: 180px;
+        // }
 
-        @media only screen and (max-width: 1600px) {
-          min-width: 160px;
-        }
+        // @media only screen and (max-width: 1600px) {
+        //   min-width: 160px;
+        // }
 
-        @media only screen and (max-width: 1440px) {
-          height: 40px;
-        }
+        // @media only screen and (max-width: 1440px) {
+        //   height: 40px;
+        // }
 
-        @media only screen and (max-width: 1280px) {
-          min-width: 130px;
-        }
+        // @media only screen and (max-width: 1280px) {
+        //   min-width: 130px;
+        // }
 
-        @media only screen and (max-width: 1024px) {
-          max-width: 160px;
-        }
+        // @media only screen and (max-width: 1024px) {
+        //   max-width: 160px;
+        // }
 
-        @media only screen and (max-width: 480px) {
-          max-width: 90%;
-          min-width: 90%;
-          justify-content: space-between;
-        }
+        // @media only screen and (max-width: 480px) {
+        //   max-width: 90%;
+        //   min-width: 90%;
+        //   justify-content: space-between;
+        // }
 
         .input-wrapper {
           position: relative;
@@ -708,7 +718,7 @@
     .info-icon {
       @include flex(center, center, row);
       position: absolute;
-      right: -20px;
+      right: -10px;
       border: 1px solid $form-label;
       top: 0;
       bottom: 0;
@@ -717,6 +727,10 @@
       height: 16px;
       width: 16px;
       font-size: 11px;
+
+      @media screen and (max-width: 1440px) {
+        right: -15px;
+      }
 
       @media (min-width: 1025px) and (max-width: 1199px) {
         top: auto;
@@ -733,8 +747,8 @@
       @media only screen and (max-width: 480px) {
         position: absolute;
         top: auto;
-        bottom: 10%;
-        right: 3%;
+        bottom: 25%;
+        right: -3%;
       }
     }
   }

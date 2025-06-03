@@ -673,7 +673,7 @@
   top: 0;
   right: 0;
   height: 100vh;
-  z-index: 9;
+  z-index: 99;
   width: 618px;
   padding-top: 117px;
   border-radius: 5px;
@@ -716,7 +716,7 @@
     padding: 17px 23px 34px;
 
     @media only screen and (max-width: 1440px) {
-      padding: 10px;
+      padding: 13px 10px;
     }
 
     button.mat-mdc-button-base {

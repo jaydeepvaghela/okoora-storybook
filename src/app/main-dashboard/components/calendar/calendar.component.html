@@ -65,10 +65,10 @@
               <button id="calendar-add-payment" mat-menu-item (click)="openPaymentDialog(true)">Payment</button>
             </div>
             <div class="add-event-menu-item">
-              <button id="calendar-add-exchange" [disabled]="userRoleType != 1" mat-menu-item (click)="openConvertDialog(true)">Exchange</button>
+              <button id="calendar-add-exchange" mat-menu-item (click)="openConvertDialog(true)">Exchange</button>
             </div>
             <div class="add-event-menu-item">
-              <button id="calendar-add-hedge" [disabled]="userRoleType != 1" mat-menu-item (click)="openHedgeDialog(true)">Hedge</button>
+              <button id="calendar-add-hedge" mat-menu-item (click)="openHedgeDialog(true)">Hedge</button>
             </div>
           </mat-menu>
         </div>
@@ -102,10 +102,10 @@
         <button id="add-event-month-payment" mat-menu-item (click)="selectedCalendarDate = data.date;openPaymentDialog(false, data?.original?.start)">+ Payment</button>
       </div>
       <div class="add-event-menu-item">
-        <button id="add-event-month-convert" mat-menu-item [disabled]="userRoleType != 1" (click)="selectedCalendarDate = data.date;openConvertDialog(false, data?.original?.start)">+ Exchange</button>
+        <button id="add-event-month-convert" mat-menu-item  (click)="selectedCalendarDate = data.date;openConvertDialog(false, data?.original?.start)">+ Exchange</button>
       </div>
       <div class="add-event-menu-item">
-        <button id="add-event-month-hedge" mat-menu-item [disabled]="userRoleType != 1" (click)="selectedCalendarDate = data.date;openHedgeDialog(false, data?.original?.start)">+ Hedge</button>
+        <button id="add-event-month-hedge" mat-menu-item (click)="selectedCalendarDate = data.date;openHedgeDialog(false, data?.original?.start)">+ Hedge</button>
       </div>
     </mat-menu>
   </ng-template>
@@ -407,7 +407,7 @@
 </ng-container>
  <mat-drawer #alertDrawer class="event-drawer" mode="side" position="end">
   <div class="colse-back-white">
-    <button id="mbsc-add-alert-close" mat-icon-button (click)="alertDrawerClose()">
+    <button id="mbsc-add-alert-close" class="mbsc-add-alert-close" mat-icon-button (click)="alertDrawerClose()">
       <mat-icon>close</mat-icon>
     </button>
   </div>

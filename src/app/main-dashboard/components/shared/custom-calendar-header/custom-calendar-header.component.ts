@@ -77,12 +77,12 @@ export class CustomCalendarHeader<D> implements OnDestroy, OnInit {
     ];
 
     const currentYear = new Date().getFullYear();
-    this.dashboardService.currentSideTabType.subscribe((data) => {
+    // this.dashboardService.currentSideTabType.subscribe((data) => {
       this.years = [];
       for (let i = currentYear; i <= currentYear + 1; i++) {
         this.years.push(i);
       }
-    });
+    // });
   }
 
   monthChanged(event: number) {

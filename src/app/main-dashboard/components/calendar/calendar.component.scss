@@ -60,10 +60,12 @@
   height: 658px;
   max-height: 658px;
   overflow-y: hidden;
+  max-width: 996px;
 
   @media screen and (max-width: 1440px) {
     height: 100%;
     max-height: 539px;
+    max-width: 758px;
     overflow-y: auto;
   }
 
@@ -79,6 +81,11 @@
 ::ng-deep {
   .cust-event-calendar {
     font-family: $manrope;
+    max-width: 996px;
+
+    @media screen and (max-width: 1440px) {
+      max-width: 758px;
+    }
 
     .mbsc-calendar-controls {
       padding: 0;
@@ -398,6 +405,7 @@
     .date-label {
       @include flex(center, center, column);
       padding: 18px 20px;
+
       // background-color: #F5F7FE;
       @media only screen and (max-width: 1440px) {
         padding: 13px 20px;
@@ -430,6 +438,7 @@
         .month-day {
           &.week {
             position: relative;
+
             &::before {
               content: "";
               position: absolute;
@@ -448,6 +457,7 @@
 
       &.disabled {
         cursor: not-allowed;
+
         .month-day {
           color: #848585;
         }
@@ -528,6 +538,7 @@
         line-height: 16px;
         text-decoration: underline !important;
         color: var(--cal-ev-blue);
+
         &:hover {
           cursor: pointer;
         }
@@ -537,6 +548,7 @@
     .mbsc-timeline-column {
       &:hover {
         cursor: pointer;
+
         &::before {
           visibility: visible;
         }
@@ -593,6 +605,7 @@
 
     .mbsc-timeline-grid {
       height: 100% !important;
+
       .mbsc-timeline-row {
         &:nth-child(2) {
           .mbsc-timeline-column {
@@ -735,6 +748,7 @@
       @media (max-width: 1440px) {
         width: 110px;
       }
+
       @media (max-width: 479px) {
         width: 110px;
       }
@@ -888,6 +902,7 @@
               display: block;
               top: 0 !important;
             }
+
             .date-label {
               visibility: hidden;
             }
@@ -1085,6 +1100,7 @@
         }
       }
     }
+
     .mbsc-has-sticky .mbsc-timeline-grid-scroll.mbsc-ltr {
       max-height: 576px;
       height: 100%;
@@ -1100,16 +1116,19 @@
         height: 100%;
       }
     }
+
     .mbsc-ios.mbsc-timeline-header-bg,
     .mbsc-material.mbsc-timeline-header-bg,
     .mbsc-timeline-header-bg.mbsc-windows {
       background: #f5f7fe !important;
+
       .mbsc-timeline-day {
         .mbsc-timeline-header-date {
           border-right-style: none;
         }
       }
     }
+
     .mbsc-calendar-wrapper {
       border-bottom: 0 !important;
     }
@@ -1419,6 +1438,45 @@
     }
   }
 
+  // this is commented down code of mine 
+  // .mat-mdc-menu-item-text {
+  //   color: #01031c;
+  //   font-size: 15px !important;
+  //   font-weight: 400 !important;
+  //   line-height: 35px;
+  //   position: relative;
+  //   font-family: 'Manrope';
+  //   padding-left: 15px;
+
+  //   @media screen and (max-width: 1440px) {
+  //     padding-left: 25px;
+  //     font-size: 12px !important;
+  //   }
+  // }
+
+  //   .mat-mdc-menu-item-text::before {
+  //     content: "";
+  //     width: 23px;
+  //     height: 23px;
+  //     position: absolute;
+  //     top: 50%;
+  //     left: 0;
+  //     transform: translateY(-50%);
+  //     background-image: url(../../../../assets/images/drop-down-plush.svg);
+  //     background-repeat: no-repeat;
+  //     border-radius: 50px;
+  //     border: 1px solid $light-gray;
+  //     background-position: center center;
+
+  //     @media only screen and (max-width: 1440px) {
+  //       width: 15px;
+  //       height: 15px;
+  //       top: 46%;
+  //       left: 0;
+  //       background-size: 7px;
+  //     }
+  //   }
+
   .mdc-menu-surface {
     &.add-event-menu {
       border-radius: 10px;
@@ -1431,6 +1489,8 @@
           border-bottom: 1px dashed rgba(29, 29, 34, 0.1);
           padding-top: 7px;
           padding-bottom: 7px;
+          // width: 100%;
+
 
           &:last-child {
             border-bottom: 0;
@@ -1458,27 +1518,36 @@
         }
       }
     }
+
     &.add-event-panel {
       .mat-mdc-menu-content {
         .add-event-menu-item {
+          width: 145px;
+          height: 50px;
           border-bottom: 1px dashed rgba(29, 29, 34, 0.1);
           padding: 7px 0;
+
           &:first-child {
             padding-top: 0;
           }
-          &:last-child{
+
+          &:last-child {
             border-bottom: none;
           }
+
           button {
             &.mat-mdc-menu-item {
-              @media screen and (max-width: 1440px){
+              @media screen and (max-width: 1440px) {
                 padding-top: 8px;
               }
+
               border-bottom: none;
+
               &:last-child {
-                @media screen and (max-width: 1440px){
+                @media screen and (max-width: 1440px) {
                   padding-top: 8px;
                 }
+
                 span {
                   &.mdc-list-item__primary-text {
                     border-bottom: none;
@@ -1635,7 +1704,7 @@
                 z-index: 9;
                 cursor: pointer;
 
-                &:checked ~ label.exchange-rate-fleg {
+                &:checked~label.exchange-rate-fleg {
                   border: 1px solid $color-blue;
                   background: $exchange-rate-fleg-background;
 
@@ -1674,6 +1743,7 @@
                       top: 7px;
                     }
                   }
+
                   &.active_currency_flag {
                     @media (max-width: 767px) {
                       width: 24px;
@@ -1704,9 +1774,11 @@
 
           .exchange-rates-graph {
             min-height: 322px;
+
             @media screen and (max-width: 1440px) {
               min-height: 280px;
             }
+
             img {
               @media (max-width: 767px) {
                 width: 100%;
@@ -2018,6 +2090,7 @@
               font-weight: 700;
               color: #01031c;
             }
+
             thead {
               tr {
                 th.mat-mdc-header-cell {
@@ -2085,17 +2158,20 @@
                       background: #e9f6ea;
                       color: #45ae4a;
                     }
+
                     &.expired {
                       border: 1px solid #f04853;
                       background: #ffe0e0;
                       color: #f04853;
                     }
+
                     &.future-payment,
                     &.payment-ready-to-send {
                       border: 1px solid #ff6805;
                       background: #ffe9db;
                       color: #ff6805;
                     }
+
                     &.fix-invoice {
                       border: 1px solid #ff6805;
                       background: #ffe9db;
@@ -2103,6 +2179,7 @@
                       position: relative;
                       display: inline-block;
                       padding-right: 27px;
+
                       &::before {
                         content: "";
                         position: absolute;
@@ -2231,6 +2308,7 @@
             font-style: normal;
             font-weight: 600;
             line-height: normal;
+
             &.disabled {
               border: 1px solid $gray-border-color;
               color: darkgray;
@@ -2303,17 +2381,20 @@
                       background: #e9f6ea;
                       color: #45ae4a;
                     }
+
                     &.expired {
                       border: 1px solid #f04853;
                       background: #ffe0e0;
                       color: #f04853;
                     }
+
                     &.future-payment,
                     &.payment-ready-to-send {
                       border: 1px solid #ff6805;
                       background: #ffe9db;
                       color: #ff6805;
                     }
+
                     &.fix-invoice {
                       border: 1px solid #ff6805;
                       background: #ffe9db;
@@ -2321,6 +2402,7 @@
                       position: relative;
                       display: inline-block;
                       padding-right: 27px;
+
                       &::before {
                         content: "";
                         position: absolute;
@@ -2422,7 +2504,7 @@
     top: 0;
     right: 0;
     height: 100vh;
-    z-index: 9;
+    z-index: 99;
     width: 618px;
     padding-top: 117px;
     border-radius: 5px;
@@ -2462,13 +2544,15 @@
     }
 
     .colse-back-white {
+      position: relative;
+      z-index: 999;
       padding: 17px 23px 34px;
 
       @media only screen and (max-width: 1440px) {
-        padding: 10px;
+        padding: 13px 10px;
       }
 
-      button.mat-mdc-button-base {
+      .mbsc-add-alert-close {
         display: flex;
         width: 33px;
         height: 33px;
@@ -3111,6 +3195,7 @@
         .mat-mdc-tab-label-container {
           .mat-mdc-tab-list {
             margin-bottom: 18px;
+
             .mat-mdc-tab-labels {
               display: flex;
               align-items: center;
@@ -3332,90 +3417,103 @@
           padding: 15px 15px 7px !important;
         }
 
-        button.mat-mdc-menu-item:hover {
-          border-radius: 10px;
-          background-color: #eceefe;
-          padding: 0 36px;
-          @media screen and (max-width: 1440px){
-            padding: 0 28px;
-          }
-        }
-
-        button.mat-mdc-menu-item {
-          border-bottom: none;
-          padding: 0 36px;
-          border-bottom: 1px dashed #d9dadd;
-          @media screen and (max-width: 1440px){
-            padding: 0 28px;
+        .add-event-menu-item {
+          border-bottom: 1px dashed rgba(29, 29, 34, 0.1);
+          padding-top: 7px;
+          padding-bottom: 7px;
+          // width: 100%;
+          &:last-child {
+            border-bottom: 0;
           }
 
-          .border-bottom-event {
-            color: #d9dadd;
-          }
-          @media only screen and (max-width: 1440px) {
-            // padding-left: 18px;
-            min-height: inherit;
-            min-width: inherit;
+          button.mat-mdc-menu-item:hover {
+            border-radius: 10px;
+            background-color: #eceefe;
+            padding: 0 36px;
+
+            @media screen and (max-width: 1440px) {
+              padding: 8px 28px 0;
+            }
           }
 
-          span.mdc-list-item__primary-text {
-            color: $blue-black;
-            font-size: 15px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 35px;
-            // border-bottom: 1px dashed $general-border-color;
-            position: relative;
-            padding-left: 15px;
-            display: block;
-            width: 100%;
-            overflow: visible;
-            // padding-bottom: 14px;
-            // margin-bottom: 8px;
+          button.mat-mdc-menu-item {
+            border-bottom: none;
+            padding: 0 36px;
+
+            @media screen and (max-width: 1440px) {
+              padding: 8px 28px 0;
+            }
+
+            .border-bottom-event {
+              color: #d9dadd;
+            }
 
             @media only screen and (max-width: 1440px) {
-              font-size: 12px;
-              line-height: 24px;
-              padding-left: 8px;
-              padding-bottom: 5px;
-              margin-bottom: 5px;
+              // padding-left: 18px;
+              min-height: inherit;
+              min-width: inherit;
             }
 
-            &::before {
-              content: "";
-              width: 23px;
-              height: 23px;
-              position: absolute;
-              top: 50%;
-              left: -22px;
-              transform: translateY(-50%);
-              background-image: url(../../../../assets/images/drop-down-plush.svg);
-              background-repeat: no-repeat;
-              border-radius: 50px;
-              border: 1px solid $light-gray;
-              background-position: center center;
+            span.mat-mdc-menu-item-text {
+              color: $blue-black;
+              font-size: 15px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 35px;
+              // border-bottom: 1px dashed $general-border-color;
+              position: relative;
+              padding-left: 15px;
+              display: block;
+              width: 100%;
+              overflow: visible;
+              // padding-bottom: 14px;
+              // margin-bottom: 8px;
 
-              @media only screen and (max-width: 1440px) {
-                width: 15px;
-                height: 15px;
-                top: 39%;
-                left: -16px;
-                background-size: 7px;
+              @media screen and (max-width: 1440px) {
+                font-size: 12px;
+                line-height: 24px;
+                padding-left: 8px;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+              }
+
+              &::before {
+                content: "";
+                width: 23px;
+                height: 23px;
+                position: absolute;
+                top: 50%;
+                left: -22px;
+                transform: translateY(-50%);
+                background-image: url(../../../../assets/images/drop-down-plush.svg);
+                background-repeat: no-repeat;
+                border-radius: 50px;
+                border: 1px solid $light-gray;
+                background-position: center center;
+
+                @media only screen and (max-width: 1440px) {
+                  width: 15px;
+                  height: 15px;
+                  top: 39%;
+                  left: -16px;
+                  background-size: 7px;
+                }
               }
             }
-          }
 
-          &:last-child {
-            span.mdc-list-item__primary-text {
-              // border-bottom: none;
-              border-bottom: 1px dashed #d9dadd;
+            &:last-child {
+              span.mat-mdc-menu-item-text {
+                border-bottom: none;
+                // border-bottom: 1px dashed #d9dadd;
+              }
             }
           }
         }
       }
     }
   }
-  .mbsc-calendar-picker-slide.mbsc-calendar-slide{
+
+  .mbsc-calendar-picker-slide.mbsc-calendar-slide {
     position: absolute !important;
   }
 }

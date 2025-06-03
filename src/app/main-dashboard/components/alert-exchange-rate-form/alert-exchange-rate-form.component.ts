@@ -89,6 +89,11 @@ export class AlertExchangeRateFormComponent {
   ) {}
 
   ngOnInit() {
+     let activeWallet: any = localStorage.getItem('activeWallet');
+    let currency = JSON.parse(activeWallet);
+    this.buy_currency_code = currency.wallet_Currency.code;
+    this.sell_currency_code = currency.wallet_Hedging.exposureBaseCurrency;
+    this.getData();
     this._walletService.AlertExposure.subscribe((res:any)=>{
       if(res?.form){
         this.alertForm = true;
@@ -96,15 +101,15 @@ export class AlertExchangeRateFormComponent {
       }
       this.cd?.detectChanges();
     })
-    this.getData();
     if (this.selectedCalendarDate) {
       this.alertExchangeRateForm?.get('dueDate')?.setValue(this.selectedCalendarDate);
     }
-    let activeWallet: any = localStorage.getItem('activeWallet');
-    let currency = JSON.parse(activeWallet);
-    this.buy_currency_code = currency.wallet_Currency.code;
-    this.sell_currency_code = currency.wallet_Hedging.exposureBaseCurrency;
+   
     
+  }
+
+  ngAfterViewInit() { 
+    this.getData();
   }
 
   ngOnChanges(changes: any) {
@@ -132,8 +137,10 @@ export class AlertExchangeRateFormComponent {
   }
 
   getForm(){
+    let activeWallet: any = localStorage.getItem('activeWallet');
+    console.log('activeWallet', activeWallet);
     this.alertExchangeRateForm = this.fb.group({
-      buy: new FormControl(this.activeCurrency?.wallet_Currency?.code, [Validators.required]),
+      buy: new FormControl(this.buy_currency_code, [Validators.required]),
       sell: new FormControl(this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency ? this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency :'ILS', [Validators.required]),
       targetRate: new FormControl({ value: '', disabled: false }, [Validators.required, Validators.pattern('^[0-9]{0,4}(?:.[0-9]{0,4}$)')]),
       dueDate: new FormControl('', [Validators.required]),
