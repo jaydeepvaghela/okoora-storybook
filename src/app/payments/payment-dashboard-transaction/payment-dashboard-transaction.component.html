@@ -1,0 +1,416 @@
+<div class="loader-wrapper">
+  <div class="payment-empty-alert" *ngIf="walletTransactionAll?.length == 0">
+    <div class="pay-empty-img">
+      <img src="images/payment-empty-img.svg" alt="There are no transactions yet" id="noTransactionsYet" />
+    </div>
+    <div class="pay-empty-data">
+      <h2>There are no transactions yet</h2>
+      <button [matMenuTriggerFor]="sendMenu" id="sendMatMenu">
+        Create new Payment
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M5.9991 5.38722L10.5347 0.75713C10.8709 0.414435 11.413 0.414435 11.7491 0.75713C11.9097 0.920422 12 1.14315 12 1.37546C12 1.60777 11.9097 1.8305 11.7491 1.99379L6.60719 7.24222C6.27143 7.586 5.72857 7.586 5.39281 7.24222L0.250891 1.99401C0.0903187 1.8305 0 1.60777 0 1.37546C0 1.14315 0.0903187 0.920422 0.250891 0.756913C0.587072 0.414435 1.1292 0.414435 1.46527 0.757348L5.9991 5.38722Z"
+            fill="white" />
+        </svg>
+      </button>
+      <mat-menu #sendMenu="matMenu" class="action-menu sent-dropdown" id="sentDropdown">
+        <button mat-menu-item (click)="createSinglePayment()" id="singlePaymentMenu" [disabled]="userRoleType !== 1">
+          Single Payment
+        </button>
+        <button mat-menu-item (click)="createMassPayment()" id="massPaymentMenu">Mass Payment
+        </button>
+      </mat-menu>
+      <strong>Send payment in a few clicks</strong>
+      <p>You can send payment either to one recipient or mass payment.</p>
+    </div>
+  </div>
+
+  <div class="all-transactions-container" *ngIf="walletTransactionAll?.length != 0">
+    <div class="transactions-title">
+      <h5>All transactions</h5>
+      <div class="d-flex align-items-center gap-1" *ngIf="dataSource?.data?.length != 0">
+        <button class="bg-transparent" id="search" *ngIf="searchFlag" (click)="SearchBarVisible()">
+          <img class="search-icon" id="searchIcon" src="images/search-transactions-icon.svg">
+        </button>
+        <div *ngIf="!searchFlag">
+          <input class="search-input" id="searchInput" type="text" (keyup)="applyFilter($event)" />
+          <img class="icon-search" id="searchIcon" src="images/search-transactions-icon.svg">
+        </div>
+        <button class="bg-transparent" id="exportBtn" (click)="export()"><img src="images/export-excel-transactions.svg"
+            id="exportIcon" /></button>
+      </div>
+    </div>
+
+    <form [formGroup]="transactionFilter" id="transactionFilterForm">
+      <div class="filter-container">
+        <div class="filter-menu">
+          <span class="filter-by" id="filterByLable">Filter by: </span>
+          <mat-select #currencySelect id="currency" multiple formControlName="currency" placeholder="All Currencies"
+            class="currency-search-input" panelClass="currency-filter-dropdown">
+            <mat-select-trigger>
+              <div *ngIf="transactionFilter.get('currency')?.value" class="selected-currencies">
+                <div class="sc-flag-wrap">
+                  <div *ngFor="let currency of transactionFilter.get('currency')?.value" class="sc-flag">
+                    <img id="flag" [src]="currency?.wallet_Flag" [alt]="currency?.wallet_Currency?.code" width="25"
+                      height="25">
+                  </div>
+                </div>
+                <span class="currency-code"><ng-container
+                    *ngFor="let currency of transactionFilter.get('currency')?.value;let i = index">{{
+                    currency?.wallet_Currency?.code }}<ng-container
+                      *ngIf="i < transactionFilter.get('currency')?.value?.length - 1">,&nbsp;</ng-container></ng-container></span>
+              </div>
+              <div *ngIf="!transactionFilter.get('currency')?.value" class="all-currency">
+                <img class="currency-flag" id="currencyFlg" src="images/all-currency-flag-dropdown.svg"
+                  alt="all currency">
+                <span class="currency">All Currencies</span>
+              </div>
+            </mat-select-trigger>
+            <div class="search-field">
+              <mat-select-search id="materialSearch" [formControl]="multiFilterCtrl"></mat-select-search>
+            </div>
+            <div class="mat_option_wrap">
+              <mat-option value="" id="matOptionWrap" (onSelectionChange)="checkSelectedCurrency($event.source)"
+                selected>
+                <span class="currency">All Currencies</span>
+                <img class="currency-flag all-currency" id="currencyFlagId" src="images/all-currency-flag-dropdown.svg"
+                  alt="all currency">
+              </mat-option>
+              <mat-option *ngFor="let currency of filteredCurrencies | async" [value]="currency" id="{{currency}}"
+                (onSelectionChange)="checkSelectedCurrency($event.source)">
+                <span class="currency" id="currencyCode">{{ currency?.wallet_Currency?.code }}</span>
+                <img class="currency-flag" id="flag" [src]="currency?.wallet_Flag"
+                  [alt]="currency?.wallet_Currency?.code">
+              </mat-option>
+            </div>
+            <div class="select-footer">
+              <button class="set-btn" id="setBtn" (click)="currencySelect.close()">Set <ng-container
+                  *ngIf="transactionFilter.get('currency')?.value?.length">({{transactionFilter.get('currency')?.value?.length}})</ng-container></button>
+            </div>
+          </mat-select>
+        </div>
+
+        <div class="date-selection-container">
+          <mat-date-range-picker #picker panelClass="payment-dashboard-calendar"
+            [calendarHeaderComponent]="customCalendarHeader">
+            <mat-datepicker-actions>
+              <button class="payment-calendar-apply-date-pc" id="paymentCalenderApplyDate" (click)="defaultDate()"
+                matDatepickerApply>Apply</button>
+              <button class="payment-calendar-close-date-pc" id="paymentCalenderCloseDate" matDatepickerCancel><img
+                  src="images/close-wallet-icon.svg"></button>
+            </mat-datepicker-actions>
+          </mat-date-range-picker>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate id="startDate" placeholder="Start date" formControlName="start" [value]="transactionFilter.get('start')?.value">
+            <input matEndDate id="endDate" placeholder="End date" formControlName="end" [value]="transactionFilter.get('end')?.value">
+          </mat-date-range-input>
+          <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+        </div>
+        <div>
+          <button type="submit" class="set-all-btn" id="setAllBtn" (click)="filterData()">Set</button>
+        </div>
+      </div>
+    </form>
+
+    <div *ngIf="walletTransactionAll?.length != 0" class="payment-transactions-table-wrap">
+      <table mat-table id="content" #content [dataSource]="dataSource" multiTemplateDataRows
+        *ngIf="dataSource?.data?.length != 0" class="mat-elevation-z8 payment-transactions-table">
+        <ng-container matColumnDef="flag">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+            <div
+              *ngIf="row?.mainType == 2 || (row?.mainType == 1 && row?.moneyTransferred != null && row?.moneyReceived != null)"
+              class="currency-pair-images">
+              <img class="country-one" [src]="row?.moneyTransferredFlag" alt="currency" />
+              <img class="country-two" [src]="row?.moneyReceivedFlag" alt="currency" />
+            </div>
+            <div class="bt-type"
+              *ngIf="(row?.mainType == 1 && row?.moneyTransferred != null && row?.moneyReceived == null) || row?.mainType == 10">
+              <span>{{getProfile(row?.WalletCharged)}}</span>
+              <img src="images/bt-type-arrow.svg">
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+            <div class="beneficiary-info">
+              <h4>Action</h4>
+              <span>{{row?.Action}}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="WalletCharged">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+            <div class="beneficiary-info"
+              *ngIf="row?.mainType == 2 || (row?.mainType == 1 && row?.moneyTransferred != null && row?.moneyReceived != null)">
+              <h4>Wallet charged</h4>
+              <span>{{row?.WalletCharged}}</span>
+            </div>
+            <div class="beneficiary-info"
+              *ngIf="(row?.mainType == 1 && row?.moneyTransferred != null && row?.moneyReceived == null) || row?.mainType == 10">
+              <h4>To</h4>
+              <span>{{row?.WalletCharged}}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Duedate">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+            <div class="beneficiary-info">
+              <h4>Due date</h4>
+              <span>{{row?.Duedate }}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row; let i = dataIndex">
+            <div class="beneficiary-info">
+              <h4>Status</h4>
+              <!-- <span class="beneficiary-status">{{row?.Status}}</span> -->
+              <span class="beneficiary-status"
+                [ngClass]="row?.Status == 'Fix invoice' ? 'activeCustom' : row?.Status?.toLowerCase()"
+                [matMenuTriggerFor]=" row?.Status == 'Active' && row?.mainType == 2 ? accountMenu : null"
+                [ngStyle]="{cursor: row?.Status == 'Active' ? 'pointer' : 'default'}">{{row?.Status == 'Fix invoice' ?
+                'Active' : row?.Status}}</span>
+            </div>
+            <mat-menu #accountMenu="matMenu" class="action-menu-cancel">
+
+              <button mat-menu-item class="delete" (click)="deletePayment(row , i)">Cancel</button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Amount">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td class="transfer-amount" mat-cell *matCellDef="let row">
+            <div class="beneficiary-info" *ngIf="row?.mainType == 2  || row?.mainType == 10">
+              <h4>Received</h4>
+              <span>{{row?.Amount}}</span>
+            </div>
+            <div class="beneficiary-info" *ngIf="(row?.mainType == 1)">
+              <h4>Sent</h4>
+              <span>{{row?.Amount}}</span>
+            </div>
+        </ng-container>
+
+        <ng-container matColumnDef="TransferDetails">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td class="transfer-details" mat-cell *matCellDef="let row; let i = dataIndex">{{row?.dispatchedFileI}}
+            <div class="beneficiary-info" *ngIf="row?.dispatchedFileId !== ''  || (isAfiiliate && row?.mainType !== 2)">
+              <h4>Transfer details</h4>
+              <span class="dispacth-file" (click)="downloadPDF(row?.dispatchedFileId, i);$event.stopPropagation()">
+                <img src="images/Pdf_icon_2.svg" width="15px"> Download
+              </span>
+            </div>
+        </ng-container>
+
+        <ng-container matColumnDef="expand">
+          <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+          <td mat-cell *matCellDef="let element">
+            <button aria-label="expand row" class="tab-open-close"
+              (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+              <img *ngIf="expandedElement !== element" src="images/open-transaction-tab.svg">
+              <img *ngIf="expandedElement === element" src="images/close-transaction-tab.svg">
+            </button>
+            <ng-template #depositMethodTooltip>
+              <div class="deposit-text-alignment">
+                <label>Exchange rate: </label>
+                <span *ngIf="element?.moneyTransferredexchangeRate && element?.moneyReceivedexchangeRate">
+                  <label>{{element?.moneyTransferredexchangeRate == 1 ? element?.moneyTransferredSign +
+                    element?.moneyTransferredexchangeRate : (element?.moneyReceivedexchangeRate == 1 ?
+                    element?.moneyReceivedSign + element?.moneyReceivedexchangeRate : '-')}}</label>=
+                  <label>{{element?.moneyTransferredexchangeRate != 1 ? element?.moneyTransferredSign +
+                    element?.moneyTransferredexchangeRate : (element?.moneyReceivedexchangeRate != 1 ?
+                    element?.moneyReceivedSign + element?.moneyReceivedexchangeRate : '-')}}</label>
+                </span>
+                <span *ngIf="!(element?.moneyTransferredexchangeRate && element?.moneyReceivedexchangeRate)">-</span>
+              </div>
+            </ng-template>
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length"
+            class="inner-tab-expand">
+            <div class="example-element-detail expanded-transaction-container"
+              [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <div class="example-element-diagram send-money-container"
+                *ngIf="(element?.mainType == 1 && element?.moneyTransferred != null && element?.moneyReceived == null)">
+                <div class="sm-info-wrap sm-info-one">
+                  <div class="info-details">
+                    <h4 class="info-title">Available balance</h4>
+                    <span>{{element?.moneyTransferredReadyToUse}}</span>
+                  </div>
+                </div>
+                <mat-divider class="dv-info" [vertical]="true"></mat-divider>
+                <div class="sm-info-wrap sm-info-two">
+                  <div class="info-details">
+                    <h4 class="info-title">Currency</h4>
+                    <span class="highlight-blue">{{element?.Currency}}</span>
+                  </div>
+                </div>
+                <mat-divider class="dv-info" [vertical]="true"></mat-divider>
+                <div class="sm-info-wrap sm-info-three">
+                  <div class="info-details">
+                    <h4 class="info-title">Fee</h4>
+                    <span>{{element?.Fee}}</span>
+                  </div>
+                  <div class="info-details">
+                    <h4 class="info-title">Commission</h4>
+                    <span>{{ element?.Commission || '-' }}</span>
+                  </div>
+                </div>
+                <mat-divider class="dv-info" [vertical]="true"></mat-divider>
+                <div class="sm-info-wrap sm-info-four">
+                  <div class="info-details">
+                    <h4 class="info-title">Creation date</h4>
+                    <span>{{element?.exeutedOn }}</span>
+                  </div>
+                  <div class="info-details fix-invoice">
+                    <button *ngIf="element?.from?.id && element?.traferStatus == 3" class="fix-invoice-btn"
+                      (click)="fixInvoice(element?.from?.id)">Fix invoice
+                      <img src="images/chevron_down-white.svg" alt="arrow-down">
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="example-element-diagram exchange-currency-container"
+                *ngIf="element?.mainType == 2 || (element?.mainType == 1 && element?.moneyTransferred != null && element?.moneyReceived != null) || element?.mainType == 10">
+                <div class="basic-info">
+                  <div class="exchange-currency ec-info-one">
+                    <div class="info-details">
+                      <h4 class="info-title">Buying</h4>
+                      <span class="highlight-blue">{{element?.Buying}}</span>
+                    </div>
+                    <div class="info-details">
+                      <h4 class="info-title">Selling</h4>
+                      <span class="highlight-blue">{{element?.Selling}}</span>
+                    </div>
+                    <div class="info-details">
+                      <h4 class="info-title">Exchange rate</h4>
+                      <strong class="highlight-blue">{{element?.moneyTransferredexchangeRate != 1 ?
+                        element?.moneyTransferredexchangeRate || '-' : (element?.moneyReceivedexchangeRate != 1 ?
+                        element?.moneyReceivedexchangeRate || '-' : '-')}}</strong>
+                    </div>
+                  </div>
+                  <mat-divider class="dv-info" [vertical]="true"></mat-divider>
+                  <div class="exchange-currency ec-info-two">
+                    <div class="info-details">
+                      <h4 class="info-title">Available balance</h4>
+                      <span class="highlight-green">
+                        {{element?.moneyReceiveReadyToUse || '-'}}
+                      </span>
+                    </div>
+                    <div class="info-details">
+                      <h4 class="info-title">Available balance</h4>
+                      <span class="highlight-green">
+                        {{element?.moneyTransferredReadyToUse || '-'}}
+                      </span>
+                    </div>
+                    <div class="info-details">
+                      <h4 class="info-title">Fee</h4>
+                      <span *ngIf="element?.Fee !== null && element?.Fee !== undefined">
+                        {{element?.Fee}}
+                      </span>
+                      <span *ngIf="element?.Fee === null || element?.Fee === undefined">-</span>
+                    </div>
+                    <div class="info-details">
+                      <h4 class="info-title">Commission</h4>
+                      <span>
+                        {{element?.Commission}}
+                      </span>
+                    </div>
+                  </div>
+                  <mat-divider class="dv-info" [vertical]="true"></mat-divider>
+                  <div class="exchange-currency ec-info-three">
+                    <div class="info-details">
+                      <h4 class="info-title">Creation date</h4>
+                      <span>{{element?.exeutedOn }}</span>
+                    </div>
+                    <div class="info-details">
+                      <button *ngIf="element?.from?.id && element?.traferStatus == 3" class="fix-invoice-btn"
+                        (click)="fixInvoice(element?.from?.id)">Fix invoice
+                        <img src="images/chevron_down-white.svg" alt="arrow-down">
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="element-row"
+          [class.example-expanded-row]="expandedElement === element"
+          (click)="expandedElement = expandedElement === element ? null : element;" [style.height]="'132px'"
+          [style.position]="'relative'">
+        </tr>
+        <tr mat-row [style.border-bottom]="'20px solid #f5f7fa'" *matRowDef="let row; columns: ['expandedDetail']"
+          class="transaction-detail-row"></tr>
+      </table>
+      <!-- <app-page-loader classes="bg-white section-loader" id="loader" *ngIf="showLoader"></app-page-loader> -->
+    </div>
+    <div class="payment-page-list">
+      <h3 class="total-entries">Total deals: {{ walletTransactionAll?.length }}</h3>
+      <div class="accounting-list-pagination">
+        <div class="page-select">
+          <span class="show-label"> Show </span>
+          <mat-form-field appearance="outline" class="filter-status mat-form-field-width-1">
+            <mat-select class="opt-select mat-select-1 font-2 font-weight-7" id="pagination" [(ngModel)]="pageSize"
+              (ngModelChange)="onPageSizeChange()">
+              <mat-option [value]="5">5</mat-option>
+              <mat-option [value]="10">10</mat-option>
+              <mat-option [value]="15">15</mat-option>
+              <mat-option [value]="20">20</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="accounting-pagination-wrapper">
+          <ngb-pagination [collectionSize]="collectionLength" [(page)]="page" [pageSize]="pageSize"
+            aria-label="Custom pagination" [maxSize]="5" [boundaryLinks]="true" (pageChange)="pageChanged($event)">
+            <ng-template ngbPaginationFirst>
+              <div class="first-page">
+                <img src="images/first-page-transaction-paginator.svg">
+              </div>
+            </ng-template>
+            <ng-template ngbPaginationLast>
+              <div class="last-page">
+                <img src="images/last-page-transaction-paginator.svg">
+              </div>
+            </ng-template>
+            <ng-template ngbPaginationPrevious>
+              <div class="prev-page">
+                <img src="images/prev-page-transaction-paginator.svg">
+              </div>
+            </ng-template>
+            <ng-template ngbPaginationNext>
+              <div class="next-page">
+                <img src="images/next-page-transaction-paginator.svg">
+              </div>
+            </ng-template>
+            <ng-template ngbPaginationEllipsis>
+              <div class="ellipsed-page">
+                ...
+              </div>
+            </ng-template>
+            <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+          </ngb-pagination>
+        </div>
+      </div>
+    </div>
+    <div class="no-filter-match" *ngIf="dataSource?.data?.length == 0">
+      There are no transaction for above filter data.
+    </div>
+  </div>
+</div>
