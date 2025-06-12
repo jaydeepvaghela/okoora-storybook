@@ -1,0 +1,119 @@
+
+<!-- <div class="buttons-container">
+  <button class="custom-button-di" (click)="DownloadTemplate()">
+    <img src="images/mass-payment/download.svg" />Download Template
+  </button>
+  <input hidden accept=".xlsx" type="file" multiple = false class="file-input" (change)="ImportTemplate($event)" #fileUpload1>
+  <button class="custom-button-di" (click)="fileUpload1.click()">
+    <img src="images/mass-payment/file-upload.svg" /> Import Template
+  </button>
+</div> -->
+<div class="table-container loader-wrapper">
+  <table class="table" #table *ngIf="selectedBeneficiaries.length">
+    <thead style="margin-bottom: 10px">
+      <tr>
+        <th>Whom to pay</th>
+        <th>Set Amount</th>
+        <th>Estimated cost</th>
+        <th>Transfer type</th>
+        <th>Documents</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let form of beneficiaryForms; let i = index" [formGroup]="form" class="table-row">
+        <td>
+          <button id="recipient_btn_mass_payment" class="custom-dropdown-button" (click)="selectRecipient()">
+            {{ form.get("product_reference")?.value || "Select" }}
+            <img class="arrow-down" src="images/arrow-down.svg" />
+          </button>
+        </td>
+        <td [class.error-border]="form.get('amount').errors?.invalidAmount">
+          <div class="input-container">
+            <div class="input-with-error-icon">
+              <img
+                src="images/error-info.svg"
+                class="error-icon"
+                *ngIf="form.get('amount').errors?.invalidAmount"
+                [matTooltip]="getErrorTooltip(form.get('amount'), i)"
+                matTooltipPosition="above"
+                matTooltipClass="custom-tooltip"
+                alt="Error Information"
+                />
+                <input
+                appSeparator
+                id="amount_input_mass_payment"
+                style="font-weight: 700"
+                [disabled]="!form.get('product_reference')?.value"
+                [class.disabled]="!form.get('product_reference')?.value"
+                [class.error]="form.get('amount').errors?.invalidAmount"
+                class="form-control"
+                type="text"
+                placeholder="0"
+                (blur)="onInputBlur(i)"
+                formControlName="amount"
+                (input)="formatInput($event)"
+                (keydown)="restrictSpecialCharacters($event)"
+              />
+            </div>
+            <img *ngIf="paymentRequests" [src]="'https://okoora-stage-api2023.azurewebsites.net' + '/Images/Flags/' + form.get('currency')?.value + '.png'" alt="Currency Flag" class="currency-flag" />
+          </div>
+        </td>
+        <td>
+          <div class="input-container">
+            <span *ngIf="form.get('charge').value">
+              {{ form.get("charge").value | number: "1.2-2" }}
+            </span>
+            <span *ngIf="!form.get('charge').value"> 0 </span>
+            <span class="currency-flag"
+              ><b>{{ form.get('chargeCurrency') ? form.get('chargeCurrency').value :  selectedWallet?.wallet_Currency?.code }}</b></span
+            >
+          </div>
+        </td>
+        <td>
+          <app-transfer-type [options]="form.get('costList').value" [form]="form" [selectedWallet]="selectedWallet"></app-transfer-type>
+        </td>
+        <td>
+          <div class="file-upload-container">
+            <div>
+              <button id="uplaod_btn_mass_payment"
+                [disabled]="!form.get('signAndFiles').value?.needFile && !form.get('signAndFiles').value?.needStamp"
+                (click)="uploadFiles(i)"
+                *ngIf="form.get('signAndFiles').value?.needFile || form.get('signAndFiles').value?.needStamp"
+              >
+                <img src="images/file-upload.svg" /> <b>Upload</b>
+              </button>
+              <span *ngIf="!form.get('signAndFiles').value?.needFile && !form.get('signAndFiles').value?.needStamp"><b>No documents needed</b></span>
+            </div>
+
+            <mat-progress-bar
+              *ngIf="form.get('signAndFiles').value?.needFile || form.get('signAndFiles').value?.needStamp"
+              class="custom-progress-bar"
+              [class.green-progress]="calculateProgress(i) === 100"
+              mode="determinate"
+              [value]="calculateProgress(i)"
+            ></mat-progress-bar>
+          </div>
+        </td>
+        <td>
+          <div style="display: flex; justify-content: space-evenly">
+            <button id="addNote_btn_mass_payment" [disabled]="!form.get('charge').value" (click)="addNote(i)">
+              <img *ngIf="form.get('note').value; else noNote" src="images/active-note.svg" />
+              <ng-template #noNote>
+                <img src="images/note.svg" />
+              </ng-template>
+            </button>
+            <button id="deleteBenef_btn_mass_payment" [disabled]="!selectedBeneficiaries.length" (click)="deleteBeneficiary(i)">
+              <img src="images/delete.svg" />
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- <pre>selectedBeneficiaries:length {{selectedBeneficiaries.length}}</pre>
+<pre>beneficiaryForms:length {{beneficiaryForms.length}}</pre>
+<pre>selectedBeneficiaries form: {{selectedBeneficiaries}}</pre>
+<pre>beneficiaryForms: {{beneficiaryForms}}</pre> -->
+<app-initial-render (addMoreRecipientsChanged)="selectRecipient()" *ngIf="!beneficiaryForms.length || !selectedBeneficiaries.length"></app-initial-render>

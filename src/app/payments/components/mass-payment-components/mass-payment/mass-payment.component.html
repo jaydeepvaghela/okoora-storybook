@@ -1,0 +1,49 @@
+<div class="mass-payment-section container">
+  <div class="sp-icon">
+    <button id="back_btn_mass_payment" *ngIf="isPreview && !isComplete" mat-icon-button (click)="goBack()">
+      <img src="images/prev-slide-icon.svg" alt="back icon" class="back-icon" />
+    </button>
+    <div class="close-container">
+      <button id="close_btn_mass_payment" class="close-btn" mat-icon-button mat-dialog-close (click)="closeMassPayment()">
+        <img src="images/close-icon-gray.svg" alt="close icon" />
+      </button>
+    </div>
+  </div>
+  <app-top-content></app-top-content>
+  <div *ngIf="!isPreview">
+    <div class="divider"></div>
+    <div class="bottom-content">
+      <div class="payment-data-options">
+        <div class="mass-payment-options">
+          <div class="new-recipient-add">
+            <button id="add_btn_mass_payment" class="add-recipient" (click)="addNewBeneficiaryForm()">+ Add</button>
+          </div>
+          <div class="template-download">
+            <button id="download_btn_mass_payment" class="download" (click)="DownloadTemplate()"> <img src="images/download.svg" /> Download template</button>
+          </div>
+          <div class="template-import">
+            <input hidden accept=".xlsx " multiple="false" type="file" class="file-input" (change)="ImportTemplate($event)" #fileUpload1>
+            <button id="import_btn_mass_payment" class="import" (click)="fileUpload1.click()"><img src="images/file-upload.svg" />Import template</button>
+          </div>
+        </div>
+        <app-wallet-currency style="width: auto" (changeCurrencyWallet)="changeCurrencyWallet($event)"
+          [selectedWallet]="selectedWallet" [beneficiaryForms]="beneficiaryForms"
+          (beneficiaryFormsChange)="handleBeneficiaryFormsChange($event)" [walletList]="data.walletList"
+          (changeIsLoading)="changeIsLoading($event)">
+        </app-wallet-currency>
+      </div>
+    </div>
+    <app-recipient-table [approvedBeneficiaries]="approvedBeneficiaries"
+      [beneficiaryForms]="beneficiaryForms" (beneficiaryFormsChange)="handleBeneficiaryFormsChange($event)"
+      [addMoreRecipients]="addMoreRecipients" (addMoreRecipientsChanged)="handleAddMoreRecipientsChanged($event)"
+      [selectedWallet]="selectedWallet"></app-recipient-table>
+    <div class="save-button" *ngIf="valueLength > 0">
+      <button id="gotoNext_btn_mass_payment" [disabled]="!canProceedToNext()"
+        [class.disabled]="!canProceedToNext()" (click)="save()">Next</button>
+    </div>
+  </div>
+  <app-preview *ngIf="isPreview" (changeIsPreview)="changeIsPreview($event)"
+    (changeCurrencyWallet)="changeCurrencyWallet($event)" [selectedWallet]="selectedWallet"
+    [beneficiaryForms]="beneficiaryForms" (beneficiaryFormsChange)="handleBeneficiaryFormsChange($event)"
+    [walletList]="data.walletList"></app-preview>
+</div>

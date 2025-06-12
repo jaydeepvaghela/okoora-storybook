@@ -1,0 +1,25 @@
+@import "../../../../../assets/scss/variable";
+
+.wallet-currency-btn {
+    width: auto;
+    min-height: 40px;
+    border-radius: 54px;
+    border: 1px solid var(--primary-blue);
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 7px;
+    color: #111827;
+    font-family: $he_heebo;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 10px 17px 10px 26px;
+    white-space: nowrap;
+
+    strong {
+        font-weight: 700;
+    }
+}

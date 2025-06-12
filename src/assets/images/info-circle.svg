@@ -1,0 +1,12 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="info-circle_svgrepo.com" clip-path="url(#clip0_1739_19607)">
+<path id="Vector" d="M7.9998 15.2C11.9763 15.2 15.1998 11.9765 15.1998 8.00005C15.1998 4.0236 11.9763 0.800049 7.9998 0.800049C4.02335 0.800049 0.799805 4.0236 0.799805 8.00005C0.799805 11.9765 4.02335 15.2 7.9998 15.2Z" stroke="#111827"/>
+<path id="Vector_2" d="M8 11L8 9" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector_3" d="M8 5.60005L8 4.80005" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_1739_19607">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>

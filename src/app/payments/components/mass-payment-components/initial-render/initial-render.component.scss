@@ -1,0 +1,53 @@
+@import "../../../../../assets/scss/variable";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title {
+    color: $dark-gray;
+    font-family: Heebo;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 38px;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  .create-payment-text {
+    color: $dark-gray;
+    text-align: center;
+    font-size: $font-14; 
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  .add-recipient {
+    margin: 20px 0;
+    background: var(--primary-blue);
+    border-radius: 40px;
+    font-size: $font-16;
+    line-height: 22px;
+    font-weight: 600;
+    color: $white;
+    padding: 5px 32px;
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &.disabled {
+      background: $light-gray; 
+      color: $color-secondary;
+      cursor: not-allowed;
+    }
+
+    @media screen and (max-width: 1440px) {
+      padding: 8px 24px;
+      font-size: 15px;
+    }
+  }
+}

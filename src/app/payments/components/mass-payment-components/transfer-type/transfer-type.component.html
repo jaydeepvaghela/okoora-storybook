@@ -1,0 +1,20 @@
+<div class="dropdown">
+  <button id="toggle_btn_mass_payment" (click)="toggleDropdown()" class="dropbtn">
+    <b>{{ getTitleText() }}</b>
+    <img class="arrow-down" src="images/arrow-down.svg" />
+  </button>
+  <div class="dropdown-content" *ngIf="showDropdown">
+    <div *ngFor="let option of options" [class.selected]="form.value.costType.key === option.key" class="dropdown-item"
+      (click)="selectOption(option)">
+      <div style="display: flex">
+        <input id="cost_input_mass_payment" type="radio" id="{{ option.key }}" name="dropdownOption"
+          [checked]="form.value.costType?.key === option.key" />
+        <label for="{{ option.key }}">
+          <span><b>{{ getDisplayText(option.key) }}</b></span>
+          <span>{{ getDescription(option.key) }}</span>
+        </label>
+      </div>
+      <span class="price">{{ selectedWallet?.wallet_Currency?.sign }} {{ option.value | number }}</span>
+    </div>
+  </div>
+</div>

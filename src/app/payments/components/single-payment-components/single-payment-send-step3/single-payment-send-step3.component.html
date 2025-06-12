@@ -1,0 +1,199 @@
+<div class="single-payment loader-wrapper">
+    <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+    <div class="sp-icon">
+        <button id="back_btn_single_payment3" (click)="previousStep()" mat-icon-button class="close-btn">
+            <img src="images/prev-slide-icon.svg" alt="back icon" class="back-icon">
+        </button>
+        <button id="close_btn_single_payment3" mat-icon-button (click)="closeButton()" class="close-btn">
+            <img src="images/close-icon-gray.svg" alt="close icon">
+        </button>
+    </div>
+    <div class="single-payment-header">
+        <div class="sph-title">
+            <span class="sph-icon">
+                <img src="images/bell-icon-black.svg" alt="bell icon image">
+            </span>
+            <h2>Single payment</h2>
+        </div>
+        <div class="sph-dropdown">
+            <button id="otherPayment_btn_single_payment3" [matMenuTriggerFor]="sendMenu" class="pay-option-dropdown">
+                Other Payments
+                <img src="images/arrow-down-gary.svg" alt="dropdown arrow icon">
+            </button>
+            <mat-menu #sendMenu="matMenu" class="action-menu sent-dropdown other-payment">
+                <button id="singlePayment_btn_single_payment3" (click)="sendAnotherPayment()" mat-menu-item>Single
+                    Payment
+                </button>
+                <button *ngIf="affiliateCountry == 'il'" id="massPayment_btn_single_payment3" mat-menu-item
+                    (click)="createMassPayment()">Mass Payment
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+    <div class="single-payment-body">
+
+        <div class="transfer-details-title">
+            <h4>Transfer details</h4>
+            <button id="copyData_btn_single_payment3" (click)="copyData()" class="copy-button-wrap">
+                <img src="images/copy-document-icon.svg" alt="copy icon">
+                <span *ngIf="copyDataText" class="copy-tooltip">
+                    {{copyDataText}}
+                </span>
+            </button>
+        </div>
+
+        <ul class="transfer-details-list">
+            <li>
+                <span>Recipient:</span>
+                <strong>{{signObjectForSummery?.bankAccountHolderName}}</strong>
+            </li>
+        </ul>
+        <ul class="transfer-details-list">
+            <li>
+                <span>Amount Sent:</span>
+                <strong>
+                    {{ signObjectForSummery?.beneficiarySign }}
+                    {{
+                    createdPaymentData?.paymentRequst?.send
+                    ? commaseprate((+createdPaymentData.paymentRequst.send).toFixed(2), 2)
+                    : '0.00'
+                    }}
+                </strong>
+            </li>
+
+            <li>
+                <span>Charged wallet:</span>
+                <strong>
+                    {{ signObjectForSummery?.selectedWalletSign }}
+                    {{
+                    chargedAmount
+                    ? commaseprate(chargedAmount, 2)
+                    : commaseprate((+createdPaymentData?.paymentRequst?.charge).toFixed(2), 2)
+                    }}
+                </strong>
+            </li>
+        </ul>
+
+        <!-- <ul class="transfer-details-list">
+            <li>
+                <span>Transfer type:</span><strong>{{selectedOption == 1 ? "Regular": "Our" }}</strong>
+            </li>
+            <li>
+                <span>Transfer price:</span><strong>{{signObjectForSummery?.selectedWalletSign}}{{selectedOption == 1 ?
+                    createdPaymentData?.costList[0]?.value : createdPaymentData?.costList[1]?.value}}</strong>
+            </li>
+        </ul> -->
+
+        <div class="transfer-fee-title">
+            <h4>Select transfer Fee</h4>
+        </div>
+
+        <mat-radio-group aria-labelledby="example-radio-group-label" [(ngModel)]="selectedOption"
+            class="example-radio-group">
+            <mat-radio-button id="cost0_btn_single_payment3" *ngIf="createdPaymentData?.costList[0]" value="1"
+                class="example-radio-button" (change)="radioChange($event)"
+                [ngClass]="{'checked-radio': selectedOption === '1'}">
+                <div class="transfer-fee-wrap">
+                    <div class="transfer-fee-type">
+                        <label class="transfer-text d-flex align-items-center"><span
+                                [ngClass]="{'text-highlight': selectedOption === '1', 'transfer-title': selectedOption !== '1'}">Regular
+                                Transfer </span> <span [tooltipClass]="'transfer-custom-tooltip'" placement="top"
+                                ngbTooltip="Receiving bank may charge extra fees."><img
+                                    src="images/info-transfer-icon.svg"></span></label>
+                        <p> Speed: 0 - 3 business days </p>
+                    </div>
+                    <strong>{{signObjectForSummery?.selectedWalletSign}}{{createdPaymentData?.costList[0]?.value}}</strong>
+                </div>
+            </mat-radio-button>
+            <mat-radio-button id="cost1_btn_single_payment3" *ngIf="createdPaymentData?.costList[1]"
+                class="example-radio-button" value="2" (change)="radioChange($event)"
+                [ngClass]="{'checked-radio': selectedOption === '2'}">
+                <div class="transfer-fee-wrap">
+                    <div class="transfer-fee-type">
+                        <label class="transfer-text d-flex align-items-center"><span
+                                [ngClass]="{'text-highlight': selectedOption === '2', 'transfer-title': selectedOption !== '2'}">Our
+                                Transfer </span> <span [tooltipClass]="'transfer-custom-tooltip'" placement="top"
+                                ngbTooltip="You cover the intermediary bank's costs"> <img
+                                    src="images/info-transfer-icon.svg"> </span> </label>
+                        <p>Speed: 0 - 3 business days </p>
+                    </div>
+                    <strong>{{signObjectForSummery?.selectedWalletSign}}{{createdPaymentData?.costList[1]?.value}}</strong>
+                </div>
+            </mat-radio-button>
+            <mat-radio-button id="cost2_btn_single_payment3" *ngIf="createdPaymentData?.costList[2]"
+                class="example-radio-button" value="4" (change)="radioChange($event)"
+                [ngClass]="{'checked-radio': selectedOption === '4'}">
+                <div class="transfer-fee-wrap">
+                    <div class="transfer-fee-type">
+                        <label class="transfer-text d-flex align-items-center"><span
+                                [ngClass]="{'text-highlight': selectedOption === '4', 'transfer-title': selectedOption !== '4'}">Payment
+                                on behalf your company </span> <span [tooltipClass]="'transfer-custom-tooltip'"
+                                placement="top"
+                                ngbTooltip="Beneficiary bank will receive the payment in your name (And not okoora)">
+                                <img src="images/info-transfer-icon.svg"></span> </label>
+                        <p>Speed: 0 - 2 business days</p>
+                    </div>
+                    <strong>{{signObjectForSummery?.selectedWalletSign}}{{createdPaymentData?.costList[2]?.value}}</strong>
+                </div>
+            </mat-radio-button>
+            <mat-radio-button id="cost3_btn_single_payment3" *ngIf="createdPaymentData?.costList[3]"
+                class="example-radio-button" value="5" (change)="radioChange($event)"
+                [ngClass]="{'checked-radio': selectedOption === '5'}">
+                <div class="transfer-fee-wrap">
+                    <div class="transfer-fee-type">
+                        <label class="transfer-text d-flex align-items-center"><span
+                                [ngClass]="{'text-highlight': selectedOption === '5', 'transfer-title': selectedOption !== '5'}">Fast
+                                payment </span> <span [tooltipClass]="'transfer-custom-tooltip'" placement="top"
+                                ngbTooltip="Subject to the cut time schedule updated on the support portal"> <img
+                                    src="images/info-transfer-icon.svg"></span></label>
+                        <p> Speed: 0 - 1 business days </p>
+                    </div>
+                    <strong>{{signObjectForSummery?.selectedWalletSign}}{{createdPaymentData?.costList[3]?.value}}</strong>
+                </div>
+            </mat-radio-button>
+        </mat-radio-group>
+
+
+        <div class="total-transaction-cost">
+            <label>Total transaction cost:</label>
+            <strong>{{signObjectForSummery?.selectedWalletSign}}{{chargedAmountAfterRefresh ?
+                commaseprate(chargedAmountAfterRefresh,2) :
+                commaseprate(createdPaymentData?.paymentRequst?.charge.toFixed(2),2)}}</strong>
+        </div>
+        <div class="checkbox-container">
+            <mat-checkbox id="approve_checkbox_single_payment3" [(ngModel)]="termsAndCondition" class="approve-check">I approve the
+            <span (click)="openPrivacyPolicyDialog()">Policy</span></mat-checkbox>
+        </div>
+        <div class="transaction-error-msg">
+            <span *ngIf="costTypeAPIError">
+                {{costTypeAPIError}}
+            </span>
+            <span *ngIf="paymentRequestAPIError ">
+                {{paymentRequestAPIError}}
+            </span>
+            <span *ngIf="termsPolicyFlag">
+                Please approve the Terms and Condition
+            </span>
+        </div>
+        <div class="error-msg" *ngIf="refreshAPIError">
+            <span>
+                {{refreshAPIError}}
+            </span>
+        </div>
+        <div class="refresh-quote-timer"
+            *ngIf="createdPaymentData?.paymentRequst?.sendCurrency != createdPaymentData?.paymentRequst?.chargeCurrency">
+            Data is valid for
+            <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
+        </div>
+        <button id="gotoNext_btn_single_payment3"
+            
+            (click)="nextStep(formStepper, formStepperProgress)" class="pay-btn-wrap"
+            [ngStyle]="{'cursor': termsAndCondition ? 'pointer' : 'default' }">
+            
+            Pay <span> ({{signObjectForSummery?.selectedWalletSign}}{{chargedAmountAfterRefresh ?
+                commaseprate(chargedAmountAfterRefresh,2) :
+                commaseprate(createdPaymentData?.paymentRequst?.charge.toFixed(2),2)}}) </span>
+        </button>
+    </div>
+    <!-- <app-footer [footerBottom]="'relative'" *ngIf="isNonIsraeliUser"></app-footer> -->
+</div>

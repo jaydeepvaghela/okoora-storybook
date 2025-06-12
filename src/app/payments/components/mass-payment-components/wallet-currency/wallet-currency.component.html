@@ -1,0 +1,6 @@
+<button id="walletCurrency_btn_mass_payment" (click)="openWalletListDialog()" class="wallet-currency-btn">
+    Wallet balance: <strong>{{ selectedWallet?.wallet_Currency?.code }}</strong> {{ selectedWallet?.wallet_Available | number: "1.2-2" }}
+    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="6" viewBox="0 0 9 6" fill="none">
+      <path d="M1 1L4.50023 5L8 1" stroke="#111827" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>

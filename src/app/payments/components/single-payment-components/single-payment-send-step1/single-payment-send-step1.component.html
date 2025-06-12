@@ -1,0 +1,226 @@
+<div class="single-payment loader-wrapper">
+    <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+
+    <div class="sp-icon">
+        <button id="close_btnicon_single_payment" (click)="backClose()" mat-icon-button class="close-btn">
+            <img src="images/prev-slide-icon.svg" alt="back icon" class="back-icon">
+        </button>
+        <button  id="close_dialoge_single_payment"  mat-icon-button mat-dialog-close class="close-btn" (click)="closeButton()">
+            <img src="images/close-icon-gray.svg" alt="close icon">
+        </button>
+    </div>
+    <div class="single-payment-header">
+        <div class="sph-title">
+            <span class="sph-icon">
+                <img src="images/bag-dollar-money-icon.svg" alt="bell icon image">
+            </span>
+            <h2>Single payment</h2>
+        </div>
+        <div class="sph-dropdown">
+            <button id="other_payment_single_payment" [matMenuTriggerFor]="sendMenu" class="pay-option-dropdown">
+                Other Payments
+                <img src="images/arrow-down-gary.svg" alt="dropdown arrow icon">
+            </button>
+            <mat-menu #sendMenu="matMenu" class="action-menu sent-dropdown other-payment">
+                <button id="signle_menubtn_single_payment" (click)="sendAnotherPayment()" mat-menu-item>Single Payment
+                </button>
+                <button id="mass_menubtn_single_payment" mat-menu-item (click)="createMassPayment()">Mass Payment
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+
+    <div *ngIf="openBeneficiaryList" class="single-payment-body">
+        <div class="recipient-dropdown">
+            <label class="recipient-field">Whom to pay</label>
+            <mat-form-field class="width select-recipients-">
+                <mat-label>Select recipients
+                </mat-label>
+                <input  matInput id="beneficiaryInput" class="forHideShow" (click)="openBeneficiaryContainer()"
+                    placeholder="Search" aria-label="Search" [formControl]="filterControl" [(ngModel)]="beneficiaryName"
+                    required />
+                <span (click)="openBeneficiaryContainer()" class="pay-dropdown-icon">
+                    <img src="images/chevron-down-icon.svg" alt="chevron down image">
+                </span>
+            </mat-form-field>
+            <strong class="add-reci" id="add_beneficiay_single_payment" (click)="createBenificiaryDialog()">+ Add Recipient</strong>
+            <!-- <mat-autocomplete #auto="matAutocomplete"> -->
+
+            <div *ngIf="openBeneficiaryList && clickBeneficiary" class="recent-list-dropdown"
+                id="beneficiaryDropdownId">
+
+                <ul class="recent-pay-iist" *ngIf="filteredBeneficiary$ | async as beneficiaryList">
+                    <li *ngFor="let beneficiary of beneficiaryList">
+                        <div [ngClass]="{'beneficiarySelected': beneficiary?.id == beneficiaryDetails?.id}"
+                            class="recent-pay-item" id="open_payment_WithBenef_single_payment" (click)="getBeneficiary(beneficiary)">
+                            <div class="profile-img">
+                                <span>{{GetbeneficiarySymbol(beneficiary?.bankAccountHolderName)}}</span>
+                                <img width="18" [src]="beneficiary?.currencyISO?.flag"
+                                    [alt]="beneficiary?.currencyISO?.code">
+                            </div>
+                            <div class="profile-data">
+                                <p> {{getBeneficiaryInfo(beneficiary)}}</p>
+                                <div class="pd-bottom">
+                                    <span> {{getBeneficiaryInfo1(beneficiary)}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <button id="selectBeneficiary_btn_single_payment" [ngClass]="{'clickedSelect': beneficiaryDetails}" [class.disabled]=" !beneficiaryDetails "
+                    [disabled]=" !beneficiaryDetails " (click)="selectedBeneficiary()"
+                    class="pay-select-btn">Select</button>
+            </div>
+        </div>
+        <div *ngIf="openBeneficiaryList && !fetchPaymentError && transactionListData?.length > 0" class="recent-pay-data">
+            <label class="recent-pay-title">Recent</label>
+            <ul class="recent-pay-iist">
+                <li *ngFor="let transaction of transactionListData" class="recent-pay-item"
+                    (click)="getTransaction(transaction)">
+                    <div class="profile-img">
+                        <span>{{GetbeneficiarySymbol(transaction?.to?.name)}} </span>
+                        <img width="18"
+                            [src]="transaction?.moneyReceived  ? transaction?.moneyReceived?.currency?.flag : transaction?.moneyTransferred?.currency?.flag">
+                    </div>
+                    <div class="profile-data">
+                        <p>{{transaction?.to?.name}} </p>
+                        <div class="pd-bottom">
+                            <strong class="currancy-name"> {{transaction?.moneyReceived ?
+                                transaction?.moneyReceived?.currency?.code :
+                                transaction?.moneyTransferred?.currency?.code }}</strong>
+                            <span>{{transaction?.to?.accountNumber}}</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div *ngIf="!openBeneficiaryList" class="single-payment-body" >
+        <div class="you-send-wrap">
+            <label class="send-feild" id="open_lblBeneficiary_single_payment" > You Send to <span (click)="openBeneficiary() "
+                    class="change-beneficiary-list-name" mat-button [matMenuTriggerFor]="beneficiaryMenu">{{beneficiaryDetails?.bankAccountHolderName}}</span></label>
+            <div class="you-send-text-feild"
+                [ngStyle]="{'border': (amount_error && !sendAmount) || (sendValidAmountError && sendAmount) ? '1px solid #DC2626' : '1px solid #3B82F6' }">
+
+                <div class="currancy-amoutn-left">
+                    <strong
+                        [ngClass]="(amount_error && !sendAmount) || (sendValidAmountError && sendAmount) ? 'error-msg-custom' : 'default-set-amount'">Set
+                        amount</strong>
+                    <label class="send-amout-feild">{{beneficiaryDetails?.currencyISO?.sign}}
+                        <input  id="amount_forpayment_single_payment" [ngClass]="{'inputClickedFlag': sendValidAmountError && sendAmount}" appSeparator
+                            type="text" placeholder="0" [(ngModel)]="sendAmount" (blur)="createPaymentRequest()" (keydown)="restrictZero($event)"  >
+
+                        </label>
+
+                        <!-- <input type="text" pattern="^[1-9][0-9]*\.?([0-9]+)?$" required oninput="if(!this.value.match('^[1-9][0-9]*\.?([0-9]+)?$'))this.value='';" > -->
+
+                </div>
+                <span class="currancy-img-right"><img width="30px" [src]="beneficiaryDetails?.currencyISO?.flag">
+                    {{beneficiaryDetails?.currencyISO?.code}}</span>
+                <span *ngIf="sendValidAmountError && sendAmount"
+                    class="alert-amount-msg">{{sendValidAmountError}}</span>
+                <span *ngIf="amount_error && !sendAmount" class="alert-amount-msg">Please set an amount</span>
+            </div>
+
+            <mat-menu #beneficiaryMenu="matMenu" class="beneficiary-list-items-menu">
+                <div *ngIf="changeBeneficiary" class="change-beneficiary-list" id="changeBeneficiaryId" (click)="$event.stopPropagation()">
+                    <div class="search-input-section">
+                        <input matInput id="beneficiaryInput" class="forHideShow" placeholder="Search Recipient" aria-label="Search"
+                         [formControl]="filterControl" [(ngModel)]="beneficiaryName" required />
+                        <img class="search-icon" src="images/search-input-icon.svg">
+                        <span class="add-recipients" (click)="createBenificiaryDialog()"> + Add Recipient</span>
+                    </div>
+
+                  <ul class="recent-pay-iist" *ngIf="filteredBeneficiary$ | async as beneficiaryList">
+                    <li *ngFor="let beneficiary of beneficiaryList">
+                      <div [ngClass]="{'beneficiarySelected': beneficiary?.id == changebeneficiaryDetails?.id}" class="recent-pay-item"
+                           (click)="changeBeneficiaryDetails(beneficiary)">
+                        <div class="profile-img">
+                          <span>{{GetbeneficiarySymbol(beneficiary?.bankAccountHolderName)}}</span>
+                          <img class="beneficiary-currency-img" width="20" [src]="beneficiary?.currencyISO?.flag" [alt]="beneficiary?.currencyISO?.code">
+                        </div>
+                        <div class="profile-data">
+                            <h3 class="beneficiary-identity">{{getBeneficiaryInfo(beneficiary)}}</h3>
+                            <div class="d-flex align-items-center">
+                                <label class="beneficiary-country">{{getChangeBeneficiaryInfo1(beneficiary)}}&nbsp; | &nbsp;</label>
+                                <label class="beneficiary-moreinfo">{{getChangeBeneficiaryInfo2(beneficiary)}}</label>
+                            </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <button id="select_detail_single_payment" [ngClass]="{'clickedSelectChange': changebeneficiaryDetails}" [class.disabled]="!changebeneficiaryDetails"
+                          [disabled]="!changebeneficiaryDetails" (click)="selectedBeneficiaryChange(changebeneficiaryDetails)"
+                          class="pay-select-btn">Select
+                  </button>
+                </div>
+            </mat-menu>
+            <div class="info-tooltip-wrap">
+                <span class="info-tooltip-text">{{selectedWallet?.wallet_Currency?.sign}}{{ createdPaymentData ?
+                    commaseprate(chargedAmount,2) : '0'}}</span>
+
+                <span #menuTrigger1="matMenuTrigger" (mouseover)="openMyMenu(menuTrigger1)"
+                    [matMenuTriggerFor]="myMenu1" class="info-icon">
+                    <img src="images/info-circle.svg" alt="info icon img">
+                </span>
+                <mat-menu #myMenu1="matMenu" [overlapTrigger]="false" class="price-tooltip">
+                    <div (mouseleave)="menuTrigger1.closeMenu()">
+                        <ng-template matMenuContent>
+                            <ul>
+                                <li>Amount
+                                    <span>{{beneficiaryDetails?.currencyISO?.sign}}{{commaseprate(createdPaymentData?.paymentRequst?.send?.toFixed(2),
+                                        2) || '0'}}</span>
+                                </li>
+                                <li>Fee: <span>{{selectedWallet?.wallet_Currency?.sign}}{{regularcostValue || '0'
+                                        }}</span></li>
+                                <li>Exchange rate: <span>{{createdPaymentData ? createdPaymentData?.paymentRequst?.exchangeRate?.major?.currency?.sign : ""}}{{createdPaymentData ?
+                                    createdMajorRate : '0'}} =
+                                        {{createdPaymentData ? createdPaymentData?.paymentRequst?.exchangeRate?.minor?.currency?.sign : ""}}{{createdPaymentData ?
+                                        createdSpotRate?.toFixed(4) : '0'}}</span></li>
+                                <li>After exchange rate:
+                                    <span>{{selectedWallet?.wallet_Currency?.sign}}{{createdPaymentData ?
+                                        commaseprate(chargedAmount,4) : '0'}}</span>
+                                </li>
+                            </ul>
+                        </ng-template>
+                    </div>
+                </mat-menu>
+            </div>
+            <!-- {{selectedWallet | json}} -->
+        </div>
+
+        <button id="openWallet_btn_single_payment" (click)="openWalletListDialog()" class="wallet-currency-btn">
+            Wallet balance: <strong>{{selectedWallet?.wallet_Currency?.code}}</strong> {{selectedWallet?.wallet_Available
+            |
+            number:'1.2-2'}}
+
+            <img src="images/arrow-down-dark.png" alt="wallet dropdowng icon">
+        </button>
+        <div class="error-msg" *ngIf="createPaymentAPIError && !sendValidAmountError">
+            <span>
+                {{createPaymentAPIError}}
+            </span>
+        </div>
+        <div class="error-msg" *ngIf="refreshAPIError">
+            <span>
+                {{refreshAPIError}}
+            </span>
+        </div>
+
+        <ng-container *ngIf="filteredBeneficiary$ | async as filteredBeneficiary">
+            <div class="error-msg"
+                 [class.d-none]="validBeneficiarySelected || isBeneficiaryPresent(filteredBeneficiary)">
+                <span class="error-beneficiary-updated-or-deleted">Beneficiary updated or deleted</span>
+            </div>
+        </ng-container>
+        <div class="refresh-quote-timer" *ngIf="createdPaymentData?.paymentRequst?.sendCurrency != createdPaymentData?.paymentRequst?.chargeCurrency">
+            Data is valid for
+            <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
+        </div>
+        <button id="goto_next_single_payment" class="pay-next-btn" [disabled]="(!validBeneficiarySelected && !isBeneficiaryPresent(filteredBeneficiary$ | async)) || sendValidAmountError ||  sendAmount?.length < '2' || refreshAPIError || createPaymentAPIError "
+            [class.disabled]="(!validBeneficiarySelected && !isBeneficiaryPresent(filteredBeneficiary$ | async)) || sendValidAmountError ||  sendAmount?.length < '2' || refreshAPIError || createPaymentAPIError "
+            (click)="nextStep(formStepper, formStepperProgress)"> Next </button>
+    </div>
+
+</div>

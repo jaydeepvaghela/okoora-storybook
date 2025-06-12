@@ -1,0 +1,42 @@
+
+<div class="main-single-payment-modal">
+    <div class="alerts-bg ab-one">
+        <span class="line-one"></span>
+        <span class="line-two"></span>
+        <span class="line-three"></span>
+    </div>
+    <div class="alerts-bg ab-two">
+        <span class="line-three"></span>
+        <span class="line-two"></span>
+        <span class="line-one"></span>
+    </div>
+    <mat-dialog-content>
+        <mat-stepper #formStepper class="form-stepper">
+            <mat-progress-bar #formStepperProgress [hidden]="true"> --</mat-progress-bar>
+            <mat-step>
+                <ng-template matStepContent>
+                    <app-single-payment-send-step1 (timerSubscriptionForComplete)="gettimerSubscriptionForComplete($event)" (createdPaymentDataFortransfer)="createdPaymentDataFortransfer($event)" (signObjectForSummeryForTransfer)="signObjectForSummeryForTransfer($event)" [benificiaryFromContacts]="benificiaryFromContacts" [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [walletList]="walletList"></app-single-payment-send-step1>
+                </ng-template>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepContent>
+                    <app-single-payment-send-step2 [timerSubscription]="timerSubscription" [createdPaymentData]="createdPaymentData" [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [walletList]="walletList"></app-single-payment-send-step2>
+                </ng-template>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepContent>
+                    <app-single-payment-send-step3 [createdPaymentData]="createdPaymentData"  [timerSubscription]="timerSubscription" [signObjectForSummery]="signObjectForSummery"  [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [walletList]="walletList"></app-single-payment-send-step3>
+                </ng-template>
+                
+            </mat-step>
+            <mat-step>
+                <ng-template matStepContent>
+                  <app-single-payment-send-completed [timerSubscription]="timerSubscription" [benificiaryFromContacts]="benificiaryFromContacts" [walletList]="walletList"> </app-single-payment-send-completed>
+                </ng-template>
+            </mat-step>
+
+        </mat-stepper>
+    </mat-dialog-content>
+    <!-- <app-footer [footerBottom]="'fix'" *ngIf="isNonIsraeliUsers && (!(formStepper?.selectedIndex == 3))"></app-footer> -->
+</div>
+

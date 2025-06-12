@@ -1,0 +1,17 @@
+<div class="top-content">
+  <div>
+    <img src="images/main-mass-payment.svg" />
+  </div>
+  <div class="sph-dropdown">
+    <button [matMenuTriggerFor]="sendMenu" class="pay-option-dropdown">
+      Other Payments
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
+        <path d="M1 1L5 5C6.5621 3.4379 7.4379 2.5621 9 1" stroke="#1F2937" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <mat-menu #sendMenu="matMenu" class="action-menu sent-dropdown other-payment">
+      <button mat-menu-item (click)="sendSinglePayment()">Single Payment</button>
+      <button mat-menu-item [class.selected-menu-item]="true">Mass Payment</button>
+    </mat-menu>
+  </div>
+</div>

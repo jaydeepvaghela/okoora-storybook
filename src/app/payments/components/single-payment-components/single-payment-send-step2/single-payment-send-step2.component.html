@@ -1,0 +1,225 @@
+<div class="single-payment">
+  <div class="sp-icon">
+    <button matStepperPrevious mat-icon-button class="close-btn">
+      <img src="images/prev-slide-icon.svg" alt="back icon" id="back_btn_single_payment2"
+        class="back-icon">
+    </button>
+    <button id="close_btn_single_payment2" mat-icon-button (click)="closeButton()" class="close-btn">
+      <img src="images/close-icon-gray.svg" alt="close icon">
+    </button>
+  </div>
+  <div class="single-payment-header">
+    <div class="sph-title">
+      <span class="sph-icon">
+        <img src="images/bell-icon-black.svg" alt="bell icon image">
+      </span>
+      <h2>Single payment</h2>
+    </div>
+    
+    <div class="sph-dropdown"> 
+      <button id="otherPayment_btn_single_payment2" [matMenuTriggerFor]="sendMenu" class="pay-option-dropdown">
+        Other Payments
+        <img src="images/arrow-down-gary.svg" alt="dropdown arrow icon">
+      </button>
+      <mat-menu #sendMenu="matMenu" class="action-menu singe-dropdown sent-dropdown">
+        <button id="singlePayment_btn_single_payment2" (click)="sendAnotherPayment()" mat-menu-item>Single Payment
+        </button>
+        <button id="massPayment_btn_single_payment2" mat-menu-item (click)="createMassPayment()">Mass Payment
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="single-payment-body">
+    <div class="form-wrapper">
+      <div class="upload-wrapper" *ngIf="!isNonIsraeliUser">
+        <div class="form-control-header"
+          *ngIf="createdPaymentData?.signAndFiles?.needStamp || createdPaymentData?.signAndFiles?.needFile ">
+          <h3 class="heading">Documents upload:</h3>
+          <span class="supported-format">Supported files: pdf, gif, jpg, png, jpeg</span>
+        </div>
+        <div class="drop-zone-wrap" *ngIf="createdPaymentData?.signAndFiles?.needStamp">
+          <!-- <div class="drop-zone-wrap"> -->
+
+          <span class="file-cancel" *ngIf="stampFiles?.length" (click)="removeStamp()">
+            <img src="images/file-cancel-icon.svg" alt="file-cancel-icon" />
+          </span>
+
+          <ngx-dropzone [multiple]="false" [ngClass]="{'upload-file-error': uploadStampError}"
+            class="drop-zone stamp-upload" (change)="onStampFileSelect($event)">
+            <!-- <span class="file-cancel">
+              <img src="images/file-cancel-icon.svg" alt="file-cancel-icon" />
+            </span> -->
+            <ngx-dropzone-label>
+              <div class="upload-text">
+                <h6>Company stamp file</h6>
+                <p>Drag & drop or <span class="browse">Choose file</span></p>
+              </div>
+              <img src="images/file-upload-img.svg" alt="uploadInvoice" />
+            </ngx-dropzone-label>
+            <ngx-dropzone-preview *ngIf="stampFiles?.length" class="drop-zone-preview" [removable]="false">
+              <ngx-dropzone-label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                  <path
+                    d="M10.2539 10.5C10.5494 10.5 10.842 10.4418 11.1149 10.3287C11.3879 10.2157 11.636 10.0499 11.8449 9.84099C12.0538 9.63206 12.2196 9.38402 12.3326 9.11104C12.4457 8.83806 12.5039 8.54547 12.5039 8.25C12.5039 7.95453 12.4457 7.66194 12.3326 7.38896C12.2196 7.11598 12.0538 6.86794 11.8449 6.65901C11.636 6.45008 11.3879 6.28434 11.1149 6.17127C10.842 6.0582 10.5494 6 10.2539 6C9.65717 6 9.08487 6.23705 8.66292 6.65901C8.24096 7.08097 8.00391 7.65326 8.00391 8.25C8.00391 8.84674 8.24096 9.41903 8.66292 9.84099C9.08487 10.2629 9.65717 10.5 10.2539 10.5Z"
+                    fill="#0F91D2" />
+                  <path
+                    d="M21.5 21C21.5 21.7956 21.1839 22.5587 20.6213 23.1213C20.0587 23.6839 19.2956 24 18.5 24H6.5C5.70435 24 4.94129 23.6839 4.37868 23.1213C3.81607 22.5587 3.5 21.7956 3.5 21V3C3.5 2.20435 3.81607 1.44129 4.37868 0.87868C4.94129 0.316071 5.70435 0 6.5 0L14.75 0L21.5 6.75V21ZM6.5 1.5C6.10218 1.5 5.72064 1.65804 5.43934 1.93934C5.15804 2.22064 5 2.60218 5 3V18L8.336 14.664C8.45422 14.5461 8.60843 14.4709 8.77417 14.4506C8.93992 14.4302 9.10773 14.4657 9.251 14.5515L12.5 16.5L15.7355 11.97C15.7988 11.8815 15.8806 11.8078 15.9753 11.754C16.0699 11.7003 16.1751 11.6678 16.2836 11.6588C16.3921 11.6498 16.5012 11.6645 16.6034 11.702C16.7056 11.7394 16.7985 11.7986 16.8755 11.8755L20 15V6.75H17C16.4033 6.75 15.831 6.51295 15.409 6.09099C14.9871 5.66903 14.75 5.09674 14.75 4.5V1.5H6.5Z"
+                    fill="#1D4ED8" />
+                </svg>
+                <div class="file-name-wrapper">
+                  <div class="text-wrapper">
+                    <h6 class="file-name">{{ stampFiles[0].name }}</h6>
+                    <span class="file-size">{{ getFileSize(stampFiles[0].size) }}</span>
+                  </div>
+                  <div class="error-progress-bar"></div>
+                  <mat-progress-bar *ngIf="showStampUploadLoader || uploadStampError"
+                    [mode]="uploadStampError ? 'determinate' : 'indeterminate'" value="100"></mat-progress-bar>
+                </div>
+              </ngx-dropzone-label>
+            </ngx-dropzone-preview>
+            <button *ngIf="uploadStampError" class="reupload-btn"> Reupload again </button>
+          </ngx-dropzone>
+        </div>
+
+        <div class="drop-zone-wrap" *ngIf="createdPaymentData?.signAndFiles?.needFile">
+          <ngx-dropzone *ngIf="invoiceFiles?.length == 0" class="drop-zone invoice-upload"
+            (change)="onInvoiceFileSelect($event)" accept=".pdf, .gif, .jpg, .png, .jpeg">
+            <!-- <span class="file-cancel">
+              <img src="images/file-cancel-icon.svg" alt="file-cancel-icon" />
+            </span> -->
+            <ngx-dropzone-label>
+              <div class="upload-text">
+                <h6>Upload Invoice</h6>
+                <p>Drag & drop or <span class="browse">Choose file</span></p>
+              </div>
+              <img src="images/file-upload-img.svg" alt="uploadInvoice" />
+            </ngx-dropzone-label>
+          </ngx-dropzone>
+          <span class="error-msg" *ngIf="errMsg"> {{errMsg}}</span>
+        </div>
+
+        <div *ngFor="let file of invoiceFiles; index as i">
+          <div class="drop-zone-wrap multiple-doc-file">
+            <ngx-dropzone [ngClass]="{'upload-file-error': i ==  addngClassForInvoice(i)}"
+              class="drop-zone invoice-upload" [disabled]="i !=  addngClassForInvoice(i)"
+              (change)="reuploadFile($event , i)">
+              <ngx-dropzone-preview class="drop-zone-preview" [removable]="false">
+                <ngx-dropzone-label>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                    <path
+                      d="M10.2539 10.5C10.5494 10.5 10.842 10.4418 11.1149 10.3287C11.3879 10.2157 11.636 10.0499 11.8449 9.84099C12.0538 9.63206 12.2196 9.38402 12.3326 9.11104C12.4457 8.83806 12.5039 8.54547 12.5039 8.25C12.5039 7.95453 12.4457 7.66194 12.3326 7.38896C12.2196 7.11598 12.0538 6.86794 11.8449 6.65901C11.636 6.45008 11.3879 6.28434 11.1149 6.17127C10.842 6.0582 10.5494 6 10.2539 6C9.65717 6 9.08487 6.23705 8.66292 6.65901C8.24096 7.08097 8.00391 7.65326 8.00391 8.25C8.00391 8.84674 8.24096 9.41903 8.66292 9.84099C9.08487 10.2629 9.65717 10.5 10.2539 10.5Z"
+                      fill="#0F91D2" />
+                    <path
+                      d="M21.5 21C21.5 21.7956 21.1839 22.5587 20.6213 23.1213C20.0587 23.6839 19.2956 24 18.5 24H6.5C5.70435 24 4.94129 23.6839 4.37868 23.1213C3.81607 22.5587 3.5 21.7956 3.5 21V3C3.5 2.20435 3.81607 1.44129 4.37868 0.87868C4.94129 0.316071 5.70435 0 6.5 0L14.75 0L21.5 6.75V21ZM6.5 1.5C6.10218 1.5 5.72064 1.65804 5.43934 1.93934C5.15804 2.22064 5 2.60218 5 3V18L8.336 14.664C8.45422 14.5461 8.60843 14.4709 8.77417 14.4506C8.93992 14.4302 9.10773 14.4657 9.251 14.5515L12.5 16.5L15.7355 11.97C15.7988 11.8815 15.8806 11.8078 15.9753 11.754C16.0699 11.7003 16.1751 11.6678 16.2836 11.6588C16.3921 11.6498 16.5012 11.6645 16.6034 11.702C16.7056 11.7394 16.7985 11.7986 16.8755 11.8755L20 15V6.75H17C16.4033 6.75 15.831 6.51295 15.409 6.09099C14.9871 5.66903 14.75 5.09674 14.75 4.5V1.5H6.5Z"
+                      fill="#1D4ED8" />
+                  </svg>
+                  <div class="file-name-wrapper">
+                    <div class="text-wrapper mt-3">
+                      <h6 class="file-name">{{ file?.name }}</h6>
+                      <span class="file-size">{{ getFileSize(file?.size) }}</span>
+                    </div>
+                    <div class="text-wrapper mt-2">
+                      <p class="FileUploadedSuccessfully">File uploaded successfully!</p>
+                    </div>
+                    <mat-progress-bar *ngIf="showFileUploadLoader || i == addngClassForInvoice(i)"
+                      [mode]="i == addngClassForInvoice(i) ? 'determinate' : 'indeterminate'"
+                      value="100"></mat-progress-bar>
+                  </div>
+                </ngx-dropzone-label>
+              </ngx-dropzone-preview>
+              <button class="reupload-btn" *ngIf="i == addngClassForInvoice(i)"> Reupload again </button>
+            </ngx-dropzone>
+            <span class="file-cancel" (click)="removeFile(i)">
+              <img src="images/file-cancel-icon.svg" alt="file-cancel-icon" />
+            </span>
+
+
+            <!-- <div *ngIf="createdPaymentData?.signAndFiles?.needStamp"> -->
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+      <form [formGroup]="form">
+
+        <div class="add-note-wrapper" *ngIf="!isNonIsraeliUser">
+          <label>Add Payment notes</label>
+          <textarea formControlName="free_text" [maxlength]="100"
+            (paste)="restrictNameOnPasteWithFormGroup($event, 'alpha-numeric',form,'free_text')"
+            (keydown)="restrictWhiteSpaceWithAlphnumeric($event)"
+            placeholder="The note will appear in the payment"></textarea>
+          <div *ngIf="form?.get('free_text')?.hasError('maxlength')" class="error-msg mt-2 freetext-cls">
+            Please limit your input to a maximum of 100 characters
+          </div>
+          <!-- <div *ngIf=" form?.get('free_text')?.hasError('pattern')" class="error-msg mt-2 freetext-cls">
+            Only letters and numbers allowed.
+          </div>
+          <div *ngIf="isInvoiceNumberHasSpecialChar" class="error-msg mt-2 freetext-cls">
+            Your input cannot contain the following characters: <> ( ) ; + = <br> Please remove them and try again
+          </div> -->
+        </div>
+
+        <div class="add-note-wrapper non-israel-note" *ngIf="isNonIsraeliUser">
+          <label>Reference<sup>*</sup></label>
+          <div class="ref-text-area">
+            <textarea formControlName="free_text" [maxlength]="100"
+            [ngClass]="{'is-invalid': form.get('free_text')?.invalid && form.get('free_text')?.touched}"
+            (paste)="restrictNameOnPasteWithFormGroup($event, 'alpha-numeric',form,'free_text')"
+            (keydown)="restrictWhiteSpaceWithAlphnumeric($event)"
+            placeholder="The reference will appear in the payment"></textarea>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" (click)="removeReference()">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM5.5757 5.57572C5.81002 5.34141 6.18991 5.34141 6.42424 5.57572L8 7.15144L9.57568 5.57574C9.81 5.34142 10.1899 5.34142 10.4242 5.57574C10.6586 5.81005 10.6586 6.18995 10.4242 6.42424L8.84848 8L10.4242 9.57568C10.6586 9.81 10.6586 10.1899 10.4242 10.4242C10.1899 10.6586 9.81 10.6586 9.57568 10.4242L8 8.84856L6.42424 10.4242C6.18994 10.6586 5.81003 10.6586 5.57572 10.4242C5.34141 10.1899 5.34141 9.81 5.57572 9.57576L7.15144 8L5.5757 6.42424C5.34138 6.18994 5.34138 5.81003 5.5757 5.57572Z" fill="#9CA3AF"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M16 8C16 12.4182 12.4182 16 8 16C3.58172 16 0 12.4182 0 8C0 3.58172 3.58172 0 8 0C12.4182 0 16 3.58172 16 8ZM5.5757 5.57572C5.81002 5.34141 6.18991 5.34141 6.42424 5.57572L8 7.15144L9.57568 5.57574C9.81 5.34142 10.1899 5.34142 10.4242 5.57574C10.6586 5.81005 10.6586 6.18995 10.4242 6.42424L8.84848 8L10.4242 9.57568C10.6586 9.81 10.6586 10.1899 10.4242 10.4242C10.1899 10.6586 9.81 10.6586 9.57568 10.4242L8 8.84856L6.42424 10.4242C6.18994 10.6586 5.81003 10.6586 5.57572 10.4242C5.34141 10.1899 5.34141 9.81 5.57572 9.57576L7.15144 8L5.5757 6.42424C5.34138 6.18994 5.34138 5.81003 5.5757 5.57572Z" fill="black" fill-opacity="0.2"/>
+            </svg>
+          </div>
+            <div class="statementText">Appears on the recipient’s bank statement</div>
+          <div *ngIf="form?.get('free_text')?.hasError('maxlength')" class="error-msg mt-2 freetext-cls">
+            Please limit your input to a maximum of 100 characters
+          </div>
+          <!-- <div *ngIf=" form?.get('free_text')?.hasError('pattern')" class="error-msg mt-2 freetext-cls">
+            Only letters and numbers allowed.
+          </div>
+          <div *ngIf="isInvoiceNumberHasSpecialChar" class="error-msg mt-2 freetext-cls">
+            Your input cannot contain the following characters: <> ( ) ; + = <br> Please remove them and try again
+          </div> -->
+        </div>
+      </form>
+      <!-- <div class="signature-wrapper" *ngIf="createdPaymentData?.signAndFiles?.needSign"> -->
+      <div class="signature-wrapper" *ngIf="createdPaymentData?.signAndFiles?.needSign && !isNonIsraeliUser">
+        <div class="signature-top-head">
+          <span>Direct signature</span>
+          <span>{{signatureDate}}</span>
+        </div>
+        <div class="form-group position-relative p-3 signature-canvas--1 signature-pad-wrap" placement="top">
+          <div class="signature-btn-wrap">
+            <button id="back_btn_cleareSigns_ingle_payment2" type="button" class="clear-canvas back-icon"
+              placement="right" (click)="drawClear();clearImg()">
+              <img src="images/back-icon.svg" alt="back-icon">
+            </button>
+            <button id="eraseSign_btn_single_payment2" type="button" class="clear-canvas eraser-icon" placement="right"
+              (click)="drawClear();clearImg()">
+              <img src="images/eraser-icon.svg" alt="eraser-icon">
+            </button>
+          </div>
+          <!--	canvas-->
+          <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()"
+            (onEndEvent)="drawComplete()"></signature-pad>
+          <img *ngIf="signatureImg" class="signature-img" [src]="signatureImg" alt="signature img">
+        </div>
+      </div>
+      <button id="goToNext_single_payment2"
+        [class.disabled]="(((needFile || needStamp || needSign) && !isEur) || isInvoiceNumberHasSpecialChar || form.get('free_text')?.hasError('maxlength') || form.get('free_text')?.hasError('pattern') || (lockErrorID?.length > 0) || uploadStampError) || (isNonIsraeliUser && ((!form.get('free_text')?.value) || (form.get('free_text')?.hasError('maxlength') || form.get('free_text')?.hasError('pattern'))))"
+        [disabled]="(((needFile || needStamp || needSign) && !isEur) || isInvoiceNumberHasSpecialChar  || form.get('free_text')?.hasError('maxlength') || form.get('free_text')?.hasError('pattern') || (lockErrorID?.length > 0) || uploadStampError) ||  (isNonIsraeliUser && ((!form.get('free_text')?.value) || (form.get('free_text')?.hasError('maxlength') || form.get('free_text')?.hasError('pattern'))))"
+        (click)="nextStep(formStepper, formStepperProgress)" class="pay-next-btn">Next</button>
+      <div class="file-upload-error" *ngIf="uploadStampError || lockErrorID?.length > 0">
+        <img src="images/erroe-info.svg" alt="info-error" class="info-error-icon">
+        <div class="file-upload-error-text">
+          <strong>{{getCommonExtension(uniqueUnsupportedExtension, stampExtension)}}
+            {{getCommonExtension(uniqueUnsupportedExtension, stampExtension).length > 1 ? 'are not' : 'is not' }}
+            supported</strong>
+          <p>Your can upload files in PDF, Jpg, Png, docx format</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

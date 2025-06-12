@@ -1,0 +1,328 @@
+@import "../../../../assets/scss/variable";
+@import "../../../../assets/scss/mixins";
+
+::ng-deep {
+  .wallet-list-dialog {
+    @media screen and (max-width: 1440px) {
+      max-width: 490px !important;
+      max-height: 472px;
+    }
+    @media screen and (max-width: 767px) {
+      max-width: 95vw !important;
+      max-height: 472px;
+    }
+    .mat-mdc-dialog-surface {
+      border-radius: 10px;
+    }
+
+    .menu-wrapper {
+      padding: 24px 32px 35px;
+
+      @media (max-width: 1440px) {
+        padding: 18px 28px 22px;
+      }
+
+      @media (max-width: 479px) {
+        padding: 18px 18px;
+      }
+
+      @media (max-width: 359px) {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      &:hover {
+        background-color: $white !important;
+      }
+
+      span.mdc-list-item__primary-text {
+        width: 100%;
+      }
+
+      .close-header {
+        width: 100%;
+        text-align: right;
+        .close-btn {
+          width: 25px;
+          height: 25px;
+          background-image: url('../../../../assets/images/close-icon.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: transparent;
+          border-radius: 50px;
+        }
+      }
+
+      .dialog-header {
+        @include flex(space-between, flex-end, row);
+        border-bottom: 1px dashed #D9DADD;
+        padding-bottom: 10px;
+        margin-bottom: 21px;
+        @media screen and (max-width: 1440px) {
+          margin-bottom: 12px;
+        }
+        .menu-heading {
+          font-size: $font-22;
+          line-height: normal;
+          font-weight: 600;
+          color: #01031C;
+          margin-bottom: 0;
+          font-family: $manrope;
+
+          @media (max-width: 767px) {
+            font-size: 18px;
+          }
+
+          @media (max-width: 479px) {
+            font-size: 18px;
+          }
+        }
+        .add-account {
+          border: 0;
+          background-color: transparent;
+          font-size: $font-12;
+          line-height: normal;
+          font-weight: 600;
+          color: var(--brand-primary-color);
+          font-family: $manrope;
+        }
+      }
+
+      .search-input {
+        height: 60px;
+        width: 100%;
+        border-radius: 7px;
+        border: 1px solid var(--light-blue);
+        box-shadow: 0px 6px 44px 0px rgba(65, 90, 235, 0.11);
+        padding: 10px 20px;
+        font-size: $font-14;
+        line-height: normal;
+        font-family: $manrope;
+        font-weight: 400;
+        color: #5B5B66;
+
+        @media (max-width: 1440px) {
+          height: 48px;
+        }
+        @media (max-width: 479px) {
+          height: 40px;
+          padding: 7px 15px;
+        }
+      }
+
+      .currencies-list {
+        margin-top: 4px;
+        margin-bottom: 18px;
+        padding-left: 0;
+        max-height: 250px;
+        overflow-y: auto;
+        @media (max-width: 1440px) {
+          max-height: 218px;
+        }
+
+        .option-wrapper {
+          border-bottom: 1px dashed #D9DADD;
+          padding: 5px 0;
+          &:last-child {
+            border-bottom: 0;
+          }
+        }
+
+        .list-item {
+          border-radius: 10px;
+          margin-bottom: 5px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          &.active {
+            background-color: $selected-list-item-color;
+          }
+
+          &.mdc-list-item.mdc-list-item--with-one-line {
+            padding: 9px 20px 14px 17px !important;
+            height: 65px !important;
+            max-height: 65px !important;
+            @media screen and (max-width: 1440px) {
+              height: 60px !important;
+              max-height: 60px !important;
+            }
+            @media (max-width: 767px) {
+              padding-left: 10px;
+              padding-right: 10px;
+            }
+          }
+
+          .mdc-list-item__primary-text {
+            @include flex(space-between, center, row);
+          }
+
+          .currency-wrapper {
+            @include flex(flex-start, center, row);
+
+            .currency-flag {
+              height: 29px;
+              width: 29px;
+              border-radius: 50px;
+
+              img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+
+            .all-currency-flag {
+              height: 38px;
+              width: auto;
+            }
+
+            .currency-texts {
+              @include flex(flex-start, flex-start, column);
+              margin-left: 26px;
+              margin-right: 14px;
+              @media screen and (max-width: 1440px) {
+                margin-left: 16px;
+              }
+
+              .all-currency {
+                font-size: $font-16;
+                line-height: normal;
+                font-weight: 700;
+                color: $blue-black;
+              }
+
+              .balance-label {
+                font-size: $font-12;
+                line-height: 19px;
+                font-weight: 400;
+                color: #01031C;
+                font-family: $inter;
+              }
+
+              .balance {
+                font-size: $font-22;
+                line-height: normal;
+                font-weight: 700;
+                color: #01031C;
+                font-family: $inter;
+
+                @media (max-width: 479px) {
+                  font-size: $font-18;
+                }
+
+                .balance-currency {
+                  font-size: $font-14;
+                  line-height: 35px;
+                  font-weight: 400;
+                  color: #93959A;
+                }
+              }
+            }
+          }
+
+          .switch {
+            position: relative;
+            height: 30px;
+            width: 50px;
+            border-radius: 50px;
+            background-color: rgba(120, 120, 128, 0.16);
+
+            @media (max-width: 1440px) {
+              height: 26px;
+              width: 46px;
+            }
+
+            @media (max-width: 479px) {
+              height: 22px;
+              width: 40px;
+              min-width: 40px;
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              background-color: $white;
+              border-radius: 50px;
+              width: 26px;
+              height: 26px;
+              top: 0;
+              bottom: 0;
+              left: 2px;
+              right: auto;
+              margin: auto 0;
+              @media (max-width: 1440px) {
+                height: 22px;
+                width: 22px;
+              }
+              @media (max-width: 479px) {
+                width: 18px;
+                height: 18px;
+              }
+            }
+          }
+
+          &[aria-selected="true"] {
+            .switch {
+              background-color: var(--brand-primary-color);
+
+              &::before {
+                right: 2px;
+                left: auto;
+                background-color: $white;
+              }
+            }
+            .currency-wrapper {
+              .currency-texts {
+                .balance-label {
+                  color: var(--brand-primary-color);
+                  font-weight: 400;
+                }
+                .balance {
+                  color: var(--brand-primary-color);
+                  font-weight: 700;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .btn-wrapper {
+        text-align: center;
+
+        .switch-btn {
+          height: 50px;
+          padding: 14px 53px;
+          font-size: $font-16;
+          line-height: normal;
+          font-weight: 600;
+          color: $white;
+          background-color: var(--light-blue);
+          border-radius: 100px;
+          font-family: $manrope;
+
+          @media (max-width: 479px) {
+            height: 40px;
+            padding: 8px 20px;
+            min-width: 100px;
+          }
+
+          &:disabled {
+            background-color: var(--content-wrapper-bg-color);
+            color: #4B4B55;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+    .err-wallet {
+      color: #dc3545;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+  }
+}

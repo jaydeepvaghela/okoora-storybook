@@ -1,0 +1,71 @@
+@import "../../../../../assets/scss/variable";
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  .dropbtn {
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    .arrow-down {
+      margin-left: 5px;
+    }
+  }
+
+  .dropdown-content {
+    width: 400px;
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    .dropdown-item.selected {
+      background-color: var(--light-blue-header-bg); /* Your desired color for selected item */
+    }
+    
+    .dropdown-item:hover {
+      background-color: var(--light-blue-header-bg); /* Color for hover state */
+    }
+    .dropdown-item {
+      align-items: flex-start;
+      cursor: pointer;
+      color: black;
+      padding: 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &:hover {
+        background-color: var(--light-blue-header-bg);
+      }
+
+      label {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      input[type="radio"] {
+        width: 15px;
+        height: 15px;
+        margin-top: 5px;
+        margin-right: 12px;
+        &:checked {
+          background-color: #007bff;
+          border: 2px solid #007bff;
+        }
+      }
+
+      .price {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.dropdown .dropdown-content {
+  display: block;
+}
