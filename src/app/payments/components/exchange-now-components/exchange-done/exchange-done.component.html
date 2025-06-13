@@ -1,0 +1,35 @@
+<div class="convert-now">
+  <div class="sp-icon">
+    <button mat-icon-button mat-dialog-close class="close-btn" (click)="closeDialog()" id="exnow-done-id1">
+      <img src="images/close-icon-gray.svg" alt="close icon">
+    </button>
+  </div>
+  <div class="convert-now-header">
+    <div class="sph-title">
+      <span class="sph-icon">
+        <img src="images/exchangeNowIcon.svg" alt="bell-icon">
+      </span>
+      <h2>Exchange Now</h2>
+    </div>
+    <div class="sph-dropdown">
+      <button [matMenuTriggerFor]="convertMenu" class="convert-option-dropdown" id="exnow-done-id2">
+        Other Exchanges
+        <img src="images/arrow-down-gary.svg" alt="dropdown arrow icon">
+      </button>
+      <mat-menu #convertMenu="matMenu" class="action-menu convert-dropdown other-conversion">
+        <button (click)="openConvertNow()" mat-menu-item id="exnow-done-id3">Exchange now</button>
+        <button mat-menu-item id="exnow-done-id3">Future Exchange</button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="convert-body">
+    <div class="successfully-alert-wrap">
+      <div class="sent-success-img">
+        <img src="images/alert-successfully-set.gif" alt="alert-successfully">
+      </div>
+      <h2 class="done-header">Currency Simplified</h2>
+      <p class="convert-text">You have Exchanged {{exchangeForm?.value?.firstExchangeSign}}{{commaseprate(exchangeForm?.value?.firstExchangeAmount, 2)}}  to {{exchangeForm?.value?.secondExchangeSign}}{{commaseprate(exchangeForm?.value?.secondExchangeAmount, 2)}} </p>
+      <button (click)="closeDialog()" class="close-btn" id="exnow-done-id4">Close</button>
+    </div>
+  </div>
+</div>

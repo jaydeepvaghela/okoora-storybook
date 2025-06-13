@@ -8,6 +8,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { PaymentDashboardTransactionComponent } from '../payment-dashboard-transaction/payment-dashboard-transaction.component';
 import { SinglePaymentSendComponent } from '../single-payment-components/single-payment-send/single-payment-send.component';
 import { MassPaymentComponent } from '../mass-payment-components/mass-payment/mass-payment.component';
+import { ExchangeMainComponent } from '../exchange-now-components/exchange-main/exchange-main.component';
+import { PlanConversionComponent } from '../exchange-later-components/plan-conversion/plan-conversion.component';
 // import { AuthenticationService } from 'src/app/auth/services/authentication.service';
 // import { WalletBalanceListModal } from 'src/app/common/models/WalletBalanceListModal';
 // import { ContactsService } from 'src/app/contacts/services/contacts.service';
@@ -153,43 +155,43 @@ export class PaymentsDashboardComponent {
   }
 
   exchangeNow() {
-    // let activeWallet: any = localStorage.getItem('activeWallet');
-    // let currency = JSON.parse(activeWallet);
-    // this.selectedWallet = this.walletList[0]
-    // this._walletService.setCurrentCurrencyData(this.selectedWallet)
-    // this.dialog
-    //   .open(ExchangeMainComponent, {
-    //     width: '100vw',
-    //     maxWidth: '100vw',
-    //     data: {
-    //       selectedwalletInfo: currency,
-    //     },
-    //     disableClose: true,
-    //   })
-    //   .afterClosed()
-    //   .subscribe((data: any) => {
-    //     if(data == 'convert-completed') {
-    //       this.child?.getAllData();
-    //     }
-    //   });
+    let activeWallet: any = localStorage.getItem('activeWallet');
+    let currency = JSON.parse(activeWallet);
+    this.selectedWallet = this.walletList[0]
+    this._walletService.setCurrentCurrencyData(this.selectedWallet)
+    this.dialog
+      .open(ExchangeMainComponent, {
+        width: '100vw',
+        maxWidth: '100vw',
+        data: {
+          selectedwalletInfo: currency,
+        },
+        disableClose: true,
+      })
+      .afterClosed()
+      .subscribe((data: any) => {
+        if(data == 'convert-completed') {
+          // this.child?.getAllData();
+        }
+      });
   }
 
   exchangePlanConvert() {
-    // let activeWallet: any = localStorage.getItem('activeWallet');
-    // let currency = JSON.parse(activeWallet);
-    // this.dialog
-    //   .open(PlanConversionComponent, {
-    //     width: '100vw',
-    //     maxWidth: '100vw',
-    //     data: {
-    //       selectedwalletInfo: currency,
-    //     },
-    //     disableClose: true,
-    //   })
-    //   .afterClosed()
-    //   .subscribe(() => {
-    //     this.child?.getAllData();
-    //   });
+    let activeWallet: any = localStorage.getItem('activeWallet');
+    let currency = JSON.parse(activeWallet);
+    this.dialog
+      .open(PlanConversionComponent, {
+        width: '100vw',
+        maxWidth: '100vw',
+        data: {
+          selectedwalletInfo: currency,
+        },
+        disableClose: true,
+      })
+      .afterClosed()
+      .subscribe(() => {
+        // this.child?.getAllData();
+      });
   }
   createMassPayment() {
     const dialogRef = this.dialog

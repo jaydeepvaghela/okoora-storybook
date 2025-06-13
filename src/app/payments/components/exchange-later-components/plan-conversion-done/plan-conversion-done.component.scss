@@ -1,0 +1,63 @@
+@import "../../../../../assets/scss/variable";
+::ng-deep {
+    .final-step-conversion {
+        max-width: 890px;
+        margin: 0 auto;
+        text-align: center;
+
+        img {
+            width: 330px;
+            height: 330px;
+
+            @media screen and (max-width: 1440px) {
+                width: 200px;
+                height: 200px;
+            }
+
+            @media screen and (max-width: 480px) {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        .simplified-title {
+            color: #030203;
+            text-align: center;
+            font-family: 'Manrope';
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            opacity: 0.8;
+
+            @media screen and (max-width: 480px) {
+                font-size: 20px;
+            }
+        }
+
+        .simplified-msg {
+            color: var(--brand-primary-color);
+            font-family: 'Manrope';
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin-bottom: 0;
+        }
+
+        .action-wrapper {
+            .close-final-btn {
+                border-radius: 40px;
+                background: var(--primary-blue);
+                padding: 14px 32px;
+                margin-top: 50px;
+                color: #FFF;
+                font-family: 'Manrope';
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+        }
+    }
+}   

@@ -714,3 +714,286 @@ export const getCurrenciesNotInWallet = [
         "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/PHP.png"
     }
 ]
+
+export const getAllActiveCurrencies = [
+    {
+        "currency_Id": 1,
+        "currency": {
+            "code": "USD",
+            "sign": "$",
+            "flag": "http://10.0.0.149:8051/Images/Flags/USD.png",
+            "currencyName": "United States Dollar"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/USD.png"
+    },
+    {
+        "currency_Id": 2,
+        "currency": {
+            "code": "EUR",
+            "sign": "€",
+            "flag": "http://10.0.0.149:8051/Images/Flags/EUR.png",
+            "currencyName": "Euro"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/EUR.png"
+    },
+    {
+        "currency_Id": 3,
+        "currency": {
+            "code": "GBP",
+            "sign": "£",
+            "flag": "http://10.0.0.149:8051/Images/Flags/GBP.png",
+            "currencyName": "British Pound Sterling"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/GBP.png"
+    },
+    {
+        "currency_Id": 4,
+        "currency": {
+            "code": "AUD",
+            "sign": "$",
+            "flag": "http://10.0.0.149:8051/Images/Flags/AUD.png",
+            "currencyName": "Australian Dollar"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/AUD.png"
+    },
+    {
+        "currency_Id": 5,
+        "currency": {
+            "code": "CHF",
+            "sign": "CHF",
+            "flag": "http://10.0.0.149:8051/Images/Flags/CHF.png",
+            "currencyName": "Swiss Franc"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/CHF.png"
+    },
+    {
+        "currency_Id": 6,
+        "currency": {
+            "code": "CAD",
+            "sign": "$",
+            "flag": "http://10.0.0.149:8051/Images/Flags/CAD.png",
+            "currencyName": "Canadian Dollar"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/CAD.png"
+    },
+    {
+        "currency_Id": 7,
+        "currency": {
+            "code": "NZD",
+            "sign": "$",
+            "flag": "http://10.0.0.149:8051/Images/Flags/NZD.png",
+            "currencyName": "New Zealand Dollar"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/NZD.png"
+    },
+    {
+        "currency_Id": 8,
+        "currency": {
+            "code": "ZAR",
+            "sign": "R",
+            "flag": "http://10.0.0.149:8051/Images/Flags/ZAR.png",
+            "currencyName": "South African Rand"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/ZAR.png"
+    },
+    {
+        "currency_Id": 9,
+        "currency": {
+            "code": "INR",
+            "sign": "₹",
+            "flag": "http://10.0.0.149:8051/Images/Flags/INR.png",
+            "currencyName": "Indian Rupee"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/INR.png"
+    },
+    {
+        "currency_Id": 10,
+        "currency": {
+            "code": "TRY",
+            "sign": "₺",
+            "flag": "http://10.0.0.149:8051/Images/Flags/TRY.png",
+            "currencyName": "Turkish Lira"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/TRY.png"
+    },
+    {
+        "currency_Id": 12,
+        "currency": {
+            "code": "MXN",
+            "sign": "$",
+            "flag": "http://10.0.0.149:8051/Images/Flags/MXN.png",
+            "currencyName": "Mexican Peso"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/MXN.png"
+    },
+    {
+        "currency_Id": 14,
+        "currency": {
+            "code": "NOK",
+            "sign": "kr",
+            "flag": "http://10.0.0.149:8051/Images/Flags/NOK.png",
+            "currencyName": "Norwegian Krone"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/NOK.png"
+    },
+    {
+        "currency_Id": 15,
+        "currency": {
+            "code": "SEK",
+            "sign": "kr",
+            "flag": "http://10.0.0.149:8051/Images/Flags/SEK.png",
+            "currencyName": "Swedish Krona"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/SEK.png"
+    },
+    {
+        "currency_Id": 16,
+        "currency": {
+            "code": "JPY",
+            "sign": "￥",
+            "flag": "http://10.0.0.149:8051/Images/Flags/JPY.png",
+            "currencyName": "Japanese Yen"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/JPY.png"
+    },
+    {
+        "currency_Id": 17,
+        "currency": {
+            "code": "ILS",
+            "sign": "₪",
+            "flag": "http://10.0.0.149:8051/Images/Flags/ILS.png",
+            "currencyName": "Israeli Shekel"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/ILS.png"
+    },
+    {
+        "currency_Id": 18,
+        "currency": {
+            "code": "CZK",
+            "sign": "Kč",
+            "flag": "http://10.0.0.149:8051/Images/Flags/CZK.png",
+            "currencyName": "Czech Koruna"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/CZK.png"
+    },
+    {
+        "currency_Id": 19,
+        "currency": {
+            "code": "HUF",
+            "sign": "Ft",
+            "flag": "http://10.0.0.149:8051/Images/Flags/HUF.png",
+            "currencyName": "Hungarian Forint"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/HUF.png"
+    },
+    {
+        "currency_Id": 20,
+        "currency": {
+            "code": "PLN",
+            "sign": "zł",
+            "flag": "http://10.0.0.149:8051/Images/Flags/PLN.png",
+            "currencyName": "Polish Zloty"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/PLN.png"
+    },
+    {
+        "currency_Id": 21,
+        "currency": {
+            "code": "THB",
+            "sign": "฿",
+            "flag": "http://10.0.0.149:8051/Images/Flags/THB.png",
+            "currencyName": "Thai Baht"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/THB.png"
+    },
+    {
+        "currency_Id": 22,
+        "currency": {
+            "code": "RON",
+            "sign": "RON",
+            "flag": "http://10.0.0.149:8051/Images/Flags/RON.png",
+            "currencyName": "Romanian Leu"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/RON.png"
+    },
+    {
+        "currency_Id": 23,
+        "currency": {
+            "code": "HKD",
+            "sign": "HK$",
+            "flag": "http://10.0.0.149:8051/Images/Flags/HKD.png",
+            "currencyName": "Hong Kong Dollar"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/HKD.png"
+    },
+    {
+        "currency_Id": 24,
+        "currency": {
+            "code": "BGN",
+            "sign": "лв.",
+            "flag": "http://10.0.0.149:8051/Images/Flags/BGN.png",
+            "currencyName": "Bulgarian Lev"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/BGN.png"
+    },
+    {
+        "currency_Id": 25,
+        "currency": {
+            "code": "DKK",
+            "sign": "kr.",
+            "flag": "http://10.0.0.149:8051/Images/Flags/DKK.png",
+            "currencyName": "Danish Krone"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/DKK.png"
+    },
+    {
+        "currency_Id": 26,
+        "currency": {
+            "code": "SGD",
+            "sign": "$",
+            "flag": "http://10.0.0.149:8051/Images/Flags/SGD.png",
+            "currencyName": "Singapore Dollar"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/SGD.png"
+    },
+    {
+        "currency_Id": 27,
+        "currency": {
+            "code": "CNH",
+            "sign": null,
+            "flag": "http://10.0.0.149:8051/Images/Flags/CNH.png",
+            "currencyName": "Chinese Yuan (Offshore)"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/CNH.png"
+    },
+    {
+        "currency_Id": 31,
+        "currency": {
+            "code": "AED",
+            "sign": "د.إ.‏",
+            "flag": "http://10.0.0.149:8051/Images/Flags/AED.png",
+            "currencyName": "United Arab Emirates Dirham"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/AED.png"
+    },
+    {
+        "currency_Id": 33,
+        "currency": {
+            "code": "CNY",
+            "sign": "¥",
+            "flag": "http://10.0.0.149:8051/Images/Flags/CNY.png",
+            "currencyName": "Chinese Yuan"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/CNY.png"
+    },
+    {
+        "currency_Id": 44,
+        "currency": {
+            "code": "PHP",
+            "sign": "₱",
+            "flag": "http://10.0.0.149:8051/Images/Flags/PHP.png",
+            "currencyName": "Philippine Peso"
+        },
+        "currency_Flag": "http://10.0.0.149:8051/Images/Flags/PHP.png"
+    }
+]

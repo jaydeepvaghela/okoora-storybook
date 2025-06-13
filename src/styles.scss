@@ -78,6 +78,10 @@ button{
   direction: ltr;
 }
 
+.mat-mdc-checkbox .mdc-checkbox {
+  padding: 0 !important;
+}
+
 .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
 .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background,
 .mat-mdc-checkbox
@@ -94,6 +98,39 @@ button{
   ~ .mdc-checkbox__background
   .mdc-checkbox__checkmark {
   color: var(--brand-primary-color) !important;
+}
+
+.mdc-checkbox__background {
+  width: 20px !important;
+  height: 20px !important;
+  border: 1px solid $light-gray !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+
+.mdc-checkbox__checkmark {
+  width: 85% !important;
+  margin: auto !important;
+}
+
+.mdc-checkbox__checkmark-path {
+  stroke-width: 2px !important;
+}
+
+.mat-mdc-checkbox.mat-accent .mdc-checkbox--selected ~ .mdc-checkbox__ripple {
+  background: var(--brand-primary-color) !important;
+}
+
+
+.mat-mdc-checkbox .mat-mdc-focus-indicator,
+.mat-mdc-checkbox-touch-target,
+.mat-mdc-checkbox-ripple,
+.mdc-checkbox__ripple {
+  display: none !important;
+}
+
+.mat-mdc-checkbox .mdc-form-field {
+  align-items: flex-start !important;
 }
 
 .mat-mdc-menu-panel {

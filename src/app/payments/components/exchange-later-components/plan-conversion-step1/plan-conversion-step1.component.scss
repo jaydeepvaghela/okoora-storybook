@@ -1,0 +1,912 @@
+@import "../../../../../assets/scss/variable";
+
+::ng-deep {
+    .plan-conversion {
+        max-width: 890px;
+        margin: 0 auto;
+        height: calc(100vh - 70px);
+
+        &.plan-con-height{
+            height: 100%;
+        }
+
+        .single-payment-body {
+            max-width: 515px;
+            margin: 0 auto;
+            padding-top: 78px;
+            padding-bottom: 50px;
+
+            @media (max-width: 1440px) {
+                padding-top: 40px;
+                padding-bottom: 30px;
+            }
+
+            @media (max-width: 991px) {
+                padding-top: 30px;
+            }
+
+            @media (max-width: 767px) {
+                padding-top: 25px;
+                padding-bottom: 25px;
+            }
+
+            .recipient-dropdown {
+                position: relative;
+
+                .mat-mdc-form-field {
+                    width: 100%;
+
+                    &.ng-valid,
+                    &.mat-focused {
+                        .mat-mdc-form-field-infix {
+                            .pay-dropdown-icon {
+                                top: 11px;
+                            }
+                        }
+                    }
+
+                    .pay-dropdown-icon {
+                        width: 24px;
+                        height: 24px;
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        right: 12px;
+                        margin: auto 0;
+                        cursor: pointer;
+                    }
+
+                    .mat-mdc-form-field-infix {
+                        background-color: #fff !important;
+                    }
+
+                    &:focus,
+                    &:hover {
+
+                        .mat-mdc-form-field-infix,
+                        .mat-mdc-text-field-wrapper {
+                            background-color: #fff !important;
+                        }
+                    }
+
+                    &.ng-valid {
+                        .mat-mdc-text-field-wrapper {
+                            &.mdc-text-field--filled {
+                                .mat-mdc-form-field-infix {
+                                    &::before {
+                                        top: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .mat-mdc-text-field-wrapper {
+                        width: 100%;
+                        padding: 0 !important;
+
+                        &.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+                            &.mdc-line-ripple {
+                                &::before {
+                                    display: none;
+                                }
+                            }
+
+                            .mat-mdc-form-field-infix {
+                                padding: 0 !important;
+
+                                .mdc-floating-label {
+                                    margin-left: 12px;
+
+                                    &.mdc-floating-label--float-above {
+                                        color: var(--input-blue-border);
+                                        font-family: Roboto, sans-serif;
+                                        font-size: 12px;
+                                        font-weight: 700;
+                                        line-height: 16px;
+                                        display: inline-block;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+                            .mdc-line-ripple {
+                                display: none;
+                            }
+                        }
+
+                        &.mdc-text-field--invalid:not(.mdc-text-field--disabled) {
+                            .mdc-floating-label {
+                                color: var(--input-blue-border);
+                            }
+
+                            .mdc-line-ripple {
+                                display: none;
+                            }
+                        }
+
+                        &.mdc-text-field--invalid {
+                            .mdc-text-field__input {
+                                caret-color: #000000;
+                            }
+                        }
+
+                        &.mdc-text-field--focused {
+                            .mat-mdc-form-field-infix {
+                                &::before {
+                                    top: 10px;
+                                }
+                            }
+                        }
+                    }
+
+                    .mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker) {
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+
+                .add-reci {
+                    color: #111827;
+                    font-family: $he_heebo;
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 16px;
+                    display: block;
+                    margin-bottom: 25px;
+                    text-align: right;
+
+                    @media (max-width: 1440px) {
+                        margin-bottom: 15px;
+                    }
+                }
+
+                .recent-list-dropdown {
+                    border-radius: 6px;
+                    background-color: #FFF;
+                    box-shadow: 0px 20px 25px -5px rgba(30, 64, 175, 0.20), 0px 8px 10px -6px rgba(30, 64, 175, 0.10);
+                    padding-top: 14px;
+                    padding-bottom: 16px;
+                    padding: 14px 10px 16px 21px;
+                    margin-top: -14px;
+
+                    position: absolute;
+                    width: 100%;
+                    background: white;
+                    z-index: 9;
+
+                    @media (max-width: 576px) {
+                        padding-left: 15px;
+                    }
+
+                    .recent-pay-iist {
+                        padding-left: 0;
+                        padding-right: 13px;
+                        max-height: 364px;
+                        overflow-y: auto;
+                        margin-bottom: 20px;
+
+                        @media (max-width: 576px) {
+                            padding-right: 8px;
+                        }
+
+                        &::-webkit-scrollbar-track {
+                            background: none !important;
+                            box-shadow: none !important;
+                        }
+
+                        &::-webkit-scrollbar {
+                            width: 6px;
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            background-color: rgba(0, 0, 0, 0.30);
+                        }
+
+                        .recent-pay-item {
+                            padding-left: 25px;
+                            padding-right: 25px;
+                            border-bottom: none;
+                            border-radius: 10px;
+                            margin-bottom: 5px;
+
+                            @media (max-width: 1440px) {
+                                padding-left: 15px;
+                                padding-right: 15px;
+                            }
+
+                            @media (max-width: 576px) {
+                                padding-left: 10px;
+                                padding-right: 10px;
+                            }
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+
+                            &:hover,
+                            &.beneficiarySelected {
+                                background-color: var(--light-blue-header-bg);
+
+                                .profile-data {
+                                    p {
+                                        color: var(--primary-blue);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .pay-select-btn {
+                        padding: 14px 32px;
+                        min-height: 50px;
+                        width: 158px;
+                        margin: 0 auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        color: #4B4B55;
+                        text-align: center;
+                        font-family: $manrope;
+                        font-size: 16px;
+                        font-weight: 600;
+                        line-height: normal;
+
+                        border-radius: 40px;
+                        background-color: var(--content-wrapper-bg-color);
+
+                        @media (max-width: 1440px) {
+                            padding: 10px 25px;
+                            min-height: 42px;
+                        }
+
+                        &.clickedSelect {
+                            color: #fff;
+                            background-color: var(--primary-blue);
+                        }
+                    }
+                }
+
+                .recipient-field {
+                    color: #111827;
+                    font-family: $he_heebo;
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 20px;
+                    display: block;
+                    margin-bottom: 6px;
+                }
+
+                input {
+                    min-height: 60px;
+                    border-radius: 4px;
+                    border: 1px solid var(--input-blue-border);
+
+                    color: #9CA3AF;
+                    font-family: $he_heebo;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 24px;
+
+                    padding: 12px 12px 0px 16px;
+                }
+            }
+
+            .recent-pay-data {
+                .recent-pay-title {
+                    color: #111827;
+                    font-family: $inter;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 38px;
+                    display: inline-block;
+                    margin-bottom: 6px;
+                }
+
+                .recent-pay-iist {
+                    max-height: 425px;
+                    overflow-y: auto;
+                }
+            }
+
+            .recent-pay-iist {
+                padding-left: 0;
+                margin-bottom: 0;
+
+                .recent-pay-item {
+                    min-height: 90px;
+                    display: flex;
+                    align-items: center;
+                    column-gap: 8px;
+                    padding: 20px 25px 20px 0;
+                    margin-bottom: 5px;
+
+                    border-bottom: 1px dashed #9CA3AF;
+                    background-color: #FFF;
+
+                    @media (max-width: 1440px) {
+                        padding: 10px 15px 10px 0;
+                        min-height: 70px;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .profile-img {
+                        padding-right: 8px;
+                        padding-bottom: 8px;
+                        position: relative;
+
+                        span {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            min-width: 35px;
+                            height: 35px;
+                            padding: 5px;
+                            border-radius: 35px;
+                            background-color: #DBEAFE;
+
+                            color: var(--dark-blue-primary);
+                            font-family: $inter;
+                            font-size: 12px;
+                            font-weight: 700;
+                            line-height: normal;
+                        }
+
+                        img {
+                            width: 18px;
+                            height: 18px;
+                            border-radius: 16px;
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                        }
+                    }
+
+                    .profile-data {
+                        p {
+                            color: #1F2937;
+                            font-family: $inter;
+                            font-size: 15px;
+                            font-weight: 700;
+                            line-height: 35px;
+                            margin-bottom: 0;
+
+                            @media (max-width: 1440px) {
+                                line-height: 25px;
+                            }
+                        }
+
+                        .pd-bottom {
+                            display: flex;
+                            align-items: center;
+
+                            color: rgb(107 114 128 / 70%);
+                            font-family: $inter;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: normal;
+
+                            .currancy-name {
+                                font-weight: 700;
+                                display: inline-block;
+                                margin-right: 17px;
+                                position: relative;
+
+                                &::before {
+                                    content: "";
+                                    width: 1px;
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    right: -9px;
+                                    border-right: 1px solid rgb(107 114 128 / 70%);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .you-send-wrap {
+                margin-bottom: 50px;
+                position: relative;
+
+                .send-feild {
+                    color: #111827;
+                    font-family: $he_heebo;
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 20px;
+                    display: block;
+                    margin-bottom: 5px;
+
+                    span {
+                        color: var(--highlight-blue);
+                    }
+                }
+
+                .duedate-container {
+                    width: 100%;
+                    min-width: 517px;
+                    max-width: 517px;
+                    border: 1px solid var(--input-blue-border);
+                    border-radius: 5px;
+
+                    @media screen and (max-width: 540px) {
+                        max-width: 100%;
+                        min-width: 100%;
+                    }
+
+                    .mat-datepicker-toggle button {
+                        background: url(../../../../../assets/images/pc-default-calendar-icon.svg);
+                        background-repeat: no-repeat;
+                        background-position: center;
+
+                        svg {
+                            display: none;
+                        }
+                    }
+
+                    input {
+                        color: #1F2937;
+                        font-family: 'Heebo';
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 700;
+                    }
+
+                    mat-label {
+                        color: #9CA3AF;;
+                        font-family: 'Heebo';
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                    }
+
+                    .mdc-floating-label--required {
+                        display: none;
+                    }
+
+                    .mat-mdc-form-field-bottom-align {
+                        display: none;
+                    }
+
+                    .mdc-text-field--filled {
+                        background-color: transparent;
+                    }
+
+                    .mdc-line-ripple {
+                        display: none;
+                    }
+
+                    .mat-mdc-floating-label.mdc-floating-label--float-above {
+                        mat-label {
+                            color: var(--input-blue-border);
+                        }
+                    }
+
+                    .mat-mdc-icon-button {
+                        --mat-mdc-button-persistent-ripple-color: none;
+                    }
+
+                    &.ng-dirty:not(.mat-form-field-hide-placeholder) {
+                        .mat-datepicker-toggle button {
+                            background: url(../../../../../assets/images/pc-active-calendar-icon.svg);
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+                    }
+                }
+
+               
+
+                .you-send-text-feild {
+                    border-radius: 4px;
+                    border: 1px solid var(--input-blue-border);
+                    height: 64px;
+                    width: 100%;
+                    position: relative;
+                    padding: 10px 10px 10px 14px;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 7px;
+                    transition: all 0.3s linear;
+                    margin-bottom: 48px;
+
+                    @media (max-width: 1440px) {
+                        height: 55px;
+                        padding: 5px 10px 5px 10px;
+                    }
+
+                    .currancy-amoutn-left {
+                        flex-grow: 1;
+                    }
+
+                    &:has(.send-amout-feild > input:focus) {
+                        background-color: #F5F5F5;
+                        border-color: #F5F5F5;
+
+                        strong {
+                            color: #374151;
+                        }
+
+                        .select-flag-dropdown {
+                            background-color: #F5F5F5;
+
+                            .mat-mdc-select {
+                                background-color: #F5F5F5;
+                            }
+                        }
+                    }
+
+                    &:has(.send-amout-feild > input.inputClickedFlag) {
+                        border-color: #B91C1C;
+
+                        strong {
+                            color: #374151;
+                        }
+                    }
+
+                    strong {
+                        color: var(--primary-blue);
+                        font-family: $he_heebo;
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 16px;
+                        display: block;
+                        margin-bottom: 5px;
+                        transition: all 0.3s linear;
+                    }
+
+                    .send-amout-feild {
+                        color: #6B7280;
+                        font-family: $inter;
+                        font-size: 20px;
+                        font-weight: 400;
+                        line-height: 24px;
+                        background-color: transparent;
+                        transition: all 0.3s linear;
+                        display: flex;
+                        align-items: center;
+                        column-gap: 2px;
+
+                        @media (max-width: 1440px) {
+                            font-size: 16px;
+                            line-height: 20px;
+                        }
+
+                        input {
+                            border: none;
+                            outline: none;
+                            background: none;
+                            transition: all 0.3s linear;
+                            flex-grow: 1;
+
+                            color: #1F2937;
+                            font-family: $inter;
+                            font-size: 20px;
+                            font-weight: 700;
+                            line-height: 24px;
+
+                            @media (max-width: 1440px) {
+                                font-size: 16px;
+                                line-height: 20px;
+                            }
+
+                            @media (max-width: 375px) {
+                                width: 180px;
+                                max-width: 180px;
+                            }
+
+                            @media (max-width: 359px) {
+                                width: 150px;
+                                max-width: 150px;
+                            }
+
+                            &:focus {
+                                background-color: #F5F5F5;
+                            }
+                        }
+
+
+                    }
+
+                    .currancy-img-right {
+                        min-width: 90px;
+                        display: flex;
+                        align-items: center;
+                        column-gap: 9px;
+
+                        color: #000;
+                        font-family: $manrope;
+                        font-size: 20px;
+                        font-weight: 700;
+                        line-height: normal;
+                        padding-left: 15px;
+
+                        img {
+                            width: 21px;
+                            height: 21px;
+                            border-radius: 21px;
+                        }
+                    }
+
+                    .alert-amount-msg {
+                        color: #B91C1C;
+                        font-family: $inter;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 20px;
+
+                        position: absolute;
+                        left: 0;
+                        bottom: -22px;
+
+                        @media (max-width: 576px) {
+                            width: 300px;
+                            bottom: -43px;
+                        }
+                    }
+                }
+            }
+
+            .wallet-currency-btn {
+                min-width: 218px;
+                min-height: 50px;
+                margin: 0 auto 68px;
+                border-radius: 54px;
+                border: 1px solid var(--input-blue-border);
+                background-color: var(--light-blue-header-bg);
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                column-gap: 7px;
+
+                color: #111827;
+                font-family: $he_heebo;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                padding: 10px 15px;
+
+                @media (max-width: 767px) {
+                    padding-top: 7px;
+                    padding-bottom: 7px;
+                    min-height: 45px;
+                    margin-bottom: 40px;
+                }
+
+                strong {
+                    font-weight: 700;
+                }
+            }
+
+            .info-tooltip-wrap {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                column-gap: 2px;
+                position: absolute;
+                bottom: -32px;
+                right: 0;
+
+                .info-tooltip-text {
+                    color: #16A34A;
+                    text-align: right;
+                    font-family: $he_heebo;
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 20px;
+                    text-align: center;
+                    padding: 3px 10px;
+
+                    border-radius: 30px;
+                    background-color: #DCFCE7;
+                    min-width: max-content;
+                    min-height: 26px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .info-icon {
+                    cursor: pointer;
+                    width: 16px;
+                    height: 16px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+
+            .successfully-alert-wrap {
+                .sent-success-img {
+                    width: 330px;
+                    height: 330px;
+                    margin: 0 auto 10px;
+
+                    @media (max-width: 1440px) {
+                        width: 250px;
+                        height: 250px;
+                    }
+
+                    @media (max-width: 991px) {
+                        width: 220px;
+                        height: 220px;
+                    }
+
+                    @media (max-width: 767px) {
+                        width: 180px;
+                        height: 180px;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                }
+
+                h2 {
+                    color: #000;
+                    text-align: center;
+                    font-family: $inter;
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 32px;
+                    text-align: center;
+                    margin-bottom: 47px;
+
+                    @media (max-width: 1440px) {
+                        margin-bottom: 20px;
+                    }
+
+                    @media (max-width: 479px) {
+                        font-size: 14px;
+                        line-height: 28px;
+                        margin-bottom: 15px;
+                    }
+
+                    strong {
+                        color: #000;
+                        font-family: $inter;
+                        font-size: 30px;
+                        font-weight: 700;
+                        line-height: 32px;
+                        display: block;
+
+                        @media (max-width: 1440px) {
+                            font-size: 28px;
+                            line-height: 30px;
+                        }
+
+                        @media (max-width: 991px) {
+                            font-size: 26px;
+                            line-height: 28px;
+                        }
+
+                        @media (max-width: 767px) {
+                            font-size: 24px;
+                            line-height: 26px;
+                        }
+
+                        @media (max-width: 479px) {
+                            font-size: 22px;
+                            line-height: 24px;
+                        }
+                    }
+                }
+
+                .pay-details-btn {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 22px;
+                    width: 100%;
+                    min-height: 48px;
+                    border-radius: 45px;
+                    background-color: #FAFAFA;
+
+                    color: #1F2937;
+                    font-family: $he_heebo;
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 28px;
+
+                    @media (max-width: 1440px) {
+                        font-size: 16px;
+                        line-height: 24px;
+                        min-height: 45px;
+                    }
+
+                    @media (max-width: 767px) {
+                        min-height: 40px;
+                    }
+                }
+            }
+
+            .error-msg {
+                color: #B91C1C;
+                font-family: $he_heebo;
+                font-size: 14px;
+                line-height: 20px;
+                margin-top: 7px;
+                margin-top: 7px;
+            }
+        }
+
+        .pay-next-btn {
+            width: 515px;
+            min-height: 48px;
+            margin: 0 auto;
+            max-width: 100%;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 65px;
+            background-color: var(--primary-blue);
+            transition: all 0.3s linear;
+            color: #fff !important;
+            font-family: $he_heebo;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 28px;
+
+            @media (max-width: 1440px) {
+                font-size: 16px;
+                line-height: 24px;
+                min-height: 40px;
+            }
+
+            &.disabled {
+                color: #6B7280 !important;
+                background-color: #F3F4F6;
+            }
+        }
+
+        .currency-sel {
+            color: #111827;
+            font-family: $he_heebo;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+
+            .mat-mdc-select-placeholder {
+                color: #111827;
+                font-family: $he_heebo;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+            }
+
+            &.mat-mdc-select-panel {
+                max-height: 380px;
+                min-width: 264px;
+                min-height: 380px;
+                padding: 19px !important;
+            }
+
+            .mat-mdc-form-field-infix .mat-mdc-select {
+                color: #111827;
+                font-family: $he_heebo;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+            }
+
+        }
+    }
+
+}

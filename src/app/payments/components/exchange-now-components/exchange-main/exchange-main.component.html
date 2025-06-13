@@ -1,0 +1,32 @@
+<div class="main-exchange-modal">
+  <div class="alerts-bg ab-one">
+    <span class="line-one"></span>
+    <span class="line-two"></span>
+    <span class="line-three"></span>
+  </div>
+  <div class="alerts-bg ab-two">
+    <span class="line-three"></span>
+    <span class="line-two"></span>
+    <span class="line-one"></span>
+  </div>
+  <mat-dialog-content>
+    <mat-stepper #formStepper class="form-stepper">
+      <mat-progress-bar #formStepperProgress [hidden]="true"></mat-progress-bar>
+      <mat-step>
+        <ng-template matStepContent>
+          <app-exchange-new-step1 (timerSubscriptionWithTimerdata)="timerSubscriptionWithTimerdata($event)" [dashboardData]="data" (exchangeFormDetails)="getExchangeFormDetails($event)" (createdConvertDataDetails)="getCreatedData($event)" (timerSubscriptionForComplete)="gettimerSubscriptionForComplete($event)"  [formStepper]="formStepper" [formStepperProgress]="formStepperProgress"> </app-exchange-new-step1>
+        </ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepContent>
+          <app-exchange-new-summary [timerSubscriptionWithTimerData]="timerSubscriptionWithTimerData"  [exchangeForm]="exchangeForm" [createdConvertData]="createdConvertData" [timerSubscription]="timerSubscription" (completedPaymentRequestDetails)="getCompletedData($event)"  [formStepper]="formStepper" [formStepperProgress]="formStepperProgress"></app-exchange-new-summary>
+        </ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepContent>
+          <app-exchange-done [exchangeForm]="exchangeForm" [completedPaymentData]="completedPaymentData"></app-exchange-done>
+        </ng-template>
+      </mat-step>
+    </mat-stepper>
+  </mat-dialog-content>
+</div>

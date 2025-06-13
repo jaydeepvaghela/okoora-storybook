@@ -1,0 +1,26 @@
+<div class="plan-conversion plan-con-height">
+    <div class="single-payment-body">
+        <form [formGroup]="convertMoneyOption" id="convertMoneyForm">
+            <div class="form-group you-send-wrap">
+                <label class="send-feild">Set a Future date</label>
+                <mat-form-field class="duedate-container" id="dueDateContainer">
+                    <mat-label>Select a due date</mat-label>
+                    <input matInput [matDatepicker]="picker" id="dueDate" [min]="minDate" formControlName="dueDate"
+                        (dateChange)="dateChanged($event)" [matDatepickerFilter]="holidayFilter" [readonly]="true">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <p class="error-msg" id="err-msg" *ngIf="convertMoneyOption.get('dueDate')?.value && convertMoneyOption.controls['dueDate'].invalid">
+                    The date isn't valid
+                </p>
+            </div>
+            <div class="stepper-action">
+                <button class="pay-next-btn" mat-button matStepperNext id="nextBtnConvert"
+                    (click)="nextSteps(formStepper, formStepperProgress)" [class.disabled]="convertMoneyOption?.invalid"
+                    [disabled]="convertMoneyOption?.invalid">
+                    Next</button>
+            </div>
+        </form>
+    </div>
+
+</div>

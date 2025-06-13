@@ -1,0 +1,104 @@
+::ng-deep {
+  .main-exchange-modal {
+    min-height: 100svh;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      bottom: -25%;
+      right: -10%;
+      border-radius: 560px;
+      background-color: #dbeafe;
+      filter: blur(200px);
+      z-index: 0;
+
+      @media (max-width: 1660px) {
+        opacity: 0.5;
+      }
+
+      @media (max-width: 1440px) {
+        width: 400px;
+        height: 400px;
+      }
+
+      @media (max-width: 1199px) {
+        display: none;
+      }
+    }
+
+    .alerts-bg {
+      width: 21.5%;
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      z-index: 0;
+      bottom: 0;
+      opacity: 0.5;
+
+      @media (max-width: 1600px) {
+        width: 14%;
+      }
+
+      @media (max-width: 1440px) {
+        width: 11%;
+      }
+
+      @media (max-width: 1279px) {
+        width: 6%;
+      }
+
+      @media (max-width: 1199px) {
+        display: none;
+      }
+
+      &.ab-one {
+        top: 0;
+        left: 30px;
+      }
+      &.ab-two {
+        top: 0;
+        right: 30px;
+      }
+      span {
+        width: 1px;
+        border: 1px dashed #d1d5db;
+
+        @media (max-width: 1660px) {
+          opacity: 0.75;
+        }
+
+        &.line-one {
+          height: 85%;
+        }
+        &.line-two {
+          height: 65%;
+        }
+        &.line-three {
+          height: 42%;
+        }
+      }
+    }
+
+    .mat-mdc-dialog-content {
+      max-height: 100vh;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .mat-horizontal-stepper-header-container {
+      display: none !important;
+    }
+    .mat-horizontal-content-container {
+      overflow: visible !important;
+
+      @media (max-width: 479px) {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  }
+}

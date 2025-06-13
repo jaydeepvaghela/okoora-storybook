@@ -1,0 +1,76 @@
+<div class="convert-now exchange-summary-section loader-wrapper">
+    <div class="sp-icon">
+        <button matStepperPrevious mat-icon-button class="close-btn" id="exnow-summary-id1">
+            <img src="images/left-arrow-dark-gray.svg" alt="back icon" class="back-icon">
+        </button>
+        <button mat-icon-button mat-dialog-close class="close-btn" (click)="closeButton()" id="exnow-summary-id2">
+            <img src="images/close-icon-gray.svg" alt="close icon">
+        </button>
+    </div>
+    <div class="convert-now-header">
+        <div class="sph-title">
+            <span class="sph-icon">
+                <!-- <img src="images/bell-icon-black.svg" alt="bell-icon"> -->
+                <img src="images/exchangeNowIcon.svg" alt="bell-icon">
+
+            </span>
+            <h2>Exchange Now </h2>
+        </div>
+        <div class="sph-dropdown">
+            <button [matMenuTriggerFor]="convertMenu" class="convert-option-dropdown">
+                Other Exchanges
+                <img src="images/arrow-down-gary.svg" alt="dropdown arrow icon">
+            </button>
+            <mat-menu #convertMenu="matMenu" class="action-menu convert-dropdown other-conversion">
+                <button (click)="openConvertNow()" id="exnow-summary-id3" mat-menu-item>Exchange now</button>
+                <button mat-menu-item id="exnow-summary-id4" (click)="exchangePlanConvert()">Future Exchange</button>
+            </mat-menu>
+        </div>
+    </div>
+    <div class="convert-body">
+        <h3 class="summary-heading">Summary</h3>
+        <div class="summary-content">
+            <ul class="transfer-details-list">
+                <li>
+                    <label class="list-texts">I am Selling</label>
+                    <span class="list-texts" *ngIf="!exchangeForm?.value?.buy">{{exchangeForm?.value?.firstExchangeSign}} {{commaseprate(exchangeForm?.value?.firstExchangeAmount,2)}}</span>
+                    <span class="list-texts" *ngIf="exchangeForm?.value?.buy">{{exchangeForm?.value?.secondExchangeSign}} {{commaseprate(exchangeForm?.value?.secondExchangeAmount,2)}}</span>
+                </li>
+                <li>
+                    <label class="list-texts">I am Buying</label>
+                    <span class="list-texts" *ngIf="exchangeForm?.value?.buy">{{exchangeForm?.value?.firstExchangeSign}} {{commaseprate(exchangeForm?.value?.firstExchangeAmount,2)}}</span>
+                    <span class="list-texts" *ngIf="!exchangeForm?.value?.buy">{{exchangeForm?.value?.secondExchangeSign}} {{commaseprate(exchangeForm?.value?.secondExchangeAmount,2)}}</span>
+                </li>
+                <li>
+                    <label class="list-texts">Exchange Rate</label><span class="exrate-texts">
+
+                      <div class="circle-timer">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                          <circle
+                            r="10"
+                            cx="16"
+                            cy="16"
+                            stroke="#0057ff"
+                            stroke-width="2"
+                            fill="none"
+                            [attr.stroke-dasharray]="timerSubscriptionWithTimerData?.circumference"
+                            [attr.stroke-dashoffset]="timerSubscriptionWithTimerData?.progress"
+                            style="transform: rotate(90deg); transform-origin: center"
+                          />
+                          <text x="16" y="20" text-anchor="middle" font-size="10" fill="#0057ff">{{ timerSubscriptionWithTimerData?.currentNumber }}</text>
+                        </svg>
+                      </div>
+                      {{createdConvertData?.convertRequest?.exchangeRate?.major?.currency?.sign}}1 =  {{createdConvertData?.convertRequest?.exchangeRate?.minor?.currency?.sign}}{{createdConvertData?.convertRequest?.exchangeRate?.minor?.rate}}</span>
+                </li>
+            </ul>
+            <mat-checkbox [(ngModel)]="termsAndCondition" class="approve-check" id="exnow-summary-id5">I approve this Exchange</mat-checkbox>
+            <div class="error-msg text-center mt-2" *ngIf="errMsg">
+                <span>
+                    {{errMsg}}
+                </span>
+            </div>
+        </div>
+        <button [disabled]="!termsAndCondition || errMsg" [class.disabled]="!termsAndCondition || errMsg"
+            (click)="nextStep(formStepper, formStepperProgress)" class="confirm-exchange-btn" id="exnow-summary-id6">Confirm exchange</button>
+    </div>
+</div>

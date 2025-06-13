@@ -1,0 +1,182 @@
+<div class="stepper-body conver-first-step loader-wrapper">
+    <form #stepOneForm [formGroup]="yourOwnRate">
+        <div class="form-details">
+            <h5 class="form-title">Your own rate</h5>
+            <p class="form-description">Set a limit order</p>
+        </div>
+        <div class="form-control-wrapper converted-upon-arrival">
+            <div class="col-12">
+                <div class="currency-wrapper temp-width">
+                    <div class="upper-row-new">
+                        <div class="currency-value">
+                            <span class="above-currency-value-text">Your exchange</span>
+                            <span class="currency-value-text"><span *ngIf="sign">{{sign}}</span>
+                                <input type="text" id="buyAmountInput" [value]="buyAmount" placeholder="0.00"
+                                    (blur)="createConvertRequest($event)"
+                                    (keyup)="checkBuyAmount(); changeChargeAmount()" formControlName="buyAmount" (keydown)="restrictSpecialCharacters($event)">
+                            </span>
+                        </div>
+                        <div class="country-dropdown">
+                            <mat-select class="form-control" name="currency" formControlName="toCurrency"
+                                placeholder="Select Currency" id="toCurrencySelectBox"
+                                (selectionChange)="AlertSpotAndRate(); createConvertRequest($event)">
+                                <mat-select-trigger>
+                                    <ng-container *ngFor="let currency of allCurrencyConvert">
+                                        <span *ngIf="currency?.currency?.code == yourOwnRate.value.toCurrency">
+                                            <img class="currency-image" [src]="currency?.currency_Flag"
+                                                alt="currency_flag">
+                                            {{ currency?.currency?.code }}
+                                        </span>
+                                    </ng-container>
+                                </mat-select-trigger>
+                                <ng-container *ngFor="let currency of allCurrencyConvert">
+                                    <mat-option [value]="currency?.currency?.code" id="{{currency?.currency?.code}}"
+                                        *ngIf="yourOwnRate.value.fromCurrency != currency?.currency?.code"><img
+                                            class="currency-image" [src]="currency?.currency_Flag" alt="currency_flag">
+                                        {{
+                                        currency?.currency?.code }}</mat-option>
+                                </ng-container>
+                            </mat-select>
+                        </div>
+                    </div>
+                    <!-- <div class="middle-row-new">
+                        <div class="middle-row-new-left">
+                            <mat-checkbox class="payer-other-check-box" formControlName="transferOnly">Transfer only if
+                            </mat-checkbox>
+                        </div>
+                        <div class="middle-row-new-right">
+                            <span> No conversion/transfer will be made if the target rate is not reached by the target
+                                day</span>
+                        </div>
+                    </div> -->
+                    <div class="bottom-row-new">
+                        <div class="bottom-row-new-left">
+                            <span class="d-flex align-items-center reaches-text">
+                                the rate reaches
+                                <span class="information-icon mb-zero">
+                                    <img src="images/info-icon.svg" id="infoIcon" [matTooltip]="targateRateRange">
+                                </span>
+                            </span>
+                            <div class="new-input">
+                                <input type="text" formControlName="spotRate"  id="rateInput"
+                                    placeholder="{{ currentFXRate  ? spot: 0.0000}}" appFourDigitDecimaNumber
+                                    (change)="changeRate($event)">
+                                <p class="error-msg" id="rateErrorMsg"
+                                    *ngIf="yourOwnRate.get('spotRate').status === 'INVALID' && yourOwnRate.get('spotRate').touched">
+                                    Required
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bottom-row-new-right reaches-text">
+                            <span>
+                                before the due date
+                            </span>
+                            <div class="new-date-picker">
+                                <div class="date-picker">
+                                    <input type="text" id="dueDateInput" class="form-control" matInput placeholder="Select date"
+                                        formControlName="dueDate" [matDatepicker]="picker" [min]="minDate"
+                                        (dateChange)="dateChanged($event)" [readonly]="true">
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cvm-text-above">
+                    <p class="cvm-after-text">Current FX rate </p>
+                    <span class="cvm-right-font-bold" *ngIf="!currentFXRate">0.00</span>
+                    <span class="cvm-right-font-bold" *ngIf="currentFXRate">{{ currentFXRate }}</span>
+                </div>
+
+            </div>
+
+
+            <div class="col-12">
+                <div class="currency-wrapper temp-width">
+                    <div class="currency-value">
+                        <span class="above-currency-value-text">Your wallet will be charged</span>
+                        <span class="currency-value-text">
+                            <span class="amount-prefix" [hidden]="!yourOwnRate.value.sellAmount">{{
+                                data?.selectedwalletInfo?.wallet_Currency?.sign }}</span>
+                            <input type="text" id="sellAmountInput" formControlName="sellAmount"
+                                placeholder="{{ data?.selectedwalletInfo?.wallet_Currency?.sign }}0.00"
+                                (blur)="createConvertRequest($event)" (keyup)="checkSellAmount()"
+                                (change)="changeAmount($event)" appOnlyNumbers [readonly]="true" [disabled]="true">
+                        </span>
+                    </div>
+                    <div class="country-dropdown">
+                        <mat-select class="form-control" name="currency"  id="currencySelect"
+                            [value]="data?.selectedwalletInfo?.wallet_Currency?.code" placeholder="Select Currency"
+                            [disabled]="true">
+                            <mat-select-trigger>
+                                <!-- <ng-container *ngFor="let currency of activeCurrency"> -->
+                                    <span>
+                                        <img class="currency-image" [src]="data?.selectedwalletInfo?.wallet_Flag" alt="currency_flag">
+                                        {{ data?.selectedwalletInfo?.wallet_Currency?.code }}
+                                    </span>
+                                <!-- </ng-container> -->
+                            </mat-select-trigger>
+                            <mat-option [value]="data?.selectedwalletInfo?.wallet_Currency?.code">
+                              <img class="currency-image" [src]="data?.selectedwalletInfo?.wallet_Flag" alt="currency_flag"> {{data?.selectedwalletInfo?.wallet_Currency?.code}}
+                            </mat-option>
+                            <!-- <ng-container *ngFor="let currency of activeCurrency">
+                                <mat-option [value]="currency?.wallet_Currency?.code"
+                                    *ngIf="yourOwnRate?.value.toCurrency != currency?.wallet_Currency?.code"><img
+                                        class="currency-image" [src]="currency.wallet_Flag" alt="currency_flag"> {{
+                                    currency?.wallet_Currency?.code
+                                    }}</mat-option>
+                            </ng-container> -->
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="cvm-text-above">
+                    <p class="cvm-after-text">Available balance
+                        <!-- <span
+                            *ngIf="buyCurrencyBalance$ | async as walletBalance;else balancePlaceholder">{{walletBalance?.wallet_Currency?.sign}}{{walletBalance?.wallet_Amount}}</span> -->
+                        <!-- <ng-template #balancePlaceholder>{{data?.selectedwalletInfo?.wallet_Amount
+                            ? data?.selectedwalletInfo?.wallet_Amount : 0.00 }}</ng-template> -->
+                        <span>{{data?.selectedwalletInfo?.wallet_Currency?.sign}}{{data?.selectedwalletInfo?.wallet_Available
+                            | number}}</span>
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-12">
+                <p class="error-msg" *ngIf="errMsg">
+                    {{errMsg}}
+                </p>
+            </div>
+            <div class="tmc-text">
+                <mat-checkbox #termsCheckbox id="termsCondition-checkbox" formControlName="termsCondition" class="payer-other-check-box">
+                    <a class="color-cahnge-blue" (click)="openPrivacyPolicyDialog()">Terms and conditions</a> of the service
+                </mat-checkbox>
+                <mat-checkbox class="payer-other-check-box" formControlName="transferOnly"> No exchange/transfer will be made if the target rate is not reached <br>by the target day
+                </mat-checkbox>
+            </div>
+            <div class="mt-3" *ngIf="errorMsg ">
+                <span *ngIf="errorMsg" class="errorMsg" id="errorMsg">{{errorMsg}}</span>
+            </div>
+            <div class="mt-3" *ngIf="errorMsgShow">
+                <span *ngIf="errorMsgShow" class="errorMsg">Current rate and Target rate is not same</span>
+            </div>
+
+
+        </div>
+        <div class="stepper-action" *ngIf="!exchange">
+            <button class="previous-button" id="previousBtn" mat-icon-button matStepperPrevious
+                (click)="previousStep(formStepper, formStepperProgress)"></button>
+            <button class="next-button" mat-button id="nextBtn"
+                [disabled]="!createFlag || !yourOwnRate.value.dueDate || !yourOwnRate.value.spotRate || !yourOwnRate.value.termsCondition || !yourOwnRate.value.transferOnly || validForm"
+                [class.disabled]="!createFlag || !yourOwnRate.value.dueDate || !yourOwnRate.value.spotRate || !yourOwnRate.value.termsCondition || !yourOwnRate.value.transferOnly || validForm"
+                (click)="nextStep(formStepper, formStepperProgress)">Make it now</button>
+        </div>
+        <div class="stepper-action sa-exchange" *ngIf="exchange">
+            <button class="pay-next-btn" mat-button id="nextBtn"
+                [disabled]="!createFlag || !yourOwnRate.value.dueDate || !yourOwnRate.value.spotRate || !yourOwnRate.value.termsCondition || !yourOwnRate.value.transferOnly || validForm"
+                [class.disabled]="!createFlag || !yourOwnRate.value.dueDate || !yourOwnRate.value.spotRate || !yourOwnRate.value.termsCondition || !yourOwnRate.value.transferOnly || validForm"
+                (click)="nextStep(formStepper, formStepperProgress)">Exchange</button>
+        </div>
+    </form>
+    <!-- <app-page-loader classes="bg-white section-loader" id="loader" *ngIf="showLoader"></app-page-loader> -->
+</div>
