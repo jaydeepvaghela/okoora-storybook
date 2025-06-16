@@ -76,14 +76,6 @@
   background-size: 31px;
   z-index: 99;
 
-  &.cash-to-flight {
-    // background-image: url(../images/cashFlightIcon.svg);
-  }
-
-  &.wallet {
-    // background-image: url(../images/wallet-icon.svg);
-  }
-
   // &.money-bag {
   //   background-image: url(../images/money-bag.svg);
   // }
@@ -92,9 +84,9 @@
   //   background-image: url(../images/Iconsproccesses.svg);
   // }
 
-  // &.sendMoney {
-  //   background-image: url(../images/sendIcon.svg);
-  // }
+  &.sendMoney {
+    background-image: url(../images/sendIcon.svg);
+  }
 
 
   @media only screen and (max-width: 1440px) {
@@ -205,6 +197,9 @@
   border-radius: 20px;
 
   &::ng-deep {
+    .mdc-linear-progress__bar {
+      height: 100%;
+    }
     .mdc-linear-progress__bar-inner {
       border-width: 12px;
       border-radius: 20px;
@@ -279,7 +274,7 @@
     border-radius: 40px;
     height: 50px;
     color: var(--brand-primary-color);
-    // background-image: url(../images/left-arrow.svg);
+    background-image: url(../images/left-arrow.svg);
     background-repeat: no-repeat;
     background-size: 8px;
     background-position: center;
@@ -813,7 +808,7 @@ form {
 
     &::ng-deep {
       .mat-mdc-select-arrow {
-        // background-image: url(../images/drop-down-arrow.svg);
+        background-image: url(../images/drop-down-arrow.svg);
         background-repeat: no-repeat;
         background-position: center;
         background-size: 12px;
@@ -1635,6 +1630,7 @@ form {
 mat-progress-bar {
   &::ng-deep {
     .mdc-linear-progress__buffer {
+      height: 100%;
       .mdc-linear-progress__buffer-bar {
         background-color: var(--content-wrapper-bg-color);
       }

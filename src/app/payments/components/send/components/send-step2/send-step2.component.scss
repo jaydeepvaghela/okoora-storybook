@@ -1,0 +1,637 @@
+@import "../../../../../../assets/scss/full-screen-modal.scss";
+@import "../../../../../../assets/scss/variable";
+@import "../../../../../../assets/scss/mixins";
+
+// .send-mony-stepper-slide-two {
+//   .form-control-wrapper {
+//     width: 600px;
+
+//     @media only screen and (max-width: 1440px) {
+//       width: 500px;
+//     }
+
+//     @media only screen and (max-width: 580px) {
+//       width: 100%;
+//     }
+
+//     &.display-pr {
+//       .currency-btn {
+//         .add-new-btn-cb {
+//           margin: 0 auto;
+//           font-style: normal;
+//           color: var(--brand-primary-color);
+//           padding: 0;
+//           width: 129px;
+//           height: 38px;
+//           border: 2px solid $general-border-color;
+//           border-radius: 20px;
+//           font-weight: 600;
+//           font-size: $font-16;
+//           line-height: 22px;
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+
+//           @media only screen and (max-width: 1440px) {
+//             font-size: 14px;
+//             line-height: 20px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .send-step-slide-two-plan-payment {
+//   .form-control-wrapper {
+
+//     &.display-pr {
+//       position: relative;
+//       width: 600px;
+//       max-width: 600px;
+
+//       @media only screen and (max-width: 1440px) {
+//         width: 500px;
+//         max-width: 500px;
+//       }
+
+//       @media only screen and (max-width: 580px) {
+//         width: 100%;
+//         max-width: 100%;
+//       }
+
+//       .currency-btn {
+//         position: absolute;
+//         top: 4px;
+//         margin-top: 0;
+//         right: -120px;
+//         text-align: right;
+//         width: 27%;
+
+//         @media only screen and (max-width: 991px) {
+//           position: relative;
+//           left: 0;
+//           right: 0;
+//           text-align: center;
+//           width: 100%;
+//           margin-bottom: 20px;
+//         }
+
+//         button {
+//           padding: 0 15px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .beneficiary-options {
+//   &:hover {
+//     background-color: var(--content-wrapper-bg-color);
+//   }
+//   .beneficiary-info {
+//     span {
+//       font-size: 14.5px;
+//     }
+//   }
+// }
+
+// .select-item {
+//   padding: 12px 0px 19px 0px;
+//   @media screen and (max-width: 1440px) {
+//     padding: 10px 0px 14px 0px;
+//   }
+//   .beneficiary-info {
+//     @include flex(flex-start, flex-start, column);
+//     span {
+//       font-size: $font-16;
+//       line-height: normal;
+//       font-weight: 700;
+//       color: #030203;
+//       font-family: $manrope;
+//       &:last-child {
+//         font-weight: 400;
+//         color: #A3A5AA;
+//       }
+//     }
+//   }
+// }
+
+// .dropdown-trigger {
+//   .select-item {
+//     padding: 0;
+//     .beneficiary-info {
+//       @include flex(flex-start, flex-start, column);
+//       span {
+//         font-size: $font-16;
+//         line-height: normal;
+//         font-weight: 700;
+//         color: #030203;
+//         font-family: $manrope;
+//         &:last-child {
+//           font-weight: 400;
+//           color: #A3A5AA;
+//         }
+//       }
+//     }
+//   }
+// }
+
+.form-control-wrapper {
+  mat-select {
+    &.beneficiary-dropdown {
+      padding-top: 14.5px;
+      padding-bottom: 14.5px;
+
+      @media screen and (max-width: 1440px) {
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+    }
+  }
+}
+
+// .choose-payment-method {
+//   width: 100%;
+
+//   .invoice-upload {
+
+//     .information-msg {
+//       margin-bottom: 20px;
+//       display: block;
+//       color: $black;
+//       margin-top: -20px;
+//     }
+//     .drop-zone {
+//       width: 456px;
+//       height: 220px;
+//       border-style: solid;
+//       position: relative;
+
+//       @media only screen and (max-width: 580px) {
+//         width: 100%;
+//         flex-wrap: wrap;
+//       }
+
+//       // &.multipleInvoice{
+//       //   justify-content: flex-start;
+//       // }
+//       &.spinner-dropz {
+//         position: relative;
+
+//         .spinner-invoice {
+//           position: absolute;
+//           top: auto;
+//           bottom: 0;
+//           left: 50%;
+//         }
+
+//       }
+
+//       .invoiceSpiner {
+//         position: absolute;
+//         bottom: 2px;
+//         left: 50%;
+//         transform: translateX(-50%);
+//       }
+//     }
+//   }
+
+//   .send-manually-invoice {
+//     text-align: center;
+
+//     .next-button {
+//       border: 2px solid $general-border-color;
+//       border-radius: 20px;
+//       width: 196px;
+//       margin: 0 auto;
+//       text-align: center;
+//       font-weight: 600;
+//       font-size: $font-16;
+//       line-height: 22px;
+//       text-align: center;
+//       color: var(--brand-primary-color);
+//     }
+//   }
+// }
+
+::ng-deep {
+  .future-payment-stepper {
+     .form-details {
+        .form-title {
+          font-family: sans-serif;
+        }
+    }
+    .recipient-dropdown {
+      position: relative;
+
+      .mat-mdc-form-field {
+        width: 100%;
+
+        .mat-mdc-form-field-infix {
+          .mdc-text-field__input {
+            padding-top: 7px;
+            padding-bottom: 7px;
+
+            @media screen and (max-width: 1440px) {
+              padding-top: 10px;
+              padding-bottom: 4px;
+            }
+          }
+        }
+
+        &.ng-valid,
+        &.mat-focused {
+          .mat-mdc-form-field-infix {
+            .pay-dropdown-icon {
+              top: 0px;
+            }
+          }
+        }
+
+        .pay-dropdown-icon {
+          width: 24px;
+          height: 24px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 12px;
+          margin: auto 0;
+          cursor: pointer;
+
+          @media screen and (max-width: 1440px) {
+            margin-top: 10px;
+          }
+        }
+
+        .mat-mdc-form-field-infix {
+          background-color: #fff !important;
+        }
+
+        &:focus,
+        &:hover {
+
+          .mat-mdc-form-field-infix,
+          .mat-mdc-text-field-wrapper {
+            background-color: #fff !important;
+          }
+        }
+
+        &.ng-valid {
+          .mat-mdc-text-field-wrapper {
+            &.mdc-text-field--filled {
+              .mat-mdc-form-field-infix {
+                &::before {
+                  top: 10px;
+                }
+              }
+            }
+          }
+        }
+
+        .mat-mdc-text-field-wrapper {
+          width: 100%;
+          padding: 0 !important;
+
+          .mat-mdc-form-field-flex .mat-mdc-floating-label {
+            top: 23px;
+          }
+
+          &.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+            &.mdc-line-ripple {
+              &::before {
+                display: none;
+              }
+            }
+
+            .mat-mdc-form-field-infix {
+              padding: 0 !important;
+
+              .mdc-floating-label {
+                margin-left: 12px;
+                color: #808080;
+
+                &.mdc-floating-label--float-above {
+                  color: var(--input-blue-border);
+                  font-family: Roboto, sans-serif;
+                  font-size: 12px;
+                  font-weight: 700;
+                  line-height: 16px;
+                  display: inline-block;
+                }
+              }
+            }
+          }
+
+          &.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+            .mdc-line-ripple {
+              display: none;
+            }
+          }
+
+          &.mdc-text-field--invalid:not(.mdc-text-field--disabled) {
+            .mdc-floating-label {
+              color: var(--input-blue-border);
+            }
+
+            .mdc-line-ripple {
+              display: none;
+            }
+          }
+
+          &.mdc-text-field--invalid {
+            .mdc-text-field__input {
+              caret-color: #000000;
+            }
+          }
+
+          &.mdc-text-field--focused {
+            .mat-mdc-form-field-infix {
+              &::before {
+                top: 10px;
+              }
+            }
+          }
+        }
+
+        .mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker) {
+          &::after {
+            display: none;
+          }
+        }
+      }
+
+      .add-reci {
+        color: #111827;
+        font-family: $he_heebo;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 16px;
+        display: block;
+        margin-bottom: 25px;
+        text-align: right;
+        cursor: pointer;
+
+        @media (max-width: 1440px) {
+          margin-bottom: 15px;
+        }
+      }
+
+      .recent-list-dropdown {
+        border-radius: 6px;
+        background-color: #FFF;
+        box-shadow: 0px 20px 25px -5px rgba(30, 64, 175, 0.20), 0px 8px 10px -6px rgba(30, 64, 175, 0.10);
+        padding-top: 14px;
+        padding-bottom: 16px;
+        padding: 14px 10px 16px 21px;
+        // margin-top: -14px;
+        // position: absolute;
+        width: 100%;
+        background: white;
+        z-index: 9;
+
+        @media (max-width: 576px) {
+          padding-left: 15px;
+        }
+
+        .recent-pay-iist {
+          padding-left: 0;
+          padding-right: 13px;
+          max-height: 364px;
+          overflow-y: auto;
+          margin-bottom: 20px;
+
+          @media (max-width: 576px) {
+            padding-right: 8px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background: none !important;
+            box-shadow: none !important;
+          }
+
+          &::-webkit-scrollbar {
+            width: 6px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.30);
+          }
+
+          .recent-pay-item {
+            padding-left: 25px;
+            padding-right: 25px;
+            border-bottom: none;
+            border-radius: 10px;
+            margin-bottom: 5px;
+
+            @media (max-width: 1440px) {
+              padding-left: 15px;
+              padding-right: 15px;
+            }
+
+            @media (max-width: 576px) {
+              padding-left: 10px;
+              padding-right: 10px;
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            &:hover,
+            &.beneficiarySelected {
+              background-color: var(--light-blue-header-bg);
+
+              .profile-data {
+                p {
+                  color: var(--primary-blue);
+                }
+              }
+            }
+          }
+        }
+
+        .pay-select-btn {
+          padding: 14px 32px;
+          min-height: 50px;
+          width: 158px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          color: #4B4B55;
+          text-align: center;
+          font-family: $manrope;
+          font-size: 16px;
+          font-weight: 600;
+          line-height: normal;
+
+          border-radius: 40px;
+          background-color: var(--content-wrapper-bg-color);
+
+          @media (max-width: 1440px) {
+            padding: 10px 25px;
+            min-height: 42px;
+          }
+
+          &.clickedSelect {
+            color: #fff;
+            background-color: var(--primary-blue);
+          }
+        }
+      }
+
+      .recipient-field {
+        color: #111827;
+        font-family: $he_heebo;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      input {
+        min-height: 50px;
+        border-radius: 4px;
+        border: 1px solid var(--input-blue-border);
+        color: #9CA3AF;
+        font-family: $he_heebo;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        padding: 8px 12px 8px 16px;
+
+        @media screen and (max-width: 1440px) {
+          min-height: 44px;
+        }
+      }
+    }
+
+    .recent-pay-data {
+      .recent-pay-title {
+        color: #111827;
+        font-family: 'Heebo';
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 38px;
+        display: inline-block;
+        margin-bottom: 6px;
+        letter-spacing: normal;
+      }
+
+      .recent-pay-iist {
+        max-height: 425px;
+        overflow-y: auto;
+      }
+    }
+
+    .recent-pay-iist {
+      padding-left: 0;
+      margin-bottom: 0;
+
+      .recent-pay-item {
+        min-height: 90px;
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+        padding: 20px 25px 20px 0;
+        margin-bottom: 5px;
+
+        border-bottom: 1px dashed #9CA3AF;
+        background-color: #FFF;
+
+        @media (max-width: 1440px) {
+          padding: 10px 15px 10px 0;
+          min-height: 70px;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .profile-img {
+          padding-right: 8px;
+          padding-bottom: 8px;
+          position: relative;
+
+          span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 35px;
+            height: 35px;
+            padding: 5px;
+            border-radius: 35px;
+            background-color: #DBEAFE;
+
+            color: var(--dark-blue-primary);
+            font-family: $inter;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: normal;
+          }
+
+          img {
+            width: 18px;
+            height: 18px;
+            border-radius: 16px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+          }
+        }
+
+        .profile-data {
+          p {
+            color: #1F2937;
+            font-family: 'Heebo';
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 35px;
+            margin-bottom: 0;
+
+            @media (max-width: 1440px) {
+              line-height: 25px;
+            }
+          }
+
+          .pd-bottom {
+            display: flex;
+            align-items: center;
+
+            color: rgb(107 114 128 / 70%);
+            font-family: $inter;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: normal;
+
+            .currancy-name {
+              font-weight: 700;
+              display: inline-block;
+              margin-right: 17px;
+              position: relative;
+
+              &::before {
+                content: "";
+                width: 1px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: -9px;
+                border-right: 1px solid rgb(107 114 128 / 70%);
+              }
+            }
+          }
+        }
+      }
+    }
+    .stepper-action {
+      .next-button {
+        font-family: 'Arial';
+      }
+    }
+  }
+}

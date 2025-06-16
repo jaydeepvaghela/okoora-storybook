@@ -10,6 +10,7 @@ import { SinglePaymentSendComponent } from '../single-payment-components/single-
 import { MassPaymentComponent } from '../mass-payment-components/mass-payment/mass-payment.component';
 import { ExchangeMainComponent } from '../exchange-now-components/exchange-main/exchange-main.component';
 import { PlanConversionComponent } from '../exchange-later-components/plan-conversion/plan-conversion.component';
+import { SendComponent } from '../send/send.component';
 // import { AuthenticationService } from 'src/app/auth/services/authentication.service';
 // import { WalletBalanceListModal } from 'src/app/common/models/WalletBalanceListModal';
 // import { ContactsService } from 'src/app/contacts/services/contacts.service';
@@ -134,24 +135,24 @@ export class PaymentsDashboardComponent {
   }
 
   CreateLockRateDialog() {
-    // let activeWallet: any = localStorage.getItem('activeWallet');
-    // let currency = JSON.parse(activeWallet);
-    // this.dialog
-    //   .open(SendComponent, {
-    //     width: '100vw',
-    //     maxWidth: '100vw',
-    //     data: {
-    //       selectedwalletInfo: currency,
-    //       type: true,
-    //       payment: false,
-    //       transaction: true,
-    //     },
-    //     disableClose: true,
-    //   })
-    //   .afterClosed()
-    //   .subscribe((shouldReload: any) => {
-    //     this.child?.getAllData();
-    //   });
+    let activeWallet: any = localStorage.getItem('activeWallet');
+    let currency = JSON.parse(activeWallet);
+    this.dialog
+      .open(SendComponent, {
+        width: '100vw',
+        maxWidth: '100vw',
+        data: {
+          selectedwalletInfo: currency,
+          type: true,
+          payment: false,
+          transaction: true,
+        },
+        disableClose: true,
+      })
+      .afterClosed()
+      .subscribe((shouldReload: any) => {
+        // this.child?.getAllData();
+      });
   }
 
   exchangeNow() {

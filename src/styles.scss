@@ -121,6 +121,22 @@ button{
   background: var(--brand-primary-color) !important;
 }
 
+.mat-datepicker-toggle {
+  button {
+    background-image: url(assets/images/calendar-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @media only screen and (max-width: 1440px) {
+      width: 44px !important;
+      height: 44px !important;
+    }
+
+    svg {
+      display: none;
+    }
+  }
+}
 
 .mat-mdc-checkbox .mat-mdc-focus-indicator,
 .mat-mdc-checkbox-touch-target,
