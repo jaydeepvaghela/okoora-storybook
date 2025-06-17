@@ -1,0 +1,49 @@
+<form id="ss5-form" #stepOneForm [formGroup]="ownRateForm" class="loader-wrapper">
+  <div *ngIf="paymentType == 'future_payment'" class="stepper-body send-mony-stepper-slide-three">
+    <div class="form-details">
+      <h5 class="form-title">Lock rate & pay later</h5>
+      <div class="send-amount">
+        <h4 class="amount" *ngIf="futurePaymentStrategyId">{{ getLockRateAmount()[0] }}</h4>
+        <span class="currency-pair" *ngIf="futurePaymentStrategyId">{{ getLockRateAmount()[1] }}/{{ getLockRateAmount()[2] }}</span>
+      </div>
+    </div>
+    <div class="form-control-wrapper">
+      <div class="radio-opt-group">
+        <h5 class="radio-select-label">Choose the best option for you:</h5>
+        <div class="radio-option">
+          <input type="radio" id="ss4-fp-freeCost" name="strategyId"
+            [value]="futurePayment.get('createPaymentResponse').value?.futurePayment[0].strategyId"
+            (change)="setStrategyId(futurePayment.get('createPaymentResponse').value?.futurePayment[0].strategyId);">
+          <label for="ss4-fp-freeCost">
+            <h5 class="heading">Free of cost</h5>
+            <p class="description">If on the payment day the exchange rate is lower than your locked rate, you will not
+              enjoy the lower rate
+            </p>
+          </label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="ss4-fp-wihtCost" name="strategyId"
+            [value]="futurePayment.get('createPaymentResponse').value?.futurePayment[1].strategyId"
+            (change)="setStrategyId(futurePayment.get('createPaymentResponse').value?.futurePayment[1].strategyId);">
+          <label for="ss4-fp-wihtCost">
+            <h5 class="heading">{{ futurePayment.get('createPaymentResponse').value?.futurePayment[1].cost }}</h5>
+            <p class="description">If on the payment day the exchange rate is lower than your locked rate, you will
+              enjoy the lower rate</p>
+          </label>
+        </div>
+      </div>
+      <div *ngIf="futurePaymentStrategyId" class="count-down">Transaction details will refresh in: <countdown #cd
+          class="time" [config]="config" (event)="handleEvent($event)"></countdown>
+      </div>
+    </div>
+    <div class="err-center-message">
+      <span *ngIf="refreshFuturePaymentErr" class="error-msg">{{ refreshFuturePaymentErr }}</span>
+    </div>
+    <div class="stepper-action">
+      <button id="ss4-fp-previous" class="previous-button" mat-icon-button matStepperPrevious
+        (click)="lockRatePrevious(formStepper, formStepperProgress)"></button>
+      <button id="ss4-fp-next" [disabled]="!futurePaymentStrategyId" class="next-button" mat-button (click)="lockRateComplete(formStepper, formStepperProgress)">
+        Buy</button>
+    </div>
+  </div>
+</form>

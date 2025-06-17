@@ -368,13 +368,13 @@
         font-weight: 600;
         line-height: 16px;
         display: block;
-        margin-bottom: 25px;
+        margin-bottom: 0;
         text-align: right;
         cursor: pointer;
 
-        @media (max-width: 1440px) {
-          margin-bottom: 15px;
-        }
+        // @media (max-width: 1440px) {
+        //   margin-bottom: 15px;
+        // }
       }
 
       .recent-list-dropdown {

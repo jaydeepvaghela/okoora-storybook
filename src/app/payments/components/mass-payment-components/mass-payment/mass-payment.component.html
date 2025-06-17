@@ -22,7 +22,7 @@
             <button id="download_btn_mass_payment" class="download" (click)="DownloadTemplate()"> <img src="images/download.svg" /> Download template</button>
           </div>
           <div class="template-import">
-            <input hidden accept=".xlsx " multiple="false" type="file" class="file-input" (change)="ImportTemplate($event)" #fileUpload1>
+            <input hidden accept=".xlsx" multiple="false" type="file" class="file-input" (change)="ImportTemplate($event)" #fileUpload1>
             <button id="import_btn_mass_payment" class="import" (click)="fileUpload1.click()"><img src="images/file-upload.svg" />Import template</button>
           </div>
         </div>
@@ -37,6 +37,7 @@
       [beneficiaryForms]="beneficiaryForms" (beneficiaryFormsChange)="handleBeneficiaryFormsChange($event)"
       [addMoreRecipients]="addMoreRecipients" (addMoreRecipientsChanged)="handleAddMoreRecipientsChanged($event)"
       [selectedWallet]="selectedWallet"></app-recipient-table>
+    
     <div class="save-button" *ngIf="valueLength > 0">
       <button id="gotoNext_btn_mass_payment" [disabled]="!canProceedToNext()"
         [class.disabled]="!canProceedToNext()" (click)="save()">Next</button>

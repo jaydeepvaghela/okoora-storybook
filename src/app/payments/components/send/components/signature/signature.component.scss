@@ -1,0 +1,168 @@
+@import "../../../../../../assets/scss/full-screen-modal.scss";
+@import "../../../../../../assets/scss/_variable";
+@import "../../../../../../assets/scss/mixins";
+
+::ng-deep {
+  .signature-modal {
+    .mat-mdc-dialog-container {
+      .mdc-dialog__surface {
+        padding: 20px;
+        border-radius: 24px;
+
+        @media (max-width: 767px) {
+          border-radius: 8px;
+        }
+
+        .loader-wrapper {
+          @media (max-width: 480px) {
+            padding-bottom: 0;
+          }
+          .signature-container {
+            max-width: 603px;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+
+    signature-pad {
+      display: block;
+      text-align: center;
+
+      @media (max-width: 767px) {
+          width: 100%;
+          max-width: 400px;
+          overflow: hidden;
+          border-radius: 8px;
+          height: 130px;
+        }
+      @media (max-width: 576px) {
+        max-width: 300px;
+      }
+      @media (max-width: 479px) {
+          max-width: 248px;
+      }
+      @media (max-width: 359px) {
+          max-width: 216px;
+      }
+      canvas {
+        background: $disable-button-bg;
+        border-radius: 10px;
+      }
+    }
+
+    // .signature-container {
+    //   width: 100%;
+    //   background: $disable-button-bg;
+    //   height: 100%;
+    // }
+    // .signature-pad canvas {
+    //   width: 100%;
+    //   height: 100%;
+    // }
+    .signature-container {
+      max-width: 603px;
+      margin: 0 auto;
+      width: auto !important;
+      height: 100% !important;
+    }
+
+    .signature-pad canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .form-details {
+      text-align: center;
+      padding: 34px 0px 0px;
+      margin-bottom: 3px;
+
+      @media only screen and (max-width: 1440px) {
+        margin-bottom: 25px;
+      }
+
+      @media (max-width: 480px) {
+        padding-top: 0;
+      }
+
+      h5.form-title {
+        font-weight: 600;
+        font-size: $font-28;
+        line-height: 38px;
+        text-align: center;
+        color: $dialog-inner-heading-color;
+        opacity: 0.8;
+      }
+
+      p.form-description {
+        text-align: center;
+        color: $form-label !important;
+        opacity: 1 !important;
+
+        span {
+          color: var(--signature-hading-sub);
+        }
+      }
+    }
+
+    .user-signature {
+      width: 780px;
+      height: 180px;
+      background: $selected-list-item-color;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      padding: 50px 0;
+
+      @media only screen and (max-width: 1024px) {
+        width: 100%;
+        border-radius: 0;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+
+        @media only screen and (max-width: 580px) {
+          max-width: 210px;
+        }
+      }
+    }
+
+    .stepper-action {
+      justify-content: end;
+      padding: 0 51px;
+      column-gap: 14px;
+
+      @media only screen and (max-width: 580px) {
+        padding: 0 20px;
+      }
+
+      @media only screen and (max-width: 480px) {
+        flex-direction: column;
+        row-gap: 14px;
+        position: relative;
+        top: 15px;
+      }
+
+      .form-control-wrapper {
+        width: 118px;
+        margin: 0;
+
+        .currency-btn {
+          margin-top: 0px;
+        }
+      }
+
+      .next-button {
+        padding: 14px 45px;
+
+        @media only screen and (max-width: 480px) {
+          padding: 11px 15px;
+        }
+      }
+    }
+  }
+}

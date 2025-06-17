@@ -54,13 +54,13 @@
             <mat-step
                 *ngIf="(lock_rate && paymentRequestForm.get('type')?.value?.paymentType != 'salary') || paymentRequestForm.get('type')?.value?.paymentType === 'future_payment'">
                 <ng-template matStepContent>
-                    <!-- <app-send-step4 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [paymentType]="paymentRequestForm.get('type')?.value?.paymentType" [futurePayment]="paymentRequestForm.get('futurePayment')"></app-send-step4> -->
+                    <app-send-step4 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [paymentType]="paymentRequestForm.get('type')?.value?.paymentType" [futurePayment]="paymentRequestForm.get('futurePayment')"></app-send-step4>
                 </ng-template>
             </mat-step>
             <mat-step
                 *ngIf="(your_own_rate && paymentRequestForm.get('type')?.value?.paymentType != 'salary') || paymentRequestForm.get('type')?.value?.paymentType === 'future_payment'">
                 <ng-template matStepContent>
-                    <!-- <app-send-step5 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [paymentType]="paymentRequestForm.get('type')?.value?.paymentType" [futurePayment]="paymentRequestForm.get('futurePayment')" [activeWalletCurrency]="data"></app-send-step5> -->
+                    <app-send-step5 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [paymentType]="paymentRequestForm.get('type')?.value?.paymentType" [futurePayment]="paymentRequestForm.get('futurePayment')" [activeWalletCurrency]="data"></app-send-step5>
                 </ng-template>
             </mat-step>
 

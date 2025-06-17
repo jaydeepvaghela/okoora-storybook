@@ -122,6 +122,28 @@ button{
 }
 
 .mat-datepicker-toggle {
+
+  .payments-dashboard-tt {
+    button {
+      background-image: none;
+    }
+  }
+  &:not(.payments-dashboard-tt) {
+     button {
+      background-image: url(assets/images/calendar-icon.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @media only screen and (max-width: 1440px) {
+        width: 44px !important;
+        height: 44px !important;
+      }
+
+      svg {
+        display: none;
+      }
+    }
+  }
   button {
     background-image: url(assets/images/calendar-icon.svg);
     background-repeat: no-repeat;

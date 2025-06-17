@@ -104,7 +104,7 @@
             <input matStartDate id="startDate" placeholder="Start date" formControlName="start" [value]="transactionFilter.get('start')?.value">
             <input matEndDate id="endDate" placeholder="End date" formControlName="end" [value]="transactionFilter.get('end')?.value">
           </mat-date-range-input>
-          <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker-toggle class="payments-dashboard-tt" [for]="picker"></mat-datepicker-toggle>
         </div>
         <div>
           <button type="submit" class="set-all-btn" id="setAllBtn" (click)="filterData()">Set</button>

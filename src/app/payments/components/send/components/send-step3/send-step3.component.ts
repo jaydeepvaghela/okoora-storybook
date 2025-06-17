@@ -14,12 +14,13 @@ import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { InvoiceFuturePayment } from '../invoice-future-payment/invoice-future-payment.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-send-step3',
   templateUrl: './send-step3.component.html',
   styleUrls: ['./send-step3.component.scss'],
-  imports: [CommonModule, ReactiveFormsModule, MatSelectModule, MatListModule]
+  imports: [CommonModule, ReactiveFormsModule, MatSelectModule, MatListModule, MatTooltipModule]
 })
 export class SendStep3Component implements AfterViewInit {
   @Input('formStepper') formStepper?: any;
@@ -126,6 +127,7 @@ export class SendStep3Component implements AfterViewInit {
   dialogOpen = false;
   fPRefreshSubscription!: Subscription;
   fpRefreshData: any;
+  costType!: any;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -711,56 +713,57 @@ export class SendStep3Component implements AfterViewInit {
   }
 
   changeCostType(ev: any, requestID: any, typeSelect?: any) {
-    // console.log("typeSelect", typeSelect);
     this.showLoader = true;
-    // this.refreshTokenFlag = false;
     this.updateCostDisabledNext = true;
     this.transferTypeSelected = false;
     this.fPRefreshSubscription?.unsubscribe();
-    if (typeSelect == 'DRP-DOWN') {
 
-      if (ev == '1 - regular' && ev.indexOf('1') !== -1) {
-        ev = this.costList[0]?.key.substring(0, 1);
+    // Dynamically determine selected cost type
+    if (typeSelect === 'DRP-DOWN') {
+      const selectedItem = this.costList.find(item => item.key === ev);
+      if (selectedItem) {
+        this.costType = parseInt(selectedItem.key.split('-')[0].trim(), 10);
       } else {
-        ev = this.costList[1]?.key.substring(0, 1);
+        console.warn('Selected dropdown value not found in costList');
+        this.costType = null;
       }
-
-      // console.log("ev", ev);
     } else {
-      if (ev?.checked == true) {
-        ev = this.costList[1]?.key.substring(0, 1);
+      // Checkbox type
+      if (ev?.checked === true) {
+        const selectedItem = this.costList[1]; // assuming second item = checked
+        this.costType = parseInt(selectedItem.key.split('-')[0].trim(), 10);
       } else {
-        ev = this.costList[0]?.key.substring(0, 1);
+        const selectedItem = this.costList[0]; // default
+        this.costType = parseInt(selectedItem.key.split('-')[0].trim(), 10);
       }
     }
 
-    let body = {
-      requestId: '781a2f8f-d33c-434d-9140-5d0b1ec7e535',
-      costType: 1,
+    const body = {
+      requestId: requestID,
+      costType: this.costType,
     };
 
-    this.showLoader = true;
+    // Simulate API response
+    const selectedCostItem = this.costList.find(item => parseInt(item.key.split('-')[0].trim(), 10) === this.costType);
 
-    // Simulated response object
     const data = {
-      requestId: '781a2f8f-d33c-434d-9140-5d0b1ec7e535',
+      requestId: requestID,
       status: true,
       message: 'Update Cost Type Successfully',
       costType: {
-        key: '1',
-        value: 5.0000
+        key: this.costType,
+        value: selectedCostItem?.value || ''
       }
     };
 
-    // Simulate the success handler
     this.showLoader = false;
     this.costTypeAPIError = '';
 
     if (ev?.checked === true) {
-      this.ourCost = data.costType.value;
+      this.ourCost = Number(data.costType.value);
     }
 
-    this.updateCost = data.costType.value;
+    this.updateCost = Number(data.costType.value);
     this.costTypeMessage = false;
     this.updateCostDisabledNext = false;
     this.transferTypeSelected = true;

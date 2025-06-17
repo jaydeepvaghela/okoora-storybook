@@ -55,7 +55,7 @@ export class MassPaymentComponent implements OnInit {
     this._walletService.activeCurrentWallet.subscribe((res) => {
       this.activeCurrencyListFilter = this.walletList.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase().includes(res?.wallet_Currency?.code?.toLowerCase()));
       this.selectedWallet = this.activeCurrencyListFilter[0];
-      this.cdr?.detectChanges()
+      this.cdr?.detectChanges();
     });
     this.valueSubscription = this._walletService.lengthValue$.subscribe((loading) => {
       this.valueLength = loading;
@@ -81,6 +81,7 @@ export class MassPaymentComponent implements OnInit {
   }
   closeMassPayment() {
     this._walletService.setIsCompleteMassPayment(false);
+    this.dialogRef.close();
   }
   changeIsPreview(value: boolean) {
     this.isPreview = value;

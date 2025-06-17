@@ -11,11 +11,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { SignaturePad, SignaturePadModule } from 'angular2-signaturepad';
+import { MatStepperModule } from '@angular/material/stepper';
 @Component({
   selector: 'app-single-payment-send-step2',
   templateUrl: './single-payment-send-step2.component.html',
   styleUrls: ['./single-payment-send-step2.component.scss'],
-  imports: [CommonModule, SignaturePadModule, MatMenuModule, MatProgressBarModule, ReactiveFormsModule, NgxDropzoneModule],
+  imports: [CommonModule, SignaturePadModule, MatMenuModule, MatProgressBarModule, ReactiveFormsModule, NgxDropzoneModule, MatStepperModule],
 })
 export class SinglePaymentSendStep2Component {
   @ViewChild(SignaturePad) signaturePad!: SignaturePad;
