@@ -1,3 +1,11 @@
+<mat-drawer #eventDrawer class="event-drawer" mode="side" position="end">
+  <div class="colse-back-white">
+    <button mat-icon-button (click)="eventDrawerClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <app-lock-payment-add-alert *ngIf="eventDrawer.opened"></app-lock-payment-add-alert>
+</mat-drawer>
 <div class="lock-next-payment-container">
   <div class="swiper-container">
     <div class="swiper-wrapper">

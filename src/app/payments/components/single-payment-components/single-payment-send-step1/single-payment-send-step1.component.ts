@@ -480,9 +480,8 @@ export class SinglePaymentSendStep1Component {
           this.showLoader = false;
           this.blurCreatedFlag = true;
           delete this.sendValidAmountError;
-          delete this.createPaymentAPIError
-          // console.log("payment created", data);
-          this.createdPaymentData = data
+          delete this.createPaymentAPIError;
+          this.createdPaymentData = data;
           console.log("createdPaymentData", this.createdPaymentData);
           this.createdPaymentDataFortransfer.emit(this.createdPaymentData)
           this._walletService?.SetCreatedPayment(this.createdPaymentData)

@@ -90,6 +90,7 @@ export class ExchangeNewSummaryComponent {
   }
 
   goToPreviousStep() {
+    this.formStepper.previous();
     delete this.errMsg;
   }
 
@@ -98,7 +99,6 @@ export class ExchangeNewSummaryComponent {
     this.dialogRef.close(this.timerSubscription);
     this.dialog.closeAll()
     this.timerSubscription?.unsubscribe();
-
   }
 
 

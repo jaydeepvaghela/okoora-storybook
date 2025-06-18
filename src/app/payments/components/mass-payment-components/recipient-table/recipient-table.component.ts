@@ -50,17 +50,35 @@ export class RecipientTableComponent implements OnChanges {
   constructor(public dialog: MatDialog, private fb: FormBuilder, private cdr: ChangeDetectorRef, private _walletService: WalletsService) { }
 
   ngOnInit() {
+    // Try to load from localStorage first
+    const storedForms = this.loadBeneficiaryFormsFromLocalStorage();
+
+    if (storedForms && storedForms.length > 0) {
+      this.beneficiaryForms = storedForms;
+      this.selectedBeneficiaries = storedForms.map((form: FormGroup) => {
+        const beneficiaryId = form.get('beneficiaryId')?.value;
+        return this.approvedBeneficiaries.find(b => b.id === beneficiaryId) || null;
+      });
+      this.cdr.detectChanges();
+      return; // Skip fetching from API if localStorage has valid data
+    }
+
+    // Initialize selectedBeneficiaries from existing forms
     this.selectedBeneficiaries = this.beneficiaryForms.map((form: FormGroup) => {
       const beneficiaryId = form.get('beneficiaryId')?.value;
-      const matchingBeneficiary = this.approvedBeneficiaries.find((approvedBeneficiary) => approvedBeneficiary.id === beneficiaryId);
-      return matchingBeneficiary || null;
+      return this.approvedBeneficiaries.find(b => b.id === beneficiaryId) || null;
     });
+
     const updatedFormGroups: FormGroup[] = [];
+
     of([]).subscribe((result: any) => {
       result.forEach((beneficiary: any) => {
-        const matchingBeneficiary = this.approvedBeneficiaries.find((approvedBeneficiary) => approvedBeneficiary.id === beneficiary?.beneficiary.id);
+        const matchingBeneficiary = this.approvedBeneficiaries.find(
+          b => b.id === beneficiary?.beneficiary.id
+        );
 
         this.selectedBeneficiaries.push(matchingBeneficiary);
+
         const newFormGroup = this.fb.group({
           beneficiaryId: [beneficiary?.beneficiary.id || null],
           product_reference: [beneficiary?.beneficiary.bankAccountHolderName, Validators.required],
@@ -79,57 +97,78 @@ export class RecipientTableComponent implements OnChanges {
           stamp: [null],
           previewStamp: this.fb.array([]),
           requestId: [beneficiary?.requestId],
-
         });
 
-        const benAndreq = {
+        this.bensAndRequest.push({
           beneficiaryId: beneficiary?.beneficiary.id,
           requestId: beneficiary?.requestId
-        }
-        this.bensAndRequest.push(benAndreq);
+        });
+
         updatedFormGroups.push(newFormGroup);
-      })
-      this.beneficiaryFormsChange.emit(updatedFormGroups);
+      });
+
       this.beneficiaryForms = updatedFormGroups;
-      this.cdr.detectChanges()
-
-    })
-
+      this.beneficiaryFormsChange.emit(updatedFormGroups);
+      this.cdr.detectChanges();
+    });
 
     this._walletService?.currentImportMassPaymentFile.subscribe((data: any) => {
       if (data && Object.keys(data).length > 0) {
-        this.ImportTemplate(data)
+        this.ImportTemplate(data);
       }
-    })
-
-  }
-  DownloadTemplate() {
-    // this._walletService.downloadExcel().subscribe((data: any) => {
-    //   this.downloadBlob(data, 'IsMassTemplate.xlsx');
-    // });
+    });
   }
 
-  private downloadBlob(blob: Blob, filename: string) {
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    link.click();
-    URL.revokeObjectURL(link.href);
-  }
-  ImportTemplate(event: any) {
-    {
-      const file = event.target?.files[0];
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        const arrayBuffer = reader.result as ArrayBuffer;
-        this.readExcel(arrayBuffer);
-      };
-      reader.readAsArrayBuffer(file);
+  loadBeneficiaryFormsFromLocalStorage(): FormGroup[] {
+    const stored = localStorage.getItem('beneficiaryForms');
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        return parsed.map((form: any) =>
+          this.fb.group({
+            beneficiaryId: [form.beneficiaryId],
+            product_reference: [form.product_reference, Validators.required],
+            beneficiarySign: [form.beneficiarySign],
+            currency: [form.currency],
+            costType: [form.costType, Validators.required],
+            costList: [form.costList],
+            charge: [form.charge],
+            note: [form.note],
+            spot: [form.spot],
+            invoiceNumber: [form.invoiceNumber],
+            signAndFiles: [form.signAndFiles],
+            amount: [form.amount],
+            files: this.fb.array(form.files || []),
+            previewFiles: this.fb.array(form.previewFiles || []),
+            stamp: [form.stamp],
+            previewStamp: this.fb.array(form.previewStamp || []),
+            requestId: [form.requestId],
+          })
+        );
+      } catch (e) {
+        console.error('Failed to load beneficiaryForms from localStorage', e);
+        return [];
+      }
     }
+    return [];
   }
-  readExcel(buffer: ArrayBuffer) {
 
+  saveBeneficiaryFormsToLocalStorage(forms: FormGroup[]) {
+    const formData = forms.map(form => form.getRawValue());
+    localStorage.setItem('beneficiaryForms', JSON.stringify(formData));
+  }
+
+  ImportTemplate(event: any) {
+    const file = event.target?.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      const arrayBuffer = reader.result as ArrayBuffer;
+      this.readExcel(arrayBuffer);
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  readExcel(buffer: ArrayBuffer) {
     var beneficiaries: any[] = []
     this.selectedBeneficiaries = []
     const workbook = new ExcelJS.Workbook();
@@ -155,10 +194,6 @@ export class RecipientTableComponent implements OnChanges {
                 beneficiaries.push(benAmdAmount);
               }
             });
-            // if (row.values?.length) {
-            //   this.generalService.setValue(row.values?.length);
-            // }
-            // console.log('Row ' + rowNumber + ' = ' + JSON.stringify(row.values));
           }
         });
       }
@@ -381,11 +416,13 @@ export class RecipientTableComponent implements OnChanges {
   private getInvalidAmountError(index: number): string {
     return this.setAmountErrorMessage[index];
   }
+
   formatNumberWithCommas(num: number): string {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
-  createPaymentRequest(index: number) {
 
+  createPaymentRequest(index: number) {
+    console.log(this.beneficiaryForms,'lol')
     this.previousValues[index] = + this.beneficiaryForms[index].get('amount').value;
     // console.log("this.beneficiaryForms[index]?.get('amount')", this.beneficiaryForms[index]?.get('amount'));
     this.showLoaderOnRow(index);
@@ -395,7 +432,7 @@ export class RecipientTableComponent implements OnChanges {
       currency: this.selectedWallet.wallet_Currency?.code,
       isMass: true
     };
-     this._walletService.mockCreatePaymentRequest(body).subscribe(
+    this._walletService.mockCreatePaymentRequest(body).subscribe(
       (res) => {
         // console.log(body);
         // this.paymentRequests[index] = res;
@@ -442,8 +479,6 @@ export class RecipientTableComponent implements OnChanges {
 
         this.beneficiaryForms[index].get('stamp').updateValueAndValidity();
         this.beneficiaryForms[index].get('files').updateValueAndValidity();
-
-
         this.cdr.detectChanges();
       },
       (error) => {
@@ -459,6 +494,8 @@ export class RecipientTableComponent implements OnChanges {
         this.hideLoader();
       }
     );
+    this.saveBeneficiaryFormsToLocalStorage(this.beneficiaryForms);
+
   }
   openDeleteBeneficiary(index: number) {
     const requestId = this.beneficiaryForms[index].get('requestId').value;
@@ -470,8 +507,6 @@ export class RecipientTableComponent implements OnChanges {
         this.componentVisible = true;
       }, 0);
     }
-
-
     // this._walletService.deletePaymentRequest(requestId).subscribe();
     this.beneficiaryForms.splice(index, 1);
     this.paymentRequests.splice(index, 1);

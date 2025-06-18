@@ -7,10 +7,13 @@ $divider-margin: 15px;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  font-family: $manrope;
+  
   .modal-button-add {
     margin-top: 10px;
     width: auto;
     margin-left: auto;
+    font-family: $manrope;
     color: var(--brand-primary-color);
   }
 

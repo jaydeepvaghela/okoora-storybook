@@ -38,7 +38,7 @@
       [addMoreRecipients]="addMoreRecipients" (addMoreRecipientsChanged)="handleAddMoreRecipientsChanged($event)"
       [selectedWallet]="selectedWallet"></app-recipient-table>
     
-    <div class="save-button" *ngIf="valueLength > 0">
+    <div class="save-button" *ngIf="beneficiaryForms.length > 0">
       <button id="gotoNext_btn_mass_payment" [disabled]="!canProceedToNext()"
         [class.disabled]="!canProceedToNext()" (click)="save()">Next</button>
     </div>

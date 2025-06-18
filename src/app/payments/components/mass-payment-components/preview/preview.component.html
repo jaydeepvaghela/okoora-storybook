@@ -102,6 +102,6 @@
   <div class="button-container">
     <button id="paymentDetails_btn_mass_payment" class="details-button" mat-icon-button
       (click)="closeMassPayment()">Payment details</button>
-    <button id="sendAnother_btn_mass_payment" class="another-button" (click)="goBack()">Send another payment</button>
+    <button id="sendAnother_btn_mass_payment" class="another-button" (click)="goBack(); removeForm();">Send another payment</button>
   </div>
 </div>

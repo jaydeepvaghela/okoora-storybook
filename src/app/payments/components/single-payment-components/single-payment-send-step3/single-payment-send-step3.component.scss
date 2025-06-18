@@ -1,7 +1,7 @@
 @import "../../../../../assets/scss/variable";
 @import "../../../../../assets/scss/mixins";
 
-::ng-deep{
+::ng-deep {
     .single-payment-body {
         .transfer-details-title {
             display: flex;
@@ -10,7 +10,7 @@
             column-gap: 10px;
             margin-bottom: 11px;
 
-            h4{
+            h4 {
                 color: #111827;
                 font-family: $he_heebo;
                 font-size: 18px;
@@ -19,7 +19,7 @@
                 margin-bottom: 0;
             }
 
-            .copy-button-wrap{
+            .copy-button-wrap {
                 width: 17px;
                 height: 17px;
                 position: relative;
@@ -32,7 +32,7 @@
                 align-items: center;
                 justify-content: center;
 
-                .copy-tooltip{
+                .copy-tooltip {
                     min-width: 77px;
                     padding: 3px 15px 5px;
                     border-radius: 20px;
@@ -42,7 +42,7 @@
                     justify-content: center;
 
                     color: #fff;
-                    font-family: "Inter", "Rubik", sans-serif;
+                    font-family: $inter;
                     font-size: 14px;
                     font-weight: 400;
                     line-height: 18px;
@@ -55,7 +55,7 @@
                         right: -8px;
                     }
 
-                    &::before{
+                    &::before {
                         content: "";
                         width: 8px;
                         height: 8px;
@@ -77,9 +77,9 @@
                     }
                 }
 
-                    
+
             }
-            
+
         }
 
         .transfer-fee-title {
@@ -87,7 +87,8 @@
             align-items: center;
             justify-content: space-between;
             margin: 35px 0 13px 0;
-            h4{
+
+            h4 {
                 color: #111827;
                 font-family: $he_heebo;
                 font-size: 18px;
@@ -96,7 +97,8 @@
                 margin-bottom: 0;
             }
         }
-        .transfer-details-list{
+
+        .transfer-details-list {
             border-radius: 5px;
             border: 1px solid #E5E7EB;
             padding: 15px 20px;
@@ -107,7 +109,7 @@
                 margin-bottom: 10px;
             }
 
-            li{
+            li {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -118,24 +120,27 @@
                 font-size: 14px;
                 font-weight: 400;
                 line-height: 20px;
+                letter-spacing: 1px;
 
                 @media (max-width: 1440px) {
                     margin-bottom: 10px;
                 }
 
-                &:last-child{
+                &:last-child {
                     margin-bottom: 0;
                 }
 
-                strong{
+                strong {
                     color: #111827;
                     font-weight: 700;
                 }
             }
         }
-        .example-radio-group{
+
+        .example-radio-group {
             display: block;
-            .example-radio-button{
+
+            .example-radio-button {
                 display: flex;
                 padding: 20px 30px 20px 5px;
                 height: 80px;
@@ -147,7 +152,7 @@
                 //     border-top: none;
                 // }
 
-                .transfer-fee-wrap{
+                .transfer-fee-wrap {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
@@ -158,12 +163,12 @@
                     font-weight: 700;
                     line-height: 20px;
 
-                    label{
+                    label {
                         color: #9CA3AF;
 
-                        span{
+                        span {
                             color: #111827;
-                            font-family: 'Inter';
+                            font-family: $inter;
                             font-size: 14px;
                             font-style: normal;
                             font-weight: 400;
@@ -171,7 +176,7 @@
                         }
                     }
 
-                    strong{
+                    strong {
                         color: #111827;
                         text-align: right;
                         font-family: 'Heebo';
@@ -180,25 +185,27 @@
                         font-weight: 700;
                         line-height: 20px;
                     }
-                    .transfer-fee-type{
+
+                    .transfer-fee-type {
                         color: #6B7280;
                         line-height: 20px;
-                        font-family: 'Inter';
+                        font-family: $inter;
                         font-weight: 400;
                         width: 100%;
                         font-style: normal;
 
                         .text-highlight {
                             color: var(--primary-blue);
-                            font-family: 'Inter';
+                            font-family: $inter;
                             font-size: 14px;
                             font-style: normal;
                             font-weight: 700;
                             line-height: 20px;
                         }
+
                         .transfer-title {
                             color: #111827;
-                            font-family: 'Inter';
+                            font-family:  $inter;
                             font-size: 14px;
                             font-style: normal;
                             font-weight: 500;
@@ -212,21 +219,22 @@
                         label {
                             gap: 5px;
                         }
-                        p{
+
+                        p {
                             color: #9CA3AF;
                             margin-bottom: 0;
                         }
                     }
                 }
 
-                .mdc-form-field{
+                .mdc-form-field {
                     width: 100%;
 
                     .mdc-radio {
                         padding-top: 0;
                     }
 
-                    label:not(.transfer-text){
+                    label:not(.transfer-text) {
                         width: 100%;
                         padding-left: 8px !important;
 
@@ -244,7 +252,8 @@
                 background: var(--light-blue-header-bg);
             }
         }
-        .total-transaction-cost{
+
+        .total-transaction-cost {
             min-height: 56px;
             padding: 20px;
             background-color: #DBEAFE;
@@ -262,14 +271,15 @@
                 margin-top: 15px;
             }
 
-            label{
+            label {
                 color: #111827;
                 font-family: $inter;
                 font-size: 14px;
                 font-weight: 400;
                 line-height: 20px;
             }
-            strong{
+
+            strong {
                 color: #111827;
                 font-family: $inter;
                 font-size: 20px;
@@ -282,38 +292,41 @@
                 }
             }
         }
-        .approve-check{
 
-            .mdc-form-field{
-                .mdc-checkbox{
-                    .mdc-checkbox__background{
+        .approve-check {
+
+            .mdc-form-field {
+                .mdc-checkbox {
+                    .mdc-checkbox__background {
                         background-color: #E5E7EB !important;
                         border-color: #E5E7EB !important;
                     }
                 }
             }
 
-            label{
+            label {
                 color: #4B5563;
-                font-family: inter;
+                font-family: $inter;
                 font-size: 12px;
-                font-style: normal;
                 font-weight: 400;
                 line-height: 20px;
+                padding-left: 8px;
 
-                span{
+                span {
                     text-decoration: underline;
                 }
             }
         }
-        .transaction-error-msg{
+
+        .transaction-error-msg {
             color: #B91C1C;
             font-family: $he_heebo;
             font-size: 14px;
             line-height: 20px;
             margin-top: 7px;
         }
-        .pay-btn-wrap{
+
+        .pay-btn-wrap {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -331,7 +344,7 @@
             background-color: #111827;
 
             span {
-                font-family: 'Inter';
+                font-family: $inter;
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 400;
@@ -345,7 +358,7 @@
                 padding: 8px;
             }
 
-            .mat-mdc-progress-spinner{
+            .mat-mdc-progress-spinner {
                 width: 32px !important;
                 height: 32px !important;
 
@@ -361,15 +374,15 @@
 
                 span {
                     color: #6B7280;
-                    font-family: 'Inter';
+                    font-family: $inter;
                     font-size: 16px;
-                    font-style: normal;
                     font-weight: 400;
                     line-height: 28px;
                 }
             }
         }
     }
+
     .refresh-quote-timer {
         @include flex(center, center, row);
         font-size: $font-14;
@@ -379,6 +392,7 @@
         font-family: $he_heebo;
         margin-top: 47px;
         text-align: center;
+
         .count-down {
             background-color: #FEE2E2;
             color: #DC2626;
@@ -386,6 +400,7 @@
             border-radius: 50px;
             margin-left: 4px;
         }
+
         @media screen and (max-width: 1440px) {
             margin-top: 36px;
         }
@@ -404,7 +419,7 @@
             font-weight: 500;
             width: 100%;
             min-width: 237px;
-            line-height: 18px; 
+            line-height: 18px;
         }
 
         .tooltip-arrow {

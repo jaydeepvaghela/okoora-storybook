@@ -12,6 +12,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { SignaturePad, SignaturePadModule } from 'angular2-signaturepad';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MassPaymentComponent } from '../../mass-payment-components/mass-payment/mass-payment.component';
 @Component({
   selector: 'app-single-payment-send-step2',
   templateUrl: './single-payment-send-step2.component.html',
@@ -424,14 +425,14 @@ export class SinglePaymentSendStep2Component {
   }
 
   createMassPayment() {
-    // const dialogRef = this.dialog.open(MassPaymentComponent, {
-    //   width: '100vw',
-    //   maxWidth: '100vw',
-    //   height: '100vh',
-    //   data: {
-    //     walletList: this.walletList,
-    //   },
-    // });
+    const dialogRef = this.dialog.open(MassPaymentComponent, {
+      width: '100vw',
+      maxWidth: '100vw',
+      height: '100vh',
+      data: {
+        walletList: this.walletList,
+      },
+    });
   }
 
   checkForSpecialCharacters(event: any) {

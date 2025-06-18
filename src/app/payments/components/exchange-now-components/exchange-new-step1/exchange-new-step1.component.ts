@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { balanceList, getAllActiveCurrencies } from '../../../../main-dashboard/dashboard-data/balanceList-data';
+import { PlanConversionComponent } from '../../exchange-later-components/plan-conversion/plan-conversion.component';
 
 @Component({
   selector: 'app-exchange-new-step1',
@@ -102,47 +103,6 @@ export class ExchangeNewStep1Component {
 
   callRefreshConvertRequestAPI() {
     this.showLoader = true;
-    // this._walletService.refreshConvertRequest(this.createdConvertData?.convertRequest?.requestId).subscribe((data: any) => {
-    //   this.showLoader = false;
-    //   this.createdConvertData = data
-    //   this.chargedAmount = Number(parseFloat(this.createdConvertData?.convertRequest?.charge?.amount).toFixed(2)).toLocaleString('en', {
-    //     minimumFractionDigits: 2
-    //   })
-    //   if (!this.exchangeForm?.value?.buy) {
-    //     this.exchangeForm.patchValue({
-    //       secondExchangeAmount: Number(parseFloat(this.createdConvertData?.convertRequest?.buy?.amount).toFixed(2)).toLocaleString('en', {
-    //         minimumFractionDigits: 2
-    //       })
-    //     })
-    //     this.exchangeForm.patchValue({ firstExchangeAmount: this.chargedAmount })
-    //   } else if (this.exchangeForm?.value?.buy) {
-    //     this.exchangeForm.patchValue({
-    //       firstExchangeAmount: Number(parseFloat(this.createdConvertData?.convertRequest?.buy?.amount).toFixed(2)).toLocaleString('en', {
-    //         minimumFractionDigits: 2
-    //       })
-    //     })
-    //     this.exchangeForm.patchValue({ secondExchangeAmount: this.chargedAmount })
-    //     // console.log(this.exchangeForm)
-    //     // console.log(this.chargedAmount)
-    //   }
-    //   this.chargedAmount = data?.convertRequest?.charge?.amount
-    //   this.createdSpotRate = data?.convertRequest?.exchangeRate?.minor?.rate
-    //   this.createdMajorRate = data?.convertRequest?.exchangeRate?.major?.rate
-    //   this.minorSpotCurrencySign = data?.convertRequest?.exchangeRate?.minor?.currency.sign;
-    //   this.majorSpotCurrencySign = data?.convertRequest?.exchangeRate?.major?.currency.sign;
-    //   this.cd?.detectChanges()
-
-    //   const refreshedSendValue: any = data?.convertRequest?.buy?.amount
-    //   this.afterExchangeRate = refreshedSendValue * this.createdSpotRate
-    //   this.refreshedPaymentAPIError = '';
-    //   this.createdConvertDataDetails.emit(this.createdConvertData)
-    //   this.cd?.detectChanges()
-
-    // }, err => {
-    //   this.showLoader = false;
-    //   this.refreshedPaymentAPIError = err?.error?.apiErrorMessage[0] ?? '';
-    //   this.timerSubscription?.unsubscribe()
-    // });
   }
 
 
@@ -297,21 +257,6 @@ export class ExchangeNewStep1Component {
 
   CurrentRateValue(buyValue: any, sellValue: any) {
     if (buyValue && sellValue) {
-      // this._commonService.getCurrentRate(buyValue, sellValue).subscribe((data: any) => {
-      //   let secondData;
-      //   let firstData;
-      //   for (const [key, value] of Object.entries(data)) {
-      //     if (value == 1) {
-      //       const firstcurrency = this.balanceListData?.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase().includes(key?.toLowerCase()));
-      //       firstData = firstcurrency[0]?.wallet_Currency?.sign + value
-      //     } else {
-      //       const secondcurrency = this.balanceListData?.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase().includes(key?.toLowerCase()));
-      //       secondData = secondcurrency[0]?.wallet_Currency?.sign + value
-      //     }
-      //   }
-      //   this.currentCurrencyValue = firstData + '=' + secondData;
-      //   this.cd.detectChanges()
-      // })
     }
   }
 
@@ -473,19 +418,19 @@ export class ExchangeNewStep1Component {
   exchangePlanConvert() {
     let activeWallet: any = localStorage.getItem('activeWallet');
     let currency = JSON.parse(activeWallet);
-    // this.dialog
-    //   .open(PlanConversionComponent, {
-    //     width: '100vw',
-    //     maxWidth: '100vw',
-    //     data: {
-    //       selectedwalletInfo: currency,
-    //     },
-    //     disableClose: true,
-    //   })
-    //   .afterClosed()
-    //   .subscribe((data: any) => {
-    //     // console.log('Exchange now dialog closed!');
-    //   });
+    this.dialog
+      .open(PlanConversionComponent, {
+        width: '100vw',
+        maxWidth: '100vw',
+        data: {
+          selectedwalletInfo: currency,
+        },
+        disableClose: true,
+      })
+      .afterClosed()
+      .subscribe((data: any) => {
+        // console.log('Exchange now dialog closed!');
+      });
   }
 
   generatePatamasFirstExchange(event: any) {
@@ -524,81 +469,6 @@ export class ExchangeNewStep1Component {
       }
     }
   }
-
-  // createConvertFinal() {
-  //   if (!this.isFormChanged) {
-  //     this.isExchangeBtnDisabled = false;
-  //     return;
-  //   }
-  //   this.currentNumber = 15;
-  //   this.progress = 0;
-  //   this.showLoader = true;
-  //   this.isExchangeInProgress = true;
-  //   this.isExchangeBtnDisabled = true;
-  //   // this._walletService.ConvertRequest(this.params).subscribe(async (data: any) => {
-  //   //   this.callConvertRequestApi = true;
-  //   //   // console.log("data", data);
-  //   //   this.createdConvertData = data
-  //   //   this.chargedAmount = Number(parseFloat(this.createdConvertData?.convertRequest?.charge?.amount).toFixed(2)).toLocaleString('en', {
-  //   //     minimumFractionDigits: 2
-  //   //   })
-  //   //   if (!this.exchangeForm?.value?.buy) {
-  //   //     this.exchangeForm.patchValue({
-  //   //       secondExchangeAmount: Number(parseFloat(this.createdConvertData?.convertRequest?.buy?.amount).toFixed(2)).toLocaleString('en', {
-  //   //         minimumFractionDigits: 2
-  //   //       })
-  //   //     })
-  //   //     this.exchangeForm.patchValue({ firstExchangeAmount: this.chargedAmount })
-  //   //   } else if (this.exchangeForm?.value?.buy) {
-  //   //     this.exchangeForm.patchValue({
-  //   //       firstExchangeAmount: Number(parseFloat(this.createdConvertData?.convertRequest?.buy?.amount).toFixed(2)).toLocaleString('en', {
-  //   //         minimumFractionDigits: 2
-  //   //       })
-  //   //     })
-  //   //     this.exchangeForm.patchValue({ secondExchangeAmount: this.chargedAmount })
-  //   //   }
-  //   //   this.exchangeForm.patchValue({ firstExchangeSign: this.firstSign ? this.firstSign : this.firstDefaultSign })
-  //   //   this.exchangeForm.patchValue({ secondExchangeSign: this.secondSign ? this.secondSign : this.secondDefaultSign })
-  //   //   this.createdSpotRate = this.createdConvertData?.convertRequest?.exchangeRate?.minor?.rate
-  //   //   this.createdMajorRate = this.createdConvertData?.convertRequest?.exchangeRate?.major?.rate
-  //   //   this.minorSpotCurrencySign = this.createdConvertData?.convertRequest?.exchangeRate?.minor?.currency.sign;
-  //   //   this.majorSpotCurrencySign = this.createdConvertData?.convertRequest?.exchangeRate?.major?.currency.sign;
-  //   //   const refreshedSendValue: any = this.createdConvertData?.convertRequest?.buy?.amount
-  //   //   this.afterExchangeRate = refreshedSendValue * this.createdSpotRate
-  //   //   this.showLoader = false
-  //   //   this.createPaymentAPIError = '';
-  //   //   this.isFormChanged = false;
-  //   //   this.isExchangeBtnDisabled = false;
-  //   //   this.isExchangeInProgress = false;
-
-  //   //   if (this.timerSubscription) {
-  //   //     this.timerSubscription?.unsubscribe()
-  //   //   }
-  //   //   this.cd?.detectChanges()
-  //   //   this.exchangeFormDetails.emit(this.exchangeForm)
-  //   //   this.createdConvertDataDetails.emit(this.createdConvertData)
-
-  //   //   this._walletService.checkWalletBalanceForConvert(this.createdConvertData?.convertRequest?.requestId).subscribe((data: any) => {
-  //   //     this.showLoader = false;
-  //   //     this.checkWalletBalanceError = '';
-  //   //     // this.currentNumber = 15;
-  //   //     this.progress = 0;
-  //   //     this.startRepeatingTimer()
-  //   //     this.timerSubscriptionForComplete.emit(this.timerSubscription)
-  //   //   }, (err) => {
-  //   //     this.checkWalletBalanceError = err?.error?.apiErrorMessage[0] ?? '';
-  //   //     this.showLoader = false;
-  //   //     this.timerSubscription?.unsubscribe()
-  //   //   })
-  //   // }, (err) => {
-  //   //   this.showLoader = false;
-  //   //   this.isExchangeInProgress = false;
-  //   //   this.isFormChanged = false;
-  //   //   this.createPaymentAPIError = err?.error?.apiErrorMessage?.[0] ?? '';
-  //   //   this.timerSubscription?.unsubscribe()
-  //   // })
-
-  // }
 
   createConvertFinal() {
     if (!this.isFormChanged) {

@@ -12,6 +12,7 @@ import { CountdownModule } from 'ngx-countdown';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MassPaymentComponent } from '../../mass-payment-components/mass-payment/mass-payment.component';
 
 @Component({
   selector: 'app-single-payment-send-step3',
@@ -270,13 +271,13 @@ export class SinglePaymentSendStep3Component {
   }
 
   createMassPayment() {
-    // const dialogRef = this.dialog.open(MassPaymentComponent, {
-    //   width: '100vw',
-    //   maxWidth: '100vw',
-    //   height: '100vh',
-    //   data: {
-    //     walletList: this.walletList,
-    //   },
-    // });
+    const dialogRef = this.dialog.open(MassPaymentComponent, {
+      width: '100vw',
+      maxWidth: '100vw',
+      height: '100vh',
+      data: {
+        walletList: this.walletList,
+      },
+    });
   }
 }

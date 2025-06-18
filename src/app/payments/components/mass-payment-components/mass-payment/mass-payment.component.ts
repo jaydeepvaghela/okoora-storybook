@@ -46,6 +46,7 @@ export class MassPaymentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    localStorage.removeItem('beneficiaryForms');
     this.isLoading = true;
     this.loadApprovedBeneficiaries();
     this._walletService.availableWalletsData.subscribe((data: any) => {
@@ -54,7 +55,7 @@ export class MassPaymentComponent implements OnInit {
 
     this._walletService.activeCurrentWallet.subscribe((res) => {
       this.activeCurrencyListFilter = this.walletList.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase().includes(res?.wallet_Currency?.code?.toLowerCase()));
-      this.selectedWallet = this.activeCurrencyListFilter[0];
+      this.selectedWallet = this.activeCurrencyListFilter[0] || localStorage.getItem('activeWallet');
       this.cdr?.detectChanges();
     });
     this.valueSubscription = this._walletService.lengthValue$.subscribe((loading) => {
@@ -80,6 +81,7 @@ export class MassPaymentComponent implements OnInit {
     this.changeIsPreview(false);
   }
   closeMassPayment() {
+    localStorage.removeItem('beneficiaryForms')
     this._walletService.setIsCompleteMassPayment(false);
     this.dialogRef.close();
   }
@@ -173,10 +175,6 @@ export class MassPaymentComponent implements OnInit {
             type: 'error',
           },
         };
-
-        // const snackBarRef = this._snackBar.openFromComponent(SnackMessageComponent, config);
-
-
       } else {
         this._walletService?.SetImportMassPAymentFile(event);
         this._snackBar.dismiss();
@@ -184,7 +182,7 @@ export class MassPaymentComponent implements OnInit {
     }
   }
   canProceedToNext(): boolean {
+    // localStorage.setItem('beneficiaryForms', JSON.stringify(this.beneficiaryForms));
     return this.beneficiaryForms.every((form) => form.valid);
-    // return this.beneficiaryForms.length > 0 ;
   }
 }

@@ -60,9 +60,14 @@ export class PreviewComponent implements OnInit, OnDestroy {
   handleChangeCurrencyWallet(event: boolean) {
     this.changeCurrencyWallet.emit(event);
   }
+  
   goBack() {
     this.changeIsPreview.emit(false);
     this._walletService.setIsCompleteMassPayment(false);
+  }
+
+  removeForm() {
+    localStorage.removeItem('beneficiaryForms');
   }
   dataURItoBlob(dataURI: string, mimeType: string = 'image/png'): Blob {
     const binary = atob(dataURI.split(',')[1]);
@@ -311,6 +316,7 @@ export class PreviewComponent implements OnInit, OnDestroy {
   closeMassPayment() {
     this.dialogRef.close('completedMassPayment');
     this._walletService.setIsCompleteMassPayment(false);
+    localStorage.removeItem('beneficiaryForms');
   }
 
   drawStart() {}

@@ -34,7 +34,7 @@
         <div class="recipient-dropdown">
             <label class="recipient-field">Whom to pay</label>
             <mat-form-field class="width select-recipients-">
-                <mat-label>Select recipients
+                <mat-label class="select-recipient-label">Select recipients
                 </mat-label>
                 <input  matInput id="beneficiaryInput" class="forHideShow" (click)="openBeneficiaryContainer()"
                     placeholder="Search" aria-label="Search" [formControl]="filterControl" [(ngModel)]="beneficiaryName"
@@ -157,7 +157,7 @@
                 </div>
             </mat-menu>
             <div class="info-tooltip-wrap">
-                <span class="info-tooltip-text">{{selectedWallet?.wallet_Currency?.sign}}{{ createdPaymentData ?
+                <span class="info-tooltip-text">{{selectedWallet.wallet_Currency.sign}}{{ createdPaymentData ?
                     commaseprate(chargedAmount,2) : '0'}}</span>
 
                 <span #menuTrigger1="matMenuTrigger" (mouseover)="openMyMenu(menuTrigger1)"
@@ -169,17 +169,17 @@
                         <ng-template matMenuContent>
                             <ul>
                                 <li>Amount
-                                    <span>{{beneficiaryDetails?.currencyISO?.sign}}{{commaseprate(createdPaymentData?.paymentRequst?.send?.toFixed(2),
+                                    <span>{{beneficiaryDetails?.currencyISO?.sign}}{{commaseprate(createdPaymentData?.paymentRequst?.send,
                                         2) || '0'}}</span>
                                 </li>
-                                <li>Fee: <span>{{selectedWallet?.wallet_Currency?.sign}}{{regularcostValue || '0'
+                                <li>Fee: <span>{{selectedWallet.wallet_Currency.sign}}{{regularcostValue || '0'
                                         }}</span></li>
                                 <li>Exchange rate: <span>{{createdPaymentData ? createdPaymentData?.paymentRequst?.exchangeRate?.major?.currency?.sign : ""}}{{createdPaymentData ?
                                     createdMajorRate : '0'}} =
                                         {{createdPaymentData ? createdPaymentData?.paymentRequst?.exchangeRate?.minor?.currency?.sign : ""}}{{createdPaymentData ?
                                         createdSpotRate?.toFixed(4) : '0'}}</span></li>
                                 <li>After exchange rate:
-                                    <span>{{selectedWallet?.wallet_Currency?.sign}}{{createdPaymentData ?
+                                    <span>{{selectedWallet.wallet_Currency.sign}}{{createdPaymentData ?
                                         commaseprate(chargedAmount,4) : '0'}}</span>
                                 </li>
                             </ul>
@@ -191,7 +191,7 @@
         </div>
 
         <button id="openWallet_btn_single_payment" (click)="openWalletListDialog()" class="wallet-currency-btn">
-            Wallet balance: <strong>{{selectedWallet?.wallet_Currency?.code}}</strong> {{selectedWallet?.wallet_Available
+            Wallet balance: <strong>{{selectedWallet.wallet_Currency.code}}</strong> {{selectedWallet.wallet_Available
             |
             number:'1.2-2'}}
 

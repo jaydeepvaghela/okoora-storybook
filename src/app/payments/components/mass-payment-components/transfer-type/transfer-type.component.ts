@@ -64,7 +64,7 @@ export class TransferTypeComponent implements OnInit {
     //     // this.form.get('costType').setValue('');
     //   }
     //   this.isRowLoading = false;
-      this.showDropdown = !this.showDropdown;
+    this.showDropdown = !this.showDropdown;
     //   },
     //   (err) => {
     //     this.isRowLoading = false;
