@@ -6,6 +6,7 @@
   .form-details {
     .form-title {
       text-transform: uppercase;
+      font-family: sans-serif;
     }
   }
 
@@ -51,6 +52,8 @@
     }
 
     &.fp-lock-rate-wrapper {
+      letter-spacing: 1px;
+      font-family: $manrope;
       .step-five-file-upload {
         &.invoice-upload {
           margin-bottom: 42px;
@@ -186,7 +189,7 @@
         }
 
         h6 {
-          font-style: normal;
+          font-family: $manrope;
           font-weight: 600;
           font-size: $font-16;
           line-height: 22px;

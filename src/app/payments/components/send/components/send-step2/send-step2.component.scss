@@ -217,6 +217,7 @@
 
 ::ng-deep {
   .future-payment-stepper {
+    font-family: $manrope;
      .form-details {
         .form-title {
           font-family: sans-serif;
@@ -630,7 +631,7 @@
     }
     .stepper-action {
       .next-button {
-        font-family: 'Arial';
+        font-family: $manrope;
       }
     }
   }

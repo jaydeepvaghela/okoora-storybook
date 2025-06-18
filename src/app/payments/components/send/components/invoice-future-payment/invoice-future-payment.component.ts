@@ -13,6 +13,10 @@ export class InvoiceFuturePayment {
     this.dialogRef.close('no');
   }
 
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
   onYesClick(): void {
     this.dialogRef.close('yes');
   }

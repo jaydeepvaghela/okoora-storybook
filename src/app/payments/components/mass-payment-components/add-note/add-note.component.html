@@ -1,0 +1,16 @@
+<form [formGroup]="formGroup" class="wrappered loader-wrapper">
+    <h6><b>Add Note for {{data.formGroup.get('product_reference').value}}</b></h6> <br/>
+    <textarea formControlName="note" rows="4" placeholder="Write a note" (input)="checkForSpecialCharacters($event)" 
+    (keydown)="restrictSpecialCharacters($event)" (paste)="onPasteTypeValue($event)"></textarea>
+    <div *ngIf="isInvoiceNumberHasSpecialChar" class="error-msg mb-2 freetext-cls">
+      Your input cannot contain the following characters:  < > ( )  ; <br> Please remove them and try again
+    </div>
+    <input formControlName="invoiceNumber" placeholder="Invoice No" appRestrictSpecialCharacters/>
+
+    <div class="button-container">
+        <button type="button" (click)="saveandcancel()">Cancel</button>
+        <button type="button" (click)="saveandcancel()" [disabled]="!formGroup.valid || isInvoiceNumberHasSpecialChar">Save</button>
+    </div>
+    <!-- <app-page-loader classes="bg-white section-loader" *ngIf="loading"></app-page-loader> -->
+
+</form>

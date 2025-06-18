@@ -4,6 +4,10 @@
 
 .send-mony-stepper-slide-three {
   .form-details {
+    .form-title {
+      font-family: sans-serif;
+      letter-spacing: 1px;
+    }
     .send-amount {
       text-align: center;
       margin-bottom: 48px;
@@ -70,6 +74,7 @@
         font-weight: 700;
         color: $dialog-inner-heading-color;
         margin-bottom: 12px;
+        font-family: $manrope;
       }
       .radio-option {
         margin-bottom: 23px;
@@ -88,9 +93,11 @@
           }
         }
         label {
+          font-family: $manrope;
           border: 1px solid $light-gray;
           border-radius: 10px;
           padding: 17px 42px 29px 50px;
+          letter-spacing: 1px;
           .heading {
             font-size: $font-16;
             line-height: normal;
@@ -114,6 +121,7 @@
       font-weight: 400;
       color: $form-label;
       text-align: center;
+      font-family: $manrope;
       .time {
         padding: 7px 18px;
         background-color: $disable-button-bg;

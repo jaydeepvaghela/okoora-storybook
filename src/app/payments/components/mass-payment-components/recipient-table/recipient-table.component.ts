@@ -10,7 +10,7 @@ import { InitialRenderComponent } from '../initial-render/initial-render.compone
 import { SelectRecipientComponent } from '../select-recipient/select-recipient.component';
 import { TransferTypeComponent } from '../transfer-type/transfer-type.component';
 import { of } from 'rxjs';
-
+import { AddNoteComponent } from '../add-note/add-note.component';
 @Component({
   selector: 'app-recipient-table',
   templateUrl: './recipient-table.component.html',
@@ -434,8 +434,6 @@ export class RecipientTableComponent implements OnChanges {
     };
     this._walletService.mockCreatePaymentRequest(body).subscribe(
       (res) => {
-        // console.log(body);
-        // this.paymentRequests[index] = res;
         this.hideLoader();
         if (this.beneficiaryForms[index]) {
           const formattedAmount = this.formatNumberWithCommas(res.paymentRequst.send);
@@ -531,18 +529,18 @@ export class RecipientTableComponent implements OnChanges {
     // });
   }
   addNote(index: number) {
-    // const dialogRef = this.dialog.open(AddNoteComponent, {
-    //   width: '600px',
-    //   data: {
-    //     formGroup: this.beneficiaryForms[index],
-    //   },
-    // });
+    const dialogRef = this.dialog.open(AddNoteComponent, {
+      width: '600px',
+      data: {
+        formGroup: this.beneficiaryForms[index],
+      },
+    });
 
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result) {
-    //     this.beneficiaryForms[index].patchValue(result);
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.beneficiaryForms[index].patchValue(result);
+      }
+    });
   }
 
   uploadFiles(index: number) {

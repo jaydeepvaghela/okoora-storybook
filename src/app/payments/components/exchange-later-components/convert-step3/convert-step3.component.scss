@@ -194,11 +194,24 @@
     }
   }
 }
+::ng-deep {
+    .country-dropdown {
+    .without-dropdown-arrow {
+      .mat-mdc-select-arrow {
+        display: none;
+        svg {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 
 .form-control-wrapper {
   &.converted-upon-arrival {
     width: 479px;
-
+    letter-spacing: 1px;
     .currency-wrapper {
       margin-bottom: 0;
     }
@@ -467,7 +480,6 @@
     }
 
     .bottom-row-new-left {
-
       @media only screen and (max-width: 767px) {
         width: 100%;
       }
@@ -479,6 +491,7 @@
       span {
         margin-bottom: 5px;
         display: block;
+        font-weight: 500;
       }
 
       .new-input {
@@ -493,13 +506,11 @@
         width: 100%;
       }
 
-      .reaches-text {
-        font-size: 14px;
-      }
-
       span {
+        font-size: 14px;
         margin-bottom: 5px;
         display: block;
+        font-weight: 500;
       }
     }
   }
