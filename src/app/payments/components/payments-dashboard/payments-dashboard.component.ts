@@ -11,18 +11,6 @@ import { MassPaymentComponent } from '../mass-payment-components/mass-payment/ma
 import { ExchangeMainComponent } from '../exchange-now-components/exchange-main/exchange-main.component';
 import { PlanConversionComponent } from '../exchange-later-components/plan-conversion/plan-conversion.component';
 import { SendComponent } from '../send/send.component';
-// import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-// import { WalletBalanceListModal } from 'src/app/common/models/WalletBalanceListModal';
-// import { ContactsService } from 'src/app/contacts/services/contacts.service';
-// import { ExchangeMainComponent } from 'src/app/exchange/components/exchange-main/exchange-main.component';
-// import { MassPaymentComponent } from 'src/app/mass-payment/components/mass-payment/mass-payment.component';
-// import { PlanConversionComponent } from 'src/app/plan-conversion/components/plan-conversion.component';
-// import { AddMoneyComponent } from 'src/app/wallets/components/add-money/add-money.component';
-// import { ConvertComponent } from 'src/app/wallets/components/convert/convert.component';
-// import { SendComponent } from 'src/app/wallets/components/send/components/send.component';
-// import { WalletsService } from 'src/app/wallets/services/wallets.service';
-// import { PaymentDashboardTransactionComponent } from '../payment-dashboard-transaction/payment-dashboard-transaction.component';
-// import { SinglePaymentSendComponent } from '../single-payment-send/single-payment-send.component';
 
 @Component({
   selector: 'app-payments-dashboard',
@@ -34,7 +22,6 @@ export class PaymentsDashboardComponent {
   timerSubscription: any;
   showLoader!: boolean;
   walletList: any;
-  // @ViewChild(PaymentDashboardTransactionComponent) child: PaymentDashboardTransactionComponent;
   selectedWallet!: WalletBalanceListModal;
   userRoleType!: number;
   activeCurrencyListFilter: any;
@@ -44,7 +31,6 @@ export class PaymentsDashboardComponent {
   constructor(
     public dialog: MatDialog,
     private _walletService: WalletsService,
-    // private contactsService:ContactsService
   ) {}
 
   ngOnInit() {
@@ -56,29 +42,6 @@ export class PaymentsDashboardComponent {
     this._walletService.activeCurrentWallet.pipe(takeUntil(this.unSubScribe$)).subscribe((wallet) => {
       this.selectedWallet = wallet;
     });
-
-    // this.contactsService.createSinglePaymentFromBeneficiary.pipe(takeUntil(this.unSubScribe$)).subscribe(res => {   
-    //   if(res !== null) {
-    //     this.createSinglePayment(res ? res : null);
-        
-    //   }
-    // })
-  }
-
-  createRequest() {
-    // this.dialog
-    //   .open(AddMoneyComponent, {
-    //     width: '100vw',
-    //     maxWidth: '100vw',
-    //     disableClose: true,
-    //     data: {
-    //       activeWallet: this.selectedWallet,
-    //     },
-    //   })
-    //   .afterClosed()
-    //   .subscribe((shouldReload: any) => {
-    //     this.ngOnInit();
-    //   });
   }
 
   createSinglePayment(data?: any) {
@@ -97,10 +60,8 @@ export class PaymentsDashboardComponent {
       })
       .afterClosed()
       .subscribe((shouldReload: any) => {
-        // console.log('shouldReload', shouldReload);
         if (shouldReload) {
           this.timerSubscription = shouldReload;
-          // this.timerSubscription?.unsubscribe()
         }
         if (shouldReload == 'completedSend') {
           let activeWallet: any = localStorage.getItem('activeWallet');
@@ -117,21 +78,6 @@ export class PaymentsDashboardComponent {
     this._walletService.activeCurrentWallet.subscribe((wallet) => {
       activeWallet = wallet;
     });
-
-    // const dialogRef = this.dialog
-    //   .open(ConvertComponent, {
-    //     width: '100vw',
-    //     maxWidth: '100vw',
-    //     disableClose: true,
-    //     data: {
-    //       selectedwalletInfo: activeWallet,
-    //       transaction: true,
-    //     },
-    //   })
-    //   .afterClosed()
-    //   .subscribe((shouldReload: any) => {
-    //     this.child?.getAllData();
-    //   });
   }
 
   CreateLockRateDialog() {

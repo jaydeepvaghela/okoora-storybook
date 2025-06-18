@@ -760,9 +760,8 @@
         background-color: transparent;
         padding: 17px 15px 17px 23px;
         margin-bottom: 0;
-
         color: #1f2937;
-        font-family: $poppins;
+        // font-family: $poppins;
         font-size: 14px;
         font-weight: 400;
         line-height: 150%;
@@ -782,6 +781,12 @@
 
         .mat-datepicker-toggle {
           margin-left: 2px;
+
+          &.payments-dashboard-tt {
+            button {
+              background-image: none;
+            }
+          }
 
           .mdc-icon-button {
             .mat-datepicker-toggle-default-icon {
@@ -987,6 +992,7 @@
               font-size: 16px;
               font-weight: 400;
               line-height: 20px;
+              letter-spacing: 0;
 
               @media (max-width: 767px) {
                 font-size: 14px;

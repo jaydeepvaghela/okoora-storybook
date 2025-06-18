@@ -1,6 +1,4 @@
 <div class="payments-wrap loader-wrapper">
-    <!-- <app-page-loader id="loader" classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
-
     <h3 class="pay-title" id="payTitle">Payments</h3>
     <div class="payments-option-wrap">
         <button [matMenuTriggerFor]="sendMenu" id="payOptionIcon">
@@ -18,13 +16,6 @@
                 Mass Payment
             </button>
         </mat-menu>
-
-        <!-- <button (click)="createRequest()">
-            <span class="pay-option-icon poi-active">
-                <img src="images/pay-arrow-white-icon.svg" alt="pay arrow white icon">
-            </span>
-            Request
-        </button> -->
         <button [matMenuTriggerFor]="exchangeMenu" id="exchangeMenu">
             <span class="pay-option-icon">
                 <img src="images/pay-exchange-icon.svg" alt="pay exchange icon" id="pei"/>
@@ -36,7 +27,6 @@
           <ng-container>
             <button mat-menu-item (click)="exchangePlanConvert()" id="exchangePlanConvertMenu">Future exchange</button>
           </ng-container>
-          <!-- <button mat-menu-item  >Plan your conversion</button> -->
         </mat-menu>
         <button (click)="CreateLockRateDialog()" id="lockRateDialogCreated">
             <span class="pay-option-icon" id="lockRateOptionIcon">
