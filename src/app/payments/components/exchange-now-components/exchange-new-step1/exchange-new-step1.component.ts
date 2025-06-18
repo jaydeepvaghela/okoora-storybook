@@ -301,9 +301,9 @@ export class ExchangeNewStep1Component {
       this.generatePatamasFirstExchange(this.exchangeForm.value.firstExchangeAmount)
       this.CurrentRateValue(!this.isSwapped ? this.exchangeForm?.value?.secondExchangeCurrency : this.exchangeForm?.value?.firstExchangeCurrency, !this.isSwapped ? this.exchangeForm?.value?.firstExchangeCurrency : this.exchangeForm?.value?.secondExchangeCurrency);
       if (this.exchangeForm?.value?.firstExchangeCurrency && this.exchangeForm?.value?.secondExchangeCurrency && this.exchangeForm?.value?.firstExchangeAmount) {
-        if (this.exchangeForm?.value?.firstExchangeCurrency != this.getSecondSelectedCurrencyDetails?.wallet_Currency?.code) {
-          this.createConvertRequest()
-        }
+        // if (this.exchangeForm?.value?.firstExchangeCurrency != this.getSecondSelectedCurrencyDetails?.wallet_Currency?.code) {
+        //   this.createConvertRequest()
+        // }
       }
       this.showLoader = false;
     }, 1000);
