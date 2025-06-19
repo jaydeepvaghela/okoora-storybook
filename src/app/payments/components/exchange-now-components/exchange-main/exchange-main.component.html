@@ -10,7 +10,7 @@
     <span class="line-one"></span>
   </div>
   <mat-dialog-content>
-    <mat-stepper #formStepper class="form-stepper">
+    <mat-stepper #formStepper class="form-stepper" [selectedIndex]="currentStepIndex">
       <mat-progress-bar #formStepperProgress [hidden]="true"></mat-progress-bar>
       <mat-step>
         <ng-template matStepContent>

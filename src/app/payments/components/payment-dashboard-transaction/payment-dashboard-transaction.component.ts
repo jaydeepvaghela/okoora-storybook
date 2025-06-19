@@ -7,11 +7,6 @@ import * as XLSX from 'xlsx';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import moment from 'moment';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
-// import { PaymentCalendarHeaderComponent } from 'src/app/shared/components/payment-calendar-header/payment-calendar-header.component';
-// import { SendComponent } from 'src/app/wallets/components/send/components/send.component';
-// import { MassPaymentComponent } from 'src/app/mass-payment/components/mass-payment/mass-payment.component';
-// import { FixInvoiceModalComponent } from '../fix-invoice-modal/fix-invoice-modal.component';
-// import { CommonDialogService } from 'src/app/shared/services/common-dialog.service';
 import { NgbPagination, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { of, ReplaySubject, Subject, takeUntil } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
@@ -30,12 +25,11 @@ import { MatSelectSearchComponent } from '../../../shared/components/mat-select-
 import { PaymentCalendarHeaderComponent } from '../../../shared/components/payment-calendar-header/payment-calendar-header.component';
 import { SinglePaymentSendComponent } from '../single-payment-components/single-payment-send/single-payment-send.component';
 import { MassPaymentComponent } from '../mass-payment-components/mass-payment/mass-payment.component';
-
 @Component({
   selector: 'app-payment-dashboard-transaction',
   templateUrl: './payment-dashboard-transaction.component.html',
   styleUrls: ['./payment-dashboard-transaction.component.scss'],
-  imports: [CommonModule, MatMenuModule, MatInputModule,ReactiveFormsModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatDateRangePicker, MatTableModule, MatDividerModule, FormsModule, NgbPaginationModule, MatSelectSearchComponent, SinglePaymentSendComponent],  
+  imports: [CommonModule, MatMenuModule, MatInputModule, ReactiveFormsModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatDateRangePicker, MatTableModule, MatDividerModule, FormsModule, NgbPaginationModule, MatSelectSearchComponent, SinglePaymentSendComponent],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -61,11 +55,11 @@ export class PaymentDashboardTransactionComponent {
   @ViewChild(MatMenuTrigger) menuTrigger!: MatMenuTrigger;
   @ViewChild(NgbPagination)
   ngbPagination!: NgbPagination;
-  today =  new Date(new  Date().getFullYear(), new  Date().getMonth() + 1, 0)
-  maxDate:any;
-  walletTransactionAll:any;
+  today = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0)
+  maxDate: any;
+  walletTransactionAll: any;
   customCalendarHeader = PaymentCalendarHeaderComponent;
-  searchFlag:boolean = true;
+  searchFlag: boolean = true;
   userRoleType!: number;
   transactionDetails: any;
   transactionStatusPayment = TransactionStatusPayment;
@@ -81,13 +75,12 @@ export class PaymentDashboardTransactionComponent {
   isTooltipBottom: boolean = false;
   pdfPreviewFirst!: string;
   zoom: number = 1.0;
-  isAfiiliate: boolean = false;  
+  isAfiiliate: boolean = false;
   affiliateCountry!: string;
 
   constructor(
     public dialog: MatDialog,
-    private snackBar: MatSnackBar)
-    { this.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1)); }
+    private snackBar: MatSnackBar) { this.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1)); }
 
   ngOnInit() {
     this.pageSize = 10;
@@ -111,21 +104,21 @@ export class PaymentDashboardTransactionComponent {
       this.isTooltipBottom = true;
       this.isTooltipLeft = false;
     }
-    else if(screenWidth <= 1024) {
+    else if (screenWidth <= 1024) {
       this.isTooltipLeft = true;
       this.isTooltipBottom = false;
     }
   }
 
   getPaginationList() {
-    if(this.ngbPagination){
+    if (this.ngbPagination) {
       this.ngbPagination.pageSize = this.pageSize;
       this.ngbPagination.page = this.page;
       this.ngbPagination.collectionSize = this.walletTransactionAll?.length;
       this.collectionLength = this.ngbPagination?.collectionSize;
     }
   }
-  
+
   getAllData() {
     // this.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
     this.transactionFilter = new FormGroup({
@@ -135,26 +128,26 @@ export class PaymentDashboardTransactionComponent {
     });
     this.showLoader = true
     of(balanceList).pipe(takeUntil(this._onDestroy)).subscribe({
-      next:(res) => {
-      this.showLoader = false
-      res.sort(function (a: any, b: any) { return b.wallet_Amount - a.wallet_Amount });
-      this.walletList = res;
-      this.filteredCurrencies.next(this.walletList.slice());
-      this.multiFilterCtrl.valueChanges
-        .pipe(takeUntil(this._onDestroy))
-        .subscribe(() => {
-          this._currencyFilter();
-        });
+      next: (res) => {
+        this.showLoader = false
+        res.sort(function (a: any, b: any) { return b.wallet_Amount - a.wallet_Amount });
+        this.walletList = res;
+        this.filteredCurrencies.next(this.walletList.slice());
+        this.multiFilterCtrl.valueChanges
+          .pipe(takeUntil(this._onDestroy))
+          .subscribe(() => {
+            this._currencyFilter();
+          });
         this.activeCurrencyListFilter = res;
         this.getPaginationList();
         this.allTransactionData();
-    }, error:(err) => {
-      this.showLoader = false;
-      this.calculatePages();
-      // this.dataSource = new MatTableDataSource([]);
+      }, error: (err) => {
+        this.showLoader = false;
+        this.calculatePages();
+        // this.dataSource = new MatTableDataSource([]);
+      }
     }
-  }
-  )
+    )
   }
 
   private _currencyFilter() {
@@ -176,10 +169,10 @@ export class PaymentDashboardTransactionComponent {
   }
 
   getInitialTransactions() {
-    if(this.walletList?.length !== 0 ) {
+    if (this.walletList?.length !== 0) {
       this.getPaginationList();
       this.calculatePages();
-      if(this.walletTransactionAll?.length !== 0) {
+      if (this.walletTransactionAll?.length !== 0) {
         const startIndex = (this.page - 1) * this.pageSize;
         const endIndex = startIndex + this.pageSize;
         this.dataSource = new MatTableDataSource(this.finalTableData.slice(startIndex, endIndex));
@@ -202,7 +195,7 @@ export class PaymentDashboardTransactionComponent {
     this.searchFlag = !this.searchFlag;
   }
 
-  pageChanged(event:any): void {
+  pageChanged(event: any): void {
     this.page = event;
     this.getInitialTransactions();
   }
@@ -254,7 +247,7 @@ export class PaymentDashboardTransactionComponent {
                   ? this.walletTransaction[index]?.to?.name
                   : '-',
             Duedate: this.walletTransaction[index]?.submitedOn ? this.formatDate(new Date(this.walletTransaction[index]?.submitedOn)) : '-',
-            Status:TransactionStatusPayment[this.walletTransaction[index]?.traferStatus],
+            Status: TransactionStatusPayment[this.walletTransaction[index]?.traferStatus],
             Amount:
               this.walletTransaction[index]?.mainType == 10 || this.walletTransaction[index]?.mainType == 2
                 ? this.walletTransaction[index]?.moneyReceived?.amount
@@ -340,13 +333,13 @@ export class PaymentDashboardTransactionComponent {
                 ? 'Payment & Exchange'
                 : this.walletTransactionAll[index]?.mainType == 2 && this.walletTransactionAll[index]?.submitedOn !== this.walletTransactionAll[index]?.exeutedOn
                   ? 'Future Exchange'
-                  : this.walletTransactionAll[index]?.mainType == 2 
-                  ? 'Exchange'
-                  : this.walletTransactionAll[index]?.mainType == 1 && this.walletTransactionAll[index]?.moneyTransferred != null && this.walletTransactionAll[index]?.moneyReceived == null
-                    ? 'Send money'
-                    : this.walletTransactionAll[index]?.mainType == 10
-                      ? 'Future Payment'
-                      : '-',
+                  : this.walletTransactionAll[index]?.mainType == 2
+                    ? 'Exchange'
+                    : this.walletTransactionAll[index]?.mainType == 1 && this.walletTransactionAll[index]?.moneyTransferred != null && this.walletTransactionAll[index]?.moneyReceived == null
+                      ? 'Send money'
+                      : this.walletTransactionAll[index]?.mainType == 10
+                        ? 'Future Payment'
+                        : '-',
             moneyTransferredFlag: this.walletTransactionAll[index]?.moneyTransferred?.currency?.flag || '-',
             moneyReceivedFlag: this.walletTransactionAll[index]?.moneyReceived?.currency?.flag || '-',
             WalletCharged:
@@ -361,7 +354,7 @@ export class PaymentDashboardTransactionComponent {
                   ? this.walletTransactionAll[index]?.to?.name
                   : '-',
             Duedate: this.walletTransactionAll[index]?.submitedOn ? this.formatDate(new Date(this.walletTransactionAll[index]?.submitedOn)) : '-',
-            Status:TransactionStatusPayment[this.walletTransactionAll[index]?.traferStatus],
+            Status: TransactionStatusPayment[this.walletTransactionAll[index]?.traferStatus],
             Amount:
               this.walletTransactionAll[index]?.mainType == 10 || this.walletTransactionAll[index]?.mainType == 2
                 ? this.walletTransactionAll[index]?.moneyReceived?.amount
@@ -389,7 +382,7 @@ export class PaymentDashboardTransactionComponent {
               ' (' +
               this.walletTransactionAll[index]?.moneyReceived?.currency?.sign +
               this.walletTransactionAll[index]?.moneyReceived?.amount?.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') +
-              ')': '-',
+              ')' : '-',
             Selling:
               this.walletTransactionAll[index]?.moneyTransferred?.currency?.code +
               ' (' +
@@ -413,12 +406,12 @@ export class PaymentDashboardTransactionComponent {
           }
           this.finalTableData.push(formatedTable);
         }
-          this.calculatePages();
-          const startIndex = (this.page - 1) * this.pageSize;
-          const endIndex = startIndex + this.pageSize;
-          this.dataSource = new MatTableDataSource(this.finalTableData.slice(startIndex, endIndex));
-          // this.dataSource = new MatTableDataSource(finalTableData);
-          this.dataSource.sort = this.sort;
+        this.calculatePages();
+        const startIndex = (this.page - 1) * this.pageSize;
+        const endIndex = startIndex + this.pageSize;
+        this.dataSource = new MatTableDataSource(this.finalTableData.slice(startIndex, endIndex));
+        // this.dataSource = new MatTableDataSource(finalTableData);
+        this.dataSource.sort = this.sort;
       },
       (err: any) => {
         this.showLoader = false;
@@ -428,24 +421,6 @@ export class PaymentDashboardTransactionComponent {
 
 
   deletePayment(payment: any, index: any) {
-    // console.log(this.walletTransactionAll[index]?.mainId, index);
-    // this.commonDialog
-    //   .confirmDialog({
-    //     title: 'Please confirm',
-    //     message: 'Are you sure you want to cancel this future conversion? Any pending actions will be discarded and cannot be undone.',
-    //     confirmText: 'Confirm',
-    //     cancelText: 'Cancel',
-    //     fromPayment: true,
-    //     modalClass: 'confirm-delete-transaction',
-    //   })
-    //   .subscribe((isConfirmed :any) => {
-    //     if (isConfirmed) {
-    //       this._walletService.deleteExposure(this.walletTransactionAll[index]?.mainId).subscribe(async res => {
-    //         this.allTransactionData();
-
-    //       })
-    //     }
-    //   });
   }
 
   applyFilter(filterValue: any) {
@@ -459,10 +434,6 @@ export class PaymentDashboardTransactionComponent {
           .trim()
           .toLowerCase()
         : filterValue.target.value.trim().toLowerCase();
-
-    // if (this.dataSource.paginator) {
-    //   this.dataSource.paginator.firstPage();
-    // }
   }
 
   defaultDate() {
@@ -611,17 +582,6 @@ export class PaymentDashboardTransactionComponent {
   }
 
   fixInvoice(requestId: string) {
-    // const dialogRef = this.dialog.open(FixInvoiceModalComponent, {
-    //   width: '764px',
-    //   maxWidth: '764px',
-    //   panelClass: 'fix-invoice-modal',
-    //   disableClose: true,
-    //   data: {
-    //     requestId: requestId,
-    //   },
-    // }).afterClosed().subscribe(res => {
-    //   this.allTransactionData();
-    // });
   }
 
   checkSelectedCurrency(selectedSource: any) {
@@ -637,46 +597,7 @@ export class PaymentDashboardTransactionComponent {
   }
 
   downloadPDF(fileId: string, index: any) {
-    if(this.isAfiiliate){
-      // this._walletService.downloadPaymentConfirmationFile(this.walletTransactionAll[index]?.mainId).subscribe({      
-      //   next: (response: Blob) => {
-      //     const fileURL = URL.createObjectURL(response);
-      //     const fileName = `DispatchedFile_${fileId}.pdf`;
-      //     const a = document.createElement('a');
-      //     a.href = fileURL;
-      //     a.download = fileName;
-      //     a.click();  
-      //     // Clean up
-      //     URL.revokeObjectURL(fileURL);
-          
-      //   },
-      //   error: (err) => {     
-      //     this.snackBar.open('Download failed', 'Ok', {
-      //       duration: 5000,
-      //       panelClass: ['invite-company-modal']
-      //     });
-      //     console.error('Error downloading file:', err);
-      //   },
-      // });
-    } else 
-    {
-      // this._walletService.downloadDispatchedPDFFile(fileId).subscribe({      
-      //   next: (response: Blob) => {
-      //     const fileURL = URL.createObjectURL(response);
-      //     const fileName = `DispatchedFile_${fileId}.pdf`;
-      //     const a = document.createElement('a');
-      //     a.href = fileURL;
-      //     a.download = fileName;
-      //     a.click();  
-      //     // Clean up
-      //     URL.revokeObjectURL(fileURL);
-          
-      //   },
-      //   error: (err) => {        
-      //     console.error('Error downloading file:', err);
-      //   },
-      // });
-    }
+
   }
 
   ngOnDestroy() {

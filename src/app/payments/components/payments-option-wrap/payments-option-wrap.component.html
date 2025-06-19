@@ -1,0 +1,38 @@
+<div class="payments-wrap loader-wrapper">
+    <div class="payments-option-wrap">
+        <button [matMenuTriggerFor]="sendMenu" id="payOptionIcon">
+            <span class="pay-option-icon poi-active">
+                <img src="images/pay-plus-icon.svg" alt="pay plus icon" />
+            </span>
+            Send
+        </button>
+
+        <mat-menu #sendMenu="matMenu" class="action-menu sent-dropdown">
+            <button mat-menu-item (click)="emitSinglePayment()" id="singlePaymentCreate">
+                Single Payment
+            </button>
+            <button mat-menu-item (click)="emitMassPayment()" id="massPaymentCreate">
+                Mass Payment
+            </button>
+        </mat-menu>
+
+        <button [matMenuTriggerFor]="exchangeMenu" id="exchangeMenu">
+            <span class="pay-option-icon">
+                <img src="images/pay-exchange-icon.svg" alt="exchange icon" />
+            </span>
+            Exchange
+        </button>
+
+        <mat-menu #exchangeMenu="matMenu" class="action-menu sent-dropdown">
+            <button mat-menu-item (click)="emitExchangeNow()" id="exchangeNowMenu">Exchange now</button>
+            <button mat-menu-item (click)="emitExchangePlan()" id="exchangePlanConvertMenu">Future exchange</button>
+        </mat-menu>
+
+        <button (click)="emitLockRate()" id="lockRateDialogCreated">
+            <span class="pay-option-icon">
+                <img src="images/pay-date-icon.svg" alt="pay date icon" />
+            </span>
+            Lock rate & Pay Later
+        </button>
+    </div>
+</div>

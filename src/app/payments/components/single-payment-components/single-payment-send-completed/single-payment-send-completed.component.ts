@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { WalletsService } from '../../../../main-dashboard/services/wallets.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
+import { MassPaymentComponent } from '../../mass-payment-components/mass-payment/mass-payment.component';
 
 @Component({
   selector: 'app-single-payment-send-completed',
@@ -16,8 +17,9 @@ export class SinglePaymentSendCompletedComponent {
   @Input('timerSubscription') timerSubscription?: any;
   @Input('walletList') walletList: any;
   @Input('benificiaryFromContacts') benificiaryFromContacts: any;
-
-  signObjectForSummery: any;
+  @Input('openBeneficiaryList') openBeneficiaryList = true;
+  @Input('signObjectForSummery') signObjectForSummery: any;
+  mockSignObject: any;
 
   constructor(
     public dialog: MatDialog,
@@ -27,18 +29,18 @@ export class SinglePaymentSendCompletedComponent {
     private router: Router
   ) { }
 
-ngOnInit(){
-  this._walletService.currentCreatedPaymentSummery?.subscribe((data: any) => {
-    this.signObjectForSummery = data
-    this.cd.detectChanges()
-
-  })
-
-}
+  ngOnInit() {
+    if (!this.signObjectForSummery) {
+      this._walletService.currentCreatedPaymentSummery?.subscribe((data: any) => {
+        this.signObjectForSummery = data;
+        this.cd.detectChanges()
+      })
+    }
+  }
 
 
   closeDialog() {
-      this.dialogRef.close('completedSend')
+    this.dialogRef.close('completedSend')
     // this.dialog.closeAll()
   }
 
@@ -64,13 +66,13 @@ ngOnInit(){
   }
 
   createMassPayment() {
-    // const dialogRef = this.dialog.open(MassPaymentComponent, {
-    //   width: '100vw',
-    //   maxWidth: '100vw',
-    //   height: '100vh',
-    //   data: {
-    //     walletList: this.walletList,
-    //   },
-    // });
+    const dialogRef = this.dialog.open(MassPaymentComponent, {
+      width: '100vw',
+      maxWidth: '100vw',
+      height: '100vh',
+      data: {
+        walletList: this.walletList,
+      },
+    });
   }
 }

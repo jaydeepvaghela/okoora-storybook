@@ -33,7 +33,7 @@ export class PreviewComponent implements OnInit, OnDestroy {
   policyApproved = false;
   buttonLoading = false;
   isLoading = false;
-  isComplete = false;
+  @Input() isComplete!: boolean;
   showTooltip: any = {};
   error = '';
   formDataForRefresh: any;
@@ -116,9 +116,6 @@ export class PreviewComponent implements OnInit, OnDestroy {
                 console.error('Form control "requestId" is missing in form group:', Index);
               }
         });
-
-        // this._walletService.uploadPaymentFileMultiplePaymentRequest(query, formData).subscribe(x =>{
-        //  this._walletService.completeMultiPaymentRequest(query2).subscribe(x =>{
           this.beneficiaryForms = [];
           this.beneficiaryFormsChange.emit([]);
           this.isComplete = true;
@@ -126,50 +123,9 @@ export class PreviewComponent implements OnInit, OnDestroy {
           if (this.isComplete) {
             this.clearInterval();
           }
-        //  });
-      // })
     }
   }
 }
-
-  // async pay() {
-  //   if (!this.beneficiaryForms.length || !this.policyApproved) return;
-  //   this.buttonLoading = true;
-
-  //   try {
-  //     if (this.needSignInBeneficiaries()) {
-  //       await this.uploadFile();
-  //     }
-  //     else
-  //     {
-  //       const query: any = {};
-  //       this.beneficiaryForms.forEach((formGroup, i) => {
-  //         const requestIdControl = formGroup.get('requestId');
-  //         if (requestIdControl) {
-  //           query[`multiRequestId[${i}]`] = requestIdControl.value;
-  //         } else {
-  //           console.error('Form control "requestId" is missing in form group:', i);
-  //         }
-  //       });
-
-  //       await this._walletService.completeMultiPaymentRequest(query).subscribe(x =>{
-  //         this.beneficiaryForms = [];
-  //         this.beneficiaryFormsChange.emit([]);
-  //         this.isComplete = true;
-  //         this._walletService.setIsCompleteMassPayment(this.isComplete);
-  //         if (this.isComplete) {
-  //           this.clearInterval();
-  //         }
-  //        });
-  //     }
-  //   } catch (error: any) {
-  //     this.error = error.error.apiErrorCode;
-  //     console.error('Error:', error);
-  //     this.resetTimer();
-  //   } finally {
-  //     this.buttonLoading = false;
-  //   }
-  // }
 
   async pay() {
     if (!this.beneficiaryForms.length || !this.policyApproved) return;
@@ -199,12 +155,6 @@ export class PreviewComponent implements OnInit, OnDestroy {
           if (this.isComplete) {
             this.clearInterval();
           }
-        //  },
-        //  (error: any) => {
-        //   this.error = error.error.apiErrorCode;
-        //   this.resetTimer(); // Assuming you have a resetTimer function
-        // }
-        // );
       }
     } catch (error: any) {
       this.error = error.error.apiErrorCode;
@@ -241,22 +191,6 @@ export class PreviewComponent implements OnInit, OnDestroy {
       this.formDataForRefresh.append('multiRequestId[' + j + ']', ids[j]);
     }
     this.isLoading = true;
-
-    // this.refreshSubscription = this._walletService.refreshMultiPaymentRequest(this.formDataForRefresh).subscribe({
-    //   next: ({ body }) => {
-    //     body.forEach((responseItem: any) => {
-    //       const formGroup = this.beneficiaryForms.find((f) => f.get('requestId').value === responseItem.requestId);
-    //       if (formGroup) {
-    //         formGroup.get('charge').setValue(responseItem.charge);
-    //       }
-    //     });
-    //     this.isLoading = false;
-    //   },
-    //   error: (error) => {
-    //     this.isLoading = false;
-    //     console.error('Error refreshing multi-payment request:', error);
-    //   },
-    // });
   }
 
   openMyMenu(menuTrigger: MatMenuTrigger) {

@@ -4,7 +4,6 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ExchangeMainComponent } from '../exchange-main/exchange-main.component';
 import { forkJoin, interval, of, Subscription } from 'rxjs';
 import { WalletsService } from '../../../../main-dashboard/services/wallets.service';
-import { getAllCurrencies } from '../../../../main-dashboard/dashboard-data/all-currency-data';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
@@ -83,29 +82,6 @@ export class ExchangeNewStep1Component {
   ) {
   }
 
-  startRepeatingTimer() {
-    this.currentNumber = 15;
-    this.progress = 0;
-    this.timerSubscription = interval(1000).subscribe(() => {
-      this.currentNumber = this.currentNumber > 0 ? this.currentNumber - 1 : 15;
-      this.progress = this.circumference * (1 - this.currentNumber / 15);
-      const timerObject = {
-        'circumference': this.circumference,
-        'currentNumber': this.currentNumber,
-        'progress': this.progress
-      }
-      this.timerSubscriptionWithTimerdata.emit(timerObject);
-      if (this.currentNumber === 0) {
-        this.callRefreshConvertRequestAPI();
-      }
-    });
-  }
-
-  callRefreshConvertRequestAPI() {
-    this.showLoader = true;
-  }
-
-
   @HostListener('document:paste', ['$event'])
   onPaste(event: ClipboardEvent) {
     const activeElement = document.activeElement;
@@ -148,6 +124,28 @@ export class ExchangeNewStep1Component {
       this.createPaymentAPIError = false;
     });
     this.getAllData();
+  }
+
+  startRepeatingTimer() {
+    this.currentNumber = 15;
+    this.progress = 0;
+    this.timerSubscription = interval(1000).subscribe(() => {
+      this.currentNumber = this.currentNumber > 0 ? this.currentNumber - 1 : 15;
+      this.progress = this.circumference * (1 - this.currentNumber / 15);
+      const timerObject = {
+        'circumference': this.circumference,
+        'currentNumber': this.currentNumber,
+        'progress': this.progress
+      }
+      this.timerSubscriptionWithTimerdata.emit(timerObject);
+      if (this.currentNumber === 0) {
+        this.callRefreshConvertRequestAPI();
+      }
+    });
+  }
+
+  callRefreshConvertRequestAPI() {
+    this.showLoader = true;
   }
 
   get shouldShowCircleTimer(): boolean {
@@ -536,22 +534,20 @@ export class ExchangeNewStep1Component {
       });
 
       if (!this.exchangeForm?.value?.buy) {
-  this.exchangeForm.patchValue({
-    secondExchangeAmount: Number(parseFloat(mockResponse.convertRequest.buy.amount).toFixed(2)).toLocaleString('en', {
-      minimumFractionDigits: 2
-    }).toString(),
-    firstExchangeAmount: this.chargedAmount.toString()
-  });
-} else {
-  this.exchangeForm.patchValue({
-    firstExchangeAmount: Number(parseFloat(mockResponse.convertRequest.buy.amount).toFixed(2)).toLocaleString('en', {
-      minimumFractionDigits: 2
-    }).toString(),
-    secondExchangeAmount: this.chargedAmount.toString()
-  });
-}
-
-
+        this.exchangeForm.patchValue({
+          secondExchangeAmount: Number(parseFloat(mockResponse.convertRequest.buy.amount).toFixed(2)).toLocaleString('en', {
+            minimumFractionDigits: 2
+          }).toString(),
+          firstExchangeAmount: this.chargedAmount.toString()
+        });
+      } else {
+        this.exchangeForm.patchValue({
+          firstExchangeAmount: Number(parseFloat(mockResponse.convertRequest.buy.amount).toFixed(2)).toLocaleString('en', {
+            minimumFractionDigits: 2
+          }).toString(),
+          secondExchangeAmount: this.chargedAmount.toString()
+        });
+      }
       this.exchangeForm.patchValue({
         firstExchangeSign: this.firstSign || this.firstDefaultSign,
         secondExchangeSign: this.secondSign || this.secondDefaultSign
@@ -590,7 +586,6 @@ export class ExchangeNewStep1Component {
     }, 1000); // Simulated API delay
   }
 
-
   commaseprate(e: any, fraction: any) {
     if (e) {
       const actualNumber = +e?.toString()?.replace(/,/g, '')
@@ -600,5 +595,4 @@ export class ExchangeNewStep1Component {
       return false;
     }
   }
-
 }

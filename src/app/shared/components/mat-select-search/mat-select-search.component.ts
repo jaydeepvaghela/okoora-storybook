@@ -156,8 +156,8 @@ export class MatSelectSearchComponent
     if (!this.searchSelectInput) {
       return;
     }
-    const panel = this.matSelect.panel.nativeElement;
-    const scrollTop = panel.scrollTop;
+    const panel = this.matSelect?.panel?.nativeElement;
+    const scrollTop = panel?.scrollTop;
     this.searchSelectInput.nativeElement.focus();
     panel.scrollTop = scrollTop;
   }

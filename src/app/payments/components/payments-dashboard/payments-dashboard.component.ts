@@ -11,12 +11,13 @@ import { MassPaymentComponent } from '../mass-payment-components/mass-payment/ma
 import { ExchangeMainComponent } from '../exchange-now-components/exchange-main/exchange-main.component';
 import { PlanConversionComponent } from '../exchange-later-components/plan-conversion/plan-conversion.component';
 import { SendComponent } from '../send/send.component';
+import { PaymentsOptionWrapComponent } from '../payments-option-wrap/payments-option-wrap.component';
 
 @Component({
   selector: 'app-payments-dashboard',
   templateUrl: './payments-dashboard.component.html',
   styleUrls: ['./payments-dashboard.component.scss'],
-  imports: [CommonModule, MatMenuModule, PaymentDashboardTransactionComponent]
+  imports: [CommonModule, MatMenuModule, PaymentDashboardTransactionComponent, PaymentsOptionWrapComponent]
 })
 export class PaymentsDashboardComponent {
   timerSubscription: any;

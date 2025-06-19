@@ -15,7 +15,7 @@
             <mat-progress-bar #formStepperProgress [hidden]="true"> --</mat-progress-bar>
             <mat-step>
                 <ng-template matStepContent>
-                    <app-single-payment-send-step1 (timerSubscriptionForComplete)="gettimerSubscriptionForComplete($event)" (createdPaymentDataFortransfer)="createdPaymentDataFortransfer($event)" (signObjectForSummeryForTransfer)="signObjectForSummeryForTransfer($event)" [benificiaryFromContacts]="benificiaryFromContacts" [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [walletList]="walletList"></app-single-payment-send-step1>
+                    <app-single-payment-send-step1 [openBeneficiaryList]="openBeneficiaryList" (timerSubscriptionForComplete)="gettimerSubscriptionForComplete($event)" (createdPaymentDataFortransfer)="createdPaymentDataFortransfer($event)" (signObjectForSummeryForTransfer)="signObjectForSummeryForTransfer($event)" [benificiaryFromContacts]="benificiaryFromContacts" [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [walletList]="walletList"></app-single-payment-send-step1>
                 </ng-template>
             </mat-step>
             <mat-step>
@@ -25,18 +25,25 @@
             </mat-step>
             <mat-step>
                 <ng-template matStepContent>
-                    <app-single-payment-send-step3 [createdPaymentData]="createdPaymentData"  [timerSubscription]="timerSubscription" [signObjectForSummery]="signObjectForSummery"  [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [walletList]="walletList"></app-single-payment-send-step3>
+                    <!-- <app-single-payment-send-step3 [createdPaymentData]="createdPaymentData"  [timerSubscription]="timerSubscription" [signObjectForSummery]="signObjectForSummery"  [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [walletList]="walletList"></app-single-payment-send-step3> -->
+                     <app-single-payment-send-step3
+                        *ngIf="createdPaymentData && signObjectForSummery"
+                        [createdPaymentData]="createdPaymentData"
+                        [timerSubscription]="timerSubscription"
+                        [signObjectForSummery]="signObjectForSummery"
+                        [formStepper]="formStepper"
+                        [formStepperProgress]="formStepperProgress"
+                        [walletList]="walletList"
+                    ></app-single-payment-send-step3>
                 </ng-template>
-                
             </mat-step>
             <mat-step>
                 <ng-template matStepContent>
-                  <app-single-payment-send-completed [timerSubscription]="timerSubscription" [benificiaryFromContacts]="benificiaryFromContacts" [walletList]="walletList"> </app-single-payment-send-completed>
+                  <app-single-payment-send-completed [signObjectForSummery]="signObjectForSummery" [openBeneficiaryList]="openBeneficiaryList" [timerSubscription]="timerSubscription" [benificiaryFromContacts]="benificiaryFromContacts" [walletList]="walletList"> </app-single-payment-send-completed>
                 </ng-template>
             </mat-step>
 
         </mat-stepper>
     </mat-dialog-content>
-    <!-- <app-footer [footerBottom]="'fix'" *ngIf="isNonIsraeliUsers && (!(formStepper?.selectedIndex == 3))"></app-footer> -->
 </div>
 

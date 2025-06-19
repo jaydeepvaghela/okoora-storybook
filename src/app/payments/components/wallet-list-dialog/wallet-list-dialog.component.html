@@ -1,31 +1,38 @@
-<div class="menu-wrapper" id="wlt-list-dialog-1" disableRipple="true" (click)="$event.stopPropagation()">
-  <div class="close-header">
-    <button mat-dialog-close class="close-btn" (click)="closeDialog()" id="wlt-list-dialog-2"></button>
-  </div>
-  <div class="dialog-header">
-    <h4 class="menu-heading">Pay with other account</h4>
-    <button class="add-account" (click)="addWalletModal()"  id="wlt-list-dialog-3">+ Add Account</button>
-  </div>
-  <input class="search-input" type="text" placeholder="Search" [formControl]="filterControl"  id="wlt-list-dialog-4"/>
-  <mat-selection-list *ngIf="walletCurrencies" [multiple]="false" class="currencies-list"  id="wlt-list-dialog-5">
-    <div *ngFor="let currency of filteredCurrency$ | async; index as i" class="option-wrapper">
-      <mat-list-option class="list-item" [value]="currency" [selected]="currency?.wallet_Currency?.code == data.selectedWallet" (selectedChange)="onSelectionChange(currency, i)">
-        <div class="currency-wrapper">
-          <div class="currency-flag">
-            <img [src]="currency?.wallet_Flag" alt="flag" />
-          </div>
-          <div class="currency-texts">
-            <span class="balance-label">Balance</span>
-            <span class="balance">{{ currency?.wallet_Available | number:'1.2-2' }}
-              <span class="balance-currency">{{ currency?.wallet_Currency?.code }}</span></span>
-          </div>
-        </div>
-        <span class="switch" id="switch-wl-{{i}}"></span>
-      </mat-list-option>
+<div class="wallet-list-dialog">
+  <div class="menu-wrapper" id="wlt-list-dialog-1" disableRipple="true" (click)="$event.stopPropagation()">
+    <div class="close-header">
+      <button mat-dialog-close class="close-btn" (click)="closeDialog()" id="wlt-list-dialog-2"></button>
     </div>
-  </mat-selection-list>
-  <div class="err-wallet" *ngIf="selectedCurrency?.wallet_SupportBaseHedging  == false && router.url === 'main-dashboard'">{{selectedCurrency?.wallet_Currency?.code}} currency is  unavailable for dashboard</div>
-  <div class="btn-wrapper">
-    <button class="switch-btn" id="wlt-list-dialog-6" (click)="switchWallet()" [disabled]="data.selectedWallet == selectedCurrency?.wallet_Currency?.code || (selectedCurrency?.wallet_SupportBaseHedging  == false && router.url === 'main-dashboard')">Switch</button>
+    <div class="dialog-header">
+      <h4 class="menu-heading">Pay with other account</h4>
+      <button class="add-account" (click)="addWalletModal()" id="wlt-list-dialog-3">+ Add Account</button>
+    </div>
+    <input class="search-input" type="text" placeholder="Search" [formControl]="filterControl" id="wlt-list-dialog-4" />
+    <mat-selection-list *ngIf="walletCurrencies" [multiple]="false" class="currencies-list" id="wlt-list-dialog-5">
+      <div *ngFor="let currency of filteredCurrency$ | async; index as i" class="option-wrapper">
+        <mat-list-option class="list-item" [value]="currency"
+          [selected]="currency?.wallet_Currency?.code == data.selectedWallet"
+          (selectedChange)="onSelectionChange(currency, i)">
+          <div class="currency-wrapper">
+            <div class="currency-flag">
+              <img [src]="currency?.wallet_Flag" alt="flag" />
+            </div>
+            <div class="currency-texts">
+              <span class="balance-label">Balance</span>
+              <span class="balance">{{ currency?.wallet_Available | number:'1.2-2' }}
+                <span class="balance-currency">{{ currency?.wallet_Currency?.code }}</span></span>
+            </div>
+          </div>
+          <span class="switch" id="switch-wl-{{i}}"></span>
+        </mat-list-option>
+      </div>
+    </mat-selection-list>
+    <div class="err-wallet"
+      *ngIf="selectedCurrency?.wallet_SupportBaseHedging  == false && router.url === 'main-dashboard'">
+      {{selectedCurrency?.wallet_Currency?.code}} currency is unavailable for dashboard</div>
+    <div class="btn-wrapper">
+      <button class="switch-btn" id="wlt-list-dialog-6" (click)="switchWallet()"
+        [disabled]="data.selectedWallet == selectedCurrency?.wallet_Currency?.code || (selectedCurrency?.wallet_SupportBaseHedging  == false && router.url === 'main-dashboard')">Switch</button>
+    </div>
   </div>
 </div>

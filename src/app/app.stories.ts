@@ -8,9 +8,10 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpClient, provideHttpClient } from "@angular/common/http";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { provideAnimations } from "@angular/platform-browser/animations";
-export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, 'i18n/', '.json');
-  }
+
+function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, 'i18n/', '.json');
+}
 const meta: Meta<AppComponent> = {
     title: 'Components/Layout',
     component: AppComponent,

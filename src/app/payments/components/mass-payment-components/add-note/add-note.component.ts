@@ -1,12 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { WalletsService } from '../../../../main-dashboard/services/wallets.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-note',
   templateUrl: './add-note.component.html',
   styleUrls: ['./add-note.component.scss'],
+  imports: [CommonModule, ReactiveFormsModule]
 })
 export class AddNoteComponent implements OnInit {
   formGroup!: FormGroup;

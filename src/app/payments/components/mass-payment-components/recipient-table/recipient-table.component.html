@@ -1,13 +1,4 @@
 
-<!-- <div class="buttons-container">
-  <button class="custom-button-di" (click)="DownloadTemplate()">
-    <img src="images/mass-payment/download.svg" />Download Template
-  </button>
-  <input hidden accept=".xlsx" type="file" multiple = false class="file-input" (change)="ImportTemplate($event)" #fileUpload1>
-  <button class="custom-button-di" (click)="fileUpload1.click()">
-    <img src="images/mass-payment/file-upload.svg" /> Import Template
-  </button>
-</div> -->
 <div class="table-container loader-wrapper">
   <table class="table" #table *ngIf="selectedBeneficiaries.length">
     <thead style="margin-bottom: 10px">
@@ -112,8 +103,4 @@
     </tbody>
   </table>
 </div>
-<!-- <pre>selectedBeneficiaries:length {{selectedBeneficiaries.length}}</pre>
-<pre>beneficiaryForms:length {{beneficiaryForms.length}}</pre>
-<pre>selectedBeneficiaries form: {{selectedBeneficiaries}}</pre>
-<pre>beneficiaryForms: {{beneficiaryForms}}</pre> -->
 <app-initial-render (addMoreRecipientsChanged)="selectRecipient()" *ngIf="!beneficiaryForms.length || !selectedBeneficiaries.length"></app-initial-render>

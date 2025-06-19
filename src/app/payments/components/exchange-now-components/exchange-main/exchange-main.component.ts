@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { WalletsService } from '../../../../main-dashboard/services/wallets.service';
 import { CommonModule } from '@angular/common';
@@ -19,15 +19,16 @@ export class ExchangeMainComponent {
   createdConvertData: any;
   timerSubscription: any;
   completedPaymentData: any;
-  activeCurrency: any;
+  @Input() activeCurrency: any;
+  @Input() currentStepIndex: number = 0;
   fromDashboardConvertObject: any;
   timerSubscriptionWithTimerData: any;
-
+  
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private _walletService: WalletsService,
-  ) { }
-
+  ) {}
 
   ngOnInit() {
+    console.log('data',this.data)
     this._walletService.activeCurrentWallet.subscribe((wallet) => {
       this.activeCurrency = wallet;
       let buyValue = this.data?.selectedType === 'buy' ? this.activeCurrency?.wallet_Currency?.code : this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency

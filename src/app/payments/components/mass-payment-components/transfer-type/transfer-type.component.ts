@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { WalletsService } from '../../../../main-dashboard/services/wallets.service';
 import { CommonModule } from '@angular/common';
-
 @Component({
   selector: 'app-transfer-type',
   templateUrl: './transfer-type.component.html',
@@ -35,7 +34,6 @@ export class TransferTypeComponent implements OnInit {
       requestId: this.form.get('requestId')?.value,
       costType: costType.key.charAt(0),
     };
-    // this._walletService.updateCostType(body).subscribe();
   }
   initializeSelectedOption() {
     if (this.form) {
@@ -52,29 +50,11 @@ export class TransferTypeComponent implements OnInit {
   }
   toggleDropdown() { 
     this.isRowLoading = true;    
-    // this.showDropdown = false;
-    // this._walletService.refreshCostList(this.form.get('requestId').value).subscribe((data) => {
-    //   if (Array.isArray(data) && data.length > 0) {
-    //     this.options = data.map((item, index) => ({
-    //       ...(this.options[index] || {}),
-    //       key: item.key === 1 ? '1 - regular' : item.key === 2 ? '2 - our' :item.key === 4 ? '4 - PaymentOnBehalf' :item.key === 5 ? '5 - FastPayment' : '',
-    //       value: item.value       
-    //     }));
-    //     this.selectedKey = null;
-    //     // this.form.get('costType').setValue('');
-    //   }
-    //   this.isRowLoading = false;
     this.showDropdown = !this.showDropdown;
-    //   },
-    //   (err) => {
-    //     this.isRowLoading = false;
-    //   }
-    // );
   }
 
   onRadioChange(selectedOption: any) {
     this.selectedKey = selectedOption.key;
-    // this.updateOptionTexts(this.selectedKey);
     this.closeDropdown();
     if (this.form) {
       this.form.patchValue({ costType: selectedOption });

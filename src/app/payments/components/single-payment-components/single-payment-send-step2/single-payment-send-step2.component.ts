@@ -78,6 +78,7 @@ export class SinglePaymentSendStep2Component {
   }
 
   ngOnInit() {
+    console.log('createdPaymentData', this.createdPaymentData)
     this.signatureDate = moment(new Date()).format(DateFormat?.dateInput)
     if (this.createdPaymentData?.signAndFiles?.needStamp) {
       this.needStamp = true

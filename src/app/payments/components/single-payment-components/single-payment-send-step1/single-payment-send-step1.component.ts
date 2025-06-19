@@ -42,6 +42,7 @@ export class SinglePaymentSendStep1Component {
   @Input('formStepperProgress') formStepperProgress?: any;
   @Input('walletList') walletList: any;
   @Input('benificiaryFromContacts') benificiaryFromContacts: any;
+  @Input('openBeneficiaryList') openBeneficiaryList = true;
   @Output() timerSubscriptionForComplete = new EventEmitter<any>();
   @Output() createdPaymentDataFortransfer = new EventEmitter<any>()
   @Output() signObjectForSummeryForTransfer = new EventEmitter<any>()
@@ -52,7 +53,6 @@ export class SinglePaymentSendStep1Component {
   selectedWallet!: WalletBalanceListModal;
   WalletCurrency!: WalletBalanceListModal;
   transactionListData: any
-  openBeneficiaryList: boolean = true;
   beneficiaryName: any;
   clickBeneficiary!: boolean;
   beneficiaryDetails: any;
@@ -157,22 +157,14 @@ export class SinglePaymentSendStep1Component {
         const transactionList = data;
         this.transactionListData1 = transactionList.filter((transaction) => transaction?.mainType == 1);
         this.transactionListData = this.transactionListData1.slice(0, 4);
-        // console.log("this.transactionListData", this.transactionListData);
         this.showLoader = false;
         this.getWalletData();
       },
       error: (err) => {
-        // console.error("Error fetching payment transactions", err);
         this.fetchPaymentError = true;
         this.showLoader = false;
       }
     });
-
-
-    // this._walletService.getAllBalanceList().subscribe((res) => {
-    //   res.sort(function (a: any, b: any) { return b.wallet_Amount - a.wallet_Amount });
-    //   this.walletList = res;
-    // })
     
     this.filteredBeneficiary$ = this.filterControl.valueChanges.pipe(
       startWith(''),
@@ -192,7 +184,7 @@ export class SinglePaymentSendStep1Component {
           }   
         }
       });
-      this.openBeneficiaryList = false
+      // this.openBeneficiaryList = false
       this.cd.detectChanges()
 
     }
@@ -219,7 +211,6 @@ export class SinglePaymentSendStep1Component {
   }
 
   restrictZero(event: any) {
-    // console.log(event?.target?.value)
     if (event?.target?.value?.length === 0 && (event?.key === "0" || event?.key === ".")) {
       event?.preventDefault();
     }
@@ -240,8 +231,7 @@ export class SinglePaymentSendStep1Component {
 
   ngAfterViewInit() {
     document.addEventListener('click', function (event: any) {
-      // console.log(event.target.closest('.recent-list-dropdown')?.classList?.contains('recent-list-dropdown'));
-      if (event.target.closest('.recent-list-dropdown')?.classList?.contains('recent-list-dropdown')) {
+       if (event.target.closest('.recent-list-dropdown')?.classList?.contains('recent-list-dropdown')) {
         var element: any = document.getElementById("beneficiaryDropdownId");
         element?.classList.remove('d-none');
       } else {
@@ -262,9 +252,6 @@ export class SinglePaymentSendStep1Component {
         }
 
       }
-
-      // console.log(event.target.closest('.change-beneficiary-list')?.classList?.contains('change-beneficiary-list'));
-
       if (event.target.closest('.change-beneficiary-list')?.classList?.contains('change-beneficiary-list')) {
         var element: any = document.getElementById("changeBeneficiaryId");
         element?.classList.remove('d-none');
@@ -273,8 +260,6 @@ export class SinglePaymentSendStep1Component {
         element?.classList?.add('d-none');
       }
     })
-
-
   }
 
   getWalletData() {
@@ -322,26 +307,15 @@ export class SinglePaymentSendStep1Component {
     this.clickBeneficiary = true
   }
   createBenificiaryDialog() {
-    // const dialogRef = this.dialog.open(AddContactsComponent, {
-    //   width: '100vw',
-    //   maxWidth: '100vw',
-    //   disableClose: true,
-    // });
   }
 
   getBeneficiary(beneficiary: any) {
-    // console.log(beneficiary);
-
-    // this.beneficiaryName = beneficiary?.bankAccountHolderName
     this.beneficiaryDetails = beneficiary
   }
   openBeneficiary() {
     this.changeBeneficiary = true;
   }
   changeBeneficiaryDetails(beneficiary: any) {
-    // console.log(beneficiary);
-
-    // this.beneficiaryName = beneficiary?.bankAccountHolderName
     this.changebeneficiaryDetails = beneficiary
   }
   getTransaction(transaction: any) {
@@ -360,8 +334,6 @@ export class SinglePaymentSendStep1Component {
     this.openBeneficiaryList = false
   }
 
-
-  // Update in the selectedBeneficiaryChange method
   selectedBeneficiaryChange(beneficiary:any) {
     this.beneficiaryDetails = beneficiary;
     this.validBeneficiarySelected = true;
@@ -392,9 +364,6 @@ export class SinglePaymentSendStep1Component {
     if (beneficiary1?.accountNumber) {
       this.beneficiaryData1 += ' | ' + beneficiary1?.accountNumber
     }
-    // if(beneficiary1?.bankNumber){
-    //   this.beneficiaryData1 += ' | '+beneficiary1?.bankNumber
-    // }
 
     return this.beneficiaryData1
   }
@@ -404,27 +373,13 @@ export class SinglePaymentSendStep1Component {
     if (beneficiary1?.currencyISO) {
       this.beneficiaryData1 += beneficiary1?.currencyISO?.code
     }
-    // if (beneficiary1?.accountNumber) {
-    //   this.beneficiaryData1 += ' | ' + beneficiary1?.accountNumber
-    // }
-    // if(beneficiary1?.bankNumber){
-    //   this.beneficiaryData1 += ' | '+beneficiary1?.bankNumber
-    // }
-
     return this.beneficiaryData1
   }
   getChangeBeneficiaryInfo2(beneficiary1: any) {
     this.beneficiaryData1 = ''
-    // if (beneficiary1?.currencyISO) {
-    //   this.beneficiaryData1 += beneficiary1?.currencyISO?.code
-    // }
     if (beneficiary1?.accountNumber) {
       this.beneficiaryData1 += beneficiary1?.accountNumber
     }
-    // if(beneficiary1?.bankNumber){
-    //   this.beneficiaryData1 += ' | '+beneficiary1?.bankNumber
-    // }
-
     return this.beneficiaryData1
   }
   getBeneficiaryInfo(beneficiary: any) {
@@ -503,38 +458,7 @@ export class SinglePaymentSendStep1Component {
           delete this.refreshAPIError
              this.signObjectForSummeryForTransfer.emit(signObjectForSummery)
           this._walletService?.SetCreatedPaymentSummery(signObjectForSummery)
-
-          // await this.changeCostType(this.costList, this.requestID)
-
           this.forRefreshData();
-          // if (this.selectedWallet?.wallet_Currency?.sign != this.beneficiaryDetails?.currencyISO?.sign) {
-          //   this.timerSubscription = timer(15000, 15000).pipe(
-          //     map(() => {
-          //       this.showLoader = true;
-          //       this._walletService.refreshQuote(this.requestID).subscribe(
-          //         (data: RefreshQuoteResponseModel) => {
-          //           // console.log(data);
-          //           this.showLoader = false;
-          //           this.chargedAmount = data?.charge?.toFixed(2)
-          //           this.createdSpotRate = data?.spot
-          //           const refreshedSendValue: any = data?.send
-          //           this.afterExchangeRate = refreshedSendValue * this.createdSpotRate
-          //           this.cd.detectChanges()
-          //         },
-          //         (err) => {
-          //           this.showLoader = false;
-          //           this.timerSubscription.unsubscribe()
-          //           this.refreshAPIError = err?.error?.apiErrorMessage[0] ?? '';
-          //           this._walletService.SetRefreshValuePayment(this.refreshAPIError)
-          //         }
-          //       );
-          //     })).subscribe();
-          //   this.timerSubscriptionForComplete.emit(this.timerSubscription)
-          // }
-          // else {
-          //   this.timerSubscription?.unsubscribe()
-          // }
-
         },
         (err) => {
           this.showLoader = false;
@@ -568,55 +492,16 @@ export class SinglePaymentSendStep1Component {
 
   forRefreshData() {
     if (this.selectedWallet?.wallet_Currency?.sign != this.beneficiaryDetails?.currencyISO?.sign) {
-            // this.timerSubscription = timer(15000, 15000).pipe(
-            //   map(() => {
-                this.showLoader = true;
-                // this._walletService.refreshQuote(this.requestID).subscribe(
-                //   (data: RefreshQuoteResponseModel) => {
-                //     // console.log(data);
-                //     this.showLoader = false;
-                //     this.chargedAmount = data?.charge?.toFixed(2)
-                //     this.createdSpotRate = data?.spot
-                //     const refreshedSendValue: any = data?.send
-                //     this.afterExchangeRate = refreshedSendValue * this.createdSpotRate
-                //     this.config = { leftTime: 14, format: 'mm:ss' };
-                //     this.cd.detectChanges()
-                //   },
-                //   (err) => {
-                //     if (this.createdPaymentData?.paymentRequst?.sendCurrency != this.createdPaymentData?.paymentRequst?.chargeCurrency) {
-                //       this.refreshAPIError = err?.error?.apiErrorMessage[0] ?? '';
-                //       this.timerSubscription.unsubscribe()
-                //     }
-                //     else {
-                //       this.timerSubscription.unsubscribe()
-                     
-                //     }
-                //   }
-                // );
-              // })).subscribe();
-          }
-          else {
-            this.timerSubscription?.unsubscribe()
-          }
+    }
+    else {
+      this.timerSubscription?.unsubscribe()
+    }
   }
 
 
   changeCostType(costList: any, requestID: any) {
     this.showLoader = true
     const ev = costList[0]?.key.substring(0, 1);
-    let body = {
-      requestId: requestID,
-      costType: ev,
-    };
-    // this._walletService.updateCostType(body).subscribe(
-    //   (data: UpdateCostListResponseModel) => {
-    //     // console.log("cost updated", data);
-    //     this.showLoader = false
-    //   },
-    //   (err) => {
-    //     this.costTypeAPIError = err?.error?.apiErrorMessage[0] ?? '';
-    //   }
-    // );
   }
 
   openMyMenu(menuTrigger: MatMenuTrigger) {

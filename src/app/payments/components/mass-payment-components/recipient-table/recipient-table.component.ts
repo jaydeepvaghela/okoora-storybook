@@ -60,10 +60,9 @@ export class RecipientTableComponent implements OnChanges {
         return this.approvedBeneficiaries.find(b => b.id === beneficiaryId) || null;
       });
       this.cdr.detectChanges();
-      return; // Skip fetching from API if localStorage has valid data
+      return;
     }
 
-    // Initialize selectedBeneficiaries from existing forms
     this.selectedBeneficiaries = this.beneficiaryForms.map((form: FormGroup) => {
       const beneficiaryId = form.get('beneficiaryId')?.value;
       return this.approvedBeneficiaries.find(b => b.id === beneficiaryId) || null;
@@ -173,7 +172,7 @@ export class RecipientTableComponent implements OnChanges {
     this.selectedBeneficiaries = []
     const workbook = new ExcelJS.Workbook();
     workbook.xlsx.load(buffer).then(wb => {
-      const worksheet = wb.getWorksheet(1); // or the name of the sheet
+      const worksheet = wb.getWorksheet(1);
       if (worksheet) {
         worksheet.eachRow({ includeEmpty: true }, (row, rowNumber) => {
           const cellValue = row.getCell(1).value as string;
@@ -226,8 +225,6 @@ export class RecipientTableComponent implements OnChanges {
             requestId: [''],
           });
           updatedFormGroups.push(newFormGroup);
-          // this.onInputBlur(number);
-
         }
 
       });
@@ -290,15 +287,9 @@ export class RecipientTableComponent implements OnChanges {
     });
     dialogRef.afterClosed().subscribe((result) => {
       const lengthToSet = result?.length ? result?.length : this.selectedBeneficiaries?.length;
-      // this.generalService.setValue(lengthToSet);
-
-
       if (result && Array.isArray(result)) {
-
         result.forEach((selectedBeneficiary) => {
-
           const existingIndex = this.selectedBeneficiaries.findIndex((b) => b.id === selectedBeneficiary.id);
-
           if (existingIndex > -1) {
             this.selectedBeneficiaries[existingIndex] = selectedBeneficiary;
           } else {
@@ -306,9 +297,6 @@ export class RecipientTableComponent implements OnChanges {
           }
           this.bensAndRequest = this.bensAndRequest.filter((x: { beneficiaryId: any; }) => x.beneficiaryId !== selectedBeneficiary.id);
         });
-        // this.bensAndRequest.forEach((element: { requestId: any; }) => {
-        //   this._walletService.deletePaymentRequest(element.requestId).subscribe()
-        // });
         this.initializeForms();
       }
       this.addMoreRecipientsChanged.emit(false);
@@ -374,21 +362,14 @@ export class RecipientTableComponent implements OnChanges {
   }
   onInputBlur(index: number): void {
     const currentAmount = this.beneficiaryForms[index].get('amount').value;
-    // console.log(this.beneficiaryForms?.length)
-    // console.log(this.previousValues?.length)
-
-    // Ensure the amount is a string and replace commas
     const numericCurrentAmount = typeof currentAmount === 'string' ? +currentAmount.replace(/,/g, '') : currentAmount;
     if (this.previousValues[index] !== numericCurrentAmount || numericCurrentAmount > 0) {
       this.createPaymentRequest(index);
-    } else {
-      // console.log('Condition is false, not creating payment request');
-    }
+    } 
   }
   formatInput(event: any): void {
     let input = event.target.value;
     if (input) {
-      // Check if input is not empty
       input = input.replace(/,/g, '');
       input = input.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       event.target.value = input;
@@ -516,17 +497,6 @@ export class RecipientTableComponent implements OnChanges {
   }
   deleteBeneficiary(index: number): void {
     this.setAmountErrorMessage.splice(index, 1)
-    // const dialogRef = this.dialog.open(RemovePopupComponent, {
-    //   width: '600px',
-    //   data: {
-    //     index: index,
-    //     deleteFunc: () => this.openDeleteBeneficiary(index),
-    //     beneficiaryName: this.beneficiaryForms[index].get('product_reference').value,
-    //   },
-    // });
-    // dialogRef.afterClosed().subscribe(() => {
-    //   this.generalService.setLoading(false);
-    // });
   }
   addNote(index: number) {
     const dialogRef = this.dialog.open(AddNoteComponent, {
@@ -544,14 +514,7 @@ export class RecipientTableComponent implements OnChanges {
   }
 
   uploadFiles(index: number) {
-    // this.dialog.open(FileUploadComponent, {
-    //   width: '600px',
-    //   data: {
-    //     requestId: this.beneficiaryForms[index].get('requestId').value,
-    //     form: this.beneficiaryForms[index],
-    //     paymentRequestFiles: this.beneficiaryForms[index].get('signAndFiles').value,
-    //   },
-    // });
+
   }
   calculateProgress(index: number): number {
     const request = this.beneficiaryForms[index];

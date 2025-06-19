@@ -22,10 +22,10 @@ import { MassPaymentComponent } from '../../mass-payment-components/mass-payment
 })
 export class SinglePaymentSendStep3Component {
   @Input('formStepper') formStepper?: any;
-  @Input('formStepperProgress') formStepperProgress?: any;
-  @Input('timerSubscription') timerSubscription?: any;
-  @Input('createdPaymentData') createdPaymentData?: any
-  @Input('signObjectForSummery') signObjectForSummery?: any;
+  @Input('formStepperProgress') formStepperProgress: any;
+  @Input('timerSubscription') timerSubscription: any;
+  @Input('createdPaymentData') createdPaymentData: any;
+  @Input('signObjectForSummery') signObjectForSummery: any;
   @Input('walletList') walletList: any;
   config = { leftTime: 15, format: 'mm:ss' };
 
@@ -55,26 +55,31 @@ export class SinglePaymentSendStep3Component {
   ) { }
 
   ngOnInit() {
-    this._walletService.currentCreatedPayment?.subscribe((data: any) => {
-      if (data) {
-        this.showLoaderSpinner = true;
-        // delete this.chargedAmount
-        // delete this.SendAmount
-        // delete this.createdPaymentData
-        this.createdPaymentData = data
-        this.cd.detectChanges()
-        this.forRefreshDataFlag = true
-        if (data.paymentRequst.chargeCurrency == data.paymentRequst.sendCurrency) {
-          this.chargedAmountAfterRefresh = true;
-          this.chargedAmountAfterRefresh = data.paymentRequst.charge + data.costList[0].value;
+    console.log("signObjectForSummerysignObjectForSummery", this.signObjectForSummery);
+    console.log("this.createdPaymentData", this.createdPaymentData);
+    if (!this.signObjectForSummery && !this.createdPaymentData) {
+      this._walletService.currentCreatedPayment?.subscribe((data: any) => {
+        if (data) {
+          this.showLoaderSpinner = true;
+          // delete this.chargedAmount
+          // delete this.SendAmount
+          // delete this.createdPaymentData
+          this.createdPaymentData = data || this.createdPaymentData
+          this.cd.detectChanges()
+          this.forRefreshDataFlag = true
+          if (data.paymentRequst.chargeCurrency == data.paymentRequst.sendCurrency) {
+            this.chargedAmountAfterRefresh = true;
+            this.chargedAmountAfterRefresh = data.paymentRequst.charge + data.costList[0].value;
+          }
         }
-      }
-    })
-    this._walletService.currentCreatedPaymentSummery?.subscribe((data: any) => {
-      console.log("data", data);
-      this.signObjectForSummery = data
-      this.cd.detectChanges()
-    })
+      })
+      this._walletService.currentCreatedPaymentSummery?.subscribe((data: any) => {
+        this.signObjectForSummery = data
+
+        this.cd.detectChanges()
+      })
+    }
+    
 
     if (!this.forRefreshDataFlag) {
       // this.forRefreshData()
