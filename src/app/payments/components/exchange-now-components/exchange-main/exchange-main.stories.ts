@@ -96,7 +96,7 @@ const meta: Meta<ExchangeMainComponent> = {
   },
 };
 
-export const Step1_NewExchange: Story = {
+export const Step1_BuySellCurrencies: Story = {
   args: {
     currentStepIndex: 0,
     data: mockDialogData
@@ -104,7 +104,7 @@ export const Step1_NewExchange: Story = {
 };
 
 
-export const Step2_Summary: Story = {
+export const Step2_ExchangeSummary: Story = {
   args: {
     currentStepIndex: 1,
     exchangeForm: mockExchangeForm,
@@ -114,7 +114,7 @@ export const Step2_Summary: Story = {
   }
 };
 
-export const Step3_Done: Story = {
+export const Step3_ExchangeCompletion: Story = {
   args: {
     currentStepIndex: 2,
     exchangeForm: mockExchangeForm,

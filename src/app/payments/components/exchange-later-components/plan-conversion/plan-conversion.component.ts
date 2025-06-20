@@ -1,4 +1,4 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject, Input, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBar } from '@angular/material/progress-bar';
@@ -21,9 +21,10 @@ export class PlanConversionComponent {
   @ViewChild('formStepperProgress') formStepperProgress!: MatProgressBar;
   @ViewChild('formStepper') formStepper!: MatStepper;
   isLastStep = false;
-  planConversionForm: FormGroup | any;
+  @Input() planConversionForm: FormGroup | any;
   activeWallet:any;
-  walletData:any;
+  @Input() walletData: any;
+  @Input() currentStep = 0; 
   constructor(private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
@@ -33,6 +34,7 @@ export class PlanConversionComponent {
   }
 
   ngOnInit(): void {
+    console.log(this.currentStep,'currrrrr stpp')
     this._walletService.activeCurrentWallet.subscribe((wallet) => {
       this.walletData = {
         selectedwalletInfo: wallet,
@@ -56,6 +58,25 @@ export class PlanConversionComponent {
     })
     if(this.data?.selectedCalendarDate){
       this.planConversionForm.get('convertMoneyOption')?.patchValue({ 'dueDate': this.data?.selectedCalendarDate });
+    }
+  // ✅ Step 3: If on step 2, patch mock values
+    if (this.currentStep === 2) {
+      this.planConversionForm.patchValue({
+        convertMoneyOption: {
+          dueDate: '2025-06-30',
+        },
+        yourOwnRate: {
+          buyAmount: '31.35',
+          sellAmount: '22.00',
+          fromCurrency: 'AUD',
+          toCurrency: 'ILS',
+          toSign: '₪',
+          spotRate: '1.425',
+          dueDate: '2025-07-01',
+          transferOnly: true,
+          termsCondition: true,
+        },
+      });
     }
   }
 

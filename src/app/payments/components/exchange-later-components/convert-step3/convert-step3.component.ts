@@ -76,6 +76,7 @@ export class ConvertStep3Component {
    }
 
   ngOnInit() {
+    this.data.selectedwalletInfo = JSON.parse(localStorage.getItem('activeWallet')!);
     // this.roles = this.auth.getRoleOfUser();
     this.showLoader = true;
     this._walletService.getAllBalanceList().subscribe((result) => {
@@ -120,7 +121,6 @@ export class ConvertStep3Component {
   dateChanged(ev: any) {
     let date = moment(ev.value).format(DateFormat.dateInput);
     this.convertMoneyOption.patchValue({ 'dueDate': this.yourOwnRate?.value?.dueDate });
-    // this.createTransfer.value['orderDetailes.FlightDate'] = date;
   }
 
   nextStep(stepper: any, progress: any) {

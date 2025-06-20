@@ -1442,7 +1442,7 @@ const mockSignObject = {
 const mockTimerSubscription = { unsubscribe: () => { } };
 
 // Story for Step 1
-export const Step1: StoryObj<SinglePaymentSendComponent> = {
+export const Step1_SelectRecipient: StoryObj<SinglePaymentSendComponent> = {
     args: {
         walletList: balanceList,
         benificiaryFromContacts: AccountTransactionsData,
@@ -1452,7 +1452,7 @@ export const Step1: StoryObj<SinglePaymentSendComponent> = {
 };
 
 // Story for Step 2
-export const Step2: StoryObj<SinglePaymentSendComponent> = {
+export const Step2_PaymentNotes: StoryObj<SinglePaymentSendComponent> = {
     args: {
         walletList: balanceList,
         createdPaymentData: mockPaymentData,
@@ -1462,7 +1462,7 @@ export const Step2: StoryObj<SinglePaymentSendComponent> = {
 };
 
 // Story for Step 3
-export const Step3: StoryObj<SinglePaymentSendComponent> = {
+export const Step3_TransferDetails: StoryObj<SinglePaymentSendComponent> = {
     args: {
         walletList: balanceList,
         createdPaymentData: mockPaymentData,
@@ -1473,7 +1473,7 @@ export const Step3: StoryObj<SinglePaymentSendComponent> = {
 };
 
 // Story for Completed Step
-export const StepCompleted: StoryObj<SinglePaymentSendComponent> = {
+export const Step_PaymentCompletion: StoryObj<SinglePaymentSendComponent> = {
     args: {
         walletList: balanceList,
         benificiaryFromContacts: AccountTransactionsData,

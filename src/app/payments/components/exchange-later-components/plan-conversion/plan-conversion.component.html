@@ -38,7 +38,7 @@
     </div>
   </div>
   <mat-dialog-content>
-    <mat-stepper #formStepper class="form-stepper" (animationDone)="stepChange(formStepper)" [linear]="false">
+    <mat-stepper #formStepper class="form-stepper" (animationDone)="stepChange(formStepper)" [linear]="false" [selectedIndex]="currentStep">
       <mat-step>
         <ng-template matStepContent>
           <app-plan-conversion-step1 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress"
