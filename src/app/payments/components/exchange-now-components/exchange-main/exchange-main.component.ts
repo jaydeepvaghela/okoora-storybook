@@ -7,6 +7,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ExchangeNewStep1Component } from '../exchange-new-step1/exchange-new-step1.component';
 import { ExchangeNewSummaryComponent } from '../exchange-new-summary/exchange-new-summary.component';
 import { ExchangeDoneComponent } from '../exchange-done/exchange-done.component';
+import { balanceList, getAllActiveCurrencies } from '../../../../main-dashboard/dashboard-data/balanceList-data';
 
 @Component({
   selector: 'app-exchange-main',
@@ -15,28 +16,34 @@ import { ExchangeDoneComponent } from '../exchange-done/exchange-done.component'
   imports: [CommonModule, MatDialogModule, MatStepperModule, MatProgressBarModule, ExchangeNewStep1Component, ExchangeNewSummaryComponent, ExchangeDoneComponent]
 })
 export class ExchangeMainComponent {
+  @Input() activeCurrency: any;
+  @Input() currentStepIndex: number = 0;
   exchangeForm: any;
   createdConvertData: any;
   timerSubscription: any;
   completedPaymentData: any;
-  @Input() activeCurrency: any;
-  @Input() currentStepIndex: number = 0;
   fromDashboardConvertObject: any;
   timerSubscriptionWithTimerData: any;
-  
+  dialogData = {
+    selectedType: 'buy',
+    fromDashboadConvert: true
+  };
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private _walletService: WalletsService,
   ) {}
+  getAllActiveCurrencies = getAllActiveCurrencies;
+  balanceList = balanceList;
 
   ngOnInit() {
     console.log('data',this.data)
+    
     this._walletService.activeCurrentWallet.subscribe((wallet) => {
       this.activeCurrency = wallet;
-      let buyValue = this.data?.selectedType === 'buy' ? this.activeCurrency?.wallet_Currency?.code : this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency
-      let sellValue = this.data?.selectedType === 'buy' ? this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency : this.activeCurrency?.wallet_Currency?.code
+      let buyValue = this.dialogData?.selectedType === 'buy' ? this.activeCurrency?.wallet_Currency?.code : this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency
+      let sellValue = this.dialogData?.selectedType === 'buy' ? this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency : this.activeCurrency?.wallet_Currency?.code
 
       this.fromDashboardConvertObject = {
-        selectedType: this.data?.selectedType,
-        fromDashboadConvert: this.data?.fromDashboadConvert,
+        selectedType: this.dialogData?.selectedType,
+        fromDashboadConvert: this.dialogData?.fromDashboadConvert,
         buyValue: buyValue,
         sellValue: sellValue
       }

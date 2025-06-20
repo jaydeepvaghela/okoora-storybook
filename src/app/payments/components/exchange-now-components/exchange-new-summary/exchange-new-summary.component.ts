@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { PlanConversionComponent } from '../../exchange-later-components/plan-conversion/plan-conversion.component';
 
 @Component({
   selector: 'app-exchange-new-summary',
@@ -42,7 +43,9 @@ export class ExchangeNewSummaryComponent {
   ) { }
 
   ngOnInit() {
-    // console.log(this.exchangeForm)
+    console.log('createdConvertData', this.createdConvertData)
+    console.log('exchange form',this.exchangeForm)
+    console
     of(getAllActiveCurrencies).subscribe(res => {
       this.activeCurrencyList = res;
       this.selectExchangeCurrency()
@@ -126,19 +129,19 @@ export class ExchangeNewSummaryComponent {
   exchangePlanConvert() {
     let activeWallet: any = localStorage.getItem('activeWallet');
     let currency = JSON.parse(activeWallet);
-    // this.dialog
-    //   .open(PlanConversionComponent, {
-    //     width: '100vw',
-    //     maxWidth: '100vw',
-    //     data: {
-    //       selectedwalletInfo: currency,
-    //     },
-    //     disableClose: true,
-    //   })
-    //   .afterClosed()
-    //   .subscribe((data: any) => {
-    //     // console.log('Exchange now dialog closed!');
-    //   });
+    this.dialog
+      .open(PlanConversionComponent, {
+        width: '100vw',
+        maxWidth: '100vw',
+        data: {
+          selectedwalletInfo: currency,
+        },
+        disableClose: true,
+      })
+      .afterClosed()
+      .subscribe((data: any) => {
+        // console.log('Exchange now dialog closed!');
+      });
   }
 
   commaseprate(e: any, fraction: any) {

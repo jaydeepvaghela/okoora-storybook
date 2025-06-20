@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, EventEmitter, HostListener, Input, Output
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ExchangeMainComponent } from '../exchange-main/exchange-main.component';
-import { forkJoin, interval, of, Subscription } from 'rxjs';
+import { forkJoin, interval, of, Subscription, tap } from 'rxjs';
 import { WalletsService } from '../../../../main-dashboard/services/wallets.service';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
@@ -72,6 +72,7 @@ export class ExchangeNewStep1Component {
   currentNumber = 15;
   progress = 0;
   sub!: Subscription;
+  activeWalletCurr: any;
 
   constructor(
     public dialog: MatDialog,
@@ -106,6 +107,7 @@ export class ExchangeNewStep1Component {
   }
 
   ngOnInit() {
+    this.setActiveWalletData();
     this.exchangeForm = this.fb.group({
       firstExchangeCurrency: new FormControl('USD', [Validators.required]),
       firstExchangeAmount: new FormControl('', [Validators.required]),
@@ -124,6 +126,15 @@ export class ExchangeNewStep1Component {
       this.createPaymentAPIError = false;
     });
     this.getAllData();
+  }
+
+  setActiveWalletData() {
+    this._walletService.getAllBalanceList().pipe(
+      tap(result => {
+        this.activeWalletCurr = result[0];
+      })
+    ).subscribe();
+    this._walletService.setCurrentCurrencyData(this.activeWalletCurr)
   }
 
   startRepeatingTimer() {
@@ -191,7 +202,7 @@ export class ExchangeNewStep1Component {
           this.getDefaultCurrencyTotal(this.defaultCurrencyCode);
         }
 
-        const defaultFirstCurrency = this.balanceListData?.find((item: any) => 
+        const defaultFirstCurrency = this.balanceListData?.find((item: any) =>
           item.wallet_Currency?.code === 'USD'
         );
         if (defaultFirstCurrency) {
@@ -432,29 +443,58 @@ export class ExchangeNewStep1Component {
   }
 
   generatePatamasFirstExchange(event: any) {
-    if (this.exchangeForm?.value?.firstExchangeCurrency && this.exchangeForm?.value?.secondExchangeCurrency && this.exchangeForm?.value?.firstExchangeAmount) {
+    // Get the input value, handling both direct values and event objects
+    let inputValue = event;
+    if (event && event.target && event.target.value !== undefined) {
+      inputValue = event.target.value;
+    }
+
+    // Remove commas and convert to number
+    const cleanValue = typeof inputValue === 'string' ? inputValue.replace(/,/g, '') : inputValue;
+    const numericValue = parseFloat(cleanValue);
+
+    // Only proceed if we have valid form values and a valid numeric input
+    if (this.exchangeForm?.value?.firstExchangeCurrency &&
+      this.exchangeForm?.value?.secondExchangeCurrency &&
+      !isNaN(numericValue) && numericValue > 0) {
+
       if (this.exchangeForm?.value?.firstExchangeCurrency != this.getSecondSelectedCurrencyDetails?.wallet_Currency?.code) {
         this.params = {
           'Charge.Currency': !this.isSwapped ? this.exchangeForm?.value?.firstExchangeCurrency : this.exchangeForm?.value?.secondExchangeCurrency,
           'Buy.Currency': !this.isSwapped ? this.exchangeForm?.value?.secondExchangeCurrency : this.exchangeForm?.value?.firstExchangeCurrency,
-          'Buy.Amount': this.isSwapped ? this.exchangeForm?.value?.firstExchangeAmount : null,
-          'Charge.Amount': !this.isSwapped ? this.exchangeForm?.value?.firstExchangeAmount : null,
+          'Buy.Amount': this.isSwapped ? numericValue : null,
+          'Charge.Amount': !this.isSwapped ? numericValue : null,
         }
       }
+      console.log('First exchange params:', this.params);
     }
-    // console.log(this.params)
   }
 
   generatePatamasSecondExchange(event: any) {
-    if (this.exchangeForm?.value?.firstExchangeCurrency && this.exchangeForm?.value?.secondExchangeCurrency && this.exchangeForm?.value?.secondExchangeAmount) {
+    // Get the input value, handling both direct values and event objects
+    let inputValue = event;
+    if (event && event.target && event.target.value !== undefined) {
+      inputValue = event.target.value;
+    }
+
+    // Remove commas and convert to number
+    const cleanValue = typeof inputValue === 'string' ? inputValue.replace(/,/g, '') : inputValue;
+    const numericValue = parseFloat(cleanValue);
+
+    // Only proceed if we have valid form values and a valid numeric input
+    if (this.exchangeForm?.value?.firstExchangeCurrency &&
+      this.exchangeForm?.value?.secondExchangeCurrency &&
+      !isNaN(numericValue) && numericValue > 0) {
+
       if (this.exchangeForm?.value?.firstExchangeCurrency != this.getSecondSelectedCurrencyDetails?.wallet_Currency?.code) {
         this.params = {
           'Charge.Currency': !this.isSwapped ? this.exchangeForm?.value?.firstExchangeCurrency : this.exchangeForm?.value?.secondExchangeCurrency,
           'Buy.Currency': this.isSwapped ? this.exchangeForm?.value?.firstExchangeCurrency : this.exchangeForm?.value?.secondExchangeCurrency,
-          'Buy.Amount': !this.isSwapped ? this.exchangeForm?.value?.secondExchangeAmount : null,
-          'Charge.Amount': this.isSwapped ? this.exchangeForm?.value?.secondExchangeAmount : null,
+          'Buy.Amount': !this.isSwapped ? numericValue : null,
+          'Charge.Amount': this.isSwapped ? numericValue : null,
         }
       }
+      console.log('Second exchange params:', this.params);
     }
   }
 
@@ -463,7 +503,7 @@ export class ExchangeNewStep1Component {
     this.isFirstInputFocused = false;
     if (this.exchangeForm?.value?.firstExchangeCurrency && this.exchangeForm?.value?.secondExchangeCurrency && (this.exchangeForm?.value?.firstExchangeAmount || this.exchangeForm?.value?.secondExchangeAmount)) {
       if (this.exchangeForm?.value?.firstExchangeCurrency != this.getSecondSelectedCurrencyDetails?.wallet_Currency?.code) {
-        this.createConvertFinal()
+        this.createConvertFinal();
       }
     }
   }
@@ -480,12 +520,55 @@ export class ExchangeNewStep1Component {
     this.isExchangeInProgress = true;
     this.isExchangeBtnDisabled = true;
 
-    // Simulated convert request response based on this.params
+    // Fix: Check if params exists and has valid values
+    if (!this.params) {
+      console.error('Params not defined');
+      this.showLoader = false;
+      this.isExchangeInProgress = false;
+      return;
+    }
+
     const buyCurrency = this.params['Buy.Currency'];
     const chargeCurrency = this.params['Charge.Currency'];
-    const chargeAmount = this.params['Charge.Amount'];
-    const buyAmount = this.params['Buy.Amount'];
+
+    // Fix: Parse and validate amounts, handle null/undefined values
+    let chargeAmount = this.params['Charge.Amount'];
+    let buyAmount = this.params['Buy.Amount'];
+
+    // Convert string amounts (with commas) to numbers
+    if (typeof chargeAmount === 'string') {
+      chargeAmount = parseFloat(chargeAmount.replace(/,/g, ''));
+    }
+    if (typeof buyAmount === 'string') {
+      buyAmount = parseFloat(buyAmount.replace(/,/g, ''));
+    }
+
+    // Validate that we have at least one valid amount
+    if ((!chargeAmount || isNaN(chargeAmount)) && (!buyAmount || isNaN(buyAmount))) {
+      console.error('No valid amount provided');
+      this.showLoader = false;
+      this.isExchangeInProgress = false;
+      return;
+    }
+
     const simulatedRate = 0.7018;
+
+    // Calculate the missing amount based on which one is provided
+    let calculatedBuyAmount: number;
+    let calculatedChargeAmount: number;
+
+    if (chargeAmount && !isNaN(chargeAmount)) {
+      calculatedChargeAmount = chargeAmount;
+      calculatedBuyAmount = chargeAmount * simulatedRate;
+    } else if (buyAmount && !isNaN(buyAmount)) {
+      calculatedBuyAmount = buyAmount;
+      calculatedChargeAmount = buyAmount / simulatedRate;
+    } else {
+      console.error('Invalid amounts');
+      this.showLoader = false;
+      this.isExchangeInProgress = false;
+      return;
+    }
 
     const mockResponse = {
       status: "Create Request Successfully",
@@ -494,11 +577,11 @@ export class ExchangeNewStep1Component {
         requestId: "808f45de-5065-4be0-9296-d37c067bca20",
         buy: {
           currency: buyCurrency,
-          amount: (chargeAmount * simulatedRate).toFixed(2)
+          amount: calculatedBuyAmount.toFixed(2)
         },
         charge: {
           currency: chargeCurrency,
-          amount: chargeAmount
+          amount: calculatedChargeAmount.toFixed(2)
         },
         finalQuote: simulatedRate,
         exchangeRate: {
@@ -506,7 +589,7 @@ export class ExchangeNewStep1Component {
             rate: 1,
             currency: {
               code: buyCurrency,
-              sign: "$", // You can enhance this by mapping currency -> sign
+              sign: "$",
               flag: null,
               currencyName: null
             }
@@ -515,7 +598,7 @@ export class ExchangeNewStep1Component {
             rate: simulatedRate,
             currency: {
               code: chargeCurrency,
-              sign: "$", // Same here
+              sign: "$",
               flag: null,
               currencyName: null
             }
@@ -525,29 +608,34 @@ export class ExchangeNewStep1Component {
       }
     };
 
-    // Use the mock response as if it's from an API
+    // Use the mock response
     setTimeout(() => {
       this.callConvertRequestApi = true;
       this.createdConvertData = mockResponse;
-      this.chargedAmount = Number(parseFloat(mockResponse.convertRequest.charge.amount).toFixed(2)).toLocaleString('en', {
-        minimumFractionDigits: 2
-      });
+
+      // Fix: Properly format the charged amount
+      this.chargedAmount = Number(parseFloat(mockResponse.convertRequest.charge.amount))
+        .toLocaleString('en', { minimumFractionDigits: 2 });
+
+      // Fix: Format amounts properly before setting form values
+      const formattedBuyAmount = Number(parseFloat(mockResponse.convertRequest.buy.amount))
+        .toLocaleString('en', { minimumFractionDigits: 2 });
+
+      const formattedChargeAmount = Number(parseFloat(mockResponse.convertRequest.charge.amount))
+        .toLocaleString('en', { minimumFractionDigits: 2 });
 
       if (!this.exchangeForm?.value?.buy) {
         this.exchangeForm.patchValue({
-          secondExchangeAmount: Number(parseFloat(mockResponse.convertRequest.buy.amount).toFixed(2)).toLocaleString('en', {
-            minimumFractionDigits: 2
-          }).toString(),
-          firstExchangeAmount: this.chargedAmount.toString()
+          secondExchangeAmount: formattedBuyAmount,
+          firstExchangeAmount: formattedChargeAmount
         });
       } else {
         this.exchangeForm.patchValue({
-          firstExchangeAmount: Number(parseFloat(mockResponse.convertRequest.buy.amount).toFixed(2)).toLocaleString('en', {
-            minimumFractionDigits: 2
-          }).toString(),
-          secondExchangeAmount: this.chargedAmount.toString()
+          firstExchangeAmount: formattedBuyAmount,
+          secondExchangeAmount: formattedChargeAmount
         });
       }
+
       this.exchangeForm.patchValue({
         firstExchangeSign: this.firstSign || this.firstDefaultSign,
         secondExchangeSign: this.secondSign || this.secondDefaultSign
@@ -558,8 +646,9 @@ export class ExchangeNewStep1Component {
       this.minorSpotCurrencySign = mockResponse.convertRequest.exchangeRate.minor.currency.sign;
       this.majorSpotCurrencySign = mockResponse.convertRequest.exchangeRate.major.currency.sign;
 
-      const refreshedSendValue = mockResponse.convertRequest.buy.amount;
-      this.afterExchangeRate = Number(refreshedSendValue) * this.createdSpotRate;
+      // Fix: Ensure proper calculation
+      const refreshedSendValue = parseFloat(mockResponse.convertRequest.buy.amount);
+      this.afterExchangeRate = refreshedSendValue * this.createdSpotRate;
 
       this.showLoader = false;
       this.createPaymentAPIError = '';
@@ -582,8 +671,8 @@ export class ExchangeNewStep1Component {
         this.progress = 0;
         this.startRepeatingTimer();
         this.timerSubscriptionForComplete.emit(this.timerSubscription);
-      }, 1000); // Simulated delay
-    }, 1000); // Simulated API delay
+      }, 1000);
+    }, 1000);
   }
 
   commaseprate(e: any, fraction: any) {
