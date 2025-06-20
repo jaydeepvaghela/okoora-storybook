@@ -9,7 +9,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ExchangeNewStep1Component } from '../exchange-new-step1/exchange-new-step1.component';
 import { ExchangeNewSummaryComponent } from '../exchange-new-summary/exchange-new-summary.component';
 import { ExchangeDoneComponent } from '../exchange-done/exchange-done.component';
-import { FormGroup, FormControl } from '@angular/forms';
 
 const mockDialogData = {
   selectedType: 'buy',

@@ -3,6 +3,7 @@
 
 ::ng-deep {
   .approval-protective-dialog {
+   
     @media only screen and (max-width: 1440px) {
       overflow-y: auto;
       height: 95vh;
@@ -16,6 +17,8 @@
 }
 
 .approval-modal-sec {
+  max-width: 600px;
+  width: 100%;
   padding: 35px;
   direction: rtl;
   position: relative;

@@ -1,47 +1,34 @@
-<form id="sc-signature-form" class="loader-wrapper">
-  <div class="form-details">
-    <h5 class="form-title">Add signature</h5>
-    <p class="form-description">By signing and continuing I agree to the <span>declaration for import
-        goods</span></p>
-  </div>
-  <div class="signature-container">
-    <signature-pad 
-      id="sc-signature-pad" 
-      [options]="signaturePadOptions" 
-      (onBeginEvent)="drawStart()"
-      (onEndEvent)="drawComplete()">
-    </signature-pad>
-  </div>
-  <div>
-    <span class="error-msg" *ngIf="uploadSignatureError">{{ uploadSignatureError }}</span>
-  </div>
-  <div class="stepper-action">
-    <div class="form-control-wrapper">
-      <div class="currency-btn">
-        <button 
-          id="sc-sign-cancel" 
-          type="button" 
-          (click)="cancelDialog()">
-          Cancel
-        </button>
-      </div>
+<div class="signature-modal">
+  <form id="sc-signature-form" class="loader-wrapper">
+    <div class="form-details">
+      <h5 class="form-title">Add signature</h5>
+      <p class="form-description">By signing and continuing I agree to the <span>declaration for import
+          goods</span></p>
     </div>
-    <button 
-      id="sc-sign-conf" 
-      class="next-button" 
-      type="button"
-      (click)="savePad()" 
-      [class.disabled]="signatureCheck"
-      [disabled]="signatureCheck || showLoader">
-      <span *ngIf="showLoader">Saving...</span>
-      <span *ngIf="!showLoader">Confirm and sign</span>
-    </button>
-    <button 
-      id="sc-sign-clear" 
-      type="button"
-      (click)="clearSignature()"
-      [disabled]="showLoader">
-      Clear
-    </button>
-  </div>
-</form>
+    <div class="signature-container">
+      <signature-pad id="sc-signature-pad" [options]="signaturePadOptions" (onBeginEvent)="drawStart()"
+        (onEndEvent)="drawComplete()">
+      </signature-pad>
+    </div>
+    <div>
+      <span class="error-msg" *ngIf="uploadSignatureError">{{ uploadSignatureError }}</span>
+    </div>
+    <div class="stepper-action">
+      <div class="form-control-wrapper">
+        <div class="currency-btn">
+          <button id="sc-sign-cancel" type="button" (click)="cancelDialog()">
+            Cancel
+          </button>
+        </div>
+      </div>
+      <button id="sc-sign-conf" class="next-button" type="button" (click)="savePad()" [class.disabled]="signatureCheck"
+        [disabled]="signatureCheck || showLoader">
+        <span *ngIf="showLoader">Saving...</span>
+        <span *ngIf="!showLoader">Confirm and sign</span>
+      </button>
+      <button id="sc-sign-clear" type="button" (click)="clearSignature()" [disabled]="showLoader">
+        Clear
+      </button>
+    </div>
+  </form>
+</div>

@@ -3,7 +3,8 @@
 
 .upload-successful-modal {
   text-align: center;
-
+  max-width: 600px;
+  width: 100%;
   .dialog-header {
     border-bottom: 0px solid $general-border-color;
     justify-content: flex-end;

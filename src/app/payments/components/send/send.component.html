@@ -8,23 +8,12 @@
     <div class="dialog-icon sendMoney"></div>
 </div>
 <mat-dialog-content class="mat-typography dialog-body">
-    <!-- <form [formGroup]="benificiaryForm.value.type.ContactType=='payer'? payerForm : benificiaryForm"
-    (ngSubmit)="onSubmit()"> -->
-    <form [formGroup]="paymentRequestForm" (ngSubmit)="onSubmit()">
+    <form class="form-send-stepper" [formGroup]="paymentRequestForm" (ngSubmit)="onSubmit()">
         <mat-progress-bar #formStepperProgress class="stepper-progressbar" mode="determinate" value="20"
             [hidden]="isLastStep"></mat-progress-bar>
-        <mat-stepper id="sc-form-stepper" #formStepper class="form-stepper" (animationDone)="stepChange(formStepper)">
+        <mat-stepper id="sc-form-stepper" #formStepper class="form-stepper" [selectedIndex]="currentStepIndex" (animationDone)="stepChange(formStepper)">
             <mat-step>
-                <!-- <app-send-step1
-            [formStepper]="formStepper"
-            [fromWallet]="fromWallet"
-            [formStepperProgress]="formStepperProgress"
-            [createPayment]="paymentRequestForm.get('createPayment')"
-            [type]="paymentRequestForm.get('type')"
-            [activeWalletCurrency]="data">
-        </app-send-step1> -->
             </mat-step>
-
             <mat-step>
                 <ng-template matStepContent>
                     <app-send-step2 *ngIf="!data?.type ? formStepper.selectedIndex == 1 : data?.type"
@@ -39,7 +28,8 @@
             </mat-step>
             <mat-step>
                 <ng-template matStepContent>
-                    <app-send-step3 [futurePayment]="paymentRequestForm.get('futurePayment')"
+                    <app-send-step3 
+                        [futurePayment]="paymentRequestForm.get('futurePayment')"
                         [formStepper]="formStepper" (newItemEvent)="addItem($event)"
                         [paymentType]="paymentRequestForm.value.type" [type]="paymentRequestForm.get('type')"
                         [createPayment]="paymentRequestForm.get('createPayment')"
@@ -63,47 +53,6 @@
                     <app-send-step5 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [paymentType]="paymentRequestForm.get('type')?.value?.paymentType" [futurePayment]="paymentRequestForm.get('futurePayment')" [activeWalletCurrency]="data"></app-send-step5>
                 </ng-template>
             </mat-step>
-
-            <mat-step
-                *ngIf="paymentRequestForm.get('type')?.value?.paymentType != 'planPayment' && paymentRequestForm.get('type')?.value?.paymentType != 'salary' && paymentRequestForm.get('type')?.value?.paymentType != 'upload_file'">
-                <!-- <app-send-summaryStep [formStepper]="formStepper" [createPayment]="paymentRequestForm.get('createPayment')"
-        [senderName]="paymentRequestForm?.value?.beneficiaryName?.benificiaryId?.bankAccountHolderName" [bankDetails]="paymentRequestForm?.value?.beneficiaryName?.bankDetails"
-         [type]="paymentRequestForm.get('type')" [beneficiaryName]="paymentRequestForm.get('beneficiaryName')" [futurePayment]="paymentRequestForm.get('futurePayment')" [activeWalletCurrency]="data"></app-send-summaryStep> -->
-            </mat-step>
-            <mat-step
-                *ngIf="paymentRequestForm?.value.type.paymentType != 'planPayment' && paymentRequestForm.get('type')?.value?.paymentType != 'salary' && paymentRequestForm?.value.type.paymentType != 'future_payment'">
-                <ng-template matStepContent>
-                    <!-- <app-complete-step
-          title="Currency Simplified"
-            message="" msg="You have sent a payment of" amount="{{paymentRequestForm?.value?.createPayment?.chargeCurrency }}{{ paymentRequestForm?.value?.createPayment?.amount }}"
-            beneficiary="from your"
-            beneficiaryName = "{{ paymentRequestForm?.value?.beneficiaryName?.currency }}"  to="to"
-            accountName="{{ paymentRequestForm?.value?.beneficiaryName?.benificiaryId?.bankAccountHolderName }}"
-            [buttonText]="paymentFromDashboard ? 'Back to Dashboard' : 'Back to my wallet'" [navigateTo]="paymentFromDashboard ? (subSite ? subSite + 'dashboard' : '/dashboard') : (subSite ? subSite + 'wallets' : '/wallets')"
-            ></app-complete-step> -->
-                </ng-template>
-            </mat-step>
-            <mat-step *ngIf="paymentRequestForm?.value.type.paymentType == 'planPayment'">
-                <ng-template matStepContent>
-                    <!-- <app-complete-step
-          message="In case the conversion will be made we will send {{ paymentRequestForm?.value?.createPayment?.chargeCurrency }}{{ paymentRequestForm?.value?.createPayment?.amount }} To:{{ paymentRequestForm?.value?.beneficiaryName?.benificiaryId?.bankAccountHolderName }} on {{currentDate | date}}."
-          [buttonText]="paymentFromDashboard ? 'Back to Dashboard' : 'Back to my wallet'" [navigateTo]="paymentFromDashboard ? (subSite ? subSite + 'dashboard' : '/dashboard') : (subSite ? subSite + 'wallets' : '/wallets')" classes="blue-clr"></app-complete-step> -->
-                </ng-template>
-            </mat-step>
-            <mat-step *ngIf="paymentRequestForm.get('type')?.value?.paymentType == 'salary'">
-                <ng-template matStepContent>
-                    <!-- <app-complete-step
-          message=""
-          [buttonText]="paymentFromDashboard ? 'Back to Dashboard' : 'Create new payment'" [salaryButton]=true  [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [navigateTo]="paymentFromDashboard ? (subSite ? subSite + 'dashboard' : '/dashboard') : (subSite ? subSite + 'wallets' : '/wallets')" classes="blue-clr"></app-complete-step> -->
-                </ng-template>
-            </mat-step>
-            <!-- <mat-step *ngIf="paymentRequestForm?.value.type.paymentType == 'future_payment'">
-        <ng-template matStepContent>
-          <app-complete-step
-          message="Your action was successful made"
-          [buttonText]="paymentFromDashboard ? 'Back to Dashboard' : 'Back to my wallet'" [navigateTo]="paymentFromDashboard ? '/dashboard' : '/wallets'" classes="blue-clr"></app-complete-step>
-        </ng-template>
-      </mat-step> -->
         </mat-stepper>
     </form>
 </mat-dialog-content>

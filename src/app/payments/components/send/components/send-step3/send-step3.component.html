@@ -26,6 +26,7 @@
                                 <mat-select class="form-control" id="ss3-fp-transfer-type" name="currency"
                                     [value]="benificiaryCurrency" [disabled]="true">
                                     <mat-select-trigger>
+                                        
                                         <ng-container *ngFor="let currencyActive of activeCurrency">
                                             <span *ngIf="currencyActive?.wallet_Currency?.code == currency">
                                                 <img class="currencyActive-image" [src]="currencyActive.wallet_Flag"

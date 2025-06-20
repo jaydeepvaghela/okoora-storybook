@@ -270,7 +270,7 @@ export class SendStep2Component implements OnInit {
     this.showLoader = true;
 
     // Generate the currency pair locally
-    const currencyPair = (selectedCurrency + benificiaryCurrency).toUpperCase();
+    const currencyPair = (`${selectedCurrency || ''}${benificiaryCurrency || ''}`).toUpperCase();
     this.currencyPairs = currencyPair;
 
     if (currencyPair) {
@@ -352,7 +352,6 @@ export class SendStep2Component implements OnInit {
     this.futurePayment.patchValue({ 'expiryDate': ev.value });
   }
   movePayerPage() {
-    // this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + `${AppPages.Contacts}` : `${AppPages.Contacts}`]);
   }
 
   async onFileSelect(event: any) {

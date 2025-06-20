@@ -143,12 +143,76 @@ export class SendStep3Component implements AfterViewInit {
   }
 
   ngOnChanges() {
-    this.benificiaryCurrency = this.currency;
+    this.benificiaryCurrency = this.beneficiaryName.bankDetails.currency;
+    console.log('this.benificiaryCurrency', this.benificiaryCurrency)
     this.createFuturePaymentErr = '';
   }
 
   ngOnInit() {
-    this.benificiaryCurrency = this.currency;
+    console.log('beneficiaryName.', this.beneficiaryName)
+    // if (!this.beneficiaryName.bankDetails) {
+    //   this.beneficiaryName = {
+    //     "bankDetails": {
+    //       "id": "54518c61-69f5-4a21-b28a-22398646998b",
+    //       "status": 2,
+    //       "bankAccountHolderEmail": "bebiyij325@cironex.com",
+    //       "bankAccountHolderName": "Goha",
+    //       "bankAccountHolderNickname": null,
+    //       "firstName": null,
+    //       "lastName": null,
+    //       "bankAccountHolderHebrewName": null,
+    //       "beneficiaryIdNumber": "52154564",
+    //       "beneficiaryCountry": "il",
+    //       "beneficiaryState": null,
+    //       "beneficiaryCity": "Petah Tikva",
+    //       "beneficiaryStreet": null,
+    //       "beneficiaryHouseNumber": null,
+    //       "beneficiaryZipCode": "65256541",
+    //       "bankFlag": "https://okoora-stage-api2023.azurewebsites.net/Images/BanksFlags/12.svg",
+    //       "currencyISO": {
+    //         "code": "ILS",
+    //         "sign": "₪",
+    //         "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png",
+    //         "currencyName": null
+    //       },
+    //       "currency": "ILS",
+    //       "paymentReason": 18,
+    //       "reasonDesc": null,
+    //       "bankCountry": "IL",
+    //       "bankName": "Bank Hapoalim B.M",
+    //       "bankAddress": null,
+    //       "bankNumber": "12",
+    //       "bankBranch": "11",
+    //       "iban": "IL150120110000000066666",
+    //       "swiftCode": "POALILIT",
+    //       "accountNumber": "66666",
+    //       "bankAccountType": 3,
+    //       "beneficiaryAccountType": 2,
+    //       "paymentTerms": null,
+    //       "ownAccount": 1,
+    //       "beneficiaryFiles": [],
+    //       "updatedAt": "2025-02-11T11:34:10.54",
+    //       "companyName": null,
+    //       "createdAt": "2025-02-11T11:34:10.54",
+    //       "deductionNum": null,
+    //       "beneficiaryStateResidenceRecipient": null,
+    //       "aba": null,
+    //       "beneficiaryAddress": "Petah Tikva,  65256541",
+    //       "routingCodeType": null,
+    //       "routingCodeValue": null,
+    //       "erpBeneficiaryId": null,
+    //       "erpService": null,
+    //       "isBeneficiaryBusinessCategoryLegit": false,
+    //       "relatedPayments": true
+    //     }
+    //   }
+    // }
+
+    this.benificiaryCurrency = this.beneficiaryName.bankDetails.currency;
+    // this.benificiaryCurrency = this.currency;
+    if (!this.currency) {
+      this.currency = this.benificiaryCurrency;
+    }
     this.accountHolderName = this.senderName;
     if (this.benificiaryCurrency) {
       this.showLoader = true;
@@ -166,6 +230,7 @@ export class SendStep3Component implements AfterViewInit {
     this._walletService.getAllBalanceList().subscribe((result) => {
       this.showBalanceListLoader = false;
       this.activeCurrency = result;
+      console.log('activeCurrencyactiveCurrency', this.activeCurrency)
     }, (err) => {
       this.showBalanceListLoader = false
     });
@@ -377,7 +442,8 @@ export class SendStep3Component implements AfterViewInit {
     this.showLoader = true;
 
     // Generate the currency pair locally
-    const currencyPair = (selectedCurrency + benificiaryCurrency).toUpperCase();
+    const currencyPair = (`${selectedCurrency || ''}${benificiaryCurrency || ''}`).toUpperCase();
+
     this.currencyPairs = currencyPair;
 
     if (currencyPair) {

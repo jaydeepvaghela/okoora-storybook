@@ -4,6 +4,8 @@
 
 ::ng-deep {
   .signature-modal {
+    max-width: 882px;
+    width: 100%;
     .mat-mdc-dialog-container {
       .mdc-dialog__surface {
         padding: 20px;

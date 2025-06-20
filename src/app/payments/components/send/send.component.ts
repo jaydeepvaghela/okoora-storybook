@@ -1,10 +1,9 @@
-import { AfterContentChecked, ChangeDetectorRef, Component, Inject, ViewChild } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, Inject, Input, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { WalletBalanceListModal } from '../../../main-dashboard/models/WalletBalanceListModal';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
 import { SendStep2Component } from './components/send-step2/send-step2.component';
@@ -12,13 +11,6 @@ import { SendStep3Component } from './components/send-step3/send-step3.component
 import { SendStep4Component } from './components/send-step4/send-step4.component';
 import { SendStep5Component } from './components/send-step5/send-step5.component';
 
-interface DialogProps {
-  data: {
-    selectedwalletInfo: WalletBalanceListModal,
-    fromPayment: boolean,
-    payment: boolean
-  }
-}
 @Component({
   selector: 'app-send',
   templateUrl: './send.component.html',
@@ -42,8 +34,9 @@ export class SendComponent implements AfterContentChecked {
   calendarDate: any;
   paymentFromDashboard = false;
   hasSetSelectedIndex = false;
-
-
+  @Input() isStorybook: boolean = false;
+  @Input() currentStepIndex: number = 0;
+  
   constructor(
     public dialog: MatDialog,
     private fb: FormBuilder,
@@ -54,8 +47,6 @@ export class SendComponent implements AfterContentChecked {
 
   ngOnInit() {
     this.calendarDate = this.data.calendarDateValue;
-    // console.log('this.calendarDate',this.calendarDate)
-    // this.roles = this.auth.getRoleOfUser();
     this.paymentRequestForm = this.fb.group({
       type: this.fb.group({
         paymentType: ['', Validators.required],
@@ -111,9 +102,6 @@ export class SendComponent implements AfterContentChecked {
         beneficiaryName: ['', Validators.required],
         CurrencyToBeCharge: ['', Validators.required],
         updateCostType: ['', Validators.required]
-        //file: this.fb.array([]),
-        //OCRUploadData: [],
-
       })
     })
     this.paymentRequestForm.valueChanges.subscribe(value => {
@@ -133,11 +121,11 @@ export class SendComponent implements AfterContentChecked {
 
   
   ngAfterContentChecked(): void {
-    if (this.data?.type && !this.hasSetSelectedIndex) {
+    if (!this.isStorybook && this.data?.type && !this.hasSetSelectedIndex) {
       if (this.formStepper) {
         this.formStepper.selectedIndex = 1;
         this.cd.detectChanges();
-        this.hasSetSelectedIndex = true;  // Prevent further changes
+        this.hasSetSelectedIndex = true;
       }
     }
   }
@@ -146,7 +134,6 @@ export class SendComponent implements AfterContentChecked {
   }
 
   paymentMethod(ev: any) {
-    // this.ispaymentmanually =  ev.value == 'payment_manually';
   }
 
   stepChange(stepper: any) {
