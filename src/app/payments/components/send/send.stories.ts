@@ -153,8 +153,6 @@ const meta: Meta<SendComponent> = {
 
 export default meta;
 
-const activeCurrency = of(balanceList)
-
 type Story = StoryObj<SendComponent>;
 
 export const Step2: Story = {
@@ -168,16 +166,22 @@ export const Step2: Story = {
   }
 };
 
-export const Step3: Story = {
-  name: 'Step 2 - Payment Info',
-  args: {
-    data: {
-      ...mockDialogData,
-      type: 'future_payment'
-    },
-    currentStepIndex: 2,
-  }
-};
+// export const Step3: Story = {
+//   name: 'Step 2 - Payment Info',
+//   args: {
+//     data: {
+//       ...mockDialogData,
+//       type: 'future_payment'
+//     },
+//     currentStepIndex: 2,
+//   }
+  // render: (args) => ({
+  //   props: {
+  //     ...args,
+  //     paymentRequestForm: mockForm
+  //   }
+  // })
+// };
 
 export const Step4: Story = {
   name: 'Step 3 - Lock Rate',

@@ -1,9 +1,8 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit, DoCheck } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { catchError, combineLatest, debounceTime, filter, of, Subject } from 'rxjs';
-import { map, Observable, Subscription, timer } from 'rxjs';
-import moment from 'moment';
+import { combineLatest, debounceTime, filter, Subject } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { CountdownComponent } from 'ngx-countdown';
 import { WalletBalanceListModal } from '../../../../../main-dashboard/models/WalletBalanceListModal';
@@ -15,7 +14,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { InvoiceFuturePayment } from '../invoice-future-payment/invoice-future-payment.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
 @Component({
   selector: 'app-send-step3',
   templateUrl: './send-step3.component.html',
@@ -32,19 +30,15 @@ export class SendStep3Component implements AfterViewInit {
   @Output() newItemEvent: EventEmitter<string> = new EventEmitter();
   @Input('currency')
   currency!: string;
-  @Input('benificiaryId')
-  benificiaryId!: string;
+  @Input('benificiaryId') benificiaryId!: string;
   @Input('activeWalletCurrency') activeWalletCurrency: any;
   @Input('paymentType') paymentTypeValue: any;
-  @ViewChild('focusInput', { static: false })
-  focusInput!: ElementRef;
+  @ViewChild('focusInput', { static: false }) focusInput!: ElementRef;
   @Input('beneficiaryName') beneficiaryName: any;
   @Input('getBeneficiary') getBeneficiary: any;
   @Input('futurePayment') futurePayment?: any;
-  @ViewChild('cd')
-  counter!: CountdownComponent;
+  @ViewChild('cd') counter!: CountdownComponent;
   typeSelect = 'drp-down';
-  loading: boolean = false
   isApproved: any;
   private stop$ = new Subject();
   isDestroyed: boolean;
@@ -52,9 +46,6 @@ export class SendStep3Component implements AfterViewInit {
   activeCurrency!: WalletBalanceListModal[];
   files: File[] = [];
   benificiaryCurrency!: string;
-  firstDropDown!: string;
-  roles: any;
-  isForMyself = false;
   isForSomeOneElse = false;
   chargeAmount: any = 0;
   spinner!: boolean;
@@ -93,26 +84,20 @@ export class SendStep3Component implements AfterViewInit {
   signaturePad!: string;
   timerSubscription: any;
   refreshTokenFlag: boolean = true;
-  fileSave: any
   minDate = new Date();
   spotRate: any;
   highestTargetRate!: number;
   lowestTargetRate!: number;
   targateRateRange!: string;
   currencyPairs: any;
-  FinalDirection: any;
-  paymentRequestId: any;
   updateCostDisabledNext: boolean = true;
   strongCurrency!: string;
   weakCurrency!: string;
   showLoader = false;
-  errorMsgShow = false;
   validForm = false;
   spot!: string;
   futurePaymentCurrency: any
   costListUpdate: any = []
-  firstAmount: any;
-  secondAmount: any;
   focus = true
   apiCallSubscription!: Subscription;
   createFuturePaymentResponse: any;
@@ -120,13 +105,10 @@ export class SendStep3Component implements AfterViewInit {
   buyfuturePaymentCurrency: any;
   showBalanceListLoader = false;
   activeCurrencyData = ''
-  futurePaymentStrategyId!: number | null;
-  userAffiliate: any;
   config = { leftTime: 0, format: 'mm:ss' };
   transferTypeSelected: boolean = false;
   dialogOpen = false;
   fPRefreshSubscription!: Subscription;
-  fpRefreshData: any;
   costType!: any;
 
   constructor(
@@ -150,63 +132,6 @@ export class SendStep3Component implements AfterViewInit {
 
   ngOnInit() {
     console.log('beneficiaryName.', this.beneficiaryName)
-    // if (!this.beneficiaryName.bankDetails) {
-    //   this.beneficiaryName = {
-    //     "bankDetails": {
-    //       "id": "54518c61-69f5-4a21-b28a-22398646998b",
-    //       "status": 2,
-    //       "bankAccountHolderEmail": "bebiyij325@cironex.com",
-    //       "bankAccountHolderName": "Goha",
-    //       "bankAccountHolderNickname": null,
-    //       "firstName": null,
-    //       "lastName": null,
-    //       "bankAccountHolderHebrewName": null,
-    //       "beneficiaryIdNumber": "52154564",
-    //       "beneficiaryCountry": "il",
-    //       "beneficiaryState": null,
-    //       "beneficiaryCity": "Petah Tikva",
-    //       "beneficiaryStreet": null,
-    //       "beneficiaryHouseNumber": null,
-    //       "beneficiaryZipCode": "65256541",
-    //       "bankFlag": "https://okoora-stage-api2023.azurewebsites.net/Images/BanksFlags/12.svg",
-    //       "currencyISO": {
-    //         "code": "ILS",
-    //         "sign": "₪",
-    //         "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png",
-    //         "currencyName": null
-    //       },
-    //       "currency": "ILS",
-    //       "paymentReason": 18,
-    //       "reasonDesc": null,
-    //       "bankCountry": "IL",
-    //       "bankName": "Bank Hapoalim B.M",
-    //       "bankAddress": null,
-    //       "bankNumber": "12",
-    //       "bankBranch": "11",
-    //       "iban": "IL150120110000000066666",
-    //       "swiftCode": "POALILIT",
-    //       "accountNumber": "66666",
-    //       "bankAccountType": 3,
-    //       "beneficiaryAccountType": 2,
-    //       "paymentTerms": null,
-    //       "ownAccount": 1,
-    //       "beneficiaryFiles": [],
-    //       "updatedAt": "2025-02-11T11:34:10.54",
-    //       "companyName": null,
-    //       "createdAt": "2025-02-11T11:34:10.54",
-    //       "deductionNum": null,
-    //       "beneficiaryStateResidenceRecipient": null,
-    //       "aba": null,
-    //       "beneficiaryAddress": "Petah Tikva,  65256541",
-    //       "routingCodeType": null,
-    //       "routingCodeValue": null,
-    //       "erpBeneficiaryId": null,
-    //       "erpService": null,
-    //       "isBeneficiaryBusinessCategoryLegit": false,
-    //       "relatedPayments": true
-    //     }
-    //   }
-    // }
 
     this.benificiaryCurrency = this.beneficiaryName.bankDetails.currency;
     // this.benificiaryCurrency = this.currency;
@@ -216,14 +141,6 @@ export class SendStep3Component implements AfterViewInit {
     this.accountHolderName = this.senderName;
     if (this.benificiaryCurrency) {
       this.showLoader = true;
-      // this._walletService
-      //   .geBalanceByCurrency(this.benificiaryCurrency)
-      //   .subscribe((data) => {
-      //     this.showLoader = false
-      //     this.createPayment?.get('chargeCurrency')?.setValue(data?.wallet_Currency?.sign); // set currency sign
-      //   }, (err) => {
-      //     this.showLoader = false
-      //   });
     }
 
     this.showBalanceListLoader = true;
@@ -316,16 +233,6 @@ export class SendStep3Component implements AfterViewInit {
 
   futurePaymentRefresh() {
     this.showLoader = true;
-    // this.fPRefreshSubscription = this.walletService.refreshQuote(this.requestID).subscribe((result)=> {
-    //     this.config = { leftTime: 60, format: 'mm:ss' };
-    //     this.showLoader = false;
-    //     this.updateCost = result?.cost ? result?.cost : this.updateCost
-    //     this.cd.detectChanges();
-    //     this.fpRefreshData = result;
-    //   }, err => {
-    //     this.showLoader = false;
-    //     // this.refreshFuturePaymentErr = err?.error?.apiErrorMessage[0];
-    //   })
   }
 
   createFuturePayment() {
@@ -474,121 +381,17 @@ export class SendStep3Component implements AfterViewInit {
     }
   }
 
-
   targetRateRange() {
     this.highestTargetRate = this.createPayment?.value?.currentRate * 1.05;
     this.lowestTargetRate = this.createPayment?.value?.currentRate * 0.95;
     this.targateRateRange = this.lowestTargetRate?.toFixed(4) + '-' + this.highestTargetRate?.toFixed(4)
   }
 
-  // complete(stepper: any, progress: any) {
-  //   const options = {
-  //     minimumFractionDigits: 2,
-  //     maximumFractionDigits: 2
-  //   };
-  //   let totalSteps = stepper.steps.length;
-  //   let currentStep = stepper.selectedIndex + 1;
-  //   progress.value = (currentStep * 100) / totalSteps;
-  //   if (this.paymentTypeValue?.paymentType != 'planPayment') {
-  //     this.createPayment.value.requestId = this.requestID;
-  //     this.createPayment.value.subscription = this.timerSubscription
-  //     var user = JSON.parse(localStorage.getItem('user') || '{}');
-  //     this.createPayment.value.userName = user.fullName;
-  //     this.isDestroyed = false;
-  //     this.createPayment.value.CurrencyImage = this.activeCurrency.find(x => x.wallet_Currency.code == this.benificiaryCurrency)?.wallet_Flag
-  //     stepper.next();
-  //     this.disableNextButton = false
-  //   } else {
-  //     if (this.createPayment?.value?.spotRate && this.spotRate) {
-  //       if (parseFloat(this.createPayment?.value?.spotRate) > parseFloat(this.spotRate)) {
-  //         this.FinalDirection = Direction.Up;
-  //       } else if (parseFloat(this.createPayment?.value?.spotRate) < parseFloat(this.spotRate)) {
-  //         this.FinalDirection = Direction.Down;
-  //       } else if (parseFloat(this.createPayment?.value?.spotRate) == parseFloat(this.spotRate)) {
-  //         this.errorMsgShow = true;
-  //       }
-  //     }
-  //     if (this.FinalDirection) {
-  //       this.showLoader = true
-  //       let data = {
-  //         'buy': this.benificiaryCurrency,
-  //         'sell': !this.activeWalletCurrency?.payment ? this.activeWalletCurrency?.selectedwalletInfo?.wallet_Currency?.code : this.activeCurrencyData,
-  //         'targetRate': this.createPayment?.value?.spotRate,
-  //         'expiry': moment(this.createPayment?.value?.expiryDate).format(DateFormat.orderFormate),
-  //         'action': 3,
-  //         'pair': this.currencyPairs,
-  //         'amount': this.createPayment?.controls?.amount?.value,
-  //         "boardID": '',
-  //         "exposureID": '',
-  //         "amountCCy": this.benificiaryCurrency,
-  //         "remarks": "",
-  //         "direction": this.FinalDirection,
-  //         "PaymentRequestId": this.paymentRequestId,
-  //         "creationSpot": this.spotRate
-  //       }
-  //       this.walletService.CreateExposure(data).subscribe(
-  //         (data: any) => {
-  //           let needStamp = data[0]?.code == 831;
-  //           if (needStamp) {
-  //             this.stampUpload();
-  //           }
-  //           this.showLoader = false
-  //           this.refreshTokenFlag = false
-  //           this.paymentRequestAPIError = '';
-  //           if (data?.status) {
-  //             stepper.next();
-  //             this.validatedCompletePayment = true;
-  //           } else {
-  //             this.validatedCompletePayment = false;
-  //           }
-  //           // this.refreshQuoteAPI.unsubscribe();
-  //           // this.refreshInterval.unsubscribe();
-  //           this.timerSubscription.unsubscribe()
-  //         },
-  //         (err) => {
-  //           this.showLoader = false
-  //           this.paymentRequestAPIError = err?.error?.apiErrorMessage[0] ?? '';
-  //           if (this.availableBlance == 0 || this.paymentRequestAPIError == 'Missing Funds') {
-  //             this.paymentRequestAPIError = "You don't have enough money in your account";
-  //           }
-  //         }
-  //       );
-  //     } else {
-  //       this.showLoader = false;
-  //     }
-  //   }
-  // }
-
   nextStep(stepper: any, progress: any) {
     this.disableNextButton = true
     this.showLoader = false;
     this.isDestroyed = true;
     this.dialogOpen = true;
-    if (this.type.get('paymentType').value === 'future_payment' && this.userAffiliate?.afiiliate.currency === 'EUR') {
-      // const dialogRef = this.dialog.open(ApprovalProtectiveDialogComponent, {
-      //   width: '600px',
-      //   disableClose: true,
-      //   panelClass: 'approval-protective-dialog',
-      //   data: {
-      //     // strategyId: this.futurePaymentStrategyId,
-      //     beneficiaryName: this.futurePayment.get('beneficiaryId').value.bankAccountHolderName,
-      //     futurePaymentCreateResponse: this.futurePayment.value.createPaymentResponse,
-      //     updatedCost: this.updateCost,
-      //     transaction: this.activeWalletCurrency?.transaction,
-      //     time: (this.counter.left) / 1000,
-      //     fpRefreshData: this.fpRefreshData
-      //   }
-      // }).afterClosed().subscribe(result => {
-      //   if (this.userAffiliate.afiiliate.currency === 'EUR') {
-      //     if (result == 'done') {
-      //       stepper.selectedIndex = 6;
-      //     } else if (result?.leftTime) {
-      //       this.dialogOpen = false;
-      //       this.config = { leftTime: result?.leftTime, format: 'mm:ss' };
-      //     }
-      //   }
-      // })
-    }
     if (this.type.get('paymentType').value === 'future_payment') {
       const dialogRef = this.dialog.open(InvoiceFuturePayment, {
         width: '600px',
@@ -609,23 +412,6 @@ export class SendStep3Component implements AfterViewInit {
 
     if (this.requestID) {
       this.stop$.complete();
-
-      // if (this.needSign || (this.needFile && this.uploadFileDone)) {
-      //   // this.walletService
-      //   //   .uploadPaymentFile(this.requestID, this.fileSave.body?.fileType, this.fileSave.formData)
-      //   //   .subscribe((response) => {
-      //   //     this.showLoader = false
-      //   //     this.complete(stepper, progress)
-      //   //     this.uploadSignaureError = false;
-      //   //   },
-      //   //     (err) => {
-      //   //       // console.error({ err })
-      //   //       this.showLoader = false
-      //   //     });
-      // }
-      // else {
-      //   this.complete(stepper, progress)
-      // }
     }
     this.showLoader = false;
   }
@@ -666,26 +452,6 @@ export class SendStep3Component implements AfterViewInit {
   }
 
   stampUpload() {
-    // this.commonDialog
-    //   .confirmDialog({
-    //     title: 'Please confirm action',
-    //     message: 'You have to upload the stamp in order to perform this operation.',
-    //     confirmText: 'Confirm',
-    //     cancelText: 'Cancel',
-    //   })
-    //   .subscribe((isConfirmed) => {
-    //     if (isConfirmed) {
-    //       this.dialog
-    //         .open(UserPreferenceComponent, {
-    //           width: '1095px',
-    //           maxWidth: '1095px',
-    //           disableClose: true,
-    //           panelClass: 'user-preference'
-    //         }).afterClosed().subscribe((shouldReload: any) => {
-    //           this.dialogRef.close();
-    //         })
-    //     }
-    //   });
   }
 
   createPaymentRequest() {
@@ -698,84 +464,6 @@ export class SendStep3Component implements AfterViewInit {
 
     };
     this.paymentRequestAPIError = '';
-    // if (body && body?.amount && body?.currency) {
-    //   this.spinner = true;
-    //   this.walletService.createPaymentRequest(body).subscribe(
-    //     (data: any) => {
-    //       this.showLoader = false;
-    //       this.disableNextButton = false;
-    //       this.createPaymentAPIError = '';
-    //       this.requestID = data?.requestId;
-    //       this.needFile = data?.signAndFiles?.needFile;
-    //       this.needSign = data?.signAndFiles?.needSign;
-    //       this.needStamp = data?.signAndFiles?.needStamp;
-    //       this.ourCost = data?.costList[1]?.value;
-    //       this.beneficiaryName.secondAmount = data?.paymentRequst?.spot;
-    //       if (this.needStamp) {
-    //         this.stampUpload();
-    //       }
-    //       if (this.paymentTypeValue?.paymentType != 'planPayment') {
-    //         this.chargeAmount = data?.paymentRequst?.charge;
-    //       }
-
-    //       this.costList = data?.costList;
-    //       if (this.costList) {
-    //         this.createPayment.patchValue({ 'costType': false });
-    //         if (this.costList.length == 1) {
-    //           this.createPayment.get('costType').disable();
-    //         }
-    //         this.changeCostType(this.createPayment?.value?.costType, this.requestID)
-    //         this.costList.forEach(element => {
-    //           this.costListUpdate.push(element.key.slice(4))
-    //         });
-    //       }
-    //       this.fileType = data?.signAndFiles?.fileType;
-    //       this.fxRate = data?.paymentRequst?.spot;
-    //       this.paymentRequestId = data?.requestId
-    //       this.getFXRate(this.fxRate);
-
-    //       this.paymentType = data?.paymentRequst?.paymentType;
-    //       if (body && body?.amount && body?.currency) {
-    //         this.spinner = false;
-    //       }
-    //       if (data) {
-    //         this.getBalanceByCurrency(body?.currency);
-    //       }
-    //       if (this?.paymentType == 1 && this.paymentTypeValue?.paymentType != 'planPayment') {
-    //         if (this.requestID && this.refreshTokenFlag) {
-    //           // Set a flag to prevent the second call to refresh()
-    //           this.refreshTokenFlag = false;
-    //           this.timerSubscription = timer(15000, 15000)
-    //             .pipe(
-    //               map(() => {
-    //                 if (!this.isDestroyed) {
-    //                   this.disableNextButton = true;
-    //                 }
-    //               })
-    //             )
-    //             .subscribe();
-
-    //         }
-
-    //       }
-    //       if (this.createPayment?.value?.costType) {
-    //         this.changeCostType(this.createPayment?.value?.costType, this.requestID)
-    //       }
-
-    //     },
-    //     (err) => {
-    //       this.disableNextButton = false;
-    //       this.showLoader = false;
-    //       this.createPaymentAPIError = err?.error?.apiErrorMessage[0] ?? '';
-    //       this.spinner = false;
-    //     }
-    //   );
-
-
-    // } 
-    // else {
-    //   this.showLoader = false
-    // }
   }
 
   changeCostType(ev: any, requestID: any, typeSelect?: any) {
@@ -784,7 +472,6 @@ export class SendStep3Component implements AfterViewInit {
     this.transferTypeSelected = false;
     this.fPRefreshSubscription?.unsubscribe();
 
-    // Dynamically determine selected cost type
     if (typeSelect === 'DRP-DOWN') {
       const selectedItem = this.costList.find(item => item.key === ev);
       if (selectedItem) {
@@ -794,7 +481,6 @@ export class SendStep3Component implements AfterViewInit {
         this.costType = null;
       }
     } else {
-      // Checkbox type
       if (ev?.checked === true) {
         const selectedItem = this.costList[1]; // assuming second item = checked
         this.costType = parseInt(selectedItem.key.split('-')[0].trim(), 10);
@@ -896,15 +582,6 @@ export class SendStep3Component implements AfterViewInit {
 
   getBalanceByCurrency(currency: string) {
     this.showLoader = true
-    // this._walletService
-    //   .geBalanceByCurrency(currency)
-    //   .subscribe((data) => {
-    //     this.showLoader = false
-    //     this.availableBlance = data?.wallet_Amount;
-    //     this.currencySign = data?.wallet_Currency?.sign;
-    //   }, (err) => {
-    //     this.showLoader = false
-    //   });
   }
 
   ngOnDestroy(): void {
