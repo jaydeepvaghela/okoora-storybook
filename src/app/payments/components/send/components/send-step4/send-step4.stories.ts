@@ -138,7 +138,7 @@ const mockFormStepperProgress = {
 };
 
 const meta: Meta<SendStep4Component> = {
-  title: 'Payments/Payment Dashboard/Lock Rate & Pay Later/Lock Rate Steps/Step 3: Lock rate without Signature Popup',
+  title: 'Payments/Payment Dashboard/Lock Rate & Pay Later/Lock Rate Steps/Step 3: Lock Rate/Lock rate without Signature Popup',
   component: SendStep4Component,
   parameters: {
     layout: 'fullscreen',

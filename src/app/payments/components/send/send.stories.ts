@@ -101,7 +101,7 @@ const mockForm = fb.group({
 });
 
 const meta: Meta<SendComponent> = {
-  title: 'Payments/Payment Dashboard/Lock Rate & Pay Later/Lock Rate Steps',
+  title: 'Payments/Payment Dashboard/Lock Rate & Pay Later/Lock Rate Steps/Step 3: Lock Rate/With Signature Popup',
   component: SendComponent,
   decorators: [
     moduleMetadata({
@@ -182,7 +182,7 @@ type Story = StoryObj<SendComponent>;
 // };
 
 export const Step4: Story = {
-  name: 'Step 3 - Lock Rate with Signature Popup',
+  name: 'Lock Rate with Signature Popup',
   args: {
     data: {
       ...mockDialogData,
