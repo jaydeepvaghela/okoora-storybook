@@ -10,7 +10,7 @@ class MockWalletsService {
 }
 
 const meta: Meta<ApprovalProtectiveDialogComponent> = {
-  title: 'Payments/Payment Dashboard/Lock Rate & Pay Later/Lock Rate Steps/Step 4 - Your Own Rate/Approval Protection Popup',
+  title: 'Payments/Payment Dashboard/Lock Rate & Pay Later/Lock Rate Steps/Step 4 - Choose Rate/Approval Protection Popup',
   component: ApprovalProtectiveDialogComponent,
   decorators: [
     moduleMetadata({

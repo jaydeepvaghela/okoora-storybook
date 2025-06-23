@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 const meta: Meta<WelldoneNewDashboardComponent> = {
-  title: 'Payments/Payment Dashboard/Lock Rate & Pay Later/Lock Rate Steps/Step 4 - Your Own Rate/Approval Protection Popup/Completion',
+  title: 'Payments/Payment Dashboard/Lock Rate & Pay Later/Lock Rate Steps/Step 4 - Choose Rate/Approval Protection Popup/Completion',
   component: WelldoneNewDashboardComponent,
   decorators: [
     moduleMetadata({

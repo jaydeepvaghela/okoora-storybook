@@ -7,7 +7,7 @@
     </div>
     <div class="dialog-icon sendMoney"></div>
 </div>
-<mat-dialog-content class="mat-typography dialog-body">
+<mat-dialog-content class="mat-typography dialog-body d-block">
     <form class="form-send-stepper" [formGroup]="paymentRequestForm" (ngSubmit)="onSubmit()">
         <mat-progress-bar #formStepperProgress class="stepper-progressbar" mode="determinate" value="20"
             [hidden]="isLastStep"></mat-progress-bar>

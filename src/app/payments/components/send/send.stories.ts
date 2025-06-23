@@ -13,8 +13,6 @@ import { SendStep4Component } from './components/send-step4/send-step4.component
 import { SendStep5Component } from './components/send-step5/send-step5.component';
 import { DateAdapter, NativeDateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { balanceList } from '../../../main-dashboard/dashboard-data/balanceList-data';
-import { of } from 'rxjs';
 
 const mockDialogData = {
   type: 'future_payment',
@@ -155,16 +153,16 @@ export default meta;
 
 type Story = StoryObj<SendComponent>;
 
-export const Step2: Story = {
-  name: 'Step 1 - Beneficiary Info',
-  args: {
-    data: {
-      ...mockDialogData,
-      type: false
-    },
-    currentStepIndex: 1
-  }
-};
+// export const Step2: Story = {
+//   name: 'Step 1 - Beneficiary Info',
+//   args: {
+//     data: {
+//       ...mockDialogData,
+//       type: false
+//     },
+//     currentStepIndex: 1
+//   }
+// };
 
 // export const Step3: Story = {
 //   name: 'Step 2 - Payment Info',
@@ -174,17 +172,17 @@ export const Step2: Story = {
 //       type: 'future_payment'
 //     },
 //     currentStepIndex: 2,
-//   }
-  // render: (args) => ({
-  //   props: {
-  //     ...args,
-  //     paymentRequestForm: mockForm
-  //   }
-  // })
+//   },
+//   render: (args) => ({
+//     props: {
+//       ...args,
+//       paymentRequestForm: mockForm
+//     }
+//   })
 // };
 
 export const Step4: Story = {
-  name: 'Step 3 - Lock Rate',
+  name: 'Step 3 - Lock Rate with Signature Popup',
   args: {
     data: {
       ...mockDialogData,
@@ -194,13 +192,13 @@ export const Step4: Story = {
   }
 };
 
-export const Step5: Story = {
-  name: 'Step 4 - Your Own Rate',
-  args: {
-    data: {
-      ...mockDialogData,
-      type: 'future_payment'
-    },
-    currentStepIndex: 4
-  }
-};
+// export const Step5: Story = {
+//   name: 'Step 4 - Your Own Rate',
+//   args: {
+//     data: {
+//       ...mockDialogData,
+//       type: 'future_payment'
+//     },
+//     currentStepIndex: 4
+//   }
+// };

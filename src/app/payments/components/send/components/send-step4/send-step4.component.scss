@@ -10,7 +10,17 @@
     }
   }
 
-  .form-control-wrapper {
+  .stepper-action {
+    .next-button {
+      font-family: $manrope;
+    }
+
+    .previous-button {
+      width: 50px;
+    }
+  }
+
+  .form-control-wrapper { 
     width: 446px;
 
     @media only screen and (max-width: 767px) {

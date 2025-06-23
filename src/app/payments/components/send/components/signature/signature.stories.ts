@@ -11,7 +11,7 @@ class MockWalletsService {
 }
 
 const meta: Meta<SignatureComponent> = {
-  title: 'Payments/Payment Dashboard/Lock Rate & Pay Later/Lock Rate Steps/Step 3 - Lock Rate/Signature Popup',
+  title: 'Payments/Payment Dashboard/Lock Rate & Pay Later/Lock Rate Steps/Signature Popup',
   component: SignatureComponent,
   tags: ['autodocs'],
   decorators: [

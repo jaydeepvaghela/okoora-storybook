@@ -131,6 +131,15 @@
     }
   }
 
+  .stepper-action {
+      .next-button {
+        font-family: $manrope;
+      }
+      .previous-button {
+        width: 50px;
+      }
+    }
+
   mat-checkbox {
     margin-top: 26px;
 

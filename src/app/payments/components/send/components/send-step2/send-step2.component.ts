@@ -10,7 +10,6 @@ import { BenificiaryModel, BenificiaryStatus } from '../../../../models/Benifici
 import { Direction } from '../../../../../main-dashboard/enums/riskProfitLoss.enum';
 import { WalletsService } from '../../../../../main-dashboard/services/wallets.service';
 import { getAllBeneficieryByAccount } from '../../../../payments-data/all-beneficiaries-data';
-// import { SendStep3Component } from '../send-step3/send-step3.component';
 import DateFormat from '../../../../../shared/constants/DateFormat';
 import { CommonModule } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -186,61 +185,8 @@ export class SendStep2Component implements OnInit {
     // );
   }
 
-  // commonCodeForManually(stepper: any, progress: any) {
-  //   this.createPayment.reset()
-  //   this._commonService.getCurrentRate(this.beneficiaryName.value.currency, this.activeWalletCurrency?.selectedwalletInfo?.wallet_Currency?.code).pipe(
-  //     tap((res: any) => {
-  //       let keyExist = Object.keys(res).some(key => key === this.beneficiaryName.value.currency);
-  //       if (keyExist) {
-  //         this.beneficiaryName.patchValue({
-  //           firstAmount: res[this.beneficiaryName.value.currency],
-  //           secondAmount: res[this.activeWalletCurrency?.selectedwalletInfo?.wallet_Currency?.code],
-  //         })
-  //       }
-  //       // this.currentExchangeRate = res?.rates;
-  //     })
-  //   ).subscribe();
-  //   this.walletService
-  //     .geBalanceByCurrency(this.beneficiaryName.value.currency)
-  //     .subscribe((data) => {
-  //       this.showLoader = false
-  //       this.createPayment?.get('chargeCurrency')?.setValue(data?.wallet_Currency?.sign); // set currency sign
-  //     }, (err) => {
-  //       this.showLoader = false
-  //     });
-  //   stepper.next()
-  //   let totalSteps = stepper.steps.length;
-  //   let currentStep = stepper.selectedIndex + 1;
-  //   progress.value = (currentStep * 100) / totalSteps;
-  //   if (this.createPayment.value.amount) {
-  //     this.walletService.setApiObs('amount')
-  //   }
-  //   this.sendstep3.ngOnInit();
-  //   this.sendstep3.ngAfterViewInit();
-  // }
-
   nextStep(stepper: any, progress: any) {
     this.createPayment.reset()
-    // this._commonService.getCurrentRate(this.beneficiaryName.value.currency, this.activeWalletCurrency?.selectedwalletInfo?.wallet_Currency?.code).pipe(
-    //   tap((res: any) => {
-    //     let keyExist = Object.keys(res).some(key => key === this.beneficiaryName.value.currency);
-    //     if (keyExist) {
-    //       this.beneficiaryName.patchValue({
-    //         firstAmount: res[this.beneficiaryName.value.currency],
-    //         secondAmount: res[this.activeWalletCurrency?.selectedwalletInfo?.wallet_Currency?.code],
-    //       })
-    //     }
-    //     // this.currentExchangeRate = res?.rates;
-    //   })
-    // ).subscribe();
-    // this.walletService
-    //   .geBalanceByCurrency(this.beneficiaryName.value.currency)
-    //   .subscribe((data) => {
-    //     this.showLoader = false
-    //     this.createPayment?.get('chargeCurrency')?.setValue(data?.wallet_Currency?.sign); // set currency sign
-    //   }, (err) => {
-    //     this.showLoader = false
-    //   });
     let totalSteps = stepper.steps.length;
     let currentStep = stepper.selectedIndex + 1;
     progress.value = (currentStep * 100) / totalSteps;
@@ -278,7 +224,6 @@ export class SendStep2Component implements OnInit {
       this.strongCurrency = currencyPair.slice(0, 3);
       this.weakCurrency = currencyPair.slice(3);
 
-      // Determine direction based on which currency is the beneficiary
       if (this.strongCurrency === benificiaryCurrency.toUpperCase()) {
         direction = Direction.Up;
       } else if (this.weakCurrency === benificiaryCurrency.toUpperCase()) {
@@ -329,7 +274,6 @@ export class SendStep2Component implements OnInit {
     if(this.activeWalletCurrency?.transaction){
       this.dialog.closeAll()
     }else{
-      // this.type.value.paymentType = 'upload_file';
     let totalSteps = stepper.steps.length;
     let currentStep = stepper.selectedIndex + 1;
     progress.value = (currentStep * 100) / totalSteps;
@@ -337,11 +281,7 @@ export class SendStep2Component implements OnInit {
   }
 
   createBenificiaryDialog() {
-    // const dialogRef = this.dialog.open(AddContactsComponent, {
-    //   width: '100vw',
-    //   maxWidth: '100vw',
-    //   disableClose: true,
-    // });
+
   }
 
   dateChanged(ev: any) {
@@ -371,14 +311,6 @@ export class SendStep2Component implements OnInit {
     } else {
       this.maximumFileReach = false;
     }
-
-    // for (var i = 0; i < this.files.length; i++) {
-    //   let formData = new FormData();
-    //   formData.append('file', this.files[i]);
-    //   let body = {
-    //     file: formData.append('file', this.files[i]),
-    //   };
-    // }
   }
 
   onFileChange(event: any) {
@@ -386,15 +318,7 @@ export class SendStep2Component implements OnInit {
   }
 
   sendManually() {
-    // if(this.type.value.paymentType == 'upload_file'){
-
-    // }
-    // this.type.patchValue({
-    //   paymentType: 'payment_manually'
-    // })
-
     this.paymentType = 'payment_manually';
-
   }
 
   holidayFilter = (date: Date | null): boolean => {
@@ -409,14 +333,6 @@ export class SendStep2Component implements OnInit {
 
   getNotradeList() {
     this.holidayDates = [];
-    let FromDate = moment(new Date()).format(DateFormat?.dateInput);
-    let ToDate = moment().add(1, 'year').format(DateFormat?.dateInput);
-    let currency = this.activeWalletCurrency?.selectedwalletInfo?.wallet_Currency?.code;
-    // this._commonService.noTradeList(FromDate, ToDate, currency).subscribe((data: any) => {
-    //   for (var i = 0; i < data.length; i++) {
-    //     this.holidayDates.push(new Date(moment(data[i]?.date).format(DateFormat.parse?.dateInput)));
-    //   }
-    // })
   }
 
   openBeneficiaryContainer() {

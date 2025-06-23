@@ -26,6 +26,7 @@
             [value]="futurePayment.get('createPaymentResponse').value?.futurePayment[1].strategyId"
             (change)="setStrategyId(futurePayment.get('createPaymentResponse').value?.futurePayment[1].strategyId);">
           <label for="ss4-fp-wihtCost">
+            <!-- <pre> {{futurePayment.get('createPaymentResponse').value | json }} </pre> -->
             <h5 class="heading">{{ futurePayment.get('createPaymentResponse').value?.futurePayment[1].cost }}</h5>
             <p class="description">If on the payment day the exchange rate is lower than your locked rate, you will
               enjoy the lower rate</p>
