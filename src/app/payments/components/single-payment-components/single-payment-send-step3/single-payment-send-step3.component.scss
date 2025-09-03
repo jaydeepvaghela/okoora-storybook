@@ -1,0 +1,456 @@
+@import "../../../../../assets/scss/variable";
+@import "../../../../../assets/scss/mixins";
+
+::ng-deep {
+    .single-payment-body {
+        .transfer-details-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 10px;
+            margin-bottom: 11px;
+
+            h4 {
+                color: #111827;
+                font-family: $he_heebo;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 28px;
+                margin-bottom: 0;
+            }
+
+            .copy-button-wrap {
+                width: 17px;
+                height: 17px;
+                position: relative;
+                background: none;
+                border: none;
+                outline: none;
+                padding: 0;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .copy-tooltip {
+                    min-width: 77px;
+                    padding: 3px 15px 5px;
+                    border-radius: 20px;
+                    background-color: var(--primary-blue);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    color: #fff;
+                    font-family: $inter;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 18px;
+                    position: absolute;
+                    top: -33px;
+                    z-index: 1;
+
+                    @media (max-width: 479px) {
+                        top: -33px;
+                        right: -8px;
+                    }
+
+                    &::before {
+                        content: "";
+                        width: 8px;
+                        height: 8px;
+                        background-color: var(--primary-blue);
+                        transform: rotate(-45deg);
+                        position: absolute;
+                        bottom: -4px;
+                        left: 0;
+                        right: 0;
+                        margin: 0 auto;
+                        z-index: -1;
+
+                        @media (max-width: 479px) {
+                            right: 12px;
+                            bottom: -3px;
+                            margin-left: auto;
+                            margin-right: 0;
+                        }
+                    }
+                }
+
+
+            }
+
+        }
+
+        .transfer-fee-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 35px 0 13px 0;
+
+            h4 {
+                color: #111827;
+                font-family: $he_heebo;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 28px;
+                margin-bottom: 0;
+            }
+        }
+
+        .transfer-details-list {
+            border-radius: 5px;
+            border: 1px solid #E5E7EB;
+            padding: 15px 20px;
+            margin-bottom: 14px;
+
+            @media (max-width: 1440px) {
+                padding: 10px 15px;
+                margin-bottom: 10px;
+            }
+
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                column-gap: 10px;
+                margin-bottom: 19px;
+                color: #374151;
+                font-family: $inter;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                letter-spacing: 1px;
+
+                @media (max-width: 1440px) {
+                    margin-bottom: 10px;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                strong {
+                    color: #111827;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .example-radio-group {
+            display: block;
+
+            .example-radio-button {
+                display: flex;
+                padding: 20px 30px 20px 5px;
+                height: 80px;
+                border: 1px solid #D1D5DB;
+                border-radius: 4px;
+                margin-bottom: 13px;
+
+                // &:first-child{
+                //     border-top: none;
+                // }
+
+                .transfer-fee-wrap {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    column-gap: 10px;
+
+                    font-family: $inter;
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 20px;
+
+                    label {
+                        color: #9CA3AF;
+
+                        span {
+                            color: #111827;
+                            font-family: $inter;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 20px;
+                        }
+                    }
+
+                    strong {
+                        color: #111827;
+                        text-align: right;
+                        font-family: 'Heebo';
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 20px;
+                    }
+
+                    .transfer-fee-type {
+                        color: #6B7280;
+                        line-height: 20px;
+                        font-family: $inter;
+                        font-weight: 400;
+                        width: 100%;
+                        font-style: normal;
+
+                        .text-highlight {
+                            color: var(--primary-blue);
+                            font-family: $inter;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 20px;
+                        }
+
+                        .transfer-title {
+                            color: #111827;
+                            font-family:  $inter;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 20px;
+                        }
+
+                        img {
+                            margin-bottom: 3px;
+                        }
+
+                        label {
+                            gap: 5px;
+                        }
+
+                        p {
+                            color: #9CA3AF;
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+
+                .mdc-form-field {
+                    width: 100%;
+
+                    .mdc-radio {
+                        padding-top: 0;
+                    }
+
+                    label:not(.transfer-text) {
+                        width: 100%;
+                        padding-left: 8px !important;
+
+                        @media screen and (max-width: 540px) {
+                            padding-left: 0 !important;
+                        }
+                    }
+                }
+
+            }
+
+            .checked-radio {
+                border-radius: 4px;
+                border: 1px solid var(--primary-blue);
+                background: var(--light-blue-header-bg);
+            }
+        }
+
+        .total-transaction-cost {
+            min-height: 56px;
+            padding: 20px;
+            background-color: #DBEAFE;
+            margin-bottom: 14px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 10px;
+
+            @media (max-width: 1440px) {
+                min-height: 50px;
+                padding: 10px 15px;
+                margin-bottom: 10px;
+                margin-top: 15px;
+            }
+
+            label {
+                color: #111827;
+                font-family: $inter;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+            }
+
+            strong {
+                color: #111827;
+                font-family: $inter;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 20px;
+                text-align: right;
+
+                @media (max-width: 1440px) {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .approve-check {
+
+            .mdc-form-field {
+                .mdc-checkbox {
+                    .mdc-checkbox__background {
+                        background-color: #E5E7EB !important;
+                        border-color: #E5E7EB !important;
+                    }
+                }
+            }
+
+            label {
+                color: #4B5563;
+                font-family: $inter;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 20px;
+                padding-left: 8px;
+                
+                span {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .transaction-error-msg {
+            color: #B91C1C;
+            font-family: $he_heebo;
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 7px;
+        }
+
+        .pay-btn-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 5px;
+            color: #D1D5DB;
+            font-family: $he_heebo;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 28px;
+            width: 100%;
+            min-height: 52px;
+            padding: 10px;
+            margin-top: 18px;
+            border-radius: 45px;
+            background-color: #111827;
+
+            span {
+                font-family: $inter;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 28px;
+            }
+
+            @media (max-width: 1440px) {
+                font-size: 16px;
+                line-height: 24px;
+                min-height: 40px;
+                padding: 8px;
+            }
+
+            .mat-mdc-progress-spinner {
+                width: 32px !important;
+                height: 32px !important;
+
+                @media (max-width: 1440px) {
+                    width: 26px !important;
+                    height: 26px !important;
+                }
+            }
+
+            &.disabled {
+                color: #6B7280;
+                background-color: #F3F4F6;
+
+                span {
+                    color: #6B7280;
+                    font-family: $inter;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 28px;
+                }
+            }
+        }
+    }
+
+    .refresh-quote-timer {
+        @include flex(center, center, row);
+        font-size: $font-14;
+        line-height: 16px;
+        font-weight: 500;
+        color: #4B5563;
+        font-family: $he_heebo;
+        margin-top: 47px;
+        text-align: center;
+
+        .count-down {
+            background-color: #FEE2E2;
+            color: #DC2626;
+            padding: 2px 10px;
+            border-radius: 50px;
+            margin-left: 4px;
+        }
+
+        @media screen and (max-width: 1440px) {
+            margin-top: 36px;
+        }
+    }
+
+    .transfer-custom-tooltip {
+
+        .tooltip-inner {
+            background-color: var(--primary-blue);
+            padding: 12px;
+            color: #FFF;
+            font-family: 'Heebo';
+            text-align: left;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            width: 100%;
+            min-width: 237px;
+            line-height: 18px;
+        }
+
+        .tooltip-arrow {
+            &:before {
+                border-top-color: var(--primary-blue);
+            }
+        }
+
+        &.w {
+            &--s {
+                width: 200px;
+            }
+        }
+
+        & .underlined-content {
+            text-decoration: underline !important;
+            background-color: transparent !important;
+
+            &:hover {
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    .footer-text {
+        color: #707070;
+        font-family: "Heebo", sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 15.22px;
+        margin: 19px 0 19px;
+        text-align: center;
+    }
+}

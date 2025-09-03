@@ -1,0 +1,25 @@
+<div class="create-an-alert-upper" *ngIf="visible">
+  <div class="create-an-alert-title">
+    <h3>Create a Rate Alert</h3>
+  </div>
+  <div class="currency-payment-rate slider-alert">
+    <div class="currency-payment-rate-head">
+      <div class="chart-header">
+        <div class="exchange-rate-currencies">
+          <div class="img-group">
+            <img [src]="currencyOfUser" id="active_currency_flag" alt="currency" class="active_currency_flag" />
+            <img [src]="activeCurrency?.wallet_Flag" id="user_currency_flag" alt="currency" class="user_currency_flag" />
+          </div>
+          <div class="label-group">
+            <h2 class="cpr-title" id="cpr-title">
+              {{ activeCurrency?.wallet_Currency?.code }}
+              /{{ activeCurrency?.wallet_Hedging?.exposureBaseCurrency }}
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="marketChart2"></div>
+  </div>
+</div>
+<app-alert-exchange-rate-form [drawer]="drawer"></app-alert-exchange-rate-form>

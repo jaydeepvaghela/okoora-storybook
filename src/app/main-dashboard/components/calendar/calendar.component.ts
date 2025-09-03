@@ -23,6 +23,9 @@ import { getCalendarDataByDate } from '../../dashboard-data/calendar-data';
 import { CalenderAddAlertComponent } from '../calender-add-alert/calender-add-alert.component';
 import { DashboardTableViewComponent } from '../dashboard-table-view/dashboard-table-view.component';
 import { TableMenuComponent } from '../table-menu/table-menu.component';
+import { SendComponent } from '../../../payments/components/send/send.component';
+import { PlanConversionComponent } from '../../../payments/components/exchange-later-components/plan-conversion/plan-conversion.component';
+import { ExchangeMainComponent } from '../../../payments/components/exchange-now-components/exchange-main/exchange-main.component';
 
 const calendarResources: MbscResource[] = [
   {
@@ -336,8 +339,6 @@ export class CalendarComponent {
   }
 
   openPaymentDialog(isMenu?: boolean, date?: any) {
-    let activeWallet: any = localStorage.getItem('activeWallet');
-    let currency = JSON.parse(activeWallet);
     let currentDate = moment();
     if (isMenu) {
       this.selectedCalendarDate = this.getSelectedDate();
@@ -345,17 +346,52 @@ export class CalendarComponent {
     if (date) {
       this.selectedCalendarDate = moment(date).format('YYYY-MM-DD');
     }
-
+    if (moment(this.selectedCalendarDate).isAfter(currentDate, 'day')) {
+        let activeWallet: any = localStorage.getItem('activeWallet');
+        let currency = JSON.parse(activeWallet);
+        this.dialog
+          .open(SendComponent, {
+            width: '100vw',
+            maxWidth: '100vw',
+            data: {
+              selectedwalletInfo: currency,
+              type: true,
+              payment: false,
+              transaction: true,
+            },
+            disableClose: true,
+          })
+          .afterClosed()
+    } else {
+      this.router.navigate(['/payments']);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   openConvertDialog(isMenu?: boolean, date?: any) {
+    let activeWallet: any = JSON.parse(localStorage.getItem('activeWallet') || '');
     if (isMenu) {
       this.selectedCalendarDate = this.getSelectedDate();
     }
     if (date) {
       this.selectedCalendarDate = moment(date).format('YYYY-MM-DD');
     }
-
+    const currentDate = moment();
+    const selectedCalendarDateMoment = moment(this.selectedCalendarDate, "YYYY-MM-DD");
+    const exchangeToOpen: any = selectedCalendarDateMoment.isAfter(currentDate) ? PlanConversionComponent : ExchangeMainComponent;
+      this.dialog.open(exchangeToOpen, {
+        width: '100vw',
+        maxWidth: '100vw',
+        data: {
+          selectedwalletInfo: activeWallet,
+          selectedCalendarDate: this.selectedCalendarDate
+        },
+        disableClose: true,
+      })
+      .afterClosed()
+      .subscribe((shouldReload: any) => {
+        this.loadCalendarDataOnChange(new Date());
+      });
   }
 
   openHedgeDialog(isMenu?: boolean, date?: any) {

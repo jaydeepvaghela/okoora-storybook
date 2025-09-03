@@ -1,0 +1,267 @@
+@import "../../../../assets/scss/full-screen-modal.scss";
+@import "../../../../assets/scss/variable";
+
+.radio-group {
+  @media only screen and (max-width: 580px) {
+    flex-wrap: wrap;
+    row-gap: 15px;
+  }
+
+  &.wallet-send-mony {
+    .box-radio {
+      @media only screen and (max-width: 580px) {
+        width: 100%;
+      }
+
+      label {
+        width: 350px;
+        height: 206px;
+        padding: 32px 15px;
+
+        @media only screen and (max-width: 1440px) {
+          padding: 15px;
+          height: 158px;
+          width: 256px;
+        }
+
+        @media only screen and (max-width: 1024px) {
+          width: 246px;
+          padding: 12px 14px;
+
+          .radio-info {
+            font-size: 12px;
+            line-height: 18px;
+          }
+        }
+
+        @media only screen and (max-width: 580px) {
+          height: 100%;
+          width: 100%;
+        }
+
+        p {
+          br {
+            @media only screen and (max-width: 1440px) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.send-mony-stepper-slide-two {
+  .form-control-wrapper {
+    width: 456px;
+
+    @media only screen and (max-width: 580px) {
+      width: 100%;
+    }
+
+    .currency-btn {
+      button {
+        height: 38px;
+        padding: 0 30px;
+      }
+    }
+  }
+}
+
+.send-mony-stepper-slide-three {
+  .form-control-wrapper {
+    width: 446px;
+
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+    }
+
+    .cvm-center-section {
+      margin: 35px 20px;
+
+      @media only screen and (max-width: 1440px) {
+        margin: 15px;
+      }
+
+      @media only screen and (max-width: 580px) {
+        margin: 15px 0;
+      }
+
+      .cvm-right-text {
+        .cvm-new-drop-down {
+          display: flex;
+          align-items: center;
+          column-gap: 9px;
+          flex-wrap: wrap;
+          row-gap: 10px;
+
+          .form-group {
+            margin-bottom: 0;
+
+            mat-select {
+              font-style: normal;
+              font-weight: 400;
+              font-size: $font-12;
+              line-height: 16px;
+              padding: 1px 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  mat-checkbox {
+    margin-top: 26px;
+
+    &::ng-deep {
+      .mdc-form-field {
+        label {
+          a {
+            color: var(--brand-primary-color);
+          }
+        }
+      }
+    }
+  }
+
+  .step-five-file-upload {
+    margin-top: 46px;
+
+    .send-file-upload-design {
+      @media only screen and (max-width: 580px) {
+        width: 100%;
+        height: 100%;
+      }
+
+      .drop-zone {
+        width: 216px;
+        height: 115px;
+
+        @media only screen and (max-width: 580px) {
+          border: 2px dashed $light-gray;
+          border-radius: 5px;
+          padding: 15px 13px;
+          width: 100%;
+          height: 100%;
+        }
+
+        .drop-zone-preview {
+          height: 84px !important;
+          min-height: 74px !important;
+
+          &::ng-deep {
+            ngx-dropzone-label {
+              @media only screen and (max-width: 580px) {
+                margin: 0px auto;
+              }
+            }
+          }
+        }
+
+        .signature-new {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background: $white;
+          cursor: pointer;
+          color: $signature-first-text-color;
+          border: 2px dashed $light-gray;
+          border-radius: 5px;
+          font-size: $font-16;
+          overflow-x: auto;
+          justify-content: center;
+          padding: 15px 13px;
+          text-align: center;
+
+          @media only screen and (max-width: 580px) {
+            border: 0;
+            border-radius: 0px;
+            padding: 0;
+            margin: 10px 0;
+            overflow-y: hidden;
+          }
+        }
+
+        h6 {
+          font-style: normal;
+          font-weight: 600;
+          font-size: $font-16;
+          line-height: 22px;
+          color: #1d1d22;
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+
+        p {
+          font-weight: 500;
+          font-size: $font-12;
+          line-height: 14px;
+          color: $form-label;
+          margin-bottom: 0;
+
+          span.browse {
+            color: var(--brand-primary-color);
+
+            br {
+              @media only screen and (max-width: 580px) {
+                display: none;
+              }
+            }
+          }
+        }
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}
+
+.currency-wrapper {
+  padding: 21px 18px;
+
+  .currency-value {
+    @include flex(flex-start, flex-start, column);
+
+    span.above-currency-value-text {
+      font-weight: 400;
+      font-size: $font-12;
+      line-height: 16px;
+      color: $dark-gray;
+
+      @media only screen and (max-width: 380px) {
+        font-size: 10px;
+      }
+    }
+
+    span.currency-value-text {
+      font-size: $font-20;
+      line-height: 27px;
+      font-weight: 600;
+      color: $dialog-inner-heading-color;
+      position: relative;
+
+      @media only screen and (max-width: 1440px) {
+        font-size: $font-16;
+      }
+    }
+
+    &::before {
+      top: -6%;
+      bottom: -6%;
+    }
+  }
+
+}
+
+::ng-deep {
+  .form-details.well-done-wrapper {
+    .form-description {
+      opacity: 1 !important;
+    }
+  }
+}

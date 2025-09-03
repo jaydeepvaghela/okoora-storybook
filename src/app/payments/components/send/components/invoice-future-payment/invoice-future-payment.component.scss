@@ -1,0 +1,104 @@
+@import "../../../../../../assets/scss/variable";
+@import "../../../../../../assets/scss/full-screen-modal.scss";
+
+.upload-successful-modal {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  .dialog-header {
+    border-bottom: 0px solid $general-border-color;
+    justify-content: flex-end;
+    padding: 0 15px;
+    height: 55px;
+
+    .close-btn {
+      float: right;
+    }
+  }
+
+  .modal-body {
+    padding: 0px 50px 50px 50px;
+
+    @media only screen and (max-width: 767px) {
+      padding: 15px;
+    }
+
+    .last-pay-title {
+      padding-bottom: 15px;
+      h4 {
+        font-family: $manrope;
+        font-weight: 600;
+        font-size: $font-28;
+        line-height: 38px;
+        color: $dialog-inner-heading-color;
+        margin-top: 30px;
+
+        @media only screen and (max-width: 1440px) {
+          font-size: 22px;
+          line-height: 28px;
+        }
+
+        @media only screen and (max-width: 767px) {
+          font-size: 18px;
+          line-height: 26px;
+        }
+      }
+      p {
+        font-family: "Manrope";
+        font-style: normal;
+        font-weight: 400;
+        font-size: $font-14;
+        line-height: 19px;
+        color: $dialog-inner-heading-color;
+      }
+    }
+
+    .upload-successful-btn-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      .yes-btn {
+        background: var(--brand-primary-color);
+        border-radius: 40px;
+        min-width: 150px;
+        text-align: center;
+        font-weight: 600;
+        font-size: $font-14;
+        line-height: 15px;
+        text-align: center;
+        color: $white;
+        height: 45px;
+      }
+      .no-btn {
+        color: black !important
+            ;
+        border: 1px solid;
+        border-radius: 40px;
+        min-width: 150px;
+        text-align: center;
+        font-weight: 600;
+        font-size: $font-14;
+        line-height: 15px;
+        text-align: center;
+        color: $white;
+        height: 45px;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .upload-success-msg {
+    .mat-mdc-dialog-surface {
+      max-width: 694px;
+      border-radius: 8px;
+    }
+  }
+  .user-preference {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+}

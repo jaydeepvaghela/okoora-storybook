@@ -1,0 +1,45 @@
+<div class="single-payment">
+    <div class="sp-icon">
+        <!-- <button mat-dialog-close mat-icon-button class="close-btn">
+            <img src="images/prev-slide-icon.svg" alt="back icon" class="back-icon">
+        </button> -->
+        <button id="close_btn_single_paymentCompleted" mat-icon-button (click)="closeDialog()" class="close-btn">
+            <img  src="images/close-icon-gray.svg" alt="close icon">
+        </button>
+    </div>
+    <div class="single-payment-header">
+        <div class="sph-title">
+            <span class="sph-icon">
+                <img src="images/bell-icon-black.svg" alt="bell icon image">
+            </span>
+            <h2>Single payment</h2>
+        </div>
+        <div class="sph-dropdown"  >
+            <button id="other_btn_single_paymentCompleted" [matMenuTriggerFor]="sendMenu" class="pay-option-dropdown">
+                Other Payments
+                <img src="images/arrow-down-gary.svg" alt="dropdown arrow icon">
+            </button>
+            <mat-menu #sendMenu="matMenu" class="action-menu sent-dropdown other-payment">
+                <button id="single_btn_single_paymentCompleted" (click)="sendAnotherPayment()" mat-menu-item>Single Payment
+                </button>
+                <button id="Mass_btn_single_paymentCompleted" mat-menu-item (click)="createMassPayment()">Mass Payment
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+    <div class="single-payment-body">
+        <div class="successfully-alert-wrap">
+            <div class="sent-success-img">
+                <img src="images/alert-successfully-set.gif" alt="alert-successfully">
+            </div>
+            <h2>Payment to {{ signObjectForSummery?.bankAccountHolderName }} <strong>Sent Successfully</strong></h2>
+
+            <button id="paymentDetail_btn_single_paymentCompleted" (click)="closeDialog()" class="pay-details-btn">
+                Payment details
+            </button>
+            <button id="sendOnother_btn_single_paymentCompleted" (click)="sendAnotherPayment()" class="pay-next-btn">
+                Send another payment
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,255 @@
+.create-an-alert-upper {
+  padding: 0 30px;
+
+  @media only screen and (max-width: 1440px) {
+    padding: 0 15px;
+  }
+
+  .create-an-alert-title {
+    h3 {
+      color: #01031C;
+      font-size: 27px;
+      font-weight: 800;
+      text-transform: uppercase;
+
+      @media screen and (max-width: 1440px) {
+        font-size: 20px;
+      }
+
+      @media screen and (max-width: 1340px) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .currency-payment-rate {
+    &.slider-alert {
+      padding: 25px 35px;
+      // background-color: #fff;
+      border-radius: 4px;
+      background-color: transparent;
+
+      @media only screen and (max-width: 1600px) {
+        padding: 20px;
+      }
+
+      @media only screen and (max-width: 1440px) {
+        padding: 10px;
+      }
+
+      .currency-payment-rate-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+
+        @media only screen and (max-width: 1440px) {
+          flex-wrap: wrap;
+          row-gap: 10px;
+        }
+
+        .chart-header {
+          .exchange-rate-currencies {
+            display: flex;
+            align-items: center;
+            column-gap: 15px;
+
+            @media only screen and (max-width: 1440px) {
+              column-gap: 10px;
+            }
+
+            .img-group {
+              position: relative;
+              padding-top: 10px;
+              padding-left: 10px;
+              z-index: 1;
+
+              @media only screen and (max-width: 1440px) {
+                padding-top: 2px;
+              }
+
+              .active_currency_flag {
+                width: 28px;
+                height: 28px;
+                border-radius: 28px;
+                position: relative;
+
+                @media only screen and (max-width: 1440px) {
+                  width: 20px;
+                  height: 20px;
+                }
+              }
+
+              .user_currency_flag {
+                width: 20px;
+                height: 20px;
+                border-radius: 20px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: -1;
+              }
+            }
+
+            .label-group {
+              .cpr-title {
+                color: #01031c;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 24px;
+                margin-bottom: 0;
+
+                @media only screen and (max-width: 1440px) {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+
+        .currency-payment-rate-data {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+          column-gap: 30px;
+
+          @media only screen and (max-width: 1440px) {
+            column-gap: 15px;
+          }
+
+          @media only screen and (max-width: 1279px) {
+            column-gap: 10px;
+            width: 100%;
+            justify-content: space-between;
+          }
+
+          @media only screen and (max-width: 767px) {
+            flex-wrap: wrap;
+            gap: 10px;
+          }
+
+          .previous-payment-rate {
+            color: #1d1d22;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            display: inline-block;
+
+            @media only screen and (max-width: 1440px) {
+              font-size: 12px;
+              line-height: 16px;
+            }
+
+            span {
+              display: inline-block;
+              margin-left: 2px;
+              font-weight: 700;
+
+              &.percentageRed {
+                color: #f04853 !important;
+              }
+
+              &.percentageGreen {
+                color: #45ae4a !important;
+              }
+            }
+          }
+
+          .cpr-right-wrap {
+            display: flex;
+            align-items: center;
+            background-color: #f5f7fe;
+            padding: 5px 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+
+            @media only screen and (max-width: 1440px) {
+              padding: 5px;
+            }
+
+            .cpr-info-text {
+              color: #01031c;
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 20px;
+              display: inline-block;
+              margin-right: 10px;
+
+              @media only screen and (max-width: 1440px) {
+                font-size: 12px;
+                line-height: 16px;
+              }
+            }
+
+            .last-pay-perc {
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 20px;
+              display: inline-block;
+              margin-right: 10px;
+              min-width: max-content;
+
+              @media only screen and (max-width: 1440px) {
+                font-size: 12px;
+                line-height: 16px;
+              }
+
+              &.percentageRed {
+                color: #f04853 !important;
+              }
+
+              &.percentageGreen {
+                color: #45ae4a !important;
+              }
+            }
+
+            label {
+              color: #ffffff;
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 20px;
+              padding: 4px 10px;
+              border-radius: 3px;
+
+              &.amountBackgroundRed {
+                background-color: #f04853;
+              }
+
+              &.amountBackgroundGreen {
+                background-color: #45ae4a;
+              }
+
+              @media only screen and (max-width: 1440px) {
+                font-size: 12px;
+                line-height: 16px;
+                padding: 2px 10px;
+              }
+            }
+          }
+        }
+      }
+
+      #marketChart2 {
+        &>div {
+          width: 100% !important;
+          height: 100% !important;
+
+          &>iframe {
+            width: 100% !important;
+            height: 220px !important;
+
+            @media (max-width: 1279px) {
+              height: 306px !important;
+            }
+
+            @media (max-width: 1024px) {
+              height: 380px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

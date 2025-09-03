@@ -1,0 +1,29 @@
+<form class="modal-container">
+  <button id="close_btn_select_recipient" class="close-btn" [mat-dialog-close]="selectedBeneficiaries">
+    <img src="images/close-icon-gray.svg" alt="close icon" />
+  </button>
+  <h4 class="modal-title"><b>Select Recipient</b></h4>
+  <button (click)="addRecipient()" class="modal-button-add"><b>+ Add Recipient</b></button>
+  <div class="divider"></div>
+  <div class="input-wrapper">
+    <input class="modal-input-search" placeholder="Search Recipient" aria-label="Search Recipient" (input)="updateSearchTerm($event)" />
+  </div>
+  <div class="modal-recipient-wrapper">
+    <div *ngFor="let beneficiary of filteredBeneficiaries" class="modal-recipient">
+      <label class="modal-recipient-label">
+        <input type="checkbox" [checked]="isSelectedBeneficiary(beneficiary)" (click)="addBeneficiary(beneficiary)"/>
+        <div class="letters-wrapper">
+          <span class="modal-initials-letter">{{ getInitials(beneficiary.bankAccountHolderName) }}</span>
+          <img height="30px" width="30px" [src]="'https://okoora-stage-api2023.azurewebsites.net' + '/Images/Flags/' + beneficiary.currency + '.png'" alt="Currency Flag" />
+        </div>
+        <div class="modal-recipient-info">
+          <span class="modal-recipient-name">{{ beneficiary.bankAccountHolderName }}</span>
+          <span class="modal-recipient-details">{{ beneficiary.currency }} | {{ beneficiary.accountNumber }} | {{ beneficiary.beneficiaryIdNumber }}</span>
+        </div>
+      </label>
+    </div>
+  </div>
+  <div>
+    <button type="button" [mat-dialog-close]="selectedBeneficiaries" (click)="setTheFunctionalValue()" class="select-button" [disabled]="selectedBeneficiaries.length === 0" [class.disabled]="selectedBeneficiaries.length === 0">Selected ({{ selectedBeneficiaries.length }})</button>
+  </div>
+</form>

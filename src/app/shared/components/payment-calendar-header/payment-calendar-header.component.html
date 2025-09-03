@@ -1,0 +1,37 @@
+<div class="payment-calendar-header">
+    <button (click)="previousClicked('month')" class="prev-btn">
+        <img src="images/arrow-previous-date.svg" alt="prev">
+    </button>
+    <div class="payment-selection-options">
+        <mat-select panelClass="month-year-view-options-mv" class="month-select" [(ngModel)]="selectedMonth" (ngModelChange)="monthChanged($event)">
+            <mat-select-trigger>
+                <ng-container>
+                    <div class="month-year-selected">
+                        <span class="sel-month-year-name">{{ selectedMonthViewValue }}</span>
+                        <img src="images/custom-select-down.svg" alt="down-arrow">
+                    </div>
+                </ng-container>
+            </mat-select-trigger>
+            <div class="payment-option-wrapper">
+                <mat-option *ngFor="let month of months" [value]="month.value" [disabled]="isMonthDisabled(month.value)">{{ month.viewValue }}</mat-option>
+            </div>
+        </mat-select>
+        <mat-select panelClass="month-year-view-options-mv" class="year-select" [(ngModel)]="selectedYear" (ngModelChange)="yearChanged($event)">
+            <mat-select-trigger>
+                <ng-container>
+                    <div class="month-year-selected">
+                    <span class="sel-month-year-name">{{ selectedYear }}</span>
+                    <img src="images/custom-select-down.svg" alt="down-arrow">
+                    </div>
+                </ng-container>
+            </mat-select-trigger>
+            <div class="payment-option-wrapper">
+                <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+            </div>
+        </mat-select>
+    </div>
+
+    <button (click)="nextClicked('month')" class="next-btn" [disabled]="isNextButtonDisabled">
+        <img src="images/arrow-next-date.svg" alt="next">
+    </button>
+</div>

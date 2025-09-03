@@ -10,11 +10,13 @@ import { ResetPasswordComponent } from './login/reset-password/reset-password.co
 import { CodeVerificationComponent } from './login/code-verification/code-verification.component';
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
+import { PaymentsDashboardComponent } from './payments/components/payments-dashboard/payments-dashboard.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'main-dashboard', pathMatch: 'full' as 'full' },
   { path: 'main-dashboard', component: MainDashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'payments', component: PaymentsDashboardComponent},
   { path: 'sign-up', component: KycMainComponent },
   { path: 'login', component: LoginComponent},
   { path: 'reset-password', component: ResetPasswordComponent},

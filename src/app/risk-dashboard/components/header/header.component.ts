@@ -8,6 +8,8 @@ import { HedgeAllDrawerComponent } from '../hedging-proposal/components/hedge-al
 import { HedgingDataService } from '../hedging-proposal/hedging-data.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { WalletListDialogComponent } from '../../../payments/components/wallet-list-dialog/wallet-list-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -22,8 +24,9 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   @Output() openSidebar = new EventEmitter();
 
   private destroy$ = new Subject<void>();
+  selectedWallet: any;
 
-  constructor(private hedgeService: HedgingDataService,private router:Router) {}
+  constructor(private hedgeService: HedgingDataService,private router:Router, private dialog: MatDialog) {}
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -79,6 +82,26 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   openMenu() {
     this.openSidebar.emit();
   }
+
+  openWalletListDialog() {
+      const dialogRef = this.dialog.open(WalletListDialogComponent, {
+        width: '562px',
+        height: '544px',
+        panelClass: 'wallet-list-dialog',
+        disableClose: true,
+        data: {
+          // walletList: this.walletList,
+          selectedWallet: this.selectedWallet?.wallet_Currency?.code
+        }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.selectedWallet = result.wallet
+          // this.cd.detectChanges();
+        }
+      });
+    }
+  
 
   ngOnDestroy() {
     this.destroy$.next();

@@ -1,0 +1,107 @@
+<div *ngIf="!isComplete" class="container loader-wrapper">
+  <header class="transfer-header">
+    <h2 class="title">Total Transfer Amount</h2>
+    <button id="totalAmount_btn_mass_payment" (click)="goBack()"><img src="images/edit.svg" /></button>
+  </header>
+
+  <hr class="divider" />
+
+  <section class="item-list">
+    <article *ngFor="let form of beneficiaryForms; let i = index" class="transaction-item">
+      <span class="company-name">{{ form.value.product_reference }}</span>
+      <div class="divider-center"></div>
+      <div class="transaction-details">
+        <span class="amount">
+          <b>{{ form.value.amount }}</b> {{ form.value.currency }}
+        </span>
+        <div class="tooltip-container">
+          <button id="tooltip_btn_mass_payment" class="info-button" aria-label="More Information"
+            (mouseover)="showTooltip[i] = true" (mouseout)="showTooltip[i] = false">
+            <img src="images/info.svg" alt="Info" />
+          </button>
+          <div class="tooltip-custom" [style.display]="showTooltip[i] ? 'block' : 'none'">
+            <div class="tooltip-inner">
+              <div class="tooltip-content">
+                <span class="label">Amount:</span>
+                <span class="value">{{ form.value.beneficiarySign }}{{ form.value.amount }}</span>
+              </div>
+              <div class="tooltip-content">
+                <span class="label">Fee:</span>
+                <span class="value">{{ form.value?.costType.value | number }} {{ selectedWallet?.wallet_Currency?.sign
+                  }}</span>
+              </div>
+              <div *ngIf="form.value.spot" class="tooltip-content">
+                <span class="label">Exchange rate:</span>
+                <span class="value">{{ form.value.beneficiarySign }}{{ "1" }} = {{ selectedWallet?.wallet_Currency?.sign
+                  }}{{ form.value.spot }}</span>
+              </div>
+              <div class="tooltip-content">
+                <span class="label">After exchange rate:</span>
+                <span class="value">{{ selectedWallet?.wallet_Currency?.sign }}{{ +form.value.charge +
+                  +form.value?.costType.value | number: "1.2-2" }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <footer class="payment-footer">
+    <div class="price">
+      <h1>{{ selectedWallet?.wallet_Currency?.sign }} {{ totalCharge() | number: "1.2-2" }}</h1>
+      <app-wallet-currency style="width: auto" (changeCurrencyWallet)="handleChangeCurrencyWallet($event)"
+        (changeIsLoading)="changeIsLoading($event)" [selectedWallet]="selectedWallet"
+        [beneficiaryForms]="beneficiaryForms" (beneficiaryFormsChange)="handleBeneficiaryFormsChangee($event)"
+        [isUpdateCurrency]="true" [walletList]="walletList">
+      </app-wallet-currency>
+    </div>
+    <div class="signature-wrapper" *ngIf="needSignInBeneficiaries()">
+      <div class="signature-top-head">
+        <span>Direct signature</span>
+        <span>{{ signatureDate }}</span>
+      </div>
+      <div class="form-group position-relative p-3 signature-canvas--1 signature-pad-wrap" placement="top">
+        <div class="signature-btn-wrap">
+          <button id="clearSign_btn_mass_payment" type="button" class="clear-canvas back-icon" placement="right"
+            (click)="drawClear(); clearImg()">
+            <img src="images/back-icon.svg" alt="back-icon" />
+          </button>
+          <button id="eraseSign_btn_mass_payment" type="button" class="clear-canvas eraser-icon" placement="right"
+            (click)="drawClear(); clearImg()">
+            <img src="images/eraser-icon.svg" alt="eraser-icon" />
+          </button>
+        </div>
+        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()"
+          (onEndEvent)="drawComplete()"></signature-pad>
+      </div>
+    </div>
+    <div class="timer">
+      <span><strong>Data is valid for </strong></span>
+      <span class="timer-clock"><strong>{{ getFormattedTime() }}</strong></span>
+    </div>
+    <button id="pay_btn_mass_payment" class="pay-button" (click)="pay()"
+      [disabled]="!policyApproved || buttonLoading || (needSignInBeneficiaries() && signaturePad.isEmpty())"
+      [class.disabled]="!policyApproved || buttonLoading || (needSignInBeneficiaries() && signaturePad.isEmpty())">
+      <div *ngIf="buttonLoading" class="circular-loader"></div>
+      Pay {{ selectedWallet?.wallet_Currency?.sign }} {{ totalCharge() | number: "1.2-2" }}
+    </button>
+    <span *ngIf="error" class="error-message"><b>Missing Funds</b></span>
+    <label class="policy-agreement">
+      <input id="approvePolicy_checkbox_mass_payment" type="checkbox" #policyCheckbox
+        (change)="policyApproved = policyCheckbox.checked" />
+      <span>I Approve the Policy</span>
+    </label>
+  </footer>
+  <!-- <app-page-loader *ngIf="isLoading" class="bg-white section-loader"></app-page-loader> -->
+</div>
+<div class="container complete-payment" *ngIf="isComplete">
+  <img alt="success-gif" src="images/success.gif" />
+  <span class="title">Payment</span>
+  <h5 class="information">Sent Successfully</h5>
+  <div class="button-container">
+    <button id="paymentDetails_btn_mass_payment" class="details-button" mat-icon-button
+      (click)="closeMassPayment()">Payment details</button>
+    <button id="sendAnother_btn_mass_payment" class="another-button" (click)="goBack(); removeForm();">Send another payment</button>
+  </div>
+</div>

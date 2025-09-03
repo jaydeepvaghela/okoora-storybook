@@ -1,0 +1,58 @@
+<div class="dialog-header">
+    <div class="container-fluid">
+        <a id="sc-dialog-logo-link" class="dialog-brand">
+            <img src="images/abcm-logo.svg" alt="abcm-logo">
+        </a>
+        <button id="sc-dialog-close" mat-icon-button mat-dialog-close class="close-btn"></button>
+    </div>
+    <div class="dialog-icon sendMoney"></div>
+</div>
+<mat-dialog-content class="mat-typography dialog-body d-block">
+    <form class="form-send-stepper" [formGroup]="paymentRequestForm" (ngSubmit)="onSubmit()">
+        <mat-progress-bar #formStepperProgress class="stepper-progressbar" mode="determinate" value="20"
+            [hidden]="isLastStep"></mat-progress-bar>
+        <mat-stepper id="sc-form-stepper" #formStepper class="form-stepper" [selectedIndex]="currentStepIndex" (animationDone)="stepChange(formStepper)">
+            <mat-step>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepContent>
+                    <app-send-step2 *ngIf="!data?.type ? formStepper.selectedIndex == 1 : data?.type"
+                        [formStepper]="formStepper" [type]="paymentRequestForm.get('type')"
+                        [beneficiaryName]="paymentRequestForm.get('beneficiaryName')"
+                        [formStepperProgress]="formStepperProgress"
+                        [futurePayment]="paymentRequestForm.get('futurePayment')"
+                        [createPayment]="paymentRequestForm.get('createPayment')" [activeWalletCurrency]="data"
+                        [OCR_payment_uploadFile]="paymentRequestForm.get('OCR_uploadFile')">
+                    </app-send-step2>
+                </ng-template>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepContent>
+                    <app-send-step3 
+                        [futurePayment]="paymentRequestForm.get('futurePayment')"
+                        [formStepper]="formStepper" (newItemEvent)="addItem($event)"
+                        [paymentType]="paymentRequestForm.value.type" [type]="paymentRequestForm.get('type')"
+                        [createPayment]="paymentRequestForm.get('createPayment')"
+                        [currency]="paymentRequestForm.get('beneficiaryName')?.value?.currency"
+                        [senderName]="paymentRequestForm.value?.beneficiaryName?.benificiaryId?.bankAccountHolderName"
+                        [benificiaryId]="paymentRequestForm.value?.beneficiaryName?.benificiaryId?.id"
+                        [beneficiaryName]="paymentRequestForm.value?.beneficiaryName"
+                        [getBeneficiary]="paymentRequestForm.get('beneficiaryName')"
+                        [formStepperProgress]="formStepperProgress" [activeWalletCurrency]="data"></app-send-step3>
+                </ng-template>
+            </mat-step>
+            <mat-step
+                *ngIf="(lock_rate && paymentRequestForm.get('type')?.value?.paymentType != 'salary') || paymentRequestForm.get('type')?.value?.paymentType === 'future_payment'">
+                <ng-template matStepContent>
+                    <app-send-step4 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [paymentType]="paymentRequestForm.get('type')?.value?.paymentType" [futurePayment]="paymentRequestForm.get('futurePayment')"></app-send-step4>
+                </ng-template>
+            </mat-step>
+            <mat-step
+                *ngIf="(your_own_rate && paymentRequestForm.get('type')?.value?.paymentType != 'salary') || paymentRequestForm.get('type')?.value?.paymentType === 'future_payment'">
+                <ng-template matStepContent>
+                    <app-send-step5 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [paymentType]="paymentRequestForm.get('type')?.value?.paymentType" [futurePayment]="paymentRequestForm.get('futurePayment')" [activeWalletCurrency]="data"></app-send-step5>
+                </ng-template>
+            </mat-step>
+        </mat-stepper>
+    </form>
+</mat-dialog-content>

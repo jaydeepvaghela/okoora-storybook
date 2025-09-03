@@ -1,0 +1,74 @@
+<div class="main-conversion-modal">
+  <div class="alerts-bg ab-one">
+    <span class="line-one" id="abOneLineOne"></span>
+    <span class="line-two" id="abOneLineTwo"></span>
+    <span class="line-three" id="abOneLineThree"></span>
+  </div>
+  <div class="alerts-bg ab-two">
+    <span class="line-three" id="abTwoLineOne"></span>
+    <span class="line-two" id="abTwoLineTwo"></span>
+    <span class="line-one" id="abTwoLineThree"></span>
+  </div>
+  <div class="convert-later">
+    <div class="sp-icon">
+      <button mat-icon-button class="close-btn" id="previousStepBtn" (click)="previousStep()">
+        <img src="images/back-arrow-future-conversion.svg" alt="back icon" class="back-icon" id="backIcon">
+      </button>
+      <button mat-icon-button mat-dialog-close class="close-btn" id="cancelBtn">
+        <img src="images/close-icon-gray.svg" id="closeBtn" alt="close icon">
+      </button>
+    </div>
+    <div class="convert-later-header">
+      <div class="sph-title">
+        <span class="sph-icon">
+          <img src="images/future-exchange-icon.svg" id="bellIcon" alt="bell-icon">
+        </span>
+        <h2>Future Exchange</h2>
+      </div>
+      <div class="sph-dropdown">
+        <button [matMenuTriggerFor]="exchangeMenu" class="convert-option-dropdown" id="currencyDropdownBtn">
+          Other Exchanges
+          <img src="images/pc-dropdown-icon.svg" alt="dropdown arrow icon" id="arrowDown">
+        </button>
+        <mat-menu #exchangeMenu="matMenu" class="action-menu drp-plan-conversion other-conversion" id="otherConversionDrp">
+          <button mat-menu-item (click)="exchangeNow()" id="exchangeNowMenu">Exchange now</button>
+          <button mat-menu-item (click)="exchangePlanConvert()" id="planConversionMenu">Future Exchange</button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+  <mat-dialog-content>
+    <mat-stepper #formStepper class="form-stepper" (animationDone)="stepChange(formStepper)" [linear]="false" [selectedIndex]="currentStep">
+      <mat-step>
+        <ng-template matStepContent>
+          <app-plan-conversion-step1 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress"
+            [convertMoneyOption]="planConversionForm.get('convertMoneyOption')"
+            [yourOwnRate]="planConversionForm.get('yourOwnRate')"
+            [activeWalletCurrency]="walletData"></app-plan-conversion-step1>
+        </ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepContent>
+          <app-convert-step3 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress"
+            [yourOwnRate]="planConversionForm.get('yourOwnRate')" [exchange]=" true"
+            [convertMoneyOption]="planConversionForm.get('convertMoneyOption')" [data]="walletData"></app-convert-step3>
+        </ng-template>
+      </mat-step>
+      <mat-step>
+        <app-plan-conversion-done 
+          [message]="
+            'You have Exchanged ' + (activeWallet?.wallet_Currency?.sign || '') + 
+            (planConversionForm.value.yourOwnRate.sellAmount | number) + 
+            ' to ' + 
+            (planConversionForm.value.yourOwnRate.toSign || '') + 
+            (planConversionForm.value.yourOwnRate.buyAmount | number)
+          " 
+          buttonText="Close"
+          title="Currency Simplified." 
+          [navigateTo]="'/payments'"> 
+        </app-plan-conversion-done>
+
+      </mat-step>
+    </mat-stepper>
+  </mat-dialog-content>
+</div>

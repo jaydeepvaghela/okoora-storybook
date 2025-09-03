@@ -1,0 +1,80 @@
+<ng-container *ngIf="paymentType === 'future_payment'">
+  <form id="ss2-fp-form" class="loader-wrapper" [formGroup]="futurePayment">
+    <div>
+      <div class="stepper-body send-money-stepper-slide-two future-payment-stepper">
+        <div class="form-details">
+          <h5 class="form-title">LOCK RATE & PAY LATER</h5>
+        </div>
+        <div class="form-control-wrapper row display-pr">
+          <div class="col-12">
+            <div class="form-group mt-25">
+              <label>Select a future date to send the payment</label>
+              <div class="date-picker">
+                <input id="ss2-fp-date-input" type="text" class="form-control" matInput placeholder="Select date"
+                  [matDatepickerFilter]="holidayFilter" [matDatepicker]="picker" [min]="minDate"
+                  formControlName="expiryDate" (click)="picker.open()" readonly>
+                <mat-datepicker-toggle id="ss2-fp-date-toggle" matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker id="ss2-fp-date-picker" #picker></mat-datepicker>
+              </div>
+              <!-- <span class="text-danger"
+                *ngIf="futurePayment.controls['expiryDate'].status == 'INVALID' && futurePayment.controls['expiryDate'].value != '' && !this.futurePayment.controls['expiryDate'].hasError('required')">
+                Please enter a valid date
+              </span> -->
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="recipient-dropdown">
+              <label>Choose a Beneficiary</label>
+              <mat-form-field class="width select-recipients-">
+                <mat-label>Select recipient</mat-label>
+                <input matInput id="beneficiaryInput" class="forHideShow" (click)="openBeneficiaryContainer()"
+                  placeholder="Search" aria-label="Search" [formControl]="filterControl"
+                  [value]="futurePayment.get('beneficiaryId')?.value?.bankAccountHolderName" required autocomplete="off"
+                  appRestrictSpecialCharacters />
+                <span (click)="openBeneficiaryContainer()" class="pay-dropdown-icon">
+                  <img src="images/chevron-down-icon.svg" alt="chevron down image">
+                </span>
+              </mat-form-field>
+              <strong class="add-reci" id="add_beneficiay_single_payment" (click)="createBenificiaryDialog()">+ Add
+                Recipient</strong>
+              <div *ngIf="openBeneficiaryList && clickBeneficiary" class="recent-list-dropdown"
+                id="beneficiaryDropdownId">
+                <ul class="recent-pay-iist" *ngIf="filteredBeneficiary$ | async as beneficiaryList">
+                  <li *ngFor="let beneficiary of beneficiaryList">
+                    <div [ngClass]="{'beneficiarySelected': beneficiary?.id == beneficiaryDetails?.id}"
+                      class="recent-pay-item" id="open_payment_WithBenef_single_payment"
+                      (click)="getBeneficiary(beneficiary)">
+                      <div class="profile-img">
+                        <span>{{GetbeneficiarySymbol(beneficiary?.bankAccountHolderName)}}</span>
+                        <img width="18" [src]="beneficiary?.currencyISO?.flag" [alt]="beneficiary?.currencyISO?.code">
+                      </div>
+                      <div class="profile-data">
+                        <p> {{getBeneficiaryInfo(beneficiary)}}</p>
+                        <div class="pd-bottom">
+                          <span> {{getBeneficiaryInfo1(beneficiary)}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <button id="selectBeneficiary_btn_single_payment" [ngClass]="{'clickedSelect': beneficiaryDetails}"
+                  [class.disabled]="!beneficiaryDetails" [disabled]="!beneficiaryDetails"
+                  (click)="selectBeneficiary(beneficiaryDetails)" class="pay-select-btn">Select</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stepper-action">
+          <button class="previous-button" mat-icon-button matStepperPrevious id="ssc2-fp-previous-btn"
+            (click)="previousStep(formStepper, formStepperProgress)"></button>
+          <button id="ssc2-fp-next-btn"
+            [class.disabled]="(futurePayment.get('expiryDate').value == '') || !futurePayment.get('beneficiaryId').valid || !futurePayment.get('expiryDate').valid"
+            [disabled]="(futurePayment.get('expiryDate').value == '') || !futurePayment.get('beneficiaryId').valid || !futurePayment.get('expiryDate').valid"
+            class="next-button let-c" mat-button matStepperNext
+            (click)="nextStepForPlan(formStepper, formStepperProgress)">
+            Let's continue</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-container>

@@ -1,0 +1,370 @@
+@import "../../../../../../assets/scss/full-screen-modal.scss";
+@import "../../../../../../assets/scss/variable";
+@import "../../../../../../assets/scss/mixins";
+
+.send-mony-stepper-slide-three {
+  .form-details {
+    .form-title {
+      font-family: sans-serif;
+      letter-spacing: 1px;
+    }
+    .send-amount {
+      text-align: center;
+      margin-bottom: 48px;
+      .amount {
+        font-size: $font-28;
+        line-height: normal;
+        font-weight: 600;
+        color: $color-blue;
+      }
+      .currency-pair {
+        color: $form-label;
+        font-size: $font-16;
+        line-height: normal;
+        font-weight: 400;
+      }
+    }
+  }
+  .form-control-wrapper {
+    width: 465px;
+
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+    }
+
+    .cvm-center-section {
+      margin: 5px 20px;
+
+      @media only screen and (max-width: 1440px) {
+        margin: 15px;
+      }
+
+      @media only screen and (max-width: 580px) {
+        margin: 15px 0;
+      }
+
+      .cvm-right-text {
+        .cvm-new-drop-down {
+          display: flex;
+          align-items: center;
+          column-gap: 9px;
+          flex-wrap: wrap;
+          row-gap: 10px;
+
+          .form-group {
+            margin-bottom: 0;
+
+            mat-select {
+              font-style: normal;
+              font-weight: 400;
+              font-size: $font-12;
+              line-height: 16px;
+              padding: 1px 10px;
+            }
+          }
+        }
+      }
+    }
+    .radio-opt-group {
+      max-width: 465px;
+      margin-bottom: 29px;
+      .radio-select-label {
+        font-size: $font-16;
+        line-height: normal;
+        font-weight: 700;
+        color: $dialog-inner-heading-color;
+        margin-bottom: 12px;
+        font-family: $manrope;
+      }
+      .radio-option {
+        margin-bottom: 23px;
+        position: relative;
+        input[type="radio"] {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 20px;
+          height: 22px;
+          width: 22px;
+          margin: auto 0;
+          accent-color: var(--light-blue);
+          &:checked + label {
+            border-color: var(--light-blue);
+          }
+        }
+        label {
+          font-family: $manrope;
+          border: 1px solid $light-gray;
+          border-radius: 10px;
+          padding: 17px 42px 29px 50px;
+          letter-spacing: 1px;
+          .heading {
+            font-size: $font-16;
+            line-height: normal;
+            font-weight: 600;
+            color: $dialog-inner-heading-color;
+            margin-bottom: 6px;
+          }
+          .description {
+            font-size: $font-13;
+            line-height: normal;
+            font-weight: 400;
+            color: $form-label;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    .count-down {
+      font-size: $font-16;
+      line-height: normal;
+      font-weight: 400;
+      color: $form-label;
+      text-align: center;
+      font-family: $manrope;
+      .time {
+        padding: 7px 18px;
+        background-color: $disable-button-bg;
+        border-radius: 30px;
+        min-width: 36px;
+      }
+    }
+  }
+
+  .stepper-action {
+      .next-button {
+        font-family: $manrope;
+      }
+      .previous-button {
+        width: 50px;
+      }
+    }
+
+  mat-checkbox {
+    margin-top: 26px;
+
+    &::ng-deep {
+      .mdc-form-field {
+        label {
+          a {
+            color: var(--brand-primary-color);
+          }
+        }
+      }
+    }
+  }
+
+  .step-five-file-upload {
+    margin-top: 46px;
+
+    .send-file-upload-design {
+      @media only screen and (max-width: 580px) {
+        width: 100%;
+        height: 100%;
+      }
+
+      .drop-zone {
+        width: 216px;
+        height: 115px;
+
+        @media only screen and (max-width: 580px) {
+          border: 2px dashed $light-gray;
+          border-radius: 5px;
+          padding: 15px 13px;
+          width: 100%;
+          height: 100%;
+        }
+
+        .drop-zone-preview {
+          height: 84px !important;
+          min-height: 74px !important;
+
+          &::ng-deep {
+            ngx-dropzone-label {
+              @media only screen and (max-width: 580px) {
+                margin: 0px auto;
+              }
+            }
+          }
+        }
+
+        .signature-new {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background: $white;
+          cursor: pointer;
+          color: $signature-first-text-color;
+          border: 2px dashed $light-gray;
+          border-radius: 5px;
+          font-size: $font-16;
+          overflow-x: auto;
+          justify-content: center;
+          padding: 15px 13px;
+          text-align: center;
+
+          @media only screen and (max-width: 580px) {
+            border: 0;
+            border-radius: 0px;
+            padding: 0;
+            margin: 10px 0;
+            overflow-y: hidden;
+          }
+        }
+
+        h6 {
+          font-style: normal;
+          font-weight: 600;
+          font-size: $font-16;
+          line-height: 22px;
+          color: $profile-bg-color;
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+
+        p {
+          font-weight: 500;
+          font-size: $font-12;
+          line-height: 14px;
+          color: $form-label;
+          margin-bottom: 0;
+
+          span.browse {
+            color: var(--brand-primary-color);
+
+            br {
+              @media only screen and (max-width: 580px) {
+                display: none;
+              }
+            }
+          }
+        }
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}
+
+.currency-wrapper {
+  padding: 21px 18px;
+
+  .currency-value {
+    @include flex(flex-start, flex-start, column);
+
+    span.above-currency-value-text {
+      font-weight: 400;
+      font-size: $font-12;
+      line-height: 16px;
+      color: $dark-gray;
+
+      @media only screen and (max-width: 380px) {
+        font-size: 10px;
+      }
+    }
+
+    span.currency-value-text {
+      font-size: $font-20;
+      line-height: 27px;
+      font-weight: 600;
+      color: $dialog-inner-heading-color;
+      position: relative;
+
+      @media only screen and (max-width: 1440px) {
+        font-size: $font-16;
+      }
+
+      @media only screen and (max-width: 480px) {
+        font-size: $font-16;
+      }
+    }
+
+    &::before {
+      top: -6%;
+      bottom: -6%;
+    }
+  }
+}
+
+.form-control-wrapper {
+  &.converted-upon-arrival {
+    max-width: 447px;
+
+    .currency-wrapper {
+      margin-bottom: 0;
+    }
+
+    .cvm-center-section {
+      margin: 20px 15px;
+
+      .cvm-right-side {
+        mat-list-item {
+          &::ng-deep {
+            .mdc-list-item__primary-text {
+              white-space: normal;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+
+              .cvm-color-text {
+                font-weight: 400;
+                font-size: $font-14;
+                line-height: 19px;
+                color: var(--brand-primary-color);
+              }
+            }
+
+            .cvm-right-font-bold {
+              &.b-new-cvm {
+                display: flex;
+                align-items: center;
+
+                input {
+                  width: 92px;
+                  height: 25px;
+                  border: 1px solid $form-control-border;
+                  border-radius: 4px;
+                  font-weight: 500;
+                  font-size: $font-14;
+                  line-height: 19px;
+                  color: $dark-black;
+                  text-align: center;
+                  margin-right: 5px;
+                }
+
+                .approve-checkbox {
+                  margin-top: 0;
+
+                  .mdc-form-field {
+                    .mdc-checkbox {
+                      width: 20px;
+                      height: 20px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.err-center-message {
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.next-button {
+  &:disabled {
+    background: $white-gray !important;
+    color: $light-gray !important;
+    cursor: not-allowed;
+  }
+}

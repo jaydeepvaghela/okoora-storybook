@@ -1,0 +1,17 @@
+<div class="payments-wrap loader-wrapper">
+    <h3 class="pay-title" id="payTitle">Payments</h3>
+    <app-payments-option-wrap
+        (singlePayment)="createSinglePayment()"
+        (massPayment)="createMassPayment()"
+        (exchangeNow)="exchangeNow()"
+        (exchangePlan)="exchangePlanConvert()"
+        (lockRate)="CreateLockRateDialog()">
+    </app-payments-option-wrap>
+
+    <div *ngIf="walletList">
+        <app-payment-dashboard-transaction> </app-payment-dashboard-transaction>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,78 @@
+<div class="approval-modal-sec dir-he">
+  <div class="approval-close-btn">
+    <button id="apdc-dialog-close" mat-icon-button="" class="colse-btn mdc-icon-button mat-mdc-icon-button mat-unthemed mat-mdc-button-base" type="button" (click)="closeDialog()">
+      <img src="images/rate-popup-close-icon.svg" alt="close"/>
+      <span class="mat-mdc-button-touch-target"></span>
+    </button>
+  </div>
+  <div class="title-approval">
+    <h3>אישור תשלום עתידי</h3>
+    <p>תאריך: {{ currentDate | date: "dd/MM/yyyy" }}</p>
+    <p class="text-right">להלן פרטי בקשתך לביצוע תשלום עתידי</p>
+  </div>
+
+  <!-- {{ futurePayment | json }} -->
+  <div class="box-approval">
+    <div class="box-row">
+      <span class="app-label">התשלום יבוצע למוטב</span>
+      <span class="app-value">{{data.beneficiaryName}}</span>
+    </div>
+    <div class="box-row">
+      <span class="app-label">התשלום יבוצע בתאריך</span>
+      <span class="app-value">{{ futurePayment?.product?.expiryDate }}</span>
+    </div>
+    <div class="box-row">
+      <span class="app-label">חשבונך יחויב היום בסכום המכירה</span>
+      <span class="app-value">{{ futurePayment?.sellAmount }}</span>
+    </div>
+    <div class="box-row">
+      <span class="app-label">סכום הנרכש במועד התשלום</span>
+      <span class="app-value">{{ futurePayment?.product?.amount }} {{ futurePayment?.product?.currency?.code }}</span>
+    </div>
+    <div class="box-row">
+      <span class="app-label">שער קובע לתשלום</span>
+      <span class="app-value">{{ futurePayment?.strike }}</span>
+    </div>
+    <div class="box-row">
+      <span class="app-label">עלות הפעולה לקיבוע השער</span>
+      <span class="app-value">{{ futurePayment?.cost }}</span>
+    </div>
+    <div class="box-row">
+      <span class="app-label">עמלת חליפין</span>
+      <span class="app-value">לפטור</span>
+    </div>
+  </div>
+
+  <div class="approval-scroll-area">
+    <ul>
+      <li><h5>תנאי התשלום </h5></li>
+      <li>ביצוע התשלום למוטב מותנה באישור החברה את המוטב והשלמת כל המסמכים הנדרשים לתשלום. במידה ועד 24 שעות טרם מועד התשלום, המוטב לא יאושר ע\"י החברה ו/או המסמכים הנדרשים להשלמת התשלום לא יתקבלו, התשלום לא יבוצע למוטב וסכום הרכישה יועבר לארנקך במערכת, בכפוף לעמלות</li>
+      <li>לאחר אישור הפעולה, העסקה לא ניתנת לביטול ו/או לשינוי על ידי הלקוח אלא בהסכמת החברה בהתאם לשיקול דעתה הבלעדי ובכפוף לעמלות.</li>
+      <li>החברה עצמה רשאית לבטל או לשנות את העסקה בהתאם לשיקול דעתה הבלעדי.</li>
+      <li>במידה ובמועד ביצוע התשלום השער היציג האחרון שפרסם בנק ישראל יהיה גבוה מהשער הקובע התשלום יבוצע בשער הקובע נמוך מהשער הקובע, התשלום יבוצע בהתאם לשער הקובע וארנקך יזוכה בסכום השווה לפער שבין השער הקובע לשער היציג (הפער מחושב לפי השער הקובע פחות השער היציג, כפול סכום הרכישה במט\"ח)",</li>
+    </ul>
+  </div>
+
+  <div class="t-last-text terms-count-down">
+    <div class="d-inline-block">
+      <span>בעוד</span>
+      <span class="font-weight-5">
+        <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
+      </span>
+      <span>בעוד</span>
+    </div>
+  </div>
+
+  <div class="t-checkbox">
+    <mat-checkbox id="apdc-risk-conf-check" class="example-margin" (change)="onChange($event)"> </mat-checkbox>
+    <span id="apdc-risk-disclosure-link" class="disclosure-link" (click)="RiskInfoDialog()">עקוב אחר שינויים</span>
+  </div>
+  <div *ngIf="completeFuturePaymentErr || refreshFuturePaymentErr" class="err-center-message">
+    <span *ngIf="completeFuturePaymentErr" class="error-msg">{{ completeFuturePaymentErr }}</span>
+    <span *ngIf="refreshFuturePaymentErr" class="error-msg">{{ refreshFuturePaymentErr }}</span>
+  </div>
+  <div class="approve-btn-wrape">
+    <button id="apdc-continue" [disabled]="!confirmCondition" (click)="futurePaymentComplete()">בצע תשלום עתידי</button>
+    <button id="apdc-cancel" (click)="closeDialog()">בטל</button>
+  </div>
+</div>

@@ -1,0 +1,246 @@
+@import "../../../../assets/scss/variable";
+@import "../../../../assets/scss/mixins";
+
+::ng-deep {
+    .cdk-overlay-pane {
+        &.well-done-modal {
+            height: 551px;
+            max-width: 746px !important;
+            width: 100%;
+
+            @media only screen and (max-width: 1440px) {
+                max-width: 551px !important;
+                height: 70vh;
+            }
+
+            @media only screen and (max-width: 1024px) {
+                @include flex(center, center, column);
+                height: 450px;
+            }
+
+            @media only screen and (max-width: 767px) {
+                @include flex(center, center, column);
+                max-width: 95vw !important;
+                height: 60vh;
+                max-height: 60vh;
+            }
+
+            @media only screen and (max-width: 480px) {
+                @include flex(center, center, column);
+                max-width: 90vw !important;
+                height: 410px;
+            }
+        }
+    }
+}
+
+.well-done-screen-main {
+    @include flex(flex-start, center, column);
+    padding-top: 67px;
+
+    @media screen and (max-width: 1440px) {
+        @include flex(center, center, column);
+    }
+
+    @media screen and (max-width: 1024px) {
+        @include flex(center, center, column);
+    }
+
+    @media screen and (max-width: 767px) {
+        @include flex(center, center, column);
+    }
+
+    @media screen and (max-width: 480px) {
+        @include flex(center, center, column);
+        padding: 50px 20px 20px;
+    }
+
+    .lock-up-popup-close-btn {
+        .approval-close-btn {
+            padding: 15px 10px;
+
+            button {
+                width: 25px;
+                height: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                margin: 0 0 0 auto;
+                position: absolute;
+                right: 15px;
+                top: 15px;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    .well-done-screen-header {
+        margin-bottom: 18px;
+        // @media only screen and (max-width: 1440px) {
+        //     width: 100px;
+        // }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .well-done-screen-center {
+        // margin-bottom: 68px;
+
+        // @media only screen and (max-width: 1440px) {
+        //     margin-bottom: 30px;
+        // }
+
+        .well-done-screen-title {
+            h6 {
+                color: $dialog-inner-heading-color;
+                text-align: center;
+                font-family: $manrope;
+                font-size: $font-28;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                opacity: 0.8;
+                margin-bottom: 25px;
+
+                @media only screen and (max-width: 1440px) {
+                    font-size: 22px;
+                }
+
+                @media only screen and (max-width: 480px) {
+                    font-size: 20px;
+                }
+            }
+
+            p {
+                font-family: 'Manrope';
+                font-size: 28px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                color: #030203;
+                margin-bottom: 25px;
+                text-align: center;
+
+                @media only screen and (max-width: 1440px) {
+                    font-size: 22px;
+                }
+
+                @media only screen and (max-width: 480px) {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .wellfonr-screen-opetion {
+            @include flex(center, center, row);
+            width: 290px;
+            height: 62px;
+            gap: 9px;
+            border-radius: 10px;
+            background: $disable-button-bg;
+
+            @media only screen and (max-width: 1440px) {
+                width: 250px;
+                height: 50px;
+            }
+
+            input[type="checkbox"] {
+                background: var(--light-blue);
+                opacity: 0;
+                cursor: pointer;
+                position: relative;
+                top: 0;
+                left: 0px;
+                right: 0;
+                bottom: 0;
+                z-index: 9;
+                width: 20px;
+                height: 20px;
+
+                @media only screen and (max-width: 1440px) {
+                    width: 17px;
+                    height: 17px;
+                }
+
+                &:checked~label {
+                    &:before {
+                        background: var(--light-blue);
+                    }
+
+                    &:after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        top: 1px;
+                        left: -18px;
+                        width: 6px;
+                        height: 14px;
+                        border: solid $white;
+                        border-width: 0 2px 2px 0;
+                        transform: rotate(45deg);
+
+                        @media only screen and (max-width: 1440px) {
+                            left: -20px;
+                            height: 12px;
+                        }
+                    }
+                }
+            }
+
+            label {
+                position: relative;
+                color: $blue-black;
+                font-family: $manrope;
+                font-size: $font-14;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                &:before {
+                    content: '';
+                    width: 20px;
+                    height: 20px;
+                    background: $white;
+                    position: absolute;
+                    border: 1px solid var(--light-blue);
+                    border-radius: 5px;
+                    left: -25px;
+                    top: 0px;
+
+                    @media only screen and (max-width: 1440px) {
+                        width: 17px;
+                        height: 17px;
+                    }
+                }
+            }
+
+
+        }
+    }
+
+    .well-done-screen-footer {
+        button {
+            @include flex(center, center, row);
+            padding: 14px 32px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, #444 0%, #000 100%);
+            color: $white;
+            font-family: $manrope;
+            font-size: $font-16;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+
+            @media only screen and (max-width: 1440px) {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+        }
+    }
+}

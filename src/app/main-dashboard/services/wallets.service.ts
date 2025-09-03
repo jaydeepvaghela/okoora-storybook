@@ -2,7 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, map, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, Subject, tap } from 'rxjs';
 import { WalletBalanceListModal } from '../models/WalletBalanceListModal';
 import { balanceList } from '../dashboard-data/balanceList-data';
 
@@ -203,8 +203,6 @@ export class WalletsService {
   public getCreatedPaymentDataSummery = new BehaviorSubject<any>({});
   currentCreatedPaymentSummery = this.getCreatedPaymentDataSummery.asObservable();
 
-
-
   public getImportMassPaymentFile = new BehaviorSubject<any>({});
   currentImportMassPaymentFile = this.getImportMassPaymentFile.asObservable();
 
@@ -217,6 +215,9 @@ export class WalletsService {
   );
 
   activeWallet$ = this.activeWalletSubject.asObservable();
+
+  private lengthValueSubject = new Subject<boolean>();
+  lengthValue$ = this.lengthValueSubject.asObservable();
   
   constructor(public router: Router) { }
 
@@ -283,6 +284,11 @@ export class WalletsService {
   setApiObs(profile: any) {
     this.profileObs$.next(profile);
   }
+
+  setLengthValue(value: any) {
+        this.lengthValueSubject.next(value);
+  }
+
 
 
  // Import your static balance list
@@ -361,4 +367,77 @@ export class WalletsService {
   getIsCompleteMassPayment(): Observable<boolean> {
     return this.isCompleteSubject.asObservable();
   }
+
+  mockCreatePaymentRequest(body: { amount: number, beneficiaryId: string, currency: string, isMass?: boolean }) {
+    const response = {
+      requestId: body.beneficiaryId,
+      status: true,
+      message: "Create Payment Request Successfully",
+      paymentRequst: {
+        quoteId: body.beneficiaryId,
+        spot: 0.4817,
+        exchangeRate: {
+          major: {
+            rate: 1.0,
+            currency: {
+              code: body.currency,
+              sign: this.getCurrencySign(body.currency),
+              flag: null,
+              currencyName: null
+            }
+          },
+          minor: {
+            rate: 0.4817,
+            currency: {
+              code: "ILS",
+              sign: "₪",
+              flag: null,
+              currencyName: null
+            }
+          }
+        },
+        charge: Number((body.amount * 2.075).toFixed(2)), // example charge logic
+        chargeCurrency: body.currency,
+        send: body.amount,
+        sendCurrency: "ILS",
+        paymentType: 1,
+        costType: {
+          key: null,
+          value: 0.0
+        }
+      },
+      costList: [
+        {
+          key: "1 - regular",
+          value: 0.0
+        },
+        {
+          key: "2 - our",
+          value: Number((body.amount * 1.02).toFixed(2)) // sample "our" cost
+        }
+      ],
+      signAndFiles: {
+        needSign: false,
+        needFile: false,
+        needStamp: false
+      }
+    };
+
+    return of(response);
+  }
+
+  private getCurrencySign(code: string): string {
+    const symbols: { [key: string]: string } = {
+      USD: '$',
+      EUR: '€',
+      GBP: '£',
+      CNH: '¥',
+      ILS: '₪'
+      // Add more as needed
+    };
+    return symbols[code] || code;
+  }
+
 }
+
+

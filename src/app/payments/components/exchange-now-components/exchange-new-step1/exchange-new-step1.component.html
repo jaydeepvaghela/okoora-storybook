@@ -1,0 +1,357 @@
+<div class="convert-now loader-wrapper">
+  <div class="sp-icon">
+    <button (click)="closeButton()" mat-icon-button class="close-btn" id="exnow-s1-close">
+      <img src="images/left-arrow-dark-gray.svg" alt="back icon" class="back-icon">
+    </button>
+    <button mat-icon-button mat-dialog-close class="close-btn" (click)="closeButton()" id="exnow-s1-id0">
+      <img src="images/close-icon-gray.svg" alt="close icon">
+    </button>
+  </div>
+  <div class="convert-now-header">
+    <div class="sph-title">
+      <span class="sph-icon">
+        <!-- <img src="images/bell-icon-black.svg" alt="bell-icon"> -->
+        <img src="images/exchangeNowIcon.svg" alt="bell-icon">
+      </span>
+      <h2>Exchange Now </h2>
+    </div>
+    <div class="sph-dropdown">
+      <button [matMenuTriggerFor]="convertMenu" id="exnow-s1-id1" class="convert-option-dropdown">
+        Other Exchanges
+        <img src="images/arrow-down-gary.svg" alt="dropdown arrow icon">
+      </button>
+      <mat-menu #convertMenu="matMenu" class="action-menu convert-dropdown other-conversion">
+        <button id="exnow-s1-id2" (click)="openConvertNow()" mat-menu-item>Exchange now</button>
+        <button id="exnow-s1-id3" mat-menu-item (click)="exchangePlanConvert()">Future Exchange</button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="single-payment-body">
+    <div *ngIf="!dashboardData.fromDashboadConvert">
+      <h3 class="buy-sell-title" *ngIf="!isSwapped">
+        Sell {{ this.getFirstSelectedCurrencyDetails.wallet_Currency.code ?
+        this.getFirstSelectedCurrencyDetails.wallet_Currency.code : this.exchangeForm.value.firstExchangeCurrency }}
+      </h3>
+      <h3 class="buy-sell-title" *ngIf="isSwapped">
+        Buy {{ this.getFirstSelectedCurrencyDetails.wallet_Currency.code ?
+        this.getFirstSelectedCurrencyDetails.wallet_Currency.code : this.exchangeForm.value.firstExchangeCurrency }}
+      </h3>
+    </div>
+    <div *ngIf="dashboardData.fromDashboadConvert">
+      <h3 class="buy-sell-title" *ngIf="!isSwapped">
+        Sell {{ this.dashboardData.selectedwalletInfo.wallet_Currency.code }}
+      </h3>
+      <h3 class="buy-sell-title" *ngIf="isSwapped">
+        Buy {{ this.dashboardData.selectedwalletInfo.wallet_Currency.code }}
+      </h3>
+    </div>
+
+    <form [formGroup]="exchangeForm" (ngSubmit)="onSubmit(exchangeForm)">
+      <div class="exchange-currency-section">
+        <div class="you-send-wrap" *ngIf="!isSwapped">
+          <div class="you-send-text-feild"
+            [class.focused]="isFirstInputFocused && !checkWalletBalanceError && !createPaymentAPIError"
+            [class.first-input-error]="checkWalletBalanceError || createPaymentAPIError || exchangeForm.value.firstExchangeCurrency == exchangeForm.value.secondExchangeCurrency">
+            <div class="currancy-amoutn-left">
+              <label class="send-amout-feild">
+                <span [class.focused]="isCurrencySignFocused">-{{firstSign ? firstSign : firstDefaultSign}}</span>
+                <input type="text" appSeparator formControlName="firstExchangeAmount" id="exnow-s1-id4"
+                  (keydown)="restrictZero($event,'firstExchangeAmount')" (input)="validateAmount($event)"
+                  placeholder="0.00" (keyup)="generatePatamasFirstExchange($event)" (blur)="createConvertRequest()"
+                  (focus)="isFirstInputFocused = true; isSecondInputFocused = false; isCurrencySignFocused = true"
+                  dynamicInputWidth>
+                <input hidden type="text" name="firstChargeCurrencyAmount" id="exnow-s1-id5" appSeparator
+                  formControlName="firstChargeCurrencyAmount">
+              </label>
+            </div>
+            <div class="select-flag-dropdown">
+              <mat-select class="form-control" (focus)="isFirstInputFocused = true; isSecondInputFocused = false;"
+                panelClass="currency-sel" placeholder="Select" formControlName="firstExchangeCurrency"
+                name="beneficiaryAccountType" (selectionChange)="firstSelectExchangeCurrency($event)" id="exnow-s1-id6">
+                <mat-select-trigger>
+                  <ng-container *ngFor="let currency of firstActiveFilteredCurrency">
+                    <span *ngIf="currency.wallet_Currency.code == exchangeForm.value.firstExchangeCurrency">
+                      <div class="select-item d-flex gap-3 align-items-center"
+                        id="exnow-s1-id6-{{currency.wallet_Currency.code}}">
+                        <img width="20px" class="currencyActive-image" [src]="currency.wallet_Flag"
+                          alt="currency_flag" />
+                        {{ currency.wallet_Currency.code }}
+                      </div>
+                    </span>
+                  </ng-container>
+                </mat-select-trigger>
+                <div class="search-inpt-popup">
+                  <div class="search-input-wrapper">
+                    <input class="filter-input" appOnlyLetters type="text" placeholder="Search"
+                      (keyup)="searchFromFirstInput($event)" id="exnow-s1-id7">
+                    <img src="images/search-input-icon.svg" class="search-icon">
+                    <span class="text-danger" *ngIf="activeCurrencyList.length == 0">
+                      Please try again
+                    </span>
+                  </div>
+                  <div class="currancy-flag-list">
+                    <mat-option *ngFor="let currency of firstActiveFilteredCurrency"
+                      value="{{currency.wallet_Currency.code}}" class="currency-options"
+                      id="exnow-s1-id7-{{currency.wallet_Currency.code}}">
+                      <div class="select-item d-flex gap-3 align-items-center">
+                        <img width="30px" class="currency-image" [src]="currency.wallet_Flag" alt="currency_flag" />
+                        <span>
+                          {{currency.wallet_Currency.code}}
+                        </span>
+                      </div>
+                    </mat-option>
+                  </div>
+                </div>
+              </mat-select>
+              <span class="currency-balance">Balance:
+                {{firstSign ? firstSign : firstDefaultSign}}{{ totalFirstCurrency ? (totalFirstCurrency| number) :
+                0}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="you-send-wrap" *ngIf="!isSwapped">
+          <div class="you-send-text-feild" [class.focused]="isSecondInputFocused">
+            <div class="currancy-amoutn-left">
+              <label class="send-amout-feild">
+                <span [class.focused]="isCurrencySignFocused">+{{secondSign ? secondSign : secondDefaultSign}}</span>
+                <input type="text" appSeparator formControlName="secondExchangeAmount"
+                  (keydown)="restrictZero($event,'secondExchangeAmount')"
+                  (focus)="isSecondInputFocused = true; isFirstInputFocused = false; isCurrencySignFocused = true"
+                  (keyup)="generatePatamasSecondExchange($event)" (input)="validateAmount($event)" placeholder="0.00"
+                  (blur)="createConvertRequest()" dynamicInputWidth id="exnow-s1-id8">
+                <input hidden type="text" name="secondChargeCurrencyAmount" appSeparator
+                  formControlName="secondChargeCurrencyAmount" id="exnow-s1-id9">
+              </label>
+            </div>
+            <div class="select-flag-dropdown">
+              <mat-select class="form-control" panelClass="currency-sel"
+                (focus)="isSecondInputFocused = true; isFirstInputFocused = false" placeholder="Select"
+                formControlName="secondExchangeCurrency" name="beneficiaryAccountType"
+                (selectionChange)="secondSelectExchangeCurrency($event)" id="exnow-s1-id10">
+                <mat-select-trigger>
+                  <ng-container *ngFor="let currency of secondActiveFilteredCurrency">
+                    <span *ngIf="currency.wallet_Currency.code == exchangeForm.value.secondExchangeCurrency">
+                      <div class="select-item d-flex gap-3 align-items-center"
+                        id="exnow-s1-id10-{{currency.wallet_Currency.code}}">
+                        <img width="20px" class="currencyActive-image" [src]="currency.wallet_Flag"
+                          alt="currency_flag" />
+                        {{ currency.wallet_Currency.code }}
+                      </div>
+                    </span>
+                  </ng-container>
+                </mat-select-trigger>
+                <div class="search-inpt-popup">
+                  <div class="search-input-wrapper">
+                    <input class="filter-input" appOnlyLetters type="text" placeholder="Search" id="exnow-s1-id11"
+                      (keyup)="searchFromSecondInput($event)">
+                    <img src="images/search-input-icon.svg" class="search-icon">
+                    <span class="text-danger" *ngIf="activeCurrencyList.length == 0">
+                      Please try again
+                    </span>
+                  </div>
+                  <div class="currancy-flag-list">
+                    <mat-option *ngFor="let currency of secondActiveFilteredCurrency"
+                      value="{{currency.wallet_Currency.code}}" class="currency-options"
+                      id="exnow-s1-id12-{{currency.wallet_Currency.code}}">
+                      <div class="select-item d-flex gap-3 align-items-center">
+                        <img width="30px" class="currency-image" [src]="currency.wallet_Flag" alt="currency_flag" />
+                        <span>
+                          {{currency.wallet_Currency.code}}
+                        </span>
+                      </div>
+                    </mat-option>
+                  </div>
+                </div>
+              </mat-select>
+              <span class="currency-balance">Balance:
+                {{secondSign ? secondSign : secondDefaultSign}}{{ totalSecondCurrency ? (totalSecondCurrency| number) :
+                0 }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="swap-exchange-currency">
+          <button class="swap-background" (click)="exchangeInput()" id="exnow-s1-id13">
+            <img *ngIf="!isSwapped" class="swap-arrow" src="images/swap-exchange-arrow.svg">
+            <img *ngIf="isSwapped" class="swap-arrow" src="images/swap-exchange-down.svg">
+          </button>
+        </div>
+        <div class="you-send-wrap" *ngIf="isSwapped">
+          <div class="you-send-text-feild" [class.focused]="isFirstInputFocused"
+            [class.first-input-error]="exchangeForm.value.firstExchangeCurrency == exchangeForm.value.secondExchangeCurrency || createPaymentAPIError">
+            <div class="currancy-amoutn-left">
+              <label class="send-amout-feild">
+                <span [class.focused]="isCurrencySignFocused">+{{firstSign ? firstSign : firstDefaultSign}}</span>
+                <input type="text" appSeparator
+                  (focus)="isFirstInputFocused = true; isSecondInputFocused = false;isCurrencySignFocused = true"
+                  formControlName="firstExchangeAmount" placeholder="0.00" (input)="validateAmount($event)"
+                  (keydown)="restrictZero($event,'firstExchangeAmount')" (blur)="createConvertRequest()"
+                  (keyup)="generatePatamasFirstExchange($event)" dynamicInputWidth id="exnow-s1-id14">
+                <input hidden type="text" name="firstChargeCurrencyAmount" id="exnow-s1-id15" appSeparator
+                  formControlName="firstChargeCurrencyAmount">
+              </label>
+            </div>
+            <div class="select-flag-dropdown">
+              <mat-select (focus)="isFirstInputFocused = true; isSecondInputFocused = false;" class="form-control"
+                panelClass="currency-sel" placeholder="Select" formControlName="firstExchangeCurrency"
+                name="beneficiaryAccountType" (selectionChange)="firstSelectExchangeCurrency($event)"
+                id="exnow-s1-id16">
+                <mat-select-trigger>
+                  <ng-container *ngFor="let currency of firstActiveFilteredCurrency">
+                    <span *ngIf="currency.wallet_Currency.code == exchangeForm.value.firstExchangeCurrency">
+                      <div class="select-item d-flex gap-3 align-items-center">
+                        <img width="20px" class="currencyActive-image" [src]="currency.wallet_Flag"
+                          alt="currency_flag" />
+                        {{ currency.wallet_Currency.code }}
+                      </div>
+                    </span>
+                  </ng-container>
+                </mat-select-trigger>
+                <div class="search-inpt-popup">
+                  <div class="search-input-wrapper">
+                    <input class="filter-input" appOnlyLetters type="text" placeholder="Search"
+                      (keyup)="searchFromFirstInput($event)" id="exnow-s1-id17">
+                    <img src="images/search-input-icon.svg" class="search-icon">
+                    <span class="text-danger" *ngIf="activeCurrencyList.length == 0">
+                      Please try again
+                    </span>
+                  </div>
+                  <div class="currancy-flag-list">
+                    <mat-option *ngFor="let currency of firstActiveFilteredCurrency"
+                      value="{{currency.wallet_Currency.code}}" class="currency-options"
+                      id="exnow-s1-id18-{{currency.wallet_Currency.code}}">
+                      <div class="select-item d-flex gap-3 align-items-center">
+                        <img width="30px" class="currency-image" [src]="currency.wallet_Flag" alt="currency_flag" />
+                        <span>
+                          {{currency.wallet_Currency.code}}
+                        </span>
+                      </div>
+                    </mat-option>
+                  </div>
+                </div>
+              </mat-select>
+              <span class="currency-balance">Balance:
+                {{firstSign ? firstSign : firstDefaultSign}}{{ totalFirstCurrency ? (totalFirstCurrency | number) : 0
+                }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="you-send-wrap" *ngIf="isSwapped">
+          <div class="you-send-text-feild" [class.focused]="isSecondInputFocused && !checkWalletBalanceError"
+            [class.second-input-error]="checkWalletBalanceError">
+            <div class="currancy-amoutn-left">
+              <label class="send-amout-feild">
+                <span [class.focused]="isCurrencySignFocused">-{{secondSign ? secondSign : secondDefaultSign}}</span>
+                <input type="text"
+                  (focus)="isSecondInputFocused = true; isFirstInputFocused = false; isCurrencySignFocused = true"
+                  appSeparator formControlName="secondExchangeAmount" placeholder="0.00"
+                  (input)="validateAmount($event)" (keydown)="restrictZero($event,'secondExchangeAmount')"
+                  (blur)="createConvertRequest()" (keyup)="generatePatamasSecondExchange($event)" dynamicInputWidth
+                  id="exnow-s1-id19">
+                <input hidden type="text" name="secondChargeCurrencyAmount" appSeparator
+                  formControlName="secondChargeCurrencyAmount">
+              </label>
+            </div>
+            <div class="select-flag-dropdown">
+              <mat-select class="form-control" panelClass="currency-sel" placeholder="Select"
+                (focus)="isSecondInputFocused = true; isFirstInputFocused = false"
+                formControlName="secondExchangeCurrency" name="beneficiaryAccountType"
+                (selectionChange)="secondSelectExchangeCurrency($event)" id="exnow-s1-id20">
+                <mat-select-trigger>
+                  <ng-container *ngFor="let currency of secondActiveFilteredCurrency">
+                    <span *ngIf="currency.wallet_Currency.code == exchangeForm.value.secondExchangeCurrency">
+                      <div class="select-item d-flex gap-3 align-items-center">
+                        <img width="20px" class="currencyActive-image" [src]="currency.wallet_Flag"
+                          alt="currency_flag" />
+                        {{ currency.wallet_Currency.code }}
+                      </div>
+                    </span>
+                  </ng-container>
+                </mat-select-trigger>
+                <div class="search-inpt-popup">
+                  <div class="search-input-wrapper">
+                    <input class="filter-input" appOnlyLetters type="text" placeholder="Search"
+                      (keyup)="searchFromSecondInput($event)" id="exnow-s1-id21">
+                    <img src="images/search-input-icon.svg" class="search-icon">
+                    <span class="text-danger" *ngIf="activeCurrencyList.length == 0">
+                      Please try again
+                    </span>
+                  </div>
+                  <div class="currancy-flag-list">
+                    <mat-option *ngFor="let currency of secondActiveFilteredCurrency"
+                      value="{{currency.wallet_Currency.code}}" class="currency-options"
+                      id="exnow-s1-id22-{{currency.wallet_Currency.code}}">
+                      <div class="select-item d-flex gap-3 align-items-center">
+                        <img width="30px" class="currency-image" [src]="currency.wallet_Flag" alt="currency_flag" />
+                        <span>
+                          {{currency.wallet_Currency.code}}
+                        </span>
+                      </div>
+                    </mat-option>
+                  </div>
+                </div>
+              </mat-select>
+              <span class="currency-balance">Balance:
+                {{secondSign ? secondSign : secondDefaultSign}}{{ totalSecondCurrency ? (totalSecondCurrency | number) :
+                0 }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <span *ngIf="majorSpotCurrencySign" class="exchange-rates">
+        <div class="circle-timer" *ngIf="!shouldShowCircleTimer">
+          <svg width="32" height="32" viewBox="0 0 32 32">
+            <circle
+              r="10"
+              cx="16"
+              cy="16"
+              stroke="#0057ff"
+              stroke-width="2"
+              fill="none"
+              [attr.stroke-dasharray]="circumference"
+              [attr.stroke-dashoffset]="progress"
+              style="transform: rotate(90deg); transform-origin: center"
+            />
+            <text x="16" y="20" text-anchor="middle" font-size="10" fill="#0057ff">{{ currentNumber }}</text>
+          </svg>
+      </div>
+      {{majorSpotCurrencySign}}1 =
+        {{secondDefaultSign}}{{createdSpotRate}}</span>
+      <span *ngIf="!majorSpotCurrencySign" class="exchange-rates">{{currentCurrencyValue}}</span>
+      <span class="error-msg-text"
+        *ngIf="exchangeForm.value.firstExchangeCurrency == exchangeForm.value.secondExchangeCurrency">Please
+        select different currency</span>
+      <div class="error-msg" *ngIf="createPaymentAPIError">
+        <span>
+          {{createPaymentAPIError}}
+        </span>
+      </div>
+      <div class="error-msg" *ngIf="checkWalletBalanceError && !createPaymentAPIError">
+        <span>
+          {{checkWalletBalanceError}}
+        </span>
+      </div>
+      <div class="error-msg" *ngIf="refreshedPaymentAPIError">
+        <span>
+          {{refreshedPaymentAPIError}}
+        </span>
+      </div>
+      <button class="pay-next-btn" (click)="nextStep(formStepper, formStepperProgress)" id="exnow-s1-next-id23"
+        [class.disabled]="exchangeForm.value.firstExchangeCurrency == '' ||
+        exchangeForm.value.secondExchangeCurrency == '' ||
+        exchangeForm.value.firstExchangeAmount == '' ||
+        exchangeForm.value.secondExchangeAmount == '' ||
+        checkWalletBalanceError || createPaymentAPIError || refreshedPaymentAPIError" [disabled]="exchangeForm.value.firstExchangeCurrency == '' ||
+          exchangeForm.value.secondExchangeCurrency == '' ||
+          exchangeForm.value.firstExchangeAmount == '' ||
+          exchangeForm.value.secondExchangeAmount == '' ||
+          checkWalletBalanceError || createPaymentAPIError ||
+          refreshedPaymentAPIError"> Exchange
+      </button>
+    </form>
+  </div>
+</div>

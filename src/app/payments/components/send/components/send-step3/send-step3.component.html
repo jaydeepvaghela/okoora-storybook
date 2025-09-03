@@ -1,0 +1,175 @@
+<div *ngIf="paymentTypeValue?.paymentType == 'future_payment'">
+    <form id="ss3-fp-form" [formGroup]="futurePayment" class="loader-wrapper">
+        <div class="stepper-body send-mony-stepper-slide-three">
+            <div class="form-details">
+                <h5 class="form-title">LOCK RATE & PAY LATER</h5>
+            </div>
+            <div class="form-control-wrapper">
+                <div class="col-12">
+                    <div class="currency-wrapper" *ngIf="beneficiaryName?.bankDetails?.bankAccountHolderName != null">
+                        <div class="upper-row-new">
+                            <div class="currency-value">
+                                <span class="above-currency-value-text">You send to -
+                                    <span class="text-blue">{{ beneficiaryName?.bankDetails?.bankAccountHolderName
+                                        }}</span>
+                                </span>
+                                <span class="mt-2">
+                                    <span
+                                        class="amount-prefix">{{beneficiaryName?.bankDetails?.currencyISO?.sign}}</span>
+                                    <input type="number" id="ss3-fp-you-send-amount" placeholder="0"
+                                        (blur)="createPaymentRequest()" formControlName="amount"
+                                        (cut)="onCutInputValue($event)" (copy)="onCopyInputValue($event)"
+                                        (paste)="onPasteInputValue($event)" (keydown)="onEnterInputValue($event)" />
+                                </span>
+                            </div>
+                            <div class="country-dropdown beneficiary-currency">
+                                <mat-select class="form-control" id="ss3-fp-transfer-type" name="currency"
+                                    [value]="benificiaryCurrency" [disabled]="true">
+                                    <mat-select-trigger>
+                                        
+                                        <ng-container *ngFor="let currencyActive of activeCurrency">
+                                            <span *ngIf="currencyActive?.wallet_Currency?.code == currency">
+                                                <img class="currencyActive-image" [src]="currencyActive.wallet_Flag"
+                                                    alt="currency_flag" />
+                                                {{ currencyActive.wallet_Currency.code }}
+                                            </span>
+                                        </ng-container>
+                                    </mat-select-trigger>
+                                    <mat-option id="ss3-fp-{{i}}" [value]="currencyActive.wallet_Currency.code"
+                                        *ngFor="let currencyActive of activeCurrency;let i=index"><img
+                                            class="currency-image" [src]="currencyActive.wallet_Flag"
+                                            alt="currency_flag" />
+                                        {{ currencyActive.wallet_Currency.code }}</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="currency-wrapper" *ngIf="beneficiaryName?.bankDetails?.bankAccountHolderName == null">
+                        <div class="upper-row-new">
+                            <div class="currency-value">
+                                <span class="above-currency-value-text">Set amount </span>
+
+                                <span>
+                                    <input type="text" id="ss3-fp-bhn-null-amount" (blur)="createPaymentRequest()"
+                                        formControlName="amount" appOnlyNumbers />
+                                </span>
+                            </div>
+                            <div class="country-dropdown beneficiary-currency">
+                                <mat-select id="ss3-fp-bhn-null-currency-select"
+                                    class="form-control select-future-payment" name="currency"
+                                    formControlName="buyCurrency"
+                                    (selectionChange)="onCurrencySelectionWithoutBenificiary()" placeholder="Choose"
+                                    panelClass="cus-dropconvert" currencyBoxFocus>
+                                    <mat-select-trigger class="select-trigger">
+                                        <ng-container *ngIf="buyfuturePaymentCurrency">
+                                            <span>
+                                                <img class="currency-image"
+                                                    [src]="buyfuturePaymentCurrency?.wallet_Flag" alt="currency_flag" />
+                                                {{ buyfuturePaymentCurrency?.wallet_Currency?.code }}
+                                            </span>
+                                        </ng-container>
+                                    </mat-select-trigger>
+
+                                    <mat-option id="ss3-fp-bhn-null-cs-opt-{{i}}" class="option-cus"
+                                        *ngFor="let currency of activeCurrency;let i = index" [value]="currency">
+                                        <img class="currency-image" [src]="currency?.wallet_Flag" alt="currency_flag" />
+                                        {{ currency?.wallet_Currency?.code }}
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cvm-text-above" *ngIf="currentFXRate">
+                        <p class="cvm-after-text">Current FX rate {{ currentFXRate }}</p>
+                    </div>
+                </div>
+                <div class="cvm-center-section cvm-section-area">
+                    <div class="cvm-right-side" *ngIf="createFuturePaymentResponse">
+                        <mat-list>
+                            <mat-list-item>
+                                <div class="cvm-right-text">
+                                    <div class="cvm-new-drop-down">
+                                        <span class="cvm-right-font-small">Transfer</span>
+                                        <div class="form-group lct-space">
+                                            <mat-select class="form-control" placeholder="Please select"
+                                                id="ss3-fp-bhn-null-cost-type" (selectionChange)="
+                          changeCostType($event.value, requestID, 'DRP-DOWN')
+                        " formControlName="costType">
+                                                <mat-option id="ss3-fp-bhn-null-cost-type-opt-{{i}}"
+                                                    *ngFor="let costKey of createFuturePaymentResponse.costList;let i=index"
+                                                    [value]="costKey?.key">{{ costKey?.key }}</mat-option>
+                                            </mat-select>
+                                        </div>
+
+                                        <div class="information-icon">
+                                            <img id="ss3-fp-transfer-type-info" width="14px" height="14px"
+                                                src="images/warn-icon.svg" alt="warning"
+                                                matTooltip="Cost may vary based on the selected type of transfer" />
+                                        </div>
+                                    </div>
+                                    <span class="cvm-right-font-bold">{{
+                                        futurePayment.get('currency').value?.wallet_Currency?.sign }}
+                                        {{ updateCost }}</span>
+                                </div>
+                            </mat-list-item>
+                        </mat-list>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="currency-wrapper input-currency-new">
+                        <div class="currency-value">
+                            <span class="above-currency-value-text">From wallet</span>
+
+                            <mat-select id="ss3-fp-select-from-currency" class="form-control select-future-payment mt-2"
+                                name="currency" formControlName="currency"
+                                (selectionChange)="onCurrencySelectionFuturePaymentChange()" placeholder="Choose"
+                                panelClass="cus-dropconvert" currencyBoxFocus>
+                                <mat-select-trigger class="select-trigger">
+                                    <ng-container *ngIf="futurePaymentCurrency">
+                                        <span>
+                                            <img class="currency-image" [src]="futurePaymentCurrency?.wallet_Flag"
+                                                alt="currency_flag" />
+                                            {{ futurePaymentCurrency?.wallet_Currency?.code }}
+                                        </span>
+                                    </ng-container>
+                                </mat-select-trigger>
+                                <ng-container *ngFor="let currency of activeCurrency;let i=index">
+                                    <mat-option id="ss3-fp-select-from-currency-opt-{{i}}"
+                                        *ngIf="currency?.wallet_Currency?.code !== benificiaryCurrency"
+                                        class="option-cus" [value]="currency">
+                                        <img class="currency-image" [src]="currency?.wallet_Flag" alt="currency_flag" />
+                                        {{ currency?.wallet_Currency?.code }}
+                                    </mat-option>
+                                </ng-container>
+                            </mat-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="err-center-message">
+                <span id="uploadAPIError" *ngIf="uploadAPIError" class="error-msg">{{
+                    uploadAPIError
+                    }}</span>
+                <span id="paymentRequestAPIError" *ngIf="paymentRequestAPIError" class="error-msg">{{
+                    paymentRequestAPIError }}</span>
+                <span id="createPaymentAPIError" *ngIf="createPaymentAPIError" class="error-msg">{{
+                    createPaymentAPIError }}</span>
+                <span id="costTypeAPIError" *ngIf="costTypeAPIError" class="error-msg">{{ costTypeAPIError }}</span>
+                <span id="refreshAPIError" *ngIf="refreshAPIError" class="error-msg">{{
+                    refreshAPIError
+                    }}</span>
+                <span id="createFuturePaymentErr" *ngIf="createFuturePaymentErr" class="error-msg">{{
+                    createFuturePaymentErr }}</span>
+            </div>
+            <div class="stepper-action">
+                <button class="previous-button" id="ss3-fp-previous" mat-icon-button matStepperPrevious
+                    (click)="previousStep(formStepper, formStepperProgress)"></button>
+                <button class="next-button let-c" id="ss3-fp-next" mat-button [disabled]="updateCostDisabledNext"
+                    [class.disabled]="updateCostDisabledNext" (click)="nextStep(formStepper, formStepperProgress)">
+                    Next step
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
