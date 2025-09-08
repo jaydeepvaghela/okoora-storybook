@@ -43,7 +43,23 @@
 }
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; font-family: $manrope !important;touch-action: manipulation;}
-body,p,h1,h2,h3,h4,h5,ul { margin: 0; font-family: sans-serif;}
+body,p,h1,h2,h3,h4,h5,ul { margin: 0;}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: sans-serif;
+}
+.mat-typography{
+  h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: sans-serif;
+}
+}
 a{text-decoration: none;}
 ul, li {
   list-style-type: none;
@@ -64,6 +80,10 @@ button{
 
 .mdc-list-item.mdc-list-item--with-one-line .mdc-list-item__end {
   display: none;
+}
+.mat-mdc-dialog-container .mdc-dialog__content,.mat-stepper-vertical, .mat-stepper-horizontal {
+  font-family: $manrope !important;
+  letter-spacing:1px;
 }
 .mat-icon {
   font-family: 'Material Icons' !important;
