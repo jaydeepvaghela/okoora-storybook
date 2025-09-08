@@ -286,6 +286,21 @@ button{
   background-color: transparent !important;
 }
 
+.mat-mdc-select-panel {
+  position: relative !important;
+  top: 14px;
+  right: 13px;
+}
+
+.mat-mdc-select-panel-above {
+  .mat-mdc-select-panel {
+    position: relative !important;
+    top: auto;
+    bottom: 14px;
+    right: 13px;
+  }
+}
+
 .mat-mdc-radio-button
   .mdc-radio
   .mdc-radio__native-control:enabled:checked

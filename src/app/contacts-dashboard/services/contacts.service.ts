@@ -5,6 +5,7 @@ import { BenificiaryModel } from '../models/BenificiaryModel';
 // import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { user } from '../components/contacts-data/userData';
+import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -258,17 +259,17 @@ export class ContactsService {
   // }
 
   openConfirmDialog(): void {
-    // const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-    //   panelClass: "confirm-dialog-close-popup"
-    // });
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      panelClass: "confirm-dialog-close-popup"
+    });
 
-    // dialogRef.afterClosed().subscribe((result: any) => {
-    //   if (result) {
-    //     this.dialog.closeAll();
-    //   } else {
-    //     console.log('Cancelled!');
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.dialog.closeAll();
+      } else {
+        console.log('Cancelled!');
+      }
+    });
   }
 
   setNewBeniStepperIndex(stepperIndex: number) {

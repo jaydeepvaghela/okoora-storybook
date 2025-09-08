@@ -210,8 +210,13 @@
                             height: 8px;
                             border-radius: 4px;
 
+                            .mdc-linear-progress__buffer {
+                              height: 8px;
+                            }
+
                             .mdc-linear-progress__buffer-bar {
                               background-color: #E4E7EC;
+                              height: 8px;
                             }
 
                             .mdc-linear-progress__bar-inner {
@@ -346,6 +351,7 @@
         line-height: 20px;
         gap: 10px;
         align-items: center;
+        letter-spacing: 0;
       }
 
       .inner-contents {

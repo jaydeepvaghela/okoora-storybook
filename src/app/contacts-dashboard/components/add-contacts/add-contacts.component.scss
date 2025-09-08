@@ -73,12 +73,20 @@
     padding:0;
     min-height:100vh;
     margin:0;
-    letter-spacing: 0;
+    letter-spacing: 0 !important;
     .form-stepper{
       padding: 0;
     }
     mat-progress-bar{
       display: none;
+    }
+  }
+
+  .new-benificiary {
+    &.mat-typography {
+      h1, h2, h3, h4, h5, h6, li, p, ul {
+        letter-spacing: 0 !important;
+      }
     }
   }
 }

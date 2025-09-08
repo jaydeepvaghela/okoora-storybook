@@ -91,6 +91,8 @@ export class NewBenificiaryStep5Component implements OnInit, OnDestroy, OnChange
   allSubscriptions() {
     this.contactsService.currentObjectForFile.subscribe((data) => {
       this.beneficiaryObjectForFile = data;
+      console.log('beneficiaryObjectForFile', this.beneficiaryObjectForFile);
+      console.log('transcationFormStep3Values', this.transcationFormStep3Values);
       this.beneficiaryObjectForFilelength = this.beneficiaryObjectForFile?.type;
       this.formPaymentReason = this.transcationFormStep3Values?.paymentReason;
       if (this.iseditBenificiary) {

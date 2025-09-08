@@ -4,7 +4,7 @@
     .cdk-overlay-pane {
         &.confirm-dialog-close-popup, &.skip-Upload-File{
             .mat-mdc-dialog-surface {
-                border-radius:24px !important;
+                border-radius: 24px !important;
             }
             .confirm-modal-sec {
                 max-width: 544px;
