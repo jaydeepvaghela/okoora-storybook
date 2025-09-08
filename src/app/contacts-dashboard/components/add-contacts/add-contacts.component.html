@@ -1,5 +1,5 @@
 <div class="dialog-header" [hidden]="isNonIsraeliUser"
-  >
+  [ngClass]="(showNewBenificiaryPage && !isNonIsraeliUser) ? 'new-benificiary' : ''">
   <div class="container-fluid">
     <a class="dialog-brand">
       <img src='images/abcm-logo.svg'
@@ -10,7 +10,7 @@
   <div class="dialog-icon"></div>
 </div>
 <mat-dialog-content class="mat-typography dialog-body contacts-dialog-container"
-  
+  [ngClass]="(showNewBenificiaryPage || isNonIsraeliUser) ? 'new-benificiary' : ''"
   [ngStyle]="{'background-color':isLastStepConfirmClicked ? '#F6F9FD' : '#ffffff'}">
   <div class="dialog-content">
     <form [formGroup]="benificiaryForm?.value?.type?.ContactType=='payer'? payerForm : benificiaryForm"
