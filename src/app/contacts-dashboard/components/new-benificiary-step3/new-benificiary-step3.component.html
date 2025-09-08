@@ -1,0 +1,125 @@
+<div class="transfer-reason-sec">
+  <form [formGroup]="transactions" class="loader-wrapper">
+    <div class="transfer-head">
+      <h5 class="title">Transfer reason</h5>
+      <p class="desc">Select the reason for the transfer to the beneficiary</p>
+    </div>
+    <div class="radio-group transaction-reason">
+      <div class="box-radio" tabindex="0" [ngClass]="isDisableReason == true ? 'disable' :  ''">
+        <input type="radio" (change)="getReason($event)" name="investmentType" id="investment" value="goods"
+          formControlName="investmentType" [(ngModel)]="selectedInvestmentType">
+        <label for="investment">
+          <div class="icn-wrap">
+            <img class="radio-img main" src="images/goods-icn.svg" alt="investment">
+            <img class="radio-img hover" src="images/goods-icn-hover.svg" alt="investment">
+            <!-- <img class="radio-img select" src="images/hand-shake-color.gif" alt="investment"> -->
+          </div>
+          <p class="radio-heading">Importing goods</p>
+          <!-- <img class="check-img" src="images/check-circle-icon.svg" alt="investment"> -->
+          <button class="btn-select">Select</button>
+        </label>
+      </div>
+      <div class="box-radio" tabindex="0" [ngClass]="isDisableReason == true ? 'disable' :  ''">
+        <input type="radio" (change)="getReason($event)" name="investmentType" id="paymentOfService" value="Services"
+          formControlName="investmentType" [(ngModel)]="selectedInvestmentType">
+        <label for="paymentOfService">
+          <div class="icn-wrap">
+            <img class="radio-img main" src="images/service-icn.svg" alt="paymentOfService">
+            <img class="radio-img hover" src="images/service-icn-hover.svg" alt="paymentOfService">
+            <!-- <img class="radio-img select" src="images/house-shake-color.gif" alt="paymentOfService"> -->
+          </div>
+          <p class="radio-heading">Services</p>
+          <!-- <img class="check-img" src="images/check-circle-icon.svg" alt="paymentOfService"> -->
+          <button class="btn-select">Select</button>
+        </label>
+      </div>
+      <div class="box-radio" tabindex="0" [ngClass]="isDisableReason == true ? 'disable' :  ''">
+        <input type="radio" (change)="getReason($event)" name="investmentType" id="loan" value="Loan"
+          formControlName="investmentType" [(ngModel)]="selectedInvestmentType">
+        <label for="loan">
+          <div class="icn-wrap">
+            <img class="radio-img main" src="images/loan-invest-icn.svg" alt="loan">
+            <img class="radio-img hover" src="images/loan-invest-icn-hover.svg" alt="loan">
+            <!-- <img class="radio-img select" src="images/plant-shake-color.gif" alt="loan"> -->
+          </div>
+          <p class="radio-heading">Loans & Investments</p>
+          <!-- <img class="check-img" src="images/check-circle-icon.svg" alt="loan"> -->
+          <button class="btn-select">Select</button>
+        </label>
+      </div>
+      <div class="box-radio" tabindex="0">
+        <input type="radio" (change)="getReason($event)" name="investmentType" id="other" value="transactions"
+          formControlName="investmentType" [(ngModel)]="selectedInvestmentType">
+        <label for="other">
+          <div class="icn-wrap">
+            <img class="radio-img main" src="images/ohter-trans-icn.svg" alt="other">
+            <img class="radio-img hover" src="images/ohter-trans-icn-hover.svg" alt="other">
+            <!-- <img class="radio-img select" src="images/briefcase-shake-color.gif" alt="other"> -->
+          </div>
+          <p class="radio-heading">Other transactions</p>
+          <!-- <img class="check-img" src="images/check-circle-icon.svg" alt="other"> -->
+          <button class="btn-select">Select</button>
+        </label>
+      </div>
+    </div>
+    <p class="error-msg" *ngIf="hasError('investmentType')">
+      <img class="country-image" src="images/red-warning-icon.svg"> Please select the option according to the
+      beneficiary transfer reason.
+    </p>
+    <div class="selection-wrap">
+      <div class="form-control-wrapper" *ngIf="transactions.value.investmentType">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="selectedPaymentReason_beneficiary_step3">Reason for the transfer to the beneficiary</label>
+              <mat-select id="selectedPaymentReason_beneficiary_step3" class="form-control transfer-select"
+                panelClass="rm-reason-dropdown" placeholder="Select the reason for the transfer to the beneficiary" name="paymentReason"
+                [(ngModel)]="selectedSortedPayment" (selectionChange)="getSelectedPayment($event.value)"
+                formControlName="paymentReason">
+
+                <mat-option *ngFor="let reason of sortedPaymentReasons" [value]="reason.id">
+                  {{ reason.translatedName  }}
+                </mat-option>
+              </mat-select>
+              <p class="error-msg" *ngIf="hasError('paymentReason')">
+                <img class="country-image" src="images/red-warning-icon.svg"> Please select the option that corresponds to the reason for the transfer to the beneficiary.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-3" *ngIf="isDisplayPaymentReasonIsOther && !isNonIsraeliUser">
+          <div class="row" >
+            <div class="col-12">
+              <div class="form-group">
+                <label for="reasonDesk">Reason for opening the beneficiary account*</label>
+                <textarea id="reasonDesk" rows="3" cols="4" class="form-control"  type="text" formControlName="reasonDesc" [minlength]="2" [maxlength]="100"
+                  pattern="^[a-zA-Z0-9 ]*$">
+                </textarea>
+                <div *ngIf="transactions.get('reasonDesc')?.hasError('maxlength')" class="error-msg mt-2 freetext-cls">
+                    <img class="country-image" src="images/red-warning-icon.svg"> Please limit your input to a maximum of 100 characters.
+                  </div>
+                  <div *ngIf="transactions.get('reasonDesc')?.hasError('minlength')" class="error-msg mt-2 freetext-cls">
+                    <img class="country-image" src="images/red-warning-icon.svg"> Minimum 2 characters required.
+                  </div>
+                  <!-- <div *ngIf=" transactions.get('reasonDesc')?.hasError('pattern')" class="error-msg mt-2 freetext-cls">
+                    Only letters and numbers allowed.
+                  </div> -->
+                <p *ngIf="(transactions.get('reasonDesc')?.touched && transactions.get('reasonDesc')?.errors?.['required'])"
+                  class="error-msg">
+                  <img class="country-image" src="images/red-warning-icon.svg">  Please specify the reason for opening the beneficiary account
+                </p>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+      <div *ngIf="loading"> <span class="err-msg">
+          {{errMsg}}
+        </span></div>
+      <div class="stepper-action">
+        <button id="nextStep_step4" class="next-button" (click)="nextStep()">
+          Next</button>
+      </div>
+    </div>
+  </form>
+</div>

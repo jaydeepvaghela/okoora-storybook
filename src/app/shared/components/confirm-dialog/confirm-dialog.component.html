@@ -1,0 +1,24 @@
+<div class="confirm-modal-sec">
+  <div class="header-sec">
+    <h2 class="title" *ngIf="!isClickedSkipUploadFileStep5"><img src="assets/images/save-confirm-icon.svg">Discard unsaved updates</h2>
+    <h2 class="title" *ngIf="isClickedSkipUploadFileStep5"><img src="assets/images/save-confirm-icon.svg">Skip Upload
+      File</h2>
+    <button class="close-icon" mat-dialog-close><img src="assets/images/x-close.svg"></button>
+  </div>
+  <div class="inner-content">
+    <span *ngIf="!isClickedSkipUploadFileStep5">
+      <h3>This will delete all your updates. Are you sure you want to proceed?</h3>
+    </span>
+    <span *ngIf="isClickedSkipUploadFileStep5">
+      <h3>To complete the beneficiary setup process, please upload the required documents. Kindly provide the missing
+        files as soon as possible so we can proceed with your request</h3>
+    </span>
+  </div>
+  <div class="footer-sec" *ngIf="!isClickedSkipUploadFileStep5">
+    <button mat-dialog-close class="btn-discard">Keep editing</button>
+    <button class="btn-keep" [mat-dialog-close]="true" (click)="onConfirm()">Discard</button>
+  </div>
+  <div class="footer-sec" *ngIf="isClickedSkipUploadFileStep5">
+    <button class="btn-discard" [mat-dialog-close]="true" (click)="OnSkipUploadFile()">OK</button>
+  </div>
+</div>

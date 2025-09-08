@@ -11,6 +11,7 @@ import { CodeVerificationComponent } from './login/code-verification/code-verifi
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { PaymentsDashboardComponent } from './payments/components/payments-dashboard/payments-dashboard.component';
+import { ContactsDashboardComponent } from './contacts-dashboard/contacts-dashboard.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'main-dashboard', pathMatch: 'full' as 'full' },
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'hedging', component: HedgingProposalComponent },
   { path: 'cashflow', component: CashflowExposureSteppersComponent },
   { path: 'advanced-policy', component: AdvancedPolicyComponent },
+  { path: 'contacts', component: ContactsDashboardComponent},
   { path: '**', redirectTo: 'main-dashboard' },
 ];
 

@@ -1,0 +1,78 @@
+<div class="upload-invoice">
+  <button mat-dialog-close class="popup-close-btn">
+    <img src="images/close-icon-gray.svg" alt="close-icon" />
+  </button>
+  <form class="loader-wrapper">
+    <div class="upload-invoice-info">
+      <h5 class="title">Upload invoice</h5>
+      <p class="desc">To create a beneficiary more quickly, upload the beneficiary documents.</p>
+    </div>
+    <div class="upload-invoice-card">
+      <div class="invoice-upload">
+        <div class="blank-file-container">
+          <ngx-dropzone id="uploadInvoice_step1" [multiple]="false" enctype="multipart/form-data" class="drop-zone"
+            (change)="onFileSelect($event)" accept=".pdf, .gif, .jpg, .jpeg, .png">
+            <ngx-dropzone-label class="file-select">
+              <img class="file-img" src="images/mouse-click.gif" alt="file-icon">
+              <p class="upload-info">Drag your invoice here <span> or </span>
+              </p>
+              <button class="btn-select-file">Select a file</button>
+            </ngx-dropzone-label>
+            <ngx-dropzone-preview class="drop-zone-preview" *ngFor="let f of files" [removable]="true"
+              >
+              <ngx-dropzone-label class="file-set">
+                <div class="progress-wrap" [ngClass]="[fileUploadError ? 'has-error' : '', cancelUpload ? 'has-error canceled':'']">
+                  <div class="file-name">
+                    <img src="images/check-circle.svg" *ngIf="uploadProgress === 100 && !cancelUpload && !fileUploadError">
+                    <div class="file-data">
+                      <h4 class="title">File Name <span> {{files[0].name}}</span></h4>
+                    </div>
+                  </div>
+                  <div class="file-upload-sec">
+                    <div class="progress-inner">
+                      <mat-progress-bar class="file-upload-loader" mode="determinate" [value]="uploadProgress"></mat-progress-bar>
+                      <button class="close-btn" *ngIf="uploadProgress != 100 && !fileUploadError && !cancelUpload" (click)="stopUploadFile($event)">
+                        <img src="images/close_progress.svg">
+                      </button>
+                      <img *ngIf="cancelUpload" src="images/rerun-file-icon.svg">
+                      <p class="file-progress" *ngIf="uploadProgress > 0 && !fileUploadError">{{ uploadProgress }}%</p>
+                      <button *ngIf="uploadProgress === 100 || fileUploadError && !cancelUpload" class="btn-replace">
+                        Replace
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="fileUploadError">
+                  <span class="error-msg">
+                    <img class="country-image" src="images/red-warning-icon.svg"> {{fileUploadError}}
+                  </span>
+                </div>
+                <div class="error-msg" *ngIf="cancelUpload">
+                  <img class="country-image" src="images/red-warning-icon.svg"> Upload canceled. Click <span>here</span> to retry.
+                </div>
+              </ngx-dropzone-label>
+            </ngx-dropzone-preview>
+          </ngx-dropzone>
+        </div>
+        <div class="file-desc">
+          <span class="file-type">Supported file formats: PDF, GIF, JPG, JPEG, PNG</span>
+          <span class="file-size">Maximum file size: 5 MB</span>
+        </div>
+      </div>
+
+
+      <div class="btn-sec firstUpInvoice">
+        <button class="btn-upload" [class.disable]="uploadProgress != 100 || fileUploadError" *ngIf="files && files.length !==0" (click)="uploadFile()">Upload</button>
+        <button id="skip_beneficiary-step1" class="skip-btn" mat-button
+          *ngIf="files && files.length === 0"
+          (click)="skipStep(formStepper, formStepperProgress)">Skip</button>
+      </div>
+      <div class="btn-sec secondUpInvoice">
+        <button class="btn-upload" [class.disable]="uploadProgress != 100 || fileUploadError" mat-dialog-close *ngIf="files && files.length !==0" (click)="uploadFile()">Upload</button>
+        <button id="skip_beneficiary-step1" class="skip-btn"
+          *ngIf="files && files.length === 0" mat-dialog-close>Skip</button>
+      </div>
+    </div>
+    <!-- <app-page-loader classes="bg-white section-loader" *ngIf=" loading"></app-page-loader> -->
+  </form>
+</div>

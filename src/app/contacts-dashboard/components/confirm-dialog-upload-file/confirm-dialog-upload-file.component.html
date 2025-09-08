@@ -1,0 +1,13 @@
+<div class="upload-confirm-modal">
+  <button mat-dialog-close class="close-btn">
+    <img src="images/close-icon-gray.svg" alt="close-icon" />
+  </button>
+  <div class="desc">
+    <h1 class="title">Are you sure?</h1>
+    <p class="info">Are you sure you want to stop?</p>
+  </div>
+  <div class="btn-wrap">
+    <button class="btn-cancel" mat-dialog-close>Cancel</button>
+    <button class="btn-skip" (click)="stopfileUpload()">Yes, stop</button>
+  </div>
+</div> 

@@ -1,0 +1,35 @@
+<form [formGroup]="type">
+  <!-- ---<input type="text" name="name" id="payer" ngModel> -->
+  <div class="contacts-selection-wrapper">
+    <div class="form-details">
+      <h5 class="form-title">
+        Add a new contact
+      </h5>
+      <p class="form-description">
+        You can add a contact for the purpose <br> of sending or receiving money
+      </p>
+    </div>
+    <div class="radio-group">
+      <div class="box-radio" tabindex="0">
+        <input type="radio" name="ContactType" value="beniciary" id="beniciary" formControlName="ContactType">
+        <label for="beniciary">
+          <img class="radio-img" src="images/beneficiary-icon.svg" alt="payer">
+          <p class="radio-heading">Beneficiary</p>
+          <p class="radio-info">Sending money <br>to someone</p>
+        </label>
+      </div>
+      <div class="box-radio" tabindex="0">
+        <input type="radio" name="ContactType" id="payer" value="payer" formControlName="ContactType">
+        <label for="payer">
+          <img class="radio-img" src="images/payer-icon.svg" alt="payer">
+          <p class="radio-heading">Payer</p>
+          <p class="radio-info">Receiving money <br>from someone</p>
+        </label>
+      </div>
+    </div>
+    <div class="stepper-action">
+      <button [class.disabled]="!type.valid" [disabled]="!type.valid" class="next-button" id="next-btn-id" mat-button
+        matStepperNext (click)="nextStep(formStepper, formStepperProgress)">Next</button>
+    </div>
+  </div>
+</form>
