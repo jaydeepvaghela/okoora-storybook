@@ -1425,6 +1425,15 @@ export const GetAllCurrenciesForPayment = [
 
 export const Countries = [
     {
+        "countryName": "United States",
+        "countryCode": "us",
+        "countryCode3Letters": "USA",
+        "phoneCode": 1,
+        "score": 1,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/us.svg"
+    },
+    {
         "countryName": "Albania",
         "countryCode": "al",
         "countryCode3Letters": "ALB",
@@ -1702,15 +1711,6 @@ export const Countries = [
         "score": 1,
         "canRegister": 0,
         "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/cn.svg"
-    },
-    {
-        "countryName": "United States",
-        "countryCode": "us",
-        "countryCode3Letters": "USA",
-        "phoneCode": 1,
-        "score": 1,
-        "canRegister": 1,
-        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/us.svg"
     },
 ]
 

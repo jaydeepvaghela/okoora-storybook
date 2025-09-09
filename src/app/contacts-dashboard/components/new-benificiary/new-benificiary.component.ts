@@ -66,7 +66,6 @@ export class NewBenificiaryComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
   ngOnInit(): void {
-    debugger
     this.stepperSubscription = this.contactsService.getnewBenificiarySelectedStepperIndexFromSummary.subscribe((res: any) => {
       if (res) {
         this.navigateToScreen(res);
