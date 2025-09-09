@@ -444,7 +444,7 @@ export class NewBenificiaryStep6Component implements OnInit, OnChanges, OnDestro
 
   reviewCmarix() {
     this.contactService.closeAllDialog();
-    this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + 'Payments' : 'Payments']);
+    this.router.navigate(['/payments']);
     if (this.isNonIsraeliUser) {
       this.contactService.createSinglePaymentFromBeneficiaryStep6(this.awReviewPayPayload.beneficiary.bank_details);
     } else {

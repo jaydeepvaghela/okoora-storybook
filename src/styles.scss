@@ -41,6 +41,13 @@
     background: rgba(255, 255, 255, 0.3);
   }
 }
+html {
+  overflow-y: hidden !important;
+  &.cdk-global-scrollblock {
+    overflow-y: auto !important;
+  }
+}
+
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; font-family: $manrope !important;touch-action: manipulation;}
 body,p,h1,h2,h3,h4,h5,ul { margin: 0;}
