@@ -438,9 +438,12 @@ export class NewBenificiaryStep5Component implements OnInit, OnDestroy, OnChange
     }
     this.fileIsRequired = '';
     this.loading = true
-    this.beneficiaryObjectForFilelength.forEach((docType: any, docIndex: any) => {
-      if (docType == type) {
-        this.beneficiaryObjectForFilelength.splice(docIndex, 1);
+    this.beneficiaryObjectForFilelength = this.beneficiaryObjectForFilelength.filter(
+    (docType: any) => docType !== type
+    );
+    // this.beneficiaryObjectForFilelength.forEach((docType: any, docIndex: any) => {
+    //   if (docType == type) {
+    //     this.beneficiaryObjectForFilelength.splice(docIndex, 1);
         this.fileArray.push(...event.addedFiles);
         let formData = new FormData();
         formData.append("files", event.addedFiles[0]);
@@ -483,8 +486,8 @@ export class NewBenificiaryStep5Component implements OnInit, OnDestroy, OnChange
         setTimeout(() => {
           this.loading = false;  // Finish the loading process after the simulated progress
         }, 3000);
-      }
-    });
+      // }
+    // });
     if (this.isDisplayTaxCountryAndDeductionFileId) {
       this.isDisplayTaxCountryAndDeductionFileId = true
     }

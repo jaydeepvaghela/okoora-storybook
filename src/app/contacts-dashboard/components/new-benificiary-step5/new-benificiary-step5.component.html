@@ -19,7 +19,6 @@
       <p class="desc">Upload the required document(s) to create your beneficiary.</p>
     </div>
     <div class="upload-file-wrap">
-      <pre>file array: {{fileArray}} length: {{fileArray.length}}</pre>
       <div class="first-second-file-container" [class.upfiles]="fileArray && fileArray.length !== 0">
         <!-- First File Start -->
         <ng-container *ngIf="fileArray.length > 0 ">
