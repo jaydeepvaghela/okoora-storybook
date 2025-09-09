@@ -1,39 +1,129 @@
 @import "../../assets/scss/_variable.scss";
 @import "../../assets/scss/_mixins.scss";
 ::ng-deep {
-    .add-contact {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        line-height: 22px;
-        color: $white-button-text-color;
-        font-family: $he_heebo;
-        background-color: $white;
-        font-weight: 400;
-        height: 46px;
-        padding: 10px 24px;
-        border-radius: 50px;
+    .contacts-header {
+      @include flex(space-between, center, row);
+      // margin-bottom: 36px;
 
-        &:hover {
-            background-color: $white;
+      // @media only screen and (max-width: 1440px) {
+      //   margin-bottom: 20px;
+      // }
+
+      @media only screen and (max-width: 480px) {
+        display: inline;
+      }
+
+      .label {
+        font-size: $contact-header-label-font-size;
+        line-height: 23px;
+        color: $black;
+        font-family: $epilogue;
+        font-weight: bold;
+        margin-bottom: 0;
+
+        @media only screen and (max-width: 1440px) {
+          font-size: 19px;
+          line-height: 22px;
+        }
+
+        @media only screen and (max-width: 480px) {
+          margin-bottom: 10px;
+        }
+      }
+
+      .action-wrapper {
+        display: flex;
+        gap: 16px;
+
+        @media only screen and (max-width: 480px) {
+          margin-bottom: 10px;
+          gap: 10px;
         }
 
         @media only screen and (max-width: 1440px) {
+          gap: 13px;
+        }
+
+        .import-contact {
+          display: flex;
+          align-items: center;
+          background: var(--primary-blue);
+          padding: 9px 27px;
+          gap: 10px;
+          border-radius: 60px;
+          color: #FFF;
+          font-family: 'Heebo';
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 30px;
+
+          @media screen and (max-width: 1440px) {
+            font-size: 13px;
+            line-height: 16px;
+            padding: 9px 20px;
+          }
+
+          @media only screen and (max-width: 580px) {
+            font-size: 14px;
+            padding: 14px;
+          }
+
+          @media only screen and (max-width: 480px) {
+            padding: 9px 15px;
+            font-size: 12px;
+          }
+        }
+        .add-contact {
+          @include flex(flex-start, center, row);
+          font-size: 16px;
+          line-height: 22px;
+          color: $white-button-text-color;
+          font-family: 'Heebo';
+          background-color: $white;
+          font-weight: 400;
+          height: 46px;
+          padding: 10px 24px;
+          border-radius: 50px;
+          
+          &:hover {
+            background-color: $white;
+          }
+  
+          @media only screen and (max-width: 1440px) {
             font-size: 13px;
             line-height: 16px;
             height: 36px;
             padding: 10px 18px;
-        }
-
-        @media only screen and (max-width: 580px) {
+          }
+  
+          @media only screen and (max-width: 580px) {
             font-size: 14px;
             line-height: 18px;
             padding: 14px;
-        }
+          }
 
-        @media only screen and (max-width: 480px) {
+          @media only screen and (max-width: 480px) {
             font-size: 12px;
+          }
+  
+          .user-icon {
+            display: inline-block;
+            height: 26px;
+            width: 26px;
+            background-image: url(../../assets/images/add-contact-icon.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            margin-right: 8px;
+  
+            @media only screen and (max-width: 1440px) {
+              height: 20px;
+              width: 20px;
+              margin-right: 5px;
+            }
+          }
         }
+      }
     }
+    
 }

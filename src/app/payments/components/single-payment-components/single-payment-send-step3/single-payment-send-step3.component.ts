@@ -55,8 +55,6 @@ export class SinglePaymentSendStep3Component {
   ) { }
 
   ngOnInit() {
-    console.log("signObjectForSummerysignObjectForSummery", this.signObjectForSummery);
-    console.log("this.createdPaymentData", this.createdPaymentData);
     if (!this.signObjectForSummery && !this.createdPaymentData) {
       this._walletService.currentCreatedPayment?.subscribe((data: any) => {
         if (data) {

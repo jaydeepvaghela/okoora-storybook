@@ -77,10 +77,6 @@ export class NewBenificiaryUploadFileComponent {
     }
   }
 
-  async gotTopusher() {
-    console.log("clicked");
-  }
-
   skipStep(stepper: any, progress: any) {
     this.benificiaryObjectFromInvoice$ = of([]);
     this.contactsService.setBeneficiaryObject({})

@@ -151,7 +151,6 @@ export class NewBenificiaryStep4Component implements OnInit, OnChanges, AfterVie
     this.filterBankCountryList();
     this.filterBankNumberDrpList();
     this.filterBranchNumberDrpList();
-    console.log('newBenificiaryBankDetails', this.newBenificiaryBankDetails);
   }
 
   getBankNumberList() {
@@ -897,10 +896,8 @@ export class NewBenificiaryStep4Component implements OnInit, OnChanges, AfterVie
         control.updateValueAndValidity(); // Update the validity status of the control, triggering validation (including pattern validation)
       });
 
-      console.log('Form Status after marking as touched:', this.newBenificiaryBankDetails.invalid);
       // Check if the form is still invalid after updating validity
       if (this.newBenificiaryBankDetails.invalid) {
-        console.log('Form is invalid:', this.newBenificiaryBankDetails.errors, this.newBenificiaryBankDetails);
         this.showLoader = false;
         this.scrollToInvalidControl(); // Scroll to the first invalid control
         return;

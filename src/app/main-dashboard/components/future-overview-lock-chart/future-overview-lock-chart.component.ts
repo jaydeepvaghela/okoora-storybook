@@ -135,7 +135,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   public chartOptions!: Partial<ChartOptions>;
 
   async ngOnInit() {
-    console.log('FutureOverviewLockChartComponent initialized', this.getLockHedgeGrafhData);
     this.activeCurrency = JSON.parse(localStorage.getItem('activeWallet') || '');
     this.showLoader = true;
     this.Directions = Direction

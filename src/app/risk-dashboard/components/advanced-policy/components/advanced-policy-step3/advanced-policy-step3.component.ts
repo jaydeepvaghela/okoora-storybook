@@ -52,8 +52,6 @@ export class AdvancedPolicyStep3Component implements OnInit {
       if (res && res.length > 0) {
         this.step2Res = res.sort((a: any, b: any) => a.index - b.index);
       } 
-      console.log('response from step2', this.step2Res);
-
     })
     // this.advancePolicyFlag = this.riskManagerService.advancePolicyFlag;
     this.riskManagerService.advancePolicyFlag$.subscribe(flag => {

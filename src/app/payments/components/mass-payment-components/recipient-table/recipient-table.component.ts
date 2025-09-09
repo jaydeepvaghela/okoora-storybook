@@ -403,7 +403,6 @@ export class RecipientTableComponent implements OnChanges {
   }
 
   createPaymentRequest(index: number) {
-    console.log(this.beneficiaryForms,'lol')
     this.previousValues[index] = + this.beneficiaryForms[index].get('amount').value;
     // console.log("this.beneficiaryForms[index]?.get('amount')", this.beneficiaryForms[index]?.get('amount'));
     this.showLoaderOnRow(index);

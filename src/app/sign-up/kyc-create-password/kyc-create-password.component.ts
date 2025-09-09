@@ -75,7 +75,6 @@ export class KycCreatePasswordComponent implements OnInit {
     updateIsFromIsraelFlag(): void {
         const countrySelected = this.kycForm?.value?.step_1?.companyAcc?.countrySelected;
         this.isFromIsrael = countrySelected !== null && countrySelected !== 'Israel';
-        console.log('updateIsFromIsraelFlag:', this.isFromIsrael, 'country:', countrySelected);
     }
 
     codeValidHandler() {
@@ -122,7 +121,6 @@ export class KycCreatePasswordComponent implements OnInit {
         }
 
         if (this.isFromIsrael) { 
-            console.log('isFromIsrael is TRUE, calling API');
             this.createUser$
                 .pipe(take(1))
                 .subscribe(() => {
@@ -134,7 +132,6 @@ export class KycCreatePasswordComponent implements OnInit {
             this.createUser$.next(true);
             // Don't navigate here - API callback will handle navigation if needed
         } else {
-            console.log('isFromIsrael is FALSE, moving to next step');
             this.nextStepEvent.next('NEXT');
         }
     }

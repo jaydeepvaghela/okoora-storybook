@@ -148,7 +148,6 @@ export class CashflowExposureStep2Component implements OnInit {
 
   getMonthValue(event: MatSelectChange): void {
     this.monthlyPeriod = event.value;
-    console.log('this.monthlyPeriod',this.monthlyPeriod);
   }
 
   preventDecimalValue(event: KeyboardEvent) {
@@ -165,10 +164,6 @@ export class CashflowExposureStep2Component implements OnInit {
       toCurrency: ['', Validators.required],
       monthlyAmount: [0]
     });
-
-    console.log('Form initialized with value:', this.cashFlowExposureForm.value);
-    console.log('From currency control:', this.cashFlowExposureForm.controls['fromCurrency']);
-
   }
 
   onToCurrencyChange(value: string) {
@@ -214,7 +209,6 @@ export class CashflowExposureStep2Component implements OnInit {
       this.walletData.find((currency: any) => {
         if (currency.code === this.gettoCurrencyvalue()) {
           this.buySellCurrRes = currency;
-          console.log(this.buySellCurrRes,'toCurrencyObject')
         }
       })
     }
@@ -249,7 +243,6 @@ export class CashflowExposureStep2Component implements OnInit {
   
       this.isCreateMonthlyTable = true;
       const currencyPair = this.gettoCurrencyvalue() + '/' + this.selectedFromCurrency.code;
-      console.log('currencyPair', currencyPair);
       const staticRes = {
         pair: currencyPair,
         monthlyExposure: this.getMonthlyAmountvalue(),
@@ -283,7 +276,6 @@ export class CashflowExposureStep2Component implements OnInit {
   
       delete cashFlowExposureRes['monthlyExposure'];
   
-      console.log('cashFlowExposureRes 231', cashFlowExposureRes);
       this.hedgeDataService.setExposureFormValue.next(cashFlowExposureRes);
   
       setTimeout(() => {

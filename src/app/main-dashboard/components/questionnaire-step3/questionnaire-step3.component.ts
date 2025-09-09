@@ -30,7 +30,6 @@ export class QuestionnaireStep3Component {
   }
 
   ngOnInit() {
-    console.log("defaultCurrencyValue", this.defaultCurrencyValue);
     of(GetDefaultCurrencyData).subscribe((res:any) => {
       this.showLoader = false
       this.exposureList = res?.exposers

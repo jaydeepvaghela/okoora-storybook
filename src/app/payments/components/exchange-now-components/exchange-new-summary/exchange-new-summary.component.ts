@@ -43,9 +43,6 @@ export class ExchangeNewSummaryComponent {
   ) { }
 
   ngOnInit() {
-    console.log('createdConvertData', this.createdConvertData)
-    console.log('exchange form',this.exchangeForm)
-    console
     of(getAllActiveCurrencies).subscribe(res => {
       this.activeCurrencyList = res;
       this.selectExchangeCurrency()

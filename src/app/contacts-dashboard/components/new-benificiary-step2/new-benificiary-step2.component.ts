@@ -126,8 +126,6 @@ export class NewBenificiaryStep2Component implements OnInit, OnChanges, OnDestro
       this.isBeneficiaryAccNotExist = isAccountExist ? true : false;
     }
 
-    console.log("isNonIsraeliUser", this.isNonIsraeliUser);
-
   }
 
   checkUploadButtonClick() {

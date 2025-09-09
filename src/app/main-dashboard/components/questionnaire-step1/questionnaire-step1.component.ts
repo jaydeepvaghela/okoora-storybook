@@ -22,7 +22,6 @@ export class QuestionnaireStep1Component {
   constructor() {
   }
   ngOnInit() {
-    console.log('defaultCurrency', this.defaultCurrencyValue);
     this.showLoader = true
     this.getAllCurrencies();
 
