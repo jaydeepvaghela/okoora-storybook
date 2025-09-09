@@ -16,7 +16,7 @@
               <img class="file-img" src="images/mouse-click.gif" alt="file-icon">
               <p class="upload-info">Drag your invoice here <span> or </span>
               </p>
-              <button class="btn-select-file">Select a file</button>
+              <button class="btn-select-file" type="button">Select a file</button>
             </ngx-dropzone-label>
             <ngx-dropzone-preview class="drop-zone-preview" *ngFor="let f of files" [removable]="true"
               >
@@ -36,7 +36,7 @@
                       </button>
                       <img *ngIf="cancelUpload" src="images/rerun-file-icon.svg">
                       <p class="file-progress" *ngIf="uploadProgress > 0 && !fileUploadError">{{ uploadProgress }}%</p>
-                      <button *ngIf="uploadProgress === 100 || fileUploadError && !cancelUpload" class="btn-replace">
+                      <button type="button" *ngIf="uploadProgress === 100 || fileUploadError && !cancelUpload" class="btn-replace">
                         Replace
                       </button>
                     </div>
@@ -62,7 +62,7 @@
 
 
       <div class="btn-sec firstUpInvoice">
-        <button class="btn-upload" [class.disable]="uploadProgress != 100 || fileUploadError" *ngIf="files && files.length !==0" (click)="uploadFile()">Upload</button>
+        <button class="btn-upload" type="button" [class.disable]="uploadProgress != 100 || fileUploadError" *ngIf="files && files.length !==0" (click)="uploadFile()">Upload</button>
         <button id="skip_beneficiary-step1" class="skip-btn" mat-button
           *ngIf="files && files.length === 0"
           (click)="skipStep(formStepper, formStepperProgress)">Skip</button>

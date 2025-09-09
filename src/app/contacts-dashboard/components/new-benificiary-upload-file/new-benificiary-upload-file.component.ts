@@ -1,4 +1,3 @@
-
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { ContactsService } from '../../services/contacts.service';
@@ -11,6 +10,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { CommonModule } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ConfirmDialogUploadFileComponent } from '../confirm-dialog-upload-file/confirm-dialog-upload-file.component';
+
 @Component({
   selector: 'app-new-benificiary-upload-file',
   templateUrl: './new-benificiary-upload-file.component.html',
@@ -43,7 +43,12 @@ export class NewBenificiaryUploadFileComponent {
   gradualProgressTimer!: Subscription;
   isError = false;
   private uploadTimeoutSubscription!: Subscription;
-  constructor(private http: HttpClient, private cd: ChangeDetectorRef, private contactsService: ContactsService,
+  private finalProgressTimer!: Subscription;
+
+  constructor(
+    private http: HttpClient, 
+    private cd: ChangeDetectorRef, 
+    private contactsService: ContactsService,
     private translateService: TranslateService,
     private contactService: ContactsService,
     public dialog: MatDialog,
@@ -61,6 +66,17 @@ export class NewBenificiaryUploadFileComponent {
     })
   }
 
+  ngOnDestroy() {
+    // Clean up subscriptions to prevent memory leaks
+    this.stopSmoothProgress();
+    if (this.uploadTimeoutSubscription) {
+      this.uploadTimeoutSubscription.unsubscribe();
+    }
+    if (this.finalProgressTimer) {
+      this.finalProgressTimer.unsubscribe();
+    }
+  }
+
   async gotTopusher() {
     console.log("clicked");
   }
@@ -68,26 +84,17 @@ export class NewBenificiaryUploadFileComponent {
   skipStep(stepper: any, progress: any) {
     this.benificiaryObjectFromInvoice$ = of([]);
     this.contactsService.setBeneficiaryObject({})
-    // this.benificiaryForm.reset();
-    // this.benificiaryForm.patchValue({
-    //   type: {
-    //     ContactType: "beniciary"
-    //   },
-    // })
 
-    // this.files = []
-    // let totalSteps = stepper.steps.length;
-    // let currentStep = stepper.selectedIndex + 1;
-    // progress.value = (currentStep * 100) / totalSteps;
     if (this.newBenificiaryStepper) {
       this.newBenificiaryStepper.selectedIndex = 1;
     }
-    // this.stepChanged.emit();
+    
     const scrollToTopNext = document.querySelector<HTMLElement>('mat-dialog-content');
     if (scrollToTopNext) {
       scrollToTopNext.scrollTop = 0;
     }
   }
+
   nextStep(stepper: any, progress: any) {
     let totalSteps = stepper.steps.length;
     let currentStep = stepper.selectedIndex + 1;
@@ -97,100 +104,145 @@ export class NewBenificiaryUploadFileComponent {
       scrollToTopNext.scrollTop = 0;
     }
   }
+
   resetUploadState() {
-    this.loading = false; // Hide the loader
-    this.uploadProgress = 0; // Reset the progress to 0
-    this.files = []; // Clear the uploaded files array
-    this.fileInput.nativeElement.value = ''; // Reset the file input element
-    this.stopGradualProgress(); // Stop the progress timer if running
-    delete this.dataFromPusherForMsg; // Clear any data from Pusher
+    this.loading = false;
+    this.uploadProgress = 0;
+    this.files = [];
+    if (this.fileInput?.nativeElement) {
+      this.fileInput.nativeElement.value = '';
+    }
+    this.stopSmoothProgress();
+    delete this.dataFromPusherForMsg;
     this.fileUploadError = '';
+    this.cancelUpload = false;
+    this.isError = false;
+    this.isFileExist = false;
   }
+
   async onFileSelect(event: any) {
     this.loading = true;
     this.isError = false;
     this.uploadProgress = 0;
     this.cancelUpload = false;
     this.files = [];
-    delete this.dataFromPusherForMsg
+    delete this.dataFromPusherForMsg;
+    this.fileUploadError = '';
+    
     this.files.push(...event.addedFiles);
-    const formData = new FormData();
-    formData.append("file", event.addedFiles[0]);
+
     if (this.validateFile(event)) {
       this.isError = true;
-      this.uploadProgress = 80;
+      this.uploadProgress = 0;
       this.loading = false;
       return;
     }
 
     if (!this.isError) {
-      this.startGradualProgress();
+      // Start the smooth progress animation
+      this.startSmoothProgress();
+      
+      // Set timeout for upload failure
       this.uploadTimeoutSubscription = timer(20000).subscribe(() => {
-        if (!this.dataFromPusherForMsg) { // If no response yet
+        if (!this.dataFromPusherForMsg && this.uploadProgress < 100) {
           this.fileUploadError = this.translateService.instant('FORMS_ERRORS.FileDoesntUpload');
-          this.uploadProgress = 80;
+          this.stopSmoothProgress();
           this.loading = false;
-          this.stopGradualProgress();
-          // this.resetUploadState(); // Reset UI state
+          this.isError = true;
         }
       });
-      // const uploadSubscription = this.contactsService.addInvoice(formData).subscribe({
-      //   next: (data: any) => {
-      //     if (this.cancelUpload) {
-      //       uploadSubscription.unsubscribe();
-      //       this.uploadTimeoutSubscription.unsubscribe();
-      //       return;
-      //     } else {
-      //       if (data.type === HttpEventType.UploadProgress) {
-      //         if (data.total) {
-      //           this.uploadProgress = Math.round((100 * data.loaded) / data.total);
-      //         }
-      //       } else if (data.type === HttpEventType.Response) {
-      //         this.uploadProgress = 100;
-      //         this.isFileExist = true;
-      //         this.uploadTimeoutSubscription.unsubscribe();
-      //         this.listenToPusher(data?.body);
-      //       }
-      //     }
-      //   },
-      //   error: () => {
-      //     this.fileUploadError = this.translateService.instant('FORMS_ERRORS.FileDoesntUpload');
-      //     this.uploadProgress = 80;  // Stop progress at 80% on any upload error
-      //     this.loading = false;
-      //     this.uploadTimeoutSubscription.unsubscribe();
-      //     // this.resetUploadState();
-      //   }
-      // });
-    }
 
+      // Simulate upload process - replace this with your actual process initiation
+      // For now, we'll simulate a successful upload after 3 seconds
+      timer(3000).subscribe(() => {
+        if (!this.cancelUpload && !this.isError) {
+          // Simulate successful response - replace with actual Pusher data when received
+          const mockResponse = { 
+            beneficiaryId: '12345', 
+            status: 'processed',
+            fileName: this.files[0]?.name 
+          };
+          this.completeUpload(mockResponse);
+        }
+      });
+    }
   }
 
-  startGradualProgress() {
-    this.gradualProgressTimer = interval(100) // Adjust the interval as needed for speed
-      .pipe(takeWhile(() => this.uploadProgress < 90)) // Stop at 90% to leave room for actual progress
+  // Smooth progress that stops at 85% to wait for completion
+  startSmoothProgress() {
+    this.gradualProgressTimer = interval(150)
+      .pipe(
+        takeWhile(() => this.uploadProgress < 85 && !this.cancelUpload && !this.isError)
+      )
       .subscribe(() => {
-        this.uploadProgress += 1;
+        // Exponential slowdown as we approach 85%
+        const remaining = 85 - this.uploadProgress;
+        const increment = Math.max(0.5, remaining / 15);
+        this.uploadProgress = Math.min(85, this.uploadProgress + increment);
+        this.uploadProgress = Math.floor(this.uploadProgress); // Round down
+        this.cd.detectChanges();
       });
   }
 
-  stopGradualProgress() {
+  stopSmoothProgress() {
     if (this.gradualProgressTimer) {
       this.gradualProgressTimer.unsubscribe();
     }
   }
 
+  // Call this method when you receive data from Pusher or your data source
+  completeUpload(data: any) {
+    this.stopSmoothProgress();
+    
+    // Animate final progress from current position to 100%
+    this.finalProgressTimer = interval(50).pipe(
+      takeWhile(() => this.uploadProgress < 100)
+    ).subscribe(() => {
+      this.uploadProgress += 3;
+      this.uploadProgress = Math.min(100, this.uploadProgress);
+      this.uploadProgress = Math.floor(this.uploadProgress); // Round down
+      if (this.uploadProgress >= 100) {
+        this.uploadProgress = 100;
+        this.isFileExist = true;
+        this.loading = false;
+        this.dataFromPusherForMsg = data;
+        
+        if (this.uploadTimeoutSubscription) {
+          this.uploadTimeoutSubscription.unsubscribe();
+        }
+        if (this.finalProgressTimer) {
+          this.finalProgressTimer.unsubscribe();
+        }
+        
+        this.cd.detectChanges();
+        
+        // Process the received data
+        this.contactsService.setBeneficiaryObject(data);
+      }
+    });
+  }
+
+  // Call this method when you receive data from Pusher
+  onPusherDataReceived(data: any) {
+    if (this.uploadProgress > 0 && this.uploadProgress < 100 && !this.isError) {
+      this.completeUpload(data);
+    }
+  }
 
   validateFile(files: any): boolean {
     this.fileUploadError = '';
+    
     if (files.rejectedFiles.length > 0) {
       this.fileUploadError = this.translateService.instant('FORMS_ERRORS.fileNotSupported');
       return true;
     }
+    
     let value = this.handleUploadFileSizing(files.addedFiles);
     if (value) {
       this.fileUploadError = this.translateService.instant('FORMS_ERRORS.fileSizeExceedsForUpload');
       return true;
     }
+    
     return false;
   }
 
@@ -199,15 +251,9 @@ export class NewBenificiaryUploadFileComponent {
     for (let i = 0; i < files.length; i++) {
       fileSizeMB += files[i].size / (1024 * 1024);
     }
-    if (fileSizeMB > 5) {
-      return true;
-    }
-    return false;
+    return fileSizeMB > 5;
   }
-  // let invoiceFileArray = this.payment.get('invoice').value;
-  // this.files.push(...event.addedFiles);
-  // invoiceFileArray.push(this.files[0]);
-  // }
+
   onFileChange(event: any) {
     this.files.splice(this.files.indexOf(event), 1);
   }
@@ -215,6 +261,7 @@ export class NewBenificiaryUploadFileComponent {
   stopUploadFile(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
+    
     const dialogRef = this.dialog.open(ConfirmDialogUploadFileComponent, {
       height: "auto",
       panelClass: "confirm-dialog-upload-file"
@@ -223,27 +270,39 @@ export class NewBenificiaryUploadFileComponent {
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
         this.cancelUpload = true;
-        this.stopGradualProgress();
+        this.stopSmoothProgress();
+        
+        if (this.finalProgressTimer) {
+          this.finalProgressTimer.unsubscribe();
+        }
+        if (this.uploadTimeoutSubscription) {
+          this.uploadTimeoutSubscription.unsubscribe();
+        }
+        
         this.uploadProgress = 40;
-        return
-        // this.resetUploadState();
-        // Handle the case where the dialog was closed with the selectFileManually flag set to true
-        console.log("confirm dialog, dialog closed");
-        // Any additional logic here
+        this.loading = false;
+        this.cd.detectChanges();
       }
     });
   }
 
+  // Retry upload functionality
+  retryUpload() {
+    if (this.files.length > 0) {
+      const event = { addedFiles: this.files, rejectedFiles: [] };
+      this.onFileSelect(event);
+    }
+  }
+
   uploadFile() {
     this.contactService.usUploadFileFromGeneralDetails.next(true);
-    localStorage.setItem('isUploadClicked',JSON.stringify(true));
+    localStorage.setItem('isUploadClicked', JSON.stringify(true));
+    
     let intervalId = setInterval(() => {
       if (this.newBenificiaryStepper) {
         this.newBenificiaryStepper.selectedIndex = 1;
-        clearInterval(intervalId); // Clear the interval to stop further execution
+        clearInterval(intervalId);
       }
     }, 1000);
   }
-
 }
-

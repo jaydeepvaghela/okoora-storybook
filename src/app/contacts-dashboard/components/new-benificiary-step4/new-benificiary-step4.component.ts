@@ -218,7 +218,6 @@ export class NewBenificiaryStep4Component implements OnInit, OnChanges, AfterVie
   }
 
   getDynamicBankDetailsObjectFromStep2() {
-    debugger
     const step2Details = this.newBenificiaryStep2?.value;
     this.isIlsScenario = step2Details?.beneficiaryCountry == 'il' && step2Details?.bankCountry == 'il' && step2Details?.currency == 'ILS';
 
@@ -1060,7 +1059,6 @@ export class NewBenificiaryStep4Component implements OnInit, OnChanges, AfterVie
 
     // to filter and pass the value of bank_Name_En from the selected bank number
     data['bankName'] = this.globalbankNumberDrpList.filter((data: any) => data.bank_Code == this.newBenificiaryBankDetails?.value?.bankNumber)[0]?.bank_Name_En;
-    debugger
     of({ body: this.isBeneficiaryExist }).subscribe({
       next: (saveBeneficiaryRes: any) => {
         saveBeneficiaryRes.body = true;

@@ -278,21 +278,30 @@
                   height: 20px;
 
                   mat-progress-bar.file-upload-loader {
-                    display: block !important;
-                    width: 100%;
-                    height: 8px;
-                    border-radius: 4px;
+                            display: block !important;
+                            width: 100%;
+                            height: 8px;
+                            border-radius: 4px;
 
-                    .mdc-linear-progress__buffer-bar {
-                      background-color: #E4E7EC;
-                    }
+                            .mdc-linear-progress__buffer {
+                              height: 8px;
+                            }
 
-                    .mdc-linear-progress__bar-inner {
-                      border-top-width: 8px;
-                      left: 0;
-                      border-color: #1B32B8;
-                    }
-                  }
+                            .mdc-linear-progress__buffer-bar {
+                              background-color: #E4E7EC;
+                              height: 8px;
+                            }
+
+                            .mdc-linear-progress__bar-inner {
+                              border-top-width: 8px;
+                              left: 0;
+                              border-color: #1B32B8;
+                            }
+
+                            .mdc-linear-progress__bar {
+                              margin: 0 !important;
+                            }
+                          }
 
                   .close-btn {
                     background-color: transparent;
