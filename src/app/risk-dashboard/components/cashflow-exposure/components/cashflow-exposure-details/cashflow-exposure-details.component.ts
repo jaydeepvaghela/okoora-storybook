@@ -160,9 +160,6 @@ export class CashflowExposureDetailsComponent {
       this.getNext12MonthNamesWithYear(this.monthlyPeriod);
     this.cashflowExposureRows?.splice(0, this.tempcashflowExposureRows?.length);
     this.cashflowExposureRows = [...this.tempcashflowExposureRows, ...this.cashflowExposureRows]
-    // for (let index = 6; index < 12; index++) {
-    //   this.cashflowExposureRows.index = index;
-    // }
   }
   
   chooseCashflowDate(index: number, year: number, month: string, day: number): void {
@@ -398,7 +395,6 @@ export class CashflowExposureDetailsComponent {
     this.getNext12MonthNamesWithYear(this.monthlyPeriod);
     this.cashflowExposureRows?.splice(0, this.tempcashflowExposureRows?.length);
     this.cashflowExposureRows = [...this.tempcashflowExposureRows, ...this.cashflowExposureRows]
-    // this.cashflowExposureRows[this.cashflowExposureRows.length - 1].blinkRowIndex = this.cashflowExposureRows.length - 1;
   }
 
   getNext12MonthNamesWithYear(monthlyPeriod: any) {

@@ -48,14 +48,12 @@
               (valueChange)="changeView($event)"
               panelClass="calender-view-option"
             >
-              <!-- <mat-option value="day">Day</mat-option> -->
               <mat-option id="calendar-week-view" value="week">Week</mat-option>
               <mat-option id="calendar-month-view" value="month">Month</mat-option>
             </mat-select>
           </div>
         </div>
         <div class="calender-header-right">
-          <!-- <button class="clander-view-btn clander-view-btn-graph"></button> -->
           <button id="calendarAddAction" class="clander-view-btn clander-view-btn-plush" [matMenuTriggerFor]="addEvent"></button>
           <mat-menu #addEvent class="add-event-panel" xPosition="before">
             <div class="add-event-menu-item">
@@ -130,9 +128,6 @@
           #eventsMenu="matMenu"
           class="event-menu menu-{{ data?.original?.resource }}"
         >
-          <!-- <button mat-menu-item *ngFor="let event of data?.original?.events">
-          <span>{{ event?.title }}</span>
-        </button> -->
           <div
             class="menu-wrapper menu-{{ data?.original?.resource }}"
             mat-menu-item
@@ -165,7 +160,6 @@
                   </ng-container>
                 </div>
                 <div class="exchange-rates-graph" *ngIf="flagData">
-                  <!-- <app-calendar-view-alert [flag]="flagData"></app-calendar-view-alert> -->
                 </div>
               </div>
               <div class="calendar-exchange-below">
@@ -187,11 +181,6 @@
                               />
                               <span class="notification-text-new">{{flagData?.targetRate}}</span>
                             </div>
-                            <!-- <div class="edit-note-after">
-                              <img
-                                src="/assets/images/exchange-rates-edit.svg"
-                              />
-                            </div> -->
                           </div>
                         </td>
                       </tr>
@@ -314,7 +303,6 @@
               </ng-container>
             </div>
             <div class="exchange-rates-graph" *ngIf="flagData">
-              <!-- <app-calendar-view-alert [flag]="flagData"></app-calendar-view-alert> -->
             </div>
           </div>
           <div class="calendar-exchange-below">
@@ -395,12 +383,10 @@
               + New Hedge
             </button>
           </div>
-          <!-- <app-table-menu [resource]="data?.original?.resource"  [tableData]="data?.original?.events.slice(0, 3)"></app-table-menu> -->
           <div class="view-all-payment">
             <button *ngIf="data?.original?.events?.length > 3" id="mbsc-evd-view-all" (click)="setTableVisibility(true);tabSelect(data?.original?.resource)">View All</button>
           </div>
         </div>
-        <!-- <div *ngIf="data?.original?.resource == 3">Hedge data</div> -->
       </div>
     </mat-menu>
   </ng-template>
@@ -437,7 +423,6 @@
     </div>
   </div>
 
-  <!-- <mat-date-range-picker #picker></mat-date-range-picker> -->
   <app-dashboard-table-view
     [selectedTab]="selectedTab"
     [showTable]="showTable"
@@ -446,5 +431,4 @@
     (addConvertClick)="openConvertDialog(true)"
   ></app-dashboard-table-view>
 </ng-container>
-<!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
 </div>

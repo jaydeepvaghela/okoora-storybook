@@ -1,7 +1,6 @@
 import { Component, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CountdownComponent } from 'ngx-countdown';
-import { tap } from 'rxjs/operators';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { WalletCurrencyModel } from '../../models/WalletCurrencyModel';
 import { CreateHedgeResponseModel } from '../../models/CreateHedgeResponseModel';
@@ -123,13 +122,11 @@ onCountdownEnd() {
     let config: MatSnackBarConfig = {
       panelClass: 'snack-message',
       horizontalPosition: 'left',
-      // duration: 5000,
       data: {
         message: message,
         type: 'success',
       },
     };
-    // this._snackBar.openFromComponent(SnackMessageComponent, config);
   }
 
   completeQuickHedge() {

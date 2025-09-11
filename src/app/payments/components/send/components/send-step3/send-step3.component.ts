@@ -134,7 +134,6 @@ export class SendStep3Component implements AfterViewInit {
     console.log('beneficiaryName.', this.beneficiaryName)
 
     this.benificiaryCurrency = this.beneficiaryName.bankDetails.currency;
-    // this.benificiaryCurrency = this.currency;
     if (!this.currency) {
       this.currency = this.benificiaryCurrency;
     }
@@ -168,14 +167,10 @@ export class SendStep3Component implements AfterViewInit {
         if (profile == 'amount') {
           this.createPaymentRequest();
           this.getPairWithRate(this.benificiaryCurrency, selectedCurrency);
-          // setTimeout(() => {
-          //   // this.vc?.format(this.createPayment?.controls?.amount?.value)
-          // }, 1000);
+          
         } else if (profile == 'amountdata') {
           this.targetRateRange();
-          // setTimeout(() => {
-          //   // this.vc?.format(this.createPayment?.controls?.amount?.value)
-          // }, 1000);
+         
         }
       });
     }
@@ -223,7 +218,6 @@ export class SendStep3Component implements AfterViewInit {
 
   handleEvent(e: any) {
     this.showLoader = false;
-    // console.log('eventtime',e);
     if (e.action == 'done') {
       if (!this.dialogOpen) {
         this.futurePaymentRefresh();
@@ -539,7 +533,6 @@ export class SendStep3Component implements AfterViewInit {
       }
     });
     if (fxRate) {
-      // console.log(fxRate)
       this.currentFXRate =
         this.currentFromCurrency +
         '1 = ' +
@@ -588,7 +581,6 @@ export class SendStep3Component implements AfterViewInit {
     if (this.apiCallSubscription) {
       this.apiCallSubscription.unsubscribe();
     }
-    // this.stop$.next();
     this.stop$.complete();
     if (this.refreshInterval) {
       clearInterval(this.refreshInterval);

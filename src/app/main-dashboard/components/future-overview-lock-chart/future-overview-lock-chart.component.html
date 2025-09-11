@@ -1,5 +1,4 @@
 <div class="lock-up-wrapper loader-wrapper">
-  <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
 
   <div class="label-wrapper">
     <h3 class="label">Future exchange rate</h3>
@@ -88,14 +87,7 @@
       [title]="chartOptions?.title!" [labels]="chartOptions?.labels!" [annotations]="chartOptions?.annotations!"
       [plotOptions]="chartOptions?.plotOptions!" [fill]="chartOptions?.fill!"></apx-chart>
   </div>
-  <!-- <div class="future-lock-chart">
-    <img *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Up" src="images/lockUP100.svg" />
-    <img *ngIf="activeCurrency?.wallet_Hedging?.direction == Directions?.Down" src="images/lockDown101.svg" />
-    <span *ngIf="createdHedgeData?.strike"> {{ createdHedgeData?.strike.toFixed(2)}}</span>
-    <span class="none-strike" *ngIf="!createdHedgeData?.strike"> X </span>
-  </div> -->
   <button id="lock_btn_execute_lock_chart" class="lock-up-btn" *ngIf="!selectedTimeFrame && !lockDateValue" (click)="showConfPopup()" [disabled]="userRoleType !== 1">
-    <!-- {{ (isCalendarEnable && lockDate) ? 'Execute' : activeCurrency?.wallet_Hedging?.direction == Directions?.Up ? 'Lock and Up' : 'Lock and Down' }} -->
     Execute
   </button>
   <button id="lock_btn1_execute_lock_chart" class="lock-up-btn" *ngIf="selectedTimeFrame || lockDateValue"

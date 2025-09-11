@@ -1,5 +1,4 @@
 <div class="single-payment loader-wrapper">
-    <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
     <div class="sp-icon">
         <button id="back_btn_single_payment3" (click)="previousStep()" mat-icon-button class="close-btn">
             <img src="images/prev-slide-icon.svg" alt="back icon" class="back-icon">
@@ -73,15 +72,7 @@
             </li>
         </ul>
 
-        <!-- <ul class="transfer-details-list">
-            <li>
-                <span>Transfer type:</span><strong>{{selectedOption == 1 ? "Regular": "Our" }}</strong>
-            </li>
-            <li>
-                <span>Transfer price:</span><strong>{{signObjectForSummery?.selectedWalletSign}}{{selectedOption == 1 ?
-                    createdPaymentData?.costList[0]?.value : createdPaymentData?.costList[1]?.value}}</strong>
-            </li>
-        </ul> -->
+       
 
         <div class="transfer-fee-title">
             <h4>Select transfer Fee</h4>
@@ -194,5 +185,5 @@
                 commaseprate(createdPaymentData?.paymentRequst?.charge.toFixed(2),2)}}) </span>
         </button>
     </div>
-    <!-- <app-footer [footerBottom]="'relative'" *ngIf="isNonIsraeliUser"></app-footer> -->
+    
 </div>

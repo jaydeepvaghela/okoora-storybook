@@ -52,11 +52,6 @@ export class CodeVerificationComponent {
   }
   ngOnInit() {
     this.resetFormErrors();
-    // if (this.formData.valueChanges) {
-    //   this.formData.valueChanges.subscribe(() => {
-    //     this.resetFormErrors();
-    //   });
-    // }
     this.startTimer();
 
   }
@@ -71,10 +66,6 @@ export class CodeVerificationComponent {
     this.showLoader = false;
 
     if (action === 'SEND') {
-      // request = combineLatest([
-      //   of('SEND'),
-      //   // this.KycS.SendEmailVerificationCode(email)
-      // ]);
     } else if (action === 'CHECK') {
 
     }
@@ -119,8 +110,6 @@ export class CodeVerificationComponent {
       return;
     }
     this.refreshAPIError = false;
-    //this.resendCode = true;
-    //this.resend.emit();
     this.handleActionByStep({ action: 'SEND' });
   }
 
@@ -161,21 +150,6 @@ export class CodeVerificationComponent {
       newPassword: newPassword,
       forgetPasswordValidationId: validationId
     }
-
-    // this._forgotPasswordService.resetPassword(request)
-    //   .subscribe(
-    //     (response: any) => {
-    //       const statusCode = response.status;
-
-    //       if (statusCode) {
-    //         this.showLoader = false;
-    //         this.passwordResetSuccess = true;
-    //       }
-    //     },
-    //     (error: any) => {
-    //       console.error(error);
-    //     }
-    //   );
   }
   handleEditValue(e: Event) {
     e.preventDefault();

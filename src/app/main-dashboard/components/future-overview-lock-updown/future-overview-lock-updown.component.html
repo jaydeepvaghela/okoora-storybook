@@ -35,9 +35,6 @@
                 <label>Required collateral</label>
             </div>
             <div class="inside-input-text">
-                <!-- <input type="text" readonly class="disable-input" placeholder={{data?.hedgeData?.collateral?.toLocaleString()}}>
-                <div class="in-input-text"><label> {{data?.hedgeData?.collateralCur}}</label></div> -->
-
                 <input  id="lock_collateral_amount_lock_updown" type="text" readonly class="disable-input"
                     placeholder={{hedgeData?.collateral?.toLocaleString()}}>
                 <div *ngIf="hedgeData?.collateralCur" class="in-input-text"><label> {{hedgeData?.collateralCur}}</label>
@@ -46,20 +43,7 @@
             </div>
         </div>
     </div>
-    <!-- <div class="lock-up-popup-below-pdd">
-        <div class="lock-up-date">
-            <div class="date-picker">
-                <input type="text" class="form-control" matInput placeholder="Select date" 
-                    [matDatepicker]="picker" [min]="minDate" (dateInput)="addEvent('input', $event)">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </div>
-            <div class="date-picker-text">
-                <label>Protection due date:</label>
-                <span>{{ formattedDate ? (formattedDate | date: 'MMM d, y') : 'N/A' }}</span>
-            </div>
-        </div>
-    </div> -->
+    
     <div class="lock-up-invoice-main">
         <label class="lock-up-invoice-title">Invoice rate:{{data?.hedgeData?.strike.toFixed(4)}} </label>
         <div class="lock-up-invoice-img">

@@ -255,7 +255,6 @@ export class SinglePaymentSendStep2Component {
       if (this.createdPaymentData?.signAndFiles?.needSign && !this.isNonIsraeliUser) {
         this.needSign = true
         this.signatureCheck = this.signaturePad.isEmpty() ? true : false;
-        // stepper.next()
         const base64Data = this.signaturePad.toDataURL();
         this.signatureImg = base64Data;
         const imageName = 'sign.png';
@@ -270,15 +269,6 @@ export class SinglePaymentSendStep2Component {
             paymentRequestId: this.createdPaymentData?.requestId,
             fileType: FileType.needSign,
           };
-          // this._walletService
-          //   .uploadPaymentFile(this.createdPaymentData?.requestId, body?.fileType, formData)
-          //   .subscribe((response: any) => {
-          //     this.showLoader = false;
-          //     this.needSign = false
-          //   }, (err: any) => {
-          //     this.showLoader = false;
-          //     this.uploadSignatureError = err?.error?.apiErrorMessage[0] ?? err?.error?.message;
-          //   });
         }
       }
       if (this.createdPaymentData?.signAndFiles?.needStamp) {
@@ -300,15 +290,12 @@ export class SinglePaymentSendStep2Component {
       }
       if (this.needFile || this.needStamp || this.needSign || this.form?.get('free_text')?.hasError('maxlength') || this.form?.get('free_text')?.hasError('pattern')) {
         stepper.next()
-        // this.timerSubscription.unsubscribe()
       }
       if ((this.needFile == undefined || this.needFile == false) && (this.needStamp == undefined || this.needStamp == false) && (this.needSign == undefined || this.needSign == false) && !this.form?.get('free_text')?.hasError('maxlength') && !this.form?.get('free_text')?.hasError('pattern')) {
         stepper.next()
-        // this.timerSubscription.unsubscribe()
 
       }
     }
-    // document.getElementsByClassName('mat-dialog-content')[0].scrollTop = 0;
   }
 
   removeReference() {
@@ -329,20 +316,9 @@ export class SinglePaymentSendStep2Component {
 
     const updateData = {
       freeText: freeTextValue, // Include the free_text value
-      // Include other properties if needed
     };
 
-    // this._walletService.updatePaymentRequest(this.createdPaymentData?.requestId, updateData).subscribe(
-    //   (data: any) => {
-    //     this.showLoader = false;
-    //     this.updatepaymentRequestAPIError = '';
-
-    //   },
-    //   (err) => {
-    //     this.showLoader = false;
-    //     this.updatepaymentRequestAPIError = err?.error?.apiErrorMessage[0] ?? '';
-    //   }
-    // );
+    
   }
 
   uploadAccountStamp() {
@@ -351,18 +327,7 @@ export class SinglePaymentSendStep2Component {
     let formData = new FormData();
     this.needStamp = true
     formData.append('StampFile', this.stampFiles[0]);
-    // this._workflowService.SetAccountStamp(formData).subscribe({
-    //   next: (data) => {
-    //     this.showStampUploadLoader = false;
-    //     this.showLoader = false;
-    //     this.needStamp = false
-    //   },
-    //   error: (err) => {
-    //     this.showStampUploadLoader = false;
-    //     this.showLoader = false;
-    //     // this.uploadStampError = err?.error?.apiErrorMessage;
-    //   }
-    // });
+    
   }
   removeFile(fileIndex: any) {
     this.invoiceFiles.splice(fileIndex, 1);
@@ -387,19 +352,7 @@ export class SinglePaymentSendStep2Component {
         paymentRequestId: this.createdPaymentData?.requestId,
         fileType: FileType.needInvoice,
       };
-      // return lastValueFrom(
-      //   this._walletService.uploadPaymentFile(body.paymentRequestId, body.fileType, formData)
-      // ).then(() => {
-      //   // Update state upon successful upload
-      //   this.needFile = false;
-      //   this.showFileUploadLoader = false;
-      //   this.uploadAPIError = '';
-      //   this.uploadFileError = false;
-      //   this.showLoader = false;
-      // }).catch((err) => {
-      //   // Handle error if upload fails
-      //   this.uploadAPIError = err?.error?.message ?? '';
-      // });
+     
     });
 
     await Promise.all(uploadPromises);
@@ -417,10 +370,8 @@ export class SinglePaymentSendStep2Component {
       disableClose: true,
     }).afterClosed()
       .subscribe((shouldReload: any) => {
-        // console.log("shouldReload", shouldReload);
         if (shouldReload) {
           this.timerSubscription = shouldReload
-          // this.timerSubscription.unsubscribe()
         }
       });
   }

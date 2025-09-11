@@ -67,7 +67,6 @@ export class QuestionnaireStep2Component implements DoCheck  {
     console.log("defaultCurrency", this.defaultCurrency);
     this._walletService.getAllBalanceList().subscribe((res) => {
       this.firsttimePopup = res?.find((x:any)=> x.wallet_Hedging != null && x.wallet_SupportBaseHedging === true) 
-      // const userPlan = JSON.parse(localStorage.getItem('user') || '');
       if (this.firsttimePopup) {
         this.balanceList = true
       } else if (!this.firsttimePopup) {
@@ -136,7 +135,6 @@ export class QuestionnaireStep2Component implements DoCheck  {
   removeCurrencyPair(index: number) {
     if (index !== this.initialPairIndex) {
       this.currencyPairs().removeAt(index);
-      // this.currencyPair.splice(index, 1);
     }
   }
 
@@ -147,30 +145,11 @@ export class QuestionnaireStep2Component implements DoCheck  {
         BuySell: Number(this.tab) + 1,
         ExposureAmount: this.addMoreCurrency.value.currencyPair[index].amount
       }
-      // this.dashboardService.SetBalanceExposures(data).subscribe((res:any) => {
         this.formStepper.next();
-      // },
-      // (err)=>{
-      //   if(err?.error?.apiErrorMessage[0]){
-      //     this.apiError = err?.error?.apiErrorMessage[0]
-      //   }
-      // })
     }
   }
 
   previousStep() {
-    // var previous = true;
-    // for (let index = 0; index < this.currencyPair.length; index++) {
-    //   if((this.currencyPair[index].buy != ''  || this.currencyPair[index].amount != '') && (this.currencyPair[index].buy != undefined || this.currencyPair[index].amount != undefined)){
-    //     previous = false;
-    //   }    
-    // }
-    // if(previous){
-    //   this.getCurrencyPair()
-    // }
-    // if(this.firsttimePopup) {
-    //   this.dialog.closeAll();
-    // }
     this.formStepper.previous();
   }
 

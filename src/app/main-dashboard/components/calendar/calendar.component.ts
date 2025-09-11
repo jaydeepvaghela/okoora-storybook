@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, HostListener, Input, Output, Renderer2, ViewChild } from '@angular/core';
 import { MbscEventcalendar, MbscEventcalendarOptions, MbscResource } from '@mobiscroll/angular';
 import { CalendarConfigs } from '../../utils/calendar.utils';
-// import { NoteCreateDialogComponent } from '../note-create-dialog/note-create-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import moment from 'moment';
 import { CalendarDayObjModel } from '../../models/CalendarDayObjModel';
@@ -224,7 +223,6 @@ export class CalendarComponent {
               eventList: true,
               labels: 'all',
               outerDays: false,
-              // popover: true
             },
           };
           break;
@@ -240,12 +238,6 @@ export class CalendarComponent {
 
   loadPopupForm(startDate: any, resource: number): void {
     this.tempEventObj = <CalendarEventsModel>{};
-    // this.tempDayObj = {
-    //   id: 1,
-    //   start: moment(startDate).format('YYYY-MM-DD'),
-    //   resource: resource,
-    //   title: this.resources[resource]?.name,
-    // };
   }
 
   generateCellMenu(args: any, event?: any) {
@@ -316,9 +308,6 @@ export class CalendarComponent {
     if(!this.oldDate) {
       document.querySelector('body')!.style.overflowY = 'hidden';
     }
-    // if(this.userRoleType !== 1 && (args.resource == 3 || args.resource == 2)){
-    //   this.renderer.setProperty(eventButton, 'disabled', true);
-    // }
   }
 
   alertDrawerOpen(isMenu?: boolean, date?: any) {
@@ -450,7 +439,6 @@ export class CalendarComponent {
     of(getCalendarDataByDate).pipe(takeUntil(this.unSubScribe$)).subscribe((result) => {
       if (result) {
         this.showLoader = false;
-        // this.changeCalendarDataFormat(result);
         this.calendarData = result.map((item: any) => {
           let changedFormatDate = item.start.split('/').reverse().join('/');
           item.start = moment(changedFormatDate).format('YYYY-MM-DD');
@@ -526,7 +514,6 @@ export class CalendarComponent {
 
   hasEvent(date: any) {
     return this.calendarData.some((obj) => obj['start'] === moment(date).format('YYYY-MM-DD'));
-    // console.log(date);
   }
 
   isDayDisabled(date: any) {

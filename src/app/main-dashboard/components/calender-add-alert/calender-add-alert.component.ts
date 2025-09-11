@@ -41,9 +41,6 @@ export class CalenderAddAlertComponent {
     this.currencyOfUser = 'https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png';
     this.Directions = Direction;
     this.tradingSource = tradingSource
-    // this._dashboardService.getlastPaymentRateDataEdit.subscribe(rate => {
-    //   this.lastPaymentRateData = Object.keys(rate).length ? rate : null;
-    // })
     this._walletService.AlertExposure.subscribe((res: any) => {
       if (res?.show) {
         this.visible = false
@@ -51,7 +48,6 @@ export class CalenderAddAlertComponent {
         this.visible = true
         let currencyPair = this.activeCurrency?.wallet_Currency?.code + "ILS"
         this.cd?.detectChanges();
-        // console.log('document.getElementById("marketChart1")',document.getElementById("marketChart1"))
         const chartElement = this.marketChart1.nativeElement;
         chartElement.outerHTML! = "<div id=\"marketChart1\"></div>";
         this.loadScripts(currencyPair);
@@ -79,7 +75,6 @@ export class CalenderAddAlertComponent {
 
   private loadScripts(currencyPair: any) {
     const chartContainer = document.getElementById("marketChart1");
-    // Clear previous scripts inside marketChart1
     if (chartContainer) {
       chartContainer.innerHTML = ""; // Remove all child elements inside the div
     }
@@ -125,6 +120,5 @@ export class CalenderAddAlertComponent {
     }`;
     let marChartContainer1 = document.getElementById("marketChart1")
     this._renderer2?.appendChild(marChartContainer1, script1)
-    // console.log('document.getElementById("marketChart1")frameeeeeeeeee',document.getElementById("marketChart1"))
   }
 }

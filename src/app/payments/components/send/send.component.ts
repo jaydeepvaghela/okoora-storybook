@@ -105,7 +105,6 @@ export class SendComponent implements AfterContentChecked {
       })
     })
     this.paymentRequestForm.valueChanges.subscribe(value => {
-      // console.log(value)
     })
     if (this.data.fromWallet == true) {
       this.fromWallet = true;

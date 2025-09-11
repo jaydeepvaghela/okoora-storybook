@@ -95,7 +95,6 @@ export class SendStep2Component implements OnInit {
         return this._filter(val || '');
       })
     );
-    // this.roles = this.auth.getRoleOfUser();
     this.filteredBeneficiary$.subscribe(
       (data) => {
         this.showLoader = false;
@@ -158,7 +157,6 @@ export class SendStep2Component implements OnInit {
 
 
   isSalaryStepTwo(result: boolean) {
-    // console.log({ result });
     this.isReadOnly = result;
   }
   benificiarySelect(ev: any) {
@@ -172,8 +170,6 @@ export class SendStep2Component implements OnInit {
   }
 
   private _filter(value: string): Observable<any[]> {
-    // return this.contactService.getAllBeneficieryByAccount().pipe(
-    //   map((response) =>
         return of(this.beneficiaryList.filter((option: { status: any; bankAccountHolderName: string; }) => {
           return option.status == BenificiaryStatus.Approved
             ? option.bankAccountHolderName
@@ -181,8 +177,6 @@ export class SendStep2Component implements OnInit {
               ?.indexOf(value.toLowerCase()) === 0
             : false;
         }))
-    //   )
-    // );
   }
 
   nextStep(stepper: any, progress: any) {
@@ -286,7 +280,6 @@ export class SendStep2Component implements OnInit {
 
   dateChanged(ev: any) {
     let date = moment(ev.value).format(DateFormat.dateInput);
-    // this.createTransfer.value['orderDetailes.FlightDate'] = date;
   }
   futurePaymentDateChanged(ev: any) {
     this.futurePayment.patchValue({ 'expiryDate': ev.value });

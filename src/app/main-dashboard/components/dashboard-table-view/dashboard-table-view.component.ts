@@ -13,7 +13,6 @@ import { CalendarTableViewComponent } from '../calendar-table-view/calendar-tabl
   imports: [CommonModule, MatTabsModule, CalendarTableViewComponent]
 })
 export class DashboardTableViewComponent {
-  //  @Input('tableData') tableData:any;
   @Input('selectedTab') selectedTab: any;
   @Input('showTable') showTable: any;
   @Output('addAlertClick') addAlertClick = new EventEmitter();
@@ -25,7 +24,6 @@ export class DashboardTableViewComponent {
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
-    // this.user = JSON.parse(localStorage.getItem('user'));
     this.getCalendarData();
   }
 
@@ -45,8 +43,6 @@ export class DashboardTableViewComponent {
     const currentDate = new Date();
     const oneYearFromNow = new Date(currentDate);
     oneYearFromNow.setFullYear(currentDate.getFullYear() + 1);
-    // const currentDateFormatted = this.formatDate(currentDate);
-    // const oneYearFromNowFormatted = this.formatDate(oneYearFromNow);
     of(getCalendarDataTableByDate).subscribe(result => {
       if (result) {
         this.tableData = result;

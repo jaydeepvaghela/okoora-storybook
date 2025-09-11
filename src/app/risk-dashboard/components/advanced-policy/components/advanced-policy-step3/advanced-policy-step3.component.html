@@ -2,8 +2,6 @@
     <button (click)="previous()" class="btn-back"><img src="images/back-icon-policy.svg" alt="back" />
       Back</button>
     <h3 class="heading">Advanced Policy</h3>
-    <!-- <div class="loader-wrapper">
-      <app-page-loader id="loader" classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
     <div class="confirm-wrap" *ngIf="!showfinalStep">
       <div class="summary-wrap">
         <h1 class="cnf-title">Before you confirm</h1>
@@ -60,7 +58,6 @@
         </div>
       </div>
     </div>
-    <!-- </div> -->
     <div class="final-step" *ngIf="showfinalStep">
       <div class="success-wrap">
         <picture>

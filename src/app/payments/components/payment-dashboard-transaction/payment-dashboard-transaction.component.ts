@@ -120,7 +120,6 @@ export class PaymentDashboardTransactionComponent {
   }
 
   getAllData() {
-    // this.maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
     this.transactionFilter = new FormGroup({
       currency: new FormControl(''),
       start: new FormControl(moment().subtract(1, 'months').add(1, 'day').toDate(), [Validators.required]),
@@ -144,7 +143,6 @@ export class PaymentDashboardTransactionComponent {
       }, error: (err) => {
         this.showLoader = false;
         this.calculatePages();
-        // this.dataSource = new MatTableDataSource([]);
       }
     }
     )
@@ -410,7 +408,6 @@ export class PaymentDashboardTransactionComponent {
         const startIndex = (this.page - 1) * this.pageSize;
         const endIndex = startIndex + this.pageSize;
         this.dataSource = new MatTableDataSource(this.finalTableData.slice(startIndex, endIndex));
-        // this.dataSource = new MatTableDataSource(finalTableData);
         this.dataSource.sort = this.sort;
       },
       (err: any) => {
@@ -460,7 +457,6 @@ export class PaymentDashboardTransactionComponent {
         if (shouldReload == 'completedSend') {
           this.getAllData();
         }
-        // this.walletService.setFutureActivityObs('success');
       });
   }
 
@@ -497,8 +493,6 @@ export class PaymentDashboardTransactionComponent {
           Commission: item?.Commission || '-',
           Creationdate: submitedOn || '-',
           ExchangeRate: item?.moneyTransferred?.exchangeRate != 1 ? item?.moneyTransferred?.exchangeRate : (item?.moneyReceived?.exchangeRate != 1 ? item?.moneyReceived?.exchangeRate : '-') || '-',
-          // Transferamount: item?.moneyTransferred?.amount ? item?.moneyTransferred?.currency?.sign + item?.moneyTransferred?.amount || '-' : '-',
-          // Currency: item?.moneyTransferred?.currency?.code || '-',
         };
       } else if (item?.mainType == 10) {
         return {
@@ -546,8 +540,6 @@ export class PaymentDashboardTransactionComponent {
           Commission: item?.Commission || '-',
           Creationdate: submitedOn || '-',
           ExchangeRate: item?.moneyTransferred?.exchangeRate != 1 ? item?.moneyTransferred?.exchangeRate : (item?.moneyReceived?.exchangeRate != 1 ? item?.moneyReceived?.exchangeRate : '-') || '-',
-          // Transferamount: item?.moneyTransferred?.amount ? item?.moneyTransferred?.currency?.sign + item?.moneyTransferred?.amount || '-' : '-',
-          // Currency: item?.moneyTransferred?.currency?.code || '-',
         };
       } else {
         return false;

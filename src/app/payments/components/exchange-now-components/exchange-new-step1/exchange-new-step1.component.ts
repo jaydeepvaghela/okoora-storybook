@@ -179,7 +179,6 @@ export class ExchangeNewStep1Component {
 
   handleEvent(e: any) {
     this.showLoader = false;
-    // console.log('eventtime',e);
     if (e.action == 'done') {
       this.CurrentRateValue(!this.isSwapped ? this.exchangeForm?.value?.secondExchangeCurrency : this.exchangeForm?.value?.firstExchangeCurrency, !this.isSwapped ? this.exchangeForm?.value?.firstExchangeCurrency : this.exchangeForm?.value?.secondExchangeCurrency)
     }
@@ -291,7 +290,6 @@ export class ExchangeNewStep1Component {
   }
 
   restrictZero(event: any, controlName: any) {
-    // console.log(event?.target?.value)
     if (event?.target?.value?.length === 0 && (event?.key === "0" || event?.key === ".")) {
       event?.preventDefault();
     }
@@ -310,9 +308,7 @@ export class ExchangeNewStep1Component {
       this.generatePatamasFirstExchange(this.exchangeForm.value.firstExchangeAmount)
       this.CurrentRateValue(!this.isSwapped ? this.exchangeForm?.value?.secondExchangeCurrency : this.exchangeForm?.value?.firstExchangeCurrency, !this.isSwapped ? this.exchangeForm?.value?.firstExchangeCurrency : this.exchangeForm?.value?.secondExchangeCurrency);
       if (this.exchangeForm?.value?.firstExchangeCurrency && this.exchangeForm?.value?.secondExchangeCurrency && this.exchangeForm?.value?.firstExchangeAmount) {
-        // if (this.exchangeForm?.value?.firstExchangeCurrency != this.getSecondSelectedCurrencyDetails?.wallet_Currency?.code) {
-        //   this.createConvertRequest()
-        // }
+       
       }
       this.showLoader = false;
     }, 1000);
@@ -338,7 +334,6 @@ export class ExchangeNewStep1Component {
       disableClose: true,
     }).afterClosed()
       .subscribe((shouldReload: any) => {
-        // console.log("shouldReload", shouldReload);
         if (shouldReload) {
           this.timerSubscription = shouldReload
           this.timerSubscription.unsubscribe()
@@ -392,7 +387,6 @@ export class ExchangeNewStep1Component {
   secondSelectExchangeCurrency(event: any) {
     const secondSelectedCurrency = this.balanceListData?.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase().includes(event?.value?.toLowerCase()));
     this.getSecondSelectedCurrencyDetails = secondSelectedCurrency[0];
-    // console.log('selected currency details', this.getSecondSelectedCurrencyDetails);
 
     this.filteredBalanceForSecondCurrency = this.balanceListData?.find((item: any) => {
       if (this.getSecondSelectedCurrencyDetails?.wallet_Currency?.code === item?.wallet_Currency?.code) {
@@ -413,7 +407,6 @@ export class ExchangeNewStep1Component {
   }
 
   onSubmit(data: any) {
-    // console.log(data);
   }
 
   searchFromFirstInput(data: any) {
@@ -438,7 +431,6 @@ export class ExchangeNewStep1Component {
       })
       .afterClosed()
       .subscribe((data: any) => {
-        // console.log('Exchange now dialog closed!');
       });
   }
 

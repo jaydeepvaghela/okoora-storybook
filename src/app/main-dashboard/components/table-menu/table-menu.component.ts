@@ -27,14 +27,5 @@ export class TableMenuComponent {
   }
 
   recheckInvoice(requestId:String){
-    // this.dialog.open(RecheckingInvoiceComponent, {
-    //   disableClose: false,
-    //   width: '1500px',
-    //   data: {
-    //     requestId: requestId
-    //   },
-    //   // height: '100vh'
-    //   panelClass: 'fix-invoice-dialog',
-    // });
   }
 }

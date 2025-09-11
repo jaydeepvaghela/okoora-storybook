@@ -58,7 +58,6 @@ export class SendStep4Component {
     public dialog: MatDialog,
     private fb: FormBuilder,
     private _walletService: WalletsService,
-    // private commonDialog: CommonDialogService,
     public dialogRef: MatDialogRef<SendStep4Component>,
     private cd: ChangeDetectorRef,
     private translateService: TranslateService
@@ -102,18 +101,10 @@ export class SendStep4Component {
     }
     if (reqBody?.invoiceNumber || reqBody?.freeText) {
       this.showLoader = true;
-      // this._walletService.updateFuturePaymentRequest(requestId, reqBody).subscribe(response => {
-      //   if (response) {
-      //     this.showLoader = false;
           let totalSteps = stepper.steps.length;
           let currentStep = stepper.selectedIndex + 1;
           progress.value = (currentStep * 100) / totalSteps;
           stepper.next();
-      //   }
-      // }, err => {
-      //   this.showLoader = false;
-      //   this.futurePaymentError = err.error.apiErrorMessage[0];
-      // })
     } else {
       let totalSteps = stepper.steps.length;
       let currentStep = stepper.selectedIndex + 1;
@@ -164,26 +155,6 @@ export class SendStep4Component {
   }
 
   stampUpload() {
-    // this.commonDialog
-    //   .confirmDialog({
-    //     title: 'Please confirm action',
-    //     message: 'You have to upload the stamp in order to perform this operation.',
-    //     confirmText: 'Confirm',
-    //     cancelText: 'Cancel',
-    //   })
-    //   .subscribe((isConfirmed) => {
-    //     if (isConfirmed) {
-    //       this.dialog
-    //         .open(UserPreferenceComponent, {
-    //           width: '1095px',
-    //           maxWidth: '1095px',
-    //           disableClose: true,
-    //           panelClass: 'user-preference'
-    //         }).afterClosed().subscribe((shouldReload: any) => {
-    //           this.dialogRef.close();
-    //         })
-    //     }
-    //   });
   }
 
   createPaymentRequest() {
@@ -193,12 +164,6 @@ export class SendStep4Component {
       currency: this.createPayment?.controls?.chargeCurrency?.value
     }
 
-    // this._walletService.createPaymentRequest(body).subscribe((data: any) => {
-    //   let needStamp = data?.signAndFiles?.needStamp;
-    //   if (needStamp) {
-    //     this.stampUpload();
-    //   }
-    // })
   }
 
   signaturePopup() {
@@ -273,7 +238,6 @@ export class SendStep4Component {
 
   dateChanged(ev: any) {
     let date = moment(ev.value).format(DateFormat.dateInput);
-    // this.createTransfer.value['orderDetailes.FlightDate'] = date;
   }
 
   removeSignature() {

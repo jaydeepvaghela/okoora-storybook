@@ -1,12 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-// import { AuthenticationService } from '../auth/services/authentication.service';
-// import { WalletBalanceListModal } from '../common/models/WalletBalanceListModal';
-// import { AddWalletComponent } from '../wallets/components/add-wallet/add-wallet.component';
-// import { WalletsService } from '../wallets/services/wallets.service';
 import { Router } from '@angular/router';
-// import { WalletListDialogComponent } from '../shared/wallet-list-dialog/wallet-list-dialog.component';
-// import { AddMoneyComponent } from '../wallets/components/add-money/add-money.component';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import SwiperCore from 'swiper';
@@ -48,7 +42,6 @@ export class WalletListGeneralComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private _walletService: WalletsService,
-    // private auth: AuthenticationService,
     private dashboardService: DashboardService,
     public router: Router,
     private cdr: ChangeDetectorRef,
@@ -59,27 +52,17 @@ export class WalletListGeneralComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.screenWidth = window.innerWidth;
-    // console(this.screenWidth)
   }
 
   ngOnInit() {
-    // localStorage.removeItem('selectedForRefresh');
-    // localStorage.removeItem('activeWalletForRefresh');
-    // this.roles = this.auth.getRoleOfUser();
-    // this._walletService.getAllBalanceList().pipe(
-    //   tap(result => {
-    //     this.activeWallet = result[0];
-    //   })
-    // ).subscribe();
+
 
     this.getAllBalanceData();
     this._walletService.activeCurrentWallet.pipe(takeUntil(this.unSubScribe$)).subscribe(res => {
-      // console({ res })
-      // console(this.walletList)
+   
       this.activeCurrencyListFilter = this.walletList.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase().includes(res?.wallet_Currency?.code?.toLowerCase()));
 
       this.selectedWallet = this.activeCurrencyListFilter[0];
-      // this._walletService.setwalletwalletDataForLock( this.selectedWallet)
       this.cdr?.detectChanges()
     });
     this._walletService.availableWalletsData.pipe(takeUntil(this.unSubScribe$)).subscribe((data: any) => {
@@ -127,7 +110,6 @@ export class WalletListGeneralComponent implements OnInit {
               fromDate: moment().subtract(6, 'months').format('DD/MM/YYYY'),
               toDate: moment().format('DD/MM/YYYY')
             }
-            // this._walletService.getWalletTransactionsWithFilter(params).subscribe();
           }
         }
       }
@@ -140,17 +122,7 @@ export class WalletListGeneralComponent implements OnInit {
       });
 
     });
-    // this.transactionDebounceSubject
-    // .pipe(debounceTime(300), takeUntil(this.unSubScribe$))
-    // .subscribe(params => {
-    //   this._walletService.getWalletTransactionsWithFilter(params).subscribe(() => {
-    //     this.zone.run(() => {
-    //       setTimeout(() => {
-    //         this.cdr.detectChanges(); // Trigger change detection properly
-    //       });
-    //     });
-    //   });
-    // });
+   
   }
 
   loadWalletListSlider() {
@@ -258,7 +230,6 @@ export class WalletListGeneralComponent implements OnInit {
 
       this._walletService.setCurrentCurrencyData(this.selectedWallet)
       if (this.mySwiper) {
-        // this.mySwiper?.update();
         this.loadWalletListSlider();
       }
       if (this.roles == '1' && this.router.url !== '/payments' && this.router.url !== '/main-dashboard') {
@@ -267,7 +238,6 @@ export class WalletListGeneralComponent implements OnInit {
           fromDate: moment().subtract(6, 'months').format('DD/MM/YYYY'),
           toDate: moment().format('DD/MM/YYYY')
         }
-        // this._walletService.getWalletTransactionsWithFilter(params).subscribe();
       }
     }, () => {
       this.showLoader = false;
@@ -286,28 +256,15 @@ export class WalletListGeneralComponent implements OnInit {
     localStorage.setItem("activeWallet", JSON.stringify(this.selectedWallet));
     localStorage.setItem("activeWalletForRefresh", i);
     localStorage.setItem("selectedForRefresh", i);
-    // this._walletService.setCurrentCurrencyData(this.activeWallet)
   }
 
   selectedWalllet(wallet: WalletBalanceListModal, i: any) {
     this.selectedWallet = wallet;
     localStorage.setItem("selectedForRefresh", i);
     this.selectedWalletData.emit(this.selectedWallet);
-    // this._walletService.setCurrentCurrencyData(this.selectedWallet);
   }
 
-  // addWalletModal() {
-  //   const dialogRef = this.dialog.open(AddWalletComponent, {
-  //     width: '520px',
-  //     height: '200',
-  //     panelClass: 'add-wallet'
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result) {
-  //       this.getAllBalanceData();
-  //     }
-  //   });
-  // }
+  
 
   addWalletModal() {
     const dialogRef = this.dialog.open(AddWalletComponent, {
@@ -318,20 +275,7 @@ export class WalletListGeneralComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // this._walletService.availableWalletsData.pipe(takeUntil(this.unSubScribe$)).subscribe((data: any) => {
-        //   this.walletList = data || [];
-
-        //   if (this.walletList.length) {
-        //     this.cdr.detectChanges();
-
-        //     setTimeout(() => {
-        //       if (this.mySwiper && this.mySwiper.slides && this.mySwiper.slides.length) {
-        //         this.mySwiper.update();
-        //         this.loadWalletListSlider();
-        //       }
-        //     }, 300);
-        //   }
-        // });
+      
         this.getAllBalanceData();
       }
 
@@ -339,45 +283,6 @@ export class WalletListGeneralComponent implements OnInit {
   }
 
 
-  openWalletListDialog() {
-    // const dialogRef = this.dialog.open(WalletListDialogComponent, {
-    //   width: '562px',
-    //   height: '544px',
-    //   panelClass: 'wallet-list-dialog',
-    //   disableClose: true,
-    //   data: {
-    //     walletList: this.walletList,
-    //     selectedWallet: this.selectedWallet?.wallet_Currency?.code
-    //   }
-    // });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.selectedWalllet(result.wallet, result.index);
-    //     this.walletSelectionChange(result.wallet, result.index);
-    //     // this._walletService?.setwalletwalletData(result.wallet)
-    //   }
-    // });
-    // dialogRef.componentInstance.onAddWalletClose.subscribe(result => {
-    //   if (result) {
-    //     this.getAllBalanceData();
-    //   }
-    // })
-  }
-
-  openAddMoney() {
-    // this.onViewDetailClick.emit();
-    // this.dialog.open(AddMoneyComponent, {
-    //   width: '100vw',
-    //   maxWidth: '100vw',
-    //   disableClose: true,
-    //   data: {
-    //     activeWallet: this.selectedWallet
-    //   }
-    // }).afterClosed()
-    //   .subscribe((shouldReload: any) => {
-    //     this.ngOnInit()
-    //   });
-  }
   ngOnDestroy() {
     localStorage.removeItem('activeWalletForRefresh');
     localStorage.removeItem('selectedForRefresh');

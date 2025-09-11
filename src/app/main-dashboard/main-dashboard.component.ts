@@ -9,7 +9,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DashboardService } from './services/dashboard.service';
 import { CommonModule } from '@angular/common';
 import { WalletsService } from './services/wallets.service';
-// import { MarketRiskChartComponent } from './components/market-risk-chart/market-risk-chart.component';
 import { MarketOverviewChartComponent } from './components/market-overview-chart/market-overview-chart.component';
 import { MatCardModule } from '@angular/material/card';
 import { LockNextPaymentComponent } from './components/lock-next-payment/lock-next-payment.component';
@@ -23,16 +22,6 @@ import { OpenInvoicesBoxComponent } from './components/open-invoices-box/open-in
 import { CurrentHedgeBoxComponent } from './components/current-hedge-box/current-hedge-box.component';
 import { MarketRiskBoxComponent } from "./components/market-risk-box/market-risk-box.component";
 import { TradeViewWrapperComponent } from "./components/trade-view-wrapper/trade-view-wrapper.component";
-// import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-// import { WalletBalanceListModal } from 'src/app/common/models/WalletBalanceListModal';
-// import { OnboardingService } from 'src/app/common/services/onboarding.service';
-// import { AuthGuard } from 'src/app/core/services/guards/auth.guard';
-// import { AddMoneyComponent } from 'src/app/wallets/components/add-money/add-money.component';
-// import { WalletsService } from 'src/app/wallets/services/wallets.service';
-// import { DashboardService } from '../../services/dashboard.service';
-// import { LockNextPaymentComponent } from '../lock-next-payment/lock-next-payment.component';
-// import { MarketRiskChartComponent } from '../market-risk-chart/market-risk-chart.component';
-// import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 
 @Component({
   selector: 'app-main-dashboard',
@@ -79,9 +68,6 @@ export class MainDashboardComponent {
     private _walletService: WalletsService,
     public dialog: MatDialog,
     private _dashboardService: DashboardService,
-    // private _onboardingService: OnboardingService,
-    // private authenticationService: AuthenticationService,
-    // private authGuard : AuthGuard
   ) { }
 
   ngOnInit() {
@@ -98,8 +84,7 @@ export class MainDashboardComponent {
       }
     })
     this.user = JSON.parse(localStorage.getItem('user')!);
-    // const tokenString = localStorage.getItem('token');
-    // if (tokenString) {
+   
 
       this.Loader = true;
       this.balanceListSubscription = this._walletService.getAllBalanceList().pipe(takeUntil(this.unSubScribe$)).subscribe(
@@ -119,24 +104,6 @@ export class MainDashboardComponent {
             }
             this._walletService.setCurrentCurrencyData(selectedWallet);
             this._walletService.setwalletObs(selectedWallet);
-            // let firsttimePopup = res?.find((x: any) => x?.wallet_Hedging != null && x?.wallet_SupportBaseHedging === true);
-            // const userPlan = JSON.parse(localStorage.getItem('user') || '');
-            // if (firsttimePopup) {
-            //   // console.log('pair is there');
-            // } else if (this.user.type == 'Business' && !this.isQuestionaireOpened) {
-            //   // if(ilsUser?.country !== 'il') {
-            //     // this.authGuard.isUserCompleteKybAndApprovedByAirWallex().subscribe(isKYBCompleted => {
-            //       // if(isKYBCompleted) {
-            //       this.dialog.closeAll();
-            //       this.isQuestionaireOpened = true;
-            //       this.openQuestionnaireDialog();
-            //       // }
-            //     //  })
-            //   // } else {
-            //   //   this.isQuestionaireOpened = true;
-            //   //   this.openQuestionnaireDialog()
-            //   // }
-            // }
           },
           error:(err) => {
             this.Loader = false;
@@ -153,19 +120,9 @@ export class MainDashboardComponent {
         .subscribe((wallet) => {
           this.activeCurrency = wallet;
           if (this.activeCurrency?.wallet_Hedging === null && this.activeCurrency?.wallet_SupportBaseHedging === true && !this.isQuestionaireOpened && this.user.type == 'Business') {  
-            // const ilsUser = JSON.parse(localStorage.getItem('user')!)['afiiliate'];
-            // if(ilsUser?.country !== 'il') {
-                // this.authGuard.isUserCompleteKybAndApprovedByAirWallex().subscribe(isKYBCompleted => {
-                //   if(isKYBCompleted) {
                     this.dialog.closeAll();
                     this.isQuestionaireOpened = true;
                     this.openQuestionnaireDialog()
-                //   }
-                //  })
-              // } else {
-              //   this.isQuestionaireOpened = true;
-              //   this.openQuestionnaireDialog()
-              // }
           }
           if (wallet?.wallet_Hedging?.pair) {
             this.getDashboardPanelData(wallet?.wallet_Hedging?.pair);
@@ -177,28 +134,9 @@ export class MainDashboardComponent {
           }
         });
 
-      // this.openQuestionnaireDialog();  // commented out to avoid opening on every init
-    
-      // const dialogRef = this.dialog.open(ApprovalProtectiveFormComponent, {
-      //   width: '600px',
-      //   disableClose: true,
-      //   panelClass: 'approval-protective-dialog',
-      //   data: {
-      //     type: 'protect',
-      //     fromNewdashboard: true,
-      //     invoiceDetailResult: "test",
-      //     colleteralData: "test",
-      //     invoiceNo: "test",
-      //     buyCurrency: "USD",
-      //     sellCurrency: "ILS",
-      //     collateralCurrency: "test"
-      //   }
-      // })
-    // }
   }
   
   ngAfterViewInit() {
-    // this.isNonIsraeliUsers = this.authenticationService.isNonIsraelUser();
     this._dashboardService.getSlidePosition().subscribe((position: number) => {
       this.isFirstSlide = position === 0;
       this.isLastSlide = position === 2;
@@ -209,34 +147,12 @@ export class MainDashboardComponent {
 
   getDashboardPanelData(wallet: any) {
     this.showLoader = true;
-    // this._dashboardService.GetMarketListData(wallet).subscribe(
-    //   (res) => {
-    //     this.showLoader = false;
-    //     this.dashboardpanelData = res;
-    //     this.errormsg = '';
-    //     this.child.getData(res);
-    //   },
-    //   (err) => {
-    //     this.showLoader = false;
-    //     this.dashboardpanelData = [];
-    //     this.errormsg = err?.error?.apiErrorMessage?.[0];
-    //   }
-    // );
   }
 
   drop(event: any) {
-    // console.log('Drag event: ', event);
     moveItemInArray(this.dashboardItems, event.previousIndex, event.currentIndex);
   }
 
-  notificationDrawerOpen() {
-    // this.notificationDrawer.open();
-    // document.querySelector('body').style.overflowY = 'hidden';
-  }
-  notificationDrawerClose() {
-    // this.notificationDrawer.close();
-    // document.querySelector('body').style.overflowY = 'auto';
-  }
 
   goToPreviousSlide() {
     if (this.lockNextPaymentComponent && this.lockNextPaymentComponent.mySwiper) {
@@ -253,7 +169,6 @@ export class MainDashboardComponent {
   openQuestionnaireDialog() {
     const dialogRef = this.dialog.open(QuestionnaireComponent, {
       width: '668px',
-      // height: '560px',
       maxWidth: '800px',
       data: { selectedCurrency: this.activeCurrency },
       backdropClass: 'questionnaire-dark-backdrop',
@@ -268,8 +183,6 @@ export class MainDashboardComponent {
             if (res[wallet] && res[wallet]?.wallet_SupportBaseHedging == true) {
               this._walletService.setCurrentCurrencyData(res[wallet]);
             }
-            // let wallet = res.findIndex((x)=> x.wallet_Hedging != null)
-            // wallet ? this._walletService.setCurrentCurrencyData(res[wallet]) : ''
           }
         });
       }
@@ -279,21 +192,6 @@ export class MainDashboardComponent {
 
   changeTableVisibility(ev: any) {
     this.showTable = ev;
-  }
-
-  openAddMoney() {
-    // this.dialog.open(AddMoneyComponent, {
-    //   width: '100vw',
-    //   maxWidth: '100vw',
-    //   disableClose: true,
-    //   data: {
-    //     activeWallet: this.activeCurrency
-    //   }
-    // }).afterClosed()
-    //   .subscribe((shouldReload: any) => {
-    //     this.ngOnInit()
-    //   });
-    // this.eventDrawerOpen();
   }
 
   ngOnDestroy(): void {

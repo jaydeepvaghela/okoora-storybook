@@ -13,8 +13,6 @@
 
   mat-selection-list {
     height: 790px;
-    // overflow-y: auto;
-    // margin-bottom: 20px;
     border-radius: 10px;
     background: #fff;
     box-shadow: 0px 11px 44px 0px rgba(0, 0, 0, 0.05);
@@ -38,14 +36,12 @@
     height: 122px;
     background: $white;
     border-radius: 15px;
-    // padding: 25px 13px 25px 25px;
     margin: 0 auto 20px;
     transition: all 0.5s;
 
     @media only screen and (max-width: 1440px) {
       width: 210px;
       height: 122px;
-      // padding: 20px 10px 20px 15px;
     }
 
     @media only screen and (max-width: 1024px) {
@@ -131,11 +127,6 @@
           max-height: 28px;
           height: 100%;
 
-          // @media only screen and (max-width: 1440px) {
-          //   max-width: 20px;
-          //   min-height: 20px;
-          //   max-height: 20px;
-          // }
 
           img {
             min-width: 36px;
@@ -566,9 +557,7 @@
       right: 55px;
     }
 
-    // @media screen and (max-width: 1280px) {
-    //   right: 40px;
-    // }
+  
 
     @media screen and (max-width: 1024px) {
       right: 40px;
@@ -751,14 +740,12 @@
         height: 122px;
         background: $white;
         border-radius: 15px;
-        // padding: 25px 13px 25px 25px;
         margin: 0 auto 20px;
         transition: all 0.5s;
 
         @media only screen and (max-width: 1440px) {
           width: 210px;
           height: 122px;
-          // padding: 20px 10px 20px 15px;
         }
 
         @media only screen and (max-width: 1024px) {

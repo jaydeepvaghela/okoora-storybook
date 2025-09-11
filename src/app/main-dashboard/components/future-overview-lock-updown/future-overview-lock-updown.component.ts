@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-// import { ApprovalProtectiveFormComponent } from 'src/app/purchase-orders/components/approval-protective-form/approval-protective-form.component';
 import { DashboardService } from '../../services/dashboard.service';
 import { WalletsService } from '../../services/wallets.service';
 import { Direction } from '../../enums/riskProfitLoss.enum';
@@ -44,7 +43,6 @@ export class FutureOverviewLockUpdownComponent {
 
   ngOnInit() {
     this.Directions = Direction
-    // console.log("created hedge data", this.data);
     this._walletService.activeWallet$.subscribe((wallet) => {
       this.activeCurrency = wallet;
     });
@@ -59,9 +57,7 @@ export class FutureOverviewLockUpdownComponent {
   }
 
   getHedgeData() {
-    // console.log("get hedge data called", this.data?.hedgeData);
     let createHedgeObject = {
-      // amount: this.activeCurrency?.wallet_Hedging?.exposureAmount,
       amount: this.lockAmount,
       productType: "1",
       expiryDate: this.data?.hedgeData?.expiryDate,
@@ -70,33 +66,27 @@ export class FutureOverviewLockUpdownComponent {
       direction: this.activeCurrency?.wallet_Hedging?.direction
     }
 
-    // console.log("createHedgeObjectd", createHedgeObject);
     of(createHedgeByCategory).subscribe((data: any) => {
       this.hedgeData = data
       this.cd.detectChanges()
     },
     err => {
       this.errorMsg = err.error.apiErrorMessage;
-      // this.DateClickedFlagForAPI = false
 
     })
 
   }
   keyupvalue(e: any) {
-    // console.log(e)
     this.lockAmount = e.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
   }
 
 
   getColotralformate(e: any) {
-    // console.log(e)
     return e?.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
   }
   opneLockup(lockAmount: any) {
-    // console.log(lockAmount);
-    // console.log(this.data?.hedgeData);
     let createHedgeObject = {
       amount: lockAmount.replace(/\,/g, ''),
       productType: "1",
@@ -105,8 +95,6 @@ export class FutureOverviewLockUpdownComponent {
       Strike: this.data?.hedgeData?.strike,
       direction: this.activeCurrency?.wallet_Hedging?.direction
     }
-    // console.log("createHedgeObject", createHedgeObject);
-    // this.dashboardService.createHedgeByCategory(createHedgeObject).subscribe((data: any) => {
       this.lockUpDialogRef.close();
       this.dialog.open(ApprovalProtectiveFormComponent, {
         width: '600px',
@@ -118,15 +106,12 @@ export class FutureOverviewLockUpdownComponent {
           expiryDate: this.data?.hedgeData?.expiryDate,
           buyCurrency: this.data?.hedgeData?.buyCurrency,
           sellCurrency: this.data?.hedgeData?.sellCurrency,
-          // HedgeData: data,
           lockAmount: lockAmount.replace(/\,/g, '')
         }
       })
-    // })
   }
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    // console.log(event);
 
   }
 

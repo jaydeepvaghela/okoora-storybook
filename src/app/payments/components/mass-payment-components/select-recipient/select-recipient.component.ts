@@ -67,11 +67,7 @@ export class SelectRecipientComponent {
   }
 
   addRecipient(): void {
-    // const dialogRef = this.dialog.open(AddContactsComponent, {
-    //   width: '100vw',
-    //   maxWidth: '100vw',
-    //   disableClose: true,
-    // });
+    
   }
   updateSearchTerm(event: Event): void {
     const inputElement = event.target as HTMLInputElement;

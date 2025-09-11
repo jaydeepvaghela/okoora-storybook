@@ -61,9 +61,6 @@ export class SinglePaymentSendStep3Component {
       this._walletService.currentCreatedPayment?.subscribe((data: any) => {
         if (data) {
           this.showLoaderSpinner = true;
-          // delete this.chargedAmount
-          // delete this.SendAmount
-          // delete this.createdPaymentData
           this.createdPaymentData = data || this.createdPaymentData
           this.cd.detectChanges()
           this.forRefreshDataFlag = true
@@ -82,7 +79,6 @@ export class SinglePaymentSendStep3Component {
     
 
     if (!this.forRefreshDataFlag) {
-      // this.forRefreshData()
     }
     this.selectedOption = "1"
     this.getAccountDetailsToCopy()
@@ -113,37 +109,7 @@ export class SinglePaymentSendStep3Component {
   }
   forRefreshData() {
     if (this.createdPaymentData?.paymentRequst?.sendCurrency != this.createdPaymentData?.paymentRequst?.chargeCurrency) {
-      // this.timerSubscriptionFortransfer = timer(0, 15000).pipe(
-      //   map(() => {
       this.showLoaderSpinner = true;
-      // this._walletService.refreshQuote(this.createdPaymentData?.requestId).subscribe(
-      //   (data: any) => {
-      //     // console.log(data);
-      //     this.showLoaderSpinner = false;
-      //     this.chargedAmount = data?.charge?.toFixed(2)
-      //     this.chargedAmountAfterRefresh = data?.chargeTotal?.toFixed(2)
-      //     this.SendAmount = data?.send?.toFixed(2)
-      //     this.createdSpotRate = data?.spot
-      //     const refreshedSendValue: any = data?.send
-      //     this.afterExchangeRate = refreshedSendValue * this.createdSpotRate
-      //     this.config = { leftTime: 15, format: 'mm:ss' };
-
-      //     this.cd.detectChanges()
-      //   },
-      //   (err) => {
-      //     this.showLoaderSpinner = false;
-      //     if (this.createdPaymentData?.paymentRequst?.sendCurrency != this.createdPaymentData?.paymentRequst?.chargeCurrency) {
-      //       this.refreshAPIError = err?.error?.apiErrorMessage[0] ?? '';
-      //       this.timerSubscription.unsubscribe()
-      //       this.timerSubscriptionFortransfer.unsubscribe()
-      //     }
-      //     else {
-      //       this.timerSubscription.unsubscribe()
-      //       this.timerSubscriptionFortransfer.unsubscribe()
-      //     }
-      //   }
-      // );
-      // })).subscribe();
     }
     else {
       this.showLoaderSpinner = false
@@ -151,7 +117,6 @@ export class SinglePaymentSendStep3Component {
     }
   }
   radioChange(event: any) {
-    // console.log("event", event?.value)
     this.changeCostType(event?.value, this.createdPaymentData?.requestId)
   }
   changeCostType(costvalue: any, requestID: any) {
@@ -162,31 +127,10 @@ export class SinglePaymentSendStep3Component {
       requestId: requestID,
       costType: ev,
     };
-    // this._walletService.updateCostType(body).subscribe(
-    //   (data: UpdateCostListResponseModel) => {
-    //     // console.log("cost updated", data);
-    //     delete this.costTypeAPIError
-    //     this.showLoader = false
-    //     this.timerSubscription?.unsubscribe();
-    //     if (this.createdPaymentData?.paymentRequst?.sendCurrency === this.createdPaymentData?.paymentRequst?.chargeCurrency) {
-    //       this.chargedAmountAfterRefresh = this.createdPaymentData?.paymentRequst?.charge + this.createdPaymentData?.costList[index]?.value;
-    //     } else {
-    //     this.forRefreshData()
-    //     }
-    //   },
-    //   (err) => {
-    //     this.costTypeAPIError = err?.error?.apiErrorMessage[0] ?? '';
-    //   }
-    // );
+    
   }
   openPrivacyPolicyDialog() {
-    // this.dialog.open(PrivacyPolicyComponent, {
-    //   width: '90vw',
-    //   height: '90vh',
-    //   panelClass: 'signature-modal',
-    //   maxWidth: '90vw',
-    //   disableClose: true,
-    // });
+    
   }
   copyData() {
     this.copyDataText = "Copied"
@@ -201,21 +145,9 @@ export class SinglePaymentSendStep3Component {
   nextStep(stepper: any, progress: any) {
     this.showLoaderSpinner = true
     this.termsPolicyFlag = !Boolean(this.termsAndCondition)
-    // if (this.formStepper) {
-    //   this._walletService.completePaymentRequest(this.createdPaymentData?.requestId, false, "").subscribe((data: any) => {
-    //     this.showLoaderSpinner = false
-    //     delete this.paymentRequestAPIError
-    //     this.timerSubscription?.unsubscribe()
+    
         stepper.next()
-      // }, (err) => {
-      //   this.showLoaderSpinner = false
-      //   this.paymentRequestAPIError = err?.error?.apiErrorMessage[0] ?? '';
-      //   if (this.paymentRequestAPIError == 'Missing Funds') {
-      //     this.paymentRequestAPIError = "You don't have enough money in your account";
-      //   }
-      // })
-  // }
-    // document.getElementsByClassName('mat-dialog-content')[0].scrollTop = 0;
+      
   }
   getAccountDetailsToCopy() {
     const recipient = this.signObjectForSummery?.bankAccountHolderName || '-';
@@ -267,7 +199,6 @@ export class SinglePaymentSendStep3Component {
       disableClose: true,
     }).afterClosed()
       .subscribe((shouldReload: any) => {
-        // console.log("shouldReload", shouldReload);
         if (shouldReload) {
           this.timerSubscription = shouldReload
           this.timerSubscription.unsubscribe()

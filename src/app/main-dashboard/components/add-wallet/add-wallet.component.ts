@@ -37,14 +37,5 @@ export class AddWalletComponent {
 
   addWallet() {
     this.dialog.close('WalletList');
-    // this._walletService.addNewWallet(this.addWalletForm.value.currency).subscribe((result: any) => {
-    //   if (result?.status) {
-    //     this.dialog.close('WalletList');
-    //   } else {
-    //     this.errorMsg = result?.message;
-    //   }
-    // }, (err: any) => {
-    //   this.errorMsg = err.error.message[0];
-    // });
   }
 }

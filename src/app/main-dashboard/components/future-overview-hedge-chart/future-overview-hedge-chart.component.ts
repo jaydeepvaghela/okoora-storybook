@@ -92,8 +92,6 @@ export class FutureOverviewHedgeChartComponent {
     private cd: ChangeDetectorRef,
     private dashboardService: DashboardService,
     private fb: FormBuilder,
-    // private _purchaseHedgeService: PurchaseHedgeService,
-    // private _authService: AuthenticationService
   ) {
     const today = new Date();
     this.minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate()).toJSON();
@@ -104,10 +102,6 @@ export class FutureOverviewHedgeChartComponent {
 
   ngOnInit() {
 
-    //-------------- ProductType---------
-    // 1 - Lock
-    // 2 - Safe
-    // 3- Range
     this.Directions = Direction
     this.dateClickedFlag = true
     this.lockDate = moment(this.selectedDate).format(DateFormat.dateInput);
@@ -136,13 +130,11 @@ export class FutureOverviewHedgeChartComponent {
   }
 
   dateClicked() {
-    // console.log("date clicked");
     this.dateClickedFlag = true;
     this.amountClickedFlag = false;
 
   }
   amountClicked() {
-    // console.log("amount clicked");
     this.dateClickedFlag = false;
     this.amountClickedFlag = true;
   }
@@ -158,7 +150,6 @@ export class FutureOverviewHedgeChartComponent {
   }
   addEvent(type: string, event: any) {
 
-    // this.showLoader = true;
     this.lockDate = moment(event?.value).format(DateFormat.dateInput);
     if (event.value !== null) {
       delete this.selectedDateMsg
@@ -173,7 +164,6 @@ export class FutureOverviewHedgeChartComponent {
     }
   }
   keyupvalue(e: any) {
-    // console.log(e)
     this.typedHedgeAmount = e.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
   }

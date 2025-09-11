@@ -312,7 +312,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
   getGraphData(pair: any, points: any) {
     let direction = this.activeCurrency?.wallet_Hedging?.direction
     let currencyPair = this.activeCurrency?.wallet_Hedging?.pair
-    // if (direction && currencyPair && !this.isCallHegeGraphData) {
       this.isCallHegeGraphData = true;
 
       of(getLockHedgeGrafhData).subscribe((data: any) => {
@@ -377,7 +376,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
                 label: {
                   borderColor: "#000000",
                   position: "top",
-                  // offsetX: 18,
                   offsetX: 25,
                   offsetY: 7,
                   borderRadius: 8,
@@ -442,7 +440,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
           },
           labels: this.seriesData?.timesPoints,
           xaxis: {
-            // type: "numeric",
             axisBorder: {
               show: true,
               color: 'false',
@@ -481,7 +478,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
         this.showLoader = false;
         this.cd.detectChanges();
       })
-    // }
   }
 
 
@@ -499,7 +495,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
         this.getDateValue(new Date(minusHolidayDate))
       }
       else {
-        // console.log(endDate);
         this.endDateValue = endDate
         this.lockDateValue = endDate
         this.lockDate = endDate
@@ -514,7 +509,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
     this.lockDate = moment(date).format(DateFormat.dateInput);
     this.lockDateValue = date
     let createHedgeObject = {
-      // amount: this.activeCurrency?.wallet_Hedging?.exposureAmount,
       amount: "50000",
       productType: "1",
       expiryDate: this.lockDate,
@@ -535,13 +529,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
           {
             x: this.selectedTimeFrame == '1 month' ? '1M' : this.selectedTimeFrame == '3 months' ? '3M' : this.selectedTimeFrame == '6 months' ? '6M' : this.selectedTimeFrame == '9 months' ? '9M' : this.selectedTimeFrame == '1 year' ? '1Y' : '',
             y: Math.max(...this.seriesData?.spotPoints),
-            // image: {
-            //   // path: 'images/lockChartGradient.svg',
-            //   width: 120,
-            //   height: 120,
-            //   offsetX: 0,
-            //   offsetY: 50,
-            // },
             marker: {
               size: 0,
               fillColor: "#fff",
@@ -583,7 +570,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
                 cssClass: "futurOverview_chart",
 
               },
-              // text: data?.strike?.toFixed(2)
               text: data?.strike
 
             },
@@ -596,7 +582,6 @@ export class FutureOverviewLockChartComponent implements OnDestroy {
         (        err: { error: { apiErrorMessage: any; }; }) => {
           this.showLoader = false;
           this.errorMsg = err.error.apiErrorMessage;
-          // this.DateClickedFlagForAPI = false
 
         })
     }

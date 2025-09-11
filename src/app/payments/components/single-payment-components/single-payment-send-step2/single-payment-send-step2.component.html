@@ -38,7 +38,6 @@
           <span class="supported-format">Supported files: pdf, gif, jpg, png, jpeg</span>
         </div>
         <div class="drop-zone-wrap" *ngIf="createdPaymentData?.signAndFiles?.needStamp">
-          <!-- <div class="drop-zone-wrap"> -->
 
           <span class="file-cancel" *ngIf="stampFiles?.length" (click)="removeStamp()">
             <img src="images/file-cancel-icon.svg" alt="file-cancel-icon" />
@@ -46,9 +45,6 @@
 
           <ngx-dropzone [multiple]="false" [ngClass]="{'upload-file-error': uploadStampError}"
             class="drop-zone stamp-upload" (change)="onStampFileSelect($event)">
-            <!-- <span class="file-cancel">
-              <img src="images/file-cancel-icon.svg" alt="file-cancel-icon" />
-            </span> -->
             <ngx-dropzone-label>
               <div class="upload-text">
                 <h6>Company stamp file</h6>
@@ -84,9 +80,6 @@
         <div class="drop-zone-wrap" *ngIf="createdPaymentData?.signAndFiles?.needFile">
           <ngx-dropzone *ngIf="invoiceFiles?.length == 0" class="drop-zone invoice-upload"
             (change)="onInvoiceFileSelect($event)" accept=".pdf, .gif, .jpg, .png, .jpeg">
-            <!-- <span class="file-cancel">
-              <img src="images/file-cancel-icon.svg" alt="file-cancel-icon" />
-            </span> -->
             <ngx-dropzone-label>
               <div class="upload-text">
                 <h6>Upload Invoice</h6>
@@ -133,9 +126,6 @@
               <img src="images/file-cancel-icon.svg" alt="file-cancel-icon" />
             </span>
 
-
-            <!-- <div *ngIf="createdPaymentData?.signAndFiles?.needStamp"> -->
-            <!-- </div> -->
           </div>
         </div>
       </div>
@@ -150,12 +140,6 @@
           <div *ngIf="form?.get('free_text')?.hasError('maxlength')" class="error-msg mt-2 freetext-cls">
             Please limit your input to a maximum of 100 characters
           </div>
-          <!-- <div *ngIf=" form?.get('free_text')?.hasError('pattern')" class="error-msg mt-2 freetext-cls">
-            Only letters and numbers allowed.
-          </div>
-          <div *ngIf="isInvoiceNumberHasSpecialChar" class="error-msg mt-2 freetext-cls">
-            Your input cannot contain the following characters: <> ( ) ; + = <br> Please remove them and try again
-          </div> -->
         </div>
 
         <div class="add-note-wrapper non-israel-note" *ngIf="isNonIsraeliUser">
@@ -175,15 +159,9 @@
           <div *ngIf="form?.get('free_text')?.hasError('maxlength')" class="error-msg mt-2 freetext-cls">
             Please limit your input to a maximum of 100 characters
           </div>
-          <!-- <div *ngIf=" form?.get('free_text')?.hasError('pattern')" class="error-msg mt-2 freetext-cls">
-            Only letters and numbers allowed.
-          </div>
-          <div *ngIf="isInvoiceNumberHasSpecialChar" class="error-msg mt-2 freetext-cls">
-            Your input cannot contain the following characters: <> ( ) ; + = <br> Please remove them and try again
-          </div> -->
+          
         </div>
       </form>
-      <!-- <div class="signature-wrapper" *ngIf="createdPaymentData?.signAndFiles?.needSign"> -->
       <div class="signature-wrapper" *ngIf="createdPaymentData?.signAndFiles?.needSign && !isNonIsraeliUser">
         <div class="signature-top-head">
           <span>Direct signature</span>

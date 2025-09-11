@@ -40,7 +40,6 @@ export class TransferTypeComponent implements OnInit {
       const costTypeControl = this.form.get('costType');
       if (costTypeControl && costTypeControl.value) {
         this.selectedKey = costTypeControl.value.key;
-        // this.updateOptionTexts(this.selectedKey);
       }
     }
   }

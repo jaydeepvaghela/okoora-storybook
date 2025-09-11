@@ -90,7 +90,6 @@ export class MarketOverviewChartComponent implements AfterViewInit {
     this._walletService.availableWalletsData.subscribe((data: any) => {
       this.walletList = data;
       this.baseCurrencyListFilter = this.walletList.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase().includes(this.activeCurrency?.wallet_Hedging?.exposureBaseCurrency?.toLowerCase()));
-      // console.log("baseCurrencyListFilter", this.baseCurrencyListFilter);
       this.currencyOfUser = this.baseCurrencyListFilter[0]?.wallet_Currency?.flag
       this.cd?.detectChanges()
     })
@@ -101,10 +100,6 @@ export class MarketOverviewChartComponent implements AfterViewInit {
 
   }
 
-  // ngAfterViewInit() {
-  //   // this.loadScripts();
-  //   this.myContainer.createEmbeddedView(this.myTemplate);
-  // }
   private loadScripts(currencyPair: any) {
     const script = this._renderer2.createElement("script");
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js";
@@ -228,7 +223,6 @@ export class MarketOverviewChartComponent implements AfterViewInit {
 
 
   ngAfterViewInit() {
-    // Ensure that the DOM element is available after the view is initialized
     if (this.marketChartElement) {
       this.marketChartElement.nativeElement.outerHTML = "<div id=\"marketChart\"></div>";
     }

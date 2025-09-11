@@ -3,8 +3,6 @@
 
 ::ng-deep {
   .cashflow-table-wrap {
-    // max-height: 441px;
-    // overflow: auto;
 
     .cashflow-table-inner-wrap {
       @media (max-width: 1279px) {
@@ -106,9 +104,6 @@
     .cashflow-data-table {
       box-shadow: none;
 
-      // @media (max-width: 1279px) {
-      //   width: 800px;
-      // }
 
       thead {
         tr {
@@ -130,90 +125,8 @@
             @media (max-width: 480px) {
               font-size: 12px;
             }
-
-            // &.mat-column-createdDate {
-            //   width: 15%;
-            // }
-
-            // &.mat-column-buy {
-            //   width: 10%;
-            // }
-
-            // &.mat-column-sell {
-            //   width: 10%;
-            // }
-
-            // &.mat-column-dueDate {
-            //   width: 10%;
-            // }
-
             &.mat-column-status {
-              // width: 25%;
-
-              // @media (max-width: 1600px) {
-              //   min-width: 220px;
-              // }
-
-              // @media (max-width: 479px) {
-              //   min-width: 150px;
-              // }
-
-              // &.alert-status {
-              //   width: 15%;
-              // }
             }
-
-            // &.mat-column-arrow {
-            //   width: 0%;
-            // }
-
-            // &.mat-column-action {
-            //   width: 0%;
-            // }
-
-            // &.mat-column-targetDate {
-            //   width: 16%;
-            // }
-
-            // &.mat-column-amount {
-            //   width: 12%;
-            // }
-
-            // &.mat-column-type {
-            //   width: 14%;
-
-            //   @media (max-width: 1600px) {
-            //     min-width: 130px;
-            //   }
-            // }
-
-            // &.mat-column-rate {
-            //   width: 9%;
-
-            //   @media (max-width: 1600px) {
-            //     min-width: 95px;
-            //   }
-            // }
-
-            // &.mat-column-beneficiary {
-            //   width: 20%;
-
-            //   @media (max-width: 1600px) {
-            //     min-width: 135px;
-            //   }
-            // }
-
-            // &.mat-column-beneficiaryName {
-            //   width: 20%;
-            // }
-
-            // &.mat-column-invoice {
-            //   width: 10%;
-            // }
-
-            // .matColumnDef {
-            //   width: 4%;
-            // }
           }
         }
       }
@@ -234,11 +147,9 @@
 
           td {
             border-bottom: 1px dotted #c6c8cc;
-            // border-right: 1px solid #c6c8cc;
             padding: 10px 16px;
 
             color: #1e1b39;
-            // font-family: $font-1;
             font-size: 14px;
             font-weight: 500;
             line-height: 18px;
@@ -323,10 +234,6 @@
                 }
               }
             }
-
-            // &.mat-column-rate {
-            //   text-align: center;
-            // }
 
             .currency-field {
               .flag {
@@ -677,7 +584,6 @@
   width: 618px;
   padding-top: 117px;
   border-radius: 5px;
-  // background: var(--content-wrapper-bg-color);
   background: linear-gradient(to top, var(--content-wrapper-bg-color), #ffffff);
   box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.05);
   overflow-x: auto;

@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, Input, Renderer2, RendererFactory2 } from '@angular/core';
-import { DashboardService } from '../../services/dashboard.service';
 import { tradingSource } from '../../enums/riskProfitLoss.enum';
 import { WalletsService } from '../../services/wallets.service';
 import { Direction } from '../../../shared/constants/alertWallet.enum';

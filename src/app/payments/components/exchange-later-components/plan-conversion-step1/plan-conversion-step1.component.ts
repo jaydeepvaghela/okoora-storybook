@@ -52,11 +52,6 @@ export class PlanConversionStep1Component {
     let FromDate = moment(new Date()).format(DateFormat?.dateInput);
     let ToDate = moment().add(1, 'year').format(DateFormat?.dateInput);
     let currency = this.activeWalletCurrency?.selectedwalletInfo?.wallet_Currency?.code;
-    // this._commonService.noTradeList(FromDate, ToDate, currency).subscribe((data: any) => {
-    //   for (var i = 0; i < data.length; i++) {
-    //     this.holidayDates.push(new Date(moment(data[i]?.date).format(DateFormat.parse?.dateInput)));
-    //   }
-    // })
   }
 
   nextSteps(stepper: any, progress: any) {

@@ -1,24 +1,15 @@
-import { ChangeDetectorRef, Component, Inject , Input, Renderer2, RendererFactory2, ViewChild,} from '@angular/core';
+import { ChangeDetectorRef, Component, Input} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import moment from 'moment';
-
-
-
-// import { GeneratMsgForBusinessComponent } from 'src/app/wallets/components/generat-msg-for-business/generat-msg-for-business.component';
-// import { WalletsService } from 'src/app/wallets/services/wallets.service';
-import { CalendarComponent } from '../calendar/calendar.component';
 import { DashboardService } from '../../services/dashboard.service';
-// import { AlertListComponent } from 'src/app/alerts/components/alert-list/alert-list.component';
 import { Router } from '@angular/router';
-
 import { Direction } from '../../../shared/constants/alertWallet.enum';
 import { WalletsService } from '../../services/wallets.service';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { DialogModule } from '@angular/cdk/dialog';
 import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
@@ -30,8 +21,6 @@ import { MatDrawer } from '@angular/material/sidenav';
 export class AlertExchangeRateFormComponent {
   buy_sell_code!: any | null;
   @Input() drawer!: MatDrawer;
-  // @ViewChild(CalendarComponent)
-  // child!: CalendarComponent;
   @Input() selectedCalendarDate!: string;
   @Input() isMenu!: boolean;
   alertExchangeRateForm!: FormGroup;
@@ -76,15 +65,11 @@ export class AlertExchangeRateFormComponent {
   
 
   constructor(
-    // @Inject(MAT_DIALOG_DATA) public data: any,
-    // public dialogRef: MatDialogRef<AlertExchangeRateFormComponent>,
     private fb: FormBuilder,
-    // private _commonService: CommonService,
     public dialog: MatDialog,
     private _walletService: WalletsService,
     private cd: ChangeDetectorRef,
     private dashboardService: DashboardService,
-    private router: Router,
 
   ) {}
 
@@ -97,7 +82,6 @@ export class AlertExchangeRateFormComponent {
     this._walletService.AlertExposure.subscribe((res:any)=>{
       if(res?.form){
         this.alertForm = true;
-        // this.alertExchangeRateForm.reset();
       }
       this.cd?.detectChanges();
     })
@@ -123,12 +107,6 @@ export class AlertExchangeRateFormComponent {
       this.activeCurrency = wallet;
       this.getForm();
     })
-    
-
-    // this._commonService.getAllActiveCurrency().subscribe(res => {
-    //   this.activeCurrencyList = res;
-    // })
-
     this.maxDate = moment().add(3, 'months');
   }
 
@@ -151,34 +129,6 @@ export class AlertExchangeRateFormComponent {
 
   AlertSpotAndRate() {
     if (this.alertExchangeRateForm.value.buy && this.alertExchangeRateForm.value.sell) {
-      // this._walletService.GetPair(this.alertExchangeRateForm.value.buy.toLowerCase(), this.alertExchangeRateForm.value.sell.toLowerCase()).subscribe((res: any) => {
-      //   this.currencyPair = res.pair;
-      //   if (this.currencyPair) {
-      //     var direction;
-      //     const strongCurrency: string = this.currencyPair?.slice(0, 3);
-      //     const weakCurrency: string = this.currencyPair?.slice(3);
-      //     if (strongCurrency == this.alertExchangeRateForm.value.sell) {
-      //       direction = Direction.Down;
-      //     } else if (weakCurrency == this.alertExchangeRateForm.value.sell) {
-      //       direction = Direction.Up;
-      //     }
-      //     var pair = {
-      //       pair: this.currencyPair,
-      //       direction: direction
-      //     }
-      //     this._walletService.AlertSpotAndRate(pair).subscribe((res) => {
-      //       if (res) {
-      //         this.spotRate = res;
-      //         this.highestTargetRate = this.spotRate * 1.05;
-      //         this.lowestTargetRate = this.spotRate * 0.95;
-      //         this.targateRateRange = this.lowestTargetRate.toFixed(4) + '-' + this.highestTargetRate.toFixed(4);
-      //         if (this.alertExchangeRateForm.value.buy && this.alertExchangeRateForm.value.sell) {
-      //           this.alertExchangeRateForm?.get('targetRate')?.enable()
-      //         }
-      //       }
-      //     })
-      //   }
-      // })
     }
   }
 
@@ -186,27 +136,9 @@ export class AlertExchangeRateFormComponent {
     this.dialog.closeAll();
      this.spotRate = this.spotRate.toString()
     if(this.spotRate.includes(arg.target.value)){
-      // this.dialog.open(GeneratMsgForBusinessComponent, {
-      //   disableClose: false,
-      //   panelClass: ['mat-dialog-sm', 'invite-company-modal'],
-      //   data: {
-      //     title: 'Target rate',
-      //     message: `Current rate and Target rate is not same please change the target rate`,
-      //     buttonText: 'ok',
-      //   }
-      // });
       this.validForm = true
     }
     else if (arg.target.value > this.highestTargetRate || arg.target.value < this.lowestTargetRate) {
-      // this.dialog.open(GeneratMsgForBusinessComponent, {
-      //   disableClose: false,
-      //   panelClass: ['mat-dialog-sm', 'invite-company-modal'],
-      //   data: {
-      //     title: 'Target rate',
-      //     message: `You can enter a value at range of 5% up / down from your platform rate   ${this.lowestTargetRate.toFixed(4)} - ${this.highestTargetRate.toFixed(4)}`,
-      //     buttonText: 'ok',
-      //   }
-      // });
       this.validForm = true
     } else {
       this.validForm = false
@@ -240,21 +172,6 @@ export class AlertExchangeRateFormComponent {
         "direction": direction,
         "creationSpot": this.spotRate
       }
-      // this._walletService.CreateExposure(data).subscribe((res: any) => {
-      //   if (res) {
-      //     this.alertForm = !this.alertForm;
-      //     this._walletService.setAlertData({show: true});
-      //     let needStamp = res[0]?.code == 831;
-      //     if (needStamp) {
-      //       // this.stampUpload();
-      //     }
-      //     this.successMessage = true;
-      //     this.showLoader = false;
-      //     // this.alertExchangeRateForm.reset();
-      //   }
-      // },err => {
-      //   this.showLoader = false;
-      // })
     }
   }
 
@@ -264,15 +181,6 @@ export class AlertExchangeRateFormComponent {
 
   closeDrawer(){
     document.querySelector('body')!.style.overflowY = 'auto';
-    // this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + `${AppPages.Alerts}` : `${AppPages.Alerts}`]);
-      // this.dialog.open(AlertListComponent, {
-      //   width: '100vw',
-      //   maxWidth: '100vw',
-      //   minHeight: '100vh',
-      //   maxHeight: '100vh'
-      // }).afterClosed()
-      //   .subscribe((shouldReload: any) => {
-      //   });
 }
   
 

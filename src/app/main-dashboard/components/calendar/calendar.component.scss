@@ -68,14 +68,6 @@
     max-width: 758px;
     overflow-y: auto;
   }
-
-  // @media screen and (max-width: 1024px) {
-  //   min-height: 537px;
-  // }
-
-  // @media screen and (max-width: 767px) {
-  //   min-height: 497px;
-  // }
 }
 
 ::ng-deep {
@@ -405,17 +397,11 @@
     .date-label {
       @include flex(center, center, column);
       padding: 18px 20px;
-
-      // background-color: #F5F7FE;
       @media only screen and (max-width: 1440px) {
         padding: 13px 20px;
       }
 
       &.today {
-        // background-color: #fff;
-        // border-top: 2px solid var(--brand-primary-color);
-        // border-bottom: 3px solid #f5f7fe;
-        // background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
         border-bottom: 2px solid var(--brand-primary-color);
         max-height: 82px;
 
@@ -688,7 +674,6 @@
     .mbsc-timeline-resource-header-cont.mbsc-ltr,
     .mbsc-windows.mbsc-timeline-header-date {
       border: none !important;
-      // height: 76px !important;
       background: $calender-header-color !important;
 
       @media only screen and (max-width: 1440px) {
@@ -707,7 +692,6 @@
           .mbsc-timeline-resource-header-cont {
             display: flex;
             align-items: center;
-            // justify-content: center;
 
             .mbsc-timeline-resource-header {
               .all-currency-tab-wrap {
@@ -808,7 +792,6 @@
       height: 49px;
       width: 72px;
       border-radius: 8px;
-      // border: 1px solid $general-border-color;
       background-color: $disable-button-bg;
       margin-left: auto;
       margin-right: auto;
@@ -871,7 +854,6 @@
       z-index: 2;
       cursor: not-allowed;
       background-color: $white;
-      // border-right: 1px dashed $calendar-border-color !important;
       opacity: 0.5;
 
       &::before {
@@ -1176,9 +1158,7 @@
       span {
         display: flex;
         align-items: center;
-        // justify-content: center;
         padding: 5px;
-        // background-color: #fff;
         width: 100px;
         height: 48px;
 
@@ -1279,10 +1259,6 @@
 
     mbsc-schedule-event {
       height: 100%;
-
-      // &:not(:first-child) {
-      //   display: none;
-      // }
     }
   }
 
@@ -1296,10 +1272,6 @@
     @include flex(flex-start, center, row);
     column-gap: 15px;
     position: fixed;
-    // top: 0;
-    // bottom: 0;
-    // left: 50%;
-    // transform: translateX(-50%);
     margin: auto;
     max-width: fit-content;
     max-height: fit-content;
@@ -1438,45 +1410,6 @@
     }
   }
 
-  // this is commented down code of mine 
-  // .mat-mdc-menu-item-text {
-  //   color: #01031c;
-  //   font-size: 15px !important;
-  //   font-weight: 400 !important;
-  //   line-height: 35px;
-  //   position: relative;
-  //   font-family: 'Manrope';
-  //   padding-left: 15px;
-
-  //   @media screen and (max-width: 1440px) {
-  //     padding-left: 25px;
-  //     font-size: 12px !important;
-  //   }
-  // }
-
-  //   .mat-mdc-menu-item-text::before {
-  //     content: "";
-  //     width: 23px;
-  //     height: 23px;
-  //     position: absolute;
-  //     top: 50%;
-  //     left: 0;
-  //     transform: translateY(-50%);
-  //     background-image: url(../../../../assets/images/drop-down-plush.svg);
-  //     background-repeat: no-repeat;
-  //     border-radius: 50px;
-  //     border: 1px solid $light-gray;
-  //     background-position: center center;
-
-  //     @media only screen and (max-width: 1440px) {
-  //       width: 15px;
-  //       height: 15px;
-  //       top: 46%;
-  //       left: 0;
-  //       background-size: 7px;
-  //     }
-  //   }
-
   .mdc-menu-surface {
     &.add-event-menu {
       border-radius: 10px;
@@ -1489,8 +1422,6 @@
           border-bottom: 1px dashed rgba(29, 29, 34, 0.1);
           padding-top: 7px;
           padding-bottom: 7px;
-          // width: 100%;
-
 
           &:last-child {
             border-bottom: 0;
@@ -1574,7 +1505,6 @@
     &.mat-mdc-menu-panel.mat-mdc-menu-panel {
       min-width: 630px;
       max-width: 630px;
-      //height: 740px;
       width: 100%;
       border-radius: 14px;
       -webkit-border-radius: 14px;
@@ -1820,7 +1750,6 @@
                     }
 
                     &.notification-blox-pb-zero {
-                      // padding-bottom: 2px;
 
                       .notification-blox-flex {
                         @include flex(flex-end, flex-start, row);
@@ -2508,7 +2437,6 @@
     width: 618px;
     padding-top: 117px;
     border-radius: 5px;
-    // background: var(--content-wrapper-bg-color);
     background: linear-gradient(to top, var(--content-wrapper-bg-color), #ffffff);
     box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.05);
     overflow-x: auto;
@@ -2965,12 +2893,6 @@
     background-color: var(--content-wrapper-bg-color);
     justify-content: space-between;
     padding-bottom: 11px;
-
-    // @media (max-width: 479px) {
-    //   padding-right: 45px;
-    //   position: relative;
-    // }
-
     .date-preview {
       display: inline-flex;
       align-items: center;
@@ -3109,12 +3031,6 @@
       display: flex;
       width: 100%;
       justify-content: space-between;
-
-      @media (max-width: 479px) {
-        // position: absolute;
-        // right: 0;
-        // bottom: 11px;
-      }
 
       .tv-back-btn {
         display: flex;
@@ -3421,7 +3337,6 @@
           border-bottom: 1px dashed rgba(29, 29, 34, 0.1);
           padding-top: 7px;
           padding-bottom: 7px;
-          // width: 100%;
           &:last-child {
             border-bottom: 0;
           }
@@ -3449,7 +3364,6 @@
             }
 
             @media only screen and (max-width: 1440px) {
-              // padding-left: 18px;
               min-height: inherit;
               min-width: inherit;
             }
@@ -3460,14 +3374,11 @@
               font-style: normal;
               font-weight: 400;
               line-height: 35px;
-              // border-bottom: 1px dashed $general-border-color;
               position: relative;
               padding-left: 15px;
               display: block;
               width: 100%;
               overflow: visible;
-              // padding-bottom: 14px;
-              // margin-bottom: 8px;
 
               @media screen and (max-width: 1440px) {
                 font-size: 12px;
@@ -3504,7 +3415,6 @@
             &:last-child {
               span.mat-mdc-menu-item-text {
                 border-bottom: none;
-                // border-bottom: 1px dashed #d9dadd;
               }
             }
           }

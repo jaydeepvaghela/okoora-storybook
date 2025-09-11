@@ -38,7 +38,6 @@ export class SignatureComponent {
   }
 
   ngAfterViewInit() {
-    // this.signaturePad is now available
     if (this.signaturePad) {
       this.signaturePad.resizeCanvas();
       this.signaturePad.set('minWidth', 2);

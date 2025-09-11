@@ -104,14 +104,6 @@ export class WalletCurrencyComponent {
       }
     });
     this.changeIsLoading.emit(true);
-    // this._walletService.updateMultiPaymentRequest(formData).subscribe(({ body }) => {
-    //   this.processResponseBody(body, this.beneficiaryForms);
-    //   this.changeIsLoading.emit(false);
-    //   this.beneficiaryFormsChange.emit(this.beneficiaryForms);
-    // },err =>{
-      
-    //   this.changeIsLoading.emit(false);
-    // });
   }
 
   updateSelectedWalletInForms() {

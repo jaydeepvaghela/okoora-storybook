@@ -1,6 +1,6 @@
 <div class="loader-wrapper">
   <div class="dashboard-wallet-header-section">
-    <app-wallet-list-general id="walletList" (onViewDetailClick)="openAddMoney()"
+    <app-wallet-list-general id="walletList"
       [isDashboardBody]="true"></app-wallet-list-general>
   </div>
   <div cdkDropList class="drag-list" (cdkDropListDropped)="drop($event)">
@@ -38,14 +38,7 @@
         <div class="drag-handle" cdkDragHandle>
           <img src="images/drag-haldle.svg" alt="drag-haldle">
         </div>
-        <!-- <app-trade-view-wrapper [lastPaymentRateData]="lastPaymentRateData"></app-trade-view-wrapper> -->
         <div id="tradingViewChart" class="trading-view-box">
-          <!-- <h2 class="section-title">Last payment rate<span class="info-icon" htmlTooltip
-              tooltipBody="Refers to the rate at which a payment was made. Monitoring the last payment rate can be essential for future payment and managing cash flow.">i</span>
-          </h2>
-          <mat-card class="box-card">
-            <app-market-overview-chart [lastPaymentRateData]="lastPaymentRateData"></app-market-overview-chart>
-          </mat-card> -->
           <app-trade-view-wrapper [lastPaymentRateData]="lastPaymentRateData"></app-trade-view-wrapper>
         </div> 
         <div class="lock-payment-box">
@@ -68,6 +61,5 @@
       </div>
     </ng-container>
   </div>
-  <!-- <app-page-loader classes="bg-white section-loader top-new" *ngIf="Loader"></app-page-loader> -->
 </div>
 <app-footer></app-footer>

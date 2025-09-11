@@ -30,7 +30,6 @@ export class ExchangeDoneComponent {
     of(getAllActiveCurrencies).subscribe(res => {
       this.activeCurrencyList = res;
       this.selectExchangeCurrency()
-      // this.activeCurrencyListFilterForSell = res;
     })
   }
   closeDialog() {
@@ -64,7 +63,6 @@ export class ExchangeDoneComponent {
       disableClose: true,
     }).afterClosed()
       .subscribe((shouldReload: any) => {
-        // console.log("shouldReload", shouldReload);
         if (shouldReload) {
           this.timerSubscription = shouldReload
           this.timerSubscription.unsubscribe()

@@ -47,7 +47,6 @@ export class AdvancedPolicyStep3Component implements OnInit {
   advancePolicyFromAPI: any;
 
   ngOnInit(): void {
-    // this.getAlreadyCompletedPolicy();
     this.riskManagerService.getAdvancePolicyStep2Data.subscribe(res => {
       if (res && res.length > 0) {
         this.step2Res = res.sort((a: any, b: any) => a.index - b.index);
@@ -55,53 +54,12 @@ export class AdvancedPolicyStep3Component implements OnInit {
       console.log('response from step2', this.step2Res);
 
     })
-    // this.advancePolicyFlag = this.riskManagerService.advancePolicyFlag;
     this.riskManagerService.advancePolicyFlag$.subscribe(flag => {
       this.advancePolicyFlag = flag;
     });
   }
 
 
-  // getAlreadyCompletedPolicy() {
-  //   this.riskManagerService?.advancePolicyCompleted$.subscribe({
-  //     next: (response) => {
-  //       if (response) {
-  //         this.riskManagerService?.getAdvancePolicyData().subscribe({
-  //           next: (result) => {
-  //             this.advancePolicyFromAPI = result;
-  //             const budgetRateFromAPI = this.advancePolicyFromAPI?.budgetRate;
-  //             this.riskManagerService.setAdvancePolicyFormvalue(budgetRateFromAPI);
-  //             if (this.advancePolicyFromAPI && this.advancePolicyFromAPI?.questionAndScores) {
-  //               this.step2Res = [];
-  //               this.step2Res.push({
-  //                 index: 0,
-  //                 answer: this.advancePolicyFromAPI.budgetRate
-  //               });
-
-  //               this.step2Res.forEach((item: any) => {
-  //                 const index = item.advancePolicyQuestions;
-  //                 if (index >= 0) {
-  //                   this.step2Res.push({
-  //                     index: index,
-  //                     answer: this.mapIntegerToAnswer(item.score, index)
-  //                   });
-  //                 }
-  //               });
-  //               this.step2Res = this.step2Res.sort((a: any, b: any) => a.index - b.index);
-  //               this.riskManagerService.setAdvancePolicyStep2Formvalue(this.step2Res);
-  //         //     }
-  //           },
-  //           error: (error) => {
-
-  //           }
-  //         })
-  //       }
-  //     },
-  //     error: () => {
-  //       console.error('Error fetching policy completion flag');
-  //     }
-  //   });
-  // }
 
 
   previous() {
@@ -258,7 +216,6 @@ export class AdvancedPolicyStep3Component implements OnInit {
         };
         // Map question index and score
         obj.advancePolicyQuestions = this.mapQuestionsToInteger(this.step2Res[index].index);
-        // obj.score = this.mapAnswerToInteger(this.step2Res[index].answer);
         obj.score = this.mapAnswerToInteger(this.step2Res[index].answer, this.step2Res[index].index);
         questionAndScores.push(obj);
       }
@@ -269,15 +226,7 @@ export class AdvancedPolicyStep3Component implements OnInit {
       }
       this.showfinalStep = true;
 
-      // this.riskManagerService?.updateAdvancePolicydata(updateAdvancePolicyModel).subscribe((res: any) => {
-      //   if (res?.["body"]) {
-      //     this.showfinalStep = true;
-      //     this.showLoader = false;
-      //   }
-      // }, (error) => {
-      //   this.showLoader = false;
-      //   this.errorMessage = error?.error?.apiErrorMessage[0] ? error?.error?.apiErrorMessage[0] : "Oops! Something went wrong. Please try again later.";
-      // });
+      
     }
   }
 

@@ -203,7 +203,6 @@ export class RecipientTableComponent implements OnChanges {
       });
       const updatedFormGroups: FormGroup[] = [];
       beneficiaries.forEach((data) => {
-        // const number = index + 1;
         if (!updatedFormGroups.some((fg) => fg.value.beneficiaryId === data.ben[0].id)) {
           const newFormGroup = this.fb.group({
             beneficiaryId: [data.ben[0].id || null],
@@ -311,7 +310,6 @@ export class RecipientTableComponent implements OnChanges {
 
       if (beneficiary) {
         formGroup.patchValue({
-          // beneficiaryId: [beneficiary.id || null],
           product_reference: beneficiary.bankAccountHolderName,
           currency: beneficiary.currency,
         });
@@ -405,7 +403,6 @@ export class RecipientTableComponent implements OnChanges {
   createPaymentRequest(index: number) {
     console.log(this.beneficiaryForms,'lol')
     this.previousValues[index] = + this.beneficiaryForms[index].get('amount').value;
-    // console.log("this.beneficiaryForms[index]?.get('amount')", this.beneficiaryForms[index]?.get('amount'));
     this.showLoaderOnRow(index);
     let body: any = {
       amount: this.beneficiaryForms[index]?.get('amount')?.value,
@@ -425,7 +422,6 @@ export class RecipientTableComponent implements OnChanges {
               prevRequst: prevReq.value,
               newRequest: res.requestId
             };
-            // this._walletService.updateNewPaymentRequest(data).subscribe()
           }
           let found = false;
           for (let item of this.bensAndRequest) {
@@ -463,7 +459,6 @@ export class RecipientTableComponent implements OnChanges {
       (error) => {
         const amountControl = this.beneficiaryForms[index].get('amount');
         amountControl.setErrors({ invalidAmount: true });
-        // this.validateAmountField(index);
         this.error = error.error.apiErrorMessage[0];
         for (let i = 0; i < this.beneficiaryForms.length; i++) {
           this.setAmountErrorMessage.push('')
@@ -486,12 +481,10 @@ export class RecipientTableComponent implements OnChanges {
         this.componentVisible = true;
       }, 0);
     }
-    // this._walletService.deletePaymentRequest(requestId).subscribe();
     this.beneficiaryForms.splice(index, 1);
     this.paymentRequests.splice(index, 1);
     this.selectedBeneficiaries.splice(index, 1);
     if (this.beneficiaryForms.length == 0) {
-      // this.generalService.setValue(0);
     }
     this.cdr.detectChanges();
   }

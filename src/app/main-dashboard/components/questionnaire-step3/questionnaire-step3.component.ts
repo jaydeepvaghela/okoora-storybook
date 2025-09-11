@@ -68,7 +68,6 @@ export class QuestionnaireStep3Component {
 
       }
       let array = result?.find((x:any)=> x.wallet_Currency.code == currency)
-      // this.addMoreCurrency.controls['currencyPair'].controls[0].controls.buy.disable();
       this.addMoreCurrency.patchValue({ currencyPair: [{buy: currency , amount: array.wallet_Hedging.exposureAmount,sign:array.wallet_Currency.sign,direction:Number(array.wallet_Hedging.buy_Sell) - 1}] });
       this.formStepper.previous();
     },

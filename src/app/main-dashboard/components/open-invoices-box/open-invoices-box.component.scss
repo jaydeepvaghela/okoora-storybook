@@ -153,42 +153,6 @@
           .currency-icon {
             font-size: 13px;
           }
-
-          // &.box-value-clamp {
-          //   max-width: 215px;
-          //   display: inline-block;
-          //   text-overflow: ellipsis;
-          //   overflow: hidden;
-          //   white-space: nowrap;
-
-          //   @media screen and (max-width: 1440px) {
-          //     max-width: 150px;
-          //   }
-          // }
-
-          // &.box-value-clamp-open-invoices {
-          //   max-width: 165px;
-          //   display: inline-block;
-          //   text-overflow: ellipsis;
-          //   overflow: hidden;
-          //   white-space: nowrap;
-
-          //   @media screen and (max-width: 1440px) {
-          //     max-width: 150px;
-          //   }
-          // }
-
-          // &.box-value-clamp-current-hedge {
-          //   max-width: 165px;
-          //   display: inline-block;
-          //   text-overflow: ellipsis;
-          //   overflow: hidden;
-          //   white-space: nowrap;
-
-          //   @media screen and (max-width: 1440px) {
-          //     max-width: 150px;
-          //   }
-          // }
         }
       }
 
@@ -233,7 +197,6 @@
           }
 
           &.at-risk {
-            // max-width: 130px;
             display: inline-block;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -245,7 +208,6 @@
           }
 
           &.at-opportunity {
-            // max-width: 130px;
             display: inline-block;
             text-overflow: ellipsis;
             overflow: hidden;

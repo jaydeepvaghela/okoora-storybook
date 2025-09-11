@@ -173,7 +173,6 @@
           <td mat-cell *matCellDef="let row; let i = dataIndex">
             <div class="beneficiary-info">
               <h4>Status</h4>
-              <!-- <span class="beneficiary-status">{{row?.Status}}</span> -->
               <span class="beneficiary-status"
                 [ngClass]="row?.Status == 'Fix invoice' ? 'activeCustom' : row?.Status?.toLowerCase()"
                 [matMenuTriggerFor]=" row?.Status == 'Active' && row?.mainType == 2 ? accountMenu : null"
@@ -359,7 +358,6 @@
         <tr mat-row [style.border-bottom]="'20px solid #f5f7fa'" *matRowDef="let row; columns: ['expandedDetail']"
           class="transaction-detail-row"></tr>
       </table>
-      <!-- <app-page-loader classes="bg-white section-loader" id="loader" *ngIf="showLoader"></app-page-loader> -->
     </div>
     <div class="payment-page-list">
       <h3 class="total-entries">Total deals: {{ walletTransactionAll?.length }}</h3>

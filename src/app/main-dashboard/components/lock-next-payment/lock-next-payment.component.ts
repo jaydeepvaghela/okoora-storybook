@@ -29,11 +29,6 @@ export class LockNextPaymentComponent {
 
   ngOnInit(): void {
     this.Directions = Direction
-    // this.dashboardService.currentdashboardDrawerType.subscribe(res=>{
-    //   if(res){
-    //     this.eventDrawerClose()
-    //   }
-    // })
   }
 
   eventDrawerOpen(){
@@ -51,16 +46,6 @@ export class LockNextPaymentComponent {
     let activeWallet:any =  localStorage.getItem("activeWallet");
     let currency = JSON.parse(activeWallet);
     this.eventDrawerOpen();
-    // this.dialog.open(AlertExchangeRateFormComponent,{
-    //   width: '100vw',
-    //   maxWidth: '100vw',
-    //   data: {
-    //     selectedwalletInfo: currency,
-    //   },
-    //   disableClose: true,
-    // }).afterClosed()
-    // .subscribe((shouldReload: any) => {
-    // });
   }
 
   CreateLockRateDialog(){

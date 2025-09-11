@@ -14,7 +14,6 @@ import { DashboardService } from '../../services/dashboard.service';
 import { of } from 'rxjs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-// Mock data for active wallet and other dependencies
 const mockActiveCurrency = {
   wallet_Currency: {
     sign: '$',
@@ -33,7 +32,6 @@ const walletsServiceMock = {
 };
 
 const dashboardServiceMock = {
-  // Add any mock methods if needed for DashboardService
 };
 
 export default {

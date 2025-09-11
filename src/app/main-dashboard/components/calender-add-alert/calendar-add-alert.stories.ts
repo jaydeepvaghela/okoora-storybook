@@ -38,7 +38,6 @@ const mockWalletService = {
 };
 
 const mockDashboardService = {
-  // Stub methods if needed
 };
 
 const MY_DATE_FORMATS = {
@@ -66,7 +65,6 @@ export default {
       providers: [
         { provide: WalletsService, useValue: mockWalletService },
         { provide: DashboardService, useValue: mockDashboardService },
-        // providers: [
         { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS] },
         { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
     //   ],

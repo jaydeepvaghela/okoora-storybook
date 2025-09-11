@@ -1,4 +1,3 @@
-// add-note.stories.ts
 
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { AddNoteComponent } from './add-note.component';

@@ -37,17 +37,12 @@ export class ApprovalProtectiveDialogComponent {
     console.log('checking...', this.data)
     this.currentDate = new Date();
     this.config = { leftTime: this.data?.time, format: 'mm:ss' };
-    // this.config = this.data?.time;
     this.futurePayment = this.data.futurePaymentCreateResponse?.futurePayment.filter((item: any) => this.data.strategyId == item.strategyId)[0];
     
   }
 
   RiskInfoDialog() {
-    // this.dialog.open(PurchaseRiskInfoComponent, {
-    //   width: '800px',
-    //   maxWidth: '800px',
-    //   panelClass: 'specific-date-dialog-after-modal'
-    // })
+ 
   }
 
   onChange(ev: any) {
@@ -65,59 +60,25 @@ export class ApprovalProtectiveDialogComponent {
   futurePaymentRefresh() {
     this.showLoader = true;
     if (this.userAffiliate?.afiiliate?.currency === 'EUR') {
-      // this.walletService.refreshQuote(this.data?.futurePaymentCreateResponse.requestId).subscribe((result) => {
-      //   this.config = { leftTime: 60, format: 'mm:ss' };
-      //   this.showLoader = false;
-      //   this.futurePayment = result;
-      // }, err => {
-      //   this.showLoader = false;
-      //   this.refreshFuturePaymentErr = err?.error?.apiErrorMessage[0];
-      // })
+      
     }
     else {
       let params = {
         strategyId: this.data.strategyId,
         requestId: this.data.futurePaymentCreateResponse.requestId
       }
-      // this.walletService.refreshFuturePayments(params).subscribe((result: any) => {
-      //   // console.log({result})
-      //   this.config = { leftTime: 60, format: 'mm:ss' };
-      //   this.showLoader = false;
-      //   this.futurePayment = result?.futurePayment[0];
-      // }, err => {
-      //   this.showLoader = false;
-      //   this.refreshFuturePaymentErr = err?.error?.apiErrorMessage[0];
-      // });
+      
     }
   }
 
   futurePaymentComplete() {
     this.showLoader = true;
-    // if (this.userAffiliate.afiiliate.currency === 'EUR') {
-    //   // this.walletService.completePaymentRequest(this.data?.futurePaymentCreateResponse.requestId).subscribe((result) => {
-    //   //   this.showLoader = false;
-    //   //   this.riskInfoDialog.close('done');
-    //   //   this.dialog.closeAll();
-    //   //   this.dialog.open(WelldoneNewDashboardComponent, {
-    //   //     panelClass: 'well-done-modal',
-    //   //     data: {
-    //   //       transaction: this.data?.transaction
-    //   //     }
-    //   //   });
-    //   // },
-    //   //   err => {
-    //   //     this.showLoader = false;
-    //   //     this.completeFuturePaymentErr = err.error.apiErrorMessage[0];
-    //   //   });
-    // }
-    // else {
+    
       let params = {
         strategyId: this.data.strategyId,
         requestId: this.data.futurePaymentCreateResponse.requestId
       }
-      // this.walletService.completeFuturePayments(params).subscribe({
-      //   next: (result) => {
-      //     this.showLoader = false;
+      
           this.riskInfoDialog.close('done');
           this.dialog.closeAll();
           this.dialog.open(WelldoneNewDashboardComponent, {
@@ -126,13 +87,7 @@ export class ApprovalProtectiveDialogComponent {
               transaction: this.data?.transaction
             }
           });
-      //   },
-      //   error: (err) => {
-      //     this.showLoader = false;
-      //     this.completeFuturePaymentErr = err.error.apiErrorMessage[0];
-      //   }
-      // });
-    // }
+     
   }
 
   closeDialog() {

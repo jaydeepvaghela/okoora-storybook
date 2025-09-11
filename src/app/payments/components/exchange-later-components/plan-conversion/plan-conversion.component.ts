@@ -98,7 +98,6 @@ export class PlanConversionComponent {
       })
       .afterClosed()
       .subscribe((data: any) => {
-        // console.log('Exchange now dialog closed!');
       });
   }
 

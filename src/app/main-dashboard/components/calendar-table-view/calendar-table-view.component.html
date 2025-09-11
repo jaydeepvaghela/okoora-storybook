@@ -85,7 +85,6 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      <!-- <app-page-loader classes="bg-white" *ngIf="visibleLoader"></app-page-loader> -->
     </table>
     <div id="mbsc-table-paginator-0" *ngIf="selectedTab == 0 && alertDataSource?.data?.length > 0">
       <pagination-controls (pageChange)="p = $event;" previousLabel="" nextLabel="" [autoHide]="true"
@@ -165,7 +164,6 @@
           <span *ngIf="!element?.status">-</span>
           <mat-menu #statusMenu="matMenu" class="fix-invoice-drop">
             <button id="mbsc-table-fix-invoice" mat-menu-item>Fix invoice</button>
-            <!-- <button mat-menu-item (click)="recheckInvoice(element?.paymentRequestId)" >Fix invoice</button> -->
           </mat-menu>
         </td>
       </ng-container>
@@ -346,6 +344,5 @@
   </div>
   <p class="text-center">MAKE YOUR FIRST HEDGE</p>
   <div class="text-center">
-    <!-- <button id="mbsc-table-nda-hedge" (click)="openHedgeDialog(false, data?.date);" class="continue" [disabled]="userRoleType !== 1">+ New Hedge</button> -->
   </div>
 </div>

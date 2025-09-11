@@ -68,21 +68,7 @@ export class AdvancedPolicyStep1Component {
     this.getSpotRate();
   }
 
-  // getAlreadySetRate() {
-  //   this.hedgingDataService.getAdvancePolicyBudgetRate.subscribe({
-  //     next: (budgetRate) => {
-  //       const numericRate = Number(budgetRate);
-  //       if (!isNaN(numericRate)) {
-  //         this.rate?.setValue(
-  //           new Intl.NumberFormat('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(numericRate)
-  //         );
-  //       }
-  //     },
-  //     error: (err) => {
-  //       console.error('Error fetching budget rate:', err);
-  //     },
-  //   });
-  // }
+
 
 
   generateBudgetRate() {

@@ -8,7 +8,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FutureOverviewLockChartComponent } from '../future-overview-lock-chart/future-overview-lock-chart.component';
 import { FutureOverviewHedgeChartComponent } from '../future-overview-hedge-chart/future-overview-hedge-chart.component';
 import { ConvertNowComponent } from '../convert-now/convert-now.component';
-// import { ConvertNowComponent } from '../convert-now/convert-now.component';
 
 @Component({
   selector: 'app-side-tabs',
@@ -24,8 +23,6 @@ export class SideTabsContainerComponent {
   selectedIndex = 0;
   @Input('getLockHedgeGrafhData') getLockHedgeGrafhData: any;
 
-  // Highcharts: typeof Highcharts = Highcharts;
-  // chartOptions: Highcharts.Options;
 
   constructor(private dashboardService: DashboardService,    
     private _walletService: WalletsService,
@@ -40,7 +37,6 @@ export class SideTabsContainerComponent {
      this.lockLabel =  this.activeCurrency?.wallet_Hedging?.direction == 1 ? "Lock & Down" : "Lock & Up"
 
     })
-    //  this.chartOptions = getChartOptions();
   }
 
   

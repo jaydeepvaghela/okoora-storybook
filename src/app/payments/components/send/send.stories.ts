@@ -153,33 +153,7 @@ export default meta;
 
 type Story = StoryObj<SendComponent>;
 
-// export const Step2: Story = {
-//   name: 'Step 1 - Beneficiary Info',
-//   args: {
-//     data: {
-//       ...mockDialogData,
-//       type: false
-//     },
-//     currentStepIndex: 1
-//   }
-// };
 
-// export const Step3: Story = {
-//   name: 'Step 2 - Payment Info',
-//   args: {
-//     data: {
-//       ...mockDialogData,
-//       type: 'future_payment'
-//     },
-//     currentStepIndex: 2,
-//   },
-//   render: (args) => ({
-//     props: {
-//       ...args,
-//       paymentRequestForm: mockForm
-//     }
-//   })
-// };
 
 export const Step4: Story = {
   name: 'Lock Rate with Signature Popup',
@@ -192,13 +166,4 @@ export const Step4: Story = {
   }
 };
 
-// export const Step5: Story = {
-//   name: 'Step 4 - Your Own Rate',
-//   args: {
-//     data: {
-//       ...mockDialogData,
-//       type: 'future_payment'
-//     },
-//     currentStepIndex: 4
-//   }
-// };
+

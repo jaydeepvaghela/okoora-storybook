@@ -66,8 +66,6 @@ export class MassPaymentComponent implements OnInit {
     });
   }
   ngOnDestroy() {
-    // this._snackBar.dismiss();
-    // this.valueSubscription.unsubscribe();
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['selectedWallet'] && !changes['selectedWallet'].firstChange) {
@@ -128,9 +126,6 @@ export class MassPaymentComponent implements OnInit {
     this.addMoreRecipients = true;
   }
   DownloadTemplate() {
-    // this._walletService.downloadExcel().subscribe((data: any) => {
-    //   this.downloadBlob(data, 'IsMassTemplate.xlsx');
-    // });
   }
 
   private downloadBlob(blob: Blob, filename: string) {
@@ -142,7 +137,6 @@ export class MassPaymentComponent implements OnInit {
   }
 
   ImportTemplate(event: any) {
-    // console.log(event?.target?.files?.length);
     if (event?.target?.files?.length > 1) {
       const config: MatSnackBarConfig = {
         panelClass: ['snack-message-error', 'snack-message-error-massImportFile'],
@@ -154,12 +148,10 @@ export class MassPaymentComponent implements OnInit {
         },
       };
 
-      // const snackBarRef = this._snackBar.openFromComponent(SnackMessageComponent, config);
     } else {
       this.importFiles = []
       this.importFiles.push(event.target.files[0]);
       this.uploadImportError = false;
-      // console.log("this.importFiles[0]?.type", this.importFiles[0]?.type);
 
       const allowedTypes = new Set(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']);
       if (!allowedTypes.has(this.importFiles[0]?.type)) {
@@ -182,7 +174,6 @@ export class MassPaymentComponent implements OnInit {
     }
   }
   canProceedToNext(): boolean {
-    // localStorage.setItem('beneficiaryForms', JSON.stringify(this.beneficiaryForms));
     return this.beneficiaryForms.every((form) => form.valid);
   }
 }

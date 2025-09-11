@@ -15,7 +15,6 @@ import { HedgingDataService } from '../hedging-proposal/hedging-data.service';
 export class AdvancedPolicyComponent {
   @ViewChild('formStepper') formStepper!: MatStepper;
   riskManagerService = inject(HedgingDataService);
-  // stepperIndex$: Subscription;
   isPolicyAlreadyCompleted: boolean | undefined;
   constructor() {
   }
@@ -40,17 +39,7 @@ export class AdvancedPolicyComponent {
 
 
   checkIfPolicyAlreadyCompleted() {
-    // this.riskManagerService.advancePolicyCompleted$.subscribe({
-    //   next: (result) => {
-    //     this.isPolicyAlreadyCompleted = result;
-    //     if (this.isPolicyAlreadyCompleted && this.formStepper) {
-    //       this.formStepper.selectedIndex = 2;
-    //     }
-    //   },
-    //   error: (err) => {
-    //     console.log('')
-    //   }
-    // })
+   
   }
 
   moveNextPage() {

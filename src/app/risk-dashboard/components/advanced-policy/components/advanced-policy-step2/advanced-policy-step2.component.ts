@@ -54,10 +54,8 @@ export class AdvancedPolicyStep2Component implements AfterViewInit,OnDestroy {
           this.setp2Stepper.selectedIndex = res; // from step3 edit first step tan index start from 0 in step2
         } else if (res > 0) {
           const stepperIndex = res - 1;
-          // this.zone.run(() => {
             this.setp2Stepper.selectedIndex = stepperIndex;
             this.cdr.detectChanges();
-          // });
           const formValuesWithIndexAndAnswer = this.formGroups.map((formGroup, index) => ({
             index: index + 1,
             answer: formGroup.value.answer
@@ -126,14 +124,12 @@ export class AdvancedPolicyStep2Component implements AfterViewInit,OnDestroy {
         if (data) {
             this.isAlreadyCompletedPolicy = true;
 
-            // Replace index 9 with index 5
             data.forEach((item: any) => {
                 if (item.index === 9) {
-                    item.index = 5; // Replace index 9 with index 5
+                    item.index = 5; 
                 }
             });
 
-            // Patch the formGroups with the updated data
             data.forEach((item: any) => {
                 const formGroup = this.formGroups[item.index - 1]; // Adjust for zero-based index
                 if (formGroup) {

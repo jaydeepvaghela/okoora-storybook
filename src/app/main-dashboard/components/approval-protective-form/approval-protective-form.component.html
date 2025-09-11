@@ -38,10 +38,6 @@
         {{ data?.type == 'protect' ? (data?.invoiceDetailResult?.paymentDate | date: ' dd/MM/YYYY') : data?.type == 'lockUP'? data?.expiryDate :  (data?.protectAllData?.paymentDate | date: ' dd/MM/YYYY') }}
       </span>
     </div>
-    <!-- <div class="box-row">
-      <span class="app-label">{{'Approve_Hedge.determiningRateForSettlement' | translate}}</span>
-      <span class="app-value">{{'Approve_Hedge.determiningRateForSettlement' | translate}}</span>
-    </div> -->
     <div class="box-row">
       <span class="app-label">Amount Required as Collateral</span>
       <span class="app-value">
@@ -56,10 +52,6 @@
       <span class="app-label">Exchange Fee</span>
       <span class="app-value">Exempt</span>
     </div>
-    <!-- <div class="box-row" *ngIf="data?.hedgeType == 3">
-      <span class="app-label">{{'Approve_Hedge.commitmentRate' | translate}}</span>
-      <span class="app-value">{{data?.HedgeData?.obligationRate}}</span>
-    </div> -->
   </div>
 
   <div class="approval-scroll-area">
@@ -67,7 +59,6 @@
       <li><h5>Hedging Conditions</h5></li>
       <li>After the operation is approved, the transaction cannot be canceled and/or changed by the client.</li>
       <li>During the life of the transaction, additional collateral may be required, which will be determined according to changes in market conditions and according to the company's requirements. If these are not transferred by the company's deadline, the company can, but is not obligated to perform.</li>
-      <!-- The following lines are additional conditions not included in the JSON file -->
       <li>Once the transaction has been approved, the client may not cancel or amend it except with the Company’s prior written consent, granted at the Company’s sole discretion and subject to the fees set out in the agreement.</li>
       <li>The Company itself is entitled to cancel or modify the transaction in accordance with the terms of the agreement.</li>
       <li>Settlement adjustment: If, on the settlement date, the official representative exchange rate (“Fixing Rate”) is higher than the contract rate, your account will be credited in the secondary currency with an amount equal to the difference between the two rates multiplied by the notional amount in the primary currency. If the Fixing Rate is lower than the contract rate, your account will be debited in the secondary currency by the same calculation.</li>
@@ -96,6 +87,4 @@
     </button>
     <button id="apf-dialog-cancel" mat-dialog-close (click)="closeForm()">Cancel</button>
   </div>
-
-  <!-- <app-page-loader classes="bg-white" *ngIf="showLoader"></app-page-loader> -->
 </div>

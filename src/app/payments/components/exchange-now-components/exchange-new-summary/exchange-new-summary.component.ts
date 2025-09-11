@@ -50,7 +50,6 @@ export class ExchangeNewSummaryComponent {
       this.activeCurrencyList = res;
       this.selectExchangeCurrency()
     })
-    // this.searchData()
   }
 
   ngOnChanges() {
@@ -69,26 +68,12 @@ export class ExchangeNewSummaryComponent {
   nextStep(stepper: any, progress: any) {
     if (this.formStepper) {
 
-      // if (this.createdConvertData?.convertRequest?.requestId) {
-      //   this.showLoader = true
-      //   this._walletService.completeConvertRequest(this.createdConvertData?.convertRequest?.requestId).subscribe((data: any) => {
-      //     this.completedPaymentRequest = data
-      //     this.completedPaymentRequestDetails.emit(this.completedPaymentRequest)
 
           if (this.timerSubscription) {
             this.timerSubscription.unsubscribe();
           }
-      //     this.showLoader = false
-      //     delete this.errMsg;
           this.formStepper.next();
           this.formStepperProgress.value = (this.formStepper?.selectedIndex + 1) * 100 / this.formStepper?.steps?.length;
-          // this.timerSubscription.unsubscribe();
-      //   }, err => {
-      //     this.showLoader = false
-      //     this.errMsg = err.error[0]?.message;
-      //     this.errMsg = err.error?.apiErrorMessage;
-      //   })
-      // }
     }
   }
 
@@ -118,9 +103,7 @@ export class ExchangeNewSummaryComponent {
       disableClose: true,
     }).afterClosed()
       .subscribe((shouldReload: any) => {
-        // console.log("shouldReload", shouldReload);
         if (shouldReload) {
-          // this.timerSubscription = shouldReload
           this.timerSubscription.unsubscribe()
         }
       });
@@ -140,7 +123,6 @@ export class ExchangeNewSummaryComponent {
       })
       .afterClosed()
       .subscribe((data: any) => {
-        // console.log('Exchange now dialog closed!');
       });
   }
 

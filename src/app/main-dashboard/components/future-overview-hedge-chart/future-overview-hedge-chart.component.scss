@@ -7,7 +7,6 @@
     padding: 34px 58px 25px;
     position: relative;
     max-width: 536px;
-    // box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
 
     @media (max-width: 1800px) {
       padding-left: 35px;
@@ -18,11 +17,6 @@
       padding-left: 30px;
       padding-right: 30px;
     }
-
-    // .error-hedgedate {
-    //   margin-top: -25px;
-    // }
-
     @media only screen and (max-width: 1440px) {
       padding: 34px 30px 25px;
       min-height: 592px;
@@ -503,7 +497,6 @@
     }
 
     @media only screen and (max-width: 480px) {
-      // flex-direction: column;
       row-gap: 10px;
       align-items: start;
     }
@@ -518,8 +511,6 @@
         padding: 17px 14px;
         height: 50px;
         margin-right: 8px;
-        // padding-left: 0;
-        // min-width: 150px;
         width: 100%;
 
         .mat-datepicker-toggle {
@@ -541,7 +532,6 @@
         }
 
         @media only screen and (max-width: 1440px) {
-          // min-width: 130px;
           padding: 9px 6px;
           height: 40px;
         }
@@ -550,18 +540,7 @@
           margin-right: 0;
         }
 
-        // @media only screen and (max-width: 580px) {
-        //   max-width: 160px;
-        // }
-
-        // @media only screen and (max-width: 480px) {
-        //   max-width: 90%;
-        //   min-width: 90%;
-        //   margin-right: 0;
-        // }
-
         mat-datepicker-toggle {
-          // &::ng-deep {
             button.mdc-icon-button {
               width: 21px !important;
               height: 44px !important;
@@ -570,7 +549,6 @@
               background-repeat: no-repeat;
               background-position: center;
             }
-          // }
         }
 
         input {
@@ -634,32 +612,6 @@
             border-color: var(--brand-primary-color);
           }
         }
-
-        // @media only screen and (max-width: 1800px) {
-        //   min-width: 180px;
-        // }
-
-        // @media only screen and (max-width: 1600px) {
-        //   min-width: 160px;
-        // }
-
-        // @media only screen and (max-width: 1440px) {
-        //   height: 40px;
-        // }
-
-        // @media only screen and (max-width: 1280px) {
-        //   min-width: 130px;
-        // }
-
-        // @media only screen and (max-width: 1024px) {
-        //   max-width: 160px;
-        // }
-
-        // @media only screen and (max-width: 480px) {
-        //   max-width: 90%;
-        //   min-width: 90%;
-        //   justify-content: space-between;
-        // }
 
         .input-wrapper {
           position: relative;
@@ -797,11 +749,6 @@
     }
   }
 
-  // .execute-btn[disabled] {
-  //   background-color: $disable-button-bg;
-  //   color: $action-btn-color;
-  //   cursor: default;
-  // }
   #chart {
     max-width: 650px;
     margin: 35px auto;
@@ -883,7 +830,6 @@
     }
   }
 
-  // ::ng-deep {
     .amount-select {
       .mat-mdc-select-value {
         color: $white;
@@ -957,5 +903,4 @@
         background-color: transparent;
       }
     }
-  // }
 }

@@ -69,7 +69,6 @@ export class PaymentsDashboardComponent {
           let currency = JSON.parse(activeWallet);
           this.activeCurrencyListFilter = this.walletList.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase().includes(currency?.wallet_Currency?.code?.toLowerCase()));
           this._walletService.setCurrentCurrencyData(this.activeCurrencyListFilter);
-          // this.child?.getAllData();
         }
       });
   }
@@ -98,7 +97,6 @@ export class PaymentsDashboardComponent {
       })
       .afterClosed()
       .subscribe((shouldReload: any) => {
-        // this.child?.getAllData();
       });
   }
 
@@ -119,7 +117,6 @@ export class PaymentsDashboardComponent {
       .afterClosed()
       .subscribe((data: any) => {
         if(data == 'convert-completed') {
-          // this.child?.getAllData();
         }
       });
   }
@@ -138,7 +135,6 @@ export class PaymentsDashboardComponent {
       })
       .afterClosed()
       .subscribe(() => {
-        // this.child?.getAllData();
       });
   }
   createMassPayment() {
@@ -158,7 +154,6 @@ export class PaymentsDashboardComponent {
           let currency = JSON.parse(activeWallet);
           this.activeCurrencyListFilter = this.walletList.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase().includes(currency?.wallet_Currency?.code?.toLowerCase()));
           this._walletService.setCurrentCurrencyData(this.activeCurrencyListFilter);
-          // this.child?.getAllData();
         }
       }
     );
@@ -167,6 +162,5 @@ export class PaymentsDashboardComponent {
   ngOnDestroy(): void {
     this.unSubScribe$.next();
     this.unSubScribe$.complete();
-    // this.contactsService.createSinglePaymentFromBeneficiaryStep6(null);
   }
 }

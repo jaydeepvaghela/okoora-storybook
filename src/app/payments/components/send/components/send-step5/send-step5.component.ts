@@ -97,26 +97,7 @@ export class SendStep5Component implements OnDestroy {
   }
 
   stampUpload() {
-    // this.commonDialog
-    //   .confirmDialog({
-    //     title: 'Please confirm action',
-    //     message: 'You have to upload the stamp in order to perform this operation.',
-    //     confirmText: 'Confirm',
-    //     cancelText: 'Cancel',
-    //   })
-    //   .subscribe((isConfirmed) => {
-    //     if (isConfirmed) {
-    //       this.dialog
-    //         .open(UserPreferenceComponent, {
-    //           width: '1095px',
-    //           maxWidth: '1095px',
-    //           disableClose: true,
-    //           panelClass: 'user-preference'
-    //         }).afterClosed().subscribe((shouldReload: any) => {
-    //           this.dialogRef.close();
-    //         })
-    //     }
-    //   });
+   
   }
 
   createPaymentRequest() {
@@ -126,12 +107,7 @@ export class SendStep5Component implements OnDestroy {
       currency: this.createPayment?.controls?.chargeCurrency?.value
     }
 
-    // this.walletService.createPaymentRequest(body).subscribe((data: any) => {
-    //   let needStamp = data?.signAndFiles?.needStamp;
-    //   if (needStamp) {
-    //     this.stampUpload();
-    //   }
-    // })
+    
   }
 
   signaturePopup() {
@@ -153,7 +129,6 @@ export class SendStep5Component implements OnDestroy {
 
   dateChanged(ev: any) {
     let date = moment(ev.value).format(DateFormat.dateInput);
-    // this.createTransfer.value['orderDetailes.FlightDate'] = date;
   }
 
   lockRatePrevious(stepper: any, progress: any) {
@@ -164,7 +139,6 @@ export class SendStep5Component implements OnDestroy {
   }
 
   lockRateComplete(stepper: any, progress: any) {
-    // console.log('this',this)
     this.dialogOpen = true;
     this.dialog.open(ApprovalProtectiveDialogComponent, {
       width: '600px',
@@ -178,14 +152,12 @@ export class SendStep5Component implements OnDestroy {
         time: (this.counter.left) / 1000
       }
     }).afterClosed().subscribe(result => {
-      // if (this.userAffiliate.afiiliate.currency !== 'EUR') {
         if (result == 'done') {
           stepper.selectedIndex = 6;
         } else if (result?.leftTime) {
           this.dialogOpen = false;
           this.config = { leftTime: result?.leftTime, format: 'mm:ss' };
         }
-      // }
     })
   }
 
@@ -213,20 +185,9 @@ export class SendStep5Component implements OnDestroy {
         requestId: this.futurePayment.value.createPaymentResponse.requestId
       };
 
-      // this.fPRefreshSubscription = this.walletService.refreshFuturePayments(params).pipe(
-      //   catchError(err => {
-      //     this.showLoader = false;
-      //     this.refreshFuturePaymentErr = err?.error?.apiErrorMessage[0];
-      //     return of(null);
-      //   })
-      // ).subscribe(result => {
+     
         this.config = { leftTime: 60, format: 'mm:ss' };
-      //   // Wrap this in setTimeout
-      //   setTimeout(() => {
-      //     this.showLoader = false;
-      //     this.cd.detectChanges();  // Trigger change detection after the next event loop
-      //   });
-      // });
+      
     });
   }
 

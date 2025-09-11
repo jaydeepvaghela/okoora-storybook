@@ -147,7 +147,6 @@ export class PreviewComponent implements OnInit, OnDestroy {
           }
         });
 
-        // await this._walletService.completeMultiPaymentRequest(query).subscribe(x =>{
           this.beneficiaryForms = [];
           this.beneficiaryFormsChange.emit([]);
           this.isComplete = true;
@@ -212,7 +211,6 @@ export class PreviewComponent implements OnInit, OnDestroy {
     this.timer = 15;
     this.intervalId = setInterval(() => {
       this.timer--;
-      // console.log(`Timer: ${this.timer}`);
       if (this.timer === 0) {
         this.handleTimerExpiration();
       }

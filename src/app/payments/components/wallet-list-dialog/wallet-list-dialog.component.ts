@@ -57,7 +57,6 @@ export class WalletListDialogComponent {
   }
 
   switchWallet() {
-    // this._walletService.setwalletwalletDataForLock(this.selectedCurrency)
     this.dialogRef.close({ wallet: this.selectedCurrency, index: this.selectedIndex });
   }
 

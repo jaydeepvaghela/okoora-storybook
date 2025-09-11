@@ -25,7 +25,6 @@
             </mat-step>
             <mat-step>
                 <ng-template matStepContent>
-                    <!-- <app-single-payment-send-step3 [createdPaymentData]="createdPaymentData"  [timerSubscription]="timerSubscription" [signObjectForSummery]="signObjectForSummery"  [formStepper]="formStepper" [formStepperProgress]="formStepperProgress" [walletList]="walletList"></app-single-payment-send-step3> -->
                      <app-single-payment-send-step3
                         *ngIf="createdPaymentData && signObjectForSummery"
                         [createdPaymentData]="createdPaymentData"

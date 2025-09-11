@@ -41,7 +41,6 @@ export class SinglePaymentSendCompletedComponent {
 
   closeDialog() {
     this.dialogRef.close('completedSend')
-    // this.dialog.closeAll()
   }
 
   sendAnotherPayment() {
@@ -57,7 +56,6 @@ export class SinglePaymentSendCompletedComponent {
       disableClose: true,
     }).afterClosed()
       .subscribe((shouldReload: any) => {
-        // console.log("shouldReload", shouldReload);
         if (shouldReload) {
           this.timerSubscription = shouldReload
           this.timerSubscription.unsubscribe()

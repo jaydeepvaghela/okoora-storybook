@@ -3,18 +3,6 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { Observable, map, of, startWith, switchMap, timer } from 'rxjs';
-// import { WalletBalanceListModal } from 'src/app/common/models/WalletBalanceListModal';
-// import { AddContactsComponent } from 'src/app/contacts/components/add-contacts/add-contacts.component';
-// import { BenificiaryModel } from 'src/app/contacts/models/BenificiaryModel';
-// import { ContactsService } from 'src/app/contacts/services/contacts.service';
-// import { WalletListDialogComponent } from 'src/app/shared/wallet-list-dialog/wallet-list-dialog.component';
-// import { PaymentResponseModel } from 'src/app/wallets/models/PaymentResponseModel';
-// import { RefreshQuoteResponseModel } from 'src/app/wallets/models/RefreshQuoteResponseModel';
-// import { UpdateCostListResponseModel } from 'src/app/wallets/models/UpdateCostListResponseModel';
-// import { WalletsService } from 'src/app/wallets/services/wallets.service';
-// import { SinglePaymentSendComponent } from '../single-payment-send/single-payment-send.component';
-// import { SendComponent } from 'src/app/wallets/components/send/components/send.component';
-// import { MassPaymentComponent } from 'src/app/mass-payment/components/mass-payment/mass-payment.component';
 import { addMonths } from 'date-fns';
 import moment from 'moment';
 import { BenificiaryModel, BenificiaryStatus } from '../../../models/BenificiaryModel';
@@ -142,8 +130,6 @@ export class SinglePaymentSendStep1Component {
     let ToDate = moment(new Date()).format(DateFormat?.dateInput)
     let FromDate = moment(endDate).format(DateFormat?.dateInput)
 
-    // console.log("FromDate", FromDate);
-    // console.log("ToDate", ToDate);
     let payloadData = {
       currency: "",
       FromDate: FromDate,
@@ -184,7 +170,6 @@ export class SinglePaymentSendStep1Component {
           }   
         }
       });
-      // this.openBeneficiaryList = false
       this.cd.detectChanges()
 
     }
@@ -554,7 +539,6 @@ export class SinglePaymentSendStep1Component {
       disableClose: true,
     }).afterClosed()
       .subscribe((shouldReload: any) => {
-        // console.log("shouldReload", shouldReload);
         if (shouldReload) {
           this.timerSubscription = shouldReload
           this.timerSubscription.unsubscribe()

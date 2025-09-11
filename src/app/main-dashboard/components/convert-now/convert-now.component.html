@@ -1,5 +1,4 @@
 <div class="convert-wrapper">
-  <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
   <div class="label-wrapper">
     <h3 class="label">Currency Exchanger</h3>
     <span class="info-icon" htmlTooltip
@@ -12,7 +11,6 @@
     </div>
     <div class="label-group">
       <h2 class="label">{{activeCurrency?.wallet_Currency?.code}}/{{activeCurrency?.wallet_Hedging?.exposureBaseCurrency}}</h2>
-      <!-- <span class="last-update">Last update: 22/08/2023</span> -->
     </div>
   </div>
   <div class="convert-option-group">
@@ -36,11 +34,6 @@
       <span class="convert-rate">{{currentCurrencyValue?.[activeCurrency?.wallet_Hedging?.exposureBaseCurrency]?.toFixed(4)}} {{activeCurrency?.wallet_Hedging?.exposureBaseCurrency}}</span>
     </span>
   </button>
-  <!-- <button *ngIf="this.selectedType === 'sell'" class="convert-button">
-    <span class="rate-wrapper"> 1 {{activeCurrency?.wallet_Hedging?.exposureBaseCurrency}} =
-      <span class="convert-rate"> {{currentCurrencyValue?.[activeCurrency?.wallet_Currency?.code]?.toFixed(2)}}  {{activeCurrency?.wallet_Currency?.code}} </span>
-    </span>
-  </button> -->
   <div class="w-100 d-flex justify-content-center align-items-center">
     <button id="buy_sell_btn_convert_now" class="buy-sell-btn mt-3" *ngIf="selectedType" (click)="openConvertComponent()">{{ buySellCurrency }}</button>
   </div>

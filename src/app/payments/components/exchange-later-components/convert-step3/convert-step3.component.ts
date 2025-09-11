@@ -77,7 +77,6 @@ export class ConvertStep3Component {
 
   ngOnInit() {
     this.data.selectedwalletInfo = JSON.parse(localStorage.getItem('activeWallet')!);
-    // this.roles = this.auth.getRoleOfUser();
     this.showLoader = true;
     this._walletService.getAllBalanceList().subscribe((result) => {
       if(result){
@@ -110,13 +109,6 @@ export class ConvertStep3Component {
   }
   openPrivacyPolicyDialog() {
     this.checkTermsCheckbox();
-    // this.dialog.open(PrivacyPolicyComponent, {
-    //   width: '90vw',
-    //   height: '90vh',
-    //   panelClass: 'signature-modal',
-    //   maxWidth: '90vw',
-    //   disableClose: true,
-    // });
   }
   dateChanged(ev: any) {
     let date = moment(ev.value).format(DateFormat.dateInput);
@@ -154,22 +146,15 @@ export class ConvertStep3Component {
         "remarks": "",
         "direction": this.FinalDirection,
         "creationSpot": this.spotRate
-        // "dueDate": this.convertMoneyOption.value.dueDate
       }
       if (this.requestIdValue && data) {
         this.showLoader = true
-        // this._walletService.CreateExposure(data)
-        // .subscribe(data=>{
-        //   if (data) {
-        //     this.showLoader = false;
+        
                 this.formStepper.next();
                 if(this.formStepperProgress){
                   this.formStepperProgress.value = (this.formStepper?.selectedIndex + 1) * 100 / this.formStepper?.steps?.length;
                 }
-        //       }
-        // },err => {this.errorMsg = err.error.apiErrorMessage
-        //   this.showLoader = false;
-        // });
+        
         }
     }
   }
@@ -180,49 +165,16 @@ export class ConvertStep3Component {
   }
 
   AlertSpotAndRate() {
-    // this._walletService.GetPair(this.yourOwnRate.value.toCurrency.toLowerCase(), this.yourOwnRate.value.fromCurrency.toLowerCase()).subscribe((res: any) => {
-    //   this.currencyPair = res.pair;
-    //   if (this.currencyPair) {
-    //     this.strongCurrency = this.currencyPair?.slice(0, 3);
-    //     this.weakCurrency = this.currencyPair?.slice(3);
-    //     if (this.strongCurrency == this.yourOwnRate.value.fromCurrency) {
-    //       this.direction = Direction.Down;
-    //     } else if (this.weakCurrency == this.yourOwnRate.value.fromCurrency) {
-    //       this.direction = Direction.Up;
-    //     }
-    //     var pair = {
-    //       pair: this.currencyPair,
-    //       direction: this.direction
-    //     }
-    //     this._walletService.AlertSpotAndRate(pair).subscribe((res) => {
-    //       if (res) {
+    
             this.spotRate = 7.7808127230000;
             this.highestTargetRate = this.spotRate * 1.05;
             this.lowestTargetRate = this.spotRate * 0.95;
             this.targateRateRange = this.lowestTargetRate.toFixed(4) + '-' + this.highestTargetRate.toFixed(4);
-            // this.yourOwnRate.patchValue({ 'spotRate': this.spotRate });
-    //       }
-    //     })
-    //   }
-    // })
+          
   }
 
   changeRate(arg:any){
-    // if (arg?.target?.value > this.highestTargetRate || arg?.target?.value < this.lowestTargetRate) {
-    //   this.dialog.open(GeneratMsgForBusinessComponent, {
-    //     disableClose: false,
-    //     panelClass: ['mat-dialog-sm', 'invite-company-modal'],
-    //     data: {
-    //       title: 'Target rate',
-    //       message: `You can enter a value at range of 5% up / down from your platform rate   ${this.lowestTargetRate.toFixed(4)} - ${this.highestTargetRate.toFixed(4)}`,
-    //       buttonText: 'ok',
-    //     }
-    //   });
-    //   this.validForm = true
-    // } else {
-    //   this.validForm = false;
-    //   this.changeChargeAmount()
-    // }
+    
   }
 
   changeChargeAmount(){
@@ -257,11 +209,9 @@ export class ConvertStep3Component {
     if (this.isSellAmount)
     {
        sellAmount = this.yourOwnRate.value.sellAmount;
-      //  amountIsValid = sellAmount != null &&  sellAmount.trim() != '' && !isNaN(sellAmount);
     }
     else {
         buyAmount = this.yourOwnRate.value.buyAmount;
-        // amountIsValid = buyAmount != null && buyAmount.trim() != '' && !isNaN(buyAmount);
     }
 
     if (this.yourOwnRate.value.toCurrency && this.yourOwnRate.value.fromCurrency && buyAmount) {
@@ -373,7 +323,6 @@ export class ConvertStep3Component {
   }
 
   getWalletBalanceByCurrency(currency: string) {
-    // this.buyCurrencyBalance$ = this._walletService.geBalanceByCurrency(currency);
   }
 
   checkSellAmount() {

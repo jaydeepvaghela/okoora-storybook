@@ -141,7 +141,6 @@
         .style("fill", this.needleData?.color)
         .style("stroke", "rgba(255,192,203,.6)")
         .style("stroke-width", 4)
-        // .style("filter",'drop-shadow(0px 0px 7px red)')
         .attr("transform", function (d) {
           var angle = scale(d);
           var x = Math.cos(angle * Math.PI / 180) * 80;

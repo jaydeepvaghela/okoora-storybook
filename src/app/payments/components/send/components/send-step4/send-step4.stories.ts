@@ -58,9 +58,6 @@ class MockWalletsService {
 class MockMatDialog {
   open(component: any, config: any) {
     return {
-    //   afterClosed: () => of({
-    //     signature: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=='
-    //   })
     };
   }
 }

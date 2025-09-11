@@ -6,7 +6,6 @@
   padding: 36px 58px 47px;
   position: relative;
   max-width: 536px;
-  // box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
 
   @media only screen and (max-width: 1600px) {
     padding: 34px 30px 25px;
@@ -73,7 +72,6 @@
 .date-wrapper {
   @include flex(flex-start, flex-start, row);
   column-gap: 10px;
-  // margin-bottom: 34px;
 
   .time-frame {
     @include flex(center, center, row);
@@ -332,10 +330,6 @@
   }
 }
 
-// .select-timeframe:focus {
-//   outline: none;
-//   border: 1px solid var(--brand-primary-color);
-// }
 
 ::ng-deep .timeframe-option {
   margin: 10px 20px;
@@ -380,7 +374,6 @@
 .lock-up-datepicker-btn[disabled] {
   background-color: $disable-button-bg;
   color: $action-btn-color;
-  // cursor: default;
 }
 
 ::ng-deep .lock-up-datepicker-btn {
@@ -464,10 +457,6 @@
     }
   }
 }
-
-// ::ng-deep .mat-calendar-body tr:first-child {
-//   display: none;
-// }
 
 ::ng-deep .select-timeframe .mat-mdc-select-arrow svg {
   display: none;
