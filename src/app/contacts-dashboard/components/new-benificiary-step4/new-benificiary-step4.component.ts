@@ -1311,7 +1311,7 @@ export class NewBenificiaryStep4Component implements OnInit, OnChanges, AfterVie
         + `isoCountryCode: ${data?.isoCountryCode?.toLowerCase()} `
         + `=> Match: ${this.newBenificiaryStep2Values?.bankCountry === data?.isoCountryCode?.toLowerCase()}`
       );
-      if (this.newBenificiaryStep2Values?.bankCountry === data?.isoCountryCode.toLowerCase()) {
+      if (this.newBenificiaryStep2Values?.bankCountry.toLowerCase() === data?.isoCountryCode.toLowerCase()) {
         this.newBenificiaryBankDetails.patchValue({
           // bankCountry: data?.isoCountryCode != null ? data?.isoCountryCode : "",
           bankName: data?.name != null ? data?.name : "",

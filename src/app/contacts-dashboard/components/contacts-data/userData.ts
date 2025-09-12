@@ -75,3 +75,57 @@ export const bicSwiftDetails = {
     "countryName": "UNITED STATES OF AMERICA",
     "isoCountryCode": "US"
 }
+
+export const getStateAndCityRes = {
+    "stateList": [
+        {
+            "name": "Alabama",
+            "state_code": "AL"
+        },
+        {
+            "name": "Alaska",
+            "state_code": "AK"
+        },
+        {
+            "name": "Arizona",
+            "state_code": "AZ"
+        },
+        {
+            "name": "Arkansas",
+            "state_code": "AR"
+        },
+        {
+            "name": "California",
+            "state_code": "CA"
+        },
+        {
+            "name": "Colorado",
+            "state_code": "CO"
+        },
+        {
+            "name": "Connecticut",
+            "state_code": "CT"
+        },
+        {
+            "name": "Delaware",
+            "state_code": "DE"
+        },
+        {
+            "name": "Florida",
+            "state_code": "FL"
+        },
+        {
+            "name": "Georgia",
+            "state_code": "GA"
+        },
+        {
+            "name": "Hawaii",
+            "state_code": "HI"
+        },
+        {
+            "name": "Idaho",
+            "state_code": "ID"
+        }
+    ],
+    "cityList": []
+}

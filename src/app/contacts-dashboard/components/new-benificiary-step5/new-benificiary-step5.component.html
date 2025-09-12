@@ -182,23 +182,6 @@
             </div>
           </div>
         </div>
-        <!-- <div *ngIf="isDisplayPaymentReasonIsOther" class="form-control-wrapper">
-          <div class="row">
-            <div class="col-12">
-              <div class="form-group">
-                <label for="reasonDesk">Reason desk*</label>
-                <input id="reasonDesk" class="form-control" (keydown)="restrickWhiteSpace($event)" type="text" formControlName="reasonDesc" [maxlength]="101"
-                  pattern="^[a-zA-Z0-9 ]*$" />
-               
-                <p *ngIf="hasError('reasonDesc') || newBenificiaryBankDetails.get('reasonDesc')?.hasError('pattern') || newBenificiaryBankDetails.get('reasonDesc')?.hasError('maxlength')"
-                  class="error-msg">
-                  <img class="country-image" src="images/red-warning-icon.svg"> Please enter a valid reason
-                  desk
-                </p>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
       <button class="btn-finish" [disabled]="uploadProgressArray[0] !== 100"  (click)="nextStep()">Finish &
         Review</button>

@@ -5,9 +5,6 @@
   </div>
   <div class="bank-form-details">
     <form [formGroup]="newBenificiaryBankDetails">
-      <!-- <ng-template #bankIbanTooltip>
-        Select the country where the beneficiary resides
-      </ng-template> -->
       <ng-template #ABAnumberTooltip>
         American banks are identified by a 9 digit ABA number,
         also known as 'Routing Number'. The ABA should be valid for
@@ -36,8 +33,9 @@
         or IBAN when sending payments in any currency
         to Mexico. CLABE is the banking standard for
         the numbering of bank accounts in Mexico.
-      </ng-template>
+      </ng-template>  
 
+      <!-- Debug information -->
 
       <ng-container *ngIf="isIlsScenario">
         <div class="row"
@@ -286,7 +284,6 @@
       </ng-container>
 
       <ng-container *ngIf="!isIlsScenario">
-
         <div class="row" *ngIf="bankDetailsDynamicFieldsObj?.displayIban">
           <div class="form-group">
             <label for="iban">IBAN*
@@ -381,7 +378,6 @@
             </div>
           </div>
         </div>
-
         <div class="row">
           <div class="form-group">
             <!-- <ng-container *ngIf="(ibanRes?.country || swiftCodeRes?.countryName) ? true : false"> -->
@@ -837,7 +833,7 @@
       </div>
       <!-- first name And last name -->
 
-        <div class="row" *ngIf="bankDetailsDynamicFieldsObj?.displayBeneficiaryState">
+        <div class="row">
           <!-- length: {{globalStateList?.length}} -->
           <div class="form-group">
             <div class="country-dropdown">
@@ -882,7 +878,7 @@
                   </div>
                 </div>
               </mat-select>
-              <input *ngIf="newBenificiaryStep2?.value?.beneficiaryCountry && globalStateList?.length == 0"
+              <input *ngIf="globalStateList?.length === 0"
                 (keydown)="restrictNameWhiteSpace($event)"
                 (paste)="restrictNameOnPaste($event,'letters',newBenificiaryBankDetails,'beneficiaryState')" type="text"
                 [class.validation-error]="hasError('beneficiaryState')" class="form-control"
@@ -945,7 +941,7 @@
                   </div>
                 </div>
               </mat-select>
-              <input *ngIf="globalCityList?.length === 0" [minlength]="2" [maxlength]="50" type="text"
+              <input [minlength]="2" [maxlength]="50" type="text"  *ngIf="cityList?.length === 0"
                 (keydown)="restrictNameWhiteSpace($event)"
                 (paste)="restrictNameOnPaste($event,'letters',newBenificiaryBankDetails,'beneficiaryCity')"
                 [class.validation-error]="hasError('beneficiaryCity')" class="form-control"
@@ -997,8 +993,6 @@
               </p>
             </div>
           </div>
-          <!-- No condition -->
-          <!-- *ngIf="bankDetailsDynamicFieldsObj?.displaybeneficiaryZipCode" -->
           <div class="col-md-6">
             <div class="form-group" [ngClass]="{'imported-erp': importedBeneficiary}">
               <label for="beneficiaryZipCode">Zip code*</label>

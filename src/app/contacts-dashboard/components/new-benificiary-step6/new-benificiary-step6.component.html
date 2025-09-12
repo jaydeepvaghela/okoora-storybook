@@ -19,8 +19,8 @@
       <li class="d-item">
         <span class="info-t">Beneficiary's country</span>
         <span class="d-data">{{displayBeneficiaryCountry(newBenificiaryStep2?.value?.beneficiaryCountry) ??
-          '--'}} <img src="icons/edit-icon.svg" alt="edit-icon"
-            *ngIf="isNonIsraeliUser && !this.editBenificiaryObj" style="padding-right: 9px;padding-left: 20px;"></span>
+          '--'}} <img src="icons/edit-icon.svg" alt="edit-icon" *ngIf="isNonIsraeliUser && !this.editBenificiaryObj"
+            style="padding-right: 9px;padding-left: 20px;"></span>
       </li>
       <li class="d-item">
         <span class="info-t">Beneficiary's bank account country</span>
@@ -45,7 +45,7 @@
             style="padding-right: 9px;padding-left: 20px;">
         </span>
       </li>
-       <li class="d-item" *ngIf="!isNonIsraeliUser">
+      <li class="d-item" *ngIf="!isNonIsraeliUser">
         <span class="info-t">Reason Desc</span>
         <span class="d-data" style="display: flex; align-items: center;">
           <span class="email-value">{{reasonDesc ? reasonDesc : '--'}}</span>
@@ -74,9 +74,6 @@
   </p>
   <button class="btn-cnf" [class.disable]="showLoader" (click)="Confirm()" *ngIf="!(isPayCmarix || isReviewCmarix)"
     [hidden]="isNonIsraeliUser && scaShow">Confirm</button>
-  <!-- <div *ngIf="scaShow" class="sca-wrap">
-    <app-embedded-sca [ScaLink]="scaRef" [awReviewPayPayload]="awReviewPayPayload" [newBenificiaryStep2Values]="newBenificiaryStep2Values"></app-embedded-sca>
-  </div> -->
 </div>
 
 

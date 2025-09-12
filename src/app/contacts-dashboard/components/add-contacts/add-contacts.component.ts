@@ -10,10 +10,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ContactSelectionComponent } from '../contact-selection/contact-selection.component';
 import { NewBenificiaryComponent } from '../new-benificiary/new-benificiary.component';
 import { GetBeneficiaryBankRequirements } from '../contacts-data/userData';
-// import { CommonService } from 'src/app/common/services/common.service';
-// import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-// import { AirwallexbeneficiaryService } from '../../services/airwallexbeneficiary.service';
-
 
 @Component({
   selector: 'app-add-contacts',

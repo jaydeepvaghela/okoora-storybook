@@ -3,10 +3,87 @@
 ::ng-deep {
   .beneficiary-detail-wrap {
     margin: 44px auto 0;
+    width: 100%;
     max-width: 699px;
+    min-width: 699px;
+
     &.loader-wrapper .loader.section-loader {
       position: fixed;
     }
+
+    @media screen and (max-width: 1440px) {
+      margin: 0 auto;
+      max-width: 600px;
+      min-width: 600px;
+
+      .title {
+        font-size: 18px;
+        line-height: 1.2;
+        margin: 0 0 15px;
+      }
+
+      .confirm-step-d {
+        .d-list {
+          cursor: pointer;
+          padding: 20px;
+          margin: 0 0 10px;
+
+          .d-item {
+            +.d-item {
+              margin: 15px 0 0;
+            }
+          }
+        }
+      }
+
+      .btn-cnf {
+        // max-width: 600px;
+        height: 45px;
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
+      padding: 0 30px;
+
+      .title {
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .title {
+        font-size: 14px;
+      }
+    }
+
+    @media screen and (max-width: 580px) {
+      padding: 0 15px;
+
+      .confirm-step-d {
+        .d-list {
+          cursor: pointer;
+
+          .d-item {
+            gap: 10px;
+
+            .info-t {
+              font-size: 12px;
+              line-height: 1.2;
+            }
+
+            .d-data {
+              font-size: 12px;
+              line-height: 1.2;
+            }
+          }
+        }
+      }
+
+      .btn-cnf {
+        height: 40px;
+      }
+    }
+
     .title {
       color: #1f2937;
       font-family: $he_heebo;
@@ -80,7 +157,7 @@
             line-height: 24px;
           }
 
-          + .d-item {
+          +.d-item {
             margin: 19px 0 0;
           }
 
@@ -117,86 +194,6 @@
         color: #d1d5db;
         cursor: none;
         pointer-events: none;
-      }
-    }
-
-    @media screen and (max-width: 1440px) {
-      margin: 0 auto;
-      max-width: 600px;
-
-      .title {
-        font-size: 18px;
-        line-height: 1.2;
-        margin: 0 0 15px;
-      }
-
-      .confirm-step-d {
-        .d-list {
-          cursor: pointer;
-          padding: 20px;
-          margin: 0 0 10px;
-
-          .d-item {
-            + .d-item {
-              margin: 15px 0 0;
-            }
-          }
-        }
-      }
-
-      .btn-cnf {
-        // max-width: 600px;
-        height: 45px;
-      }
-    }
-
-    @media screen and (max-width: 1024px) {
-      padding: 0 30px;
-
-      .title {
-        font-size: 16px;
-      }
-
-      // .btn-cnf {
-      //   max-width: calc(600px - 60px);
-      // }
-    }
-
-    @media screen and (max-width: 767px) {
-      .title {
-        font-size: 14px;
-      }
-
-      // .btn-cnf {
-      //   max-width: calc(100% - 60px);
-      // }
-    }
-
-    @media screen and (max-width: 580px) {
-      padding: 0 15px;
-
-      .confirm-step-d {
-        .d-list {
-          cursor: pointer;
-
-          .d-item {
-            gap: 10px;
-
-            .info-t {
-              font-size: 12px;
-              line-height: 1.2;
-            }
-
-            .d-data {
-              font-size: 12px;
-              line-height: 1.2;
-            }
-          }
-        }
-      }
-
-      .btn-cnf {
-        height: 40px;
       }
     }
   }
@@ -239,6 +236,7 @@
         width: calc(100% - 68px);
         border-bottom: 1px dashed #e5e7eb;
         margin: 0 0 53px;
+
         .title {
           color: #1d4ed8;
           text-align: center;
@@ -250,6 +248,7 @@
           font-size: 30px;
           font-weight: 700;
           line-height: 38px;
+
           span {
             color: #1f2937;
           }
@@ -364,6 +363,7 @@
         .desc-sec {
           margin: 0 0 30px;
           width: calc(100% - 30px);
+
           .title {
             font-size: 25px;
             line-height: 1.2;
@@ -373,10 +373,12 @@
             font-size: 25px;
             line-height: 1.2;
           }
+
           .desc {
             max-width: max-content;
             margin: 3px auto 30px;
           }
+
           .btn-pay {
             height: 45px;
             min-width: 140px;
@@ -386,6 +388,7 @@
       }
 
       .btn-sec {
+
         .btn-b-list,
         .btn-add-new {
           width: 200px;
@@ -422,6 +425,7 @@
       }
 
       .btn-sec {
+
         .btn-b-list,
         .btn-add-new {
           width: max-content;

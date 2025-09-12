@@ -170,23 +170,6 @@ export const getAllCurrencies = [
         }
     },
     {
-        "id": 11,
-        "name": "RUB",
-        "active": 0,
-        "markUpId": null,
-        "symbol": null,
-        "otherMarkUp": null,
-        "major": null,
-        "activeHedge": false,
-        "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RUB.png",
-        "currency": {
-            "code": "RUB",
-            "sign": "RUB",
-            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RUB.png",
-            "currencyName": null
-        }
-    },
-    {
         "id": 12,
         "name": "MXN",
         "active": 1,
@@ -557,23 +540,6 @@ export const getAllCurrencies = [
             "code": "KRW",
             "sign": "₩",
             "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/KRW.png",
-            "currencyName": null
-        }
-    },
-    {
-        "id": 43,
-        "name": "RSD",
-        "active": 0,
-        "markUpId": null,
-        "symbol": null,
-        "otherMarkUp": null,
-        "major": null,
-        "activeHedge": false,
-        "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RSD.png",
-        "currency": {
-            "code": "RSD",
-            "sign": "RSD",
-            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RSD.png",
             "currencyName": null
         }
     },
@@ -1808,15 +1774,6 @@ export const GetActiveHedgingCurrency = {
             }
         },
         {
-            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RUB.png",
-            "currency": {
-                "code": "RUB",
-                "sign": "RUB",
-                "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RUB.png",
-                "currencyName": null
-            }
-        },
-        {
             "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/MXN.png",
             "currency": {
                 "code": "MXN",
@@ -2002,15 +1959,6 @@ export const GetActiveHedgingCurrency = {
                 "code": "KRW",
                 "sign": "₩",
                 "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/KRW.png",
-                "currencyName": null
-            }
-        },
-        {
-            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RSD.png",
-            "currency": {
-                "code": "RSD",
-                "sign": "RSD",
-                "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RSD.png",
                 "currencyName": null
             }
         },

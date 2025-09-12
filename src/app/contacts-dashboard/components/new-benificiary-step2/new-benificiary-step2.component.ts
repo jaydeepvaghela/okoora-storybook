@@ -94,11 +94,18 @@ export class NewBenificiaryStep2Component implements OnInit, OnChanges, OnDestro
   ) { }
 
   ngOnInit(): void {
+    // Initialize global data
+    this.globalCountryData = this.parentCountryList || [];
+    this.globalCurrencyData = this.parentCurrencyData || [];
+    this.countryList = this.bankCountryList = this.globalCountryData;
+    this.currencyData = this.globalCurrencyData;
+
     this.checkUploadButtonClick();
     this.filterCountryList();
     this.filterBankCountryList();
     this.filterCurrencyList();
-    this.allSubscriptions()
+    this.allSubscriptions();
+
     this.newBenificiaryStep2?.patchValue({
       beneficiaryCountry: this.newBenificiaryStep2Values?.beneficiaryCountry,
       bankCountry: this.newBenificiaryStep2Values?.bankCountry?.toLowerCase(),
@@ -125,8 +132,8 @@ export class NewBenificiaryStep2Component implements OnInit, OnChanges, OnDestro
       const isAccountExist = accountType.includes(parseInt(this.newBenificiaryStep2?.value?.beneficiaryAccountType, 10));
       this.isBeneficiaryAccNotExist = isAccountExist ? true : false;
     }
-
   }
+
 
   checkUploadButtonClick() {
     const isUploadBtnClicked = JSON.parse(localStorage.getItem('isUploadClicked')!);
