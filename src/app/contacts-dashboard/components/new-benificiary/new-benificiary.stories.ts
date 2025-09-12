@@ -1,27 +1,23 @@
-import { Meta, StoryObj } from '@storybook/angular';
-import { moduleMetadata } from '@storybook/angular';
-
-import { NewBenificiaryComponent } from './new-benificiary.component';
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
-// Import other modules or services if needed
+import { NewBenificiaryComponent } from './new-benificiary.component';
+import { ContactSelectionComponent } from '../contact-selection/contact-selection.component';
 
 export default {
   title: 'Contacts/Beneficiary/Header and Stepper',
   component: NewBenificiaryComponent,
   decorators: [
     moduleMetadata({
+      declarations: [NewBenificiaryComponent, ContactSelectionComponent],
       imports: [
         CommonModule,
         ReactiveFormsModule,
         MatStepperModule,
         MatProgressBarModule,
-      ],
-      providers: [
-        // Add any services if necessary
       ],
     }),
   ],

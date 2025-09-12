@@ -58,7 +58,7 @@ export const Default: Story = {
 
     const transactions = new FormGroup({
       investmentType: new FormControl(''),
-      paymentReason: new FormControl(''),
+      paymentReason: new FormControl(null),
       reasonDesc: new FormControl(''),
       beneficiaryStateResidenceRecipient: new FormControl('')
     });
