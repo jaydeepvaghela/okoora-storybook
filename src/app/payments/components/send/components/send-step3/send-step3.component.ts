@@ -126,12 +126,10 @@ export class SendStep3Component implements AfterViewInit {
 
   ngOnChanges() {
     this.benificiaryCurrency = this.beneficiaryName.bankDetails.currency;
-    console.log('this.benificiaryCurrency', this.benificiaryCurrency)
     this.createFuturePaymentErr = '';
   }
 
   ngOnInit() {
-    console.log('beneficiaryName.', this.beneficiaryName)
 
     this.benificiaryCurrency = this.beneficiaryName.bankDetails.currency;
     // this.benificiaryCurrency = this.currency;
@@ -147,7 +145,6 @@ export class SendStep3Component implements AfterViewInit {
     this._walletService.getAllBalanceList().subscribe((result) => {
       this.showBalanceListLoader = false;
       this.activeCurrency = result;
-      console.log('activeCurrencyactiveCurrency', this.activeCurrency)
     }, (err) => {
       this.showBalanceListLoader = false
     });

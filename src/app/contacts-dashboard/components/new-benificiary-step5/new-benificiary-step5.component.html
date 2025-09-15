@@ -1,0 +1,193 @@
+<div class="upload-two-files-container">
+  <form [formGroup]="uploadFile" class="loader-wrapper">
+
+    <ng-template #TaxDedudctionTooltip>
+      American banks are identified by a 9 digit ABA number,
+      also known as 'Routing Number'. The ABA should be valid for
+      FedWIRE payments. Some ABA values are only valid for
+      FedACH payments. Payments to FedACH-only ABAs will fail.
+      The ABA is required for all payments to the USA.
+    </ng-template>
+    <ng-template #BeneficiaryTaxResidenceTooltip>
+      The country where the beneficiary is considered a tax resident for their primary tax obligations.
+    </ng-template>
+    <ng-template #deductionFileIdTooltip>
+      Enter your withholding tax file number as registered with the tax authorities.
+    </ng-template>
+    <div class="upload-invoice-info">
+      <h5 class="title">Upload Document(s)</h5>
+      <p class="desc">Upload the required document(s) to create your beneficiary.</p>
+    </div>
+    <div class="upload-file-wrap">
+      <div class="first-second-file-container" [class.upfiles]="fileArray && fileArray.length !== 0">
+        <!-- First File Start -->
+        <ng-container *ngIf="fileArray.length > 0 ">
+          <div class="upload-invoice-card">
+            <ngx-dropzone [multiple]="false" accept=".pdf, .gif, .jpg, .png, .jpeg"
+              *ngFor="let f of fileArray;let i = index " class="drop-zone"
+              (change)="onBeneficiaryFileChange($event , uploadedfile[i].type ,i)">
+              <ngx-dropzone-preview class="drop-zone-preview" [removable]="true">
+                <ngx-dropzone-label class="file-set">
+                  <div class="progress-wrap"
+                    [ngClass]="[fileUploadErrors[i] ? 'has-error': '', cancelUpload[i] ? 'has-error canceled' :'']">
+                    <h3 class="tag-name">{{BeneficiaryDocTypeName[uploadedfile[i].type]}}</h3>
+                    <div class="progress-wrap-inner">
+                      <div class="file-name">
+                        <img src="images/check-circle.svg"
+                          *ngIf="!fileUploadErrors[i] && uploadProgressArray[i] === 100 && !cancelUpload[i]">
+                        <div class="file-data">
+                          <h4 class="title">File Name <span> {{fileArray?.[i]?.name}}</span></h4>
+                        </div>
+                      </div>
+                      <div class="file-upload-sec">
+                        <div class="progress-inner">
+                          <mat-progress-bar class="file-upload-loader" mode="determinate"
+                            [value]="uploadProgressArray[i]"></mat-progress-bar>
+                          <button class="close-btn" *ngIf="uploadProgressArray[i] != 100 && !fileUploadErrors[i]"
+                            (click)="stopUploadFile($event, i)">
+                            <img src="images/close_progress.svg">
+                          </button>
+                          <img *ngIf="cancelUpload[i]" src="images/rerun-file-icon.svg">
+                          <p class="file-progress" *ngIf="uploadProgressArray[i] != 100 && !fileUploadErrors[i]">{{
+                            uploadProgressArray[i] }}%</p>
+                          <button *ngIf="uploadProgressArray[i] === 100 || fileUploadErrors[i] && !cancelUpload[i]"
+                            class="btn-replace">
+                            Replace
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="error-msg" *ngIf="fileUploadErrors[i]">
+                    <img class="country-image" src="images/red-warning-icon.svg"> {{fileUploadErrors[i]}}
+                  </div>
+                  <div class="error-msg" *ngIf="cancelUpload[i]">
+                    <img class="country-image" src="images/red-warning-icon.svg"> Upload canceled. Click
+                    <span>here</span> to retry.
+                  </div>
+                </ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+
+          </div>
+        </ng-container>
+        <ng-container>
+          <div class="upload-invoice-card" *ngFor="let type of beneficiaryObjectForFilelength let i = index ">
+            <!-- <img src="images/tooltip-icon.svg" *ngIf="BeneficiaryDocTypeName[type] == 'Tax Deduction Certificate'" [ngbTooltip]="TaxDedudctionTooltip"
+              placement="bottom-right" tooltipClass="beneficiary-tooltip--rm file-tooltip" alt="more-info" class="tool-icn"> -->
+            <ngx-dropzone id="uploadInvoice_step1" [multiple]="false" enctype="multipart/form-data" class="drop-zone"
+              (change)="onFileSelect($event,type, i)" accept=".pdf, .gif, .jpg, .png, .jpeg">
+              <ngx-dropzone-label class="file-select">
+                <p class="upload-info"><span class="top-info"><span>Drag and drop your</span> <span><b>
+                        {{BeneficiaryDocTypeName[type]}}</b>
+                      here</span></span> <span class="browse">
+                    or <button class="btn-select-file">browse</button></span>
+                </p>
+              </ngx-dropzone-label>
+            </ngx-dropzone>
+          </div>
+        </ng-container>
+      </div>
+      <div class="file-desc">
+        <span class="file-type">Supported file formats: pdf, gif, jpg, png, jpeg</span>
+        <span class="file-size">Maximum file size: 5 MB</span>
+      </div>
+      <div class="error-msg" *ngIf="fileIsRequired">
+        <img class="country-image" src="images/red-warning-icon.svg"> {{fileIsRequired}}
+      </div>
+      <div class="btn-sec">
+        <!-- <button class="upload-btn" [class.disable]="hasUploadErrors()" (click)="upload()"
+          *ngIf="isUploadBtnDisplay"
+          [disabled]="hasUploadErrors()">
+          Upload
+        </button> -->
+      </div>
+      <div class="inner-contents">
+        <div class="warning-msg">
+          <h3 class="title"><img src="images/warning_svgrepo.com.svg" /> Why is this required?</h3>
+          <p class="desc">As part of <b>AML</b> (Anti-Money Laundering) compliance, we are required to verify account
+            identity.</p>
+        </div>
+        <div class="form-fields" *ngIf="isDisplayTaxCountryAndDeductionFileId">
+          <div class="row">
+            <div class="country-dropdown">
+              <label for="beneficiaryStateResidenceRecipient" class="benef-label"
+                [class.validation-error]="hasError('beneficiaryStateResidenceRecipient')">Beneficiary tax residence
+                country* <img src="images/tooltip-icon.svg" [ngbTooltip]="BeneficiaryTaxResidenceTooltip"
+                placement="auto" tooltipClass="beneficiary-tooltip--rm" alt="more-info" class="tool-icn"></label>
+              <mat-select class="form-control to-country-rm" panelClass="rm-country-dropdown" id="toCurrency"
+                formControlName="beneficiaryStateResidenceRecipient"
+                [class.validation-error]="hasError('beneficiaryStateResidenceRecipient')" placeholder="Select the beneficiary tax residence country"
+                (openedChange)="onCountryDropdownOpen($event)">
+                <mat-select-trigger>
+                  <ng-container *ngFor="let country of countryList">
+                    <div *ngIf="country?.countryCode == getCountryCode()" class="to-country-section">
+                      <img class="country-image" [src]="country?.flag" alt="currency_flag" />
+                      <!-- <img class="currency-tick" src="images/tick-currency.svg" alt="tick" /> -->
+                      <span class="country-code">
+                        {{ country?.countryName }}
+                      </span>
+                    </div>
+                  </ng-container>
+                </mat-select-trigger>
+                <div class="search-inpt-popup">
+                  <div class="search-input-wrapper">
+                    <div class="input-inner">
+                      <input #beneficiaryStateResidenceInput class="filter-input"
+                        [ngClass]="countryList?.length == 0 ? 'error-input' : ''" appOnlyLetters type="text"
+                        placeholder="Search" id="exnow-s1-id7" [formControl]="benCountrySearchControl">
+                      <button class="clear-search" (click)="clearSearch()"><img alt="close"
+                          src="images/country-search-close.svg"></button>
+                      <button class="country-search"><img alt="close"
+                          src="images/search-country-icon.svg"></button>
+                    </div>
+                    <span class="error-msg" *ngIf="countryList?.length == 0">
+                      Record not found!
+                    </span>
+                  </div>
+                  <div class="country-flag-list">
+                    <mat-option *ngFor="let country of countryList; index as i" value="{{country.countryCode}}"
+                      class="country-options" id="exnow-s1-id7-{{country.countryCode}}">
+                      <div class="select-item d-flex align-items-center">
+                        <img class="country-image" [src]="country?.flag" alt="currency_flag" />
+                        <div class="code-with-info">
+                          <span class="info">{{ country?.countryName }}</span>
+                        </div>
+                      </div>
+                    </mat-option>
+                  </div>
+                </div>
+              </mat-select>
+              <!-- <p class="infor-msg">The country where the beneficiary is considered a tax resident for their primary tax obligations.</p> -->
+              <p *ngIf="hasError('beneficiaryStateResidenceRecipient')" class="error-msg">
+                <img class="country-image" src="images/red-warning-icon.svg"> Please enter a valid Beneficiary
+                tax residence
+                country
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label for="deductionNum">Withholding tax file* <img src="images/tooltip-icon.svg" [ngbTooltip]="deductionFileIdTooltip"
+                placement="auto" tooltipClass="beneficiary-tooltip--rm" alt="more-info" class="tool-icn"></label>
+              <input (keydown)="restrickWhiteSpace($event)"
+                [class.validation-error]="hasError('deductionNum') || newBenificiaryBankDetails.get('deductionNum')?.hasError('minlength') || newBenificiaryBankDetails.get('deductionNum')?.hasError('maxlength')"
+                type="text" placeholder="Enter a valid withholding tax file number" class="form-control"
+                formControlName="deductionNum" appOnlyEnglish id="deductionNum">
+                <!-- <p class="infor-msg">The unique identifier for the deduction file associated with this transaction.</p> -->
+              <p *ngIf="hasError('deductionNum') || newBenificiaryBankDetails.get('deductionNum')?.hasError('minlength') || newBenificiaryBankDetails.get('deductionNum')?.hasError('maxlength')"
+                class="error-msg">
+                <img class="country-image" src="images/red-warning-icon.svg"> Please enter a valid Withholding tax file
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-finish" [disabled]="uploadProgressArray[0] !== 100"  (click)="nextStep()">Finish &
+        Review</button>
+    </div>
+  </form>
+  <p *ngIf="errMsg" class="error-msg">
+    <img class="country-image" src="images/red-warning-icon.svg"> {{errMsg}}
+  </p>
+</div>

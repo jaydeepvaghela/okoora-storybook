@@ -75,8 +75,7 @@ export class MarketOverviewChartComponent implements AfterViewInit {
 
   ngOnInit() {
     this.Directions = Direction;
-    this.tradingSource = tradingSource
-    console.log("lastPaymentRateData", this.lastPaymentRateData);
+    this.tradingSource = tradingSource;
 
     this._walletService.activeCurrentWallet.subscribe((wallet) => {
 

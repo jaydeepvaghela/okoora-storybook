@@ -1,0 +1,193 @@
+@import "../../../../assets/scss/variable";
+
+::ng-deep {
+    .cdk-overlay-pane {
+        &.confirm-dialog-close-popup, &.skip-Upload-File{
+            .mat-mdc-dialog-surface {
+                border-radius: 24px !important;
+            }
+            .confirm-modal-sec {
+                max-width: 544px;
+
+                .header-sec {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 11px 24px;
+                    background-color: #EEF3FC;
+
+                    .title {
+                        color: #181D27;
+                        font-family: $he_heebo;
+                        font-size: 18px;
+                        font-weight: 600;
+                        line-height: 28px;
+                        margin: 0;
+
+                        img {
+                            margin: 0 7px 0 0;
+                        }
+                    }
+
+                    .close-icon {
+                        padding: 0;
+                        background-color: transparent;
+                        cursor: pointer;
+                        line-height: 1;
+                    }
+                }
+
+                .inner-content {
+                    padding: 20px 20px 32px 90px;
+
+                    h3 {
+                        margin: 0;
+                        color: #535862;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 20px;
+                    }
+                }
+
+                .footer-sec {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: 12px;
+                    padding: 0 24px 24px;
+
+                    .btn-keep {
+                        border-radius: 8px;
+                        border: 1px solid #D5D7DA;
+                        background: $white;
+                        box-shadow: 0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+                        color: #414651;
+                        font-family: $he_heebo;
+                        font-size: 16px;
+                        font-weight: 600;
+                        padding: 10px 18px;
+                        line-height: 24px;
+                        display: flex;
+                        height: 44px;
+                        border-radius: 8px;
+
+                        &:hover {
+                            background-color: #1D4ED8;
+                            color: $white;
+                            border-color: #1D4ED8;
+                        }
+                    }
+
+                    .btn-discard {
+                        display: flex;
+                        padding: 10px 18px;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 8px;
+                        border: 1px solid #1D4ED8;
+                        background: #1D4ED8;
+                        box-shadow: 0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+                        color: $white;
+                        font-family: $he_heebo;
+                        font-size: 16px;
+                        font-weight: 600;
+                        line-height: 24px;
+                        height: 44px;
+
+                        &:hover {
+                            opacity: 0.9;
+                        }
+                    }
+                }
+
+                @media screen and (max-width:1440px) {
+                    .header-sec {
+                        padding: 10px 20px;
+
+                        .title {
+                            font-size: 16px;
+                            line-height: 1.2;
+
+                            img {
+                                width: 40px;
+                            }
+                        }
+
+                        .close-icon {
+                            img {
+                                width: 20px;
+                            }
+                        }
+                    }
+
+                    .inner-content {
+                        padding: 20px 20px 20px 67px;
+                    }
+
+                    .footer-sec {
+                        padding: 0 20px 20px;
+
+                        .btn-keep,
+                        .btn-discard {
+                            font-size: 14px;
+                            line-height: 1;
+                            height: 35px;
+                            padding: 10px 15px;
+                        }
+                    }
+                }
+
+                @media screen and (max-width:1024px) {
+                    min-width: 100%;
+                }
+
+                @media screen and (max-width:767px) {
+                    .header-sec {
+                        padding: 10px;
+
+                        .title {
+                            font-size: 14px;
+
+                            img {
+                                width: 30px;
+                            }
+                        }
+
+                        .close-icon {
+                            img {
+                                width: 15px;
+                            }
+                        }
+                    }
+
+                    .inner-content {
+                        padding: 20px 20px 20px 48px;
+
+                        h3 {
+                            font-size: 12px;
+                            line-height: 1.2;
+                        }
+                    }
+
+                    .footer-sec {
+                        padding: 0 10px 10px;
+
+                        .btn-keep,
+                        .btn-discard {
+                            font-size: 12px;
+                            line-height: 1;
+                            height: 30px;
+                            padding: 8px 10px;
+                        }
+                    }
+                }
+            }
+        }
+        // &.skip-Upload-File{
+        //   .confirm-modal-sec {
+        //     min-width: 544px;
+        //   }
+        // }
+    }
+}

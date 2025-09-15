@@ -1,0 +1,282 @@
+@import "../../../../assets/scss/variable.scss";
+
+::ng-deep {
+    app-new-benificiary {
+        display: block;
+        padding: 90px 0 0;
+
+        @media screen and (max-width:1660px) {
+            padding: 76px 0 0;
+        }
+
+        @media screen and (max-width:767px) {
+            padding: 47px 0 0;
+        }
+    }
+    .beneficiary-head {
+        position: fixed;
+        z-index: 11;
+        top: 0;
+        padding: 26px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $white;
+        left: 0;
+        width: 100%;
+        gap: 10px;
+
+        .dialog-brand {
+            display: inline-block;
+            position: absolute;
+            left: 30px;
+
+            img {
+                height: 41px;
+            }
+        }
+
+        .head-inner {
+            max-width: 950px;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            margin: auto;
+            width: 100%;
+
+            .title {
+                margin: 0;
+                color: #111827;
+                font-family: $he_heebo;
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 38px;
+                text-transform: uppercase;
+            }
+
+            .back-btn,
+            .close-icon {
+                cursor: pointer;
+            }
+        }
+
+        @media screen and (max-width:1660px) {
+            padding: 23px 0;
+
+            .dialog-brand {
+                left: 20px;
+
+                img {
+                    height: 25px;
+                }
+            }
+
+            .head-inner {
+                max-width: 600px;
+
+                .title {
+                    font-size: 20px;
+                    line-height: 1.5;
+                }
+            }
+        }
+
+        @media screen and (max-width:1024px) {
+            padding: 20px;
+
+            .dialog-brand {
+                left: auto;
+                position: relative;
+            }
+
+            .head-inner {
+                max-width: 60%;
+
+                .title {
+                    font-size: 16px;
+                    line-height: 1.5;
+                }
+            }
+        }
+
+        @media screen and (max-width:767px) {
+            padding: 12px 20px;
+
+            .dialog-brand {
+                img {
+                    height: 18px;
+                }
+            }
+
+            .head-inner {
+                .title {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        @media screen and (max-width:580px) {
+            .dialog-brand {
+                img {
+                    height: 14px;
+                }
+            }
+
+            .head-inner {
+                .title {
+                    font-size: 12px;
+                }
+
+                .back-btn img {
+                    width: 15px;
+                    height: auto;
+                }
+
+                .close-icon img {
+                    width: 9px;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    .transfer-reason-steppers {
+        width: 100%;
+        max-width: 740px;
+        margin: 58px auto 20px;
+
+        .progress-bar {
+            padding: 0 61px;
+
+            mat-progress-bar {
+                display: block;
+                height: 4px;
+
+                .mdc-linear-progress__buffer-bar {
+                    background-color: #D1D5DB;
+                    height: 1px;
+                }
+
+                .mdc-linear-progress__bar-inner {
+                    border-top-width: 3px;
+                    border-color: #1D4ED8;
+                    left: 0;
+                }
+            }
+        }
+
+        .transfer-menu {
+            padding: 14px 0 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 79px;
+
+            li {
+                color: #9CA3AF;
+                font-family: $he_heebo;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 24px;
+                position: relative;
+                min-width: 127px;
+                text-align: center;
+
+                &:before {
+                    width: 13px;
+                    height: 13px;
+                    border-radius: 50%;
+                    border: 2px solid #1D4ED8;
+                    background-color: $white;
+                    content: "";
+                    position: absolute;
+                    top: -22px;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    opacity: 0;
+                }
+
+                &.activeMenu {
+                    color: #1D4ED8;
+                    font-weight: 700;
+
+                    &:before {
+                        opacity: 1;
+                    }
+                }
+
+                &.visited {
+                    color: #1D4ED8;
+                }
+
+            }
+        }
+
+        @media screen and (max-width:1440px) {
+            margin: 30px auto;
+        }
+
+        @media screen and (max-width:1024px) {
+            padding: 0 30px;
+            margin: 20px auto;
+
+            .transfer-menu {
+                gap: 20px;
+
+                li {
+                    font-size: 12px;
+                    min-width: 105px;
+
+                }
+            }
+        }
+
+        @media screen and (max-width:1024px) {
+            padding: 0 30px;
+
+            .progress-bar {
+                padding: 0 50px;
+            }
+
+            .transfer-menu {
+                gap: 20px;
+
+                li {
+                    font-size: 12px;
+                    min-width: 105px;
+
+                }
+            }
+        }
+
+        @media screen and (max-width:580px) {
+            padding: 0 15px;
+
+            .progress-bar {
+                padding: 0 39px;
+            }
+
+            .transfer-menu {
+                gap: 0;
+                padding: 10px 0 0;
+
+                li {
+                    font-size: 10px;
+                    min-width: 87px;
+                    line-height: 1.2;
+
+                    &::before {
+                        width: 12px;
+                        height: 12px;
+                        top: -18px;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width:420px) {
+            padding: 0 10px;
+        }
+    }
+
+}

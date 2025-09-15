@@ -143,5 +143,62 @@
     "MONTH_9": "October",
     "MONTH_10": "November",
     "MONTH_11": "December"
+  },
+  "FORMS_ERRORS": {
+    "MaxLength": {
+      "maximum": "Maximum"
+    },
+    "MinLength": {
+      "minmum": "Minimum",
+      "chars_required": "characters are required."
+    },
+    "chars_allowed": "characters are allowed.",
+    "field_is_required": "This field is required",
+    "invalid_format": "Invalid format",
+    "white_space_not_allowed": "White spaces are not allowed",
+    "email_not_valid": "email is not valid",
+    "future_date": "Date must be a future date.",
+    "api_error": "Network error.",
+    "min_amount_should_be": "Minimum amount should be",
+    "max_amount_should_be": "Maximum amount should be",
+    "password_not_Equivalent": "Password not equivalent",
+    "countryNotFound": "Search not found",
+    "en_pattern": "Only English letters, numbers, and the characters are allowed",
+    "matDatepickerParse": "Date is invalid",
+    "only_english_and_numbers_and_space": "Only English letters and numbers are allowed.",
+    "only_english_characters": "Only English letters are allowed.",
+    "not_valid_id_number": "The ID number you have entered isn't a valid one.",
+    "password_special_characters": "One of the characters entered is invalid",
+    "minAnnualAmount": "You must enter a new annual amount that is higher than this amount:",
+    "mustBeMultipliedBy": "The amount should be in multiples of",
+    "fileNotSupported": "The uploaded file type is not supported.",
+    "fileSizeNotAllowed": "The file is too large. allowed maximum size is",
+    "fileSizeExceedsForUpload": "The uploaded file exceeds the maximum size limit of 5 MB. Please choose a smaller file.",
+    "FileDoesntUpload": "Upload failed. The file upload is taking too long. Please check your internet connection and try again.",
+    "invalidStakeInCompany": "Invalid stake in the company",
+    "FileUploadedSuccessfully": "File uploaded successfully!"
+  },
+  "NEW_BENEFICIARY_PAYMENT_REASONS": {
+    "CompanyStocks": "Invest in company stocks",
+    "RealEstateAbroad": "Invest in real estate abroad",
+    "OtherAssetsAbroad": "Invest in other assets abroad",
+    "CompanyOwnerLoan": "Company owner loan",
+    "CapitalRefund": "Return of investment fund (with accountant approval)",
+    "PartnershipInvest": "Partnership Invest",
+    "OptionsInvestments": "Invest in options",
+    "UpTo250k": "Transfer for services up to 250k",
+    "ServicesOver250k": "Transfer for services over 250k",
+    "TourismServices": "Tourism services",
+    "ThirdPartyTransfer": "Third Party Transfer",
+    "TransportationServicesOverseas": "Transportation services overseas",
+    "RequestForAlimony": "Advertising abroad",
+    "Salaries": "Salaries ILS only",
+    "EducationAbroad": "Education abroad",
+    "RelativeAbroad": "Relative residing overseas",
+    "InBoarderTransfer": "Transfer to an Israeli resident, to an Israeli bank only",
+    "CrossBoarderTransfer": "Transfer to my account abroad",
+    "Other": "Other",
+    "ImportOfGoodsNotIncludingBooks": "Import of goods not including books",
+    "SoftwareDevelopmentOrOnlineServices": "Software development or online services"
   }
 }

@@ -1,0 +1,37 @@
+<div class="invoice-info-wrap">
+  <div class="invoice-img-wrap" *ngIf="!isUploadDoucment">
+    <div class="desc">
+      <h3 class="title">Upload Invoice</h3>
+      <p>To create a beneficiary more quickly, upload the beneficiary documents</p>
+    </div>
+    <div class="item-wrap">
+      <div class="item-step step1" (click)="uploadDoucment()">
+        <div class="img-wrap">
+          <span class="step-tag">Step 1</span>
+          <img src="images/upload-invoice-step1.gif" alt="Step1" />
+        </div>
+        <div class="d-info">
+          <h4 class="title">Upload Invoice</h4>
+          <p>To use our document AI reader, you need only to upload beneficiary document or an invoice</p>
+        </div>
+      </div>
+      <div class="item-step step2">
+        <div class="img-wrap">
+          <span class="step-tag">Step 2</span>
+          <img src="images/view-beneficiary-data-step1.gif" alt="Step2" />
+        </div>
+        <div class="d-info">
+          <h4 class="title">Extract and view beneficiary Data</h4>
+          <p>Our document AI reader, Will extract all the necessary details. that can help you setup your beneficiary quickly.   </p>
+        </div>
+      </div>
+    </div>
+    <div class="btn-wrap">
+      <button class="btn-upload" (click)="uploadDoucment()">Upload Document</button>
+      <button class="btn-skip" (click)="skipUpload()">Skip</button>
+    </div>
+  </div>
+
+  <app-new-benificiary-upload-file *ngIf="isUploadDoucment" [newBenificiaryStepper]="newBenificiaryStepper"></app-new-benificiary-upload-file>
+</div>
+

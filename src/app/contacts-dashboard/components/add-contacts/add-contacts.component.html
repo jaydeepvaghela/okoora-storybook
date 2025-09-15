@@ -1,0 +1,115 @@
+<div class="dialog-header" [hidden]="isNonIsraeliUser"
+  [ngClass]="(showNewBenificiaryPage && !isNonIsraeliUser) ? 'new-benificiary' : ''">
+  <div class="container-fluid">
+    <a class="dialog-brand">
+      <img src='images/abcm-logo.svg'
+        alt="abcm-logo">
+    </a>
+    <button mat-icon-button mat-dialog-close class="close-btn" (click)="closeModel()"></button>
+  </div>
+  <div class="dialog-icon"></div>
+</div>
+<mat-dialog-content class="mat-typography dialog-body contacts-dialog-container"
+  [ngClass]="(showNewBenificiaryPage || isNonIsraeliUser) ? 'new-benificiary' : ''"
+  [ngStyle]="{'background-color':isLastStepConfirmClicked ? '#F6F9FD' : '#ffffff'}">
+  <div class="dialog-content">
+    <form [formGroup]="benificiaryForm?.value?.type?.ContactType=='payer'? payerForm : benificiaryForm"
+      (ngSubmit)="onSubmit()">
+      <mat-progress-bar #formStepperProgress class="stepper-progressbar" mode="determinate" value="20"
+        [hidden]="isLastStep || isNonIsraeliUser"></mat-progress-bar>
+      <mat-stepper #formStepper class="form-stepper" (animationDone)="stepChange(formStepper)">
+        <mat-step
+          *ngIf="!editBeneficiary && !editPayer && !fromWallet && !isNonIsraeliUser && !isCreateBeneficiaryFromSummary">
+          <ng-template matStepContent>
+            <app-contact-selection [isUserHasCCAccount]="isUserHasCCAccount" [formStepper]="formStepper"
+              [formStepperProgress]="formStepperProgress" [type]="benificiaryForm.get('type')"></app-contact-selection>
+          </ng-template>
+        </mat-step>
+        <div
+          *ngIf="(benificiaryForm.value.type.ContactType=='beniciary' || editBeneficiary) || isNonIsraeliUser || isCreateBeneficiaryFromSummary">
+          <mat-step>
+            <ng-template matStepContent>
+              <app-new-benificiary [editBenificiaryObj]="beneficiaryForEdit" [editBeneficiary]="editBeneficiary"
+                [formStepper]="formStepper" [newBenificiaryStep2]="benificiaryForm.get('newBenificiaryStep2')"
+                [newBenificiaryBankDetails]="benificiaryForm.get('newBenificiaryBankDetails')"
+                [newBenificiaryStep2Values]="newBenificiaryStep2Values"
+                [transcationFormStep3Values]="transcationFormStep3Values"
+                [bankDetailsFormStep4Values]="bankDetailsFormStep4Values"
+                [uploadFileFormStep5Values]="uploadFileFormStep5Values" [formStepperProgress]="formStepperProgress"
+                [payment]="benificiaryForm.get('payment')" [benificiaryForm]="benificiaryForm"
+                [awBeneficiaryForm]="awBeneficiaryForm" [awBeneficiaryDetailsObj]="awObj"
+                [awFormSchemaErrors]="awFormSchemaErrors" (moveToMainContactPage)="moveToMainContactPage()"
+                (isAWStep2NextClicked)="isAWStep2NextClicked($event)"
+                [isNonIsraeliUser]="isNonIsraeliUser"></app-new-benificiary>
+            </ng-template>
+          </mat-step>
+          <!-- <mat-step>
+            <ng-template matStepContent>
+              <app-add-edit-benificiary-step4 [formStepper]="formStepper"
+                                [formStepperProgress]="formStepperProgress"
+                                [transactions]="benificiaryForm.get('transactions')"
+                                [benificiaryForm]="benificiaryForm"></app-add-edit-benificiary-step4>
+            </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepContent>
+              <app-app-add-edit-benificiary-step5 [formStepper]="formStepper"
+                [formStepperProgress]="formStepperProgress" [uploadFile]="benificiaryForm.get('uploadFile')">
+              </app-app-add-edit-benificiary-step5>
+            </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepContent>
+              <app-complete-step message="Beneficiary saved" buttonText="Back to my contacts"
+              [navigateTo]="subSite ? subSite + 'contacts' : '/contacts'"></app-complete-step>
+            </ng-template>
+          </mat-step> -->
+        </div>
+        <!-- <div *ngIf="benificiaryForm.value.type.ContactType=='payer' || editPayer">
+          <ng-container *ngIf="!isUserHasCCAccount">
+            <mat-step *ngIf="payerForm.value.payerProfileDetail.payerAccount != 'oversease' && !fromWallet">
+              <ng-template matStepContent>
+                <app-add-edit-payer-step1 [formStepper]="formStepper" [formStepperProgress]="formStepperProgress"
+                  [payerProfileType]="payerForm.get('payerProfileType')"></app-add-edit-payer-step1>
+              </ng-template>
+            </mat-step>
+            <mat-step
+              *ngIf="payerForm.value.payerProfileType.paymentReason != 2 || payerForm.value.payerProfileDetail.payerAccount == 'oversease' || payerDataForEditenable">
+              <ng-template matStepContent>
+                <app-add-edit-payer-step2 [formStepper]="formStepper" [fromWallet]="fromWallet" [fromSend]="fromSend"
+                  [formStepperProgress]="formStepperProgress" [payerForm]="payerForm"
+                  [payerAccountDetail]="payerForm.get('payerAccountDetail')"></app-add-edit-payer-step2>
+              </ng-template>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepContent>
+                <app-add-edit-payer-step3 [formStepper]="formStepper" [fromSend]="fromSend"
+                  [formStepperProgress]="formStepperProgress" [payerProfileDetail]="payerForm.get('payerProfileDetail')"
+                  [profileType]="payerForm.value.payerProfileType.paymentReason">
+                </app-add-edit-payer-step3>
+              </ng-template>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepContent>
+                <app-complete-step message={{wellDoneMsg}} buttonText="Go to my contacts"
+                  [navigateTo]="subSite ? subSite + 'contacts' : '/contacts'"></app-complete-step>
+              </ng-template>
+            </mat-step>
+          </ng-container>
+        </div> -->
+
+        <!-- <div *ngIf="benificiaryForm.value.type.ContactType=='payer' || editPayer">
+          <mat-step *ngIf="isUserHasCCAccount">
+            <app-new-payer [editPayer]="editPayer" [editPayerObj]="payerDataForEdit"
+              (moveToMainContactPage)="moveToMainContactPage()"></app-new-payer>
+          </mat-step>
+        </div> -->
+      </mat-stepper>
+    </form>
+    <!-- <app-footer [footerBottom]="'fix'" *ngIf="isNonIsraeliUser && displayAWFooter"></app-footer> -->
+
+  </div>
+
+
+</mat-dialog-content>

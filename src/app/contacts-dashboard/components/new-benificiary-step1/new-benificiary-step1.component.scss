@@ -1,0 +1,247 @@
+@import "../../../../assets/scss/variable.scss";
+
+::ng-deep {
+    .invoice-info-wrap {
+        letter-spacing: 0;
+        padding: 65px 30px;
+        .invoice-img-wrap {
+            margin: auto;
+            max-width: 904px;
+            .desc {
+                text-align: center;
+
+                .title {
+                    color: #1F2937;
+                    font-family: $he_heebo;
+                    font-size: 20px;
+                    font-weight: 500;
+                    line-height: 30px;
+                    margin: 0 0 4px;
+                }
+
+                p {
+                    color: #6B7280;
+                    text-align: center;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 20px;
+                    margin: 0;
+                }
+            }
+
+            .item-wrap {
+                display: flex;
+                gap: 12px;
+                margin: 23px 0 0;
+
+                .item-step {
+                    border-radius: 10px;
+                    border: 1px solid #F3F4F6;
+                    background: $white;
+                    box-shadow: 0px 24px 64px 0px rgba(0, 0, 0, 0.04);
+                    padding: 16px;
+                    width: 50%;
+                    max-width: 446px;
+                    .img-wrap {
+                        border-radius: 5px;
+                        background: #E7F0FE;
+                        position: relative;
+
+                        .step-tag {
+                            position: absolute;
+                            top: -4px;
+                            left: -7px;
+                            content: "";
+                            display: flex;
+                            width: 76px;
+                            height: 32px;
+                            padding: 10px;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 10px;
+                            border-radius: 5px;
+                            background: $white;
+                            color: $black;
+                            font-family: $he_heebo;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 24px;
+                        }
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .d-info {
+                        padding: 15px 9px 28px;
+
+                        .title {
+                            color: $black;
+                            font-family: $he_heebo;
+                            font-size: 18px;
+                            font-weight: 400;
+                            line-height: 24px;
+                            margin: 0 0 9px;
+                        }
+
+                        p {
+                            color: #9CA3AF;
+                            font-family: $he_heebo;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 19px;
+                            margin: 0;
+                            max-width: 371px;
+                        }
+                    }
+                }
+            }
+
+            .btn-wrap {
+                margin: 39px 0 0;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                gap: 22px;
+                align-items: center;
+                .btn-upload {
+                    display: flex;
+                    width: 602px;
+                    height: 50px;
+                    padding: 10px 20px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    border-radius: 50px;
+                    background:#1D4ED8;
+                    color:$white;
+                    font-family:$he_heebo;
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 24px;
+                    margin: 0 auto;
+                    transition: all .5s ease;
+                    &:hover{
+                        opacity: .9;
+                    }
+                }
+                .btn-skip{
+                    display:inline-flex;
+                    height: 50px;
+                    width: 252px;
+                    padding: 10px 60px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    color:#1D4ED8;
+                    font-family:$he_heebo;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 19px;
+                    border-radius: 40px;
+                    border: 1px solid #E6EFFD;
+                    transition: all .5s ease;
+                    background-color: #E6EFFD;
+                    &:hover{
+                        color: $white;
+                        background-color: #1D4ED8;
+                        border-color: #1D4ED8;
+                    }
+                }
+            }
+            @media screen and (max-width:1660px) {
+                max-width: 600px;
+                .desc{
+                    .title{
+                        font-size: 18px;
+                        line-height: 1.2;
+                    }
+                    p{
+                        font-size: 12px;
+                        line-height: 1;
+                    }
+                }
+                .item-wrap{
+                    margin:18px 0 0;
+                    .item-step{
+                        .img-wrap{
+                            .step-tag{
+                                width: 66px;
+                                height: 28px;
+                                font-size: 12px;
+                                line-height: 1;
+                            }
+                        }
+                        .d-info{
+                            padding: 15px 9px;
+                            .title{
+                                font-size: 14px;
+                                line-height: 1.2;
+                            }
+                            p{
+                                font-size: 12px;
+                                line-height: 1.5;
+                            }
+                        }
+                    }
+                }
+                .btn-wrap{
+                    margin: 20px 0 0;
+                    gap:15px;
+                    .btn-upload{
+                        width: 400px;
+                        height: 40px;
+                        font-size: 12px;
+                        line-height: 1;
+                    }
+                    .btn-skip{
+                        width: 150px;
+                        height: 40px;
+                        padding: 5px 40px;
+                        font-size: 12px;
+                    }
+                }
+            }
+            @media screen and (max-width:640px) {
+                .desc{
+                    .title{
+                        font-size:16px;
+                        line-height: 1;
+                    }
+                }
+                .item-wrap{
+                    margin:14px 0 0;
+                }
+            }
+            @media screen and (max-width:580px) {
+                .item-wrap{
+                    margin:10px 0 0;
+                    flex-direction: column;
+                    .item-step{
+                        width: 100%;
+                    }
+                }
+                .btn-wrap{
+                    .btn-upload{
+                        width: 200px;
+                    }
+                    .btn-skip{
+                        width: auto;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1440px) {
+            padding: 50px 30px;
+        }
+        @media screen and (max-width:1024px) {
+            padding:30px;
+        }
+        @media screen and (max-width:767px) {
+            padding:20px;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+@import "../../../../assets/scss/full-screen-modal.scss";
+
+.contacts-selection-wrapper {
+  .radio-group {
+    &.account-number {
+      margin-bottom: 64px;
+
+      @media only screen and (max-width: 1440px) {
+        margin-bottom: 42px;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        margin-left: -10px;
+        margin-right: -10px;
+        width: auto;
+      }
+
+      @media only screen and (max-width: 580px) {
+        margin-bottom: 20px;
+      }
+
+      .box-radio {
+        label {
+          height: 133px;
+          width: 295px;
+          padding: 40px 22px;
+
+          @media only screen and (max-width: 1440px) {
+            height: 123px;
+            width: 279px;
+            padding: 28px 18px;
+          }
+
+          @media only screen and (max-width: 1024px) {
+            height: 133px;
+            width: 295px;
+          }
+
+          @media only screen and (max-width: 767px) {
+            height: 103px;
+          }
+        }
+      }
+    }
+  }
+}

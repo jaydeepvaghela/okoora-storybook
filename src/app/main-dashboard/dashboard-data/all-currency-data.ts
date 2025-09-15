@@ -170,23 +170,6 @@ export const getAllCurrencies = [
         }
     },
     {
-        "id": 11,
-        "name": "RUB",
-        "active": 0,
-        "markUpId": null,
-        "symbol": null,
-        "otherMarkUp": null,
-        "major": null,
-        "activeHedge": false,
-        "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RUB.png",
-        "currency": {
-            "code": "RUB",
-            "sign": "RUB",
-            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RUB.png",
-            "currencyName": null
-        }
-    },
-    {
         "id": 12,
         "name": "MXN",
         "active": 1,
@@ -557,23 +540,6 @@ export const getAllCurrencies = [
             "code": "KRW",
             "sign": "₩",
             "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/KRW.png",
-            "currencyName": null
-        }
-    },
-    {
-        "id": 43,
-        "name": "RSD",
-        "active": 0,
-        "markUpId": null,
-        "symbol": null,
-        "otherMarkUp": null,
-        "major": null,
-        "activeHedge": false,
-        "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RSD.png",
-        "currency": {
-            "code": "RSD",
-            "sign": "RSD",
-            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RSD.png",
             "currencyName": null
         }
     },
@@ -1140,6 +1106,580 @@ export const getAllCurrencies = [
     }
 ]
 
+export const GetAllCurrenciesForPayment = [
+    {
+        "currency_Id": 1,
+        "currency": {
+            "code": "USD",
+            "sign": "$",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png",
+            "currencyName": "United States Dollar"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/USD.png"
+    },
+    {
+        "currency_Id": 2,
+        "currency": {
+            "code": "EUR",
+            "sign": "€",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png",
+            "currencyName": "Euro"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/EUR.png"
+    },
+    {
+        "currency_Id": 3,
+        "currency": {
+            "code": "GBP",
+            "sign": "£",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/GBP.png",
+            "currencyName": "British Pound Sterling"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/GBP.png"
+    },
+    {
+        "currency_Id": 4,
+        "currency": {
+            "code": "AUD",
+            "sign": "$",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/AUD.png",
+            "currencyName": "Australian Dollar"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/AUD.png"
+    },
+    {
+        "currency_Id": 5,
+        "currency": {
+            "code": "CHF",
+            "sign": "CHF",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/CHF.png",
+            "currencyName": "Swiss Franc"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/CHF.png"
+    },
+    {
+        "currency_Id": 6,
+        "currency": {
+            "code": "CAD",
+            "sign": "C$",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/CAD.png",
+            "currencyName": "Canadian Dollar"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/CAD.png"
+    },
+    {
+        "currency_Id": 7,
+        "currency": {
+            "code": "NZD",
+            "sign": "$",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/NZD.png",
+            "currencyName": "New Zealand Dollar"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/NZD.png"
+    },
+    {
+        "currency_Id": 8,
+        "currency": {
+            "code": "ZAR",
+            "sign": "R",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ZAR.png",
+            "currencyName": "South African Rand"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ZAR.png"
+    },
+    {
+        "currency_Id": 9,
+        "currency": {
+            "code": "INR",
+            "sign": "₹",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/INR.png",
+            "currencyName": "Indian Rupee"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/INR.png"
+    },
+    {
+        "currency_Id": 10,
+        "currency": {
+            "code": "TRY",
+            "sign": "₺",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/TRY.png",
+            "currencyName": "Turkish Lira"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/TRY.png"
+    },
+    {
+        "currency_Id": 12,
+        "currency": {
+            "code": "MXN",
+            "sign": "$",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/MXN.png",
+            "currencyName": "Mexican Peso"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/MXN.png"
+    },
+    {
+        "currency_Id": 14,
+        "currency": {
+            "code": "NOK",
+            "sign": "kr",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/NOK.png",
+            "currencyName": "Norwegian Krone"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/NOK.png"
+    },
+    {
+        "currency_Id": 15,
+        "currency": {
+            "code": "SEK",
+            "sign": "kr",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/SEK.png",
+            "currencyName": "Swedish Krona"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/SEK.png"
+    },
+    {
+        "currency_Id": 16,
+        "currency": {
+            "code": "JPY",
+            "sign": "￥",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/JPY.png",
+            "currencyName": "Japanese Yen"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/JPY.png"
+    },
+    {
+        "currency_Id": 17,
+        "currency": {
+            "code": "ILS",
+            "sign": "₪",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png",
+            "currencyName": "Israeli Shekel"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png"
+    },
+    {
+        "currency_Id": 18,
+        "currency": {
+            "code": "CZK",
+            "sign": "Kč",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/CZK.png",
+            "currencyName": "Czech Koruna"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/CZK.png"
+    },
+    {
+        "currency_Id": 19,
+        "currency": {
+            "code": "HUF",
+            "sign": "Ft",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/HUF.png",
+            "currencyName": "Hungarian Forint"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/HUF.png"
+    },
+    {
+        "currency_Id": 20,
+        "currency": {
+            "code": "PLN",
+            "sign": "zł",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/PLN.png",
+            "currencyName": "Polish Zloty"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/PLN.png"
+    },
+    {
+        "currency_Id": 21,
+        "currency": {
+            "code": "THB",
+            "sign": "฿",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/THB.png",
+            "currencyName": "Thai Baht"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/THB.png"
+    },
+    {
+        "currency_Id": 22,
+        "currency": {
+            "code": "RON",
+            "sign": "RON",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RON.png",
+            "currencyName": "Romanian Leu"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RON.png"
+    },
+    {
+        "currency_Id": 23,
+        "currency": {
+            "code": "HKD",
+            "sign": "HK$",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/HKD.png",
+            "currencyName": "Hong Kong Dollar"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/HKD.png"
+    },
+    {
+        "currency_Id": 24,
+        "currency": {
+            "code": "BGN",
+            "sign": "лв.",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/BGN.png",
+            "currencyName": "Bulgarian Lev"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/BGN.png"
+    },
+    {
+        "currency_Id": 25,
+        "currency": {
+            "code": "DKK",
+            "sign": "kr.",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/DKK.png",
+            "currencyName": "Danish Krone"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/DKK.png"
+    },
+    {
+        "currency_Id": 26,
+        "currency": {
+            "code": "SGD",
+            "sign": "$",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/SGD.png",
+            "currencyName": "Singapore Dollar"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/SGD.png"
+    },
+    {
+        "currency_Id": 27,
+        "currency": {
+            "code": "CNH",
+            "sign": "¥",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/CNH.png",
+            "currencyName": "Chinese Yuan (Offshore)"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/CNH.png"
+    },
+    {
+        "currency_Id": 31,
+        "currency": {
+            "code": "AED",
+            "sign": "د.إ.‏",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/AED.png",
+            "currencyName": "United Arab Emirates Dirham"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/AED.png"
+    },
+    {
+        "currency_Id": 33,
+        "currency": {
+            "code": "CNY",
+            "sign": "¥",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/CNY.png",
+            "currencyName": "Chinese Yuan"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/CNY.png"
+    },
+    {
+        "currency_Id": 44,
+        "currency": {
+            "code": "PHP",
+            "sign": "₱",
+            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/PHP.png",
+            "currencyName": "Philippine Peso"
+        },
+        "currency_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/PHP.png"
+    }
+]
+
+export const Countries = [
+    {
+        "countryName": "United States",
+        "countryCode": "us",
+        "countryCode3Letters": "USA",
+        "phoneCode": 1,
+        "score": 1,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/us.svg"
+    },
+    {
+        "countryName": "Albania",
+        "countryCode": "al",
+        "countryCode3Letters": "ALB",
+        "phoneCode": 355,
+        "score": 2,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/al.svg"
+    },
+    {
+        "countryName": "Algeria",
+        "countryCode": "dz",
+        "countryCode3Letters": "DZA",
+        "phoneCode": 213,
+        "score": 1,
+        "canRegister": 0,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/dz.svg"
+    },
+    {
+        "countryName": "Andorra",
+        "countryCode": "ad",
+        "countryCode3Letters": "AND",
+        "phoneCode": 376,
+        "score": 2,
+        "canRegister": 0,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/ad.svg"
+    },
+    {
+        "countryName": "Antarctica",
+        "countryCode": "aq",
+        "countryCode3Letters": "ATA",
+        "phoneCode": 672,
+        "score": 4,
+        "canRegister": 0,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/aq.svg"
+    },
+    {
+        "countryName": "Argentina",
+        "countryCode": "ar",
+        "countryCode3Letters": "ARG",
+        "phoneCode": 54,
+        "score": 3,
+        "canRegister": 0,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/ar.svg"
+    },
+    {
+        "countryName": "Armenia",
+        "countryCode": "am",
+        "countryCode3Letters": "ARM",
+        "phoneCode": 374,
+        "score": 4,
+        "canRegister": 0,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/am.svg"
+    },
+    {
+        "countryName": "Aruba",
+        "countryCode": "aw",
+        "countryCode3Letters": "ABW",
+        "phoneCode": 297,
+        "score": 4,
+        "canRegister": 0,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/aw.svg"
+    },
+    {
+        "countryName": "Australia",
+        "countryCode": "au",
+        "countryCode3Letters": "AUS",
+        "phoneCode": 61,
+        "score": 3,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/au.svg"
+    },
+    {
+        "countryName": "Austria",
+        "countryCode": "at",
+        "countryCode3Letters": "AUT",
+        "phoneCode": 43,
+        "score": 1,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/at.svg"
+    },
+    {
+        "countryName": "Azerbaijan",
+        "countryCode": "az",
+        "countryCode3Letters": "AZE",
+        "phoneCode": 994,
+        "score": 2,
+        "canRegister": 0,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/az.svg"
+    },
+    {
+        "countryName": "Bangladesh",
+        "countryCode": "bd",
+        "countryCode3Letters": "BGD",
+        "phoneCode": 880,
+        "score": 2,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/bd.svg"
+    },
+    {
+        "countryName": "Belgium",
+        "countryCode": "be",
+        "countryCode3Letters": "BEL",
+        "phoneCode": 32,
+        "score": 1,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/be.svg"
+    },
+    {
+        "countryName": "Belize",
+        "countryCode": "bz",
+        "countryCode3Letters": "BLZ",
+        "phoneCode": 501,
+        "score": 4,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/bz.svg"
+    },
+    {
+        "countryName": "Benin",
+        "countryCode": "bj",
+        "countryCode3Letters": "BEN",
+        "phoneCode": 229,
+        "score": 4,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/bj.svg"
+    },
+    {
+        "countryName": "Bhutan",
+        "countryCode": "bt",
+        "countryCode3Letters": "BTN",
+        "phoneCode": 975,
+        "score": 4,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/bt.svg"
+    },
+    {
+        "countryName": "Bolivia",
+        "countryCode": "bo",
+        "countryCode3Letters": "BOL",
+        "phoneCode": 591,
+        "score": 2,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/bo.svg"
+    },
+    {
+        "countryName": "Bosnia And Herzegovina",
+        "countryCode": "ba",
+        "countryCode3Letters": "BIH",
+        "phoneCode": 387,
+        "score": 2,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/ba.svg"
+    },
+    {
+        "countryName": "Botswana",
+        "countryCode": "bw",
+        "countryCode3Letters": "BWA",
+        "phoneCode": 267,
+        "score": 2,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/bw.svg"
+    },
+    {
+        "countryName": "Brazil",
+        "countryCode": "br",
+        "countryCode3Letters": "BRA",
+        "phoneCode": 55,
+        "score": 5,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/br.svg"
+    },
+    {
+        "countryName": "Brunei Darussalam",
+        "countryCode": "bn",
+        "countryCode3Letters": "BRN",
+        "phoneCode": 673,
+        "score": 4,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/bn.svg"
+    },
+    {
+        "countryName": "Bulgaria",
+        "countryCode": "bg",
+        "countryCode3Letters": "BGR",
+        "phoneCode": 359,
+        "score": 4,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/bg.svg"
+    },
+    {
+        "countryName": "Burkina Faso",
+        "countryCode": "bf",
+        "countryCode3Letters": "BFA",
+        "phoneCode": 226,
+        "score": 4,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/bf.svg"
+    },
+    {
+        "countryName": "Burundi",
+        "countryCode": "bi",
+        "countryCode3Letters": "BDI",
+        "phoneCode": 257,
+        "score": 4,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/bi.svg"
+    },
+    {
+        "countryName": "Cambodia",
+        "countryCode": "kh",
+        "countryCode3Letters": "KHM",
+        "phoneCode": 855,
+        "score": 2,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/kh.svg"
+    },
+    {
+        "countryName": "Cameroon",
+        "countryCode": "cm",
+        "countryCode3Letters": "CMR",
+        "phoneCode": 237,
+        "score": 4,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/cm.svg"
+    },
+    {
+        "countryName": "Canada",
+        "countryCode": "ca",
+        "countryCode3Letters": "CAN",
+        "phoneCode": 1,
+        "score": 1,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/ca.svg"
+    },
+    {
+        "countryName": "Cape Verde",
+        "countryCode": "cv",
+        "countryCode3Letters": "CPV",
+        "phoneCode": 238,
+        "score": 4,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/cv.svg"
+    },
+    {
+        "countryName": "Central African Republic",
+        "countryCode": "cf",
+        "countryCode3Letters": "CAF",
+        "phoneCode": 236,
+        "score": 4,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/cf.svg"
+    },
+    {
+        "countryName": "Chad",
+        "countryCode": "td",
+        "countryCode3Letters": "TCD",
+        "phoneCode": 235,
+        "score": 5,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/td.svg"
+    },
+    {
+        "countryName": "Chile",
+        "countryCode": "cl",
+        "countryCode3Letters": "CHL",
+        "phoneCode": 56,
+        "score": 2,
+        "canRegister": 1,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/cl.svg"
+    },
+    {
+        "countryName": "China",
+        "countryCode": "cn",
+        "countryCode3Letters": "CHN",
+        "phoneCode": 86,
+        "score": 1,
+        "canRegister": 0,
+        "flag": "https://okoora-stage-api2023.azurewebsites.net//Images/CountryFlags/cn.svg"
+    },
+]
+
 export const GetActiveHedgingCurrency = {
     "baseCurrency": "ILS",
     "supportedHedge": [
@@ -1230,15 +1770,6 @@ export const GetActiveHedgingCurrency = {
                 "code": "TRY",
                 "sign": "₺",
                 "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/TRY.png",
-                "currencyName": null
-            }
-        },
-        {
-            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RUB.png",
-            "currency": {
-                "code": "RUB",
-                "sign": "RUB",
-                "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RUB.png",
                 "currencyName": null
             }
         },
@@ -1428,15 +1959,6 @@ export const GetActiveHedgingCurrency = {
                 "code": "KRW",
                 "sign": "₩",
                 "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/KRW.png",
-                "currencyName": null
-            }
-        },
-        {
-            "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RSD.png",
-            "currency": {
-                "code": "RSD",
-                "sign": "RSD",
-                "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/RSD.png",
                 "currencyName": null
             }
         },
@@ -1761,3 +2283,63 @@ export const GetDefaultCurrencyData = {
         }
     ]
 }
+
+export const statesList = [ // based on US country
+    {
+        "name": "Berat County",
+        "state_code": "01"
+    },
+    {
+        "name": "Berat District",
+        "state_code": "BR"
+    },
+    {
+        "name": "Bulqizë District",
+        "state_code": "BU"
+    },
+    {
+        "name": "Delvinë District",
+        "state_code": "DL"
+    },
+    {
+        "name": "Devoll District",
+        "state_code": "DV"
+    },
+    {
+        "name": "Dibër County",
+        "state_code": "09"
+    },
+    {
+        "name": "Dibër District",
+        "state_code": "DI"
+    },
+    {
+        "name": "Durrës County",
+        "state_code": "02"
+    },
+    {
+        "name": "Durrës District",
+        "state_code": "DR"
+    },
+    {
+        "name": "Elbasan County",
+        "state_code": "03"
+    }
+]
+
+export const cityList = [
+    "Abbeville",
+    "Adamsville",
+    "Alabaster",
+    "Albertville",
+    "Alexander City",
+    "Alexandria",
+    "Aliceville",
+    "Andalusia",
+    "Anniston",
+    "Arab",
+    "Argo",
+    "Ashford",
+    "Ashland",
+    "Ashville"
+]

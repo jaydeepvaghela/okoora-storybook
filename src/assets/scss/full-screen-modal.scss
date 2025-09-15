@@ -70,7 +70,7 @@
   transform: translateX(-50%);
   bottom: -50%;
   background-color: $white;
-  // background-image: url(../images/contacts-icon.svg);
+  background-image: url(../images/contacts-icon.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 31px;
@@ -97,6 +97,7 @@
 }
 
 .dialog-body {
+  font-family: "Manrope", "Rubik", sans-serif !important;
   min-height: calc(100vh - $navbar-height);
   overflow-x: hidden;
   padding-top: 105px;

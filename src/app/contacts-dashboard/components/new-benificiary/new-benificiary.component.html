@@ -1,0 +1,122 @@
+<div class="beneficiary-head" [ngStyle]="{'background-color':summaryPageInit == true ? '#F6F9FD' : '#fff'}">
+  <a class="dialog-brand" href="#" [ngStyle]="{'visibility':showProgressAndCurrencyTitle ? 'visible':'hidden'}">
+    <img src="images/abcm-logo.svg"
+      alt="abcm-logo">
+  </a>
+  <div class="head-inner">
+    <span class="back-btn" (click)="prevStep()"
+      [ngStyle]="{'visibility':showProgressAndCurrencyTitle ? 'visible':'hidden'}">
+      <img src="images/beneficiary-back-icon.svg"
+        *ngIf="!isNonIsraeliUser && editBenificiaryObj && newBenificiaryStepper?.selectedIndex === 2 ? false : true">
+    </span>
+    <h3 class="title" [ngStyle]="{'visibility':showProgressAndCurrencyTitle ? 'visible':'hidden'}">{{iseditBenificiary ?
+      'Update an existing': 'Add a new'}} Beneficiary</h3>
+    <span class="close-icon" (click)="contactsService?.openConfirmDialog()"
+      [ngStyle]="{'visibility':showProgressAndCurrencyTitle ? 'visible':'hidden'}">
+      <img src="images/beneficiary-close.svg">
+    </span>
+  </div>
+</div>
+
+<div class="isShowProgress">
+  <div class="transfer-reason-steppers" *ngIf="newBenificiaryStepper.selectedIndex === 2 || newBenificiaryStepper.selectedIndex === 3 ||
+  newBenificiaryStepper.selectedIndex === 4 || newBenificiaryStepper.selectedIndex === 5">
+    <div class="progress-bar">
+      <mat-progress-bar class="transfer-reason-loader" mode="determinate" [value]="progressWidth"></mat-progress-bar>
+    </div>
+    <ul class="transfer-menu">
+      <li [class.activeMenu]="newBenificiaryStepper.selectedIndex === 2">Transaction
+        reason
+      </li>
+      <li [class.activeMenu]="newBenificiaryStepper.selectedIndex === 3">Beneficiary’s details</li>
+      <ng-container *ngIf="!isNonIsraeliUser">
+        <li [class.activeMenu]="newBenificiaryStepper.selectedIndex === 4">Review</li>
+      </ng-container>
+      <li [class.activeMenu]="newBenificiaryStepper.selectedIndex === 5">
+        <span *ngIf="!isNonIsraeliUser"> Complete </span>
+        <span *ngIf="isNonIsraeliUser"> Review </span>
+      </li>
+    </ul>
+  </div>
+</div>
+<mat-horizontal-stepper [linear]="false" #newBenificiaryStepper (stepChange)="onStepChangeNewBenificiary($event)"
+  [ngStyle]="{'background-color':summaryPageInit == true ? '#F6F9FD' : '#fff'}">
+  <mat-step>
+    <ng-template matStepLabel>Step 1</ng-template>
+    <app-new-benificiary-step1 [stepIndex]="newBenificiaryStepper.selectedIndex" [iseditBenificiary]="iseditBenificiary"
+      [newBenificiaryBankDetails]="benificiaryForm.get('newBenificiaryBankDetails')" (stepChanged)="onStepChange()"
+      [stepIndex]="newBenificiaryStepper.selectedIndex" [newBenificiaryStepper]="newBenificiaryStepper"
+      *ngIf="newBenificiaryStepper.selectedIndex === 0"></app-new-benificiary-step1>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Step 2</ng-template>
+    <app-new-benificiary-step2 [newBenificiaryStep2Values]="newBenificiaryStep2Values"
+      [benificiaryForm]="benificiaryForm" [iseditBenificiary]="iseditBenificiary"
+      [editBenificiaryObj]="editBenificiaryObj" (stepChanged)="onStepChange()"
+      (step2ChangedValues)="step2ChangedValues($event)"
+      [newBenificiaryBankDetails]="benificiaryForm.get('newBenificiaryBankDetails')"
+      [stepIndex]="newBenificiaryStepper.selectedIndex" [newBenificiaryStep2]="newBenificiaryStep2"
+      [countryList]="countryList" [currencyData]="currencyData" [isNonIsraeliUser]="isNonIsraeliUser"
+      [awFormSchemaErrors]="awFormSchemaErrors" [awBeneficiaryDetailsObj]="awBeneficiaryDetailsObj"
+      *ngIf="newBenificiaryStepper.selectedIndex === 1"></app-new-benificiary-step2>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Step 3</ng-template>
+    <app-new-benificiary-step3 [iseditBenificiary]="editBeneficiary" [uploadFile]="benificiaryForm.get('uploadFile')"
+      [editBenificiaryObj]="editBenificiaryObj" (transcationFormValues)="transcationFormValues($event)"
+      (stepChanged)="onStepChange()" [stepIndex]="newBenificiaryStepper.selectedIndex"
+      [benificiaryForm]="benificiaryForm" [paymentReasons]="paymentReasons" [countryList]="countryList"
+      [transactions]="benificiaryForm.get('transactions')" [isNonIsraeliUser]="isNonIsraeliUser"
+      *ngIf="newBenificiaryStepper.selectedIndex === 2"></app-new-benificiary-step3>
+  </mat-step>
+
+  <mat-step *ngIf="!isNonIsraeliUser">
+    <!-- Display only non-israeli user -->
+    <ng-template matStepLabel>Step 4</ng-template>
+    <app-new-benificiary-step4 [newBenificiaryStep2Values]="newBenificiaryStep2Values"
+      [transcationFormStep3Values]="transcationFormStep3Values"
+      [bankDetailsFormStep4Values]="bankDetailsFormStep4Values" [benificiaryForm]="benificiaryForm"
+      [iseditBenificiary]="editBeneficiary" [editBenificiaryObj]="editBenificiaryObj" (stepChanged)="onStepChange()"
+      (skipUploadFileStep)="skipUploadFileStep()" (movePreviousStep)="prevStep()"
+      [account]="benificiaryForm.get('account')" [payment]="benificiaryForm.get('payment')"
+      (bankDetailsFormValues)="bankDetailsFormValues($event)" [payment]="benificiaryForm.get('payment')"
+      [countryList]="countryList" [newBenificiaryStep2]="benificiaryForm.get('newBenificiaryStep2')"
+      [newBenificiaryBankDetails]="benificiaryForm.get('newBenificiaryBankDetails')" [paymentReasons]="paymentReasons"
+      [transactions]="benificiaryForm.get('transactions')" [stepIndex]="newBenificiaryStepper.selectedIndex"
+      *ngIf="newBenificiaryStepper.selectedIndex === 3"></app-new-benificiary-step4>
+  </mat-step>
+
+  <mat-step *ngIf="isNonIsraeliUser">
+    <!-- <app-aw-new-beneficiary-step4 [newBenificiaryStep2]="benificiaryForm.get('newBenificiaryStep2')"
+      [awBeneficiaryForm]="awBeneficiaryForm" [newBenificiaryStep2Values]="newBenificiaryStep2Values"
+      [iseditBenificiary]="editBeneficiary" [editBenificiaryObj]="editBenificiaryObj"
+      *ngIf="newBenificiaryStepper.selectedIndex === 3"></app-aw-new-beneficiary-step4> -->
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Step 5</ng-template>
+    <app-new-benificiary-step5 [paymentReasons]="paymentReasons"
+      [transcationFormStep3Values]="transcationFormStep3Values" [uploadFileFormStep5Values]="uploadFileFormStep5Values"
+      [iseditBenificiary]="editBeneficiary" (uploadFileFormValues)="uploadFileFormValues($event)"
+      [editBenificiaryObj]="editBenificiaryObj" [transactions]="benificiaryForm.get('transactions')"
+      [countryList]="countryList" [newBenificiaryBankDetails]="benificiaryForm.get('newBenificiaryBankDetails')"
+      [uploadFile]="benificiaryForm.get('uploadFile')" [newBenificiaryStep2]="newBenificiaryStep2"
+      (movePreviousStep)="prevStep()" (stepChanged)="onStepChange()" [stepIndex]="newBenificiaryStepper.selectedIndex"
+      *ngIf="newBenificiaryStepper.selectedIndex === 4"></app-new-benificiary-step5>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Step 6</ng-template>
+    <app-new-benificiary-step6 [countryList]="countryList" [iseditBenificiary]="editBeneficiary"
+      [transactions]="benificiaryForm.get('transactions')" [editBenificiaryObj]="editBenificiaryObj"
+      [uploadFile]="benificiaryForm.get('uploadFile')" [uploadFileFormStep5Values]="uploadFileFormStep5Values"
+      [newBenificiaryBankDetails]="benificiaryForm.get('newBenificiaryBankDetails')"
+      [newBenificiaryStep2]="benificiaryForm.get('newBenificiaryStep2')" [newBenificiaryStep2Values]="newBenificiaryStep2Values" (movePreviousStep)="prevStep()"
+      (stepChanged)="onStepChange()" [stepIndex]="newBenificiaryStepper.selectedIndex"
+      [isNonIsraeliUser]="isNonIsraeliUser"
+      *ngIf="newBenificiaryStepper.selectedIndex == 5"></app-new-benificiary-step6>
+  </mat-step>
+</mat-horizontal-stepper>
+

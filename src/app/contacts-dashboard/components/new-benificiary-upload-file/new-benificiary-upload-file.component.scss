@@ -1,0 +1,681 @@
+// @import "../../../../assets/scss/full-screen-modal.scss";
+@import "../../../../assets/scss/variable.scss";
+
+::ng-deep {
+  .cdk-overlay-pane {
+    &.account-detail-open-file {
+      width: 100%;
+      max-width: 899px !important;
+
+      .mat-mdc-dialog-surface {
+        border-radius: 10px;
+        border: 1px dashed #BFDBFE;
+        box-shadow: 0px 24px 64px 0px rgba(0, 0, 0, 0.04);
+      }
+
+      .upload-invoice {
+        padding: 41px 67px 98px 60px;
+        max-width: 100%;
+
+        .popup-close-btn {
+          display: block;
+          position: absolute;
+          top: 25px;
+          right: 18px;
+          line-height: 1;
+          padding: 0;
+
+          img {
+            width: 13px;
+          }
+        }
+
+        .upload-invoice-info {
+          margin: 0 0 36px;
+        }
+
+        .upload-invoice-card {
+          padding: 0;
+          border: none;
+          padding: 0;
+          box-shadow: none;
+
+          .btn-sec {
+            &.secondUpInvoice {
+              display: flex;
+            }
+
+            &.firstUpInvoice {
+              display: none;
+            }
+          }
+        }
+      }
+
+      @media screen and (max-width:1440px) {
+        max-width: 700px !important;
+
+        .upload-invoice {
+          padding: 40px;
+
+          .popup-close-btn {
+            top: 10px;
+            right: 10px;
+
+            img {
+              width: 10px;
+            }
+          }
+
+          .upload-invoice-info {
+            margin: 0 0 15px;
+          }
+        }
+      }
+
+      @media screen and (max-width:991px) {
+        .upload-invoice {
+          padding: 30px;
+        }
+      }
+
+      @media screen and (max-width:767px) {
+        max-width: 90vw !important;
+      }
+
+      @media screen and (max-width:580px) {
+        .upload-invoice {
+          padding: 20px;
+        }
+      }
+    }
+  }
+
+  .upload-invoice {
+    max-width: 899px;
+    margin: auto;
+
+    .popup-close-btn {
+      display: none;
+    }
+
+    .upload-invoice-info {
+      margin: 0 0 21px;
+      text-align: center;
+
+      .title {
+        color: #1F2937;
+        font-family: $he_heebo;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 30px;
+        margin: 0 0 4px;
+      }
+
+      .desc {
+        color: #6B7280;
+        text-align: center;
+        font-family: $he_heebo;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        margin: 0;
+      }
+
+      @media screen and (max-width:1440px) {
+        margin: 0 0 15px;
+
+        .title {
+          font-size: 16px;
+          line-height: 1.2;
+        }
+
+        .desc {
+          line-height: 1.5;
+        }
+      }
+
+      @media screen and (max-width:420px) {
+        .desc {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .upload-invoice-card {
+      border-radius: 10px;
+      border: 1px dashed #BFDBFE;
+      background: $white;
+      box-shadow: 0px 24px 64px 0px rgba(0, 0, 0, 0.04);
+      padding: 73px 67px 39px 60px;
+
+      .invoice-upload {
+        ngx-dropzone {
+          border-radius: 10px;
+          border: 1px dashed #D1D5DB;
+          background: #FBFBFB;
+          height: auto;
+          color: #1F2937;
+          margin-bottom: 13px;
+
+          ngx-dropzone-label {
+            width: 100%;
+            margin: 0;
+
+            &.file-select {
+              max-width: 307px;
+              margin: 23px auto 37px;
+            }
+
+            .file-img {
+              width: auto;
+              height: 68px;
+              margin: 0 0 11px;
+            }
+
+            .upload-info {
+              color: #1F2937;
+              font-family: $he_heebo;
+              font-size: 24px;
+              font-weight: 700;
+              line-height: 32px;
+              text-align: center;
+              margin: 0;
+
+              span {
+                color: #374151;
+                font-family: $he_heebo;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 20px;
+                display: block;
+                margin: 11px 0 15px;
+              }
+            }
+
+            .btn-select-file {
+              display: flex;
+              width: 100%;
+              height: 50px;
+              padding: 10px 20px;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+              border-radius: 50px;
+              background: #1D4ED8;
+              color: $white;
+              font-family: $he_heebo;
+              font-size: 14px;
+              font-weight: 700;
+              line-height: 24px;
+
+              &:hover {
+                opacity: .9;
+              }
+            }
+          }
+
+          ngx-dropzone-remove-badge {
+            opacity: 0;
+          }
+
+          .drop-zone-preview {
+            width: 100%;
+            background: transparent;
+            padding: 0 !important;
+            min-width: 100% !important;
+            max-width: 100% !important;
+            min-height: auto !important;
+            height: auto !important;
+            margin: 0 !important;
+
+            .progress-wrap {
+              display: flex;
+              width: 100%;
+              padding: 24px 27px 41px 14px;
+              align-items: flex-end;
+              justify-content: space-between;
+              gap: 20px;
+
+              .file-name {
+                display: flex;
+                gap: 11px;
+                align-items: flex-end;
+
+                .file-data {
+                  .title {
+                    color: #4B5563;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    margin: 0;
+                    text-align: left;
+
+                    span {
+                      display: block;
+                      font-size: 16px;
+                      white-space: nowrap;
+                      max-width: 211px;
+                      text-overflow: ellipsis;
+                      overflow: hidden;
+                    }
+                  }
+                }
+              }
+
+              .file-upload-sec {
+                width: 100%;
+                display: flex;
+                position: relative;
+                max-width: 454px;
+
+                .progress-inner {
+                  display: flex;
+                  gap: 12px;
+                  align-items: center;
+                  width: 100%;
+                  height: 20px;
+
+                  mat-progress-bar.file-upload-loader {
+                            display: block !important;
+                            width: 100%;
+                            height: 8px;
+                            border-radius: 4px;
+
+                            .mdc-linear-progress__buffer {
+                              height: 8px;
+                            }
+
+                            .mdc-linear-progress__buffer-bar {
+                              background-color: #E4E7EC;
+                              height: 8px;
+                            }
+
+                            .mdc-linear-progress__bar-inner {
+                              border-top-width: 8px;
+                              left: 0;
+                              border-color: #1B32B8;
+                            }
+
+                            .mdc-linear-progress__bar {
+                              margin: 0 !important;
+                            }
+                          }
+
+                  .close-btn {
+                    background-color: transparent;
+                    padding: 0;
+                  }
+
+                  .file-progress {
+                    color: #344054;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 20px;
+                    margin: 0;
+                  }
+                }
+
+                .btn-replace {
+                  position: absolute;
+                  bottom: -20px;
+                  left: 0;
+                  display: flex;
+                  width: auto;
+                  background-color: transparent;
+                  padding: 0;
+                  color: #1D4ED8;
+                  font-family: $he_heebo;
+                  font-size: 14px;
+                  font-weight: 400;
+                  line-height: 20px;
+                  margin: 4px 0 0;
+                }
+              }
+
+              &.has-error {
+                padding: 20px 10px 0;
+
+                .file-upload-sec {
+                  .progress-inner {
+                    mat-progress-bar.file-upload-loader {
+                      .mdc-linear-progress__bar-inner {
+                        border-color: #F04438;
+                      }
+                    }
+                  }
+                  .btn-replace{
+                    position: relative;
+                    bottom: 0;
+                    margin: 0;
+                  }
+                }
+
+                &.canceled {
+                  .file-upload-sec {
+                    .progress-inner {
+                      mat-progress-bar.file-upload-loader {
+                        .mdc-linear-progress__bar-inner {
+                          border-color: #FDA29B;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .error-msg {
+              margin: 7px 10px 18px;
+              display: block;
+              color: #DC2626;
+              font-family: $he_heebo;
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 24px;
+              text-align: left;
+
+              span {
+                color: #1D4ED8;
+              }
+            }
+          }
+        }
+      }
+
+      .file-desc {
+        display: flex;
+        justify-content: space-between;
+        color: grey;
+        color: #4B5563;
+        font-family: $he_heebo;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 13px 0 0;
+      }
+
+      .btn-sec {
+        text-align: center;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 10px;
+        margin: 40px 0 0;
+
+        &.secondUpInvoice {
+          display: none;
+        }
+
+        &.firstUpInvoice {
+          display: flex;
+        }
+
+        .btn-upload {
+          display: flex;
+          width: 100%;
+          max-width: 252px;
+          height: 50px;
+          padding: 10px 20px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50px;
+          background: #1D4ED8;
+          color: $white;
+          font-family: $he_heebo;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 24px;
+
+          &.disable {
+            background: #E5E7EB;
+            color: $white;
+            pointer-events: none;
+          }
+        }
+
+        .skip-btn {
+          display: flex;
+          height: 50px;
+          padding: 10px 60px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          border-radius: 40px;
+          border: 1px solid #E6EFFD;
+          color: #1D4ED8;
+          font-family: $he_heebo;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 19px;
+          margin: 18px 0 0;
+          max-width: 252px;
+          background-color: #E6EFFD;
+          width: 100%;
+          &:hover{
+            color: $white;
+            background-color: #1D4ED8;
+            border-color: #1D4ED8;
+        }
+        }
+      }
+    }
+
+    @media screen and (max-width:1440px) {
+      max-width: 700px;
+
+      .upload-invoice-card {
+        padding: 40px;
+
+        .invoice-upload {
+          ngx-dropzone {
+            margin: 0 0 5px;
+
+            ngx-dropzone-label {
+              &.file-select {
+                margin: 20px auto;
+              }
+
+              .file-img {
+                height: 50px;
+              }
+
+              .upload-info {
+                font-size: 20px;
+                line-height: 1.5;
+
+                span {
+                  margin: 5px 0;
+                }
+              }
+
+              .btn-select-file {
+                height: 40px;
+              }
+            }
+
+            .drop-zone-preview {
+              .progress-wrap {
+                padding: 20px 10px 30px;
+
+                .file-name {
+                  img {
+                    width: 25px;
+                  }
+
+                  .file-data {
+                    .title {
+                      font-size: 12px;
+                      line-height: 1.5;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .btn-sec {
+          margin: 20px 0 0;
+
+          .skip-btn {
+            height: 40px;
+            margin: 0;
+            max-width: 150px;
+          }
+
+          .btn-upload {
+            height: 40px;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width:991px) {
+      .upload-invoice-card {
+        padding: 30px;
+
+        .invoice-upload {
+          ngx-dropzone {
+            ngx-dropzone-label {
+              &.file-select {
+                margin: 20px auto;
+                max-width: 200px;
+              }
+
+              .file-img {
+                height: 40px;
+                margin: 0 0 5px;
+              }
+
+              .upload-info {
+                font-size: 16px;
+                line-height: 1.5;
+              }
+
+              .btn-select-file {
+                height: 35px;
+              }
+            }
+
+            .drop-zone-preview {
+              .progress-wrap {
+                .file-name {
+                  img {
+                    width: 25px;
+                  }
+
+                  .file-data {
+                    .title {
+                      font-size: 12px;
+                      line-height: 1.5;
+
+                      span {
+                        font-size: 14px;
+                        line-height: 1;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .file-desc {
+          font-size: 12px;
+          line-height: 1.2;
+        }
+
+        .btn-sec {
+          .skip-btn {
+            max-width: auto;
+            height: 35px;
+          }
+
+          .btn-upload {
+            height: 35px;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width:580px) {
+      .upload-invoice-card {
+        padding: 20px;
+
+        .invoice-upload {
+          ngx-dropzone {
+            ngx-dropzone-label {
+              &.file-select {
+                margin: 20px auto;
+                max-width: 200px;
+              }
+
+              .file-img {
+                height: 40px;
+                margin: 0 0 5px;
+              }
+
+              .upload-info {
+                font-size: 14px;
+
+                span {
+                  line-height: 1;
+                  font-size: 12px;
+                }
+              }
+
+              .btn-select-file {
+                font-size: 12px;
+                height: 30px;
+                max-width: max-content;
+                margin: auto;
+              }
+            }
+
+            .drop-zone-preview {
+              .progress-wrap {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+
+                .file-upload-sec {
+                  .progress-inner {
+                    .file-progress {
+                      font-size: 12px;
+                    }
+                  }
+
+                  .btn-replace {
+                    font-size: 12px;
+                    bottom: -15px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .file-desc {
+          font-size: 10px;
+        }
+
+        .btn-sec {
+          .skip-btn {
+            font-size: 12px;
+            height: 30px;
+            max-width: auto;
+          }
+
+          .btn-upload {
+            font-size: 12px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+}

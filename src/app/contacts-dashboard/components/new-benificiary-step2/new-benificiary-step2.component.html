@@ -1,0 +1,249 @@
+<div class="bank-account-wrap loader-wrapper">
+  <div class="account-info text-center">
+    <h3 class="title">Beneficiary details</h3>
+    <ng-container *ngIf="isNonIsraeliUser">
+      <!-- non-israeli users -->
+      <p class="sub-info">Fill in all your beneficiary's bank account details</p>
+    </ng-container>
+
+    <ng-container *ngIf="!isNonIsraeliUser">
+      <!-- <p class="sub-info">Fill in all your beneficiary's bank account details or <button
+          (click)="openAccountDetailUploadFile()" class="btn-upload-doc">upload a document</button></p> -->
+      <p class="sub-info">Fill in all your beneficiary's bank account and personal details</p>
+    </ng-container>
+  </div>
+  <div class="beneficiary-input-list">
+    <div class="form-content">
+      <form [formGroup]="newBenificiaryStep2">
+        <div class="country-dropdown">
+          <label for="beneficiaryCountry" class="benef-label">Beneficiary's country*
+          </label>
+          <mat-select class="form-control to-country-rm" panelClass="rm-country-dropdown" id="toCurrency"
+            [class.validation-error]="hasError('beneficiaryCountry')" formControlName="beneficiaryCountry"
+            placeholder="Select a country" (openedChange)="onCountryDropdownOpen($event)"
+            (selectionChange)="changeCountry($event)">
+            <mat-select-trigger>
+              <ng-container *ngFor="let country of countryList">
+                <div *ngIf="country?.countryCode == getCountryCode()" class="to-country-section">
+                  <img class="country-image" [src]="country?.flag" alt="currency_flag" />
+                  <span class="country-code">
+                    {{ country?.countryName }}
+                  </span>
+                </div>
+              </ng-container>
+            </mat-select-trigger>
+            <div class="search-inpt-popup">
+              <div class="search-input-wrapper">
+                <div class="input-inner">
+                  <input #searchBeneficiaryCountryInput class="filter-input"
+                    [ngClass]="countryList?.length == 0 ? 'error-input' : ''" appOnlyLetters type="text"
+                    placeholder="Search" id="exnow-s1-id7" [formControl]="benCountrySearchControl"
+                    (keydown.space)="$event.stopPropagation()">
+                  <button class="clear-search" (click)="clearSearch()"><img alt="close"
+                      src="images/country-search-close.svg"></button>
+                  <span class="country-search"><img alt="close" src="images/search-country-icon.svg"></span>
+                </div>
+                <span class="error-msg" *ngIf="countryList?.length == 0">
+                  Record not found!
+                </span>
+              </div>
+              <div class="country-flag-list">
+                <mat-option *ngFor="let country of countryList; index as i" value="{{country.countryCode}}"
+                  class="country-options" id="exnow-s1-id7-{{country.countryCode}}">
+                  <div class="select-item d-flex align-items-center">
+                    <img class="country-image" [src]="country?.flag" alt="currency_flag" />
+                    <div class="code-with-info">
+                      <span class="info">{{ country?.countryName }}</span>
+                    </div>
+                  </div>
+                </mat-option>
+              </div>
+            </div>
+          </mat-select>
+          <p *ngIf="hasError('beneficiaryCountry')" class="error-msg">
+            <img class="country-image" src="images/red-warning-icon.svg"> Please select the beneficiary country
+            from the list.
+          </p>
+        </div>
+        <div class="country-dropdown">
+          <label for="beneficiaryCountry" class="benef-label">Beneficiary's bank account's country*
+          </label>
+          <mat-select class="form-control to-country-rm" panelClass="rm-country-dropdown" id="toCurrency"
+            [class.validation-error]="hasError('bankCountry')" formControlName="bankCountry"
+            placeholder="Select beneficiary's bank account's country" (openedChange)="onBankCountryDropdownOpen($event)"
+            (selectionChange)="changeBankCountry()">
+            <mat-select-trigger>
+              <ng-container *ngFor="let country of bankCountryList">
+                <div *ngIf="country?.countryCode == getBankCountryCode()" class="to-country-section">
+                  <img class="country-image" [src]="country?.flag" alt="currency_flag" />
+                  <span class="country-code">
+                    {{ country?.countryName }}
+                  </span>
+                </div>
+              </ng-container>
+            </mat-select-trigger>
+            <div class="search-inpt-popup">
+              <div class="search-input-wrapper">
+                <div class="input-inner">
+                  <input #searchBenBankCountryInput class="filter-input"
+                    [ngClass]="countryList?.length == 0 ? 'error-input' : ''" appOnlyLetters type="text"
+                    placeholder="Search" id="exnow-s1-id7" [formControl]="benBankCountrySearchControl">
+                  <button class="clear-search" (click)="clearSearch()"><img alt="close"
+                      src="images/country-search-close.svg"></button>
+                  <span class="country-search"><img alt="close" src="images/search-country-icon.svg"></span>
+                </div>
+                <span class="error-msg" *ngIf="bankCountryList?.length == 0">
+                  Record not found!
+                </span>
+              </div>
+              <div class="country-flag-list">
+                <mat-option *ngFor="let country of bankCountryList; index as i" value="{{country.countryCode}}"
+                  class="country-options" id="exnow-s1-id7-{{country.countryCode}}">
+                  <div class="select-item d-flex align-items-center">
+                    <img class="country-image" [src]="country?.flag" alt="currency_flag" />
+                    <div class="code-with-info">
+                      <span class="info">{{ country?.countryName }}</span>
+                    </div>
+                  </div>
+                </mat-option>
+              </div>
+            </div>
+          </mat-select>
+          <p *ngIf="hasError('bankCountry')" class="error-msg">
+
+            <img class="country-image" src="images/red-warning-icon.svg"> Please select the beneficiary bank
+            country from the list.
+          </p>
+        </div>
+        <div class="country-dropdown currency-dropdown">
+          <label for="currency" class="benef-label">
+            Currency*</label>
+          <mat-select class="form-control to-country-rm" [class.validation-error]="hasError('currency')"
+            panelClass="rm-country-dropdown" id="toCurrency" formControlName="currency" placeholder="Select a currency"
+            (openedChange)="onCurrencyDropdownOpen($event)" (selectionChange)="changeCurrency()">
+            <mat-select-trigger>
+              <ng-container *ngFor="let currencyObj of currencyData">
+                <div *ngIf="currencyObj?.currency?.code == gettoCurrencyvalue()" class="to-country-section">
+                  <img width="30px" class="country-image" [src]="currencyObj?.currency?.flag" />
+                  <span class="country-code">
+                    {{ currencyObj?.currency?.code }}
+                  </span>
+                </div>
+              </ng-container>
+            </mat-select-trigger>
+            <div class="search-inpt-popup">
+              <div class="search-input-wrapper">
+                <div class="input-inner">
+                  <input #searchCurrencyInput class="filter-input"
+                    [ngClass]="currencyData?.length == 0 ? 'error-input' : ''" appOnlyLetters type="text"
+                    placeholder="Search" id="exnow-s1-id7" [formControl]="searchCurrencyControl">
+                  <button class="clear-search" (click)="clearSearch()"><img alt="close"
+                      src="images/country-search-close.svg"></button>
+                  <span class="country-search"><img alt="close" src="images/search-country-icon.svg"></span>
+                </div>
+                <span class="error-msg" *ngIf="currencyData?.length == 0">
+                  Record not found!
+                </span>
+              </div>
+              <div class="country-flag-list currency-info">
+                <mat-option *ngFor="let currencyObj of currencyData; index as i" value="{{currencyObj?.currency?.code}}"
+                  class="currency-options" id="exnow-s1-id7-{{currencyObj?.currency?.code}}">
+                  <div class="select-item d-flex align-items-start">
+                    <img width="30px" class="country-image" [src]="currencyObj?.currency?.flag" />
+                    <div class="code-with-info">
+                      <span class="code">{{ currencyObj?.currency?.code }}</span>
+                      <span class="info">{{ currencyObj?.currency?.currencyName }}</span>
+                    </div>
+                  </div>
+                </mat-option>
+              </div>
+            </div>
+          </mat-select>
+          <p *ngIf="hasError('currency')" class="error-msg">
+            <img class="country-image" src="images/red-warning-icon.svg"> Please select a currency from the list.
+          </p>
+        </div>
+        <div class="beneficary-type-sec" [class.validation-error]="hasError('beneficiaryBusinessType')">
+          <label class="type-label">Beneficiary type*
+          </label>
+          <div class="beneficiary-type-option">
+            <div class="item-type type-one" [ngClass]="{'disable':iseditBenificiary && isBeneficiaryAccNotExist}">
+              <input type="radio" name="beneficiaryAccountType" id="business" value="1"
+                formControlName="beneficiaryAccountType" (change)="handleBeneficiaryChange()">
+              <label class="radio-label" for="business">
+                <div class="type-inner">
+                  <img src="images/bank-icon.svg" class="main-img" alt="bank" />
+                  <img src="images/bank-hover-icon.svg" class="hover-img" alt="bank" />
+                  <div class="type-info">
+                    <label class="info">Business</label>
+                    <!-- <p class="desc">International bank transfer</p> -->
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="item-type" [ngClass]="{'disable':iseditBenificiary && isBeneficiaryAccNotExist}">
+              <input type="radio" name="beneficiaryAccountType" id="individual" value="2"
+                formControlName="beneficiaryAccountType" (change)="handleBeneficiaryChange()">
+              <label class="radio-label" for="individual">
+                <div class="type-inner">
+                  <img src="images/globe-dollar-icon.svg" class="main-img" alt="globe" />
+                  <img src="images/globe-dollar-hover.svg" class="hover-img" alt="globe" />
+                  <div class="type-info">
+                    <label class="info">Individual</label>
+                    <!-- <p class="desc">International bank transfer</p> -->
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <p *ngIf="hasError('beneficiaryAccountType')" class="error-msg">
+            <img class="country-image" src="images/red-warning-icon.svg"> Please select the
+            beneficiary type
+          </p>
+        </div>
+        <ng-container *ngIf="!isNonIsraeliUser">
+          <div class="category-desc" [class.validation-error]="hasError('IsBeneficiaryBusinessCategoryLegit')"
+            [ngClass]="{'disable':iseditBenificiary && isBeneficiaryAccNotExist}"
+            *ngIf="newBenificiaryStep2.get('beneficiaryAccountType')?.value == '1'">
+            <div class="cat-inner">
+              <div class="info-sec">
+                <h4 class="title">Is your beneficiary business in one of these categories?</h4>
+                <div class="desc">Pharmacy, Drug & Vitamin Stores, Grocery, Beverage & Tobacco, Diet & Nutrition, Flower
+                  Shops, Financial Institutions, Financial services, Fintech</div>
+              </div>
+              <div class="radio-group">
+                <div class="box-radio" tabindex="0">
+                  <input type="radio" name="IsBeneficiaryBusinessCategoryLegit" id="true" value="true"
+                    formControlName="IsBeneficiaryBusinessCategoryLegit">
+                  <label for="true">
+                    No
+                  </label>
+                </div>
+                <div class="box-radio" tabindex="0">
+                  <input type="radio" name="IsBeneficiaryBusinessCategoryLegit" id="false" value="false"
+                    formControlName="IsBeneficiaryBusinessCategoryLegit">
+                  <label for="false">
+                    Yes
+                  </label>
+                </div>
+              </div>
+            </div>
+            <p *ngIf="hasError('IsBeneficiaryBusinessCategoryLegit') && newBenificiaryStep2.get('beneficiaryAccountType')?.value == '1'"
+              class="error-msg">
+              <img class="country-image" src="images/red-warning-icon.svg"> Please mark the option according to
+              the
+              beneficiary business category
+            </p>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="isNonIsraeliUser">
+          <p *ngIf="awSchemaError" class="error-msg">
+            <img class="country-image" src="images/red-warning-icon.svg"> {{awSchemaError}}
+        </ng-container>
+
+        <button class="btn-next" (click)="nextStep()">Next</button>
+      </form>
+    </div>
+  </div>
+</div>

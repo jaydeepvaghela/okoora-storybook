@@ -429,7 +429,6 @@ export class SinglePaymentSendStep1Component {
         beneficiaryId: this.beneficiaryDetails?.id,
         currency: this.selectedWallet?.wallet_Currency?.code
       };
-      console.log("body", body);
       this._walletService.mockCreatePaymentRequest(body).subscribe(
         (data: any) => {
           this.showLoader = false;
@@ -437,7 +436,6 @@ export class SinglePaymentSendStep1Component {
           delete this.sendValidAmountError;
           delete this.createPaymentAPIError;
           this.createdPaymentData = data;
-          console.log("createdPaymentData", this.createdPaymentData);
           this.createdPaymentDataFortransfer.emit(this.createdPaymentData)
           this._walletService?.SetCreatedPayment(this.createdPaymentData)
           this.chargedAmount = this.createdPaymentData?.paymentRequst?.charge?.toFixed(2)

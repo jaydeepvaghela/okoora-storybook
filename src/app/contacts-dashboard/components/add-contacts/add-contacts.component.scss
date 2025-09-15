@@ -1,0 +1,92 @@
+@import "../../../../assets/scss/full-screen-modal.scss";
+
+::ng-deep {
+  .contacts-dialog-container {
+    .mat-mdc-radio-group {
+      @include flex(center, center, row);
+      margin-left: -10px;
+      margin-right: -10px;
+      width: auto;
+      flex-wrap: wrap;
+
+      .mat-mdc-radio-button {
+        padding: 0 10px;
+        max-width: 25%;
+        width: 100%;
+        margin: 0;
+
+        .mdc-form-field {
+          position: relative;
+
+          label {
+            background: linear-gradient(115.28deg, rgba(41, 71, 242, 0.04) 4.99%, rgba(41, 71, 242, 0) 99.15%);
+            border: 2px solid $light-gray;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 289px;
+            height: 163px;
+            padding: 0;
+            text-align: center;
+
+            .payerprofile-icon {
+              max-width: 50px;
+              width: 100%;
+              min-height: 50px;
+              max-height: 50px;
+              padding: 5px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 5px;
+
+              img {
+                width: 100%;
+              }
+            }
+
+            p {
+              font-weight: 600;
+              font-size: $font-20;
+              line-height: 27px;
+              color: $profile-btn-text-color;
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        &.mat-mdc-radio-checked {
+          label {
+            border-color: var(--active-tab-border-color);
+            background: linear-gradient(115.28deg, rgba(41, 71, 242, 0.04) 4.99%, rgba(41, 71, 242, 0) 99.15%);
+          }
+        }
+      }
+    }
+  }
+  .dialog-header.new-benificiary{
+    display: none;
+  }
+  .contacts-dialog-container.new-benificiary{
+    padding:0;
+    min-height:100vh;
+    margin:0;
+    letter-spacing: 0 !important;
+    .form-stepper{
+      padding: 0;
+    }
+    mat-progress-bar{
+      display: none;
+    }
+  }
+
+  .new-benificiary {
+    &.mat-typography {
+      h1, h2, h3, h4, h5, h6, li, p, ul {
+        letter-spacing: 0 !important;
+      }
+    }
+  }
+}

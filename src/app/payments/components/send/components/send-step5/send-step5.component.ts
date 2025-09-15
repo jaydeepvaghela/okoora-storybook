@@ -236,7 +236,6 @@ export class SendStep5Component implements OnDestroy {
     let amount = strategy[0]?.product?.amount;
     let buyCurrency = strategy[0]?.product?.currency?.wallet_Currency?.code;
     let sellCurrency = strategy[0]?.feeCost;
-    console.log('strategy[0]', strategy[0])
     return [amount, buyCurrency, sellCurrency];
   }
 
