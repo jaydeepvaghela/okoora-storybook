@@ -7,7 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   selector: 'app-contact-selection',
   templateUrl: './contact-selection.component.html',
   styleUrls: ['./contact-selection.component.scss'],
-  imports: [CommonModule, ReactiveFormsModule]
+  imports: [CommonModule, ReactiveFormsModule],
+  standalone: true
 })
 export class ContactSelectionComponent {
   @Input('formStepper') formStepper?: any;

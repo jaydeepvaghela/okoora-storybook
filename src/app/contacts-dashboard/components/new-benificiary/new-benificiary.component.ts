@@ -3,7 +3,8 @@ import { ContactsService } from '../../services/contacts.service';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { map, of, Subject, Subscription, takeUntil } from 'rxjs';
 import { ActiveCurrencyModel } from '../../../main-dashboard/models/ActiveCurrencyModel';
-import { AddContactsComponent } from '../add-contacts/add-contacts.component';
+import { forwardRef } from '@angular/core';
+const AddContactsComponent = forwardRef(() => import('../add-contacts/add-contacts.component').then(m => m.AddContactsComponent));
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
 import { getAllActiveCurrencies } from '../../../main-dashboard/dashboard-data/balanceList-data';
@@ -22,7 +23,18 @@ import { NewBenificiaryStep6Component } from '../new-benificiary-step6/new-benif
   selector: 'app-new-benificiary',
   templateUrl: './new-benificiary.component.html',
   styleUrls: ['./new-benificiary.component.scss'],
-  imports: [CommonModule, MatProgressBarModule, MatStepperModule, NewBenificiaryStep1Component, NewBenificiaryStep2Component, NewBenificiaryStep3Component, NewBenificiaryStep4Component, NewBenificiaryStep5Component, NewBenificiaryStep6Component]
+  imports: [
+    CommonModule,
+    MatProgressBarModule,
+    MatStepperModule,
+    NewBenificiaryStep1Component,
+    NewBenificiaryStep2Component,
+    NewBenificiaryStep3Component,
+    NewBenificiaryStep4Component,
+    NewBenificiaryStep5Component,
+    NewBenificiaryStep6Component
+  ],
+  standalone: true
 })
 export class NewBenificiaryComponent implements OnInit, OnDestroy, AfterViewInit, AfterContentChecked{
   @Input('formStepper') formStepper?: any;

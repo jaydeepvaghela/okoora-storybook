@@ -15,7 +15,16 @@ import { GetBeneficiaryBankRequirements } from '../contacts-data/userData';
   selector: 'app-add-contacts',
   templateUrl: './add-contacts.component.html',
   styleUrls: ['./add-contacts.component.scss'],
-  imports: [CommonModule, MatDialogContent, ReactiveFormsModule, MatProgressBarModule, MatStepperModule, ContactSelectionComponent, NewBenificiaryComponent]
+  imports: [
+    CommonModule,
+    MatDialogContent,
+    ReactiveFormsModule,
+    MatProgressBarModule,
+    MatStepperModule,
+    ContactSelectionComponent,
+    NewBenificiaryComponent
+  ],
+  standalone: true
 })
 export class AddContactsComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('formStepper') formStepper!: MatStepper;
