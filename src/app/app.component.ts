@@ -27,7 +27,7 @@ export class AppComponent {
     if (!this.isLoggedInUser) {
       this.router.navigate(['/login']);
     } else {
-      this.router.navigate(['/main-dashboard']);
+      this.router.navigate(['/fx-dashboard']);
     }
   }
 

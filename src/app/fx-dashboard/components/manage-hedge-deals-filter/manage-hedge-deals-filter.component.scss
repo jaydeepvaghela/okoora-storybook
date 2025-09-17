@@ -1,0 +1,893 @@
+@import "../../../../assets/scss/variable";
+
+::ng-deep {
+  .deals-filters-container {
+    padding: 0;
+    background-color: #F9FAFB;
+    font-family: $he_heebo;
+
+    .header {
+      padding: 37px 37px 22px 48px;
+      background-color: $white;
+
+      .title {
+        color: #374151;
+        font-family: $he_heebo;
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 28px;
+        margin: 0;
+      }
+
+      @media screen and (max-width:1440px) {
+        padding: 10px 20px;
+
+        .title {
+          font-size: 22px;
+          line-height: 1.2;
+        }
+      }
+
+      @media screen and (max-width:767px) {
+        .title {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 27px;
+      padding: 0;
+
+      @media screen and (max-width:1440px) {
+        top: 15px;
+        right: 15px;
+      }
+    }
+
+    .filter-input-wrap {
+      padding: 27px 46px 33px 47px;
+
+      hr {
+        margin: 34px 0;
+        border-top: 1px dashed #D8D8D8;
+        opacity: 1;
+      }
+
+      @media screen and (max-width:1440px) {
+        padding: 20px;
+
+        hr {
+          margin: 10px 0;
+        }
+      }
+
+      .deal-type {
+        .title {
+          color: #000;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 20px;
+          margin: 0 0 14px;
+        }
+
+        @media screen and (max-width:1024px) {
+          font-size: 14px;
+          line-height: 1.2;
+          margin: 0 0 10px;
+        }
+
+        .deal-wrap {
+          display: flex;
+          gap: 27px;
+          align-items: center;
+          flex-wrap: wrap;
+
+          @media screen and (max-width:1440px) {
+            gap: 15px;
+          }
+
+          .deal-type-box {
+            .mdc-form-field>label {
+              padding-left: 10px !important;
+              color: #000;
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 20px;
+            }
+          }
+        }
+      }
+
+      .date-range {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        @media screen and (max-width:580px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        &.trade {
+          margin: 0 0 34px;
+
+          @media screen and (max-width:1440px) {
+            margin: 0 0 20px;
+          }
+        }
+
+        .title {
+          color: #000;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 20px;
+
+          @media screen and (max-width:1024px) {
+            font-size: 14px;
+            line-height: 1.2;
+          }
+        }
+
+        .date-wrap {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          margin: 7px 0;
+          flex-wrap: wrap;
+
+          @media screen and (max-width:1440px) {
+            gap: 10px;
+          }
+
+          @media screen and (max-width:580px) {
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .mat-mdc-form-field {
+            max-width: 230px;
+
+            @media screen and (max-width:580px) {
+              width: 100%;
+              max-width: 100%;
+            }
+
+            .mat-mdc-form-field-subscript-wrapper,
+            .mdc-line-ripple {
+              display: none;
+            }
+
+            &:not(.mat-form-field-hide-placeholder) {
+              .mat-mdc-text-field-wrapper {
+                border: 1px solid #3B82F6;
+
+                .mat-datepicker-toggle {
+                  .mdc-icon-button {
+                    background-image: url('../../../../assets/images/fx-dashboard/blue-filter-cal-icn.svg');
+                  }
+                }
+              }
+            }
+
+            .mat-mdc-text-field-wrapper {
+              border: 1px solid #CFD9DE;
+              background-color: #fff;
+
+              .mat-mdc-form-field-focus-overlay {
+                display: none;
+              }
+
+              .mdc-floating-label {
+                color: #111827;
+                font-family: $he_heebo;
+                font-size: 15px;
+                font-weight: 400;
+                line-height: 24px;
+
+                &.mdc-floating-label--float-above {
+                  transform: translateY(-80%) scale(0.85);
+                  color: #3B82F6;
+                }
+              }
+
+              .mdc-text-field__input {
+                color: #111827;
+                font-family: $he_heebo;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 24px;
+              }
+
+              .mat-datepicker-toggle {
+                .mdc-icon-button {
+                  background-image: url('../../../../assets/images/fx-dashboard/filter-cal-icn.svg');
+
+                  .mat-mdc-focus-indicator,
+                  .mat-ripple,
+                  .mat-mdc-button-persistent-ripple {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .date-separator {
+          margin: auto;
+        }
+      }
+
+      .currency-sec {
+        .title {
+          color: #000;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 20px;
+        }
+
+        .subtitle {
+          color: #56627D;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+        }
+
+        .currency-search-input {
+          padding: 10px 15px;
+          border-radius: 6px;
+          border: 1px solid #CFD9DE;
+          margin: 7px 0;
+
+          .mdc-evolution-chip-set__chips {
+            flex-wrap: nowrap;
+            margin-left: -4px;
+          }
+
+          .mat-mdc-chip {
+            background-color: #f1f3fe;
+            margin-left: 4px;
+            height: 28px;
+
+            .mdc-evolution-chip__action {
+              padding-left: 10px;
+
+              @media screen and (max-width:1440px) {
+                padding-left: 9px;
+              }
+            }
+
+            .mdc-evolution-chip__text-label {
+              color: #111827;
+              font-family: $he_heebo;
+              font-size: 12px;
+              font-weight: 500;
+              line-height: 38px;
+            }
+
+            &.more-chip {
+              .mdc-evolution-chip__text-label {
+                color: #1D4ED8;
+                font-size: 14px;
+                font-weight: 700;
+              }
+            }
+
+            .mdc-evolution-chip__icon--trailing {
+              font-size: 0;
+              background-image: url("../../../../assets/images/connector/mat-chip-close-icn.svg");
+              background-repeat: no-repeat;
+              background-size: contain;
+              width: 14px;
+              height: 16px;
+              padding: 0 4px;
+              opacity: 1;
+            }
+          }
+
+          .mat-mdc-select-placeholder {
+            color: #111827;
+            font-family: $he_heebo;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 36px;
+
+            @media screen and (max-width: 991px) {
+              line-height: 33px;
+            }
+          }
+
+          .mat-mdc-select-arrow {
+            svg {
+              display: none;
+            }
+
+            background-image: url("../../../../assets/images/connector/drop-arrow.svg");
+            background-repeat: no-repeat;
+            width: 24px;
+            height: 24px;
+            filter: brightness(0);
+          }
+
+          &[aria-expanded="true"] {
+            border-color: #2947f2;
+
+            .mat-mdc-select-placeholder {
+              color: #2947f2;
+            }
+
+            .mat-mdc-select-arrow {
+              background-image: url("../../../../assets/images/connector/open-select-arrow-blue.svg");
+              filter: brightness(1);
+            }
+          }
+        }
+      }
+
+      .hedge-status-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 0 34px;
+        border-bottom: 1px dashed #D8D8D8;
+        flex-wrap: wrap;
+
+        @media screen and (max-width:1440px) {
+          padding: 0 0 20px;
+        }
+
+        .hedge-info {
+          .title {
+            color: #000;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+
+            @media screen and (max-width:1024px) {
+              font-size: 14px;
+              line-height: 1.2;
+            }
+          }
+
+          .subtitle {
+            color: #56627D;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+
+            @media screen and (max-width:1024px) {
+              font-size: 12px;
+              line-height: 1.2;
+            }
+          }
+        }
+
+        .status-option {
+          display: flex;
+          gap: 9px;
+          align-items: center;
+          margin: 4px 0;
+
+          .status-box {
+            border-radius: 23px;
+            border: 1px solid #4B5563;
+            background: #F9FAFB;
+            padding: 7px 20px;
+
+            @media screen and (max-width:1024px) {
+              padding: 5px 10px;
+            }
+
+            label {
+              color: #4B5563;
+              font-size: 13px;
+              font-weight: 500;
+              line-height: 20px;
+              padding-left: 10px !important;
+            }
+
+            &.mat-mdc-checkbox-checked {
+              background-color: #EFF6FF;
+              border-color: #1D4ED8;
+
+              label {
+                color: #1D4ED8;
+              }
+            }
+          }
+        }
+      }
+
+      .actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin: 25px 0 0;
+
+        @media screen and (max-width:1440px) {
+          margin: 20px 0 0;
+        }
+
+        .btn-clear {
+          color: #2320E6;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 16px;
+          padding: 17px 26px;
+          background-color: transparent;
+
+          @media screen and (max-width:1024px) {
+            line-height: 1.2;
+            padding: 10px 20px;
+          }
+        }
+
+        .btn-save {
+          border-radius: 9px;
+          background: #1E1E1E;
+          color: #FFF;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 16px;
+          padding: 17px 26px;
+
+          @media screen and (max-width:1024px) {
+            line-height: 1.2;
+            padding: 10px 20px;
+          }
+        }
+      }
+    }
+
+    .mat-mdc-checkbox .mdc-checkbox {
+      .mdc-checkbox__background {
+        border-radius: 4px;
+        border-color: #D1D1D6 !important;
+      }
+
+      .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+      .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,
+      .mdc-checkbox__native-control[data-indeterminate=true]:enabled~.mdc-checkbox__background {
+        background-color: #1D4ED8 !important;
+        border-color: #1D4ED8 !important;
+      }
+
+      .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark {
+        color: $white !important;
+        width: 70% !important;
+
+        .mdc-checkbox__checkmark-path {
+          stroke-width: 3px !important;
+        }
+      }
+    }
+  }
+
+  .currency-filter-dropdown {
+    padding: 36px 0 21px !important;
+
+    @media screen and (max-width:767px) {
+      padding: 20px 0 !important;
+    }
+
+    .select-currency {
+      margin: 0;
+      padding: 0 22px 9px;
+      border-bottom: 1px dashed #d9dadd;
+      color: #111827;
+      font-family: $he_heebo;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+
+      @media screen and (max-width:767px) {
+        padding: 0 15px 9px;
+        font-size: 14px;
+      }
+    }
+
+    .search-field {
+      margin: 0;
+      padding: 0 22px 9px;
+      border-bottom: 1px dashed #d9dadd;
+      color: #9ca3af;
+      font-family: $he_heebo;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+
+      @media screen and (max-width:767px) {
+        font-size: 14px;
+        padding: 0 15px 9px;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        right: 17px;
+        background: url("../../../../assets/images/connector/beneficiary-search-icn.svg") center no-repeat;
+        background-size: contain;
+        z-index: 110;
+        width: 24px;
+        height: 24px;
+      }
+
+      .mat-select-search-input {
+        padding: 0;
+      }
+
+      .mat-select-search-inner {
+        padding: 0 22px;
+
+        input {
+          border: none;
+          padding: 0;
+        }
+      }
+    }
+
+    .mat-mdc-option {
+      min-height: 54px;
+      padding: 0 22px;
+      color: #4b5563;
+      font-family: $he_heebo;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: normal;
+      border-bottom: 1px dashed #d9dadd;
+
+      @media screen and (max-width:767px) {
+        padding: 0 15px;
+        min-height: 45px;
+        font-size: 14px;
+      }
+
+      .mat-pseudo-checkbox {
+        border-color: #6b7280 !important;
+        width: 16px !important;
+        height: 16px !important;
+        border-radius: 3px !important;
+
+        &::after {
+          width: 7px;
+          height: 3px;
+          top: -1px !important;
+          left: 0px !important;
+        }
+
+        @media screen and (max-width:767px) {
+          width: 14px !important;
+          height: 14px !important;
+          margin-right: 10px;
+
+          &::after {
+            top: -2px !important;
+          }
+        }
+      }
+
+      .mdc-list-item__primary-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .currency {
+          color: #4b5563;
+          font-family: $he_heebo;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: normal;
+        }
+
+        .currency-flag {
+          width: 27px;
+          height: auto;
+          margin: 0 0 0 auto;
+        }
+      }
+
+      &:hover,
+      &.mat-mdc-option-active {
+        background-color: transparent;
+      }
+    }
+
+    .select-footer {
+      text-align: center;
+      padding: 38px 0 0;
+
+      @media screen and (max-width:767px) {
+        padding: 30px 0 0;
+      }
+
+      .set-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 14px 24px;
+        border-radius: 24px;
+        background-color: #1d4ed8;
+        color: #fff;
+        font-family: $he_heebo;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.2;
+        margin: auto;
+      }
+    }
+  }
+
+  // custom calendar datepicker style
+  .payment-dashboard-calendar+.mat-datepicker-actions {
+    background-color: #f9fafb;
+    padding: 0 15px 29px 15px !important;
+  }
+
+  .mat-datepicker-content:has(mat-calendar.payment-dashboard-calendar) {
+    border-radius: 16px !important;
+  }
+
+  .mat-datepicker-content-container:has(mat-calendar.payment-dashboard-calendar) {
+    overflow: hidden;
+    border-radius: 16px !important;
+
+    .mat-datepicker-actions {
+      background-color: #f9fafb;
+      padding: 0 15px 29px 15px !important;
+    }
+
+    .payment-dashboard-calendar {
+      .mat-calendar-content {
+        .mat-calendar-table-header {
+          tr {
+            th {
+              span {
+                color: #1f1f1f;
+                text-align: center;
+                font-family: $he_heebo;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 20px;
+              }
+            }
+          }
+        }
+
+        .mat-calendar-body-cell-container {
+          .mat-calendar-body-in-range {
+            &::before {
+              background: transparent !important;
+            }
+
+            .mat-calendar-body-cell-content {
+              background-color: rgba(63, 81, 181, 0.2);
+              width: 54px !important;
+              border-radius: 0;
+
+              @media screen and (max-width: 480px) {
+                width: 49px !important;
+              }
+
+              @media screen and (max-width: 360px) {
+                width: 46px !important;
+              }
+
+              @media screen and (max-width: 320px) {
+                width: 40px !important;
+              }
+            }
+
+            &.mat-calendar-body-range-start {
+              .mat-calendar-body-cell-content {
+                border-top-left-radius: 6px;
+                border-bottom-left-radius: 6px;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+              }
+            }
+
+            &.mat-calendar-body-range-end {
+              .mat-calendar-body-cell-content {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                border-top-right-radius: 6px;
+                border-bottom-right-radius: 6px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .payment-dashboard-calendar {
+    width: 426px !important;
+    height: auto !important;
+    background-color: #f9fafb !important;
+
+    @media screen and (max-width: 479px) {
+      width: 360px !important;
+    }
+
+    @media screen and (max-width: 375px) {
+      width: 350px !important;
+    }
+
+    @media screen and (max-width: 360px) {
+      width: 342px !important;
+    }
+
+    @media screen and (max-width: 320px) {
+      width: 300px !important;
+    }
+
+    .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+      border-color: unset !important;
+      border-width: 0 !important;
+    }
+
+    .mat-calendar-table-header {
+      color: #1f1f1f;
+      text-align: center;
+      font-family: "Heebo";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+
+      th {
+        padding: 0 0 15px 0;
+        font-weight: 600;
+        font-family: "Heebo";
+        color: #1f1f1f;
+      }
+    }
+
+    .mat-calendar-body-cell {
+      color: #1f1f1f;
+      text-align: center;
+      font-family: "Heebo";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .mat-calendar-content {
+      padding: 0 24px 20px 24px;
+
+      @media screen and (max-width: 479px) {
+        padding: 0 10px;
+      }
+
+      .mat-calendar-body {
+        .mat-calendar-body-cell-container {
+          height: 44px;
+          max-height: 44px;
+          padding: 24px 25px 24px 25px !important;
+          @media screen and (max-width:1440px) {
+            padding: 22px !important;
+          }
+          @media screen and (max-width: 479px) {
+            padding: 0 !important;
+          }
+        }
+
+        .mat-calendar-body-label {
+          visibility: hidden;
+          padding: 0 0 0 0 !important;
+        }
+      }
+
+      .mat-calendar-table-header-divider {
+        display: none;
+      }
+
+      .mat-calendar-body-cell {
+        &:not(.mat-calendar-body-disabled) {
+          .mat-calendar-body-cell-content {
+            &:not(.mat-calendar-body-selected) {
+              color: #1f1f1f;
+            }
+          }
+        }
+      }
+
+      .mat-calendar-body-cell-content {
+        background-color: #fff;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 14px;
+        box-shadow: none;
+        height: 44px;
+        width: 50px;
+        box-shadow: 0px 1px 1px 0px rgba(0, 14, 51, 0.05);
+        &.mat-calendar-body-selected{
+          background-color:#3f51b5;
+        }
+        @media screen and (max-width: 1440px) {
+          height: 90%;
+        }
+
+        @media screen and (max-width: 479px) {
+          font-size: 12px;
+          width: 45px;
+        }
+
+        @media screen and (max-width: 320px) {
+          font-size: 12px;
+          width: 38px;
+          height: 38px;
+        }
+      }
+    }
+  }
+
+  .payment-calendar-apply-date-pc {
+    background-color: #1f2937;
+    width: 100%;
+    height: 38px;
+    border-radius: 50px;
+    margin: 0 42px;
+    padding: 8px 32px;
+    font-family: "Heebo";
+    color: #fff;
+    font-size: 16px;
+
+    @media screen and (max-width: 1440px) {
+      height: 40px;
+      font-size: 14px;
+    }
+  }
+
+  .payment-calendar-close-date-pc {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    img {
+      width: 45px;
+      height: 45px;
+
+      @media screen and (max-width:1440px) {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  .hedge-month-year-view-options-mv {
+    position: absolute !important;
+    max-height: max-content !important;
+    padding-right: 0 !important;
+    top:80px;
+    &.year {
+      right: -50px;
+    }
+    @media screen and (max-height:700px) {
+      top:-60px;
+      bottom: 0;
+    }
+    @media screen and (max-width:767px) {
+      left: 0 !important;
+      margin: auto !important;
+      top: 0;
+      bottom: 0;
+    }
+  }
+  .cdk-overlay-pane:has(.hedge-month-year-view-options-mv){
+    position: absolute !important;
+  }
+}

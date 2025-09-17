@@ -1,0 +1,157 @@
+@import "../../../../assets/scss/variable";
+
+::ng-deep {
+    .close-deal-sec {
+        padding: 43px 48px 24px 63px;
+        font-family: $he_heebo;
+
+        @media screen and (max-width:1024px) {
+            padding:25px;
+        }
+        @media screen and (max-width:767px) {
+            padding: 20px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            padding: 0;
+        }
+
+        .popup-header {
+            h2 {
+                color: #000;
+                font-family: 'Inter';
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 120%;
+                margin: 0 0 7px;
+                @media screen and (max-width:1024px) {
+                    font-size: 16px;
+                }
+            }
+            
+            p {
+                color: #000;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 120%;
+                margin: 0;
+            }
+        }
+        
+        .popup-content {
+            .deal-details {
+                padding:18px 0 11px;
+                border-top: 1px dashed #BEBEBE;
+                border-bottom: 1px dashed #BEBEBE;
+                margin: 17px 0 28px;
+                @media screen and (max-width:1024px) {
+                    padding: 10px 0;
+                    margin: 10px 0;
+                }
+                
+                .deal-row {
+                    display: flex;
+                    gap: 54px;
+                    justify-content: flex-start;
+                    align-items: center;
+                    text-align: left;
+                    @media screen and (max-width:1024px) {
+                        gap:20px
+                    }
+                    &:not(:last-child){
+                        margin: 0 0 13.5px;
+                        @media screen and (max-width:1024px) {
+                            margin: 0 0 5px;
+                        }
+                    }
+                    .label {
+                        color: #1F2937;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 20px;
+                        max-width:161px;
+                        width: 50%;
+                        @media screen and (max-width:1024px) {
+                            max-width: 120px;
+                        }
+                    }
+
+                    .value {
+                        color: #1F2937;
+                        font-size: 14px;
+                        font-weight: 700;
+                        line-height: 20px;
+                        &.profit {
+                            color: #16A34A;
+                        }
+                         &.loss {
+                            color: #DC2626; // red
+                        }
+                    }
+                }
+            }
+
+            .deal-terms {
+                text-align: left;
+                h3 {
+                    color: #374151;
+                    font-size: 12px;
+                    font-weight: 700;
+                    line-height: 18px;
+                    margin: 0 0 5px;
+                }
+
+                .terms-text {
+                    border-radius: 10px;
+                    background: #F6F6FE;
+                    max-height: 89px;
+                    padding: 13px 20px;
+                    overflow-y: auto;
+                    p {
+                        color: #6B7280;
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 18px;
+                        margin: 0;
+
+                        a {
+                            color: #1D4ED8;
+                            text-decoration: underline !important;
+                        }
+                    }
+                }
+            }
+
+            .popup-actions {
+                margin: 32px 0 0;
+                text-align: center;
+                @media screen and (max-width:1024px) {
+                    margin: 20px 0 0;
+                }
+                .confirm-btn {
+                    border-radius: 20px;
+                    background: #2320E6;
+                    padding: 10px 20px;
+                    color: #FFF;
+                    font-size: 12px;
+                    font-weight: 700;
+                    line-height: 18px;
+                    @media screen and (max-width:1024px) {
+                        padding: 10px;
+                    }
+                }
+
+                .offer-expiry {
+                    color: #000;
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 24px;
+                    margin: 9px 0 0;
+                }
+            }
+        }
+    }
+}

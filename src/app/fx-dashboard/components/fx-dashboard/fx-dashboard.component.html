@@ -1,0 +1,57 @@
+<div class="fx-dashboard-wrapper loader-wrapper">
+    <div class="fx-dashboard-body">
+        <div class="fx-dash-header">
+            <h2 class="title">FX Auto-Pilot</h2>
+            <div class="right-btns">
+                <button class="manage-deal" (click)="openManageHedgeDeals()"><img src="images/fx-dashboard/deal-icon.svg" alt="manage deals">Manage Deals</button>
+            </div>
+        </div>
+        <div class="fx-dash-content-wrapper">
+            <div class="fx-dash-left-container" id="autoPilotInitialTourStep" *ngIf="!isPayableProtectFilled && conversionData?.length == 0">
+                <div class="fx-dash-left-body">
+                    <div class="auto-pilot-top">
+                        <label class="fx-auto-pilot-label">
+                            <img src="images/info-circle-icon.svg">Every 10 minutes, a new automation starts
+                        </label>
+                        <div class="auto-pilot-anim-wrap">
+                            <img src="images/fx-dashboard/auto-pilot-center-bg.gif" alt="auto-pilot">
+                        </div>
+                    </div>
+                    <div class="auto-pilot-bottom">
+                        <div class="auto-pilot-wrap">
+                            <div class="btn-wrap">
+                                <button class="auto-pilot-btn" (click)="openFxErp()" id="enableAutoPilotTourStep">
+                                    <span>
+                                        <img src="images/fx-dashboard/sheild-icn.gif" alt="auto-pilot">
+                                        Enable <strong>Auto pilot</strong>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="auto-pilot-desc">
+                                Stop FX surprises - switch on, stay protected
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fx-dash-left-container" id="autoPilotInitialTourStep" *ngIf="isPayableProtectFilled || conversionData?.length > 0">
+                <div class="fx-dash-left-body">
+                    <div class="auto-pilot-list-banner">
+                        <div class="automation-msg">
+                            <img src="images/info-circle-icon.svg">Every 5 minutes, a new automation starts
+                        </div>
+                        <h4 class="title"><img src="images/fx-dashboard/sheild-icn.gif" alt="auto-pilot">Auto-pilot</h4>
+                    </div>
+                    <div class="fx-dash-list-wrap">
+                        <app-auto-pilot-list [conversionData]="conversionData"></app-auto-pilot-list>
+                    </div>
+                </div>
+            </div>
+            <div class="fx-dash-right-container" id="autoPilotChartTourStep">
+                <app-fx-protected-risk></app-fx-protected-risk>
+            </div>
+        </div>
+
+    </div>
+
+</div>
