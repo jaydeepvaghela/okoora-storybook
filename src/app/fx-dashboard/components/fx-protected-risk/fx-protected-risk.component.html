@@ -1,0 +1,90 @@
+<div class="protected-exposure-card loader-wrapper">
+    <div class="card-header">
+        <div class="title">Protected vs. Exposure</div>
+         <mat-select *ngIf="selectedTab === 0" [(value)]="selectedMonth"
+            class="month-select" panelClass="month-select-panel"
+            (selectionChange)="onMonthChange()">
+                <mat-option *ngFor="let month of next12Months" [value]="month.value">
+                    {{ month.label }}
+                </mat-option>
+            </mat-select>
+            <span class="year-label" *ngIf="selectedTab === 1">{{ currentYear }} - {{ currentYear + 1 }}</span>
+    </div>
+
+    <mat-tab-group (selectedIndexChange)="onTabChange($event)" class="toggle-tabs">
+        <mat-tab label="Monthly"></mat-tab>
+        <mat-tab label="Yearly"></mat-tab>
+    </mat-tab-group>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-row">
+            <label class="label protected">Protected {{ currentData?.protectedPercent}}%</label>
+            <span class="value protected"><img src="images/fx-dashboard/protected-icn.svg"> {{baseCurrencyWallet?.wallet_Currency?.sign}}{{
+                currentData?.protected | number }}</span>
+        </div>
+        <div class="stat-row un-protected">
+            <label class="label uncovered">Uncovered risk {{currentData?.unProtectedPercent}}%</label>
+            <span class="value uncovered"><img src="images/fx-dashboard/unprotected-icn.svg"> {{baseCurrencyWallet?.wallet_Currency?.sign}}{{
+                currentData?.unProtected | number }}</span>
+        </div>
+        <div class="stat-row total">
+            <label class="label">Total</label>
+            <span class="value" *ngIf="!showEditForm">{{baseCurrencyWallet?.wallet_Currency?.sign}}{{ currentData?.total | number }}
+                <button *ngIf="selectedTab === 0" class="btn-edit" (click)="editTotal()"><img src="images/fx-dashboard/round-edit-icn.svg"></button>
+            </span>
+            <div class="edit-form" *ngIf="showEditForm" >
+                <input placeholder="{{ baseCurrencyWallet?.wallet_Currency?.sign }}0.00" type="text" [(ngModel)]="editedTotal" class="edit-input">
+                <button class="btn-clear" (click)="clearTotal()"><img src="images/fx-dashboard/round-close-icn.svg"></button>
+                <button class="btn-save" (click)="saveTotal()"><img src="images/fx-dashboard/round-done-icn.svg"></button>
+            </div>
+        </div>
+            <p *ngIf="!isEditError" class="edit-error-msg">Unexpected error occurred, please try again later.</p>
+    </div>
+
+    <div class="chart-container" *ngIf="(chartOptionsCovered?.series?.[0] ?? 0) > 0 || (chartOptionsUncovered?.series?.[0] ?? 0) > 0">
+        <!-- Render the chart with higher % first (in background), then the smaller % (on top) -->
+        <ng-container *ngIf="showUncoveredFirst; else coveredFirst">
+            <apx-chart *ngIf="chartOptionsCovered?.series?.[0] > 0" [series]="chartOptionsCovered.series" [chart]="chartOptionsCovered.chart"
+                [plotOptions]="chartOptionsCovered.plotOptions" [labels]="chartOptionsCovered.labels"
+                [colors]="chartOptionsCovered.colors" [fill]="chartOptionsCovered.fill"
+                [stroke]="chartOptionsCovered.stroke" [ngClass]="'covered-risk'">
+            </apx-chart>
+
+            <apx-chart *ngIf="chartOptionsUncovered?.series?.[0] > 0" [series]="chartOptionsUncovered.series" [chart]="chartOptionsUncovered.chart"
+                [plotOptions]="chartOptionsUncovered.plotOptions" [labels]="chartOptionsUncovered.labels"
+                [colors]="chartOptionsUncovered.colors" [fill]="chartOptionsUncovered.fill"
+                [stroke]="chartOptionsUncovered.stroke" [ngClass]="'uncovered-risk'">
+            </apx-chart>
+        </ng-container>
+
+        <ng-template #coveredFirst>
+            <apx-chart *ngIf="chartOptionsUncovered?.series?.[0] > 0" [series]="chartOptionsUncovered.series" [chart]="chartOptionsUncovered.chart"
+                [plotOptions]="chartOptionsUncovered.plotOptions" [labels]="chartOptionsUncovered.labels"
+                [colors]="chartOptionsUncovered.colors" [fill]="chartOptionsUncovered.fill"
+                [stroke]="chartOptionsUncovered.stroke" [ngClass]="'uncovered-risk'">
+            </apx-chart>
+
+            <apx-chart *ngIf="chartOptionsCovered?.series?.[0] > 0" [series]="chartOptionsCovered.series" [chart]="chartOptionsCovered.chart"
+                [plotOptions]="chartOptionsCovered.plotOptions" [labels]="chartOptionsCovered.labels"
+                [colors]="chartOptionsCovered.colors" [fill]="chartOptionsCovered.fill"
+                [stroke]="chartOptionsCovered.stroke"  [ngClass]="'covered-risk'">
+            </apx-chart>
+        </ng-template>
+
+        <div class="centered-label">
+            <div class="percent-label">
+                <span class="caption">Uncovered risk</span>
+                <label class="percentage">{{ currentData?.unProtectedPercent }}%</label>
+            </div>
+            <!-- <button class="view-details-btn">View Details</button> -->
+        </div>
+    </div>
+    <!-- <div class="footer-stats">
+        <div class="growth">
+            <span class="arrow">▲</span>
+            <span class="text">+8% coverage since December</span>
+        </div>
+    </div> -->
+      <!-- <app-page-loader classes="bg-white section-loader" *ngIf="isLoading"></app-page-loader> -->
+</div>

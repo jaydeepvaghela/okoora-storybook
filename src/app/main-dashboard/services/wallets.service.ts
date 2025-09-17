@@ -218,7 +218,9 @@ export class WalletsService {
 
   private lengthValueSubject = new Subject<boolean>();
   lengthValue$ = this.lengthValueSubject.asObservable();
-  
+  allowedHedgeCurrencies$ = new BehaviorSubject<Set<string>>(new Set());
+  private balanceRefreshTrigger$ = new BehaviorSubject<boolean>(false);
+  balanceRefresh$ = this.balanceRefreshTrigger$.asObservable();
   constructor(public router: Router) { }
 
   setActiveWallet(wallet: WalletBalanceListModal) {
@@ -286,15 +288,17 @@ export class WalletsService {
   }
 
   setLengthValue(value: any) {
-        this.lengthValueSubject.next(value);
+    this.lengthValueSubject.next(value);
   }
 
+  triggerBalanceRefresh() {
+    this.balanceRefreshTrigger$.next(true);
+  }
 
-
- // Import your static balance list
+  // Import your static balance list
 
   getAllBalanceList() {
-      return of(balanceList as unknown as WalletBalanceListModal[]).pipe(
+    return of(balanceList as unknown as WalletBalanceListModal[]).pipe(
       map((data) => {
         data.sort((a, b) => b.wallet_Amount - a.wallet_Amount);
 

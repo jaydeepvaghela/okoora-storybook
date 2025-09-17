@@ -346,3 +346,16 @@ button{
 .mat-mdc-outlined-button {
   --mat-mdc-button-persistent-ripple-color: #fff;
 }
+.mat-pseudo-checkbox {
+    border: 1px solid #c6c8cc !important;
+    background: transparent !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+.mat-pseudo-checkbox::after {
+    color: #000000;
+    border-left: 1px solid var(--brand-primary-color) !important;
+    border-bottom: 1px solid var(--brand-primary-color) !important;
+    top: 5px !important;
+    left: 4px !important;
+}

@@ -12,9 +12,10 @@ import { ChangePasswordComponent } from './login/change-password/change-password
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { PaymentsDashboardComponent } from './payments/components/payments-dashboard/payments-dashboard.component';
 import { ContactsDashboardComponent } from './contacts-dashboard/contacts-dashboard.component';
+import { FxDashboardComponent } from './fx-dashboard/components/fx-dashboard/fx-dashboard.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'main-dashboard', pathMatch: 'full' as 'full' },
+  { path: '', redirectTo: 'fx-dashboard', pathMatch: 'full' as 'full' },
   { path: 'main-dashboard', component: MainDashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'payments', component: PaymentsDashboardComponent},
@@ -27,7 +28,8 @@ export const routes: Routes = [
   { path: 'cashflow', component: CashflowExposureSteppersComponent },
   { path: 'advanced-policy', component: AdvancedPolicyComponent },
   { path: 'contacts', component: ContactsDashboardComponent},
-  { path: '**', redirectTo: 'main-dashboard' },
+  { path: 'fx-dashboard', component: FxDashboardComponent},
+  { path: '**', redirectTo: 'fx-dashboard' },
 ];
 
 @NgModule({

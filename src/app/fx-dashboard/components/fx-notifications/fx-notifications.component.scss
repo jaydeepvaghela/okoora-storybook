@@ -1,0 +1,119 @@
+@import "../../../../assets/scss/variable";
+
+::ng-deep {
+    .fx-noti-list {
+        position: relative;
+
+        .fx-noti-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 19px 28px 18px 24px;
+            gap: 15px;
+            width: 100%;
+            border-radius: 3px;
+            opacity: 0.5;
+            background: linear-gradient(0deg, #FFF 0%, #FFF 100%), #FFFCEB;
+            box-shadow: 0px 98px 28px 0px rgba(0, 0, 0, 0.00), 0px 63px 25px 0px rgba(0, 0, 0, 0.01), 0px 35px 21px 0px rgba(0, 0, 0, 0.05);
+            position: absolute;
+            bottom: -10px;
+            transition: bottom 0.5s cubic-bezier(0.35, 0, 0.25, 1),
+                transform 0.5s cubic-bezier(0.35, 0, 0.25, 1),
+                opacity 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+            transform: translateY(0);
+            border-bottom: 2px solid transparent;
+            @media screen and (max-width:1440px) {
+                padding: 16px;
+                gap: 10px;
+            }
+            @media screen and (max-width:580px) {
+                gap: 5px;
+                flex-direction: column;
+                padding:10px;
+                align-items: flex-end;
+            }
+            &:nth-child(2) {
+                transform: scale(0.98);
+                bottom: -10px;
+            }
+
+            &:last-child {
+                transform: scale(0.96);
+                opacity: 0.3;
+                bottom: -20px;
+            }
+
+            &.active {
+                width: 100%;
+                border-radius: 6px;
+                opacity: 1;
+                background: #FFFEFA;
+                box-shadow: 0px 98px 28px 0px rgba(0, 0, 0, 0.00), 0px 35px 21px 0px rgba(0, 0, 0, 0.05);
+                position: relative;
+                bottom: 0;
+                z-index: 1;
+                &.notif-0 {
+                    border-bottom-color: #E6B800; // yellow
+                }
+                &.notif-1 {
+                    border-bottom-color: #47DB02; // green
+                }
+                &.notif-2 {
+                    border-bottom-color: #4F85FA; // blue
+                }
+            }
+
+
+
+            .noti-info {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+
+                img {
+                    width: 41px;
+                    height: auto;
+                    padding: 1.4px;
+                }
+
+                .fx-noti-info {
+                    .title {
+                        color: #374151;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 800;
+                        line-height: 20px;
+                        margin: 0;
+                    }
+
+                    .desc {
+                        color: #6B7280;
+                        font-family: $he_heebo;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 20px;
+                        margin: 0;
+                        @media screen and (max-width:767px) {
+                            font-size: 12px;
+                            line-height: 18px;
+                        }
+                    }
+                }
+            }
+
+            .btn-detail {
+                border-radius: 20px;
+                border: 1px solid #DBDBDB;
+                display: flex;
+                padding: 3px 10px;
+                text-align: center;
+                color: #000;
+                font-family: $he_heebo;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 18px;
+                white-space: nowrap;
+            }
+        }
+    }
+}

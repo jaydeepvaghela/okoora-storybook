@@ -1,0 +1,13 @@
+<div class="fx-noti-list">
+    <div class="fx-noti-item" *ngFor="let noti of notifications; let i = index;"
+        (click)="switchToTop(i)" [ngClass]="'notif-' + noti.origIndex" [class.active]="noti.id === activeId">
+        <div class="noti-info">
+            <img src="assets/images/fx-notification.gif" alt="notification" />
+            <div class="fx-noti-info">
+                <h3 class="title">{{ noti.title }}</h3>
+                <p class="desc" [innerHTML]="noti.desc"></p>
+            </div>
+        </div>
+        <button class="btn-detail" (click)="getAllNotifications()">All notifications</button>
+    </div>
+</div>
