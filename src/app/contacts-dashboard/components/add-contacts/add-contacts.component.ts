@@ -10,6 +10,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ContactSelectionComponent } from '../contact-selection/contact-selection.component';
 import { NewBenificiaryComponent } from '../new-benificiary/new-benificiary.component';
 import { GetBeneficiaryBankRequirements } from '../contacts-data/userData';
+import { NewPayerComponent } from '../new-payer/new-payer.component';
 
 @Component({
   selector: 'app-add-contacts',
@@ -22,7 +23,8 @@ import { GetBeneficiaryBankRequirements } from '../contacts-data/userData';
     MatProgressBarModule,
     MatStepperModule,
     ContactSelectionComponent,
-    NewBenificiaryComponent
+    NewBenificiaryComponent,
+    NewPayerComponent
   ],
   standalone: true
 })

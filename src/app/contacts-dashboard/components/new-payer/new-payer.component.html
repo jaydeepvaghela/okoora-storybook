@@ -1,0 +1,80 @@
+<div class="beneficiary-head" [ngStyle]="{'background-color':isSummaryPageInit == true ? '#F6F9FD' : '#fff'}">
+  <a class="dialog-brand" href="#" [ngStyle]="{'visibility':showProgressAndCurrencyTitle ? 'visible':'hidden'}">
+    <img [src]="isSubSite ? subsiteLogo : 'images/abcm-logo.svg'" 
+           [alt]="isSubSite ? isSubSite : 'abcm-logo'">
+  </a>
+  <div class="head-inner">
+    <span class="back-btn" (click)="prevStep()"
+      [ngStyle]="{'visibility':showProgressAndCurrencyTitle ? 'visible':'hidden'}">
+      <img src="images/beneficiary-back-icon.svg">
+    </span>
+    <h3 class="title" [ngStyle]="{'visibility':showProgressAndCurrencyTitle ? 'visible':'hidden'}">{{editPayer ? 'UPDATE' : 'ADD'}} NEW PAYER</h3>
+    <!-- <span class="close-icon" (click)="contactService?.openConfirmDialog()"  [ngStyle]="{'visibility':showProgressAndCurrencyTitle ? 'visible':'hidden'}"> -->
+      <span *ngIf="!lastscreenCloseIcon" class="close-icon" (click)="contactService?.openConfirmDialog()">
+      <img src="images/beneficiary-close.svg">
+    </span>
+    <span *ngIf="lastscreenCloseIcon" class="close-icon" (click)="lastScreenCloseIcon()">
+      <img src="images/beneficiary-close.svg">
+    </span>
+  </div>
+</div>
+
+<div class="isShowProgress" *ngIf="showProgressAndCurrencyTitle">
+  <div class="transfer-reason-steppers payer-steps" *ngIf="formStepper.selectedIndex === 0 || formStepper.selectedIndex === 1 ||
+  formStepper.selectedIndex === 2 || formStepper.selectedIndex === 3">
+    <div class="progress-bar">
+      <mat-progress-bar class="transfer-reason-loader" mode="determinate" [value]="progressWidth"></mat-progress-bar>
+    </div>
+    <ul class="transfer-menu">
+      <!-- (click)="navigateTOStepper(3)" -->
+      <li [class.activeMenu]="formStepper.selectedIndex === 0">Payer reason</li>
+      <li [class.activeMenu]="formStepper.selectedIndex === 1">Payer type</li>
+      <li [class.activeMenu]="formStepper.selectedIndex === 2">Review</li>
+      <li [class.activeMenu]="formStepper.selectedIndex === 3">Complete</li>
+    </ul>
+  </div>
+</div>
+<form [formGroup]="payerForm" (ngSubmit)="onSubmit()">
+  <mat-horizontal-stepper [ngStyle]="{'background-color':isSummaryPageInit == true ? '#F6F9FD' : '#fff'}" #formStepper
+    labelPosition="bottom" [linear]="false" (selectionChange)="onStepChangeEvent($event)"
+    (stepChange)="onStepChangeNewBenificiary($event)">
+    <mat-step label="Payer reason">
+      <app-new-payer-step-one [editPayer]="editPayer" [editPayerObj]="editPayerObj" [payerForm]="payerForm"
+        [newPayerReasonForm]="payerForm.get('newPayerReasonForm')"
+        [formStepper]="formStepper" *ngIf="formStepper.selectedIndex == 0" (nextStep)="goToNextStep(formStepper)" [stepIndex]="formStepper.selectedIndex"
+        (stepChanged)="onStepChange()"></app-new-payer-step-one>
+    </mat-step>
+
+    <!-- Step 2 -->
+    <mat-step label="Payer type">
+      <app-new-payer-step-two [uploadFileForm]="payerForm.get('uploadFileForm')" [editPayer]="editPayer" [editPayerObj]="editPayerObj" [payerForm]="payerForm"
+        [payerAccountDetail]="payerForm.get('payerAccountDetail')" [formStepper]="formStepper"
+        *ngIf="formStepper.selectedIndex == 1" (backStep)="goToPreviousStep(formStepper)" [stepIndex]="formStepper.selectedIndex"
+        (nextStep)="goToNextStep(formStepper)" (stepChanged)="onStepChange()">
+      </app-new-payer-step-two>
+    </mat-step>
+
+    <!-- Step 3 -->
+    <mat-step label="Review">
+      <app-new-payer-step-three [stepIndex]="formStepper.selectedIndex" [uploadFileForm]="payerForm.get('uploadFileForm')"
+        *ngIf="formStepper.selectedIndex === 2" (backStep)="goToPreviousStep(formStepper)"
+        [payerAccountDetail]="payerForm.get('payerAccountDetail')"
+        [editPayer]="editPayer" [editPayerObj]="editPayerObj"
+        (nextStep)="goToNextStep(formStepper)" (stepChanged)="onStepChange()" [payerForm]="payerForm"
+        [newPayerReasonForm]="payerForm.get('newPayerReasonForm')"
+        [formStepper]="formStepper"></app-new-payer-step-three>
+    </mat-step>
+
+    <!-- Step 4 -->
+    <mat-step label="Complete">
+      <app-new-payer-summary-step [payerAccountDetail]="payerForm.get('payerAccountDetail')" [uploadFileForm]="payerForm.get('uploadFileForm')" [stepIndex]="formStepper.selectedIndex" [countryList]="countryList"
+      *ngIf="formStepper.selectedIndex === 3" (backStep)="goToPreviousStep(formStepper)" (stepChanged)="onStepChange()" [payerForm]="payerForm"
+        [formStepper]="formStepper"></app-new-payer-summary-step>
+      <!-- <p>Content for Complete</p>
+    <div>
+      <button mat-button matStepperPrevious>Previous</button>
+      <button mat-button>Finish</button>
+    </div> -->
+    </mat-step>
+  </mat-horizontal-stepper>
+</form>

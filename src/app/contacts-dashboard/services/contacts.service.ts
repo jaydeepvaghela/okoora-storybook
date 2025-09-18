@@ -1,10 +1,10 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, tap } from 'rxjs';
 import { BenificiaryModel } from '../models/BenificiaryModel';
 // import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { user } from '../components/contacts-data/userData';
+import { getBankNumberList, getBranchNumberList, user } from '../components/contacts-data/userData';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Injectable({
@@ -344,14 +344,112 @@ export class ContactsService {
     this.setStateAndCityRes.next(stateCityRes)
   }
 
-  // getBankNumberList() {
-  //   return this.dataService.getRequest<{ result: any }>(ApiMap.getBankNUmberList.url);
-  // }
+  getBankNumberList() {
+    return of(getBankNumberList);
+  }
 
-  // getBranchNumberList(bank_Code: string) {
-  //   const url = ApiMap.getBranchNumberList.url.replace('[bank_Code]', bank_Code);  // Use the correct placeholder
-  //   return this.dataService.getRequest<{ result: any }>(url);
-  // }
+  getBranchNumberList(bank_Code: string) {
+    return of(getBranchNumberList)
+  }
+
+  restrictNameWhiteSpace(event: any) {
+    const inputValue = event.target.value;
+
+    // Prevent the first space if input is empty or starts with a space
+    if (event.keyCode === 32 && inputValue.length === 0) {
+      event.preventDefault();
+      return;
+    }
+
+    // Prevent consecutive spaces
+    if (event.keyCode === 32 && inputValue.endsWith(' ')) {
+      event.preventDefault();
+      return;
+    }
+
+    // Prevent two spaces after a word
+    if (event.keyCode === 32 && /\s$/.test(inputValue)) {
+      event.preventDefault();
+      return;
+    }
+
+    // Allow only letters (uppercase and lowercase) and spaces
+    if (event.keyCode !== 32 && !/[a-zA-Z]/.test(event.key) && event.keyCode !== 8) {
+      event.preventDefault();
+      return;
+    }
+  }
+
+  restrictNameOnPaste(event: ClipboardEvent, type: string) {
+    const clipboardData = event.clipboardData || (window as any).clipboardData;
+    const pastedText = clipboardData.getData('text');
+
+    let sanitizedText = '';
+
+    if (type === 'letters') {
+      sanitizedText = pastedText
+        .replace(/^\s+/, '') // Remove leading spaces
+        .replace(/\s{2,}/g, ' ') // Replace consecutive spaces
+        .replace(/[^a-zA-Z\s]/g, '') // Allow only letters and spaces
+        .trim(); // Remove trailing spaces
+    } else {
+      sanitizedText = pastedText
+        .replace(/^\s+/, '') // Remove leading spaces
+        .replace(/\s{2,}/g, ' ') // Replace consecutive spaces
+        .replace(/[^a-zA-Z0-9\s]/g, '') // Allow letters, numbers, and spaces
+        .trim(); // Remove trailing spaces
+    }
+
+    event.preventDefault();
+
+    const inputElement = event.target as HTMLInputElement;
+    const currentValue = inputElement.value;
+
+    // Combine the existing value and sanitized pasted text
+    let combinedValue =
+      currentValue.substring(0, inputElement.selectionStart || 0) +
+      sanitizedText +
+      currentValue.substring(inputElement.selectionEnd || 0);
+
+    combinedValue = combinedValue
+      .replace(/^\s+/, '') // Remove leading spaces
+      .replace(/\s{2,}/g, ' ') // Replace consecutive spaces
+      .replace(/[^a-zA-Z0-9\s]/g, '') // Ensure only valid characters
+      .trim(); // Remove trailing spaces
+
+    // Update the input field's value
+    inputElement.value = combinedValue;
+
+    // **Trigger the native input event**
+    const inputEvent = new Event('input', { bubbles: true, cancelable: true });
+    inputElement.dispatchEvent(inputEvent); // Simulate the input event
+  }
+
+  restrictWhiteSpaceWithAlphnumeric(event: any) {
+    const inputValue = event.target.value;
+
+    if (event.keyCode === 32 && inputValue.length === 0) {
+      event.preventDefault();
+      return;
+    }
+
+    // Prevent consecutive spaces
+    if (event.keyCode === 32 && inputValue.endsWith(' ')) {
+      event.preventDefault();
+      return;
+    }
+
+    // Prevent two spaces after a word
+    if (event.keyCode === 32 && /\s$/.test(inputValue)) {
+      event.preventDefault();
+      return;
+    }
+
+    // Allow only letters (both upper and lower case), numbers, and spaces inside the text
+    if (event.keyCode !== 32 && !/[a-zA-Z0-9]/.test(event.key) && event.keyCode !== 8) {
+      event.preventDefault(); // Prevent non-alphanumeric characters (except backspace)
+    }
+  }
   // EmbeddedSca_clientId(){
   //   return environment.EmbeddedKYCAWClientId;
   // }

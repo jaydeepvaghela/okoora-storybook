@@ -1,0 +1,204 @@
+{
+  "KYC": {
+    "Continue": "Continue",
+    "ContinueLogin": "Continue to login",
+    "Login": "Log in",
+    "confirmation_incorrect": "Confirmation code is incorrect",
+    "try_again": "Try again",
+    "createAccount": "Click here to create password",
+    "PassedLimitTitle": "Too Many Attempts",
+    "PassedLimitParagraph": "Sorry! you have reached our limit for the number of times you can request a verification code. You can try again in 10 minutes",
+    "alreadyHaveAccount": "Already have an account?",
+    "SignIn": "Sign in",
+    "FAQ": "FAQ"
+  },
+  "fields": {
+    "private_email": "Your email",
+    "company_email": "Your work email",
+    "signup_with_email": "Sign up with email",
+    "email_disclaimer_1": "By confirming your email, you agree to our ",
+    "email_disclaimer_2": "Terms of Service,",
+    "email_disclaimer_3": " and that you have read and understood our ",
+    "email_disclaimer_4": "Privacy Policy.",
+    "code_hasnt_arrived_tooltip": "If code hasn't arrived Make sure you have entered the correct email address. Check your spam folder.",
+    "phone_code": "Code",
+    "phone_num": "Mobile phone number",
+    "phone_code_hasnt_arrived_tooltip": "If code hasn't arrived You might be experiencing mobile network issues, check network settings on your phone.",
+    "create_pass": "Create password",
+    "create_pass_hint": "Enter your password",
+    "confirmPassword": "Confirm password",
+    "pass_must_have": "Your password must have:",
+    "pass_must_have_lower_case_letter": "a minimum of 1 lower case letter [a-z]",
+    "pass_must_have_upper_case_letter": "a minimum of 1 upper case letter [A-Z]",
+    "pass_must_have_more_chars": "8 or more characters",
+    "pass_must_have_numbers": "Numbers",
+    "pass_must_have_letters": "Letters",
+    "pass_must_have_special_characters": "Special characters",
+    "first_name": "Legal first name",
+    "first_name_he": "First Name in Hebrew",
+    "last_name": "Legal last name",
+    "last_name_he": "Last Name in Hebrew",
+    "id_number": "Legal ID number",
+    "birth_date": "Birth date",
+    "country": "Country",
+    "street_address": "Street address",
+    "apartment_num": "Apartment number",
+    "city": "City",
+    "state": "State or province",
+    "zipcode": "ZIP code",
+    "city_he": "City in Hebrew",
+    "street_he": "Street in Hebrew"
+  },
+  "KYC_Step_1": {
+    "title": "Open a new account",
+    "p_1": "",
+    "p_2": "Select your account type:",
+    "companyAcc": {
+      "title": "I want to create a company account",
+      "description": "Business activity under a legal entity such as a Enterprise; Company; Institutions; Licensed / Tiny Dealer; Association, etc",
+      "field_label": "Country of incorporation"
+    },
+    "privateAcc": {
+      "title": "I want to create a private account",
+      "description": "A private person who operates independently and personally not in a business setting",
+      "field_label": "Country of residence",
+      "id_file": "Upload ID / Driving License / Passport file",
+      "country_not_from_israel": "We are sorry, private registration is currently not available in this country"
+    },
+    "invitedAcc": {
+      "title": "I was invited to join a company",
+      "description": "You received an invitation to join a company’s account"
+    }
+  },
+  "KYC_Step_2": {
+    "titlePrivate": "Enter your email",
+    "titleCompany": "Enter your work email",
+    "OfakimEmailInUseTitle": "Existing Profile Alert",
+    "OfakimEmailInUse": "Hi. Your email address already exists in the system. Please log in with your regular credentials and continue your registration process from the system.",
+    "OfakimEmailInUseLogIn": "Log In",
+    "p_1": "We need an email address that is not already used for another account.",
+    "p_2": ""
+  },
+  "KYC_Step_3": {
+    "title": "Confirm your email",
+    "p_1": "Check your spam folder and the spelling of your email address.",
+    "p_2": "Incorrect email?",
+    "edit_email": "Edit email address",
+    "enter_code": "Enter code from email",
+    "code_not_arrived": "Code hasn't arrived?",
+    "resend_code": "Re-send code",
+    "you_can_retry": "You can retry"
+  },
+  "KYC_Step_4": {
+    "title": "Enter your phone number",
+    "p_1": "We will only use this number for account setup and for security purposes, such as two-factor authentication. We do not share personal information with third parties.",
+    "p_2": ""
+  },
+  "KYC_Step_5": {
+    "title": "Confirm your phone number",
+    "p_1": "We've sent you a confirmation code via SMS.",
+    "p_2": "Wrong number?",
+    "edit_phone": "Edit",
+    "enter_code": "Enter confirmation code from SMS"
+  },
+  "KYC_Step_6": {
+    "title": "Create your password",
+    "p_1": "Create a strong password and keep it secure.",
+    "p_2": ""
+  },
+  "KYC_Step_7": {
+    "title": "Personal details",
+    "p_1": "As stated on your official ID. We will need your name to verify your identity.",
+    "p_2": "",
+    "id_duplication": "ID exists in system!",
+    "id_length": "ID length must be 9 digits",
+    "verified": "User has been verified successfully!",
+    "unverified": "User couldn't be verified, please make sure you upload a clear and legible document!"
+  },
+  "KYC_Step_8": {
+    "title": "Home address",
+    "p_1": "By law, we require your home address to open your account.",
+    "p_2": ""
+  },
+  "EMAIL_VERIFICATION": {
+    "title": "Confirm your email",
+    "p_1": "Check your spam folder and the spelling of your email address.",
+    "p_2": "Incorrect email?",
+    "edit_email": "Edit email address",
+    "enter_code": "Enter code from email",
+    "code_not_arrived": "Code hasn't arrived?",
+    "resend_code": "Re-send code",
+    "you_can_retry": "You can retry"
+  },
+  "MONTH_SELECTION": {
+    "MONTH_0": "January",
+    "MONTH_1": "February",
+    "MONTH_2": "March",
+    "MONTH_3": "April",
+    "MONTH_4": "May",
+    "MONTH_5": "June",
+    "MONTH_6": "July",
+    "MONTH_7": "August",
+    "MONTH_8": "September",
+    "MONTH_9": "October",
+    "MONTH_10": "November",
+    "MONTH_11": "December"
+  },
+  "FORMS_ERRORS": {
+    "MaxLength": {
+      "maximum": "Maximum"
+    },
+    "MinLength": {
+      "minmum": "Minimum",
+      "chars_required": "characters are required."
+    },
+    "chars_allowed": "characters are allowed.",
+    "field_is_required": "This field is required",
+    "invalid_format": "Invalid format",
+    "white_space_not_allowed": "White spaces are not allowed",
+    "email_not_valid": "email is not valid",
+    "future_date": "Date must be a future date.",
+    "api_error": "Network error.",
+    "min_amount_should_be": "Minimum amount should be",
+    "max_amount_should_be": "Maximum amount should be",
+    "password_not_Equivalent": "Password not equivalent",
+    "countryNotFound": "Search not found",
+    "en_pattern": "Only English letters, numbers, and the characters are allowed",
+    "matDatepickerParse": "Date is invalid",
+    "only_english_and_numbers_and_space": "Only English letters and numbers are allowed.",
+    "only_english_characters": "Only English letters are allowed.",
+    "not_valid_id_number": "The ID number you have entered isn't a valid one.",
+    "password_special_characters": "One of the characters entered is invalid",
+    "minAnnualAmount": "You must enter a new annual amount that is higher than this amount:",
+    "mustBeMultipliedBy": "The amount should be in multiples of",
+    "fileNotSupported": "The uploaded file type is not supported.",
+    "fileSizeNotAllowed": "The file is too large. allowed maximum size is",
+    "fileSizeExceedsForUpload": "The uploaded file exceeds the maximum size limit of 5 MB. Please choose a smaller file.",
+    "FileDoesntUpload": "Upload failed. The file upload is taking too long. Please check your internet connection and try again.",
+    "invalidStakeInCompany": "Invalid stake in the company",
+    "FileUploadedSuccessfully": "File uploaded successfully!"
+  },
+  "NEW_BENEFICIARY_PAYMENT_REASONS": {
+    "CompanyStocks": "Invest in company stocks",
+    "RealEstateAbroad": "Invest in real estate abroad",
+    "OtherAssetsAbroad": "Invest in other assets abroad",
+    "CompanyOwnerLoan": "Company owner loan",
+    "CapitalRefund": "Return of investment fund (with accountant approval)",
+    "PartnershipInvest": "Partnership Invest",
+    "OptionsInvestments": "Invest in options",
+    "UpTo250k": "Transfer for services up to 250k",
+    "ServicesOver250k": "Transfer for services over 250k",
+    "TourismServices": "Tourism services",
+    "ThirdPartyTransfer": "Third Party Transfer",
+    "TransportationServicesOverseas": "Transportation services overseas",
+    "RequestForAlimony": "Advertising abroad",
+    "Salaries": "Salaries ILS only",
+    "EducationAbroad": "Education abroad",
+    "RelativeAbroad": "Relative residing overseas",
+    "InBoarderTransfer": "Transfer to an Israeli resident, to an Israeli bank only",
+    "CrossBoarderTransfer": "Transfer to my account abroad",
+    "Other": "Other",
+    "ImportOfGoodsNotIncludingBooks": "Import of goods not including books",
+    "SoftwareDevelopmentOrOnlineServices": "Software development or online services"
+  }
+}
