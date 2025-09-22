@@ -6,6 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectSearchComponent } from '../../../shared/components/mat-select-search/mat-select-search.component';
 import { LottieComponent } from 'ngx-lottie';
+import { customerSupplierList } from '../../../fx-dashboard/components/fx-dashboard-data/customer-supplier-list';
 
 export default {
   title: 'FX ERP Connection/Invoice Step 10',
@@ -25,7 +26,7 @@ export const Default: StoryObj<FxErpInvoiceStep10Component> = {
   args: {
     stepper: mockStepper as any,
     autoPilotForm: undefined,
-    erpCustomerSuppliersList: [],
+    erpCustomerSuppliersList: customerSupplierList,
     walletList: [],
   },
 };

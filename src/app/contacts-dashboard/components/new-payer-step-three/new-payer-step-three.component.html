@@ -1,0 +1,153 @@
+<div class="payer-upload-two-files-container">
+  <form [formGroup]="uploadFileForm" class="loader-wrapper">
+
+    <ng-template #InvoiceTooltip>
+      <div class="tt-desc">
+        <b>What it is:</b>
+        <p>A bill indicating payment for goods or services.</p>
+        <br>
+        <b>Why we need it:</b>
+        <p>This helps verify the transaction is linked to genuine goods or services, reducing risks of fraudulent
+          activities.</p>
+      </div>
+    </ng-template>
+    <ng-template #InvestmentContractTooltip>
+      <div class="tt-desc">
+        <b>What it is:</b>
+        <p>A document detailing the terms of your investment.</p>
+        <br>
+        <b>Why we need it:</b>
+        <p>If your deposit relates to an investment, this helps us validate the source and purpose of funds, ensuring
+          compliance with financial regulations.</p>
+      </div>
+    </ng-template>
+    <ng-template #TaxAuthorityTooltip>
+      <div class="tt-desc">
+        <b>What it is:</b>
+        <p>A statement from your bank confirming account ownership.</p>
+        <br>
+        <b>Why we need it:</b>
+        <p>This document allows us to verify the legitimacy of the
+          transaction and comply with tax authority requirements.</p>
+      </div>
+    </ng-template>
+    <ng-container *ngIf="selectedPaymentReason !== 4">
+      <div class="upload-invoice-info">
+        <h5 class="title">Upload Document</h5>
+        <p class="desc">Document uploads are required to verify the payer’s identity and ensure compliance.</p>
+      </div>
+      <div class="upload-file-wrap">
+        <div class="first-second-file-container" [class.upfiles]="fileArray && fileArray.length !== 0">
+          <ng-container *ngIf="fileArray.length > 0 ">
+            <div class="upload-invoice-card">
+              <ngx-dropzone [multiple]="false" accept=".pdf, .gif, .jpg, .png, .jpeg"
+                *ngFor="let f of fileArray;let i = index " class="drop-zone"
+                (change)="onBeneficiaryFileChange($event , uploadedfile[i].type ,i)">
+                <ngx-dropzone-preview class="drop-zone-preview" [removable]="true">
+                  <ngx-dropzone-label class="file-set">
+                    <div class="progress-wrap"
+                      [ngClass]="[fileUploadErrors[i] ? 'has-error': '', cancelUpload[i] ? 'has-error canceled' :'']">
+                      <h3 class="tag-name">{{NewPayerDocTypeName[uploadedfile[i].type]}}</h3>
+                      <div class="progress-wrap-inner">
+                        <div class="file-name">
+                          <img src="images/check-circle.svg"
+                            *ngIf="!fileUploadErrors[i] && uploadProgressArray[i] === 100 && !cancelUpload[i]">
+                          <div class="file-data">
+                            <h4 class="title">File Name <span> {{fileArray?.[i]?.name}}</span></h4>
+                          </div>
+                        </div>
+                        <div class="file-upload-sec">
+                          <div class="progress-inner">
+                            <mat-progress-bar class="file-upload-loader" mode="determinate"
+                              [value]="uploadProgressArray[i]"></mat-progress-bar>
+                            <button class="close-btn" *ngIf="uploadProgressArray[i] != 100 && !fileUploadErrors[i]"
+                              (click)="stopUploadFile($event, i)">
+                              <img src="images/close_progress.svg">
+                            </button>
+                            <img *ngIf="cancelUpload[i]" src="images/rerun-file-icon.svg">
+                            <p class="file-progress" *ngIf="uploadProgressArray[i] != 100 && !fileUploadErrors[i]">{{
+                              uploadProgressArray[i] }}%</p>
+                            <button *ngIf="uploadProgressArray[i] === 100 || fileUploadErrors[i] && !cancelUpload[i]"
+                              class="btn-replace">
+                              Replace
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="error-msg" *ngIf="fileUploadErrors[i]">
+                      <img class="country-image" src="images/red-warning-icon.svg"> {{fileUploadErrors[i]}}
+                    </div>
+                    <div class="error-msg" *ngIf="cancelUpload[i]">
+                      <img class="country-image" src="images/red-warning-icon.svg"> Upload canceled. Click
+                      <span>here</span> to retry.
+                    </div>
+                  </ngx-dropzone-label>
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+
+            </div>
+          </ng-container>
+          <ng-container>
+            <div class="upload-invoice-card" *ngFor="let type of beneficiaryObjectForFilelength let i = index ">
+              <img src="images/tooltip-icon.svg" *ngIf="type == 1" [ngbTooltip]="InvoiceTooltip"
+                placement="bottom-right" tooltipClass="payer-tooltip--rm2" alt="more-info" class="tool-icn">
+              <img src="images/tooltip-icon.svg" *ngIf="type == 2" [ngbTooltip]="InvestmentContractTooltip"
+                placement="bottom-right" tooltipClass="payer-tooltip--rm2" alt="more-info" class="tool-icn">
+              <img src="images/tooltip-icon.svg" *ngIf="type == 4" [ngbTooltip]="TaxAuthorityTooltip"
+                placement="bottom-right" tooltipClass="payer-tooltip--rm2" alt="more-info" class="tool-icn">
+              <ngx-dropzone id="uploadInvoice_step1" [multiple]="false" enctype="multipart/form-data" class="drop-zone"
+                (change)="onFileSelect($event,type, i)" accept=".pdf, .gif, .jpg, .png, .jpeg">
+                <ngx-dropzone-label class="file-select">
+                  <p class="upload-info"><span class="top-info"><span>Drag your</span> <span><b>
+                          {{NewPayerDocTypeName[type]}}</b>
+                        here</span></span> <span class="browse">
+                      or <button class="btn-select-file">browse</button></span>
+                  </p>
+                </ngx-dropzone-label>
+              </ngx-dropzone>
+            </div>
+          </ng-container>
+        </div>
+        <div class="file-desc">
+          <span class="file-type">File supported: pdf, gif, jpg, png, jpeg</span>
+          <span class="file-size">Max file: 5MB</span>
+        </div>
+        <div class="error-msg" *ngIf="fileIsRequired">
+          <img class="country-image" src="images/red-warning-icon.svg"> {{fileIsRequired}}
+        </div>
+        <!-- <div class="btn-sec">
+          <button class="upload-btn" [class.disable]="hasUploadErrors()" (click)="upload()" *ngIf="isUploadBtnDisplay"
+            [disabled]="hasUploadErrors()">
+            Upload
+          </button>
+        </div> -->
+      </div>
+    </ng-container>
+
+    <form [formGroup]="payerAccountDetail" class="note-section-container" *ngIf="selectedPaymentReason == 4">
+      <div class="upload-invoice-info">
+        <h5 class="title">Please note</h5>
+        <p class="desc">Please provide further information on the payment reason.</p>
+      </div>
+
+      <section class="note-section-wrapper">
+        <div class="reason-title-wrapper">
+          <label for="payment-reason" class="reason-label">Tell us the reason</label>
+          <img src="images/tooltip-icon.svg" [ngbTooltip]="paymentReasonTooltip" placement="auto"
+            tooltipClass="payer-tooltip--rm" alt="more-info" class="tool-icn">
+        </div>
+        <textarea formControlName="foundsSourceDetails" class="reason-text-area" id="payment-reason"
+          placeholder="That payment is for..."></textarea>
+      </section>
+      <ng-template #paymentReasonTooltip>
+        Briefly explain the purpose or reason for this payment
+      </ng-template>
+    </form>
+    <button class="btn-finish" [class.disable]="hasUploadErrors()" (click)="finishAndReview()">Finish &
+      Review</button>
+  </form>
+  <p *ngIf="errMsg" class="error-msg">
+    <img class="country-image" src="images/red-warning-icon.svg"> {{errMsg}}
+  </p>
+</div>

@@ -10,6 +10,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ContactSelectionComponent } from '../contact-selection/contact-selection.component';
 import { NewBenificiaryComponent } from '../new-benificiary/new-benificiary.component';
 import { GetBeneficiaryBankRequirements } from '../contacts-data/userData';
+import { NewPayerComponent } from '../new-payer/new-payer.component';
 
 @Component({
   selector: 'app-add-contacts',
@@ -22,11 +23,11 @@ import { GetBeneficiaryBankRequirements } from '../contacts-data/userData';
     MatProgressBarModule,
     MatStepperModule,
     ContactSelectionComponent,
-    NewBenificiaryComponent
-  ],
-  standalone: true
+    NewBenificiaryComponent,
+    NewPayerComponent
+  ]
 })
-export class AddContactsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class AddContactsComponent implements OnInit, OnDestroy {
   @ViewChild('formStepper') formStepper!: MatStepper;
   @Input('awBeneficiaryDetailsObj') awBeneficiaryDetailsObj: any
 
@@ -724,23 +725,6 @@ export class AddContactsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.newBenificiaryStep2Values = formData;
   }
 
-  ngOnDestroy(): void {
-    if (this.getBeneficiaryDataForEdit$) {
-      this.getBeneficiaryDataForEdit$.unsubscribe();
-    }
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
-  }
-
-  ngAfterViewInit(): void {
-    // if (this.isNonIsraeliUser) {
-    //   if (this.formStepper) {
-    //     this.benificiaryForm.get('type')?.get('ContactType')?.patchValue('beniciary');
-    //     this.editBeneficiary = true;
-    //   }
-    // }
-  }
-
   getBenificiaryBankRequirement(beneficiaryForEdit: any) {
     let BeneficiaryAccountType : any;
     let BeneficiaryBankAccountDetails : any;
@@ -1111,5 +1095,14 @@ export class AddContactsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.IsBankDetailObjForEdit[key] = false;
     });
   }
+
+  ngOnDestroy(): void {
+    if (this.getBeneficiaryDataForEdit$) {
+      this.getBeneficiaryDataForEdit$.unsubscribe();
+    }
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
 
 }
