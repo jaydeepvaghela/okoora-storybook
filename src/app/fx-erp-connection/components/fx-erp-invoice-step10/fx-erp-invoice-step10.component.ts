@@ -132,7 +132,7 @@ export class FxErpInvoiceStep10Component implements OnInit {
     //       this.isLoading = false;
     //     },
     //   });
-      // this.stepper.selectedIndex = InvoiceSteps.IndexNine;
+      this.stepper.selectedIndex = InvoiceSteps.IndexNine;
   }
 
   // to filter the list
