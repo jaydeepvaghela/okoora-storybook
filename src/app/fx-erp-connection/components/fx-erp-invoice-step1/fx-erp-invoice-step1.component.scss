@@ -1,0 +1,392 @@
+@import "../../../../assets/scss/variable";
+
+::ng-deep {
+  .auto-pilot-container {
+    display: flex;
+    align-items: center;
+    gap: 21px;
+    height: 100vh;
+    max-height: 918px;
+    font-family: $he_heebo;
+
+    @media screen and (max-width:1440px) {
+      max-height: calc(100vh - 50px);
+    }
+
+    @media screen and (min-width: 768px) and (orientation: portrait) {
+        max-height: 46vh;
+    }
+
+    @media screen and (max-width:767px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .left-panel {
+      display: flex;
+      align-items: center;
+      background: url(../../../../assets/images/fx-erp/fx-erp-step-left-bg.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100%;
+      background-position: center;
+      width: 100%;
+      max-width: 484px;
+      border-radius: 10px;
+
+      @media screen and (max-width:1199px) {
+        max-width: 350px;
+      }
+
+      @media screen and (max-width:991px) {
+        max-width: 250px;
+      }
+
+      @media screen and (max-width:767px) {
+        max-width: 100%;
+        max-height: max-content;
+      }
+
+      .info-sec {
+        padding: 0 89px;
+
+        @media screen and (max-width:1199px) {
+          padding: 0 40px;
+        }
+
+        @media screen and (max-width:991px) {
+          padding: 0 30px;
+        }
+
+        @media screen and (max-width:767px) {
+          padding: 30px;
+        }
+
+        .title {
+          color: #FFF;
+          font-size: 60px;
+          font-weight: 700;
+          line-height: 72px;
+          letter-spacing: -1.2px;
+          margin: 0;
+
+          @media screen and (max-width:1440px) {
+            font-size: 50px;
+            line-height: 1.2;
+          }
+
+          @media screen and (max-width: 1199px) {
+            font-size: 40px;
+          }
+
+          @media screen and (max-width:1024px) {
+            font-size: 30px;
+          }
+
+          @media screen and (max-width:991px) {
+            font-size: 25px;
+          }
+
+          @media screen and (max-width:767px) {
+            font-size: 20px;
+
+            br {
+              display: none;
+            }
+          }
+
+          @media screen and (max-width:580px) {
+            font-size: 18px;
+          }
+
+        }
+
+        .desc {
+          color: #05F2F2;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 30px;
+          margin: 0;
+
+          @media screen and (max-width: 1199px) {
+            font-size: 18px;
+            line-height: 1.2;
+          }
+
+          @media screen and (max-width:1024px) {
+            font-size: 16px;
+          }
+
+          @media screen and (max-width:991px) {
+            font-size: 14px;
+          }
+
+          @media screen and (max-width:767px) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .right-panel {
+      background: url(../../../../assets/images/fx-erp/fx-erp-step-right-bg.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      overflow-y: auto;
+
+      .inner-wrap {
+        max-width: 563px;
+        margin: 91px auto 0;
+
+        @media screen and (max-width:1440px) {
+          max-width: 400px;
+        }
+
+        @media screen and (max-width:1199px) {
+          margin: 120px auto 20px;
+        }
+
+        @media screen and (max-width:991px) {
+          margin: 90px auto 20px;
+        }
+
+        @media screen and (max-width:767px) {
+          margin: 90px 20px 20px;
+        }
+
+        .detail-wrap {
+          display: flex;
+          align-items: flex-start;
+          gap: 13px;
+          padding: 0 0 60px;
+          border-bottom: 1px dashed #DBDBDB;
+
+          @media screen and (max-width:1440px) {
+            padding: 0 0 20px;
+            gap: 10px;
+          }
+
+          @media screen and (max-width:991px) {
+            padding: 0 0 15px;
+          }
+
+          img {
+            width: 30px;
+            height: auto;
+
+            @media screen and (max-width:1440px) {
+              width:18px;
+            }
+          }
+
+          .info {
+            .title {
+              color: #111827;
+              font-size: 22px;
+              font-weight: 700;
+              line-height: 120%;
+              margin: 0 0 10px;
+
+              @media screen and (max-width:1440px) {
+                font-size:18px;
+                line-height: 1.2;
+                margin: 0 0 5px;
+              }
+
+              @media screen and (max-width:767px) {
+                font-size: 16px;
+              }
+
+              span {
+                color: #ABB5C5;
+                font-weight: 400;
+              }
+            }
+
+            .desc {
+              color: #4B5563;
+              font-size: 16px;
+              font-weight: 500;
+              line-height: 25px;
+              margin: 0;
+
+              @media screen and (max-width:1440px) {
+                font-size: 14px;
+                line-height: 20px;
+              }
+
+              @media screen and (max-width:767px) {
+                font-size: 12px;
+                line-height: 1.2;
+              }
+            }
+          }
+        }
+
+        .benefits {
+          padding: 44px 0 0 43px;
+
+          @media screen and (max-width:1440px) {
+            padding:20px 0 0 35px;
+          }
+
+          @media screen and (max-width:991px) {
+            padding: 15px 0 0 30px;
+          }
+
+          @media screen and (max-width:767px) {
+            padding: 15px 0 0 30px;
+          }
+
+          .title {
+            color: #111827;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 120%;
+            margin: 0 0 7px;
+
+            @media screen and (max-width:1440px) {
+              font-size: 18px;
+              line-height: 1.2;
+              margin: 0 0 5px;
+            }
+
+            @media screen and (max-width:767px) {
+              font-size: 16px;
+            }
+          }
+
+          .benef-list {
+            padding: 0;
+            margin: 0;
+
+            li {
+              padding: 10px 15px 10px 0;
+              display: flex;
+              gap: 5px;
+              align-items: center;
+              color: #111827;
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 30px;
+
+              @media screen and (max-width:1440px) {
+                padding:0;
+                line-height: 1.2;
+              }
+
+              @media screen and (max-width:991px) {
+                padding: 5px 5px 0 0;
+              }
+
+              @media screen and (max-width:767px) {
+                img {
+                  width: 20px;
+                }
+              }
+            }
+          }
+        }
+
+        .activate-pilot-wrap {
+          max-width: max-content;
+          margin: 41px auto 10px;
+
+          @media screen and (max-width:1440px) {
+            margin: 10px auto;
+          }
+
+          .desc {
+            text-align: center;
+            color: #111827;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            margin: 0;
+          }
+
+          .btn-wrap {
+            width: 140px;
+            height: 140px;
+            border-radius: 95px;
+            border: 1px solid rgba(225, 229, 249, 0.60);
+            padding: 5px;
+            margin: 14px auto 18px;
+
+            .auto-pilot-btn {
+              width: 100%;
+              height: 100%;
+              border-radius: 95px;
+              border: 6px solid rgba(225, 229, 249, 0.60);
+              background: linear-gradient(142deg, #2320E6 13.79%, #12108E 113.12%);
+              box-shadow: 0px 5px 28px 0px rgba(13, 52, 206, 0.1), 0px 14px 26px 0px rgba(13, 52, 206, 0.33), 0px 36px 22px 0px rgba(13, 52, 206, 0.1), 0px 16px 16px 0px rgba(13, 52, 206, 0.17);
+              display: flex;
+              align-items: flex-start;
+              justify-content: center;
+              padding: 20px 0 0;
+
+              &:hover {
+                background: url(../../../../assets/images/fx-dashboard/auto-pilot-btn-hover.svg);
+                background-position: center;
+              }
+
+              span {
+                color: #FFF;
+                text-align: center;
+                font-family: $he_heebo;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                img {
+                  margin: 0 0 6px;
+                  width: 19px;
+                  height: 24px;
+                }
+              }
+            }
+
+            @media screen and (max-width:1440px) {
+              width: 120px;
+              height: 120px;
+              padding: 4px;
+
+              .auto-pilot-btn {
+                border-width: 4px;
+
+                span {
+                  font-size: 16px;
+                  line-height: 1;
+
+                  img {
+                    margin: 0 0 3px;
+                    width: 16px;
+                    height: auto;
+                  }
+                }
+              }
+            }
+          }
+
+          .note {
+            color: #6B7280;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 20px;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<div class="set-rules-container">
+  <!-- Left Panel -->
+  <div class="snackbar-container" *ngIf="!isERPConnected">
+    <div class="content">
+      <img src="images/fx-erp/check-done.svg" alt="Success" class="snackbar-icon" />
+      <div class="info">
+        <h4 class="title">Your ERP is connected</h4>
+        <p class="message">Now you can set rules </p>
+      </div>
+    </div>
+    <img src="images/fx-erp/erp-close-icn.svg" alt="close" (click)="closeMsg()" class="snackbar-icon" />
+  </div>
+  <div class="left-panel">
+    <div class="info-sec">
+      <h1 class="title">Set your <br>rules</h1>
+      <p class="desc">Choose what to protect and how — your auto-pilot, your way.</p>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <!-- back / close -->
+    <button class="back-btn" type="button" (click)="onBack()">Back</button>
+    <div class="content">
+      <!-- <div class="label-with-tooltip">
+        <img src="/images/fx-erp/erp-invoice-icn.svg" alt="invoice" />
+        <span>Invoices / Bills</span>
+      </div> -->
+
+      <h3 class="heading">Define Auto-Pilot rules</h3>
+
+      <!-- ERP Image Preview -->
+      <img src="images/fx-erp/erp-set-up-rules-banner.svg" class="erp-preview" alt="ERP preview" />
+
+      <div class="steps">
+        <p class="step-title">Step 2: How to define your rules</p>
+        <ul>
+          <li><span>1. Select a category to protect ERP data</span> - Protect invoices and/or bills.</li>
+          <li><span>2. Select currencies</span> - Protect cross-border transactions</li>
+          <li><span>3. Set amount range</span> - Transactions in this range (e.g., $1,000–$25,000) will be protected</li>
+          <li><span>4. Select due term</span> - Only those transactions (e.g., Net 30/60/90) will be protected</li>
+          <li><span>5. Exclude contacts</span> - Their transactions won’t be auto-protected</li>
+        </ul>
+      </div>
+
+      <!-- Connect Button -->
+      <button class="connect-btn" (click)="onNext()">Define rules</button>
+
+    </div>
+  </div>
+</div>

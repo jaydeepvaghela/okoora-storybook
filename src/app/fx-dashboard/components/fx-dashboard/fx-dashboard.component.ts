@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ManageHedgeDealsComponent } from '../manage-hedge-deals/manage-hedge-deals.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 // import { FxErpStepperComponent } from 'src/app/fx-erp-connection/components/fx-erp-stepper/fx-erp-stepper.component';
 // import { OnboardingService } from 'src/app/common/services/onboarding.service';
@@ -13,6 +12,8 @@ import { defaultCurrency } from '../../../main-dashboard/dashboard-data/default-
 import { CommonModule } from '@angular/common';
 import { AutoPilotListComponent } from '../auto-pilot-list/auto-pilot-list.component';
 import { FxProtectedRiskComponent } from '../fx-protected-risk/fx-protected-risk.component';
+import { FxErpStepperComponent } from '../../../fx-erp-connection/components/fx-erp-stepper/fx-erp-stepper.component';
+import { getConversionRules } from '../fx-dashboard-data/conversionRules';
 // import { AuthenticationService } from 'src/app/auth/services/authentication.service';
 // import { AuthGuard } from 'src/app/core/services/guards/auth.guard';
 // import { DashboardService } from 'src/app/dashboard/services/dashboard.service';
@@ -205,16 +206,16 @@ export class FxDashboardComponent {
   }
 
   getFxConversionRulesData() {
-    // this._fxDashboardService.getFxConversionRules()
-    //   .pipe(takeUntil(this.unSubScribe$))
-    //   .subscribe({
-    //     next: (result: any) => {
-    //       this.conversionData = result;
-    //     },
-    //     error: (err: any) => {
-    //       console.error('Error fetching conversion rules:', err);
-    //     }
-    //   });
+    of(getConversionRules)
+      .pipe(takeUntil(this.unSubScribe$))
+      .subscribe({
+        next: (result: any) => {
+          this.conversionData = result;
+        },
+        error: (err: any) => {
+          console.error('Error fetching conversion rules:', err);
+        }
+      });
   }
 
   isCurrencyAllowed(code: string): boolean {
@@ -267,19 +268,20 @@ export class FxDashboardComponent {
       disableClose: true,
     });
   }
-  openFxErp() {
-    // this.dialog.open(FxErpStepperComponent, {
-    //   width: '100vw',
-    //   height: '100vh',
-    //   maxWidth: '1627px',
-    //   maxHeight: '966px',
-    //   panelClass: 'fx-erp-dialog',
-    //   disableClose: true,
-    // }).afterClosed().subscribe(res => {
-    //   if (res && res === 'fromConversion') {
-    //     this.getFxConversionRulesData();
-    //   }
-    // });
+  async openFxErp() {
+    // const { FxErpStepperComponent } = await import('../../../fx-erp-connection/components/fx-erp-stepper/fx-erp-stepper.component');
+    this.dialog.open(FxErpStepperComponent, {
+      width: '100vw',
+      height: '100vh',
+      maxWidth: '1627px',
+      maxHeight: '966px',
+      panelClass: 'fx-erp-dialog',
+      disableClose: true,
+    }).afterClosed().subscribe(res => {
+      if (res && res === 'fromConversion') {
+        this.getFxConversionRulesData();
+      }
+    });
   }
 
   ngOnDestroy() {

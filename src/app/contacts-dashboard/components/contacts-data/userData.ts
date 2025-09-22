@@ -48,7 +48,7 @@ export const user = {
     isAuthorizedForWebApi: false,
     sourceAccount: null,
     isAutomatedHedging: true,
-    isPayableProtectFilled: true,
+    isPayableProtectFilled: false,
     isERPConnected: 1,
     exposureType: "invoice"
   };

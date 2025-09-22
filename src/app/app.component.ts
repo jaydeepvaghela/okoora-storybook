@@ -3,6 +3,8 @@ import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./risk-dashboard/components/header/header.component";
 import { SidebarComponent } from "./risk-dashboard/components/sidebar/sidebar.component";
 import { CommonModule } from '@angular/common';
+import { of, take } from 'rxjs';
+import { user } from './contacts-dashboard/components/contacts-data/userData';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +29,9 @@ export class AppComponent {
     if (!this.isLoggedInUser) {
       this.router.navigate(['/login']);
     } else {
+      of(user).pipe(take(1)).subscribe((res: any) => {
+        localStorage.setItem('user', JSON.stringify(res)); 
+      });
       this.router.navigate(['/fx-dashboard']);
     }
   }
