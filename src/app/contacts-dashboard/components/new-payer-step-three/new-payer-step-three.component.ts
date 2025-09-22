@@ -108,7 +108,7 @@ export class NewPayerStepThreeComponent implements OnInit {
 
   getPaymentReason() {
     this.payerService.getPayerObjectForFile.pipe(takeUntil(this.unSubScribe$)).subscribe((data) => {
-      this.selectedPaymentReason = data?.savePayerRes.paymentReason;
+      this.selectedPaymentReason = data?.savePayerRes?.paymentReason;
     });
     
     this.fileArray = [];
@@ -141,7 +141,7 @@ export class NewPayerStepThreeComponent implements OnInit {
       });
     } else {
       this.payerService.getPayerObjectForFile.pipe(takeUntil(this.unSubScribe$)).subscribe((data) => {
-        this.selectedPaymentReason = data?.savePayerRes.paymentReason;
+        this.selectedPaymentReason = data?.savePayerRes?.paymentReason;
         this.beneficiaryObjectForFile = data;
         this.beneficiaryObjectForFilelength = this.beneficiaryObjectForFile?.type;
       });

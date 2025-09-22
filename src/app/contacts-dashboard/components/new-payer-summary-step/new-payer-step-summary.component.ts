@@ -4,7 +4,6 @@ import { FormGroup } from '@angular/forms';
 import { PayerPaymentReason } from '../../enums/PayerPaymentReason';
 import { NgbTooltip, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { PayerService } from '../../services/payer.service';
-import { AddContactsComponent } from '../add-contacts/add-contacts.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -146,10 +145,11 @@ export class NewPayerSummaryStepComponent {
     }
   }
 
-  createBeneficiaryDialog() {
+  async createBeneficiaryDialog() {
     this.contactService.closeAllDialog();
     this.contactService.setNewPayerStepperIndexFromSummary(0);
-    const dialogRef = this.dialog.open(AddContactsComponent, {
+    const { AddContactsComponent } = await import('../add-contacts/add-contacts.component');
+    this.dialog.open(AddContactsComponent, {
       width: '100vw',
       maxWidth: '100vw',
       disableClose: true,
