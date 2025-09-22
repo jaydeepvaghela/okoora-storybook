@@ -7,7 +7,7 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrls: ['./fx-erp-invoice-step4.component.scss']
 })
 export class FxErpInvoiceStep4Component implements OnInit {
-  sessionWindow: Window | null;
+  sessionWindow: Window | null | undefined;
   @Input() stepper!: MatStepper; 
 
   ngOnInit() {
