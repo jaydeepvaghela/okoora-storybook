@@ -13,10 +13,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// const MockRouter = {
-//   navigate: () => Promise.resolve(true),
-//   url: '/payer'
-// };
+const MockRouter = {
+  navigate: () => Promise.resolve(true),
+  url: '/payer'
+};
 
 // AoT requires an exported function for factories
 function HttpLoaderFactory(http: HttpClient) {
@@ -51,7 +51,7 @@ export default {
       providers: [
         ContactsService,
         PayerService,
-        // { provide: Router, useValue: MockRouter }
+        { provide: Router, useValue: MockRouter }
       ]
     }),
   ],

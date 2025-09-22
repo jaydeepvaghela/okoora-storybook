@@ -25,10 +25,9 @@ import { NewPayerComponent } from '../new-payer/new-payer.component';
     ContactSelectionComponent,
     NewBenificiaryComponent,
     NewPayerComponent
-  ],
-  standalone: true
+  ]
 })
-export class AddContactsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class AddContactsComponent implements OnInit, OnDestroy {
   @ViewChild('formStepper') formStepper!: MatStepper;
   @Input('awBeneficiaryDetailsObj') awBeneficiaryDetailsObj: any
 
@@ -726,23 +725,6 @@ export class AddContactsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.newBenificiaryStep2Values = formData;
   }
 
-  ngOnDestroy(): void {
-    if (this.getBeneficiaryDataForEdit$) {
-      this.getBeneficiaryDataForEdit$.unsubscribe();
-    }
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
-  }
-
-  ngAfterViewInit(): void {
-    // if (this.isNonIsraeliUser) {
-    //   if (this.formStepper) {
-    //     this.benificiaryForm.get('type')?.get('ContactType')?.patchValue('beniciary');
-    //     this.editBeneficiary = true;
-    //   }
-    // }
-  }
-
   getBenificiaryBankRequirement(beneficiaryForEdit: any) {
     let BeneficiaryAccountType : any;
     let BeneficiaryBankAccountDetails : any;
@@ -1113,5 +1095,14 @@ export class AddContactsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.IsBankDetailObjForEdit[key] = false;
     });
   }
+
+  ngOnDestroy(): void {
+    if (this.getBeneficiaryDataForEdit$) {
+      this.getBeneficiaryDataForEdit$.unsubscribe();
+    }
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
 
 }
