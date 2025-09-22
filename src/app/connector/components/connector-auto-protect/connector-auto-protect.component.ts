@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -8,13 +8,20 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
   styleUrls: ['./connector-auto-protect.component.scss'],
   imports:[MatDialogModule,CommonModule]
 })
-export class ConnectorAutoProtectComponent {
-  autoProtect: any;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<ConnectorAutoProtectComponent>) {
-    this.data = data;
+export class ConnectorAutoProtectComponent implements OnInit, OnChanges {
+  @Input() data: any;
+  autoProtect: boolean = false;
+  constructor(@Inject(MAT_DIALOG_DATA) public injectedData: any, private dialogRef: MatDialogRef<ConnectorAutoProtectComponent>) {
+    // Prefer Storybook args (data input) if present, else fallback to injectedData
+    this.data = this.data || injectedData;
   }
   ngOnInit() {
-    this.autoProtect = this.data?.isAutoProtectEnabled;
+    this.autoProtect = this.data?.isAutoProtectEnabled ?? false;
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['data'] && changes['data'].currentValue) {
+      this.autoProtect = changes['data'].currentValue.isAutoProtectEnabled ?? false;
+    }
   }
   confirm(result: boolean) {
     this.dialogRef.close({ confirmed: result });

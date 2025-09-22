@@ -1,4 +1,4 @@
-<div class="protected-exposure-card loader-wrapper">
+<div class="protected-exposure-card loader-wrapper mt-3">
     <div class="card-header">
         <div class="title">Protected vs. Exposure</div>
          <mat-select *ngIf="selectedTab === 0" [(value)]="selectedMonth"
@@ -11,7 +11,7 @@
             <span class="year-label" *ngIf="selectedTab === 1">{{ currentYear }} - {{ currentYear + 1 }}</span>
     </div>
 
-    <mat-tab-group (selectedIndexChange)="onTabChange($event)" class="toggle-tabs">
+    <mat-tab-group [selectedIndex]="selectedTab" (selectedIndexChange)="onTabChange($event)" class="toggle-tabs">
         <mat-tab label="Monthly"></mat-tab>
         <mat-tab label="Yearly"></mat-tab>
     </mat-tab-group>

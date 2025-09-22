@@ -45,14 +45,28 @@ export class FxProtectedRiskComponent {
 
   isYearly: boolean = false;
   private readonly _onDestroy = new Subject<void>();
-  currentData!: any;
+  currentData: any = {
+    protectedPercent: 10.0,
+    protected: 95336.14,
+    unProtectedPercent: 90.0,
+    unProtected: 904663.86,
+    total: 1000000.00,
+  };
+
+  yearlyData: any = {
+    protectedPercent: 90.0,
+    protected: 904663.86,
+    unProtectedPercent: 10.0,
+    unProtected: 95336.14,
+    total: 1000000.00,
+  };
   isLoading: boolean = false;
   selectedMonth: string = '';
   selectedTab = 0;
   selectedMonthFirstDate: string = '';  // store the first date (YYYY-MM-DD)
   next12Months: { label: string; value: string }[] = [];
   unSubScribe$ = new Subject<void>();
-  baseCurrencyWallet: any;
+  baseCurrencyWallet: any = { wallet_Currency: { sign: '₪' } };
   walletList: any[] = [];
   showEditForm!: boolean;
   currentYear!: number;
@@ -62,6 +76,15 @@ export class FxProtectedRiskComponent {
   constructor(private readonly fxDashboardService: FxDashboardService, private _walletService: WalletsService, private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    // If chart options AND currentData are provided (e.g., from Storybook), use them directly
+    if (
+      this.chartOptionsCovered &&
+      this.chartOptionsUncovered &&
+      this.currentData
+    ) {
+      // Do not override Storybook args
+      return;
+    }
     const currentMonth = moment().format('MMMM');  // e.g., 'July'
     this.selectedMonth = currentMonth;
     this.updateNext12Months();
@@ -82,10 +105,22 @@ export class FxProtectedRiskComponent {
     this.selectedTab = index;
     if (index === 0) {
       this.isYearly = false;
-      // this.getYearlyExposureDetails();
+      this.currentData = {
+        protectedPercent: 10.0,
+        protected: 95336.14,
+        unProtectedPercent: 90.0,
+        unProtected: 904663.86,
+        total: 1000000.00,
+      };
     } else {
       this.isYearly = true;
-      // this.getYearlyExposureDetails();
+      this.currentData = {
+        protectedPercent: 90.0,
+        protected: 904663.86,
+        unProtectedPercent: 10.0,
+        unProtected: 95336.14,
+        total: 1000000.00,
+      };
     }
     if (localStorage.getItem('defaultCurrency')) {
       this.getYearlyExposureDetails();
@@ -157,7 +192,7 @@ export class FxProtectedRiskComponent {
     const date = new Date();
     const firstDateOfMonth = moment(date).startOf('month').format('YYYY-MM-DD');
     this.isLoading = true;
-   of(getMonthlyExposureData)
+    of(this.selectedTab == 0 ? getMonthlyExposureData : this.yearlyData)
       .pipe(takeUntil(this._onDestroy))
       .subscribe((res) => {
         if (res) {

@@ -8,7 +8,9 @@
         padding: 20px 20px 35px 30px;
         height: 100%;
         font-family: $he_heebo;
-
+        max-width: 387px;
+        position: relative;
+        margin: auto;
         @media screen and (max-width:1440px) {
             padding: 20px;
         }

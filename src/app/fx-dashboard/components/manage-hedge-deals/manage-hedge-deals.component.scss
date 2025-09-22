@@ -307,6 +307,13 @@
     }
 
     .hedge-table {
+      &.tableScroll,
+      &.table-responsive {
+        overflow: auto;
+        max-height: 500px;
+        width: 100%;
+        display: block;
+      }
       border-radius: 10px;
       border: 1px solid #DFEAFB;
       background: #FBFCFE;

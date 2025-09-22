@@ -1,4 +1,3 @@
-
 import { ChangeDetectorRef, Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -25,6 +24,7 @@ import { ManageDealsSubtableComponent } from '../manage-deals-subtable/manage-de
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 interface HedgeDeal {
   id: number;
@@ -85,7 +85,7 @@ export const CUSTOM_DATE_FORMATS: MatDateFormats = {
     ]),
   ],
   imports: [
-    FormsModule, CommonModule, SafeValuePipe, MatTableModule, ManageDealsSubtableComponent, MatMenuModule, MatSelectModule, NgbPagination,MatDialogModule
+    FormsModule, CommonModule, SafeValuePipe, MatTableModule, ManageDealsSubtableComponent, MatMenuModule, MatSelectModule, NgbPagination,MatDialogModule, MatExpansionModule
   ]
 })
 export class ManageHedgeDealsComponent implements OnInit {
@@ -302,11 +302,10 @@ export class ManageHedgeDealsComponent implements OnInit {
         data.mainHedgeDealDto?.isProfit,
         data.mainHedgeDealDto?.canCloseDeal
       ];
-      return values.some(val => (val !== undefined && val !== null && val.toString().toLowerCase().includes(filter)));
+      return values.some(val => (val !== undefined && val !== null && val.toString().toLowerCase()?.includes(filter)));
     };
   }
 
-  // (Removed duplicate getHedgeDealsTableWithRelatedDeal and expandRelatedDeal methods, and duplicate wallet/dataSource setup)
   // set page data 
   setPageData() {
     const startIndex = (this.page - 1) * this.pageSize;
@@ -462,7 +461,7 @@ export class ManageHedgeDealsComponent implements OnInit {
         if (shouldReload == 'completedSend') {
           let activeWallet: any = localStorage.getItem('activeWallet');
           let currency = JSON.parse(activeWallet);
-          this.activeCurrencyListFilter = this.walletList.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase().includes(currency?.wallet_Currency?.code?.toLowerCase()));
+          this.activeCurrencyListFilter = this.walletList.filter((option: any) => option?.wallet_Currency?.code?.toLowerCase()?.includes(currency?.wallet_Currency?.code?.toLowerCase()));
           this._walletService.setCurrentCurrencyData(this.activeCurrencyListFilter);
           this.child?.getAllData();
         }

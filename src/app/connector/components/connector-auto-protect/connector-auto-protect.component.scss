@@ -15,7 +15,9 @@ sans-serif;
 
     .auto-protect-modal {
         padding: 32px 40px;
-
+        max-width: 465px;
+        position: relative;
+        margin: auto;
         .close-button {
             padding: 0;
             position: absolute;
