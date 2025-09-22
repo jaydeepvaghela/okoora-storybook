@@ -1,0 +1,78 @@
+<div class="onboarding-container">
+    <!-- ░░ LEFT PANEL ░░ -->
+    <div class="left-panel">
+        <div class="info-sec">
+            <h2 class="title">Choose your <br />protection <br />window</h2>
+            <p class="desc">Lock in rates ahead of time and <br />avoid market surprises.</p>
+        </div>
+    </div>
+    <!-- ░░ RIGHT PANEL ░░ -->
+    <div class="right-panel">
+        <!-- back / close -->
+        <div class="top-row">
+            <button class="back-btn" type="button" (click)="onBack()">Back</button>
+            <ul class="stepper-steps">
+                <li class="active"></li>
+                <li class="active"></li>
+                <li class="active"></li>
+                <li class="active"></li>
+                <li></li>
+            </ul>
+        </div>
+        <!-- main copy & form -->
+        <div class="content">
+            <!-- <div class="label">
+                <img src="images/fx-erp/erp-invoice-icn.svg" alt="invoice" />
+                <span>Invoices / bills</span>
+            </div> -->
+
+            <h3 class="heading">When should we start protecting your transactions?</h3>
+            <p class="description">
+                We’ll automatically protect any transaction that’s due within the time you choose. <br>Choosing 30 days means
+                we’ll scan every day for transactions due in the next 30 days <br>and protect them automatically.
+            </p>
+
+            <div class="erp-mperiod">
+                <img src="images/fx-erp/erp-month-period-img.svg" alt="month-icon" />
+            </div>
+
+            <div class="due-date-protection">
+                <label class="title">
+                    Protect all transactions with a due date within the next:
+                    <img src="images/info-circle-icon.svg" class="info-icon" placement="auto" tooltipClass="fx-duedate-ttp" [ngbTooltip]="fxDueDateTooltip">
+                </label>
+
+                <ng-template #fxDueDateTooltip>
+                    <div class="protection-options-card">
+                        <div class="protection-option" *ngFor="let item of protectionOptions">
+                            <div class="option-description">{{ item.description }}</div>
+                            <div class="option-label">{{ item.label }}</div>
+                        </div>
+                    </div>
+                </ng-template>
+                <form [formGroup]="autoPilotForm">
+                <mat-radio-group class="button-radio-group" formControlName="InvoiceBillMaxDuePeriod">
+                    <mat-radio-button class="button-radio" *ngFor="let option of dueDateOptions" [value]="option.value">
+                        {{ option.label }}
+                    </mat-radio-button>
+                </mat-radio-group>
+                </form>
+            </div>
+
+
+            <!-- Tip Box -->
+            <div class="tip-box">
+                <img src="images/fx-erp/erp_info.svg" alt="info" />
+                <div>
+                    <strong>Pro tip</strong><br />
+                    <span>We’ll constantly check for new transactions inside your selected window
+                        and protect them automatically.</span>
+                </div>
+            </div>
+            <!-- Continue Button -->
+            <div class="continue-btn-container">
+                <button class="continue-btn" type="button" (click)="onNext()">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>

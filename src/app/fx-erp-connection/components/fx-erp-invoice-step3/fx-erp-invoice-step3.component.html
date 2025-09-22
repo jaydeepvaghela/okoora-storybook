@@ -1,0 +1,48 @@
+<div class="link-your-invoice-container">
+  <!-- Left Panel -->
+  <div class="left-panel">
+    <div class="info-sec">
+      <h2 class="title">Link your <br />invoices</h2>
+      <p class="desc">One connection, full protection.</p>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right-panel">
+<!-- back / close -->
+        <div class="top-row">
+            <button class="back-btn" type="button" (click)="onBack()">Back</button>
+        </div>
+    <div class="content">
+      <!-- <div class="label-with-tooltip">
+        <img src="images/fx-erp/erp-invoice-icn.svg" alt="invoice" />
+        <span>Invoices / Bills</span>
+      </div> -->
+
+      <h3 class="heading">How to set the auto-pilot?</h3>
+
+      <!-- ERP Image Preview -->
+      <img src="images/fx-erp/erp-link-invoice-banner.svg" class="erp-preview" alt="ERP preview" />
+
+      <div class="steps">
+        <h3>Step 1: Connect Your ERP</h3>
+        <p>To activate Auto-Pilot, we’ll sync with your data — safely and securely.</p>
+        <ul>
+          <li>Pick your ERP (like Xero, Storybook, etc.)</li>
+          <li>Log in with your ERP credentials</li>
+          <li>Approve the connection</li>
+          <li>That’s it — you’re synced</li>
+        </ul>
+      </div>
+
+      <!-- Connect Button -->
+      <button class="connect-btn" (click)="connectToERP()">Connect to ERP</button>
+
+      <!-- Disclaimer -->
+      <p class="disclaimer">
+        <img src="images/fx-erp/erp-lock.svg" alt="lock" />
+        We never touch your data — we only read what’s needed to protect your FX.
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,373 @@
+@import "../../../../assets/scss/variable";
+
+.choose-pilot-container {
+  display: flex;
+  height: calc(100vh - 48px);
+  max-height: 918px;
+  gap: 21px;
+  font-family: $he_heebo;
+
+  @media screen and (max-width: 1440px) {
+    max-height: calc(100vh - 50px);
+  }
+
+  @media screen and (min-width: 768px) and (orientation: portrait) {
+    max-height: 46vh;
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .left-panel {
+    display: flex;
+    align-items: center;
+    background: url(../../../../assets/images/fx-erp/fx-erp-step-left-bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-position: center;
+    width: 100%;
+    max-width: 484px;
+    border-radius: 10px;
+
+    @media screen and (max-width: 1199px) {
+      max-width: 350px;
+    }
+
+    @media screen and (max-width: 991px) {
+      max-width: 250px;
+    }
+
+    @media screen and (max-width: 767px) {
+      max-width: 100%;
+      max-height: max-content;
+    }
+
+    .info-sec {
+      padding: 0 20px 0 89px;
+
+      @media screen and (max-width: 1199px) {
+        padding: 0 40px;
+      }
+
+      @media screen and (max-width: 991px) {
+        padding: 0 30px;
+      }
+
+      @media screen and (max-width: 767px) {
+        padding: 30px;
+      }
+
+      .title {
+        color: #fff;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 72px;
+        letter-spacing: -1.2px;
+        margin: 0;
+
+        @media screen and (max-width:1440px) {
+          font-size: 50px;
+          line-height: 1.2;
+        }
+
+        @media screen and (max-width: 1199px) {
+          font-size: 40px;
+        }
+
+        @media screen and (max-width:1024px) {
+          font-size: 30px;
+        }
+
+        @media screen and (max-width:991px) {
+          font-size: 25px;
+        }
+
+        @media screen and (max-width:767px) {
+          font-size: 20px;
+
+          br {
+            display: none;
+          }
+        }
+
+        @media screen and (max-width:580px) {
+          font-size: 18px;
+        }
+      }
+
+      .desc {
+        color: #05F2F2;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 30px;
+        margin: 0;
+
+        @media screen and (max-width: 1199px) {
+          font-size: 18px;
+          line-height: 1.2;
+        }
+
+        @media screen and (max-width:1024px) {
+          font-size: 16px;
+        }
+
+        @media screen and (max-width:991px) {
+          font-size: 14px;
+        }
+
+        @media screen and (max-width:767px) {
+          font-size: 12px;
+
+          br {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  // Right Panel
+  .right-panel {
+    padding: 40px 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: url(../../../../assets/images/fx-erp/fx-erp-step-right-bg1.svg);
+    background-position: bottom;
+    background-size: cover;
+    width: 100%;
+    overflow-y: auto;
+
+    .top-row {
+      .back-btn {
+        color: #4b5563;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        padding: 10px 12px;
+        cursor: pointer;
+        margin-bottom: 26px;
+
+        @media screen and (max-width:1440px) {
+          padding: 0;
+          margin: 0;
+        }
+
+        @media screen and (max-width: 767px) {
+          padding: 15px 0px;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @media screen and (max-width: 1440px) {
+      padding: 30px 10px;
+    }
+
+    @media screen and (max-width: 1199px) {
+      padding: 20px 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding: 0;
+    }
+
+    .select-option-wrap {
+      max-width: 578px;
+      margin: 33px auto 0 200px;
+      width: 100%;
+
+      @media screen and (max-width: 1440px) {
+        margin: 20px auto;
+      }
+
+      @media screen and (max-width: 1024px) {
+        max-width: 70%;
+      }
+
+      @media screen and (max-width: 991px) {
+        max-width: 80%;
+      }
+
+      @media screen and (max-width: 767px) {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .title {
+        color: #111827;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 120%;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        margin: 0 0 27px;
+
+        .sheild {
+          width: 24px;
+          height: auto;
+        }
+
+        @media screen and (max-width:1440px) {
+          font-size: 18px;
+          margin: 0 0 20px;
+
+          .sheild {
+            width: 22px;
+          }
+        }
+
+        @media screen and (max-width:1199px) {
+          margin: 0 0 10px;
+        }
+
+        @media screen and (max-width:991px) {
+          font-size: 16px;
+
+          .sheild {
+            width: 18px;
+          }
+        }
+      }
+
+      .option-card {
+        padding: 20px 33px;
+        gap: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 10px;
+        border: 1px solid #c7c7c7;
+        background: #fff;
+        margin: 0 0 15px;
+
+        &.selected-type {
+          border: 1px solid #2947F2;
+        }
+
+        @media screen and (max-width: 1440px) {
+          padding: 15px 20px;
+          margin: 0 0 10px;
+        }
+
+        &:hover {
+          border-color: #267ff8;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        &.disabled {
+          pointer-events: none;
+          border-color:rgba(199,199,199,0.4);
+          .card-inner {
+            .type-icn {
+              opacity: 0.5;
+            }
+            .card-info {
+              .title,
+              .desc {
+                opacity: 0.5;
+              }
+            }
+          }
+          .tooltip-wrapper {
+            opacity: 0.5;
+          }
+        }
+
+        .error-msg {
+          color: #CA0000;
+          font-size: 12px;
+          font-weight: 400;
+          margin: 6px 0 0;
+        }
+
+        .card-inner {
+          display: flex;
+          gap: 9px;
+          align-items: flex-start;
+
+          @media screen and (max-width:1440px) {
+            gap: 5px;
+          }
+
+          .type-icn {
+            width: 24px;
+            height: auto;
+
+            @media screen and (max-width:1440px) {
+              width: 20px;
+            }
+          }
+
+          .card-info {
+            max-width: 366px;
+
+            @media screen and (max-width: 767px) {
+              max-width: 100%;
+            }
+
+            .title {
+              color: #000;
+              font-size: 18px;
+              font-weight: 600;
+              line-height: 28px;
+              margin: 0;
+
+              @media screen and (max-width:1440px) {
+                font-size: 16px;
+                line-height: 1.2;
+              }
+            }
+
+            .desc {
+              color: #4b5563;
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 18px;
+              margin: 0;
+            }
+          }
+        }
+
+        .tooltip-wrapper {
+          img {
+            padding: 0 5px;
+          }
+        }
+      }
+
+      .tip-box {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        border-radius: 10px;
+        background: #f0fdf4;
+        color: #333;
+        padding: 16px;
+        margin-top: auto;
+
+        .title {
+          color: #1f2937;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 20px;
+          margin: 0 0 4px;
+        }
+
+        .desc {
+          color: #374151;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

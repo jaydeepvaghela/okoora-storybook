@@ -15,6 +15,7 @@ import { ConnectorAutoProtectComponent } from '../../../connector/components/con
 import { MatTabsModule } from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FxErpStepperComponent } from '../../../fx-erp-connection/components/fx-erp-stepper/fx-erp-stepper.component';
 
 @Component({
   selector: 'app-auto-pilot-list',
@@ -175,21 +176,21 @@ export class AutoPilotListComponent {
 
 
   addNewAutomation() {
-    // const dialogRef = this.dialog.open(FxErpStepperComponent, {
-    //   width: '100vw',
-    //   height: '100vh',
-    //   maxWidth: '1627px',
-    //   maxHeight: '966px',
-    //   panelClass: 'fx-erp-dialog',
-    //   disableClose: true,
-    //   data: {
-    //     isNewAutomation: true, // pass data to the dialog
-    //     walletList: this.walletList
-    //   }
-    // });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.getFxConversionRulesData();
-    // });
+    const dialogRef = this.dialog.open(FxErpStepperComponent, {
+      width: '100vw',
+      height: '100vh',
+      maxWidth: '1627px',
+      maxHeight: '966px',
+      panelClass: 'fx-erp-dialog',
+      disableClose: true,
+      data: {
+        isNewAutomation: true, // pass data to the dialog
+        walletList: this.walletList
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getFxConversionRulesData();
+    });
   }
 
   redirectToExposureTable(id: string) {

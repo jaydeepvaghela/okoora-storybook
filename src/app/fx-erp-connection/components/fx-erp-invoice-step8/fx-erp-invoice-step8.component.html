@@ -1,0 +1,95 @@
+<form [formGroup]="autoPilotForm">
+<div class="invoice-range-container">
+  <div class="left-panel">
+    <div class="info-sec">
+      <h2 class="title">Set your<br> range</h2>
+      <p class="desc">You decide what qualifies for<br> automatic protection.</p>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="top-row">
+      <button class="back-btn" type="button" (click)="onBack()">Back</button>
+      <ul class="stepper-steps">
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="content">
+      <!-- <div class="label-with-tooltip">
+        <img src="/images/fx-erp/erp-invoice-icn.svg" alt="invoice" />
+        <span class="label">Invoices / Bills</span>
+      </div> -->
+      <h3 class="title">What amounts should we protect?</h3>
+      <p class="desc">Choose the range of transaction values to include in your protection.</p>
+      <p class="desc">(You can adjust this anytime.)</p>
+      <img src="images/fx-erp/fx-erp-invoice.svg" class="erp-preview" alt="ERP preview" />
+      <div class="range-wrapper">
+  <h4 class="range-label">Set amount range</h4>
+  <div class="range-row">
+    <!-- Min input -->
+    <div class="amount-field">
+      <h5 class="input-label">From</h5>
+      <input
+        #minInput
+        matInput
+        type="text"
+        [value]="formatAmount(min)"
+        (input)="onMinChange($any($event.target).value)"
+        placeholder="$500"
+        formControlName="InvoiceBillMinExposureAmount"
+        name="minBox"
+      />
+    </div>
+
+    <!-- Slider -->
+    <mat-slider class="slider-width" [min]="minLimit" [max]="maxLimit" [step]="step">
+      <input
+        matSliderStartThumb
+        formControlName="InvoiceBillMinExposureAmount"
+        name="minThumb"
+      />
+      <input
+        matSliderEndThumb
+        formControlName="InvoiceBillMaxExposureAmount"
+        name="maxThumb"
+      />
+    </mat-slider>
+
+    <!-- Max input -->
+    <div class="amount-field">
+      <h5 class="input-label">To</h5>
+    <input
+      #maxInput
+      matInput
+      type="text"
+      [value]="formatAmount(max)"
+      (input)="onMaxChange($any($event.target).value)"
+      placeholder="$10,000"
+      formControlName="InvoiceBillMaxExposureAmount"
+      name="maxBox"
+/>
+    </div>
+    
+</div>
+<div *ngFor="let error of validationErrors" class="error-msg">
+              {{ error }}
+            </div>
+  </div>
+
+      <div class="tip-box">
+        <img src="images/info-circle-icon.svg" alt="">
+        <div class="info">
+          <h4 class="title">Pro tip</h4>
+          <p class="desc">Expanding the range helps protect more of your supplier transactions. You can always adjust it later</p>
+        </div>
+      </div>
+      <button class="connect-btn" (click)="onNext()">Continue</button>
+    </div>
+  </div>
+</div>
+
+</form>

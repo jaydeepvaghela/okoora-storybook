@@ -1,0 +1,57 @@
+<div class="pick-invoice-direction-container">
+    <!-- ░░ LEFT PANEL ░░ -->
+    <div class="left-panel">
+        <div class="info-sec">
+            <h2 class="title">
+                Define ERP<br />
+                Category
+            </h2>
+
+            <p class="desc">
+                We’ll protect payments in and out<br />
+                — based on your choice.
+            </p>
+        </div>
+    </div>
+
+    <!-- ░░ RIGHT PANEL ░░ -->
+    <div class="right-panel">
+        <!-- back / close -->
+        <div class="top-row">
+            <button class="back-btn" type="button" (click)="onBack()">Back</button>
+            <ul class="stepper-steps">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <span class="blank-span"></span>
+        </div>
+        <!-- main copy & form -->
+        <div class="content">
+            <!-- <div class="label">
+                <img src="/assets/images/fx-erp/erp-invoice-icn.svg" alt="invoice" />
+                <span>Invoices / bills</span>
+            </div> -->
+
+            <h3 class="heading">Which transactions do you want to protect?</h3>
+            <p class="description">
+                Make sure the right transactions are always covered. Choose incoming, outgoing, or both.
+            </p>
+
+            <!-- …your existing layout above… -->
+
+            <!-- MAT RADIO GROUP -->
+            <label class="field-label">Select transactions type</label>
+            <form [formGroup]="autoPilotForm">
+                <mat-radio-group formControlName="invoiceType" class="radio-column" aria-label="Invoice type">
+                    <mat-radio-button value="IncomingInvoice">Invoices</mat-radio-button>
+                    <mat-radio-button value="Bill">Bills</mat-radio-button>
+                    <mat-radio-button value="Both">Both</mat-radio-button>
+                </mat-radio-group>
+            </form>
+            <button class="continue-btn" type="button" (click)="onNext()">Continue</button>
+        </div>
+    </div>
+</div>
