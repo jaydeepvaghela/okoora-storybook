@@ -2,9 +2,6 @@
     <div class="fx-dashboard-body">
         <div class="fx-dash-header">
             <h2 class="title">FX Auto-Pilot</h2>
-            <div class="right-btns">
-                <button class="manage-deal" (click)="openManageHedgeDeals()"><img src="images/fx-dashboard/deal-icon.svg" alt="manage deals">Manage Deals</button>
-            </div>
         </div>
         <div class="fx-dash-content-wrapper">
             <div class="fx-dash-left-container" id="autoPilotInitialTourStep" *ngIf="!isPayableProtectFilled && conversionData?.length == 0">
@@ -20,7 +17,7 @@
                     <div class="auto-pilot-bottom">
                         <div class="auto-pilot-wrap">
                             <div class="btn-wrap">
-                                <button class="auto-pilot-btn" (click)="openFxErp()" id="enableAutoPilotTourStep">
+                                <button class="auto-pilot-btn" id="enableAutoPilotTourStep">
                                     <span>
                                         <img src="images/fx-dashboard/sheild-icn.gif" alt="auto-pilot">
                                         Enable <strong>Auto pilot</strong>
@@ -46,9 +43,6 @@
                         <app-auto-pilot-list [conversionData]="conversionData"></app-auto-pilot-list>
                     </div>
                 </div>
-            </div>
-            <div class="fx-dash-right-container" id="autoPilotChartTourStep">
-                <app-fx-protected-risk></app-fx-protected-risk>
             </div>
         </div>
 

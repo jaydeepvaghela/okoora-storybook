@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { InvoiceSteps } from '../../../connector/enums/status';
 import { MatSliderModule } from '@angular/material/slider';
@@ -18,7 +19,7 @@ export class FxErpInvoiceStep8Component implements OnInit, AfterViewInit {
   @ViewChild('maxInput') maxInput!: ElementRef<HTMLInputElement>;
   @Input() stepper!: MatStepper; 
   @Output() stepperData = new EventEmitter<void>();
-  @Input() autoPilotForm!: FormGroup;
+  @Input() autoPilotForm: FormGroup = new FormGroup({});
 
   minLimit: number = 1;
   maxLimit: number = 100000;
@@ -36,24 +37,32 @@ ngAfterViewInit(): void {
 }
 
   ngOnInit(): void {
-    // this.autoPilotForm.patchValue({
-    //   InvoiceBillMinExposureAmount: this.minLimit,
-    //   InvoiceBillMaxExposureAmount: this.maxLimit
-    // })
-    if (!this.autoPilotForm.get('InvoiceBillMinExposureAmount')?.value) {
-      this.autoPilotForm.patchValue({ InvoiceBillMinExposureAmount: this.minLimit });
-    }
-    if (!this.autoPilotForm.get('InvoiceBillMaxExposureAmount')?.value) {
-      this.autoPilotForm.patchValue({ InvoiceBillMaxExposureAmount: this.maxLimit });
-    }
+    this.autoPilotForm.patchValue({
+      InvoiceBillMinExposureAmount: this.minLimit,
+      InvoiceBillMaxExposureAmount: this.maxLimit
+    })
+      // Ensure required controls exist
+      if (!this.autoPilotForm.contains('InvoiceBillMinExposureAmount')) {
+        this.autoPilotForm.addControl('InvoiceBillMinExposureAmount', new FormControl(this.minLimit));
+      }
+      if (!this.autoPilotForm.contains('InvoiceBillMaxExposureAmount')) {
+        this.autoPilotForm.addControl('InvoiceBillMaxExposureAmount', new FormControl(this.maxLimit));
+      }
 
-    this.autoPilotForm.get('InvoiceBillMinExposureAmount')?.valueChanges.subscribe(() => {
-      this.validateAmounts();
-    });
+      if (!this.autoPilotForm.get('InvoiceBillMinExposureAmount')?.value) {
+        this.autoPilotForm.patchValue({ InvoiceBillMinExposureAmount: this.minLimit });
+      }
+      if (!this.autoPilotForm.get('InvoiceBillMaxExposureAmount')?.value) {
+        this.autoPilotForm.patchValue({ InvoiceBillMaxExposureAmount: this.maxLimit });
+      }
 
-    this.autoPilotForm.get('InvoiceBillMaxExposureAmount')?.valueChanges.subscribe(() => {
-      this.validateAmounts();
-    });
+      this.autoPilotForm.get('InvoiceBillMinExposureAmount')?.valueChanges.subscribe(() => {
+        this.validateAmounts();
+      });
+
+      this.autoPilotForm.get('InvoiceBillMaxExposureAmount')?.valueChanges.subscribe(() => {
+        this.validateAmounts();
+      });
   }
 
   get min(): number {

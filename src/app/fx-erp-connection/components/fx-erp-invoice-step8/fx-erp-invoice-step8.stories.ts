@@ -19,11 +19,19 @@ const mockStepper = {
   selectedIndex: 7,
 };
 
-const mockForm = undefined;
+const mockForm = new FormGroup({
+  InvoiceBillMinExposureAmount: new FormControl(1),
+  InvoiceBillMaxExposureAmount: new FormControl(100000),
+});
 
 export const Default: StoryObj<FxErpInvoiceStep8Component> = {
   args: {
     stepper: mockStepper as any,
     autoPilotForm: mockForm,
+  },
+  parameters: {
+    controls: {
+      exclude: ['autoPilotForm'],
+    },
   },
 };

@@ -12,7 +12,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { FormsModule } from '@angular/forms';
 
 export default {
-  title: 'FX Dashboard/AutoPilotList/FxProtectedRisk',
+  title: 'FX Dashboard/FxProtectedRisk',
   component: FxProtectedRiskComponent,
   decorators: [
     moduleMetadata({
