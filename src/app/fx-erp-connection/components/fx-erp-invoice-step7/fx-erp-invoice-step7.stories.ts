@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
+import { getActiveHedgingCurrency } from '../../../fx-dashboard/components/fx-dashboard-data/active-hedging-currency';
 
 export default {
   title: 'FX ERP Connection/Invoice Step 7',
@@ -21,17 +22,23 @@ const mockStepper = {
   selectedIndex: 6,
 };
 
-const mockForm = { InvoiceBillCurrencies: [] } as any;
+
+const mockForm = new FormGroup({
+  InvoiceBillCurrencies: new FormControl([]),
+});
 
 export const Default: StoryObj<FxErpInvoiceStep7Component> = {
-  args: {
-    stepper: mockStepper as any,
-    autoPilotForm: mockForm,
-    walletList: [
-      { wallet_Currency: { code: 'USD', flag: 'images/flags/us.svg' } },
-      { wallet_Currency: { code: 'ILS', flag: 'images/flags/il.svg' } },
-      { wallet_Currency: { code: 'EUR', flag: 'images/flags/eu.svg' } },
-      { wallet_Currency: { code: 'GBP', flag: 'images/flags/gb.svg' } }
-    ],
+  render: (args: any) => ({
+    props: {
+      ...args,
+      stepper: mockStepper as any,
+      autoPilotForm: mockForm,
+    walletList: getActiveHedgingCurrency.supportedHedge,
+    },
+  }),
+  parameters: {
+    controls: {
+      exclude: ['autoPilotForm'],
+    },
   },
 };

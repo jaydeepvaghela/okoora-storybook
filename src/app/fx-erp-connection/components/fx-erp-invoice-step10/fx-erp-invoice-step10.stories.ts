@@ -22,11 +22,26 @@ const mockStepper = {
   selectedIndex: 10,
 };
 
+import { FormGroup, FormControl } from '@angular/forms';
+import { getActiveHedgingCurrency } from '../../../fx-dashboard/components/fx-dashboard-data/active-hedging-currency';
+
+const mockAutoPilotForm = new FormGroup({
+  InvoiceBillBlacklist: new FormControl(''),
+});
+
 export const Default: StoryObj<FxErpInvoiceStep10Component> = {
-  args: {
-    stepper: mockStepper as any,
-    autoPilotForm: undefined,
-    erpCustomerSuppliersList: customerSupplierList,
-    walletList: [],
+  render: (args) => ({
+    props: {
+      ...args,
+      stepper: mockStepper as any,
+      autoPilotForm: mockAutoPilotForm,
+      erpCustomerSuppliersList: customerSupplierList,
+      walletList: getActiveHedgingCurrency,
+    },
+  }),
+  parameters: {
+    controls: {
+      exclude: ['autoPilotForm'],
+    },
   },
 };
