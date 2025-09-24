@@ -8,8 +8,6 @@
     height: 100vh;
     max-height: 918px;
     font-family: $he_heebo;
-    padding: 26px 26px 22px 15px;
-    background: #fff;
 
     @media screen and (max-width:1440px) {
       max-height: calc(100vh - 50px);
