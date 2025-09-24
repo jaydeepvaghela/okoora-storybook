@@ -2,7 +2,7 @@
     <div class="fx-dashboard-body">
         <div class="fx-dash-header">
             <h2 class="title">FX Auto-Pilot</h2>
-            <div class="right-btns">
+            <div class="right-btns" *ngIf="!hideProtectedRisk">
                 <button class="manage-deal" (click)="openManageHedgeDeals()"><img src="images/fx-dashboard/deal-icon.svg" alt="manage deals">Manage Deals</button>
             </div>
         </div>
@@ -20,7 +20,7 @@
                     <div class="auto-pilot-bottom">
                         <div class="auto-pilot-wrap">
                             <div class="btn-wrap">
-                                <button class="auto-pilot-btn" (click)="openFxErp()" id="enableAutoPilotTourStep">
+                                <button class="auto-pilot-btn" id="enableAutoPilotTourStep">
                                     <span>
                                         <img src="images/fx-dashboard/sheild-icn.gif" alt="auto-pilot">
                                         Enable <strong>Auto pilot</strong>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="fx-dash-right-container" id="autoPilotChartTourStep">
+            <div class="fx-dash-right-container" id="autoPilotChartTourStep" *ngIf="!hideProtectedRisk">
                 <app-fx-protected-risk></app-fx-protected-risk>
             </div>
         </div>

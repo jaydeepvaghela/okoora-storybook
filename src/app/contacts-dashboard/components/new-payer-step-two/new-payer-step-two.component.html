@@ -1,0 +1,708 @@
+<div class="payer-type-form">
+  <form [formGroup]="payerAccountDetail">
+    <div class="payer-type-info">
+      <h5 class="title">What is your payer's type?</h5>
+      <p class="desc">Select whether the payer is an individual or a company.</p>
+    </div>
+    <div class="account-type-sec">
+      <div class="beneficiary-type-option">
+        <div class="item-type type-one">
+          <input type="radio" name="entityType" id="business" [value]="1" formControlName="entityType" />
+          <label class="radio-label" for="business">
+            <div class="type-inner">
+              <img src="images/bank-icon.svg" class="main-img" alt="bank" />
+              <img src="images/bank-hover-icon.svg" class="hover-img" alt="bank" />
+              <div class="type-info">
+                <label class="info">Business</label>
+                <p class="desc">International bank transfer</p>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="item-type">
+          <input type="radio" name="entityType" id="Overseas" [value]="2" formControlName="entityType" />
+          <label class="radio-label" for="Overseas">
+            <div class="type-inner">
+              <img src="images/globe-dollar-icon.svg" class="main-img" alt="globe" />
+              <img src="images/globe-dollar-hover.svg" class="hover-img" alt="globe" />
+              <div class="type-info">
+                <label class="info">Individual</label>
+                <p class="desc">International bank transfer</p>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="selection-wrap" *ngIf="payerAccountDetail.get('entityType')?.value == 1">
+        <div class="bank-info">
+          <h4 class="title">Business Details</h4>
+          <p class="desc">Enter the company’s details to set up the payer.</p>
+        </div>
+
+        <div class="form-control-wrapper">
+          <div class="row">
+            <div class="form-group">
+              <label for="bankAccountHolderName" class="benef-label">Bank account holder name
+                <img src="images/beneficiary-info-icon.svg" [ngbTooltip]="companyNameTooltip" placement="auto"
+                  tooltipClass="payer-tooltip--rm" alt="more-info" />
+              </label>
+              <input type="text" (keydown)="restrictNameWhiteSpace($event)"
+                (paste)="restrictNameOnPaste($event,'letters')" class="form-control"
+                [class.validation-error]="hasError('bankAccountHolderName')"
+                placeholder="Enter Bank account holder name" [maxlength]="101"
+                formControlName="bankAccountHolderName" />
+              <p *ngIf="hasError('bankAccountHolderName')" class="error-msg"><img class="country-image"
+                  src="images/red-warning-icon.svg" /> Please enter a valid bank account holder name</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control-wrapper">
+          <div class="country-dropdown">
+            <label for="beneficiaryCountry" class="benef-label">Incorporation country
+              <img src="images/beneficiary-info-icon.svg" [ngbTooltip]="incorporationCountryTp" placement="auto"
+                tooltipClass="payer-tooltip--rm" alt="more-info" />
+            </label>
+            <mat-select class="form-control to-country-rm" panelClass="rm-country-dropdown" id="toCurrency"
+              [class.validation-error]="hasError('unionCountry')" formControlName="unionCountry"
+              placeholder="Select Country" (openedChange)="onIncorporationCountryDropdownOpen($event)">
+              <mat-select-trigger>
+                <ng-container *ngFor="let country of incorporationCList">
+                  <div *ngIf="country?.countryCode == getIncorporationCountryCode()" class="to-country-section">
+                    <img width="30px" class="country-image" [src]="country?.flag" alt="currency_flag" />
+                    <span class="country-code">
+                      {{ country?.countryName }}
+                    </span>
+                    <!-- <img class="currency-tick" src="images/tick-currency.svg" alt="tick" /> -->
+                  </div>
+                </ng-container>
+              </mat-select-trigger>
+
+              <div class="search-inpt-popup">
+                <div class="search-input-wrapper">
+                  <div class="input-inner">
+                    <input #searchIncorportionCountryInput class="filter-input"
+                      [ngClass]="countryList?.length == 0 ? 'error-input' : ''" appOnlyLetters type="text"
+                      placeholder="Search" id="exnow-s1-id7" [formControl]="incoporationCountrySearchControl" />
+                    <button class="clear-search" (click)="clearSearch()"><img alt="close"
+                        src="images/country-search-close.svg" /></button>
+                    <span class="country-search"><img alt="close" src="images/search-country-icon.svg" /></span>
+                  </div>
+                  <span class="error-msg" *ngIf="incorporationCList?.length == 0"> Record not found! </span>
+                </div>
+                <div class="country-flag-list">
+                  <mat-option *ngFor="let country of incorporationCList; index as i" value="{{ country.countryCode }}"
+                    class="country-options" id="exnow-s1-id7-{{ country.countryCode }}">
+                    <div class="select-item d-flex align-items-center">
+                      <img width="30px" class="country-image" [src]="country?.flag" alt="currency_flag" />
+                      <div class="code-with-info">
+                        <span class="info">{{ country?.countryName }}</span>
+                      </div>
+                    </div>
+                  </mat-option>
+                </div>
+              </div>
+            </mat-select>
+            <p *ngIf="hasError('unionCountry')" class="error-msg"><img class="country-image"
+                src="images/red-warning-icon.svg" /> Please enter a valid incorporation country</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="selection-wrap" *ngIf="payerAccountDetail.get('entityType')?.value == 2">
+        <div class="bank-info">
+          <h4 class="title">Individual details</h4>
+          <p class="desc">Enter the individual’s details to set up the payer.</p>
+        </div>
+        <div class="row">
+          <div class="form-control-wrapper">
+            <div class="form-group">
+              <label for="lastName" class="benef-label">Full name
+                <img src="images/beneficiary-info-icon.svg" [ngbTooltip]="fullNameTooltip" placement="auto"
+                  tooltipClass="payer-tooltip--rm" alt="more-info" />
+              </label>
+              <input type="text" [class.validation-error]="hasError('bankAccountHolderName')" class="form-control"
+                placeholder="Enter Full name" formControlName="bankAccountHolderName"
+                (keydown)="restrictNameWhiteSpace($event)" (paste)="restrictNameOnPaste($event,'letters')" />
+              <p *ngIf="hasError('bankAccountHolderName')" class="error-msg"><img class="country-image"
+                  src="images/red-warning-icon.svg" /> Please enter a valid full name</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-control-wrapper">
+          <div class="country-dropdown">
+            <label for="beneficiaryCountry" class="benef-label">Residence country
+              <img src="images/beneficiary-info-icon.svg" [ngbTooltip]="residestooltip" placement="auto"
+                tooltipClass="payer-tooltip--rm" alt="more-info" />
+            </label>
+            <mat-select class="form-control to-country-rm" panelClass="rm-country-dropdown" id="toCurrency"
+              [class.validation-error]="hasError('payerCountry')" formControlName="payerCountry"
+              placeholder="Select Country" (openedChange)="onResidenceCountryDropdownOpen($event)">
+              <mat-select-trigger>
+                <ng-container *ngFor="let country of residenceCList">
+                  <div *ngIf="country?.countryCode == getResidenceCountryCode()" class="to-country-section">
+                    <img class="country-image" [src]="country?.flag" alt="currency_flag" />
+                    <span class="country-code">
+                      {{ country?.countryName }}
+                    </span>
+                    <!-- <img class="currency-tick" src="images/tick-currency.svg" alt="tick" /> -->
+                  </div>
+                </ng-container>
+              </mat-select-trigger>
+              <div class="search-inpt-popup">
+                <div class="search-input-wrapper">
+                  <div class="input-inner">
+                    <input #searchResidenceCountryInput class="filter-input"
+                      [ngClass]="countryList?.length == 0 ? 'error-input' : ''" appOnlyLetters type="text"
+                      placeholder="Search" id="exnow-s1-id7" [formControl]="residenceCountrySearchControl" />
+                    <button class="clear-search" (click)="clearSearch()"><img alt="close"
+                        src="images/country-search-close.svg" /></button>
+                    <span class="country-search"><img alt="close" src="images/search-country-icon.svg" /></span>
+                  </div>
+                  <span class="error-msg" *ngIf="residenceCList?.length == 0"> Record not found! </span>
+                </div>
+                <div class="country-flag-list">
+                  <mat-option *ngFor="let country of residenceCList; index as i" value="{{ country.countryCode }}"
+                    class="country-options" id="exnow-s1-id7-{{ country.countryCode }}">
+                    <div class="select-item d-flex align-items-center">
+                      <img width="30px" class="country-image" [src]="country?.flag" alt="currency_flag" />
+                      <div class="code-with-info">
+                        <span class="info">{{ country?.countryName }}</span>
+                      </div>
+                    </div>
+                  </mat-option>
+                </div>
+              </div>
+            </mat-select>
+            <p *ngIf="hasError('payerCountry')" class="error-msg"><img class="country-image"
+                src="images/red-warning-icon.svg" /> Please enter a valid residence country</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="selection-wrap"
+        *ngIf="payerAccountDetail.get('entityType')?.value == 1 || payerAccountDetail.get('entityType')?.value == 2">
+        <div class="form-control-wrapper">
+          <div class="country-dropdown">
+            <label for="beneficiaryCountry" class="benef-label">Bank country
+              <img src="images/beneficiary-info-icon.svg" [ngbTooltip]="bankCountryTooltip" placement="auto"
+                tooltipClass="payer-tooltip--rm" alt="more-info" />
+            </label>
+            <mat-select class="form-control to-country-rm" panelClass="rm-country-dropdown" id="toCurrency"
+              [class.validation-error]="hasError('bankCountry')" formControlName="bankCountry"
+              placeholder="Select Country" (openedChange)="onBankCountryDropdownOpen($event)">
+              <mat-select-trigger>
+                <ng-container *ngFor="let country of bankCountryList">
+                  <div *ngIf="country?.countryCode == getBankCountryCode()" class="to-country-section">
+                    <img class="country-image" [src]="country?.flag" alt="currency_flag" />
+                    <span class="country-code">
+                      {{ country?.countryName }}
+                    </span>
+                    <!-- <img class="currency-tick" src="images/tick-currency.svg" alt="tick" /> -->
+                  </div>
+                </ng-container>
+              </mat-select-trigger>
+              <div class="search-inpt-popup">
+                <div class="search-input-wrapper">
+                  <div class="input-inner">
+                    <input #searchBenBankCountryInput class="filter-input"
+                      [ngClass]="countryList?.length == 0 ? 'error-input' : ''" appOnlyLetters type="text"
+                      placeholder="Search" id="exnow-s1-id7" [formControl]="bankCountrySearchControl" />
+                    <button class="clear-search" (click)="clearSearch()"><img alt="close"
+                        src="images/country-search-close.svg" /></button>
+                    <span class="country-search"><img alt="close" src="images/search-country-icon.svg" /></span>
+                  </div>
+                  <span class="error-msg" *ngIf="bankCountryList?.length == 0"> Record not found! </span>
+                </div>
+                <div class="country-flag-list">
+                  <mat-option *ngFor="let country of bankCountryList; index as i" value="{{ country.countryCode }}"
+                    class="country-options" id="exnow-s1-id7-{{ country.countryCode }}">
+                    <div class="select-item d-flex align-items-center">
+                      <img width="30px" class="country-image" [src]="country?.flag" alt="currency_flag" />
+                      <div class="code-with-info">
+                        <span class="info">{{ country?.countryName }}</span>
+                      </div>
+                    </div>
+                  </mat-option>
+                </div>
+              </div>
+            </mat-select>
+            <p *ngIf="hasError('bankCountry')" class="error-msg"><img class="country-image"
+                src="images/red-warning-icon.svg" /> Please enter a valid bank country</p>
+          </div>
+        </div>
+        <div class="form-control-wrapper">
+          <div class="country-dropdown currency-dropdown">
+            <label for="beneficiaryCountry" class="benef-label">Currency
+              <img src="images/beneficiary-info-icon.svg" [ngbTooltip]="payerProfileCurrencyTooltip"
+                placement="auto" tooltipClass="payer-tooltip--rm" alt="more-info" />
+            </label>
+            <mat-select class="form-control to-country-rm" [class.disabledCurrency]="(choosenPaymentReason == 2 || editPayer)"
+              [class.validation-error]="hasError('currency')" panelClass="rm-country-dropdown" id="toCurrency"
+              formControlName="currency" placeholder="Select Currency" (openedChange)="onCurrencyDropdownOpen($event)"
+              (selectionChange)="changeCurrency()">
+              <mat-select-trigger>
+                <ng-container *ngFor="let currencyObj of currencyData">
+                  <div *ngIf="currencyObj?.currency?.code == gettoCurrencyvalue()" class="to-country-section">
+                    <img width="30px" class="country-image" [src]="currencyObj?.currency?.flag" />
+                    <!-- <img class="country-image" src="images/ILS-flag-square.svg" alt="currency_flag" /> -->
+                    <!-- <img class="currency-tick" src="images/tick-currency.svg" alt="tick" /> -->
+                    <span class="country-code">
+                      {{ currencyObj?.currency?.code }}
+                    </span>
+                  </div>
+                </ng-container>
+              </mat-select-trigger>
+              <div class="search-inpt-popup">
+                <div class="search-input-wrapper">
+                  <div class="input-inner">
+                    <input #searchCurrencyInput class="filter-input"
+                      [ngClass]="currencyData?.length == 0 ? 'error-input' : ''" appOnlyLetters type="text"
+                      placeholder="Search" id="exnow-s1-id7" [formControl]="searchCurrencyControl" />
+                    <button class="clear-search" (click)="clearSearch()"><img alt="close"
+                        src="images/country-search-close.svg" /></button>
+                    <span class="country-search"><img alt="close" src="images/search-country-icon.svg" /></span>
+                  </div>
+                  <span class="error-msg" *ngIf="currencyData?.length == 0"> Record not found! </span>
+                </div>
+                <div class="country-flag-list currency-info">
+                  <mat-option *ngFor="let currencyObj of currencyData; index as i"
+                    value="{{ currencyObj?.currency?.code }}" class="currency-options"
+                    id="exnow-s1-id7-{{ currencyObj?.currency?.code }}">
+                    <div class="select-item d-flex align-items-start">
+                      <!-- <img width="30px" class="country-image" src="images/ILS-flag-square.svg"
+                      alt="currency_flag" /> -->
+                      <img width="30px" class="country-image" [src]="currencyObj?.currency?.flag" />
+                      <div class="code-with-info">
+                        <span class="code">{{ currencyObj?.currency?.code }}</span>
+                        <span class="info">{{ currencyObj?.currency?.currencyName }}</span>
+                      </div>
+                    </div>
+                  </mat-option>
+                </div>
+              </div>
+            </mat-select>
+            <p *ngIf="hasError('currency')" class="error-msg"><img class="country-image"
+                src="images/red-warning-icon.svg" /> Please enter a valid currency</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- BUSINESS - PAYER TYPE -->
+      <ng-container *ngIf="payerAccountDetail.get('entityType')?.value == 1">
+        <!-- If currency Non-ILS Non-CC Account Holders (20%)-->
+        <ng-container
+          *ngIf="!isCCAccountHolder && payerAccountDetail.get('currency')?.value && (getBankCountryCode() != 'il' || payerAccountDetail.get('currency')?.value !== 'ILS')">
+          <!-- Foreign currency + non CC/AW Account Holders (20%)-->
+          <div class="selection-wrap bank-form">
+            <div class="account-details-section-wrapper">
+              <div class="bank-info">
+                <h4 class="title">Bank account details</h4>
+                <p class="desc">Enter the company’s details to set up the payer.</p>
+              </div>
+              <div class="account-type-sec">
+                <div class="beneficiary-type-option">
+                  <div class="item-type type-one">
+                    <input type="radio" name="accountType" [value]="1" formControlName="accountType" />
+                    <label class="radio-label">
+                      <div class="type-inner">
+                        <img src="images/bank-icon.svg" class="main-img" alt="bank" />
+                        <img src="images/bank-hover-icon.svg" class="hover-img" alt="bank" />
+                        <div class="type-info">
+                          <label class="info">IBAN</label>
+                          <p class="desc">International bank transfer</p>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="item-type">
+                    <input type="radio" name="accountType" [value]="2" formControlName="accountType" />
+                    <label class="radio-label">
+                      <div class="type-inner">
+                        <img src="images/globe-dollar-icon.svg" class="main-img" alt="globe" />
+                        <img src="images/globe-dollar-hover.svg" class="hover-img" alt="globe" />
+                        <div class="type-info">
+                          <label class="info">Swift</label>
+                          <p class="desc">International bank transfer</p>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <p *ngIf="hasError('accountType')" class="error-msg"><img class="country-image"
+                  src="images/red-warning-icon.svg" /> Please select a valid account type</p>
+            </div>
+            <div class="row" *ngIf="payerAccountDetail?.get('accountType')?.value == 1">
+              <div class="number-form-group">
+                <label for="iban">IBAN number*
+                </label>
+                <div class="input-wrapper iban-wrap">
+                  <input type="text" [maxlength]="35" [class.validation-error]="hasError('iban') || ibanError" #iban
+                    class="form-control" id="iban" placeholder="For an example: BNPAUS22" formControlName="iban"
+                    (keyup)="checkForValidIBANorSwift()" appOnlyAlphanumeric>
+                  <span class="badge-icon">
+                    <mat-spinner *ngIf="showLoading" [diameter]="20"></mat-spinner>
+                    <ng-container *ngIf="isValidIban && !showLoading && payerAccountDetail?.get('iban')?.value">
+                      <img class="success-icon" src="images/ibnGreen.png" alt="check">
+                    </ng-container>
+                  </span>
+                  <button class="btn-check-no" *ngIf="payerAccountDetail?.get('iban')?.value"
+                    (click)="checkForValidIBANorSwift()">Check</button>
+                </div>
+                <!-- <p *ngIf="errorMessage && payerAccountDetail.get('iban')?.invalid" class="error-msg"><img
+                    class="country-image" src="images/red-warning-icon.svg" />Please enter valid IBAN number.</p> -->
+                <p *ngIf="hasError('iban') || ibanError" class="error-msg"><img class="country-image"
+                    src="images/red-warning-icon.svg" /> Please enter a valid IBAN number.</p>
+              </div>
+
+            </div>
+
+            <div *ngIf="payerAccountDetail?.get('accountType')?.value == 2" class="number-form-group">
+              <label for="swiftCode">SWIFT number*</label>
+              <div class="input-wrapper iban-wrap">
+                <input type="text" [maxlength]="20" [class.validation-error]="hasError('bicSwift') || swiftError"
+                  class="form-control" id="swiftCode" placeholder="Enter SWIFT Code" formControlName="bicSwift"
+                  (keyup)="checkForValidIBANorSwift()" />
+                <span class="badge-icon">
+                  <mat-spinner *ngIf="showLoading" [diameter]="20"></mat-spinner>
+                  <ng-container *ngIf="isValidIban && !showLoading && payerAccountDetail?.get('bicSwift')?.value">
+                    <img class="success-icon" src="images/ibnGreen.png" alt="check">
+                  </ng-container>
+                </span>
+                <button class="btn-check-no" *ngIf="payerAccountDetail?.get('bicSwift')?.value"
+                  (click)="checkForValidIBANorSwift()">Check</button>
+              </div>
+              <!-- <p *ngIf="errorMessage && payerAccountDetail.get('bicSwift')?.value" class="error-msg"><img
+                  class="country-image" src="images/red-warning-icon.svg" />Please enter valid SWIFT number.</p> -->
+              <p *ngIf="hasError('bicSwift') || swiftError" class="error-msg"><img class="country-image"
+                  src="images/red-warning-icon.svg" /> Please enter a valid SWIFT number.</p>
+            </div>
+
+            <div class="row"
+              *ngIf="isValidIban && (payerAccountDetail?.get('iban')?.value || payerAccountDetail?.get('bicSwift')?.value)">
+              <div class="col-md-8">
+                <div class="form-control-wrapper">
+                  <div class="form-group">
+                    <label for="bankName" class="benef-label">Bank name*</label>
+                    <input type="text" [readOnly]="(ibanDetails?.bank || ibanDetails?.name)"
+                      [class.validation-error]="hasError('bankName')" class="form-control"
+                      placeholder="For an example: Regional bank" formControlName="bankName" appOnlyLetters />
+                    <p *ngIf="hasError('bankName')" class="error-msg"><img class="country-image"
+                        src="images/red-warning-icon.svg" /> Please enter a valid bank name</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 ps-md-0" *ngIf="payerAccountDetail?.get('iban')?.value">
+                <div class="form-control-wrapper">
+                  <div class="form-group">
+                    <label for="lastName" class="benef-label">Bank number*</label>
+                    <input [readOnly]="ibanDetails?.bankCode" [class.validation-error]="hasError('bankNumber')"
+                      type="text" class="form-control" placeholder="For example: 10" formControlName="bankNumber"
+                      appOnlyNumbers (keydown)="restrictZeroAndDot($event)" />
+                    <p *ngIf="hasError('bankNumber')" class="error-msg"><img class="country-image"
+                        src="images/red-warning-icon.svg" /> Please enter a valid bank number</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 ps-md-0" *ngIf="payerAccountDetail?.get('bicSwift')?.value">
+                <div class="form-control-wrapper">
+                  <div class="form-group">
+                    <label for="accountName" class="benef-label">Account number*</label>
+                    <input (input)="getAccountDetail()"
+                      (keydown)="restrictWhiteSpaceWithAlphnumeric($event); restrictZeroAndDot($event)" type="text"
+                      [class.validation-error]="hasError('accountNumber')" class="form-control"
+                      placeholder="For an example: 132456" maxlength="20" formControlName="accountNumber" appOnlyEnglish
+                      (cut)="onCutTypeValue($event)" (copy)="onCopyTypeValue($event)"
+                      (paste)="onPasteTypeValue($event)" />
+                    <p *ngIf="hasError('accountNumber')" class="error-msg"><img class="country-image"
+                        src="images/red-warning-icon.svg" /> Please enter a valid account number</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <!-- If currency ILS + CC/AW Account Holders (80%)-->
+        <ng-container
+          *ngIf="choosenPaymentReason != 2 && (payerAccountDetail.get('currency')?.value && payerAccountDetail.get('currency')?.value === 'ILS')">
+          <!-- Foreign currency + non CC/AW Account Holders (20%)-->
+          <div class="selection-wrap bank-form" *ngIf="(getBankCountryCode() == 'il') || isCCAccountHolder">
+            <div class="bank-info">
+              <h4 class="title">Israeli bank account details</h4>
+              <p class="desc">Enter the company’s details to set up the payer.</p>
+            </div>
+            <div class="row">
+              <div class="form-control-wrapper">
+                <div class="form-group">
+                  <label for="accountNumber" class="benef-label">Account number*</label>
+                  <input (input)="getAccountDetail()"
+                    (keydown)="restrictWhiteSpaceWithAlphnumeric($event); restrictZeroAndDot($event)" type="text"
+                    [class.validation-error]="hasError('accountNumber')" class="form-control"
+                    placeholder="For an example: 132456" formControlName="accountNumber" appOnlyEnglish
+                    (cut)="onCutTypeValue($event)" (copy)="onCopyTypeValue($event)"
+                    (paste)="onPasteTypeValue($event)" />
+                  <p *ngIf="hasError('accountNumber')" class="error-msg"><img class="country-image"
+                      src="images/red-warning-icon.svg" /> Please enter a valid account number</p>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="col-md-4 pe-md-0">
+                <div class="form-control-wrapper">
+                  <div class="form-group">
+                    <label for="lastName" class="benef-label">Bank number*</label>
+                    <input (input)="getAccountDetail()" type="text" [class.validation-error]="hasError('bankNumber')"
+                      class="form-control" placeholder="For an example: 132456" formControlName="bankNumber"
+                      appOnlyNumbers (keydown)="restrictZeroAndDot($event)"
+                      (cut)="onCutTypeValue($event)" (copy)="onCopyTypeValue($event)" (paste)="onPasteTypeValue($event)"
+                      />
+                    <p *ngIf="hasError('bankNumber')" class="error-msg"><img class="country-image"
+                        src="images/red-warning-icon.svg" /> Please enter a valid bank number</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="form-control-wrapper">
+                  <div class="form-group">
+                    <label for="lastName" class="benef-label">Bank branch*</label>
+                    <input (input)="getAccountDetail()" type="text" [class.validation-error]="hasError('bankBranch')"
+                      class="form-control" placeholder="For an example: 132456" formControlName="bankBranch"
+                      (keydown)="restrictWhiteSpaceWithAlphnumeric($event); restrictZeroAndDot($event)" appOnlyAlphanumeric
+                      (cut)="onCutTypeValue($event)" (copy)="onCopyTypeValue($event)" (paste)="onPasteTypeValue($event)" />
+                    <p *ngIf="hasError('bankBranch')" class="error-msg"><img class="country-image"
+                        src="images/red-warning-icon.svg" /> Please enter a valid bank branch</p>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </ng-container>
+      </ng-container>
+
+
+      <!-- INDIVIDUAL - PAYER TYPE -->
+      <ng-container *ngIf="payerAccountDetail.get('entityType')?.value == 2">
+        <!-- If currency Non-ILS and Non-CC Account Holders (20%) -->
+        <ng-container
+          *ngIf="!isCCAccountHolder && payerAccountDetail.get('currency')?.value && (getBankCountryCode() != 'il' || payerAccountDetail.get('currency')?.value !== 'ILS')">
+          <!-- Foreign currency + non CC/AW Account Holders (20%)-->
+          <div class="selection-wrap bank-form">
+            <div class="account-details-section-wrapper">
+              <div class="bank-info">
+                <h4 class="title">Bank account details</h4>
+                <p class="desc">Enter the company's details to set up the payer.</p>
+              </div>
+              <div class="account-type-sec">
+                <div class="beneficiary-type-option">
+                  <div class="item-type type-one">
+                    <input type="radio" name="accountType" [value]="1" formControlName="accountType" />
+                    <label class="radio-label" for="business">
+                      <div class="type-inner">
+                        <img src="images/bank-icon.svg" class="main-img" alt="bank" />
+                        <img src="images/bank-hover-icon.svg" class="hover-img" alt="bank" />
+                        <div class="type-info">
+                          <label class="info">IBAN</label>
+                          <p class="desc">International bank transfer</p>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="item-type">
+                    <input type="radio" name="accountType" [value]="2" formControlName="accountType" />
+                    <label class="radio-label" for="Overseas">
+                      <div class="type-inner">
+                        <img src="images/globe-dollar-icon.svg" class="main-img" alt="globe" />
+                        <img src="images/globe-dollar-hover.svg" class="hover-img" alt="globe" />
+                        <div class="type-info">
+                          <label class="info">Swift</label>
+                          <p class="desc">International bank transfer</p>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <p *ngIf="hasError('accountType')" class="error-msg"><img class="country-image"
+                  src="images/red-warning-icon.svg" /> Please select a valid account type</p>
+            </div>
+            <div class="row" *ngIf="payerAccountDetail?.get('accountType')?.value == 1">
+              <div class="number-form-group">
+                <label for="iban">IBAN number*
+                </label>
+                <div class="input-wrapper iban-wrap">
+                  <input type="text" [maxlength]="35" [class.validation-error]="hasError('iban') || ibanError" #iban
+                    class="form-control" (keyup)="checkForValidIBANorSwift()" id="iban"
+                    placeholder="For an example: BNPAUS22" formControlName="iban" appOnlyAlphanumeric>
+                  <span class="badge-icon">
+                    <mat-spinner *ngIf="showLoading" [diameter]="20"></mat-spinner>
+                    <ng-container *ngIf="isValidIban && !showLoading && payerAccountDetail?.get('iban')?.value">
+                      <img class="success-icon" src="images/ibnGreen.png" alt="check">
+                    </ng-container>
+                  </span>
+                  <button class="btn-check-no" *ngIf="payerAccountDetail?.get('iban')?.value"
+                    (click)="checkForValidIBANorSwift()">Check</button>
+                </div>
+                <p *ngIf="hasError('iban') || ibanError" class="error-msg"><img class="country-image"
+                    src="images/red-warning-icon.svg" />Please enter a valid IBAN number.</p>
+              </div>
+            </div>
+
+            <div *ngIf="payerAccountDetail?.get('accountType')?.value == 2" class="number-form-group">
+              <label for="swiftCode">SWIFT number*</label>
+              <div class="input-wrapper iban-wrap">
+                <input type="text" [maxlength]="20" [class.validation-error]="hasError('bicSwift') || swiftError"
+                  class="form-control" id="swiftCode" placeholder="Enter SWIFT Code" formControlName="bicSwift"
+                  (keyup)="checkForValidIBANorSwift()" />
+                <span class="badge-icon">
+                  <mat-spinner *ngIf="showLoading" [diameter]="20"></mat-spinner>
+                  <ng-container *ngIf="isValidIban && !showLoading && payerAccountDetail?.get('bicSwift')?.value">
+                    <img class="success-icon" src="images/ibnGreen.png" alt="check">
+                  </ng-container>
+                </span>
+                <button class="btn-check-no" *ngIf="payerAccountDetail?.get('bicSwift')?.value"
+                  (click)="checkForValidIBANorSwift()">Check</button>
+              </div>
+              <p *ngIf="hasError('bicSwift') || swiftError" class="error-msg"><img class="country-image"
+                  src="images/red-warning-icon.svg" />Please enter a valid SWIFT number.</p>
+            </div>
+
+            <div class="row"
+              *ngIf="isValidIban && (payerAccountDetail?.get('iban')?.value || payerAccountDetail?.get('bicSwift')?.value)">
+              <div class="col-md-8">
+                <div class="form-control-wrapper">
+                  <div class="form-group">
+                    <label for="lastName" class="benef-label">Bank name*</label>
+                    <input type="text" [readOnly]="(ibanDetails?.bank || ibanDetails?.name)"
+                      [class.validation-error]="hasError('bankName')" class="form-control"
+                      placeholder="For an example: Regional bank" formControlName="bankName" appOnlyLetters />
+                    <p *ngIf="hasError('bankName')" class="error-msg"><img class="country-image"
+                        src="images/red-warning-icon.svg" /> Please enter a valid bank name</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 ps-md-0" *ngIf="payerAccountDetail?.get('iban')?.value">
+                <div class="form-control-wrapper">
+                  <div class="form-group">
+                    <label for="lastName" class="benef-label">Bank number*</label>
+                    <input type="text" [readOnly]="(ibanDetails?.bankCode)"
+                      [class.validation-error]="hasError('bankNumber')" class="form-control"
+                      placeholder="For example: 10" formControlName="bankNumber" appOnlyNumbers
+                      (keydown)="restrictZeroAndDot($event)" (cut)="onCutTypeValue($event)"
+                      (copy)="onCopyTypeValue($event)" (paste)="onPasteTypeValue($event)" />
+                    <p *ngIf="hasError('bankNumber')" class="error-msg"><img class="country-image"
+                        src="images/red-warning-icon.svg" /> Please enter a valid bank number</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 ps-md-0" *ngIf="payerAccountDetail?.get('bicSwift')?.value">
+                <div class="form-control-wrapper">
+                  <div class="form-group">
+                    <label for="accountName" class="benef-label">Account number*</label>
+                    <input (input)="getAccountDetail()"
+                      (keydown)="restrictWhiteSpaceWithAlphnumeric($event); restrictZeroAndDot($event)" type="text"
+                      [class.validation-error]="hasError('accountNumber')" class="form-control"
+                      placeholder="For an example: 132456" maxlength="20" formControlName="accountNumber" appOnlyEnglish
+                      (cut)="onCutTypeValue($event)" (copy)="onCopyTypeValue($event)"
+                      (paste)="onPasteTypeValue($event)" />
+                    <p *ngIf="hasError('accountNumber')" class="error-msg"><img class="country-image"
+                        src="images/red-warning-icon.svg" /> Please enter a valid account number</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container
+          *ngIf="choosenPaymentReason != 2 && (payerAccountDetail.get('currency')?.value && payerAccountDetail.get('currency')?.value === 'ILS')">
+          <!-- Foreign currency + non CC/AW Account Holders (20%)-->
+          <div class="selection-wrap bank-form" *ngIf="(getBankCountryCode() == 'il') || isCCAccountHolder">
+            <div class="bank-info">
+              <h4 class="title">Israeli bank account details</h4>
+              <p class="desc">Enter the company’s details to set up the payer.</p>
+            </div>
+            <div class="row">
+              <div class="form-control-wrapper">
+                <div class="form-group">
+                  <label for="accountName" class="benef-label">Account number*</label>
+                  <input (input)="getAccountDetail()"
+                    (keydown)="restrictWhiteSpaceWithAlphnumeric($event); restrictZeroAndDot($event)" type="text"
+                    [class.validation-error]="hasError('accountNumber')" class="form-control"
+                    placeholder="For an example: 132456" formControlName="accountNumber" appOnlyEnglish
+                    (cut)="onCutTypeValue($event)" (copy)="onCopyTypeValue($event)"
+                    (paste)="onPasteTypeValue($event)" />
+                  <p *ngIf="hasError('accountNumber')" class="error-msg"><img class="country-image"
+                      src="images/red-warning-icon.svg" /> Please enter a valid account number</p>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="col-md-4 pe-md-0">
+                <div class="form-control-wrapper">
+                  <div class="form-group">
+                    <label for="bankNumber" class="benef-label">Bank number*</label>
+                    <input (input)="getAccountDetail()" type="text" [class.validation-error]="hasError('bankNumber')" class="form-control"
+                      placeholder="For an example: 132456" formControlName="bankNumber" appOnlyNumbers (keydown)="restrictZeroAndDot($event)"
+                      (cut)="onCutTypeValue($event)" (copy)="onCopyTypeValue($event)" (paste)="onPasteTypeValue($event)" />
+                    <p *ngIf="hasError('bankNumber')" class="error-msg"><img class="country-image"
+                        src="images/red-warning-icon.svg" /> Please enter a valid bank number</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="form-control-wrapper">
+                  <div class="form-group">
+                    <label for="lastName" class="benef-label">Bank branch*</label>
+                    <input (input)="getAccountDetail()" type="text" [class.validation-error]="hasError('bankBranch')" class="form-control"
+                      placeholder="For an example: 132456" formControlName="bankBranch"
+                      (keydown)="restrictWhiteSpaceWithAlphnumeric($event); restrictZeroAndDot($event)" appOnlyAlphanumeric
+                      (cut)="onCutTypeValue($event)" (copy)="onCopyTypeValue($event)" (paste)="onPasteTypeValue($event)"/>
+
+                    <p *ngIf="hasError('bankBranch')" class="error-msg"><img class="country-image"
+                        src="images/red-warning-icon.svg" /> Please enter a valid bank branch</p>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+          </div>
+        </ng-container>
+
+      </ng-container>
+
+    </div>
+    <ng-template #companyNameTooltip>
+      Enter the full legal name of the payer company.
+    </ng-template>
+    <ng-template #incorporationCountryTp>
+      Choose the country where the company is legally incorporated.
+    </ng-template>
+    <ng-template #fullNameTooltip>
+      Enter the full name of the person or entity making the payment.
+    </ng-template>
+    <ng-template #lastNameTooltip>
+      Enter the last name of the person or entity making the payment.
+    </ng-template>
+    <ng-template #residestooltip>
+      Choose the country where the payer currently resides.
+    </ng-template>
+    <ng-template #bankCountryTooltip>
+      Choose the country where the bank is located or registered
+    </ng-template>
+    <ng-template #payerProfileCurrencyTooltip>
+      Choose the currency for the transaction or account.
+    </ng-template>
+  </form>
+  <p *ngIf="errorMsg" class="error-msg">
+    <img class="country-image" src="images/red-warning-icon.svg"> {{errorMsg}}
+  </p>
+  <button [ngStyle]="{
+    'pointer-events': isSubmitForm ? 'none' : 'auto',
+    'cursor': isSubmitForm ? 'default' : 'pointer'
+  }" mat-button [disabled]="errorMsg" *ngIf="payerAccountDetail.get('entityType')?.value" class="btn-next"
+    (click)="NextFromPayerSecondStep()">Next</button>
+</div>

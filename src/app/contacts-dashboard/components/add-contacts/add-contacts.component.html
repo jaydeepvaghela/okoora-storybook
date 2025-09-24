@@ -98,13 +98,12 @@
             </mat-step>
           </ng-container>
         </div> -->
-
-        <!-- <div *ngIf="benificiaryForm.value.type.ContactType=='payer' || editPayer">
+        <div *ngIf="benificiaryForm.value.type.ContactType=='payer' || editPayer">
           <mat-step *ngIf="isUserHasCCAccount">
             <app-new-payer [editPayer]="editPayer" [editPayerObj]="payerDataForEdit"
               (moveToMainContactPage)="moveToMainContactPage()"></app-new-payer>
           </mat-step>
-        </div> -->
+        </div>
       </mat-stepper>
     </form>
     <!-- <app-footer [footerBottom]="'fix'" *ngIf="isNonIsraeliUser && displayAWFooter"></app-footer> -->

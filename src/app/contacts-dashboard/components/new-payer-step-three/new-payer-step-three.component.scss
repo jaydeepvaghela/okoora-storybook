@@ -1,0 +1,1022 @@
+@import "../../../../assets/scss/variable.scss";
+
+::ng-deep {
+  .payer-tooltip--rm2 {
+    --bs-tooltip-opacity: 1;
+    --bs-tooltip-max-width:357px;
+
+    .tooltip-inner {
+      background-color:$black;
+      color: $white;
+      padding:20px;
+      font-size: 12px;
+      text-align: left;
+      font-family: $he_heebo;
+      font-weight:400;
+      line-height:20px;
+      border-radius:8px;
+      .tt-desc{
+        b{
+          font-weight: 600;
+        }
+        p{
+          margin: 0;
+        }
+      }
+    }
+    @media screen and (max-width:1440px) {
+      --bs-tooltip-max-width:350px;
+      .tooltip-inner {
+        padding:8px;
+      }
+    }
+    @media screen and (max-width:1024px) {
+      --bs-tooltip-max-width:300px;
+    }
+    @media screen and (max-width:767px) {
+      --bs-tooltip-max-width: 250px;
+    }
+  }
+  .payer-upload-two-files-container {
+    max-width: 899px;
+    min-width: 899px;
+    width: 100%;
+    margin: 38px auto 0;
+
+    .upload-invoice-info {
+      text-align: center;
+      margin: 0 0 19px;
+
+      .title {
+        color: #1F2937;
+        font-family: $he_heebo;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 30px;
+        margin: 0 0 4px;
+      }
+
+      .desc {
+        color: #6B7280;
+        font-family: $he_heebo;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        margin: 0;
+      }
+    }
+
+    .upload-file-wrap {
+      border-radius: 10px;
+      border: 1px dashed #BFDBFE;
+      background: $white;
+      box-shadow: 0px 24px 64px 0px rgba(0, 0, 0, 0.04);
+      padding: 46px 67px 50px 60px;
+
+      .first-second-file-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+
+        .upload-invoice-card {
+          position: relative;
+          width: 100%;
+          max-width: 380px;
+
+          .tool-icn {
+            position: absolute;
+            top: 9px;
+            right: 9px;
+            content: "";
+            padding: 5px 0;
+            cursor: pointer;
+          }
+
+          .drop-zone {
+            border-radius: 10px;
+            border: 1px dashed #D1D5DB;
+            background: #FBFBFB;
+            height: 228px;
+
+            .file-select {
+              z-index: 1;
+
+              .upload-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 0 10px;
+                color: #1F2937;
+                text-align: center;
+                font-family: $he_heebo;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 28px;
+
+                .top-info {
+                  display: flex;
+                  flex-direction: column;
+                }
+
+                b {
+                  color: #1D4ED8;
+                }
+
+                .browse {
+                  margin: 24px 0 0;
+                  color: #6B7280;
+                  font-family: $he_heebo;
+                  font-size: 14px;
+                  font-weight: 500;
+                  line-height: 20px;
+
+                  .btn-select-file {
+                    padding: 0;
+                    color: #1D4ED8;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 20px;
+                    background-color: transparent;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.upfiles {
+          flex-direction: column;
+          width: 100%;
+          border-radius: 10px;
+          border: 1px dashed #D1D5DB;
+          background: #FBFBFB;
+          padding: 0 27px 0 29px;
+          gap: 0;
+
+          .upload-invoice-card {
+            max-width: 100%;
+
+            .tool-icn {
+              display: none;
+            }
+
+            .drop-zone {
+              height: auto;
+              width: 100%;
+              background-color: transparent;
+              border: none;
+
+              .drop-zone-preview {
+                width: 100%;
+                background: transparent;
+                padding: 0 !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                min-height: auto !important;
+                height: auto !important;
+                margin: 0 !important;
+
+                .file-set {
+                  width: 100%;
+                  margin: 0;
+
+                  .progress-wrap {
+                    padding: 19px 0 50px;
+
+                    .tag-name {
+                      color: #1D4ED8;
+                      font-family: $he_heebo;
+                      font-size: 18px;
+                      font-weight: 700;
+                      line-height: 28px;
+                      margin: 0;
+                      text-align: left;
+                    }
+
+                    .progress-wrap-inner {
+                      display: flex;
+                      width: 100%;
+                      align-items: flex-end;
+                      justify-content: space-between;
+                      gap: 20px;
+
+                      .file-name {
+                        display: flex;
+                        gap: 14px;
+                        align-items: flex-end;
+                        .file-data {
+                          .title {
+                            color: #4B5563;
+                            font-family: $he_heebo;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 20px;
+                            margin: 0;
+                            text-align: left;
+
+                            span {
+                              display: block;
+                              font-size: 16px;
+                              white-space: nowrap;
+                              width: 211px;
+                              text-overflow: ellipsis;
+                              overflow: hidden;
+                            }
+                          }
+                        }
+                      }
+
+                      .file-upload-sec {
+                        width: 100%;
+                        display: flex;
+                        position: relative;
+                        max-width: 454px;
+
+                        .progress-inner {
+                          display: flex;
+                          gap: 12px;
+                          align-items: center;
+                          width: 100%;
+
+                          mat-progress-bar.file-upload-loader {
+                            display: block !important;
+                            width: 100%;
+                            height: 8px;
+                            border-radius: 4px;
+
+                            .mdc-linear-progress__buffer-bar {
+                              background-color: #E4E7EC;
+                              height: 8px;
+                            }
+
+                            .mdc-linear-progress__buffer {
+                              height: 8px !important;
+                            }
+
+                            .mdc-linear-progress__bar {
+                              margin: 0 !important;
+                              height: 8px;
+                            }
+
+                            .mdc-linear-progress__bar-inner {
+                              border-top-width: 8px;
+                              left: 0;
+                              border-color: #1B32B8;
+                            }
+                          }
+
+                          .close-btn {
+                            background-color: transparent;
+                            padding: 0;
+                          }
+
+                          .file-progress {
+                            color: #344054;
+                            font-family: $he_heebo;
+                            font-size: 14px;
+                            font-weight: 500;
+                            line-height: 20px;
+                            margin: 0;
+                          }
+                        }
+
+                        .btn-replace {
+                          display: flex;
+                          width: auto;
+                          background-color: transparent;
+                          padding: 0;
+                          color: #1D4ED8;
+                          font-family: $he_heebo;
+                          font-size: 14px;
+                          font-weight: 400;
+                          line-height: 20px;
+                          margin: 0;
+                        }
+                      }
+                    }
+
+                    &.has-error {
+                      padding: 19px 0 0;
+
+                      .progress-wrap-inner {
+                        .file-upload-sec {
+                          .progress-inner {
+                            mat-progress-bar.file-upload-loader {
+                              .mdc-linear-progress__bar-inner {
+                                border-color: #F04438;
+                              }
+                            }
+                          }
+                        }
+                      }
+                      &.canceled{
+                        .progress-wrap-inner {
+                          .file-upload-sec {
+                            .progress-inner {
+                              mat-progress-bar.file-upload-loader {
+                                .mdc-linear-progress__bar-inner {
+                                  border-color: #FDA29B;
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .error-msg {
+                    color: #DC2626;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 24px;
+                    margin: 7px 0 18px;
+                    text-align: left;
+                    span{
+                      color:#1D4ED8;
+                    }
+                  }
+                }
+
+                ngx-dropzone-remove-badge {
+                  display: none;
+                }
+              }
+
+              .file-select {
+                width: 100%;
+                margin: 0;
+
+                .upload-info {
+                  flex-direction: row;
+                  justify-content: space-between;
+                  padding: 38px 0 50px;
+
+                  .top-info {
+                    flex-direction: row;
+                    gap: 5px;
+                  }
+
+                  .browse {
+                    margin: 0;
+                  }
+                }
+              }
+
+              &:first-child {
+                border-bottom: 1px dashed #D1D5DB;
+                border-radius: 0;
+              }
+            }
+          }
+        }
+      }
+
+      .file-desc {
+        margin: 8px 0 20px;
+        display: flex;
+        justify-content: space-between;
+        color: #9CA3AF;
+        font-family: $he_heebo;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .inner-contents {
+        .warning-msg {
+          text-align: center;
+          margin: 0 0 59px;
+
+          .title {
+            color: #374151;
+            font-family: $he_heebo;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 24px;
+            margin: 0 0 3px;
+          }
+
+          .desc {
+            color: #6B7280;
+            font-family: $he_heebo;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 19px;
+            margin: 0;
+          }
+        }
+
+        .form-fields {
+          label {
+            color: #1F2937;
+            font-family: $he_heebo;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 24px;
+            margin: 0 0 5px;
+            .tool-icn{
+              padding:5px 0;
+              cursor: pointer;
+            }
+          }
+
+          .country-dropdown {
+            margin: 0 0 27px;
+
+            mat-select {
+              display: flex;
+              align-items: center;
+              width: 100%;
+              min-width: 320px;
+              height: 60px;
+              border-radius: 4px;
+              border: 1px solid #9CA3AF;
+              background: $white;
+
+              &:focus {
+                box-shadow: none;
+              }
+
+              &.validation-error {
+                border-color: #DC2626;
+              }
+
+              .to-country-section {
+                img {
+                  width: 29px;
+                  height: auto;
+                }
+
+                .country-code {
+                  color: #2C2C2E;
+                  font-family: $he_heebo;
+                  font-size: 14px;
+                  font-weight: 400;
+                  line-height: 24px;
+                  margin-left: 18px;
+                  text-transform: capitalize;
+                }
+              }
+
+
+              @media screen and (max-width: 1440px) {
+                min-width: 260px;
+                height: 45px;
+
+                .to-country-section {
+                  .country-code {
+                    margin-left: 10px;
+                  }
+                }
+              }
+
+              .mat-mdc-select-trigger {
+                .mat-mdc-select-value {
+                  .mat-mdc-select-min-line {
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 24px;
+
+                    @media screen and (max-width: 1440px) {
+                      line-height: 20px;
+                    }
+
+                    @media screen and (max-width:420px) {
+                      line-height: 1.2;
+                      font-size: 12px;
+                    }
+                  }
+
+                  .mat-mdc-select-placeholder {
+                    color: #9CA3AF;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 24px;
+
+                    @media screen and (max-width: 1440px) {
+                      line-height: 20px;
+                      font-size: 14px;
+                    }
+
+                    @media screen and (max-width:420px) {
+                      line-height: 1.2;
+                      font-size: 12px;
+                    }
+                  }
+                }
+              }
+
+              .mat-mdc-select-arrow-wrapper {
+                .mat-mdc-select-arrow {
+                  width: 12px;
+                  height: 7px;
+                  background: url(../../../../assets/images/arrow-down-black.svg) center no-repeat;
+                  background-size: contain;
+
+                  svg {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+
+          .form-group {
+            margin: 0 0 27px;
+          }
+
+          .form-control {
+            height: 60px;
+            border-color: #9CA3AF;
+            border-radius: 4px;
+            color: #1F2937;
+            font-family: $he_heebo;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 24px;
+            box-shadow: none;
+            &:focus{
+              box-shadow: none;
+            }
+            &::placeholder {
+              color: #9CA3AF;
+            }
+
+            &.validation-error {
+              border-color: #DC2626;
+            }
+
+            @media screen and (max-width: 1440px) {
+              height: 45px;
+            }
+          }
+          .error-msg {
+            color: #DC2626;
+            font-family: $he_heebo;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 24px;
+            margin: 7px 0 0;
+            text-align: left;
+          }
+        }
+      }
+
+      .btn-sec {
+        text-align: center;
+
+        .upload-btn {
+          display: flex;
+          width: 100%;
+          max-width: 252px;
+          height: 50px;
+          padding: 10px 20px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50px;
+          background: #1D4ED8;
+          color: $white;
+          font-family: $he_heebo;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 24px;
+          margin: 31px auto 24px;
+
+          &:hover {
+            opacity: 0.9;
+          }
+
+          &.disable {
+            background-color: #F3F4F6;
+            color: #D1D5DB;
+            cursor: none;
+            pointer-events: none;
+          }
+        }
+
+        .save-btn {
+          display: inline-flex;
+          width: auto;
+          height: 50px;
+          padding: 10px 60px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 40px;
+          border: 1px solid #D1D5DB;
+          color: #1D4ED8;
+          font-family: $he_heebo;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 19px;
+          margin: 24px 0 0;
+
+          &:hover {
+            background-color: #1D4ED8;
+            color: $white;
+            border-color: #1D4ED8;
+          }
+        }
+      }
+    }
+    .btn-finish {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      margin:40px auto 0;
+      display: flex;
+      max-width: 602px;
+      width: 100%;
+      height: 50px;
+      padding: 10px 20px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      background: #1D4ED8;
+      color: $white;
+      font-family: $he_heebo;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 24px;
+      z-index: 2;
+
+      &:hover {
+        opacity: 0.9;
+      }
+      &.disable {
+        background-color: #F3F4F6;
+        color: #D1D5DB;
+        cursor: none;
+        pointer-events: none;
+      }
+    }
+
+    @media screen and (max-width:1440px) {
+      max-width: 700px;
+      min-width: 700px;
+      margin: 0 auto;
+
+      .upload-invoice-info {
+        margin: 0 0 15px;
+
+        .title {
+          font-size: 18px;
+          line-height: 1.2;
+        }
+      }
+
+      .upload-file-wrap {
+        padding: 30px;
+
+        .first-second-file-container {
+          .upload-invoice-card {
+            .drop-zone {
+              height: 150px;
+
+              .file-select {
+                .upload-info {
+                  font-size: 16px;
+                  line-height: 1.2;
+
+                  .browse {
+                    margin: 15px 0 0;
+                  }
+                }
+              }
+            }
+          }
+
+          &.upfiles {
+            padding: 0 20px;
+
+            .upload-invoice-card {
+              .drop-zone {
+                .drop-zone-preview {
+                  .file-set {
+                    .progress-wrap {
+                      padding: 19px 0;
+
+                      &.has-error {
+                        padding: 19px 0 0;
+                      }
+
+                      .tag-name {
+                        font-size: 16px;
+                        line-height: 1.5;
+                      }
+
+                      .progress-wrap-inner {
+                        .file-name {
+                          gap: 5px;
+                          img{
+                            width: 25px;
+                            height: auto;
+                          }
+                          .file-data {
+                            .title {
+                              font-size: 12px;
+                              line-height: 1.2;
+
+                              span {
+                                font-size: 14px;
+                              }
+                            }
+                          }
+                        }
+
+                        .file-upload-sec {
+                          .btn-replace {
+                            font-size: 12px;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .file-select {
+                  .upload-info {
+                    padding: 30px 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .file-desc {
+          font-size: 12px;
+          line-height: 1.2;
+          margin: 5px 0 10px;
+
+        }
+
+        .inner-contents {
+          .warning-msg {
+            margin: 0 0 30px;
+          }
+
+          .form-fields {
+            .country-dropdown {
+              margin: 0 0 15px;
+            }
+
+            .form-group {
+              margin: 0 0 15px;
+            }
+          }
+        }
+
+        .btn-sec {
+          .upload-btn {
+            height: 45px;
+            margin: 20px auto;
+            max-width: 200px;
+          }
+
+          .save-btn {
+            margin: 15px 0 0;
+            height: 45px;
+            padding: 10px 40px;
+          }
+        }
+      }
+      .btn-finish {
+        height: 45px;
+        max-width: calc(600px - 30px);
+      }
+    }
+
+    @media screen and (max-width:1024px) {
+      max-width: calc(600px - 30px);
+      min-width: calc(600px - 30px);
+      .upload-invoice-info {
+        .title {
+          font-size: 16px;
+        }
+      }
+
+      .upload-file-wrap {
+        padding: 20px;
+
+        .first-second-file-container {
+          .upload-invoice-card {
+            .drop-zone {
+              .file-select {
+                .upload-info {
+                  font-size: 14px;
+
+                  .browse {
+                    margin: 10px 0 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .inner-contents {
+          .warning-msg {
+            margin: 0 0 20px;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width:767px) {
+      margin: 0 30px;
+
+      .upload-file-wrap {
+        .first-second-file-container {
+          &.upfiles {
+            .upload-invoice-card {
+              .drop-zone {
+                .drop-zone-preview {
+                  .file-set {
+                    .progress-wrap {
+                      padding: 15px 0;
+
+                      .progress-wrap-inner {
+                        flex-direction: column;
+                        gap: 10px;
+                        align-items: flex-start;
+                      }
+
+                      &.has-error {
+                        padding: 15px 0 0;
+                      }
+                    }
+                    .error-msg {
+                      font-size: 12px;
+                      line-height: 1.2;
+                      margin: 5px 0 15px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .btn-sec {
+          .upload-btn {
+            height: 40px;
+            max-width: 200px;
+          }
+
+          .save-btn {
+            height: 40px;
+          }
+        }
+
+      }
+      .btn-finish {
+        height: 40px;
+        margin: 20px auto 0;
+        max-width: 90%;
+      }
+    }
+
+    @media screen and (max-width:580px) {
+      margin: 0 20px;
+
+      .upload-invoice-info {
+        .title {
+          font-size: 14px;
+        }
+
+        .desc {
+          font-size: 12px;
+        }
+      }
+
+      .upload-file-wrap {
+        .first-second-file-container {
+          flex-direction: column;
+          .upload-invoice-card {
+            max-width: 100%;
+          }
+        }
+
+        .inner-contents {
+          .warning-msg {
+            margin: 0 0 20px;
+
+            .title {
+              img {
+                width: 15px;
+                height: auto;
+              }
+            }
+          }
+
+          .form-fields {
+            .country-dropdown {
+              margin: 0 0 10px;
+            }
+
+            .form-group {
+              margin: 0 0 10px;
+            }
+          }
+        }
+
+        .btn-sec {
+          .upload-btn {
+            height: 35px;
+            max-width: 100px;
+          }
+
+          .save-btn {
+            height: 35px;
+            padding: 10px 20px;
+          }
+        }
+
+      }
+      .btn-finish {
+        height: 35px;
+      }
+    }
+  }
+}
+
+
+.note-section-container {
+  .note-section-wrapper{
+    width: 100%;
+    max-width: 899px;
+    border-radius: 10px;
+    border: 1px dashed #BFDBFE;
+    background:#FFF;
+    padding: 35px 130px 53px 166px;
+    box-shadow: 0px 24px 64px 0px rgba(0, 0, 0, 0.04);
+    margin-bottom: 10px;
+
+    @media screen and (max-width:1440px) {
+      padding: 25px 100px 30px 110px;
+    }
+    @media screen and (max-width:540px) {
+      padding: 20px 30px;
+    }
+
+    .reason-title-wrapper{
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 5px;
+
+      .reason-label {
+        color:#1F2937;
+        font-family: $he_heebo;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px; /* 171.429% */
+        letter-spacing: 0;
+      }
+      img {
+        padding: 5px 0;
+        cursor: pointer;
+      }
+
+    }
+
+    .reason-text-area{
+      padding: 18px 0 0 16px;
+      max-width: 602px;
+      width: 100%;
+      height: 246px;
+      border-radius: 4px;
+      border: 1px solid #9CA3AF;
+      background: #FFF;
+      resize: none;
+      color: #9CA3AF;
+      font-family: $he_heebo;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 24px;
+      &:focus {
+        outline: none; /* No outline */
+      }
+      @media screen and (max-width: 1440px){
+        padding: 14px 0 0 12px;
+        height: 200px;
+      }
+      @media screen and (max-width:540px) {
+        height: 150px;
+        padding: 5px 0 0 6px;
+      }
+
+    }
+
+  }
+}

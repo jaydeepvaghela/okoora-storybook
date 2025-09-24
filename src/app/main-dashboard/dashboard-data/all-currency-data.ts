@@ -2262,6 +2262,12 @@ export const GetActiveHedgingCurrency = {
     ]
 }
 
+export const TaxHavenCountryCodes = [
+    "ad",
+    "aw",
+    "bz"
+];
+
 export const GetDefaultCurrencyData = {
     "baseCurency": "ILS",
     "exposers": [

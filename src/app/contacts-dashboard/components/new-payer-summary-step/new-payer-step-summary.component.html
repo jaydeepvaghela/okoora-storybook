@@ -1,0 +1,88 @@
+<div class="payer-detail-wrap" *ngIf="!isSummaryConfirmed">
+  <h2 class="title">Review & Confirm Payer Details</h2>
+  <div class="copy-btn-wrap"><button class="btn-copy-icon" #copytooltip="ngbTooltip" triggers="manual"
+      [ngbTooltip]="payerCopyTooltip" placement="auto" tooltipClass="beneficiary-tooltip--rm"
+      (click)="copyDetailsToClipboard()"><img src="images/copy-icon-black.svg"></button></div>
+  <ng-template #payerCopyTooltip>
+    Copied to clipboard.
+  </ng-template>
+  <div class="confirm-step-d">
+    <ul class="d-list" (click)="navigateToScreen(1)">
+      <li class="d-item">
+        <span class="info-t">Payer type</span>
+        <span class="d-data d-tag">{{
+          payerForm.get('newPayerReasonForm')?.get('paymentReason')?.value === 2 &&
+          payerForm.get('newPayerReasonForm')?.get('currency')?.value === 'ILS' ? '--' :
+          payerForm.get('payerAccountDetail')?.get('entityType')?.value == '1' ? 'Business' :
+          payerForm.get('payerAccountDetail')?.get('entityType')?.value == '2' ? 'Individual' :
+          '--'}}</span>
+      </li>
+      <li class="d-item">
+        <span class="info-t">Payer bank country</span>
+        <span class="d-data d-tag">{{
+          payerForm.get('newPayerReasonForm')?.get('paymentReason')?.value === 2 &&
+          payerForm.get('newPayerReasonForm')?.get('currency')?.value === 'ILS' ? 'Israel' :
+          (displayCountryName(payerForm.get('payerAccountDetail')?.get('bankCountry')?.value) || '--')}}
+        </span>
+      </li>
+      <li class="d-item">
+        <span class="info-t">Payer country</span>
+        <span class="d-data">
+          {{
+          payerForm.get('newPayerReasonForm')?.get('paymentReason')?.value === 2 &&
+          payerForm.get('newPayerReasonForm')?.get('currency')?.value === 'ILS'
+          ? 'Israel'
+          : displayCountryName(payerForm.get('payerAccountDetail')?.get('payerCountry')?.value) ||
+          displayCountryName(payerForm.get('payerAccountDetail')?.get('unionCountry')?.value) ||
+          '--'
+          }}
+        </span>
+      </li>
+      <li class="d-item">
+        <span class="info-t">Currency</span>
+        <span class="d-data d-tag">{{ payerForm.get('newPayerReasonForm')?.get('paymentReason')?.value === 2 ?
+          payerForm.get('newPayerReasonForm')?.get('currency')?.value
+          : payerForm.get('payerAccountDetail')?.get('currency')?.value}}</span>
+      </li>
+    </ul>
+    <ul class="d-list" (click)="navigateToScreen(0)">
+      <li class="d-item">
+        <span class="info-t">Transfer reason</span>
+        <span
+          class="d-data d-tag">{{PayerPaymentReason[payerForm.get('newPayerReasonForm')?.get('paymentReason')?.value]}}</span>
+      </li>
+    </ul>
+  </div>
+  <button class="btn-cnf" (click)="confirmSummary()" 
+  [ngStyle]="{
+    'pointer-events': isSubmitForm ? 'none' : 'auto',
+    'cursor': isSubmitForm ? 'default' : 'pointer'
+}">Finish</button>
+</div>
+
+<div class="confirm-payer-final" *ngIf="isSummaryConfirmed">
+  <div class="pay-container">
+    <div class="image-sec">
+      <img src="images/mass-payment/success.gif" />
+    </div>
+    <div class="desc-sec">
+      <div class="title">{{payerForm.get('payerAccountDetail')?.get('bankAccountHolderName')?.value}}</div>
+      <div class="sub-title"> {{
+        payerForm.get('newPayerReasonForm')?.get('currency')?.value === 'ILS'
+        ? 'You have set yourself as a payer!'
+        : 'is your new Payer'
+        }}</div>
+      <!-- <button class="btn-pay"
+        *ngIf=" payerForm.get('newPayerReasonForm')?.get('currency')?.value != 'ILS' ">Pay<span>{{payerForm.get('payerAccountDetail')?.get('bankAccountHolderName')?.value}}</span></button> -->
+    </div>
+    <!-- <div class="desc-sec">
+      <div class="title"></div>
+      <div class="sub-title">Is currently in review</div>
+      <p class="desc">The approve process can take up to 2-3 business days</p>
+    </div> -->
+    <div class="btn-sec">
+      <button class="btn-b-list" (click)="navigateToContactPage()">Payer’s List</button>
+      <button class="btn-add-new" (click)="createBeneficiaryDialog()">Add New Payer</button>
+    </div>
+  </div>
+</div>

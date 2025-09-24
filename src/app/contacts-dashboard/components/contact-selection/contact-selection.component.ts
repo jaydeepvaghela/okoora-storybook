@@ -29,12 +29,13 @@ export class ContactSelectionComponent {
       localStorage.removeItem('payerselected');
     } else if (this.type?.value?.ContactType == 'beniciary') {
       localStorage.removeItem('payerselected');
+     
+    }
+    
+    if (this.formStepper) {
       if (stepper) {
         stepper.next(); // This moves to the next step
       }
-    }
-    if (this.formStepper) {
-
       let totalSteps = stepper.steps.length;
       let currentStep = stepper.selectedIndex + 1;
       progress.value = (currentStep * 100) / totalSteps;
