@@ -5,10 +5,11 @@ import { SidebarComponent } from "./risk-dashboard/components/sidebar/sidebar.co
 import { CommonModule } from '@angular/common';
 import { of, take } from 'rxjs';
 import { user } from './contacts-dashboard/components/contacts-data/userData';
+import { NewHeaderComponent } from './shared/new-header/new-header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, SidebarComponent, CommonModule],
+  imports: [RouterOutlet, NewHeaderComponent, SidebarComponent, CommonModule],
   templateUrl:'app.component.html',
   styleUrl:'app.component.scss',
 })

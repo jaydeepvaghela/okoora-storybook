@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 // import { FxErpStepperComponent } from 'src/app/fx-erp-connection/components/fx-erp-stepper/fx-erp-stepper.component';
 // import { OnboardingService } from 'src/app/common/services/onboarding.service';
@@ -27,6 +27,7 @@ import { getConversionRules } from '../fx-dashboard-data/conversionRules';
   imports: [CommonModule, AutoPilotListComponent, FxProtectedRiskComponent, MatDialogModule]
 })
 export class FxDashboardComponent {
+  @Input() hideProtectedRisk: boolean = false;
   isPayableProtectFilled: boolean = false;
   showLoader: boolean = false;
   balanceListSubscription: any;

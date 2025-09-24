@@ -29,5 +29,6 @@ export default {
 export const Default: StoryObj<FxDashboardComponent> = {
   args: {
     // Add any required mock inputs here
+    hideProtectedRisk: true,
   },
 };
