@@ -2,6 +2,9 @@
     <div class="fx-dashboard-body">
         <div class="fx-dash-header">
             <h2 class="title">FX Auto-Pilot</h2>
+            <div class="right-btns">
+                <button class="manage-deal" (click)="openManageHedgeDeals()"><img src="images/fx-dashboard/deal-icon.svg" alt="manage deals">Manage Deals</button>
+            </div>
         </div>
         <div class="fx-dash-content-wrapper">
             <div class="fx-dash-left-container" id="autoPilotInitialTourStep" *ngIf="!isPayableProtectFilled && conversionData?.length == 0">
