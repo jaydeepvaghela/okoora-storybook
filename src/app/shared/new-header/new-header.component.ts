@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { distinctUntilChanged, fromEvent, Observable, of, Subject, Subscribable, Subscription, takeUntil, tap } from 'rxjs';
 import { MatDrawer } from '@angular/material/sidenav';
@@ -33,6 +33,7 @@ import { QuickHedgeDrawerComponent } from '../../risk-dashboard/components/hedgi
 })
 export class NewHeaderComponent {
   @Output() openSidebar = new EventEmitter();
+  @Input() hideElements: boolean = false;
   maxFlaglocalStorage!: boolean;
   maxSiteName!: string | null;
   maxLogo: boolean = false;
