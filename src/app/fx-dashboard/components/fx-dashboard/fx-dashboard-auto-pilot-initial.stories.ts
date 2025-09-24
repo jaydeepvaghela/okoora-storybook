@@ -30,5 +30,6 @@ export const AutoPilotInitial: StoryObj<FxDashboardComponent> = {
   args: {
     isPayableProtectFilled: false,
     conversionData: [],
+    hideProtectedRisk: true,
   },
 };
