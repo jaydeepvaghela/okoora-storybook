@@ -3,7 +3,7 @@ import { FxErpInvoiceStep5Component } from './fx-erp-invoice-step5.component';
 import { CommonModule } from '@angular/common';
 
 export default {
-  title: 'FX ERP Connection/Invoice Step 5',
+  title: 'FX Dashboard/Auto-pilot functionality/Invoice Rules Steps/Invoice Step 5',
   component: FxErpInvoiceStep5Component,
   decorators: [
     moduleMetadata({

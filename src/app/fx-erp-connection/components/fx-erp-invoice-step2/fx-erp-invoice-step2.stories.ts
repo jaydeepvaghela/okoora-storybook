@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 // import { FormGroup, FormControl } from '@angular/forms';
 
 export default {
-  title: 'FX ERP Connection/Invoice Step 2',
+  title: 'FX Dashboard/Auto-pilot functionality/Invoice Rules Steps/Invoice Step 2',
   component: FxErpInvoiceStep2Component,
   decorators: [
     moduleMetadata({
