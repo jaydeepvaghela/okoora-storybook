@@ -39,7 +39,7 @@ class MockChangeDetectorRef {
 }
 
 const meta: Meta<ManageHedgeDealsComponent> = {
-  title: 'FX-Dashboard/ManageHedgeDeals',
+  title: 'FX Dashboard/Hedge Deals/Hedge Deals Listing',
   component: ManageHedgeDealsComponent,
   decorators: [
     moduleMetadata({

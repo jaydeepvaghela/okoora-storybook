@@ -9,7 +9,7 @@ import { AutoPilotListComponent } from '../auto-pilot-list/auto-pilot-list.compo
 import { FxProtectedRiskComponent } from '../fx-protected-risk/fx-protected-risk.component';
 
 export default {
-  title: 'FX Dashboard/AutoPilotList/Auto Pilot Filled',
+  title: 'FX Dashboard/Auto-pilot functionality/Listing',
   component: FxDashboardComponent,
   decorators: [
     moduleMetadata({
