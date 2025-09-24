@@ -142,6 +142,9 @@
           &.market-place {
             background-image: url('../../../../assets/images/marketplace-gray.svg');
           }
+          &.automation{
+            background: url('../../../../assets/images/automation-icn.svg');
+          }
         }
 
         .menu-text {
@@ -208,6 +211,9 @@
             &.market-place {
               background-image: url('../../../../assets/images/marketplace-white.svg');
             }
+            &.automation{
+              filter: brightness(99);
+            }
           }
 
           .menu-text {
@@ -257,6 +263,9 @@
 
             &.market-place {
               background-image: url('../../../../assets/images/marketplace-blue.svg');
+            }
+            &.automation{
+              filter: brightness(5);
             }
           }
 
@@ -464,7 +473,7 @@
     }
   }
 
-  @media screen and (max-width:1440px) and (min-width:1025px) {
+  @media screen and (min-width:1025px) {
     &:not(:hover) {
       max-width: 124px;
 

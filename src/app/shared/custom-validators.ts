@@ -1,7 +1,7 @@
 import { AbstractControl, FormGroup, ValidatorFn, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
 // import { environment } from "src/environments/environment";
-import { SubjectService } from "../main-kyc/services/subject.service";
+// import { SubjectService } from "../main-kyc/services/subject.service";
 /**
  * Regular expressions
  */
@@ -32,9 +32,9 @@ export const validateID = (id:any) => {
  export const onlyValidIdNumber = (): ValidatorFn => {
     return (control: AbstractControl):any => {
 
-        if (!environment.production && !SubjectService.idValidation) {
-            return null;
-        }
+        // if (!environment.production && !SubjectService.idValidation) {
+        //     return null;
+        // }
 
         const id = control.value;
         // if the value given is empty string then we return null because these fields are optional

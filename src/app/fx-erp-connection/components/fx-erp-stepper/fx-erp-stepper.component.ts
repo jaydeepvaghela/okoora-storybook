@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { of, Subject, takeUntil } from 'rxjs';
 import { customerSupplierList } from '../../../fx-dashboard/components/fx-dashboard-data/customer-supplier-list';
@@ -25,7 +25,7 @@ import { FxErpInvoiceStep12Component } from '../fx-erp-invoice-step12/fx-erp-inv
   selector: 'app-fx-erp-stepper',
   templateUrl: './fx-erp-stepper.component.html',
   styleUrls: ['./fx-erp-stepper.component.scss'],
-  imports:[MatStepperModule,MatProgressBarModule,CommonModule,FxErpInvoiceStep1Component,FxErpInvoiceStep2Component,FxErpInvoiceStep3Component,FxErpInvoiceStep5Component,FxErpInvoiceStep6Component,FxErpInvoiceStep7Component,FxErpInvoiceStep8Component,FxErpInvoiceStep9Component,FxErpInvoiceStep10Component,FxErpInvoiceStep11Component,FxErpInvoiceStep12Component,ReactiveFormsModule]
+  imports:[MatStepperModule,MatProgressBarModule,CommonModule,FxErpInvoiceStep1Component,FxErpInvoiceStep2Component,FxErpInvoiceStep3Component,FxErpInvoiceStep5Component,FxErpInvoiceStep6Component,FxErpInvoiceStep7Component,FxErpInvoiceStep8Component,FxErpInvoiceStep9Component,FxErpInvoiceStep10Component,FxErpInvoiceStep11Component,FxErpInvoiceStep12Component,ReactiveFormsModule,MatDialogModule]
 })
 export class FxErpStepperComponent implements OnInit, AfterViewInit, OnDestroy{
   inVoiceSteps = InvoiceSteps; // invoice flow steps enum
