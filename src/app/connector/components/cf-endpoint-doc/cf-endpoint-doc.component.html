@@ -1,0 +1,350 @@
+<section class="cashflow-endpoint-documentation">
+    <div class="wrapper-actions">
+        <!-- <div class="go-back" (click)="redirectBack()" *ngIf="!fromAutoPilotCashflowComplete">
+            <img src="assets/images/back-arrow-left.svg" alt="back">back
+        </div> -->
+        <button class="btn-exposure-tbl" (click)="redirectToExposure()">{{'ExposureTable.exposureTable' | translate}}</button>
+    </div>
+
+    <div class="cashflow-integration-wrapper">
+        <h3 class="title">{{'ExposureTable.cashFlowIntegration' | translate}}</h3>
+        <p class="paragraph">{{'ExposureTable.cashFlowIntegrationDescOne' | translate}}
+            <br> {{'ExposureTable.cashFlowIntegrationDescTwo' | translate}}</p>
+    </div>
+    <div class="endpoints-header-wrapper" id="endpoint-wrapper">
+        <div class="endpoints-header">
+            <picture>
+                <img src="assets/images/park-connection-icon.svg" alt="connection-icon">
+            </picture>
+            <label class="title">{{'ExposureTable.endpoints' | translate}}</label>
+        </div>
+        <div class="cta-options-wrapper">
+            <button (click)="focusOnAuthSection()" class="cta-btn">{{'ExposureTable.authentication' | translate}}</button>
+            <button (click)="focusOnCashflowSection()" class="cta-btn">{{'ExposureTable.createCashflow' | translate}}</button>
+        </div>
+    </div>
+    <!-- Authentication API documentation section -->
+    <div class="authentication-doc-wrapper auth-doc-first" id="authenticationDocSection" #authenticationDocSection>
+        <div class="left-doc-wrapper">
+            <div class="title-wrap">
+                <h4 class="title mb-0">{{'ExposureTable.authentication' | translate}}</h4>
+            </div>
+            <div class="params-container">
+                <div class="url-section">
+                    <div class="url-title">
+                        <label class="title">{{'ExposureTable.URL' | translate}}</label>
+                        <span class="type">{{'ExposureTable.POST' | translate}}</span>
+                    </div>
+                    <a class="link"
+                        href="https://okoora-stage-api2023.azurewebsites.net/api/v1.0/Authentication/Authenticate" target="_blank">https://okoora-stage-api2023.azurewebsites.net/api/v1.0/Authentication/Authenticate</a>
+                </div>
+                <div class="headers-section">
+                    <label class="title">{{'ExposureTable.headers' | translate}}</label>
+                    <div class="doc-content first-row">
+                        <label class="label-head">{{'ExposureTable.contentType' | translate}}</label>
+                        <span class="span-head">{{'ExposureTable.applicationJson' | translate}}</span>
+                    </div>
+                    <div class="doc-content">
+                        <label class="label-head">{{'ExposureTable.clientID' | translate}}</label>
+                        <div class="client-cred">
+                            <div class="cred-wrapper">
+                                <span class="id-value" id="clientId">{{ showClientsId ? clientsId : maskedClientsId }}</span>
+                                <button class="hide-show-btn" [ngClass]="{ 'show': showClientsId }"
+                                    (click)="showClientsId = !showClientsId">
+                                </button>
+                            </div>
+                            <img src="assets/images/copy-icon.svg" (click)="copyContent('clientId')" alt="copy" />
+                        </div>
+                    </div>
+                    <div class="doc-content">
+                        <label class="label-head">{{'ExposureTable.clientSecret' | translate}}</label>
+                        <div class="client-cred">
+                            <div class="cred-wrapper">
+                                <span class="id-value" id="clientSecret">{{ showClientSecret ? clientSecret : maskedClientSecret }}</span>
+                                <button class="hide-show-btn" [ngClass]="{ 'show': showClientSecret }"
+                                    (click)="showClientSecret = !showClientSecret">
+                                </button>
+                            </div>
+                            <img src="assets/images/copy-icon.svg" (click)="copyContent('clientSecret')" alt="copy" />
+                        </div>
+                    </div>
+                </div>
+                <div class="parameters-section">
+                    <label class="title">{{'ExposureTable.parameters' | translate}}</label>
+                    <div class="param-wrapper">
+                        <div class="doc-content first-row">
+                            <div class="params">
+                                <label class="label-head">{{'ExposureTable.username' | translate}}</label>
+                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                            </div>
+                            <label class="param-info">{{'ExposureTable.yourMainAccountEmailAddress' | translate}}</label>
+                        <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                        </div>
+                        <div class="doc-content">
+                            <div class="params">
+                                <label class="label-head">{{'ExposureTable.password' | translate}}</label>
+                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                            </div>
+                            <label class="param-info">{{'ExposureTable.yourMainAccountPassword' | translate}}</label>
+                            <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shell-example-section">
+                    <div class="header-shell">
+                        <div class="shell-left">
+                            <h3 class="title">{{'ExposureTable.exampleFromShell' | translate}}</h3>
+                            <img src="assets/images/shell-icon.svg" alt="shell" />
+                        </div>
+                        <img src="assets/images/copy-icon-w.svg" (click)="copyContent('authCode')" alt="copy" />
+                    </div>
+                    <div class="content-shell" id="authCode">
+                        <label class="curl">curl</label> <span class="request"> --request </span> <span
+                            class="post">POST</span> \
+                        <p class="request">--url <span
+                                class="default">'https://okoora-stage-api2023.azurewebsites.net/api/v1.0/Authentication/Authenticate'</span>
+                            <span class="default"> \</span>
+                        </p>
+                        <p class="request">--header <span class="default">'Content-Type: application/json' \</span> </p>
+                        <p class="request">--header <span class="default">'ClientId: Wltcy9uYW1laW'</span> </p>
+                        <p class="request">--header <span class="default">'ClientSecret: Y2FsaG9zdDo0'</span> </p>
+                        <p class="request">--data <span class="default">
+                                '&#123;
+                                <br> "username": "johndoea@example.com",
+                                <br> "password": "123456789" <br>
+                                &#125;'</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-doc-wrapper">
+            <div class="success-wrapper">
+                <label class="title">{{'ExposureTable.successResponse' | translate}}</label>
+                <div class="response-content" id="authResponse">
+                    &#123;
+                    <br><label>&nbsp;&nbsp;&nbsp;"access_token"</label>: <span>"eyJhbGciOiJIUzI1...."</span>,
+                    <br><label>&nbsp;&nbsp;&nbsp;"token_type"</label>: <span>"Bearer"</span>,
+                    <br> &#125;
+                    <img src="assets/images/copy-icon-w.svg" (click)="copyContent('authResponse')" alt="copy" />
+                </div>
+            </div>
+            <div class="failure-wrapper">
+                <label class="title">{{'ExposureTable.errorResponses' | translate}}</label>
+                <div class="response-content">
+                    <div class="res-wrapper">
+                        <label>400 Bad Request</label>
+                        <span>&nbsp;&nbsp;&nbsp;&#123;"error": "Missing 'username' or 'password'"&#125;</span>
+                    </div>
+
+                    <div class="res-wrapper">
+                        <label>401 Unauthorized</label>
+                        <span>&nbsp;&nbsp;&nbsp;&#123;"error": "Invalid credentials"&#125;</span>
+                    </div>
+
+                    <div class="res-wrapper">
+                        <label>403 Forbidden</label>
+                        <span class="mb-0">&nbsp;&nbsp;&nbsp;&#123;"error": "Invalid X-Client-Id or
+                            X-Client-Secret"&#125;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cashflow API documentation section-->
+    <div class="cashflow-doc-wrapper" id="cashflowDocSection" #cashflowDocSection>
+        <div class="left-doc-wrapper">
+            <div class="title-wrap">
+                <h4 class="title mb-0">{{'ExposureTable.createCashflow' | translate}}</h4>
+            </div>
+            <div class="params-container">
+                <div class="url-section">
+                    <div class="url-title">
+                        <label class="title">{{'ExposureTable.URL' | translate}}</label>
+                        <span class="type">{{'ExposureTable.POST' | translate}}</span>
+                    </div>
+                    <a class="link"
+                        href="https://okoora-stage-api2023.azurewebsites.net/api/ApiDeck/Cashflow" target="_blank">https://okoora-stage-api2023.azurewebsites.net/api/ApiDeck/Cashflow</a>
+                </div>
+                <div class="headers-section">
+                    <label class="title">{{'ExposureTable.headers' | translate}}</label>
+                    <div class="doc-content first-row">
+                        <label class="label-head">{{'ExposureTable.contentType' | translate}}</label>
+                        <span class="span-head">{{'ExposureTable.applicationJson' | translate}}</span>
+                    </div>
+                    <div class="doc-content">
+                        <label class="label-head">{{'ExposureTable.authorization' | translate}}</label>
+                        <span class="span-head">{{'ExposureTable.bearerToken' | translate}}</span>
+                    </div>
+                </div>
+                <div class="parameters-section">
+                    <label class="title">{{'ExposureTable.parameters' | translate}}</label>
+                    <div class="param-wrapper">
+                        <div class="doc-content first-row">
+                            <div class="params">
+                                <label class="label-head">{{'ExposureTable.records' | translate}}</label>
+                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                            </div>
+                            <label class="param-info">{{'ExposureTable.listOfCashFlowRecords' | translate}}</label>
+                            <span class="param-type">{{'ExposureTable.object' | translate}}</span>
+                        </div>
+                        <div class="doc-content">
+                            <div class="params">
+                                <label class="label-head">{{'ExposureTable.currency' | translate}}</label>
+                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                            </div>
+                            <label class="param-info">{{'ExposureTable.currencyDesc' | translate}}</label>
+                            <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                        </div>
+                        <div class="doc-content">
+                            <div class="params">
+                                <label class="label-head">{{'ExposureTable.amount' | translate}}</label>
+                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                            </div>
+                            <label class="param-info">{{'ExposureTable.amountDesc' | translate}}</label>
+                            <span class="param-type">{{'ExposureTable.double' | translate}}</span>
+                        </div>
+                        <div class="doc-content">
+                            <div class="params">
+                                <label class="label-head">{{'ExposureTable.type' | translate}}</label>
+                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                            </div>
+                            <label class="param-info type-wrap">{{'ExposureTable.typeDesc' | translate}}:
+                                <div class="type-dropdown">
+                                    <mat-select placeholder="{{ 'manageDeal.Select' | translate}}" panelClass="type-select-dropdown">
+                                        <mat-option value="Interest">{{ 'ExposureTable.interest' | translate }}</mat-option>
+                                        <mat-option value="FX Gain">{{ 'ExposureTable.fxGain' | translate }}</mat-option>
+                                        <mat-option value="Rent">{{ 'ExposureTable.rent' | translate }}</mat-option>
+                                        <mat-option value="Dividends">{{ 'ExposureTable.dividends' | translate }}</mat-option>
+                                        <mat-option value="Grants">{{ 'ExposureTable.grants' | translate }}</mat-option>
+                                        <mat-option value="Commissions">{{ 'ExposureTable.commissions' | translate }}</mat-option>
+                                        <mat-option value="Refund">{{ 'ExposureTable.refund' | translate }}</mat-option>
+                                        <mat-option value="Asset Sale">{{ 'ExposureTable.assetSale' | translate }}</mat-option>
+                                        <mat-option value="Salaries">{{ 'ExposureTable.salaries' | translate }}</mat-option>
+                                        <mat-option value="Taxes">{{ 'ExposureTable.taxes' | translate }}</mat-option>
+                                        <mat-option value="Bank Fees">{{ 'ExposureTable.bankFees' | translate }}</mat-option>
+                                        <mat-option value="FX Loss">{{ 'ExposureTable.fxLoss' | translate }}</mat-option>
+                                        <mat-option value="Loans">{{ 'ExposureTable.loans' | translate }}</mat-option>
+                                        <mat-option value="Marketing">{{ 'ExposureTable.marketing' | translate }}</mat-option>
+                                        <mat-option value="Travel">{{ 'ExposureTable.travel' | translate }}</mat-option>
+                                        <mat-option value="Software">{{ 'ExposureTable.software' | translate }}</mat-option>
+                                        <mat-option value="Services">{{ 'ExposureTable.services' | translate }}</mat-option>
+                                        <mat-option value="Equipment">{{ 'ExposureTable.equipment' | translate }}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </label> <!-- will have mat-select -->
+                            <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                        </div>
+                        <div class="doc-content">
+                            <div class="params">
+                                <label class="label-head">{{'ExposureTable.dueDate' | translate}}</label>
+                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                            </div>
+                            <label class="param-info">{{'ExposureTable.dueDateDesc' | translate}}</label>
+                            <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                        </div>
+                        <div class="doc-content">
+                            <div class="params">
+                                <label class="label-head">{{'ExposureTable.direction' | translate}}</label>
+                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                            </div>
+                            <label class="param-info">{{'ExposureTable.directionDesc' | translate}}</label>
+                            <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shell-example-section">
+                    <div class="header-shell">
+                        <div class="shell-left">
+                            <h3 class="title">{{'ExposureTable.exampleFromShell' | translate}}</h3>
+                            <img src="assets/images/shell-icon.svg" alt="shell" />
+                        </div>
+                        <img src="assets/images/copy-icon-w.svg" (click)="copyContent('cashCode')" alt="copy" />
+                    </div>
+                    <div class="content-shell" id="cashCode">
+                        <label class="curl">curl</label> <span class="request"> --request </span> <span
+                            class="post">POST</span> \
+                        <p class="request">--url <span
+                                class="default">'https://okoora-stage-api2023.azurewebsites.net/api/ApiDeck/Cashflow'</span>
+                            <span class="default"> \</span>
+                        </p>
+                        <p class="request">--header <span class="default">'Content-Type: application/json'</span> </p>
+                        <p class="request">--header <span class="default">'Authorization: Bearer
+                                eyJhbGciOiJIUzI..'</span> </p>
+                        <p class="request">--data <span class="default">
+                                '&#123;
+                                <br>"records": [
+                                <br>&nbsp;&nbsp;&nbsp;&#123; <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"currency": "USD",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"amount": 12500.75,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"type": "Commissions",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"dueDate": "2025-07-20",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"direction": "BUY"<br>
+                                &nbsp;&nbsp;&nbsp;&#125;<br>
+                                &nbsp;&nbsp;&nbsp;&#123;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"currency": "EUR",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"amount": 1450.75,<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"type": "Rent",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"dueDate": "2025-07-28",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;"direction": "SELL"<br>
+                                &nbsp;&nbsp;&nbsp;&#125;<br>
+                                &nbsp;&nbsp;&nbsp;]<br>
+                                &#125;'
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-doc-wrapper">
+            <div class="success-wrapper">
+                <label class="title">{{'ExposureTable.successResponse' | translate}}</label>
+                <div class="response-content" id="cashResponse">
+                    &#123;
+                    <br><label>&nbsp;&nbsp;&nbsp;"status"</label>: <span>"success"</span>,
+                    <br><label>&nbsp;&nbsp;&nbsp;"message"</label>: <span>"2 records saved successfully."</span>,
+                    <br><label>&nbsp;&nbsp;&nbsp;"recordIds"</label>: <span>["csh_001", "csh_002"]</span>,
+                    <br> &#125;
+                    <img src="assets/images/copy-icon-w.svg" (click)="copyContent('cashResponse')" alt="copy" />
+                </div>
+            </div>
+            <div class="failure-wrapper">
+                <label class="title">{{'ExposureTable.errorResponses' | translate}}</label>
+                <div class="response-content">
+                    <div class="res-wrapper">
+                        <label>400 Bad Request - Validation Error</label>
+                        <span>&nbsp;&nbsp;&nbsp;&#123;"error": "Invalid 'type' value"&#125;</span>
+                    </div>
+
+                    <div class="res-wrapper">
+                        <label>400 Bad Request – Format Error</label>
+                        <span>&nbsp;&nbsp;&nbsp;&#123;"error": "dueDate must be in YYYY-MM-DD format"&#125;</span>
+                    </div>
+
+                    <div class="res-wrapper">
+                        <label>401 Unauthorized</label>
+                        <span>&nbsp;&nbsp;&nbsp;&#123;"error": "Unauthorized - invalid or expired access token"&#125;</span>
+                    </div>
+
+                    <div class="res-wrapper">
+                        <label>403 Forbidden</label>
+                        <span>&nbsp;&nbsp;&nbsp;&#123;"error": "Forbidden - invalid client credentials"&#125;</span>
+                    </div>
+
+                    <div class="res-wrapper">
+                        <label>422 Unprocessable Entity – Business Rule Violation</label>
+                        <span>&nbsp;&nbsp;&nbsp;&#123;"error": "Amount must be greater than 0"&#125;</span>
+                    </div>
+
+                    <div class="res-wrapper">
+                        <label>500 Internal Server Error</label>
+                        <span class="mb-0">&nbsp;&nbsp;&nbsp;&#123;"error": "Unexpected error occurred while processing
+                            records"&#125;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -1,12 +1,8 @@
 import { Injectable, NgZone } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
-import { CountriesData } from 'src/app/activate-account/models/general';
-import { DataService } from 'src/app/core/services/data.service';
-import { ActiveCurrencyModel } from 'src/app/shared/models/ActiveCurrencyModel';
-import { ApiMap } from '../api.map';
-import { BalanceByCurrencyResposeModel } from '../models/BalanceByCurrencyResposeModel';
 import { FormGroup } from '@angular/forms';
 import { MatDrawer } from '@angular/material/sidenav';
+import { CountriesData } from '../../activate-account/models/general';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +20,9 @@ export class CommonService {
 
   private setSourceAccountList = new BehaviorSubject<any>([]);
   getSourceAccountList$ = this.setSourceAccountList.asObservable();
-  drawerRef: MatDrawer;
+  drawerRef: MatDrawer | undefined;
 
   constructor(
-    private dataService: DataService,
     private ngZone: NgZone
   ) { }
 
@@ -35,92 +30,92 @@ export class CommonService {
     this.setErpFlagsFromClientProfile.next(data)
   }
 
-  getAllActiveCurrency() {
-    return this.dataService.getRequest<ActiveCurrencyModel[]>(ApiMap.getActiveCurrencies.url).pipe(
-      map((data: any) => {
-        // var user = JSON.parse(localStorage.getItem('user') || '{}');
-        // if (user?.afiiliate?.currency == 'EUR') {
-        //   let index = data.findIndex((i: any) => i?.currency?.code === 'ILS');
-        //   if (index > -1) {
-        //     data.splice(index, 1);
-        //   }
-        // }
-        return data;
-      }));
-  }
+  // getAllActiveCurrency() {
+  //   return this.dataService.getRequest<ActiveCurrencyModel[]>(ApiMap.getActiveCurrencies.url).pipe(
+  //     map((data: any) => {
+  //       // var user = JSON.parse(localStorage.getItem('user') || '{}');
+  //       // if (user?.afiiliate?.currency == 'EUR') {
+  //       //   let index = data.findIndex((i: any) => i?.currency?.code === 'ILS');
+  //       //   if (index > -1) {
+  //       //     data.splice(index, 1);
+  //       //   }
+  //       // }
+  //       return data;
+  //     }));
+  // }
 
-  GetCurrenciesNotInWallet() {
-    return this.dataService.getRequest<ActiveCurrencyModel[]>(ApiMap.GetCurrenciesNotInWallet.url).pipe(
-      map((data: any) => {
-        // var user = JSON.parse(localStorage.getItem('user') || '{}');
-        // if (user?.afiiliate?.currency == 'EUR') {
-        //   let index = data.findIndex((i: any) => i?.wallet_Currency?.code === 'ILS');
-        //   if (index > -1) {
-        //     data.splice(index, 1);
-        //   }
-        // }
-        return data;
-      }))
-  }
+  // GetCurrenciesNotInWallet() {
+  //   return this.dataService.getRequest<ActiveCurrencyModel[]>(ApiMap.GetCurrenciesNotInWallet.url).pipe(
+  //     map((data: any) => {
+  //       // var user = JSON.parse(localStorage.getItem('user') || '{}');
+  //       // if (user?.afiiliate?.currency == 'EUR') {
+  //       //   let index = data.findIndex((i: any) => i?.wallet_Currency?.code === 'ILS');
+  //       //   if (index > -1) {
+  //       //     data.splice(index, 1);
+  //       //   }
+  //       // }
+  //       return data;
+  //     }))
+  // }
 
-  beneficiariesWithOwnAccount() {
-    return this.dataService.getRequest<any>(ApiMap.beneficiariesWithOwnAccount.url);
-  }
+  // beneficiariesWithOwnAccount() {
+  //   return this.dataService.getRequest<any>(ApiMap.beneficiariesWithOwnAccount.url);
+  // }
 
-  getCountries() {
-    return this.dataService.getRequest<{ result: any }>(ApiMap.getCountries.url);
-  }
-  getWhiteLabelList() {
-    return this.dataService.getRequest<{ result: any }>(ApiMap.getWhiteLabelList.url);
-  }
+  // getCountries() {
+  //   return this.dataService.getRequest<{ result: any }>(ApiMap.getCountries.url);
+  // }
+  // getWhiteLabelList() {
+  //   return this.dataService.getRequest<{ result: any }>(ApiMap.getWhiteLabelList.url);
+  // }
 
   setSourceAccountListData(data: any) {
     this.setSourceAccountList.next(data);
   }
 
-  geStateList(iso2: string) {
-    const params = new URLSearchParams();
-    params.set('iso2', iso2);
-    return this.dataService.getRequest<BalanceByCurrencyResposeModel>(ApiMap.getStates.url + '?' + params);
-  }
+  // geStateList(iso2: string) {
+  //   const params = new URLSearchParams();
+  //   params.set('iso2', iso2);
+  //   return this.dataService.getRequest<BalanceByCurrencyResposeModel>(ApiMap.getStates.url + '?' + params);
+  // }
 
-  getCityList(country: string, state: string) {
-    const params = new URLSearchParams();
-    params.set('country', country);
-    params.set('state', state);
+  // getCityList(country: string, state: string) {
+  //   const params = new URLSearchParams();
+  //   params.set('country', country);
+  //   params.set('state', state);
 
-    return this.dataService.getRequest<{ result: boolean }>(ApiMap.getCity.url + '?' + params)
-  };
-  getCityWithIso2(iso2: string) {
-    const params = new URLSearchParams();
-    params.set('iso2', iso2);
-    return this.dataService.getRequest<{ result: boolean }>(ApiMap.getCityWithIso2.url + '?' + params)
+  //   return this.dataService.getRequest<{ result: boolean }>(ApiMap.getCity.url + '?' + params)
+  // };
+  // getCityWithIso2(iso2: string) {
+  //   const params = new URLSearchParams();
+  //   params.set('iso2', iso2);
+  //   return this.dataService.getRequest<{ result: boolean }>(ApiMap.getCityWithIso2.url + '?' + params)
 
-  }
+  // }
 
-  getCurrentExchangeRate(baseCurrency = 'ILS') {
-    return this.dataService.getRequest<{ result: any }>(ApiMap.getExchangeRate.url.concat(baseCurrency));
-  }
+  // getCurrentExchangeRate(baseCurrency = 'ILS') {
+  //   return this.dataService.getRequest<{ result: any }>(ApiMap.getExchangeRate.url.concat(baseCurrency));
+  // }
 
-  noTradeList(FromDate: any, ToDate: any, currency: string) {
-    const params = new URLSearchParams();
-    params.set('FromDate', FromDate);
-    params.set('ToDate', ToDate);
-    params.set('currency', currency || null);
+  // noTradeList(FromDate: any, ToDate: any, currency: string) {
+  //   const params = new URLSearchParams();
+  //   params.set('FromDate', FromDate);
+  //   params.set('ToDate', ToDate);
+  //   params.set('currency', currency || null);
 
-    return this.dataService.postRequest<{ result: boolean }>(ApiMap.noTradeList.url + '?' + params)
+  //   return this.dataService.postRequest<{ result: boolean }>(ApiMap.noTradeList.url + '?' + params)
 
-  }
+  // }
 
-  getCurrentRate(buy: any, sell: any) {
-    let params = {
-      buy: buy,
-      sell: sell
-    };
-    return this.dataService.getRequest<any>(
-      ApiMap.getCurrentRate.url, params
-    );
-  }
+  // getCurrentRate(buy: any, sell: any) {
+  //   let params = {
+  //     buy: buy,
+  //     sell: sell
+  //   };
+  //   return this.dataService.getRequest<any>(
+  //     ApiMap.getCurrentRate.url, params
+  //   );
+  // }
 
   setMaxSelectableDate(date: Date | null): void {
     this.maxSelectableDateSubject.next(date);

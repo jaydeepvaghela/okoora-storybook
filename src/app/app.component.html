@@ -1,6 +1,6 @@
 <div class="layout" [ngClass]="{'not-dashboard': isAuthRoute}">
     <ng-container *ngIf="!isSignUpRoute && !isLoginRoute && !isForgotPasswordRoute && !isChangePasswordRoute && !isCodeVerificationRoute">
-        <app-header (openSidebar)="openSidebar()"></app-header>
+        <app-new-header (openSidebar)="openSidebar()"></app-new-header>
         <app-sidebar></app-sidebar>
     </ng-container>
     

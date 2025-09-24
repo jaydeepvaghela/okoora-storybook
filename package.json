@@ -74,6 +74,7 @@
     "@storybook/blocks": "^8.6.4",
     "@storybook/test": "^8.6.4",
     "@types/file-saver": "^2.0.7",
+    "@types/lodash": "^4.17.20",
     "chromatic": "^11.27.0",
     "css-loader": "^7.1.2",
     "storybook": "^8.6.4",
