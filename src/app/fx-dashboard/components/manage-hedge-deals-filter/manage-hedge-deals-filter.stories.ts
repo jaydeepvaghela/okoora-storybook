@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
 export default {
-  title: 'FX Dashboard/ManageHedgeDeals/Manage Hedge Deals Filter',
+  title: 'FX Dashboard/Hedge Deals/Hedge Deals Filters',
   component: ManageHedgeDealsFilterComponent,
   decorators: [
     moduleMetadata({

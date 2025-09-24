@@ -65,7 +65,7 @@ const mockDealData = {
 };
 
 const meta: Meta<CloseDealComponent> = {
-  title: 'FX Dashboard/ManageHedgeDeals/Close Deal',
+  title: 'FX Dashboard/Hedge Deals/Close Hedge Deals',
   component: CloseDealComponent,
   decorators: [
     moduleMetadata({
