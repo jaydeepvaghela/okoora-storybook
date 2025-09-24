@@ -1,0 +1,446 @@
+<section class="connectors-step4 loader-wrapper">
+  <div class="automations-center-container">
+    <h2><img src="/assets/images/connector/automation-icon.svg" alt="Rocket Icon" class="icon" />
+      {{ "ExposureTable.automationsCenter" | translate }}</h2>
+    <div class="tab-buttons">
+      <button [class.active]="selectedTab === 'exposures'" (click)="selectTab('exposures')">{{ "ExposureTable.exposures" | translate }}</button>
+      <button  [class.active]="selectedTab === 'converts'"
+        (click)="selectTab('converts')">{{ "ExposureTable.converts" | translate }}</button>
+      <button class="add-btn" (click)="setNewRule()">
+        <img src="/assets/images/connector/table_plus.svg" alt="Plus Icon" class="icon" /> </button>
+    </div>
+    <!-- <div class="rule-warning-wrap" *ngIf="matchedConvertRule?.status == 3 && showMatchedConvertRule && selectedTab == 'converts'">
+      <img src="/assets/images/fx-erp/convert-want-icn.svg" alt="info" />
+      <div class="rule-desc">
+        <h4 class="title">Automation Rule Expired</h4>
+        <p class="desc"> “{{matchedConvertRule?.ruleName}}” has reached its end date and will no longer run.</p>
+      </div>
+    </div> -->
+
+    <div class="rule-warning-wrap" *ngIf="latestRuleConvert && showLatestRuleConvert && selectedTab == 'converts'">
+      <img src="/assets/images/fx-erp/convert-want-icn.svg" alt="info" />
+      <div class="rule-desc">
+        <h4 class="title">Conversion Executed</h4>
+        <p class="desc"> Conversion of {{latestRuleConvert?.buyAmount | number:'1.0-4'}}
+          {{latestRuleConvert?.buyCurrency}} → {{latestRuleConvert?.sellCurrency}} completed under rule
+          “{{latestRuleConvert?.ruleName}}”.</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="selectedTab === 'exposures'" class="step-header" [ngClass]="{ 'disable': !isPayableProtectFilled }">
+    <div class="top-sec">
+      <div class="left-part">
+        <h1 class="title">{{ "ExposureTable.exposureOverview" | translate }}</h1>
+        <p class="desc">{{ "ExposureTable.exposureOverviewDesc" | translate }}</p>
+      </div>
+      <div class="auto-switch">
+        <img src="assets/images/connector/auto-protect-info.svg" [ngbTooltip]="autoProtectTooltip" placement="top"
+          tooltipClass="exposure-tooltip--rm1" class="auto-info" container="body">
+        <mat-slide-toggle id="toggle-auto-protect" [checked]="isAutoProtectEnabled"
+          (change)="onAutoProtectToggle($event)"></mat-slide-toggle>
+        <span class="auto-label">{{ "ExposureTable.autoProtected" | translate }}</span>
+      </div>
+      <ng-template #autoProtectTooltip>{{ "ExposureTable.autoProtectedTooltip" | translate }}</ng-template>
+    </div>
+    <div class="bottom-sec">
+      <div class="exposure-item">
+        <div class="inner-wrap t-amount">
+          <img src="assets/images/connector/total-aval-balance.svg">
+          <div class="info">
+            <h3 class="title">{{ "ExposureTable.totalAvailableBalance" | translate }}
+              <img src="assets/images/connector/amount-info.svg" [ngbTooltip]="totalBalanceTooltip" placement="top"
+                tooltipClass="exposure-tooltip--rm1" class="amount-info">
+            </h3>
+            <p class="amount-value">
+              <span><strong>{{exposureData?.hedgingBalanceResponse?.totalAvailableBalanceCurrencySign}}</strong></span>{{ exposureData?.hedgingBalanceResponse?.totalAvailableBalance | number:'1.0-0' }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="exposure-item">
+        <div class="inner-wrap lock-fund">
+          <img src="assets/images/connector/locked-fund.svg">
+          <div class="info">
+            <h3 class="title">{{ "ExposureTable.lockedFunds" | translate }}
+              <img src="assets/images/connector/amount-info.svg" [ngbTooltip]="lockedFundTooltip" placement="top"
+                tooltipClass="exposure-tooltip--rm1" class="amount-info">
+            </h3>
+              <p class="amount-value">
+                <span><strong>{{exposureData?.hedgingBalanceResponse?.collateralBalanceCurrencySign}}</strong></span>{{exposureData?.hedgingBalanceResponse?.collateralBalance | number:'1.0-0'}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="exposure-item">
+        <div class="inner-wrap r-amount">
+          <img src="assets/images/connector/required-collateral.svg">
+          <div class="info">
+            <h3 class="title">{{ "ExposureTable.requiredCollateral" | translate}} <img src="assets/images/connector/amount-info.svg"
+                [ngbTooltip]="requiredCollateralTooltip" placement="top" tooltipClass="exposure-tooltip--rm1"
+                class="amount-info"></h3>
+            <p class="amount-value">
+              <span><strong>{{exposureData?.hedgingBalanceResponse?.requiredCollateralCurrencySign}}</strong></span>{{exposureData?.hedgingBalanceResponse?.requiredCollateral | number:'1.0-0'}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="exposure-item">
+        <div class="inner-wrap u-amount">
+          <img src="assets/images/connector/unprotected-amount.svg">
+          <div class="info">
+            <h3 class="title">{{ "ExposureTable.unprotectedAmount" | translate }}
+              <img src="assets/images/connector/amount-info.svg" [ngbTooltip]="unProtectTooltip" placement="top"
+                tooltipClass="exposure-tooltip--rm1" class="amount-info">
+            </h3>
+            <p class="amount-value">
+              <span><strong>{{exposureData?.hedgingBalanceResponse?.unprotectedAmountCurrencySign}}</strong></span>{{exposureData?.hedgingBalanceResponse?.unprotectedAmount | number:'1.0-0'}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #totalBalanceTooltip>{{ "ExposureTable.totalAvailableBalanceTooltip" | translate }}</ng-template>
+    <ng-template #lockedFundTooltip>{{ "ExposureTable.lockedFundsToolTip" | translate }}</ng-template>
+    <ng-template #requiredCollateralTooltip>{{ "ExposureTable.requiredCollateralToolTip" | translate }}</ng-template>
+    <ng-template #unProtectTooltip>{{ "ExposureTable.unprotectedAmountTooltip" | translate }}</ng-template>
+  </div>
+  <div class="protect-msg-wrap" *ngIf="exposureData?.isMissingFunds === true">
+    <img src="assets/images/connector/pause-icn.svg" alt="paused">
+    <div class="protect-info">
+      <h3 class="title">Auto-hedging is paused due to low funds.</h3>
+      <p class="desc">To avoid closure of active protection deals, add {{ rulesData?.collateralCurrencySign}}{{
+        rulesData?.missingCollateralAmount }} to your account. <button class="fund-btn" (click)="openAddMoney()">Add
+          Funds</button> </p>
+
+      <!-- <ng-template #actionNeededMissingFunds> 
+      <h3 class="title">Auto-Hedging Paused - Action Needed</h3>
+      <p class="desc">To continue protecting new exposures, add {{ rulesData?.collateralCurrencySign }}{{ rulesData?.missingCollateralAmount }} to your account.<button class="fund-btn" (click)="openAddMoney()">Add
+          Funds</button></p>
+    </ng-template> -->
+    </div>
+  </div>
+  <!-- Exposure table listing -->
+  <div class="exposure-listing" *ngIf="selectedTab === 'exposures'">
+    <div class="exposure-head">
+      <h3 class="title">{{ "ExposureTable.exposuresTable" | translate }}</h3>
+      <div class="cta-api" *ngIf="isPayableProtectFilled">
+        <button class="edit-btn cashflow-api-btn" (click)="redirectToCashflowAPI()">{{ "ExposureTable.cashFlowAPI" | translate }}</button>
+        <button class="edit-btn" (click)="editConnectorRules()">{{ "ExposureTable.editRules" | translate }}</button>
+      </div>
+    </div>
+    <div class="table-type1 tableScroll loader-wrapper exposure-data-table loader-wrapper">
+      <div class="table-custom-scroll exposure-list-structure">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="displayName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.to" | translate}} <span class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row" (click)="openInfoERPListing(row)" [class.has-related-deal]="row?.isRelatedDeals">
+              {{ row.user?.displayName || '–' }}
+              <img class="miss-benef" (click)="createBenificiaryDialog($event)"
+                *ngIf="(recordType[row?.recordType] | lowercase) === 'bill'  && row?.isMissingBeneficiary"
+                src="assets/images/connector/miss-benef-icn.svg">
+            </td>
+
+          </ng-container>
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.status" | translate}} <span class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row" (click)="openInfoERPListing(row)"> <span
+                [ngClass]="getStatusClass(hedgingStatus[row.hedgeState])">{{ hedgingStatus[row?.hedgeState]
+                }}</span> </td>
+          </ng-container>
+          <ng-container matColumnDef="currency">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.currency" | translate}} <span class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row" (click)="openInfoERPListing(row)"> {{ row?.currency || '–' }} </td>
+          </ng-container>
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header="total"> {{ "ExposureTable.amount" | translate}} <span class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row" (click)="openInfoERPListing(row)"> {{ (row.currencySign + (row?.total | number:'1.0-0')) ||
+              '–' }} </td>
+          </ng-container>
+          <ng-container matColumnDef="dueDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.dueDate" | translate}} <span class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row" (click)="openInfoERPListing(row)"> {{ (row.dueDate | date:'dd/MM/yy') ||
+              '–' }} </td>
+          </ng-container>
+          <ng-container matColumnDef="erpRecordId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.ID" | translate}} <span class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row" (click)="openInfoERPListing(row)"> {{
+              ((row?.erpRecordId)?.split('-').pop() | uppercase) || '–' }} </td>
+          </ng-container>
+          <ng-container matColumnDef="recordType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.exposureType" | translate}} <span class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row" (click)="openInfoERPListing(row)"> <span class="type">{{
+                recordType[row?.recordType]
+                || '–' }}</span> </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <!-- <tr class="mat-row no-data text-center" *matNoDataRow>
+            <td  class="mat-cell" [attr.colspan]="displayedColumns.length">
+              No record found
+            </td>
+          </tr> -->
+        </table>
+      </div>
+    </div>
+    <div class="exposure-list-pagination" *ngIf="collectionLength > 0">
+      <span class="deal-count">{{ "ExposureTable.totalDeals" | translate}}: {{ collectionLength }}</span>
+      <div class="exposure-pagination">
+        <div class="page-select">
+          <span class="show-label">{{ "ExposureTable.show" | translate}}</span>
+          <mat-form-field appearance="outline" class="filter-status mat-form-field-width-1">
+            <mat-select [(ngModel)]="pageSize" class="opt-select mat-select-1 font-2 font-weight-7"
+              panelClass="connector-page-sl" (ngModelChange)="onPageSizeChange()">
+              <mat-option [value]="10">10</mat-option>
+              <mat-option [value]="20">20</mat-option>
+              <mat-option [value]="50">50</mat-option>
+              <mat-option [value]="100">100</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="accounting-list-pagination">
+          <div class="accounting-pagination-wrapper">
+            <ngb-pagination [collectionSize]="collectionLength" [(page)]="page" [pageSize]="pageSize"
+              (pageChange)="pageChanged($event)" aria-label="Custom pagination" [boundaryLinks]="true" [maxSize]="5">
+              <ng-template ngbPaginationFirst>
+                <div class="first-page" id="firstAccRepPageId">
+                  <img src="../../../../assets/images/first-page-transaction-paginator.svg">
+                </div>
+              </ng-template>
+              <ng-template ngbPaginationLast>
+                <div class="last-page" id="lastAccRepPageId">
+                  <img src="../../../../assets/images/last-page-transaction-paginator.svg">
+                </div>
+              </ng-template>
+              <ng-template ngbPaginationPrevious>
+                <div class="prev-page" id="prevAccRepPageId">
+                  <img src="../../../../assets/images/prev-page-transaction-paginator.svg">
+                </div>
+              </ng-template>
+              <ng-template ngbPaginationNext>
+                <div class="next-page" id="nextAccRepPageId">
+                  <img src="../../../../assets/images/next-page-transaction-paginator.svg">
+                </div>
+              </ng-template>
+              <ng-template ngbPaginationEllipsis>
+                <div class="ellipsed-page" id="middleAccRepPageId">
+                  ...
+                </div>
+              </ng-template>
+              <ng-template ngbPaginationNumber let-page>
+                <div id="accRepPage{{page}}">
+                  {{ page }}
+                </div>
+              </ng-template>
+            </ngb-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- //conversion table listing -->
+  <div class="exposure-listing" *ngIf="selectedTab === 'converts'">
+    <div class="convert-head">
+      <h2 class="title"><i class="icon"><img src="/assets/images/connector/conversion-table.svg"
+            alt="Conversion-table Icon" /></i> {{ "ExposureTable.conversionTable" | translate}}</h2>
+      <div class="cta-api">
+        <div class="filter-options">
+          <div class="rule-name-select" [ngClass]="{ 'disable': ruleConvertList?.length == 0 }">
+            <span class="s-label">{{ "ExposureTable.ruleName" | translate}}</span>
+            <mat-select #ruleNameSelect class="name-select" panelClass="panel-rule-name" placeholder="{{ 'ExposureTable.selectRuleName' | translate}}" (selectionChange)="onRuleNameChange($event.value)">
+              <mat-select-trigger>
+                <ng-container *ngIf="selectedRule">
+                  <div class="rule-item">
+                    <span class="curr-icon-wrapper">
+                      <img class="curr-icon" [src]="getCurrencyFlag(selectedRule?.buyCurrency)"
+                        [alt]="selectedRule?.buyCurrency + '-flag'">
+                      <img class="curr-icon" [src]="getCurrencyFlag(selectedRule?.sellCurrency)"
+                        [alt]="selectedRule?.sellCurrency + '-flag'">
+                    </span>
+                    <span class="rule-name">{{ selectedRule.ruleName }}</span>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="!selectedRule">
+                  {{ "ExposureTable.selectRuleName" | translate}}
+                </ng-container>
+              </mat-select-trigger>
+              <mat-option *ngFor="let rule of conversionData" [value]="rule.id">
+                <div class="rule-item">
+                  <span class="curr-icon-wrapper">
+                    <img class="curr-icon" [src]="getCurrencyFlag(rule?.buyCurrency)"
+                      [alt]="rule?.buyCurrency + '-flag'">
+                    <img class="curr-icon" [src]="getCurrencyFlag(rule?.sellCurrency)"
+                      [alt]="rule?.sellCurrency + '-flag'">
+                  </span>
+                  <span class="rule-name">{{ rule.ruleName }}</span>
+                </div>
+              </mat-option>
+              <button class="all-rule" (click)="getAllRuleConvertList()">All rules</button>
+            </mat-select>
+          </div>
+          <!-- <div class="currency-tag tag">
+            <div class="currency-wrap">
+              <div class="sc-flag">
+                <img src="/assets/images/fx-erp/ILS.svg">
+              </div>
+              <div class="sc-flag">
+                <img src="/assets/images/fx-erp/CHF.svg">
+              </div>
+              <div class="sc-flag">
+                <img src="/assets/images/fx-erp/USD.svg">
+              </div>
+            </div>
+            <div class="currency-code">
+              ILS, USD, CHF
+            </div>
+            <button class="remove-btn"><img src="/assets/images/fx-erp/chip-close-icn.svg"></button>
+          </div>
+          <div class="exe-date-tag tag">
+            <span class="date-val"><strong>Execution Date</strong> 01/12/2023</span>
+            <button class="remove-btn"><img src="/assets/images/fx-erp/chip-close-icn.svg"></button>
+          </div> -->
+        </div>
+        <!-- <div class="filter-btns">
+          <button class="filter-btn">
+            <img src="/assets/images/fx-erp/convert-filter-icn.svg" alt="Conversion-table Icon" />
+          </button>
+          <button class="edit-btn" (click)="editPopUpRules()">Edit rules</button>
+          <button class="edit-btn export-btn">Export report</button>
+        </div> -->
+      </div>
+    </div>
+    <div class="table-type1 tableScroll loader-wrapper exposure-data-table convert-table loader-wrapper">
+      <div class="table-custom-scroll exposure-list-structure">
+        <table mat-table [dataSource]="convertDataSource" matSort>
+          <ng-container matColumnDef="ruleName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.ruleName" | translate}} <span class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row">
+              {{ row?.ruleName }}
+              <!-- <span class="update-label">Updated on 28/07/2025</span> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sourceNTargetCurrency">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.sourceNTargetCurrency" | translate}} <span
+                class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row">
+              <div class="currency-wrap">
+                <div class="currency-item">
+                  <img class="curr-icon" [src]="getCurrencyFlag(row?.buyCurrency)" [alt]="row?.buyCurrency + '-flag'">
+                  {{ row?.buyCurrency }} <span>{{ getCurrencySign(row?.buyCurrency) }}{{ row?.buyAmount |
+                    number:'1.4-4'}}</span>
+                </div>
+                <img class="con-icn" src="/assets/images/connector/arrow-left.svg" alt="arrow">
+                <div class="currency-item">
+                  <img class="curr-icon" [src]="getCurrencyFlag(row?.sellCurrency)" [alt]="row?.sellCurrency + '-flag'">
+                  {{ row?.sellCurrency }} <span>{{ getCurrencySign(row?.sellCurrency) }}{{ row?.sellAmount |
+                    number:'1.4-4'}}</span>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="targetRate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.ruleApplies" | translate}} <span class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row">{{ row?.operator === 1 ? '>' : '<' }} {{ row?.targetRate }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="executedRate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.executedRate" | translate}} <span class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row">{{ row?.executedRate }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="executionDateNTime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ "ExposureTable.executionDateNTime" | translate}} <span
+                class="fas fa-sort"></span></th>
+            <td mat-cell *matCellDef="let row">{{ row?.executedAt | date:'dd/MM/yy' }} |
+              <span class="time-label">{{ row?.executedAt | date:'HH:mm ss' }}</span>
+            </td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="nextExecutionDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Next execution Date <span class="fas fa-sort"></span>
+            </th>
+            <td mat-cell *matCellDef="let row"> 07/09/23</td>
+          </ng-container> -->
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsConvert"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsConvert;"></tr>
+          <!-- <tr class="mat-row no-data text-center" *matNoDataRow>
+            <td *ngIf="(!loading)" class="mat-cell" [attr.colspan]="displayedColumnsConvert.length">
+              No record found
+            </td>
+          </tr> -->
+        </table>
+      </div>
+    </div>
+    <div class="exposure-list-pagination" *ngIf="convertcollectionLength > 0">
+      <span class="deal-count">{{ "ExposureTable.totalDeals" | translate}}: {{ convertcollectionLength }}</span>
+      <div class="exposure-pagination">
+        <div class="page-select">
+          <span class="show-label">{{ "ExposureTable.show" | translate}}</span>
+          <mat-form-field appearance="outline" class="filter-status mat-form-field-width-1">
+            <mat-select [(ngModel)]="pageSize" class="opt-select mat-select-1 font-2 font-weight-7"
+              panelClass="connector-page-sl" (ngModelChange)="onConvertPageSizeChange()">
+              <mat-option [value]="10">10</mat-option>
+              <mat-option [value]="20">20</mat-option>
+              <mat-option [value]="50">50</mat-option>
+              <mat-option [value]="100">100</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="accounting-list-pagination">
+          <div class="accounting-pagination-wrapper">
+            <ngb-pagination [collectionSize]="convertcollectionLength" [(page)]="page" [pageSize]="pageSize"
+              (pageChange)="convertpageChanged($event)" aria-label="Custom pagination" [boundaryLinks]="true"
+              [maxSize]="5">
+              <ng-template ngbPaginationFirst>
+                <div class="first-page" id="firstAccRepPageId">
+                  <img src="../../../../assets/images/first-page-transaction-paginator.svg">
+                </div>
+              </ng-template>
+              <ng-template ngbPaginationLast>
+                <div class="last-page" id="lastAccRepPageId">
+                  <img src="../../../../assets/images/last-page-transaction-paginator.svg">
+                </div>
+              </ng-template>
+              <ng-template ngbPaginationPrevious>
+                <div class="prev-page" id="prevAccRepPageId">
+                  <img src="../../../../assets/images/prev-page-transaction-paginator.svg">
+                </div>
+              </ng-template>
+              <ng-template ngbPaginationNext>
+                <div class="next-page" id="nextAccRepPageId">
+                  <img src="../../../../assets/images/next-page-transaction-paginator.svg">
+                </div>
+              </ng-template>
+              <ng-template ngbPaginationEllipsis>
+                <div class="ellipsed-page" id="middleAccRepPageId">
+                  ...
+                </div>
+              </ng-template>
+              <ng-template ngbPaginationNumber let-page>
+                <div id="accRepPage{{page}}">
+                  {{ page }}
+                </div>
+              </ng-template>
+            </ngb-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- //exposure table no data -->
+  <div class="no-table-data-wrap" *ngIf="!loading && selectedTab === 'exposures' && collectionLength == 0">
+    <h3 class="title">{{'ExposureTable.youDontHaveAnyData' | translate }}</h3>
+    <img src="/assets/images/fx-erp/no-data-img.gif" class="no-data-img" alt="info" />
+    <button *ngIf="!isPayableProtectFilled" class="edit-btn" (click)="setNewRule()">{{'ExposureTable.createNewAutomation' | translate }}</button>
+  </div>
+  <div class="no-table-data-wrap" *ngIf="!loading && selectedTab === 'converts' && convertcollectionLength == 0">
+    <h3 class="title">{{'ExposureTable.youDontHaveAnyData' | translate }}</h3>
+    <img src="/assets/images/fx-erp/no-data-img.gif" class="no-data-img" alt="info" />
+    <button class="edit-btn" (click)="setNewRule()">{{'ExposureTable.setNewRule' | translate }}</button>
+  </div>
+  <app-page-loader classes="bg-white section-loader" *ngIf="loading"></app-page-loader>
+</section>
