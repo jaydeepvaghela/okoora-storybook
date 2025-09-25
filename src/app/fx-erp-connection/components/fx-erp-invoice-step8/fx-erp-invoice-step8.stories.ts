@@ -6,7 +6,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 
 export default {
-  title: 'FX ERP Connection/Invoice Step 8',
+  title: 'FX Dashboard/Auto-pilot functionality/Invoice Rules Steps/Invoice Step 8',
   component: FxErpInvoiceStep8Component,
   decorators: [
     moduleMetadata({

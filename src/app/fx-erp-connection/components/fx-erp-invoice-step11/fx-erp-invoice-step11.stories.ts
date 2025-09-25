@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 export default {
-  title: 'FX ERP Connection/Invoice Step 11',
+  title: 'FX Dashboard/Auto-pilot functionality/Invoice Rules Steps/Invoice Step 11',
   component: FxErpInvoiceStep11Component,
   decorators: [
     moduleMetadata({

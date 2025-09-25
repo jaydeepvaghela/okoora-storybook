@@ -1,10 +1,9 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { FxErpInvoiceStep1Component } from './fx-erp-invoice-step1.component';
-import { MatStepper } from '@angular/material/stepper';
 import { CommonModule } from '@angular/common';
 
 export default {
-  title: 'FX ERP Connection/Invoice Step 1',
+  title: 'FX Dashboard/Auto-pilot functionality/Invoice Rules Steps/Invoice Step 1',
   component: FxErpInvoiceStep1Component,
   decorators: [
     moduleMetadata({
