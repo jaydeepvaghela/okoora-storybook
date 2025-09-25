@@ -49,7 +49,6 @@
   .side-bar-wrapper {
     padding: 72px 0 23px 29px;
     height: 100vh;
-    overflow-y: auto;
 
     .logo {
       text-align: center;
@@ -150,9 +149,16 @@
         .menu-text {
           color: #111827;
           font-family: $he_heebo;
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 700;
-          line-height: 26px;
+          line-height: 15px;
+          &.grey-text{
+            font-weight: 500;
+            color:#374151;
+            &:hover{
+              font-weight: 700;
+            }
+          }
         }
 
         .new-badge {
@@ -303,11 +309,11 @@
             }
 
             .menu-text {
-              color: #111827;
+              color: #374151;
               font-family: $he_heebo;
-              font-size: 16px;
-              font-weight: 700;
-              line-height: 26px;
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 15px;
             }
           }
 
@@ -324,6 +330,7 @@
 
               .menu-text {
                 color: $white;
+                font-weight: 700;
               }
             }
 
@@ -402,7 +409,6 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        display: none;
         border-radius: 40px;
         background-color: #fff;
         border: 1px solid #374151;
@@ -431,6 +437,11 @@
           border-color: var(--primary-blue);
         }
       }
+    }
+  }
+  &:hover{
+    .side-bar-wrapper{
+      overflow-y: auto;
     }
   }
 
@@ -473,7 +484,7 @@
     }
   }
 
-  @media screen and (min-width:1025px) {
+  @media screen and (min-width:768px) {
     &:not(:hover) {
       max-width: 124px;
 
@@ -550,7 +561,7 @@
   }
 
   @media screen and (max-width:1024px) {
-    max-width: 200px;
+    // max-width: 200px;
 
     .side-bar-wrapper {
       padding: 72px 0 23px 7px;

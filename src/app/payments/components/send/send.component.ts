@@ -10,12 +10,14 @@ import { SendStep2Component } from './components/send-step2/send-step2.component
 import { SendStep3Component } from './components/send-step3/send-step3.component';
 import { SendStep4Component } from './components/send-step4/send-step4.component';
 import { SendStep5Component } from './components/send-step5/send-step5.component';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-send',
   templateUrl: './send.component.html',
   styleUrls: ['./send.component.scss'],
-  imports: [CommonModule, MatDialogModule, FormsModule, ReactiveFormsModule, MatProgressBarModule, MatStepperModule, SendStep2Component, SendStep3Component, SendStep4Component, SendStep5Component]
+  imports: [CommonModule, MatDialogModule, FormsModule, ReactiveFormsModule, MatProgressBarModule, MatStepperModule, SendStep2Component, SendStep3Component, SendStep4Component, SendStep5Component],
+  providers:[provideNativeDateAdapter()]
 })
 export class SendComponent implements AfterContentChecked {
   @ViewChild('formStepper') formStepper!: MatStepper;
