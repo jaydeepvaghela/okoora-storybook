@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { WalletsService } from '../../../../main-dashboard/services/wallets.service';
+import { AddContactsComponent } from '../../../../contacts-dashboard/components/add-contacts/add-contacts.component';
 
 @Component({
   selector: 'app-select-recipient',
@@ -67,11 +68,11 @@ export class SelectRecipientComponent {
   }
 
   addRecipient(): void {
-    // const dialogRef = this.dialog.open(AddContactsComponent, {
-    //   width: '100vw',
-    //   maxWidth: '100vw',
-    //   disableClose: true,
-    // });
+    const dialogRef = this.dialog.open(AddContactsComponent, {
+      width: '100vw',
+      maxWidth: '100vw',
+      disableClose: true,
+    });
   }
   updateSearchTerm(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
