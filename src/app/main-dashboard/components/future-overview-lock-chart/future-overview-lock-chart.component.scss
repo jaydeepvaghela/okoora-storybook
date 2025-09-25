@@ -443,7 +443,7 @@
       height: unset;
 
       &.mat-calendar-body-selected {
-        background-color: #2947f2 !important;
+        background-color: var(--light-blue) !important;
       }
     }
   }

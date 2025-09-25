@@ -110,7 +110,7 @@
             //                 .mdc-linear-progress__bar-inner {
             //                   border-width: 12px;
             //                   border-radius: 20px;
-            //                   border-color: #175CD3;
+            //                   border-color: var(--highlight-prime);
 
             //                   @media screen and (max-width: 1440px) {
             //                     border-width: 9px;
@@ -166,7 +166,7 @@
             //                 span {
             //                     color:$white;
             //                     font-family: $he_heebo;
-            //                     background-color: #175CD3;
+            //                     background-color: var(--highlight-prime);
             //                     font-size: 12px;
             //                     font-style: normal;
             //                     font-weight:700;
@@ -359,7 +359,7 @@
                                 .input-wrap {
                                     position: relative;
                                     border-radius: 6px;
-                                    border: 1px solid #175CD3;
+                                    border: 1px solid var(--highlight-prime);
 
                                     .edit-price {
                                         border: none;
@@ -696,8 +696,8 @@
                     }
 
                     &:hover {
-                        background-color: #175CD3;
-                        border-color: #175CD3;
+                        background-color: var(--highlight-prime);
+                        border-color: var(--highlight-prime);
 
                         .plus-icon {
                             background-image: url(../../../../../../assets/images/plus-large-white.svg);
@@ -721,8 +721,8 @@
                         }
 
                         &:hover {
-                            background-color: #175CD3;
-                            border-color: #175CD3;
+                            background-color: var(--highlight-prime);
+                            border-color: var(--highlight-prime);
                             color: $white;
 
                             .plus-icon {
@@ -944,7 +944,7 @@
                                     .input-wrap {
                                         position: relative;
                                         border-radius: 6px;
-                                        border: 1px solid #175CD3;
+                                        border: 1px solid var(--highlight-prime);
 
                                         .edit-price {
                                             height: 40px;
@@ -1123,7 +1123,7 @@
                                 .edit-inner {
                                     .input-wrap {
                                         border-radius: 6px;
-                                        border: 1px solid #175CD3;
+                                        border: 1px solid var(--highlight-prime);
                                         position: relative;
 
                                         .edit-price {
@@ -1190,7 +1190,7 @@
         --bs-tooltip-max-width: 307px;
 
         .tooltip-inner {
-            background-color: #1D4ED8;
+            background-color: var(--primary-blue);
             color: $white;
             padding: 19px 18px 19px 29px;
             font-size: 14px;
@@ -1210,7 +1210,7 @@
                 border-top-width: 14px;
                 border-left-width: 7px;
                 border-right-width: 7px;
-                border-top-color: #1D4ED8;
+                border-top-color: var(--primary-blue);
                 left: 15px;
                 right: auto;
             }
@@ -1243,7 +1243,7 @@
             --bs-tooltip-max-width: 307px;
 
             .tooltip-inner {
-                background-color: #1D4ED8;
+                background-color: var(--primary-blue);
                 color: $white;
                 padding: 22px 23px 17px 24px;
                 font-size: 14px;
@@ -1263,7 +1263,7 @@
                     border-top-width: 17px;
                     border-left-width: 8px;
                     border-right-width: 8px;
-                    border-top-color: #1D4ED8;
+                    border-top-color: var(--primary-blue);
                     left: 15px;
                     right: auto;
                 }
@@ -1277,7 +1277,7 @@
                     border-bottom-width: 17px;
                     border-left-width: 8px;
                     border-right-width: 8px;
-                    border-bottom-color: #1D4ED8;
+                    border-bottom-color: var(--primary-blue);
                     left: 15px;
                     right: auto;
                     top: -25px;
@@ -1369,7 +1369,7 @@
 
                         .try-btn-text {
                             background-color: $white;
-                            color: #175CD3;
+                            color: var(--highlight-prime);
                             font-family: $he_heebo;
                             font-size: 12px;
                             font-weight: 700;
@@ -1509,12 +1509,12 @@
                             .mat-calendar-body-selected {
                                 border-radius: 5px;
                                 box-shadow: none;
-                                background-color: #003EFF !important;
+                                background-color: var(--shade-detail-prime) !important;
                             }
 
                             &.mat-calendar-body-active {
                                 .mat-calendar-body-cell-content {
-                                    background-color: #003EFF !important;
+                                    background-color: var(--shade-detail-prime) !important;
                                     color: $white !important;
                                 }
                             }
@@ -1562,7 +1562,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #003EFF !important;
+            background: var(--shade-detail-prime) !important;
             color: #FFF !important;
             width: 72px !important;
             height: 35px;

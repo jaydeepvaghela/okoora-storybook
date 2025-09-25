@@ -20,12 +20,13 @@ import { FxErpInvoiceStep9Component } from '../fx-erp-invoice-step9/fx-erp-invoi
 import { FxErpInvoiceStep10Component } from '../fx-erp-invoice-step10/fx-erp-invoice-step10.component';
 import { FxErpInvoiceStep11Component } from '../fx-erp-invoice-step11/fx-erp-invoice-step11.component';
 import { FxErpInvoiceStep12Component } from '../fx-erp-invoice-step12/fx-erp-invoice-step12.component';
+import { FxConversionSteppersComponent } from '../fx-conversion/components/fx-conversion-steppers/fx-conversion-steppers.component';
 
 @Component({
   selector: 'app-fx-erp-stepper',
   templateUrl: './fx-erp-stepper.component.html',
   styleUrls: ['./fx-erp-stepper.component.scss'],
-  imports:[MatStepperModule,MatProgressBarModule,CommonModule,FxErpInvoiceStep1Component,FxErpInvoiceStep2Component,FxErpInvoiceStep3Component,FxErpInvoiceStep5Component,FxErpInvoiceStep6Component,FxErpInvoiceStep7Component,FxErpInvoiceStep8Component,FxErpInvoiceStep9Component,FxErpInvoiceStep10Component,FxErpInvoiceStep11Component,FxErpInvoiceStep12Component,ReactiveFormsModule,MatDialogModule]
+  imports:[MatStepperModule,MatProgressBarModule,CommonModule,FxErpInvoiceStep1Component,FxErpInvoiceStep2Component,FxErpInvoiceStep3Component,FxErpInvoiceStep5Component,FxErpInvoiceStep6Component,FxErpInvoiceStep7Component,FxErpInvoiceStep8Component,FxErpInvoiceStep9Component,FxErpInvoiceStep10Component,FxErpInvoiceStep11Component,FxErpInvoiceStep12Component,ReactiveFormsModule,MatDialogModule, FxConversionSteppersComponent]
 })
 export class FxErpStepperComponent implements OnInit, AfterViewInit, OnDestroy{
   inVoiceSteps = InvoiceSteps; // invoice flow steps enum

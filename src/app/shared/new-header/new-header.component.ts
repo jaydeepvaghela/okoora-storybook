@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { distinctUntilChanged, fromEvent, Observable, of, Subject, Subscribable, Subscription, takeUntil, tap } from 'rxjs';
 import { MatDrawer } from '@angular/material/sidenav';
@@ -26,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HedgeAllDrawerComponent } from '../../risk-dashboard/components/hedging-proposal/components/hedge-all-drawer/hedge-all-drawer.component';
 import { QuickHedgeDrawerComponent } from '../../risk-dashboard/components/hedging-proposal/components/quick-hedge-drawer/quick-hedge-drawer.component';
 import { EditCashflowRulesDrawerComponent } from '../../connector/components/edit-cashflow-rules-drawer/edit-cashflow-rules-drawer.component';
+import { ErpConnectionDialogComponent } from '../components/erp-connection-dialog/erp-connection-dialog.component';
 @Component({
   selector: 'app-new-header',
   templateUrl: './new-header.component.html',
@@ -33,6 +34,10 @@ import { EditCashflowRulesDrawerComponent } from '../../connector/components/edi
   imports:[CommonModule,LanguageDropdownComponent,FormsModule,MatMenuModule,MatIconModule,MatDrawer,HedgeAllDrawerComponent,QuickHedgeDrawerComponent, EditCashflowRulesDrawerComponent]
 })
 export class NewHeaderComponent {
+  /**
+   * If true, hides the header actions (Deposit, Send payment, Convert, Lock Rate, ERP Connection) for use in Storybook WalletDropdown story.
+   */
+  @Input() hideHeaderActions = false;
   @Output() openSidebar = new EventEmitter();
   maxFlaglocalStorage!: boolean;
   maxSiteName!: string | null;
@@ -696,7 +701,7 @@ export class NewHeaderComponent {
   }
 
   // onERPConnection() {
-  //   if (JSON.parse(localStorage.getItem('user')!)?.isERPConnected == 1) return;
+  //   // if (JSON.parse(localStorage.getItem('user')!)?.isERPConnected == 1) return;
   //   this.dialog.open(ErpConnectionDialogComponent, {
   //     width: '608px',
   //     maxWidth: '95vw',

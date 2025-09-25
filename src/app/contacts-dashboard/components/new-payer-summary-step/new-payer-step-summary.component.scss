@@ -96,7 +96,7 @@
       justify-content: center;
       align-items: center;
       border-radius: 50px;
-      background: #1D4ED8;
+      background: var(--primary-blue);
       color: $white;
       font-family: $he_heebo;
       font-size: 14px;
@@ -223,7 +223,7 @@
         letter-spacing: 0;
         
         .title {
-          color: #1D4ED8;
+          color: var(--primary-blue);
           text-align: center;
           font-family: $he_heebo;
           font-size: 30px;
@@ -252,7 +252,7 @@
           align-items: center;
           gap: 10px;
           border-radius: 50px;
-          background: #1D4ED8;
+          background: var(--primary-blue);
           color: $white;
           font-family: $he_heebo;
           font-size: 14px;

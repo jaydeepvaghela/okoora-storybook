@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 export default {
-  title: 'FX Dashboard/AutoPilotList',
+  title: 'FX Dashboard/Auto-pilot functionality/Listing',
   component: AutoPilotListComponent,
   decorators: [
     moduleMetadata({
@@ -56,7 +56,7 @@ const conversionData = [
 ];
 
 
-export const Exposures: StoryObj<AutoPilotListComponent> = {
+export const ExposuresTab: StoryObj<AutoPilotListComponent> = {
   args: {
     automationTableData,
     conversionData,
@@ -66,7 +66,7 @@ export const Exposures: StoryObj<AutoPilotListComponent> = {
   },
 };
 
-export const Converts: StoryObj<AutoPilotListComponent> = {
+export const ConvertsTab: StoryObj<AutoPilotListComponent> = {
   args: {
     automationTableData,
     conversionData,

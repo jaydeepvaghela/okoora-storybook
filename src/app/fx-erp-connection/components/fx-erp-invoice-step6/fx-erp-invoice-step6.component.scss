@@ -6,7 +6,7 @@
       padding: 0 !important;
 
       .mdc-radio__native-control:enabled+.mdc-radio__background .mdc-radio__inner-circle {
-        background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, #2320e6 99.12%) !important;
+        background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, var(--color-light-prime) 99.12%) !important;
         box-shadow: 0px 4px 10px #b4b6bb !important;
         border-color: transparent !important;
         border-width: 0;
@@ -238,7 +238,7 @@
         }
 
         &.active {
-          background: #2320e6;
+          background: var(--color-light-prime);
         }
       }
     }
@@ -378,7 +378,7 @@
           /* 171.429% */
 
           input {
-            accent-color: #2320e6;
+            accent-color: var(--color-light-prime);
           }
         }
       }
@@ -389,7 +389,7 @@
         width: 180px;
         padding: 10px;
         border-radius: 40px;
-        background: #2320e6;
+        background: var(--color-light-prime);
         color: #fff;
         font-size: 16px;
         font-weight: 700;

@@ -36,7 +36,7 @@ const calendarResources: MbscResource[] = [
   {
     id: 1,
     name: 'Payment',
-    color: '#2947F2',
+    color: 'var(--light-blue)',
   },
   {
     id: 2,

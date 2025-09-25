@@ -10,12 +10,14 @@ import { PlanConversionStep1Component } from '../plan-conversion-step1/plan-conv
 import { CommonModule } from '@angular/common';
 import { ConvertStep3Component } from '../convert-step3/convert-step3.component';
 import { PlanConversionDoneComponent } from '../plan-conversion-done/plan-conversion-done.component';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-plan-conversion',
   templateUrl: './plan-conversion.component.html',
   styleUrls: ['./plan-conversion.component.scss'],
-  imports: [CommonModule, MatMenuModule, MatDialogModule, MatStepperModule, PlanConversionDoneComponent, PlanConversionStep1Component, ConvertStep3Component]
+  imports: [CommonModule, MatMenuModule, MatDialogModule, MatStepperModule, PlanConversionDoneComponent, PlanConversionStep1Component, ConvertStep3Component],
+  providers:[provideNativeDateAdapter()]
 })
 export class PlanConversionComponent {
   @ViewChild('formStepperProgress') formStepperProgress!: MatProgressBar;

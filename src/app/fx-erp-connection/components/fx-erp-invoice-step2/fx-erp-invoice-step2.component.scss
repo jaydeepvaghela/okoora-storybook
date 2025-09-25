@@ -248,7 +248,7 @@
         margin: 0 0 15px;
 
         &.selected-type {
-          border: 1px solid #2947F2;
+          border: 1px solid var(--light-blue);
         }
 
         @media screen and (max-width: 1440px) {

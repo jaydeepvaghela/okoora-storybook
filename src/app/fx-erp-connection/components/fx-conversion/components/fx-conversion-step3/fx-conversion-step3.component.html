@@ -1,0 +1,95 @@
+<form [formGroup]="fxConversionForm">
+  <div class="rate-condition-container">
+    <div class="left-panel">
+      <div class="info-sec">
+        <h2 class="title">Define rate <br />condition</h2>
+        <p class="desc">Stay in control. Protect your FX <br />with ease</p>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="top-row">
+        <button class="back-btn" type="button" (click)="previous()">Back</button>
+        <ul class="stepper-steps">
+          <li class="active"></li>
+          <li class="active"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="label-with-tooltip">
+          <img src="images/fx-erp/erp-invoice-icn.svg" alt="invoice" />
+          <span>Convert</span>
+        </div>
+
+        <h3 class="heading">Define the rate and rule for execution</h3>
+        <div class="rate-section">
+          <div class="rate-dropdown">
+              <div class="pair-labels">
+                <h3 class="dropdown-label">Rate Condition</h3>
+                <mat-select placeholder="Select condition" class="rate-select" panelClass="rate-filter-dropdown"
+                  formControlName="hasCondition" [class.validation-error]="hasError('hasCondition')"
+                  (selectionChange)="onConditionChange($event.value)">
+                  <mat-option *ngFor="let condition of rateConstionList" [value]="condition.value">
+                    {{ condition.label }}
+                  </mat-option>
+                </mat-select>
+                <div *ngIf="hasError('hasCondition')" class="error-msgs">
+                  <img class="err-image" src="images/red-warning-icon.svg" alt="warning"> Select a condition or
+                  choose 'No rate
+                  condition' to run on every scheduled date.
+                </div>
+            </div>
+          
+            <div class="rate-input-wrap"
+              >
+              <h3 class="input-label">Set rate ({{currencyPair}})</h3>
+              <input type="text" class="rate-input" formControlName="targetRate" placeholder="Enter rate e.g. 1.0250"
+                [ngClass]="{'validation-error': fxConversionForm.get('targetRate')?.invalid && fxConversionForm.get('targetRate')?.touched}" />
+              <ng-container *ngIf="fxConversionForm.get('targetRate') as control">
+                <div *ngIf="control?.touched && control?.errors">
+                  <div class="error-msgs" *ngIf="control?.errors?.['required']">
+                    <img class="err-image" src="images/red-warning-icon.svg" alt="warning">Enter a valid rate
+                    (e.g., 1.085). This field is required for selected condition.
+                  </div>
+                  <div class="error-msgs" *ngIf="control?.errors?.['positive']">
+                    <img class="err-image" src="images/red-warning-icon.svg" alt="warning">Rate must be a
+                    positive number.
+                  </div>
+                  <div class="error-msgs" *ngIf="control?.errors?.['decimal']">
+                    <img class="err-image" src="images/red-warning-icon.svg" alt="warning">Rate must be up to 2
+                    decimal places.
+                  </div>
+                   <div class="error-msgs" *ngIf="control?.errors?.['min']">
+                    <img class="err-image" src="images/red-warning-icon.svg" alt="warning">Rate must be above 0.
+                  </div>
+                   <div class="error-msgs" *ngIf="control?.errors?.['invalidChars']">
+                    <img class="err-image" src="images/red-warning-icon.svg" alt="warning"> Only numbers are allowed.
+                  </div>
+                  <div class="error-msgs" *ngIf="farFromSpotError">
+                    <img class="err-image" src="images/red-warning-icon.svg" alt="warning">
+                    Rate is far from current spot rate. Please adjust the rate.
+                  </div>
+                  <div class="error-msgs" *ngIf="control?.errors?.['max']">
+                    <img class="err-image" src="images/red-warning-icon.svg" alt="warning">Rate must not exceed 10× current spot rate.
+                  </div>
+                </div>
+              </ng-container>
+              <p class="sub-tile">Current rate: ~{{currentSpotRate}} (for reference only)</p>
+            </div>
+          </div>
+          <div class="condition-preview-box" *ngIf="fxConversionForm.get('hasCondition')?.value && fxConversionForm.get('targetRate')?.valid">
+            <img src="images/fx-erp/erp_info.svg" alt="info">
+            <div class="desc">
+              <h4 class="title">Condition Preview</h4>
+              <p class="detail">Execute only when {{currencyPair}} rate is {{fxConversionForm.get('hasCondition')?.value == 1 ? 'greater' : 'less'}} than {{fxConversionForm.get('targetRate')?.value}}</p>
+            </div>
+          </div>
+        </div>
+        <button class="connect-btn" (click)="next()">Continue</button>
+      </div>
+    </div>
+  </div>
+</form>

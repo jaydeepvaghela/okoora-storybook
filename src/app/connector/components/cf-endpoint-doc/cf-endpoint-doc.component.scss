@@ -52,7 +52,7 @@ $spline: "Spline Sans Mono";
             margin-bottom: 24px;
 
             .title {
-                color: #2320E6;
+                color: var(--color-light-prime);
                 font-size: 20px;
                 font-weight: 700;
                 line-height: 30px;
@@ -200,7 +200,7 @@ $spline: "Spline Sans Mono";
                     position: relative;
 
                     .title {
-                        color: #2947F2;
+                        color: var(--light-blue);
                         font-family: $he_heebo;
                         font-size: 18px;
                         font-weight: 700;
@@ -210,7 +210,7 @@ $spline: "Spline Sans Mono";
                         &::before {
                             content: '';
                             position: absolute;
-                            border-left: 2px solid #2320E6;
+                            border-left: 2px solid var(--color-light-prime);
                             height: 29px;
                             left: 0;
                         }
@@ -281,7 +281,7 @@ $spline: "Spline Sans Mono";
                             .type {
                                 padding: 2px 8px 0px 8px;
                                 border-radius: 40px;
-                                background: #2320E6;
+                                background: var(--color-light-prime);
                                 color: #FFF;
                                 font-family: $he_heebo;
                                 font-size: 10px;
@@ -294,7 +294,7 @@ $spline: "Spline Sans Mono";
                         }
 
                         .link {
-                            color: #2947F2;
+                            color: var(--light-blue);
                             font-family: $he_heebo;
                             font-size: 14px;
                             font-weight: 400;
@@ -319,7 +319,7 @@ $spline: "Spline Sans Mono";
                         }
 
                         .title {
-                            color: #1D4ED8;
+                            color: var(--primary-blue);
                             font-family: $he_heebo;
                             font-size: 14px;
                             font-weight: 700;
@@ -439,7 +439,7 @@ $spline: "Spline Sans Mono";
                         }
 
                         .title {
-                            color: #1D4ED8;
+                            color: var(--primary-blue);
                             font-family: $he_heebo;
                             font-size: 14px;
                             font-weight: 700;

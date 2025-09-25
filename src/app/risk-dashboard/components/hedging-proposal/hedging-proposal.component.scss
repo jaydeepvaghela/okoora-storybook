@@ -163,7 +163,7 @@
 
     .hedge-header {
       .hedge-heading {
-        color: #175cd3;
+        color: var(--highlight-prime);
         font-family: $he_heebo;
         font-size: 30px;
         font-weight: 700;
@@ -182,7 +182,7 @@
       max-width: 1189px;
       border-radius: 10px;
       opacity: 0.8;
-      background: #2947f2;
+      background: var(--light-blue);
       border: 1px solid #fff;
       border-bottom-right-radius: 20px;
       border-bottom-left-radius: 20px;
@@ -443,7 +443,7 @@
           }
 
           .hedge-deposit-link {
-            color: #175cd3;
+            color: var(--highlight-prime);
             font-family: $he_heebo;
             font-size: 12px;
             font-weight: 600;
@@ -496,7 +496,7 @@
 
           .hedge-all-button {
             border-radius: 50px;
-            background: #175cd3;
+            background: var(--highlight-prime);
             color: $white;
             font-family: $he_heebo;
             font-size: 16px;
@@ -682,13 +682,13 @@
             font-weight: 600;
             line-height: 20px;
             border-radius: 50px;
-            background: #175CD3;
+            background: var(--highlight-prime);
             width: 112px;
             height: 37px;
           }
 
           .save-row-btn {
-            color: #1D4ED8;
+            color: var(--primary-blue);
             font-family: $he_heebo;
             font-size: 13px;
             font-weight: 400;
@@ -706,7 +706,7 @@
           }
 
           .row-hedged {
-            color: #175CD3;
+            color: var(--highlight-prime);
             font-family: $he_heebo;
             font-size: 14px;
             font-weight: 600;
@@ -724,7 +724,7 @@
             gap: 5px;
 
             .amount-text {
-              color: #175CD3;
+              color: var(--highlight-prime);
               font-family: $he_heebo;
               font-size: 16px;
               font-weight: 800;
@@ -777,7 +777,7 @@
               .input-wrap {
                 position: relative;
                 border-radius: 6px;
-                border: 1px solid #175CD3;
+                border: 1px solid var(--highlight-prime);
 
                 .edit-price {
                   border: none;
@@ -1091,10 +1091,10 @@
             .mat-mdc-slider-visual-thumb {
               z-index: 1;
               .mdc-slider__thumb-knob {
-                border-color: #175CD3;
+                border-color: var(--highlight-prime);
                 width: 30px;
                 height: 30px;
-                background-color: #175cd3;
+                background-color: var(--highlight-prime);
                 border-width: 8px;
                 outline: 6px solid rgba(217, 220, 241, .6);
 
@@ -1114,7 +1114,7 @@
           }
 
           .reset-link {
-            color: #175CD3;
+            color: var(--highlight-prime);
             font-family: $he_heebo;
             font-size: 12px;
             font-weight: 500;
@@ -1155,12 +1155,12 @@
           margin-bottom: 0;
 
           a {
-            color: #175CD3;
+            color: var(--highlight-prime);
             font-family: $he_heebo;
             font-size: 12px;
             font-weight: 700;
             line-height: 18px;
-            border-bottom: 1px solid #175CD3;
+            border-bottom: 1px solid var(--highlight-prime);
             cursor: pointer;
           }
 
@@ -1179,7 +1179,7 @@
 
         .hedge-all-button {
           border-radius: 50px;
-          background: #175cd3;
+          background: var(--highlight-prime);
           color: $white;
           font-family: $he_heebo;
           font-size: 16px;
@@ -1435,12 +1435,12 @@
               .mat-calendar-body-selected {
                 border-radius: 5px;
                 box-shadow: none;
-                background-color: #003EFF !important;
+                background-color: var(--shade-detail-prime) !important;
               }
 
               &.mat-calendar-body-active {
                 .mat-calendar-body-cell-content {
-                  background-color: #003EFF !important;
+                  background-color: var(--shade-detail-prime) !important;
                   color: $white !important;
                 }
               }
@@ -1487,7 +1487,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #003EFF !important;
+      background: var(--shade-detail-prime) !important;
       color: #FFF !important;
       width: 72px !important;
       height: 35px;
@@ -1534,7 +1534,7 @@
         background-color: #E5F4FF !important;
 
         .mdc-list-item__primary-text {
-          color: #175CD3;
+          color: var(--highlight-prime);
           font-weight: 700;
         }
       }
@@ -1543,7 +1543,7 @@
         background-color: #EFF8FF;
 
         .mdc-list-item__primary-text {
-          color: #175CD3;
+          color: var(--highlight-prime);
           font-weight: 700;
         }
       }

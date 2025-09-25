@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { getActiveHedgingCurrency } from '../../../fx-dashboard/components/fx-dashboard-data/active-hedging-currency';
 
 export default {
-  title: 'FX ERP Connection/Invoice Step 7',
+  title: 'FX Dashboard/Auto-pilot functionality/Invoice Rules Steps/Invoice Step 7',
   component: FxErpInvoiceStep7Component,
   decorators: [
     moduleMetadata({

@@ -6,7 +6,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export default {
-  title: 'FX Dashboard/AutoPilotList/DeleteConversionRule',
+  title: 'FX Dashboard/Auto-pilot functionality/Conversion Rules/Delete Conversion Rule',
   component: DeleteConversionRuleComponent,
   decorators: [
     moduleMetadata({

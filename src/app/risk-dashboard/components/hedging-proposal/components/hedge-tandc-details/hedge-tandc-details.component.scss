@@ -95,7 +95,7 @@
             .cancel-action {
                 border-radius: 9999px;
                 border: 1px solid #D1D5DB;
-                color: #1D4ED8;
+                color: var(--primary-blue);
                 font-family: $he_heebo;
                 font-size: 13px;
                 font-weight: 400;
@@ -106,9 +106,9 @@
 
             .confirm-action {
                 border-radius: 9999px;
-                border: 1px solid #1D4ED8;
+                border: 1px solid var(--primary-blue);
                 background: $white;
-                color: #1D4ED8;
+                color: var(--primary-blue);
                 font-family: $he_heebo;
                 font-size: 13px;
                 font-weight: 400;
@@ -118,7 +118,7 @@
 
                 &.scrolled-to-end {
                     transition: .5s;
-                    background: #1D4ED8;
+                    background: var(--primary-blue);
                     color: $white;
                 }
             }

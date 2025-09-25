@@ -315,7 +315,7 @@
         }
 
         .step-title {
-          color: #2320E6;
+          color: var(--color-light-prime);
           font-size: 18px;
           font-weight: 700;
           line-height: 28px;
@@ -342,7 +342,7 @@
         align-items: center;
         gap: 10px;
         border-radius: 40px;
-        background: #2320E6;
+        background: var(--color-light-prime);
         color: #FFFFFF;
         align-items: center;
         margin: 42px 0 0 auto;

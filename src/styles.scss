@@ -318,7 +318,7 @@ button{
 }
 
 .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__inner-circle {
-  background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, #2320e6 99.12%) !important;
+  background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, var(--color-light-prime) 99.12%) !important;
   box-shadow: 0px 4px 10px #b4b6bb !important;
   border-color: transparent !important;
   border-width: 0;

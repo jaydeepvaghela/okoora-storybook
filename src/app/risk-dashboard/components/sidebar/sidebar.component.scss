@@ -49,7 +49,6 @@
   .side-bar-wrapper {
     padding: 72px 0 23px 29px;
     height: 100vh;
-    overflow-y: auto;
 
     .logo {
       text-align: center;
@@ -150,16 +149,23 @@
         .menu-text {
           color: #111827;
           font-family: $he_heebo;
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 700;
-          line-height: 26px;
+          line-height: 15px;
+          &.grey-text{
+            font-weight: 500;
+            color:#374151;
+            &:hover{
+              font-weight: 700;
+            }
+          }
         }
 
         .new-badge {
           padding: 1px 7px;
           border-radius: 40px;
           background: #05F2F2;
-          color: #2947F2;
+          color: var(--light-blue);
           font-family: $he_heebo;
           font-size: 11px;
           font-weight: 400;
@@ -168,7 +174,7 @@
         }
 
         &.active {
-          background-color: #1E40AF;
+          background-color: var(--dark-blue-primary);
           box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.25);
 
           i {
@@ -270,7 +276,7 @@
           }
 
           .menu-text {
-            color: #1E40AF;
+            color: var(--dark-blue-primary);
           }
         }
         &.marketplace{
@@ -303,16 +309,16 @@
             }
 
             .menu-text {
-              color: #111827;
+              color: #374151;
               font-family: $he_heebo;
-              font-size: 16px;
-              font-weight: 700;
-              line-height: 26px;
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 15px;
             }
           }
 
           &.mat-expanded {
-            background-color: #1E40AF;
+            background-color: var(--dark-blue-primary);
             box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.25);
 
             .mat-expansion-panel-header-title {
@@ -324,6 +330,7 @@
 
               .menu-text {
                 color: $white;
+                font-weight: 700;
               }
             }
 
@@ -343,7 +350,7 @@
               }
 
               .menu-text {
-                color: #1E40AF;
+                color: var(--dark-blue-primary);
               }
             }
           }
@@ -370,7 +377,7 @@
                   margin: 10px 0 0;
 
                   &:hover {
-                    color: #1D4ED8;
+                    color: var(--primary-blue);
                   }
                 }
               }
@@ -402,7 +409,6 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        display: none;
         border-radius: 40px;
         background-color: #fff;
         border: 1px solid #374151;
@@ -427,10 +433,15 @@
           background-repeat: no-repeat, no-repeat;
           background-position: left 32px center, left 34px center;
           background-size: auto, 10px;
-          color: #1d4ed8;
-          border-color: #1d4ed8;
+          color: var(--primary-blue);
+          border-color: var(--primary-blue);
         }
       }
+    }
+  }
+  &:hover{
+    .side-bar-wrapper{
+      overflow-y: auto;
     }
   }
 
@@ -463,7 +474,7 @@
                 }
 
                 &.active {
-                  color: #1D4ED8;
+                  color: var(--primary-blue);
                 }
               }
             }
@@ -473,7 +484,7 @@
     }
   }
 
-  @media screen and (min-width:1025px) {
+  @media screen and (min-width:768px) {
     &:not(:hover) {
       max-width: 124px;
 
@@ -550,7 +561,7 @@
   }
 
   @media screen and (max-width:1024px) {
-    max-width: 200px;
+    // max-width: 200px;
 
     .side-bar-wrapper {
       padding: 72px 0 23px 7px;

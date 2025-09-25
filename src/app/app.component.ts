@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./risk-dashboard/components/header/header.component";
 import { SidebarComponent } from "./risk-dashboard/components/sidebar/sidebar.component";
@@ -18,6 +18,7 @@ export class AppComponent {
   @Input() ShowDashboard: boolean = false;
   @Input() Showhedging: boolean = false;
   @Input() showCashflowExposure: boolean = false;
+  @Input() selectedTheme: string = '';
   isLoggedInUser!: string | null;
   
   constructor(private router: Router) {}
@@ -34,6 +35,22 @@ export class AppComponent {
         localStorage.setItem('user', JSON.stringify(res)); 
       });
       this.router.navigate(['/fx-dashboard']);
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedTheme']) {
+      this.applyTheme(changes['selectedTheme'].currentValue);
+    }
+  }
+
+  private applyTheme(theme: string) {
+    const root = document.documentElement;
+
+    root.classList.remove('theme-max', 'theme-wrap', 'theme-default');
+
+    if (theme) {
+      root.classList.add(theme);
     }
   }
 

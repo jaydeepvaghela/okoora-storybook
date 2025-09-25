@@ -1,0 +1,52 @@
+<section class="erp-connection-section">
+  <div class="header">
+    <button class="close-btn" (click)="closeDrawer()" aria-label="Close">
+      <img src="images/fx-erp/erp-close-icn.svg" alt="close">
+    </button>
+  </div>
+
+  <div class="content">
+    <h2>Let’s connect your ERP</h2>
+    <p class="subtext">
+      Connect your ERP to gain clarity and control over your finances.<br>
+      No more manual updates. Just real-time insights, and it’s automatic.
+    </p>
+
+    <div class="features">
+      <div class="feature">
+        <span class="icon">
+          <img src="../../../../images/fx-dashboard/lock-fill.svg" alt="Security Icon">
+        </span>
+        <div class="text-content">
+          <label class="title">We fetch only what matters</label>
+          <p>Just invoices and bills. Nothing more, nothing hidden.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="icon">
+          <img src="../../../../images/fx-dashboard/share-off.svg" alt="Privacy Icon">
+        </span>
+        <div class="text-content">
+          <label class="title">Private by design</label>
+          <p>Your data is yours. We don’t share it, and we never will.</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="icon">
+          <img src="../../../../images/fx-dashboard/control-camera.svg" alt="Control Icon">
+        </span>
+        <div class="text-content">
+          <label class="title">You’re always in control</label>
+          <p>No surprises. No background changes. Disconnect whenever you like.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="connect-erp-btn" mat-raised-button color="primary" (click)="connectErp()">Connect My ERP</button>
+      <button class="dismiss-btn" (click)="closeDrawer()">Not now</button>
+    </div>
+  </div>
+</section>

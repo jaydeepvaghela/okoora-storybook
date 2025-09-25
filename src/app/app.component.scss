@@ -1,6 +1,6 @@
 @import "../assets/scss/variable";
 .layout {
-    padding: 117px 0 0 240px;
+    padding: 117px 0 0 124px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -52,10 +52,10 @@
         padding:93px 0 0 124px;
     }
     @media screen and (max-width:1024px) {
-        padding:87px 0 0 200px;
+        padding:87px 0 0 124px;
     }
     @media screen and (max-width:930px) {
-        padding:118px 0 0 200px;
+        padding:118px 0 0 124px;
     }
     @media screen and (max-width:767px) {
         padding:100px 0 0 0;

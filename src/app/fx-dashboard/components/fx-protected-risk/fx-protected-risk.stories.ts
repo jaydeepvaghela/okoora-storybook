@@ -12,7 +12,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { FormsModule } from '@angular/forms';
 
 export default {
-  title: 'FX Dashboard/FxProtectedRisk',
+  title: 'FX Dashboard/Protected vs. Exposure Chart',
   component: FxProtectedRiskComponent,
   decorators: [
     moduleMetadata({
@@ -21,7 +21,7 @@ export default {
   ],
 } as Meta<FxProtectedRiskComponent>;
 
-export const Monthly: StoryObj<FxProtectedRiskComponent> = {
+export const MonthlyView: StoryObj<FxProtectedRiskComponent> = {
   args: {
     selectedTab: 0,
     isYearly: false,
@@ -147,7 +147,7 @@ export const Monthly: StoryObj<FxProtectedRiskComponent> = {
   },
 };
 
-export const Yearly: StoryObj<FxProtectedRiskComponent> = {
+export const YearlyView: StoryObj<FxProtectedRiskComponent> = {
   args: {
     selectedTab: 1,
     isYearly: true,

@@ -1,0 +1,62 @@
+<div class="set-convertion-container-step5">
+  <!-- Left Panel -->
+  <div class="left-panel">
+    <div class="info-sec">
+      <h2 class="title">Set a name<br>for the rule.</h2>
+      <p class="desc">Stay in control. Protect your FX <br>with ease.</p>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <div class="top-row">
+      <button class="back-btn" type="button" (click)="onBack()">Back</button>
+      <ul class="stepper-steps">
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <!-- Content Area -->
+    <form [formGroup]="fxConversionForm">
+      <div class="content">
+        <div class="label-with-tooltip">
+          <img src="/images/fx-erp/erp-invoice-icn.svg" alt="convert" />
+          <span class="label">Convert</span>
+        </div>
+        <h3 class="title">Set a name</h3>
+        <div class="rule-form-wrap">
+          <div for="ruleName" class="input-label">Rule name</div>
+          <input 
+            type="text" 
+            id="ruleName" 
+            class="name-input" 
+            placeholder="Enter a rule name" 
+            maxlength="50"
+            formControlName="ruleName" 
+            [ngClass]="{'validation-error': fxConversionForm.get('ruleName')?.invalid && fxConversionForm.get('ruleName')?.touched}"
+          />
+          <p class="note-text">For e.g. "One-time EUR Purchase"</p>
+          
+          <!-- Error message for required field -->
+          <div *ngIf="hasSpecificError('ruleName', 'required')" class="error-msgs">
+            <img class="err-image" src="/images/red-warning-icon.svg" alt="warning">
+            Rule name is required.
+          </div>
+          
+          <!-- Error message for length validation -->
+          <div *ngIf="(hasSpecificError('ruleName', 'minlength') || hasSpecificError('ruleName', 'maxlength')) && !hasSpecificError('ruleName', 'required')" class="error-msgs">
+            <img class="err-image" src="/images/red-warning-icon.svg" alt="warning">
+            Rule name must be between 2-50 characters long.
+          </div>
+          
+          <button class="btn-finish" type="button" (click)="next()" 
+          [ngClass]="{'validation-error': fxConversionForm.get('ruleName')?.invalid && fxConversionForm.get('ruleName')?.touched}">Finish & review</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
