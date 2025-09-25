@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 
 export default {
-  title: 'FX ERP Connection/Invoice Step 6',
+  title: 'FX Dashboard/Auto-pilot functionality/Invoice Rules Steps/Invoice Step 6',
   component: FxErpInvoiceStep6Component,
   decorators: [
     moduleMetadata({

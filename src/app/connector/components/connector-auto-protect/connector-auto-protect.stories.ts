@@ -5,7 +5,7 @@ import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/materia
 import { CommonModule } from '@angular/common';
 
 export default {
-  title: 'FX Dashboard/AutoPilotList/AutoProtect',
+  title: 'FX Dashboard/Auto-pilot functionality/Listing',
   component: ConnectorAutoProtectComponent,
   decorators: [
     moduleMetadata({
@@ -19,7 +19,7 @@ export default {
 } as Meta<ConnectorAutoProtectComponent>;
 
 
-export const AutoProtectActivated: StoryObj<ConnectorAutoProtectComponent> = {
+export const PlayAutomations: StoryObj<ConnectorAutoProtectComponent> = {
   args: {
     data: { isAutoProtectEnabled: true },
   },
@@ -32,7 +32,7 @@ export const AutoProtectActivated: StoryObj<ConnectorAutoProtectComponent> = {
   },
 };
 
-export const AutoProtectDeactivated: StoryObj<ConnectorAutoProtectComponent> = {
+export const PauseAutomations: StoryObj<ConnectorAutoProtectComponent> = {
   args: {
     data: { isAutoProtectEnabled: false },
   },

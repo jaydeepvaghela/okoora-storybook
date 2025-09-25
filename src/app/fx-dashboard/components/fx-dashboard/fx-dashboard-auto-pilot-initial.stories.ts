@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 export default {
-  title: 'FX Dashboard/AutoPilotList/Auto Pilot Initial',
+  title: 'FX Dashboard/Auto-pilot functionality/Auto-pilot setup',
   component: FxDashboardComponent,
   decorators: [
     moduleMetadata({
@@ -26,7 +26,7 @@ export default {
   ],
 } as Meta<FxDashboardComponent>;
 
-export const AutoPilotInitial: StoryObj<FxDashboardComponent> = {
+export const Default: StoryObj<FxDashboardComponent> = {
   args: {
     isPayableProtectFilled: false,
     conversionData: [],
