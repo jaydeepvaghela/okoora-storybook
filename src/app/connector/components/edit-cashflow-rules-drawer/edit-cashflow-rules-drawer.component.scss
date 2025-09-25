@@ -95,7 +95,7 @@ $he_heebo: "Heebo", sans-serif;
             }
 
             .mdc-tab-indicator__content--underline {
-              border-color: #2947F2;
+              border-color: var(--light-blue);
             }
 
             &.mdc-tab--active {
@@ -155,7 +155,7 @@ $he_heebo: "Heebo", sans-serif;
                 padding: 0 !important;
 
                 .mdc-radio__native-control:enabled+.mdc-radio__background .mdc-radio__inner-circle {
-                  background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, #2320e6 99.12%) !important;
+                  background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, var(--color-light-prime) 99.12%) !important;
                   box-shadow: 0px 4px 10px #b4b6bb !important;
                   border-color: transparent !important;
                   border-width: 0;
@@ -267,7 +267,7 @@ $he_heebo: "Heebo", sans-serif;
                 }
 
                 &:focus {
-                  border-color: #2947F2;
+                  border-color: var(--light-blue);
                   box-shadow: 0 0 10px 0 rgba(35, 32, 230, 0.30), 0 4px 5px 0 rgba(33, 1, 38, 0.03) inset;
                 }
 
@@ -294,7 +294,7 @@ $he_heebo: "Heebo", sans-serif;
 
                   .mdc-slider__track--active {
                     .mdc-slider__track--active_fill {
-                      border-color: #2947F2;
+                      border-color: var(--light-blue);
                     }
                   }
                 }
@@ -403,11 +403,11 @@ $he_heebo: "Heebo", sans-serif;
 
                   &.mat-focused {
                     .mdc-text-field {
-                      border-color: #2947f2;
+                      border-color: var(--light-blue);
 
                       .mat-mdc-form-field-infix {
                         .mat-mdc-select-placeholder {
-                          color: #2947f2;
+                          color: var(--light-blue);
                         }
 
                         .mat-mdc-select-arrow {
@@ -453,7 +453,7 @@ $he_heebo: "Heebo", sans-serif;
 
                     &.more-chip {
                       .mdc-evolution-chip__text-label {
-                        color: #1D4ED8;
+                        color: var(--primary-blue);
                         font-size: 14px;
                         font-weight: 700;
                       }
@@ -495,10 +495,10 @@ $he_heebo: "Heebo", sans-serif;
                   }
 
                   &[aria-expanded="true"] {
-                    border-color: #2947f2;
+                    border-color: var(--light-blue);
 
                     .mat-mdc-select-placeholder {
-                      color: #2947f2;
+                      color: var(--light-blue);
                     }
 
                     .mat-mdc-select-arrow {
@@ -584,10 +584,10 @@ $he_heebo: "Heebo", sans-serif;
                   }
 
                   &[aria-expanded="true"] {
-                    border-color: #2947f2;
+                    border-color: var(--light-blue);
 
                     .mat-mdc-select-placeholder {
-                      color: #2947f2;
+                      color: var(--light-blue);
                     }
 
                     .mat-mdc-select-arrow {
@@ -616,7 +616,7 @@ $he_heebo: "Heebo", sans-serif;
 
           .next-btn {
             border-radius: 10px;
-            background: #2320E6;
+            background: var(--color-light-prime);
             width: 100%;
             padding: 17px 10px;
             color: #FFF;
@@ -841,7 +841,7 @@ $he_heebo: "Heebo", sans-serif;
             gap: 5px;
             padding: 14px 24px;
             border-radius: 24px;
-            background-color: #1d4ed8;
+            background-color: var(--primary-blue);
             color: #fff;
             font-family: $he_heebo;
             font-size: 14px;
@@ -985,7 +985,7 @@ $he_heebo: "Heebo", sans-serif;
             gap: 5px;
             padding: 14px 24px;
             border-radius: 24px;
-            background-color: #1d4ed8;
+            background-color: var(--primary-blue);
             color: #fff;
             font-family: $he_heebo;
             font-size: 14px;

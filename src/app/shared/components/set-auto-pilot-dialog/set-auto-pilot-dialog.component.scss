@@ -40,7 +40,7 @@
             margin: auto;
 
             .title {
-                color: #1D4ED8;
+                color: var(--primary-blue);
                 font-size: 44px;
                 font-style: normal;
                 font-weight: 700;
@@ -163,7 +163,7 @@
                 margin: auto;
                 padding: 15px 10px;
                 border-radius: 40px;
-                background: #2320E6;
+                background: var(--color-light-prime);
                 color: #FFF;
                 font-size: 16px;
                 font-weight: 700;

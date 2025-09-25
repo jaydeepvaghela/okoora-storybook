@@ -7,4 +7,5 @@ export interface WalletBalanceListModal {
   wallet_Available:number;
   wallet_Flag: string;
   wallet_Hedging: any;
+  wallet_IsBaseCurency?: boolean;
 }

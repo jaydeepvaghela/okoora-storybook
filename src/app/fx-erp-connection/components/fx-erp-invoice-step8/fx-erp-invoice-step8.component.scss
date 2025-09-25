@@ -21,7 +21,7 @@
 
         .mdc-slider__track--active {
           .mdc-slider__track--active_fill {
-            border-color: #2947F2;
+            border-color: var(--light-blue);
           }
         }
       }
@@ -244,7 +244,7 @@
           }
 
           &.active {
-            background-color: #2320E6;
+            background-color: var(--color-light-prime);
           }
 
           @media screen and (max-width:1440px) {
@@ -408,7 +408,7 @@
             width: 100%;
 
             &:focus {
-              border-color: #2947F2;
+              border-color: var(--light-blue);
               box-shadow: 0px 0px 10px 0px rgba(35, 32, 230, 0.30), 0px 4px 5px 0px rgba(33, 1, 38, 0.03) inset;
             }
           }
@@ -424,7 +424,7 @@
         align-items: center;
         gap: 10px;
         border-radius: 40px;
-        background: #2320E6;
+        background: var(--color-light-prime);
         color: #FFFFFF;
         align-items: center;
         color: #FFF;

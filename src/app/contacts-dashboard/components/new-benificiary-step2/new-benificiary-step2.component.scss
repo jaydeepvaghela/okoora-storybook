@@ -58,7 +58,7 @@
         margin: 0;
 
         .btn-upload-doc {
-          color: #1d4ed8;
+          color: var(--primary-blue);
           display: inline-block;
           padding: 0;
         }
@@ -232,7 +232,7 @@
                   font-weight: 500;
 
                   &:before {
-                    border-color: #1d4ed8;
+                    border-color: var(--primary-blue);
                   }
 
                   &:after {
@@ -271,7 +271,7 @@
                   position: absolute;
                   top: 1px;
                   left: 5px;
-                  background-color: #1d4ed8;
+                  background-color: var(--primary-blue);
                   border-radius: 50%;
                   content: "";
                   opacity: 0;
@@ -349,7 +349,7 @@
                   }
 
                   &:before {
-                    background-color: #1d4ed8;
+                    background-color: var(--primary-blue);
                   }
 
                   &:after {
@@ -445,7 +445,7 @@
         align-items: center;
         gap: 10px;
         border-radius: 50px;
-        background: #1d4ed8;
+        background: var(--primary-blue);
         color: $white;
         font-family: $he_heebo;
         font-size: 14px;
@@ -610,7 +610,7 @@
           align-items: center;
           gap: 18px;
           border-radius: 7px;
-          border: 1px solid #2947f2;
+          border: 1px solid var(--light-blue);
           background: #f9fafb;
 
           .filter-input {

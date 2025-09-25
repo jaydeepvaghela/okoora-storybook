@@ -166,7 +166,7 @@
 
             &:not(.mat-form-field-hide-placeholder) {
               .mat-mdc-text-field-wrapper {
-                border: 1px solid #3B82F6;
+                border: 1px solid var(--border-color-prime);
 
                 .mat-datepicker-toggle {
                   .mdc-icon-button {
@@ -193,7 +193,7 @@
 
                 &.mdc-floating-label--float-above {
                   transform: translateY(-80%) scale(0.85);
-                  color: #3B82F6;
+                  color: var(--border-color-prime);
                 }
               }
 
@@ -274,7 +274,7 @@
 
             &.more-chip {
               .mdc-evolution-chip__text-label {
-                color: #1D4ED8;
+                color: var(--primary-blue);
                 font-size: 14px;
                 font-weight: 700;
               }
@@ -317,10 +317,10 @@
           }
 
           &[aria-expanded="true"] {
-            border-color: #2947f2;
+            border-color: var(--light-blue);
 
             .mat-mdc-select-placeholder {
-              color: #2947f2;
+              color: var(--light-blue);
             }
 
             .mat-mdc-select-arrow {
@@ -395,10 +395,10 @@
 
             &.mat-mdc-checkbox-checked {
               background-color: #EFF6FF;
-              border-color: #1D4ED8;
+              border-color: var(--primary-blue);
 
               label {
-                color: #1D4ED8;
+                color: var(--primary-blue);
               }
             }
           }
@@ -416,7 +416,7 @@
         }
 
         .btn-clear {
-          color: #2320E6;
+          color: var(--color-light-prime);
           font-size: 14px;
           font-weight: 700;
           line-height: 16px;
@@ -455,8 +455,8 @@
       .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
       .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,
       .mdc-checkbox__native-control[data-indeterminate=true]:enabled~.mdc-checkbox__background {
-        background-color: #1D4ED8 !important;
-        border-color: #1D4ED8 !important;
+        background-color: var(--primary-blue) !important;
+        border-color: var(--primary-blue) !important;
       }
 
       .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark {
@@ -621,7 +621,7 @@
         gap: 5px;
         padding: 14px 24px;
         border-radius: 24px;
-        background-color: #1d4ed8;
+        background-color: var(--primary-blue);
         color: #fff;
         font-family: $he_heebo;
         font-size: 14px;

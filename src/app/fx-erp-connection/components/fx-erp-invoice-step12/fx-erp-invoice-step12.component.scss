@@ -146,11 +146,11 @@
                 width: 68px;
                 height: 68px;
                 margin-bottom: 32px;
-                color: #1d4ed8;
+                color: var(--primary-blue);
             }
 
             .headline {
-                color: #1d4ed8;
+                color: var(--primary-blue);
                 font-size: 24px;
                 font-weight: 600;
                 font-family: $inter;
@@ -201,7 +201,7 @@
 
         .primary-btn {
             border-radius: 10px;
-            background: #2320e6;
+            background: var(--color-light-prime);
             padding: 10px;
             color: #fff;
             text-align: center;

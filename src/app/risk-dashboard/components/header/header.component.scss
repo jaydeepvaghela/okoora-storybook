@@ -213,12 +213,12 @@ header {
 
                         &:hover {
                             background-color: #EEF3FC;
-                            border-color: #1D4ED8;
-                            color: #1D4ED8;
+                            border-color: var(--primary-blue);
+                            color: var(--primary-blue);
 
                             svg {
                                 path {
-                                    fill: #1D4ED8;
+                                    fill: var(--primary-blue);
                                 }
                             }
                         }
@@ -228,7 +228,7 @@ header {
                         height: 40px;
                         padding: 12px 24px;
                         border-radius: 100px;
-                        background-color: #1E40AF;
+                        background-color: var(--dark-blue-primary);
                         font-size: 12px;
                         line-height: 15px;
                         font-weight: 500;

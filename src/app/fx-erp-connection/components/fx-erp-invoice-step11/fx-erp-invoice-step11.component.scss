@@ -213,7 +213,7 @@
             }
 
             &.active {
-              background-color: #2320E6;
+              background-color: var(--color-light-prime);
             }
 
             @media screen and (max-width:1440px) {
@@ -266,7 +266,7 @@
 
           .review-h-info {
             .title {
-              color: #2320E6;
+              color: var(--color-light-prime);
               font-family: $he_heebo;
               font-size: 28px;
               font-weight: 700;
@@ -438,7 +438,7 @@
                   .contact-count {
                     display: inline-block;
                     border-radius: 20px;
-                    background: #2947F2;
+                    background: var(--light-blue);
                     color: #E5E7EB;
                     font-family: $he_heebo;
                     font-size: 12px;
@@ -526,7 +526,7 @@
               justify-content: center;
               align-items: center;
               border-radius: 10px;
-              background: #2320E6;
+              background: var(--color-light-prime);
               color: #FFF;
               text-align: center;
               font-family: $he_heebo;
@@ -582,7 +582,7 @@
                   }
 
                   a {
-                    color: #1D4ED8;
+                    color: var(--primary-blue);
                     font-size: 14px;
                     font-weight: 400;
                     line-height: 24px;

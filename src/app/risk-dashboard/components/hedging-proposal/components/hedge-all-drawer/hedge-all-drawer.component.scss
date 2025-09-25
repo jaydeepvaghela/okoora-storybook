@@ -79,7 +79,7 @@
       }
 
       .forward-btn {
-        color: #175cd3;
+        color: var(--highlight-prime);
         text-align: center;
         font-family: $he_heebo;
         font-size: 14px;
@@ -104,7 +104,7 @@
         margin-bottom: 25px;
       }
       .back-to-hedge {
-        color: #175cd3;
+        color: var(--highlight-prime);
         font-family: $he_heebo;
         font-size: 14px;
         font-weight: 400;
@@ -185,7 +185,7 @@
             }
 
             .action-link {
-              color: #175CD3;
+              color: var(--highlight-prime);
               font-family: $he_heebo;
               font-size: 14px;
               font-weight: 400;
@@ -224,7 +224,7 @@
         margin-bottom: 25px;
       }
       .back-to-hedge {
-        color: #175cd3;
+        color: var(--highlight-prime);
         font-family: $he_heebo;
         font-size: 14px;
         font-weight: 400;
@@ -341,7 +341,7 @@
         height: 20px !important;
 
         .mdc-circular-progress__indeterminate-circle-graphic {
-          stroke: #2947F2;  
+          stroke: var(--light-blue);  
         }
       }
       .info-wrapper {
@@ -363,7 +363,7 @@
           margin-bottom: 15px;
           margin-top: 15px;
           .hedge-all-details {
-            color: #175cd3;
+            color: var(--highlight-prime);
             font-family: $he_heebo;
             font-size: 14px;
             font-weight: 400;
@@ -485,10 +485,10 @@
         }
 
         button {
-          color: #175cd3;
+          color: var(--highlight-prime);
           border: none;
           padding: 0;
-          border-bottom: 1px solid #175cd3;
+          border-bottom: 1px solid var(--highlight-prime);
           background-color: transparent;
           cursor: pointer;
         }
@@ -549,7 +549,7 @@
         }
       }
       .hedge-now {
-        background: #175cd3;
+        background: var(--highlight-prime);
         box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.25);
         color: $white;
         font-family: $he_heebo;
@@ -613,12 +613,12 @@
           margin-bottom: 0;
 
           a {
-            color: #175CD3;
+            color: var(--highlight-prime);
             font-family: $he_heebo;
             font-size: 12px;
             font-weight: 700;
             line-height: 18px;
-            border-bottom: 1px solid #175CD3;
+            border-bottom: 1px solid var(--highlight-prime);
           }
 
           span {

@@ -83,7 +83,7 @@
                 }
 
                 b {
-                  color: #1D4ED8;
+                  color: var(--primary-blue);
                 }
 
                 .browse {
@@ -96,7 +96,7 @@
 
                   .btn-select-file {
                     padding: 0;
-                    color: #1D4ED8;
+                    color: var(--primary-blue);
                     font-family: $he_heebo;
                     font-size: 14px;
                     font-weight: 500;
@@ -149,7 +149,7 @@
                     padding: 19px 0 50px;
 
                     .tag-name {
-                      color: #1D4ED8;
+                      color: var(--primary-blue);
                       font-family: $he_heebo;
                       font-size: 18px;
                       font-weight: 700;
@@ -250,7 +250,7 @@
                           width: auto;
                           background-color: transparent;
                           padding: 0;
-                          color: #1D4ED8;
+                          color: var(--primary-blue);
                           font-family: $he_heebo;
                           font-size: 14px;
                           font-weight: 400;
@@ -301,7 +301,7 @@
                     text-align: left;
 
                     span {
-                      color: #1D4ED8;
+                      color: var(--primary-blue);
                     }
                   }
                 }
@@ -572,7 +572,7 @@
         justify-content: center;
         align-items: center;
         border-radius: 50px;
-        background: #1D4ED8;
+        background: var(--primary-blue);
         color: $white;
         font-family: $he_heebo;
         font-size: 14px;
@@ -603,7 +603,7 @@
           justify-content: center;
           align-items: center;
           border-radius: 50px;
-          background: #1D4ED8;
+          background: var(--primary-blue);
           color: $white;
           font-family: $he_heebo;
           font-size: 14px;
@@ -632,7 +632,7 @@
           align-items: center;
           border-radius: 40px;
           border: 1px solid #D1D5DB;
-          color: #1D4ED8;
+          color: var(--primary-blue);
           font-family: $he_heebo;
           font-size: 14px;
           font-weight: 400;
@@ -640,9 +640,9 @@
           margin: 24px 0 0;
 
           &:hover {
-            background-color: #1D4ED8;
+            background-color: var(--primary-blue);
             color: $white;
-            border-color: #1D4ED8;
+            border-color: var(--primary-blue);
           }
         }
       }
@@ -962,7 +962,7 @@
           align-items: center;
           gap: 18px;
           border-radius: 7px;
-          border: 1px solid #2947f2;
+          border: 1px solid var(--light-blue);
           background: #f9fafb;
 
           .filter-input {

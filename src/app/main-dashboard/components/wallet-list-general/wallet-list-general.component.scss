@@ -98,7 +98,7 @@
     }
 
     &.back-blue {
-      background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, #2320e6 99.12%);
+      background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, var(--color-light-prime) 99.12%);
 
       .back-new {
         .wallet-box-left {
@@ -811,7 +811,7 @@
         }
 
         &.back-blue {
-          background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, #2320e6 99.12%);
+          background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, var(--color-light-prime) 99.12%);
 
           .back-new {
             .wallet-box-left {

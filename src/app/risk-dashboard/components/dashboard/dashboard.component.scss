@@ -140,7 +140,7 @@
     --bs-tooltip-max-width: 307px;
 
     .tooltip-inner {
-      background-color: #1D4ED8;
+      background-color: var(--primary-blue);
       color: $white;
       padding: 19px 25px 19px 29px;
       box-shadow: 0px 14px 34px 0px rgba(0, 0, 0, 0.15);
@@ -161,7 +161,7 @@
         border-top-width: 14px;
         border-left-width: 7px;
         border-right-width: 7px;
-        border-top-color: #1D4ED8;
+        border-top-color: var(--primary-blue);
         left: 15px;
         right: auto;
       }

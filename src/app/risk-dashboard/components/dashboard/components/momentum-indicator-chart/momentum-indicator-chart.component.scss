@@ -43,7 +43,7 @@
           font-weight: 400;
           line-height: 28px;
           span {
-            color: #175CD3;
+            color: var(--highlight-prime);
             &.direction-2 {
               &.declining-significantly {
                 color: #11AF1C;

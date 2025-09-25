@@ -148,7 +148,7 @@
                         gap: 5px;
                         padding: 14px 24px;
                         border-radius: 24px;
-                        background-color: #1d4ed8;
+                        background-color: var(--primary-blue);
                         color: #fff;
                         font-family: $he_heebo;
                         font-size: 14px;
@@ -278,10 +278,10 @@
                 }
 
                 &[aria-expanded="true"] {
-                    border-color: #2947f2;
+                    border-color: var(--light-blue);
 
                     .mat-mdc-select-placeholder {
-                        color: #2947f2;
+                        color: var(--light-blue);
                     }
 
                     .mat-mdc-select-arrow {
@@ -505,7 +505,7 @@
                 }
 
                 &.active {
-                    background: #2320e6;
+                    background: var(--color-light-prime);
                 }
             }
         }
@@ -719,7 +719,7 @@
                 width: 100%;
                 padding: 10px;
                 border-radius: 40px;
-                background: #2320e6;
+                background: var(--color-light-prime);
                 color: #fff;
                 font-size: 16px;
                 font-weight: 700;

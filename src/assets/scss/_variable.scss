@@ -69,6 +69,7 @@ $cal-ev-black: #01031C;
 $cal-ev-orange: #FF6805;
 $week-day-gray: #848585;
 $month-day-font-color: #252525;
+$highlight-prime: #175CD3;
 // $calender-plush-icon-background: #0C41FF;
 
 
@@ -259,12 +260,13 @@ $ios_login: #60A5FA;
 
 
 
-// Primary theme colors conditional (non-max)
-:root {
+// Primary theme colors conditional
+:root, .theme-default {
     --dark-blue-primary: #1E40AF; //done
     --light-blue-bg: #EEF3FC; //done
     --primary-blue: #1D4ED8; //done
     --brand-primary-color: #2947f2; //done
+    --color-light-prime: #2320E6; 
     --active-tab-border-color: #e7e7e7; //done
     --account-detail-header-bg-color: #2947f2; //done
     --light-blue: #2947F2; //done
@@ -279,6 +281,60 @@ $ios_login: #60A5FA;
     --auth-input-color: #3F5AF3; // done
     --signature-hading-sub: #324ff3; // done
     --highlight-blue: #2563eb; // done
+    --highlight-prime: #175CD3;
+    --shade-detail-prime: #003EFF;
+    --border-color-prime: #3B82F6;
+}
+
+.theme-max {
+    --dark-blue-primary: #6E3B16;              /* Dark brown */
+    --light-blue-bg: #f7e1cae8;                  /* Light brown background */
+    --primary-blue: #A0522D;                   /* Primary brown */
+    --brand-primary-color: #8B4513;            /* Brand brown */
+    --active-tab-border-color: #8B4513;
+    --account-detail-header-bg-color: #8B4513;
+    --light-blue: #a7611b;
+    --color-light-prime: #4d221f; 
+    --cal-ev-blue: #8B4513;
+    --calender-plush-icon-background: #D2691E; /* Calendar brown */
+    --input-blue-border: #CD853F;              /* Input brown border */
+    --pagination-btn-bg-color: #DEB887;        /* Pagination button brown */
+    --light-blue-header-bg: #FAF4EE;           /* Light brown header background */
+    --content-wrapper-bg-color: #F5F7FA;       /* Content wrapper brown background */
+    --kyc-btn-color: #8B4513;                  /* KYC button brown */
+    --color-blue-royal: #A0522D;               /* Royal brown */
+    --auth-input-color: #A0522D;               /* Authentication input brown */
+    --signature-hading-sub: #8B4513;           /* Signature heading brown */
+    --highlight-blue: #8C4211;    
+    --highlight-prime: #7d4825; 
+    --shade-detail-prime: #6e350f;
+    
+    --border-color-prime: #3c2511;
+}
+
+.theme-wrap {
+  --dark-blue-primary: #145A32;              /* Dark green */
+  --light-blue-bg: #cef0dd;                  /* Light green background */
+  --primary-blue: #28A745;                   /* Primary green */
+  --brand-primary-color: #218838;            /* Brand green */
+  --active-tab-border-color: #218838;
+  --account-detail-header-bg-color: #218838;
+  --light-blue: #218838;
+  --cal-ev-blue: #218838;
+  --color-light-prime: #0a49189c; 
+  --calender-plush-icon-background: #2ECC71; /* Calendar green */
+  --input-blue-border: #58D68D;              /* Input green border */
+  --pagination-btn-bg-color: #A9DFBF;        /* Pagination button green */
+  --light-blue-header-bg: #F1F8F5;           /* Light green header background */
+  --content-wrapper-bg-color: #F5F7FA;       /* Neutral background (keep same) */
+  --kyc-btn-color: #218838;                  /* KYC button green */
+  --color-blue-royal: #28A745;               /* Royal green */
+  --auth-input-color: #28A745;               /* Authentication input green */
+  --signature-hading-sub: #218838;           /* Signature heading green */
+  --highlight-blue: #196F3D;                 /* Highlight green */
+  --highlight-prime: #146134;
+  --shade-detail-prime: #0e4b28;
+  --border-color-prime: rgb(40, 88, 17);
 }
 
 

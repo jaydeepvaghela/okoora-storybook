@@ -52,7 +52,7 @@
           cursor: pointer;
 
           &:checked + label {
-            background-color: #1d4ed8;
+            background-color: var(--primary-blue);
 
             // .check-img {
             //   display: block;
@@ -143,7 +143,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            color: #1d4ed8;
+            color: var(--primary-blue);
             text-align: center;
             font-family: $he_heebo;
             font-size: 14px;
@@ -207,9 +207,9 @@
         //       }
 
         //       .btn-select {
-        //         background-color: #1d4ed8;
+        //         background-color: var(--primary-blue);
         //         color: $white;
-        //         border-color: #1d4ed8;
+        //         border-color: var(--primary-blue);
         //       }
         //     }
         //   }
@@ -428,7 +428,7 @@
             border-color: #dc2626;
           }
           &.ng-valid {
-            border-color: #1d4ed8;
+            border-color: var(--primary-blue);
           }
 
           @media screen and (max-width: 1440px) {
@@ -519,7 +519,7 @@
           justify-content: center;
           align-items: center;
           border-radius: 50px;
-          background: #1d4ed8;
+          background: var(--primary-blue);
           color: $white;
           font-family: $he_heebo;
           font-size: 14px;
@@ -760,7 +760,7 @@
           top: 9px;
           width: 10px;
           height: 10px;
-          background-color: #1d4ed8;
+          background-color: var(--primary-blue);
           content: "";
           border-radius: 50%;
           opacity: 0;
@@ -769,7 +769,7 @@
       }
 
       &.mdc-list-item--selected {
-        background-color: #1d4ed8 !important;
+        background-color: var(--primary-blue) !important;
 
         .mdc-list-item__primary-text {
           color: $white;

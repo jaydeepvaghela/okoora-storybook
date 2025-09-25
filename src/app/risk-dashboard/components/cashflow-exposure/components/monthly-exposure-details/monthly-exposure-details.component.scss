@@ -56,7 +56,7 @@
                     .mdc-linear-progress__bar-inner {
                         border-width: 12px;
                         border-radius: 20px;
-                        border-color: #175CD3;
+                        border-color: var(--highlight-prime);
 
                         @media screen and (max-width: 1440px) {
                             border-width: 9px;
@@ -116,7 +116,7 @@
                     span {
                         color: $white;
                         font-family: $he_heebo;
-                        background-color: #175CD3;
+                        background-color: var(--highlight-prime);
                         font-size: 12px;
                         font-style: normal;
                         font-weight: 700;

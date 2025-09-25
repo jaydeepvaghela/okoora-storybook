@@ -118,7 +118,7 @@
                         margin: 0;
 
                         a {
-                            color: #1D4ED8;
+                            color: var(--primary-blue);
                             text-decoration: underline !important;
                         }
                     }
@@ -133,7 +133,7 @@
                 }
                 .confirm-btn {
                     border-radius: 20px;
-                    background: #2320E6;
+                    background: var(--color-light-prime);
                     padding: 10px 20px;
                     color: #FFF;
                     font-size: 12px;

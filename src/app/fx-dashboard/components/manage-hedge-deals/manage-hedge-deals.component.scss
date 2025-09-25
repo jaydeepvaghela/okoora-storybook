@@ -215,7 +215,7 @@
 
           .export-btn {
             border-radius: 55px;
-            background: #1D4ED8;
+            background: var(--primary-blue);
             box-shadow: 0px 15px 30px -12px rgba(41, 71, 242, 0.20);
             color: #FFF;
             font-size: 14px;
@@ -295,7 +295,7 @@
             align-items: center;
             padding: 11px 20px;
             border-radius: 55px;
-            background: #1D4ED8;
+            background: var(--primary-blue);
             box-shadow: 0 15px 30px -12px rgba(41, 71, 242, 0.20);
             color: #FFF;
             font-size: 14px;
@@ -381,9 +381,9 @@
 
           .open {
             border-radius: 23px;
-            border: 1px solid #1D4ED8;
+            border: 1px solid var(--primary-blue);
             background: #EFF6FF;
-            color: #1D4ED8;
+            color: var(--primary-blue);
             font-size: 13px;
             font-style: normal;
             font-weight: 500;
@@ -405,7 +405,7 @@
 
           .online,
           .offline {
-            color: #1D4ED8;
+            color: var(--primary-blue);
             font-size: 14px;
             font-style: normal;
             font-weight: 500;
@@ -460,7 +460,7 @@
 
             .close-deal {
               border-radius: 7px;
-              background: #2320E6;
+              background: var(--color-light-prime);
               color: #FFF;
               font-size: 12px;
               font-weight: 700;
@@ -512,7 +512,7 @@
             .mdc-data-table__cell {
               background-color: #D9E3F6;
               border-bottom: none;
-              border-top: 1px solid #2320E6;
+              border-top: 1px solid var(--color-light-prime);
             }
           }
         }

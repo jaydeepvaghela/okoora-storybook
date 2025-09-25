@@ -1,0 +1,48 @@
+<div class="set-convertion-step1-container">
+    <!-- Left Panel -->
+    <div class="left-panel">
+        <div class="info-sec">
+            <h2 class="title">Getting <br />Started</h2>
+            <p class="desc">Stay in control. Protect your FX <br>with ease</p>
+        </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+        <!-- back / close -->
+        <div class="top-row">
+            <button class="back-btn" (click)="previous()" type="button">Back</button>
+        </div>
+        <div class="content">
+            <div class="label-with-tooltip">
+                <img src="images/fx-erp/erp-invoice-icn.svg" alt="convert" />
+                <span>Convert</span>
+            </div>
+
+            <h3 class="heading">How to set conversions auto-pilot?</h3>
+
+            <!-- ERP Image Preview -->
+            <img src="images/fx-erp/convert-step1-bg.png" class="erp-preview" alt="ERP preview" />
+
+            <div class="steps">
+                <h3>One-time setup. Ongoing conversions</h3>
+                <p>How to turn on auto-conversion:</p>
+                <ul>
+                    <li><strong>1. Select currencies pair</strong> e.g. USD/EUR</li>
+                    <li><strong>2. Schedule you due date</strong> e.g., 1st of each month</li>
+                    <li><strong>3. Set the desire rate</strong> e.g., EUR/USD > 1.08</li>
+                    <li><strong>4. Set a unique name</strong> e.g. “One-time EUR Purchase”</li>
+                </ul>
+            </div>
+
+            <!-- Connect Button -->
+            <button class="connect-btn" (click)="next()">Start here</button>
+
+            <!-- Disclaimer -->
+            <p class="disclaimer">
+                <img src="images/fx-erp/hint-icn.svg" alt="lock" />
+                Takes 2 minutes • No integration needed to start
+            </p>
+        </div>
+    </div>
+</div>

@@ -114,7 +114,7 @@
                 }
 
                 &:before {
-                  background-color: #1d4ed8;
+                  background-color: var(--primary-blue);
                 }
 
                 &:after {
@@ -480,7 +480,7 @@
             }
 
             &.ng-valid {
-              border-color: #1d4ed8;
+              border-color: var(--primary-blue);
             }
 
             @media screen and (max-width: 1440px) {
@@ -657,7 +657,7 @@
                       }
 
                       &:before {
-                        background-color: #1d4ed8;
+                        background-color: var(--primary-blue);
                       }
 
                       &:after {
@@ -925,7 +925,7 @@
               margin: auto;
 
               &:hover {
-                background-color: #1d4ed8;
+                background-color: var(--primary-blue);
                 color: $white;
               }
             }
@@ -969,7 +969,7 @@
             justify-content: center;
             align-items: center;
             border-radius: 50px;
-            background: #1d4ed8;
+            background: var(--primary-blue);
             color: $white;
             font-family: $he_heebo;
             font-size: 14px;
@@ -998,7 +998,7 @@
       justify-content: center;
       align-items: center;
       border-radius: 50px;
-      background: var(--Brand-Brand-700, #1d4ed8);
+      background: var(--Brand-Brand-700, var(--primary-blue));
       color: $white;
       font-family: $he_heebo;
       font-size: 14px;
@@ -1058,7 +1058,7 @@
           align-items: center;
           gap: 18px;
           border-radius: 7px;
-          border: 1px solid #2947f2;
+          border: 1px solid var(--light-blue);
           background: #f9fafb;
 
           .filter-input {

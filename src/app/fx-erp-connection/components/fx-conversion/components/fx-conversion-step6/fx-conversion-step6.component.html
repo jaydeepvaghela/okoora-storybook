@@ -1,0 +1,100 @@
+<div class="set-convertion-container-step6 loader-wrapper">
+  <!-- ░░ LEFT PANEL ░░ -->
+  <div class="left-panel">
+    <div class="info-sec">
+      <h2 class="title">Choose currencies</h2>
+      <p class="desc">Stay in control. Protect your FX with ease</p>
+    </div>
+  </div>
+
+  <!-- ░░ RIGHT PANEL ░░ -->
+  <div class="right-panel">
+    <div class="top-row">
+      <button class="back-btn" type="button" (click)="onBack()">Back</button>
+      <ul class="stepper-steps">
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+      </ul>
+    </div>
+
+
+    <!-- Rule Summary -->
+    <div class="content">
+      <div class="label-with-tooltip">
+        <img src="images/fx-erp/erp-invoice-icn.svg" alt="convert" />
+        <span>Convert</span>
+      </div>
+
+      <h3 class="title">Rule Summary</h3>
+      <div class="automation-container">
+        <h2 class="title">You’ll Buy {{currencySign$ | async}}{{ summaryData?.BuyAmount ? summaryData?.BuyAmount : summaryData?.SellAmount}}</h2>
+        <div class="subtitle">Pay with {{summaryData?.BuyAmount ? summaryData?.sellCurrency : summaryData?.buyCurrency}}</div>
+
+        <div class="form-section">
+          <!-- Frequency -->
+          <div class="form-row">
+            <div class="label">
+              <img src="images/fx-erp/summary-cal-icn.svg">
+              Frequency <span class="frequency-badge">
+                {{getFrequencyName(summaryData?.executionFrequency)}}
+              </span>
+            </div>
+
+            <div class="dates">
+              <div class="date-label">Start date: <strong>{{summaryData?.StartDate | date:'dd/MM/yyyy'}}</strong></div>
+              <div *ngIf="summaryData?.Expiry" class="date-label">End date: <strong>{{summaryData?.Expiry | date:'dd/MM/yyyy'}}</strong></div>
+            </div>
+          </div>
+          <hr>
+
+          <!-- Rate -->
+          <div class="form-row">
+            <label class="label">
+              <img src="images/fx-erp/line-chart-icn.svg">
+              Rate
+            </label>
+            <span class="rate-condition">Only if <strong>{{currencyPair}} &gt; {{summaryData?.targetRate}}</strong></span>
+          </div>
+          <!-- <hr> -->
+          <!-- Email Notifications -->
+          <!-- <div class="form-row">
+            <div class="label"><img src="images/fx-erp/toggle-line-icn.svg"> Email notifications</div>
+            <div class="right-sec">
+              <mat-slide-toggle id="toggle-auto-protect" *ngIf="true"></mat-slide-toggle>
+              <span class="enable-label" *ngIf="false">Enabled</span>
+            </div>
+            
+          </div> -->
+
+          <!-- Start Automation Button -->
+        </div>
+        <button class="start-btn" [ngClass]="{'err-btn': errorMessage || (!isTandCChecked && isSubmitted)}" (click)="onStartAutomation()">
+          Start automation
+        </button>
+
+        <div class="set-tandc checkbox-field" [ngClass]="{'error': !isTandCChecked && isSubmitted}">
+        <mat-checkbox [(ngModel)]="isTandCChecked">
+          By continuing you agree to our FX conversion terms
+          <a href="{{termsOfUseUrl}}" target="_blank">Term of use</a>.
+        </mat-checkbox>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-msgs text-center">
+          <img class="err-image" src="images/red-warning-icon.svg" alt="warning">
+          {{errorMessage}}
+        </div>
+
+        <!-- Info Notes -->
+        <ul class="info-list">
+          <li>Your trade rules are monitored during active market hours.</li>
+          <li>If conditions are met, the trade executes. If not, it’s skipped for the day.</li>
+          <li>You can pause or cancel this rule at any time.</li>
+          <li>Execution confirmations will be sent via email if notifications are enabled.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

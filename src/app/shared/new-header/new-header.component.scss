@@ -75,7 +75,7 @@
 
           .wallet-label {
             display: block;
-            color: #1D4ED8;
+            color: var(--primary-blue);
             font-family: $he_heebo;
             font-size: 12px;
             font-weight: 400;
@@ -110,7 +110,7 @@
         &.driver-active-element {
           .driver-btn-active {
             border-radius: 10px;
-            background: #2320E6;
+            background: var(--color-light-prime);
             color: #FFF;
             font-family: $he_heebo;
             font-size: 14px;
@@ -163,7 +163,7 @@
           &:hover,
           &.active {
             background: #EEF3FC;
-            color: #2320E6;
+            color: var(--color-light-prime);
             font-weight: 700;
 
             .hover-img {
@@ -176,7 +176,7 @@
           }
 
           &.selected {
-            background-color: #1D4ED8;
+            background-color: var(--primary-blue);
             color: $white;
 
             .main-img {
@@ -372,7 +372,7 @@
 
         .btn-add-wallet {
           border-radius: 40px;
-          background: #2947F2;
+          background: var(--light-blue);
           padding: 1px 10px;
           width: 100%;
           color: #EFF6FF;
@@ -432,7 +432,7 @@
 
           .user-role {
             border-radius: 30px;
-            background: #1D4ED8;
+            background: var(--primary-blue);
             color: #FFF;
             font-family: $he_heebo;
             font-size: 12px;
@@ -476,7 +476,7 @@
               }
 
               &.active {
-                background: #2320E6;
+                background: var(--color-light-prime);
                 color: #FFF;
               }
 

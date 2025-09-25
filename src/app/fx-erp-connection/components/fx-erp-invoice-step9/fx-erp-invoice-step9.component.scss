@@ -228,7 +228,7 @@
                         }
 
                         &.active {
-                            background: #2320e6;
+                            background: var(--color-light-prime);
                         }
                     }
                 }
@@ -386,7 +386,7 @@
                         cursor: pointer;
 
                         input {
-                            accent-color: #2320e6;
+                            accent-color: var(--color-light-prime);
                         }
                     }
                 }
@@ -409,7 +409,7 @@
                         line-height: 24px;
                         cursor: pointer;
                         border-radius: 40px;
-                        background: #2320E6;
+                        background: var(--color-light-prime);
 
                         @media screen and (max-width:767px) {
                             width: max-content;
@@ -477,7 +477,7 @@
                         }
 
                         &.mat-mdc-radio-checked {
-                            background: #2320E6;
+                            background: var(--color-light-prime);
 
                             .mdc-form-field {
                                 label {
