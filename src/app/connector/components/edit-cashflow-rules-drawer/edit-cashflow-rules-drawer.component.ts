@@ -1,14 +1,33 @@
 import { AfterViewInit, Component, ElementRef, Input, SimpleChanges, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ReplaySubject, Subject, takeUntil } from 'rxjs';
-import { WalletsService } from 'src/app/wallets/services/wallets.service';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { of, ReplaySubject, Subject, takeUntil } from 'rxjs';
+
 import { ConnectorService } from '../../connector.service';
 import { stripDollar } from '../../stripDollar.util';
+import { WalletsService } from '../../../main-dashboard/services/wallets.service';
+import { getActiveHedgingCurrency } from '../../../fx-dashboard/components/fx-dashboard-data/active-hedging-currency';
+import { addRule } from '../../../fx-dashboard/components/fx-dashboard-data/add-rule';
+import { getFilteredInvoice } from '../../../fx-dashboard/components/fx-dashboard-data/get-filtered-invoice';
+import { getUserHedgingRules } from '../../../fx-dashboard/components/fx-dashboard-data/getUserHedgingRules';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-edit-cashflow-rules-drawer',
   templateUrl: './edit-cashflow-rules-drawer.component.html',
-  styleUrls: ['./edit-cashflow-rules-drawer.component.scss']
+  styleUrls: ['./edit-cashflow-rules-drawer.component.scss'],
+  imports: [CommonModule, TranslateModule, MatSelectModule, MatRadioModule, MatDatepickerModule, MatSliderModule, FormsModule, ReactiveFormsModule,MatInputModule, MatFormFieldModule ,MatTabsModule, MatSlideToggleModule, MatSelectModule, MatChipsModule, MatIconModule, 
+    require('../../../shared/components/mat-select-search/mat-select-search.component').MatSelectSearchComponent]
 })
 export class EditCashflowRulesDrawerComponent implements AfterViewInit {
   @ViewChild('minInput') minInput!: ElementRef<HTMLInputElement>;
@@ -20,14 +39,14 @@ export class EditCashflowRulesDrawerComponent implements AfterViewInit {
   private _onDestroy = new Subject<void>();
   walletList: any;
   multiFilterCtrl: FormControl = new FormControl();
-  activeCurrencyListFilter: any[];
+  activeCurrencyListFilter: any[] | undefined;
 
   excludeContactFilterCnt: FormControl = new FormControl();
   excludeContactData$: ReplaySubject<any[]> = new ReplaySubject<any[]>();
   cashFlowFilteredCurrencies$: ReplaySubject<any[]> = new ReplaySubject<any[]>(1);
   connectorForm: any;
   ERPcontactsList: any;
-  loading: boolean;
+  loading: boolean | undefined;
 
   private ruleData: any = null;
   private walletListLoaded = false;
@@ -44,7 +63,7 @@ export class EditCashflowRulesDrawerComponent implements AfterViewInit {
   data: any;
   passdata: any;
   latestRuleResponse: any;
-  importExosureType: string | null;
+  importExosureType: string | null | undefined;
   minLimit: number = 1;
   maxLimit: number = 100000;
   step: number = 1;
@@ -102,8 +121,8 @@ export class EditCashflowRulesDrawerComponent implements AfterViewInit {
 
   getHedgingRules() {
     this.loading = true;
-    this._connectorService.getHedgingRules().subscribe({
-      next: (response) => {
+    of(getUserHedgingRules).subscribe({
+      next: (response: any) => {
         if (response) {
           this.rulesData = response;
           setTimeout(() => {
@@ -113,7 +132,7 @@ export class EditCashflowRulesDrawerComponent implements AfterViewInit {
           //this.ruleData = this.ruleData.filter((f: any) => f.ruleType.toLowerCase() === this.importExosureType?.toLowerCase());
         }
       },
-      error: (error) => {
+      error: (error : any) => {
         console.error('Error fetching hedging rules:', error);
       }
     });
@@ -245,7 +264,7 @@ export class EditCashflowRulesDrawerComponent implements AfterViewInit {
 
       this.minInput.nativeElement.value = this.formatAmount(min);
       this.maxInput.nativeElement.value = this.formatAmount(max);
-      if(this.importExosureType == 'cashflow'){
+      if(this.importExosureType == 'cashflow' && this.minCInput && this.maxCInput){
         const minC = this.connectorForm.get('CashflowMinExposureAmount')?.value || 0;
         const maxC = this.connectorForm.get('CashflowMaxExposureAmount')?.value || 0;
         this.minCInput.nativeElement.value = this.formatAmount(minC);
@@ -255,7 +274,7 @@ export class EditCashflowRulesDrawerComponent implements AfterViewInit {
   }
 
   getAllCurrencies() {
-    this._connectorService.GetActiveHedgingCurrency().pipe(takeUntil(this._onDestroy)).subscribe({
+    of(getActiveHedgingCurrency).pipe(takeUntil(this._onDestroy)).subscribe({
       next: (res: any) => {
         this.walletList = res?.supportedHedge;
         this.filteredCurrencies.next(this.walletList.slice());
@@ -266,7 +285,7 @@ export class EditCashflowRulesDrawerComponent implements AfterViewInit {
         this.walletListLoaded = true;
         // this.bindFormData();
       },
-      error: (err) => { },
+      error: (err: any) => { },
     });
   }
 
@@ -375,10 +394,10 @@ export class EditCashflowRulesDrawerComponent implements AfterViewInit {
   editConnectorRule(payload: any) {
     this.loading = true;
 
-    this._connectorService.addRule(payload)
+    of(addRule)
       .pipe(takeUntil(this._onDestroy))
       .subscribe({
-        next: (ruleResponse) => {
+        next: (ruleResponse: any) => {
           this.storeOriginalFormState();
           // this.closeDrawer();
 
@@ -402,7 +421,7 @@ export class EditCashflowRulesDrawerComponent implements AfterViewInit {
           };
 
           // Step 4: Call invoice list API
-          this._connectorService.GetFilteredInvoiceBillList(finalPayload)
+          of(getFilteredInvoice)
             .pipe(takeUntil(this._onDestroy))
             .subscribe({
               next: (invoiceList: any) => {
@@ -411,13 +430,13 @@ export class EditCashflowRulesDrawerComponent implements AfterViewInit {
                 const data = invoiceList;
                 this._connectorService.setApprovedList(data);
               },
-              error: (listError) => {
+              error: (listError: any) => {
                 this.loading = false;
                 console.error('Error fetching invoice bill list:', listError);
               }
             });
         },
-        error: (ruleError) => {
+        error: (ruleError: any) => {
           this.loading = false;
           console.error('Error saving rules:', ruleError);
         }

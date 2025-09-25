@@ -25,11 +25,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { HedgeAllDrawerComponent } from '../../risk-dashboard/components/hedging-proposal/components/hedge-all-drawer/hedge-all-drawer.component';
 import { QuickHedgeDrawerComponent } from '../../risk-dashboard/components/hedging-proposal/components/quick-hedge-drawer/quick-hedge-drawer.component';
+import { EditCashflowRulesDrawerComponent } from '../../connector/components/edit-cashflow-rules-drawer/edit-cashflow-rules-drawer.component';
 @Component({
   selector: 'app-new-header',
   templateUrl: './new-header.component.html',
   styleUrls: ['./new-header.component.scss'],
-  imports:[CommonModule,LanguageDropdownComponent,FormsModule,MatMenuModule,MatIconModule,MatDrawer,HedgeAllDrawerComponent,QuickHedgeDrawerComponent]
+  imports:[CommonModule,LanguageDropdownComponent,FormsModule,MatMenuModule,MatIconModule,MatDrawer,HedgeAllDrawerComponent,QuickHedgeDrawerComponent, EditCashflowRulesDrawerComponent]
 })
 export class NewHeaderComponent {
   @Output() openSidebar = new EventEmitter();
@@ -60,7 +61,7 @@ export class NewHeaderComponent {
   // @ViewChild('riskManagerDrawer') riskManagerDrawer: MatDrawer;
   @ViewChild('quickHedgeDrawer') quickHedgeDrawer!: MatDrawer;
   @ViewChild('hedgeAllDrawer') hedgeAllDrawer!: MatDrawer;
-  // @ViewChild('editCashflowRulesDrawer') editCashflowRulesDrawer: MatDrawer;
+ @ViewChild('editCashflowRulesDrawer') editCashflowRulesDrawer: MatDrawer | undefined;
   // @ViewChild('openInfoERPDrawer') openInfoERPDrawer: MatDrawer;
   // @ViewChild('editFxConversionDrawer') editFxConversionDrawer: MatDrawer;
   bacdropSourceSubscription!: Subscription;
@@ -72,6 +73,7 @@ export class NewHeaderComponent {
   activeWallet!: WalletBalanceListModal;
   user: any;
   unsubscribe$ = new Subject<void>();
+
 
   constructor(
     private dialog: MatDialog,
@@ -172,11 +174,11 @@ export class NewHeaderComponent {
     //   }
     // });
 
-    // this._connectorService.openEditCashflowRulesDrawer.subscribe((res:any) => {
-    //   if (res !== null) {
-    //     res ? this.manageEditRulesConnectorDrawerOpen() : this.manageEditRulesConnectorDrawerClose();
-    //   }
-    // })
+    this._connectorService.openEditCashflowRulesDrawer.subscribe((res:any) => {
+      if (res !== null) {
+        res ? this.manageEditRulesConnectorDrawerOpen() : this.manageEditRulesConnectorDrawerClose();
+      }
+    })
 
     // this._connectorService.openInfoERPDrawer.subscribe((res:any) => {
     //   if (res) {
@@ -516,32 +518,32 @@ export class NewHeaderComponent {
   closeHedgeAllDrawer() {
     this.hedgeService.closeHedgeAllDrawer();
   }
-  // manageEditRulesConnectorDrawerOpen() {
-  //   this.editCashflowRulesDrawer?.open();
-  //   this.showDlg = false;
-  //   const bodyElem = document.querySelector('body') as HTMLElement;
-  //   bodyElem.style.overflowY = 'hidden';
-  //   if (!document.querySelector('.drawer-backdrop.edit-rule-connector-drawer-backdrop')) {
-  //     document.querySelector('.drawer-hedge-quick')?.insertAdjacentHTML("afterend", "<div class='drawer-backdrop edit-rule-connector-drawer-backdrop'></div>");
-  //   }
-  //   const backdropElem = document.querySelector('.drawer-backdrop.edit-rule-connector-drawer-backdrop') as HTMLElement;
-  //   this.bacdropSourceSubscription = fromEvent(backdropElem, 'click').subscribe(res => {
-  //     this.manageEditRulesConnectorDrawerClose();
-  //   });
-  // }
+  manageEditRulesConnectorDrawerOpen() {
+    this.editCashflowRulesDrawer?.open();
+    this.showDlg = false;
+    const bodyElem = document.querySelector('body') as HTMLElement;
+    bodyElem.style.overflowY = 'hidden';
+    if (!document.querySelector('.drawer-backdrop.edit-rule-connector-drawer-backdrop')) {
+      document.querySelector('.drawer-hedge-quick')?.insertAdjacentHTML("afterend", "<div class='drawer-backdrop edit-rule-connector-drawer-backdrop'></div>");
+    }
+    const backdropElem = document.querySelector('.drawer-backdrop.edit-rule-connector-drawer-backdrop') as HTMLElement;
+    this.bacdropSourceSubscription = fromEvent(backdropElem, 'click').subscribe(res => {
+      this.manageEditRulesConnectorDrawerClose();
+    });
+  }
 
-  // manageEditRulesConnectorDrawerClose() {
-  //   this.editCashflowRulesDrawer?.close().then(() => {
-  //     const bodyElem = document.querySelector('body') as HTMLElement;
-  //     bodyElem.style.overflowY = 'auto';
-  //     const backdropElem = document.querySelector('.drawer-backdrop.edit-rule-connector-drawer-backdrop');
-  //     if (backdropElem) {
-  //       backdropElem.remove();
-  //     }
-  //     this.bacdropSourceSubscription.unsubscribe();
-  //     this.showDlg = true;
-  //   });
-  // }
+  manageEditRulesConnectorDrawerClose() {
+    this.editCashflowRulesDrawer?.close().then(() => {
+      const bodyElem = document.querySelector('body') as HTMLElement;
+      bodyElem.style.overflowY = 'auto';
+      const backdropElem = document.querySelector('.drawer-backdrop.edit-rule-connector-drawer-backdrop');
+      if (backdropElem) {
+        backdropElem.remove();
+      }
+      this.bacdropSourceSubscription.unsubscribe();
+      this.showDlg = true;
+    });
+  }
 
   // manageOpenERInfoDrawerOpen() {
   //   this.openInfoERPDrawer?.open();

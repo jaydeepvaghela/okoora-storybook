@@ -1,36 +1,46 @@
 import { Component, ViewChild, AfterViewInit, Input, ChangeDetectorRef, AfterContentInit, AfterViewChecked } from '@angular/core';
 import { ConnectorService } from '../../connector.service';
-import { FormGroup } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
-import { timer, takeUntil, switchMap, Subject, take } from 'rxjs';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { timer, takeUntil, switchMap, Subject, take, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { FxErpStepperComponent } from 'src/app/fx-erp-connection/components/fx-erp-stepper/fx-erp-stepper.component';
-import { InvoiceSteps } from 'src/app/connector/enums/status';
-import { CommonService } from 'src/app/common/services/common.service';
-import { AddContactsComponent } from 'src/app/contacts/components/add-contacts/add-contacts.component';
+
 import { HedgeState, recordType } from '../../enums/status';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ConnectorAutoProtectComponent } from '../connector-auto-protect/connector-auto-protect.component';
 import { MatStepper } from '@angular/material/stepper';
-import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-import { FxDashboardService } from 'src/app/fx-dashboard/services/fx-dashboard.service';
-import { WalletsService } from 'src/app/wallets/services/wallets.service';
+
 import { MatSort } from '@angular/material/sort';
-import { MatSelect } from '@angular/material/select';
-import { ManageHedgeDealsComponent } from 'src/app/fx-dashboard/components/manage-hedge-deals/manage-hedge-deals.component';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
+
+import {  ExposureList, getAutomatedHedging } from '../../connectors-data';
+import { FxDashboardService } from '../../../fx-dashboard/services/fx-dashboard.service';
+import { WalletsService } from '../../../main-dashboard/services/wallets.service';
+import { FxErpStepperComponent } from '../../../fx-erp-connection/components/fx-erp-stepper/fx-erp-stepper.component';
+import { CommonService } from '../../../common/services/common.service';
+import { getActiveHedgingCurrency } from '../../../fx-dashboard/components/fx-dashboard-data/active-hedging-currency';
+import { ManageHedgeDealsComponent } from '../../../fx-dashboard/components/manage-hedge-deals/manage-hedge-deals.component';
+import { AddContactsComponent } from '../../../contacts-dashboard/components/add-contacts/add-contacts.component';
+import { getConversionRules } from '../../../fx-dashboard/components/fx-dashboard-data/conversionRules';
+import { CommonModule } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgbPaginationModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-connectors-step4',
   templateUrl: './connectors-step4.component.html',
   styleUrls: ['./connectors-step4.component.scss'],
+  imports:[MatSlideToggleModule,MatTabsModule,CommonModule, TranslateModule, NgbTooltipModule, MatTableModule, MatSelectModule, NgbPaginationModule, FormsModule, ReactiveFormsModule, ]
 })
 export class ConnectorsStep4Component implements AfterViewChecked {
-  dataSource: MatTableDataSource<any>;
-  convertDataSource: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<any> | undefined;
+  convertDataSource: MatTableDataSource<any> | undefined;
   recordType = recordType;
   displayedColumns: string[] = ['displayName', 'status', 'currency', 'total', 'dueDate', 'erpRecordId', 'recordType'];
   displayedColumnsConvert: string[] = ['ruleName', 'sourceNTargetCurrency', 'targetRate', 'executedRate', 'executionDateNTime'];
-  @Input() connectorForm: FormGroup;
+  @Input() connectorForm: FormGroup | undefined;
   allData: any[] = [];
   filteredData: any[] = [];
   paginatedData: any[] = [];
@@ -38,16 +48,23 @@ export class ConnectorsStep4Component implements AfterViewChecked {
   pageSize: number = 10;
   collectionLength: number = 0;
   convertcollectionLength: number = 0;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatSort) convertSort: MatSort;
-  @ViewChild('ruleNameSelect') ruleNameSelect: MatSelect;
+  @ViewChild(MatSort) sort: MatSort | undefined;
+  @ViewChild(MatSort) convertSort: MatSort | undefined;
+  @ViewChild('ruleNameSelect') ruleNameSelect: MatSelect | undefined;
   private _onDestroy = new Subject<void>();
   exposureData: any;
-  hedgingStatus: typeof HedgeState;
+  hedgeStateLabels: { [key: number]: string } = {
+    [HedgeState.Pending]: 'Pending',
+    [HedgeState.Hedged]: 'Hedged',
+    [HedgeState.Completed]: 'Completed',
+    [HedgeState['Missing Collateral']]: 'Missing Collateral',
+    [HedgeState['Missing Collateral For Active Deal']]: 'Missing Collateral For Active Deal',
+    [HedgeState.Closed]: 'Closed'
+  };
   rulesData: any;
-  loading: boolean;
-  isAutoProtectEnabled: boolean;
-  selectedExposureType: string | null;
+  loading: boolean | undefined;
+  isAutoProtectEnabled: boolean | undefined;
+  selectedExposureType: string | null | undefined;
   isPayableProtectFilled: any;
   exposuteTypeFromAPI: any;
   unsubscribe$ = new Subject<void>();
@@ -56,15 +73,15 @@ export class ConnectorsStep4Component implements AfterViewChecked {
   ruleConvertId: string = ''; // rule convert ID if available
   walletList: any;
   conversionData: any[] = [];
-  filteredRuleConvertList: any[] = [];
-  isNonisraeliUser: boolean;
+  filteredRuleConvertList: any[]= [];
+  isNonisraeliUser: boolean | undefined;
   matchedConvertRule: any;
   latestRuleConvert: any;
   showMatchedConvertRule: boolean = false;
   showLatestRuleConvert: boolean = false;
   selectedRule: any = null;
   activeHedgeCurrencies: any;
-  constructor(private _connectorService: ConnectorService, private authenticateService: AuthenticationService, public dialog: MatDialog, private headerCommService: CommonService, private stepper: MatStepper, private cdr: ChangeDetectorRef, private commonService: CommonService, private matStepper: MatStepper,
+  constructor(private _connectorService: ConnectorService, public dialog: MatDialog, private headerCommService: CommonService, private stepper: MatStepper, private cdr: ChangeDetectorRef, private commonService: CommonService, private matStepper: MatStepper,
     private _fxDashboardService: FxDashboardService, private _walletService: WalletsService,
   ) {
     //  this.commonService.getErpFlagsFromClientProfile$.pipe(takeUntil(this.unsubscribe$)).subscribe(res => {
@@ -79,13 +96,13 @@ export class ConnectorsStep4Component implements AfterViewChecked {
   ngOnInit() {
     this.getRuleConvertListById(); // get the current conversion rule ID from the subject
 
-    this.isNonisraeliUser = this.authenticateService.isNonIsraelUser();
+    this.isNonisraeliUser = false
     this.getAllCurrencies();
     this.getActiveHedgingCurrency();
     this.getFxConversionRulesData();
     const user = JSON.parse(localStorage.getItem('user')!);
     this.isAutoProtectEnabled = user['isAutomatedHedging'];
-    this.isPayableProtectFilled = user['isPayableProtectFilled']
+    this.isPayableProtectFilled = user['isPayableProtectFilled'] = true
     this.selectedExposureType = this._connectorService.getSelectedExposureType();
     this._connectorService.ruleResponse$.pipe(take(1)).subscribe({
       next: (response) => {
@@ -100,8 +117,10 @@ export class ConnectorsStep4Component implements AfterViewChecked {
       },
     });
     if (this.isPayableProtectFilled) {
+      console.log('connector data:', getAutomatedHedging);
+      
       this.loading = true;
-      this._connectorService.getAutomatedHedging(this.isAutoProtectEnabled).subscribe({
+      of(getAutomatedHedging).subscribe({
         next: (response: any) => {
           // console.log('Automated Hedging Response:', response);
           const list = response;
@@ -125,7 +144,7 @@ export class ConnectorsStep4Component implements AfterViewChecked {
 
 
 
-  this.hedgingStatus = HedgeState;
+
 
     // Show warning messages for 5 seconds if present
     if (this.matchedConvertRule?.status == 3) {
@@ -167,8 +186,7 @@ export class ConnectorsStep4Component implements AfterViewChecked {
                 importExposureType,
               };
               this.loading = true;
-              this._connectorService
-                .getExposureList(payload)
+                of(ExposureList)
                 .pipe(takeUntil(this._onDestroy))
                 .subscribe({
                   next: (list: any) => {
@@ -176,7 +194,7 @@ export class ConnectorsStep4Component implements AfterViewChecked {
                     this._connectorService.setApprovedList(data); // update BehaviorSubject
                     this.loading = false;
                   },
-                  error: (err) => {
+                  error: (err: any) => {
                     // console.error('Error in listing API with payload:', err);
                     this.loading = false;
                   },
@@ -199,7 +217,7 @@ export class ConnectorsStep4Component implements AfterViewChecked {
   }
 
   getActiveHedgingCurrency() {
-    this._connectorService.GetActiveHedgingCurrency().pipe(takeUntil(this._onDestroy)).subscribe({
+   of(getActiveHedgingCurrency).pipe(takeUntil(this._onDestroy)).subscribe({
       next: (res: any) => {
         this.activeHedgeCurrencies = res?.supportedHedge;
       },
@@ -208,7 +226,7 @@ export class ConnectorsStep4Component implements AfterViewChecked {
   }
 
   getFxConversionRulesData() {
-    this._fxDashboardService.getFxConversionRules()
+    of(getConversionRules)
       .pipe(takeUntil(this._onDestroy))
       .subscribe({
         next: (result: any) => {
@@ -277,7 +295,11 @@ export class ConnectorsStep4Component implements AfterViewChecked {
       }
     };
 
-    this.dataSource.sort = this.sort;
+    if (this.dataSource && this.sort) {
+      this.dataSource.sort = this.sort;
+    } else if (this.dataSource) {
+      this.dataSource.sort = null;
+    }
     this.filteredData = [...invoiceList];
     this.collectionLength = this.filteredData.length;
     this.refreshData();
@@ -286,10 +308,12 @@ export class ConnectorsStep4Component implements AfterViewChecked {
 
   ngAfterViewChecked() {
     if (this.selectedTab === 'exposures') {
-      this.dataSource.sort = this.sort;
+      if (this.dataSource) {
+        this.dataSource.sort = this.sort ?? null;
+      }
     } else if (this.selectedTab === 'converts') {
       if (this.convertDataSource) {
-        this.convertDataSource.sort = this.convertSort;
+        this.convertDataSource.sort = this.convertSort ?? null;
       }
     }
   }
@@ -299,7 +323,9 @@ export class ConnectorsStep4Component implements AfterViewChecked {
     const startIndex = (this.page - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.paginatedData = this.filteredData.slice(startIndex, endIndex);
-    this.dataSource.data = this.paginatedData;
+    if (this.dataSource) {
+      this.dataSource.data = this.paginatedData;
+    }
     this.cdr.detectChanges();
     // this.loading = false; // Set loading to false after data is refreshed
   }
@@ -307,7 +333,9 @@ export class ConnectorsStep4Component implements AfterViewChecked {
     const startIndex = (this.page - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.paginatedData = this.filteredRuleConvertList.slice(startIndex, endIndex);
-    this.convertDataSource.data = this.paginatedData;
+    if (this.convertDataSource) {
+      this.convertDataSource.data = this.paginatedData;
+    }
     this.cdr.detectChanges();
     // this.loading = false; // Set loading to false after data is refreshed
   }
@@ -431,7 +459,7 @@ export class ConnectorsStep4Component implements AfterViewChecked {
     dialogRef.afterClosed().subscribe(result => {
       if (!result) {
         // User cancelled - revert the toggle
-        event.source.checked = this.isAutoProtectEnabled;
+        event.source.checked = this.isAutoProtectEnabled ?? false;
         return;
       }
 
@@ -442,15 +470,15 @@ export class ConnectorsStep4Component implements AfterViewChecked {
       this.isAutoProtectEnabled = isConfirmed;
       //  console.log('Auto Protect Enabled:', this.isAutoProtectEnabled);
       this.loading = true;
-      this._connectorService.getAutomatedHedging(this.isAutoProtectEnabled).subscribe({
+      of(getAutomatedHedging).subscribe({
         next: (response: any) => {
           //  console.log('Automated Hedging Response:', response);
           const list = response;
           this.updateDataSource(list);
           this.loading = false;
-          this.authenticateService.getUserProfile().subscribe((data: any) => {
-            localStorage.setItem('user', JSON.stringify(data));
-          });
+          // this.authenticateService.getUserProfile().subscribe((data: any) => {
+          //   localStorage.setItem('user', JSON.stringify(data));
+          // });
         },
         error: (error) => {
           console.log('Automated Hedging Error:', error);
@@ -484,8 +512,7 @@ export class ConnectorsStep4Component implements AfterViewChecked {
    * else get the all the conversion rule list
    */
   getRuleConvertList() {
-    this._connectorService
-      .getRuleConvertList(this.ruleConvertId)
+    of(getConversionRules)
       .pipe(takeUntil(this._onDestroy))
       .subscribe({
         next: (list: any[]) => {
@@ -509,8 +536,8 @@ export class ConnectorsStep4Component implements AfterViewChecked {
           }
           this.onConvertPageSizeChange();
         },
-        error: (err) => {
-          console.error('Error fetching rule convert list:', err);
+        error: (er: any) => {
+          console.error('Error fetching rule convert list:', er);
         },
       });
   }
@@ -565,7 +592,7 @@ export class ConnectorsStep4Component implements AfterViewChecked {
           return item[property];
       }
     };
-    this.convertDataSource.sort = this.convertSort;
+    this.convertDataSource.sort = this.convertSort ?? null;
     this.convertcollectionLength = this.convertDataSource.data.length;
   }
 

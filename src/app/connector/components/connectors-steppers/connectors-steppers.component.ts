@@ -1,34 +1,43 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { BehaviorSubject, map, Observable, Subject, take, takeUntil } from 'rxjs';
-import { WalletsService } from 'src/app/wallets/services/wallets.service';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
+import { Observable, of, Subject, takeUntil } from 'rxjs';
+
 import { ConnectorService } from '../../connector.service';
-import { DataService } from 'src/app/core/services/data.service';
-import { ApiMap } from 'src/app/common/api.map';
-import { MatStepper } from '@angular/material/stepper';
-import { AuthenticationService } from 'src/app/auth/services/authentication.service';
-import { ERPType, InvoiceSteps } from '../../enums/status';
-import { CommonService } from 'src/app/common/services/common.service';
+import { ERPType } from '../../enums/status';
+import { WalletsService } from '../../../main-dashboard/services/wallets.service';
+import { getActiveHedgingCurrency } from '../../../fx-dashboard/components/fx-dashboard-data/active-hedging-currency';
+import { customerSupplierList } from '../../../fx-dashboard/components/fx-dashboard-data/customer-supplier-list';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ConnectorsStep4Component } from '../connectors-step4/connectors-step4.component';
+import { CfEndpointDocComponent } from '../cf-endpoint-doc/cf-endpoint-doc.component';
+import { TranslateModule } from '@ngx-translate/core';
+// import { AuthenticationService } from '../../../main-dashboard/services/authentication.service';
+// import { DataService } from '../../../main-dashboard/services/data.service';
+
 
 @Component({
   selector: 'app-connectors-steppers',
   templateUrl: './connectors-steppers.component.html',
-  styleUrls: ['./connectors-steppers.component.scss']
+  styleUrls: ['./connectors-steppers.component.scss'],
+  imports: [CommonModule, MatStepperModule, ConnectorsStep4Component, CfEndpointDocComponent, TranslateModule]
 })
 export class ConnectorsSteppersComponent implements OnInit {
-  connectorForm: FormGroup;
+  connectorForm: FormGroup = {} as FormGroup;
   walletList: any = [];
   erpCustomerSuppliersList: any = [];
   _onDestroy = new Subject<void>();
-  fromAutoPilotCashflowComplete: boolean;
+  fromAutoPilotCashflowComplete: boolean = false;
   @ViewChild('formStepper') formStepper!: MatStepper;
-  unsubscribe$: Observable<any>;
+  unsubscribe$: Observable<any> | undefined;
 
   constructor(private fb: FormBuilder,
     private _walletService: WalletsService,
     private connectorService: ConnectorService,
-    private dataService: DataService,
-    private _authService: AuthenticationService) {
+    ) {
   }
 
   ngOnInit(): void {
@@ -90,17 +99,19 @@ export class ConnectorsSteppersComponent implements OnInit {
   }
 
   getAllCurrencies() {
-    this.connectorService.GetActiveHedgingCurrency().pipe(takeUntil(this._onDestroy)).subscribe({
+   of(getActiveHedgingCurrency).pipe(takeUntil(this._onDestroy)).subscribe({
       next: (res: any) => {
         this.walletList = res?.supportedHedge;
       },
-      error: (err) => { },
+      error: (err: any) => {
+      },
     })
+   // this.walletList = [{ currency: 'USD' }, { currency: 'ILS' }] 
   }
 
   GetErpCustomerSupplierList() {
     this.connectorService
-      .GetErpCustomerSupplier()
+      of(customerSupplierList)
       .pipe(takeUntil(this._onDestroy))
       .subscribe({
         next: (res: any) => {

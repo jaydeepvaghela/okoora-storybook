@@ -1,7 +1,7 @@
 <section class="cashflow-endpoint-documentation">
     <div class="wrapper-actions">
         <!-- <div class="go-back" (click)="redirectBack()" *ngIf="!fromAutoPilotCashflowComplete">
-            <img src="assets/images/back-arrow-left.svg" alt="back">back
+            <img src="images/back-arrow-left.svg" alt="back">back
         </div> -->
         <button class="btn-exposure-tbl" (click)="redirectToExposure()">{{'ExposureTable.exposureTable' | translate}}</button>
     </div>
@@ -14,7 +14,7 @@
     <div class="endpoints-header-wrapper" id="endpoint-wrapper">
         <div class="endpoints-header">
             <picture>
-                <img src="assets/images/park-connection-icon.svg" alt="connection-icon">
+                <img src="images/park-connection-icon.svg" alt="connection-icon">
             </picture>
             <label class="title">{{'ExposureTable.endpoints' | translate}}</label>
         </div>
@@ -53,7 +53,7 @@
                                     (click)="showClientsId = !showClientsId">
                                 </button>
                             </div>
-                            <img src="assets/images/copy-icon.svg" (click)="copyContent('clientId')" alt="copy" />
+                            <img src="images/copy-icon.svg" (click)="copyContent('clientId')" alt="copy" />
                         </div>
                     </div>
                     <div class="doc-content">
@@ -65,7 +65,7 @@
                                     (click)="showClientSecret = !showClientSecret">
                                 </button>
                             </div>
-                            <img src="assets/images/copy-icon.svg" (click)="copyContent('clientSecret')" alt="copy" />
+                            <img src="images/copy-icon.svg" (click)="copyContent('clientSecret')" alt="copy" />
                         </div>
                     </div>
                 </div>
@@ -94,9 +94,9 @@
                     <div class="header-shell">
                         <div class="shell-left">
                             <h3 class="title">{{'ExposureTable.exampleFromShell' | translate}}</h3>
-                            <img src="assets/images/shell-icon.svg" alt="shell" />
+                            <img src="images/shell-icon.svg" alt="shell" />
                         </div>
-                        <img src="assets/images/copy-icon-w.svg" (click)="copyContent('authCode')" alt="copy" />
+                        <img src="images/copy-icon-w.svg" (click)="copyContent('authCode')" alt="copy" />
                     </div>
                     <div class="content-shell" id="authCode">
                         <label class="curl">curl</label> <span class="request"> --request </span> <span
@@ -110,7 +110,7 @@
                         <p class="request">--header <span class="default">'ClientSecret: Y2FsaG9zdDo0'</span> </p>
                         <p class="request">--data <span class="default">
                                 '&#123;
-                                <br> "username": "johndoea@example.com",
+                                <br> "username": "johndoea&#64;example.com",
                                 <br> "password": "123456789" <br>
                                 &#125;'</span>
                         </p>
@@ -126,7 +126,7 @@
                     <br><label>&nbsp;&nbsp;&nbsp;"access_token"</label>: <span>"eyJhbGciOiJIUzI1...."</span>,
                     <br><label>&nbsp;&nbsp;&nbsp;"token_type"</label>: <span>"Bearer"</span>,
                     <br> &#125;
-                    <img src="assets/images/copy-icon-w.svg" (click)="copyContent('authResponse')" alt="copy" />
+                    <img src="images/copy-icon-w.svg" (click)="copyContent('authResponse')" alt="copy" />
                 </div>
             </div>
             <div class="failure-wrapper">
@@ -258,9 +258,9 @@
                     <div class="header-shell">
                         <div class="shell-left">
                             <h3 class="title">{{'ExposureTable.exampleFromShell' | translate}}</h3>
-                            <img src="assets/images/shell-icon.svg" alt="shell" />
+                            <img src="images/shell-icon.svg" alt="shell" />
                         </div>
-                        <img src="assets/images/copy-icon-w.svg" (click)="copyContent('cashCode')" alt="copy" />
+                        <img src="images/copy-icon-w.svg" (click)="copyContent('cashCode')" alt="copy" />
                     </div>
                     <div class="content-shell" id="cashCode">
                         <label class="curl">curl</label> <span class="request"> --request </span> <span
@@ -306,7 +306,7 @@
                     <br><label>&nbsp;&nbsp;&nbsp;"message"</label>: <span>"2 records saved successfully."</span>,
                     <br><label>&nbsp;&nbsp;&nbsp;"recordIds"</label>: <span>["csh_001", "csh_002"]</span>,
                     <br> &#125;
-                    <img src="assets/images/copy-icon-w.svg" (click)="copyContent('cashResponse')" alt="copy" />
+                    <img src="images/copy-icon-w.svg" (click)="copyContent('cashResponse')" alt="copy" />
                 </div>
             </div>
             <div class="failure-wrapper">

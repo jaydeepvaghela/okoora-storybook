@@ -128,13 +128,14 @@
 <mat-drawer #hedgeAllDrawer mode="side" position="end" class="drawer-hedge-all" [opened]="false">
   <app-hedge-all-drawer (closeDrawer)="closeHedgeAllDrawer()"></app-hedge-all-drawer>
 </mat-drawer>
+
 <!-- <mat-drawer #notificationDrawer mode="side" position="end" class="fx-notification-drawer">
   <app-fx-notification-drawer *ngIf="notificationDrawer.opened"></app-fx-notification-drawer>
-</mat-drawer>
+</mat-drawer> -->
 <mat-drawer #editCashflowRulesDrawer mode="side" position="end" class="edit-cashflow-rules-drawer">
   <app-edit-cashflow-rules-drawer *ngIf="editCashflowRulesDrawer.opened"></app-edit-cashflow-rules-drawer>
 </mat-drawer>
-<mat-drawer #openInfoERPDrawer mode="side" position="end" class="open-info-ERPDrawer">
+<!-- <mat-drawer #openInfoERPDrawer mode="side" position="end" class="open-info-ERPDrawer">
   <app-erplisting-info *ngIf="openInfoERPDrawer.opened"></app-erplisting-info>
 </mat-drawer>
 <mat-drawer #editFxConversionDrawer mode="side" position="end" class="fx-conversion-drawer">

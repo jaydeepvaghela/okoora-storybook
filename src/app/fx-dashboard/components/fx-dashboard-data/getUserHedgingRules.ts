@@ -1,4 +1,6 @@
-export const userHedgingRule = [
+
+
+export const  getUserHedgingRules = [
     {
         "id": "3101df35-6a51-4d1c-b7ff-bfd64f6780cd",
         "accountId": "c3aefa63-d081-4a68-979a-bf666e576c18",

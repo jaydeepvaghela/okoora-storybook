@@ -1,43 +1,47 @@
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { MatSelectModule } from '@angular/material/select';
 import { MatStepper } from '@angular/material/stepper';
+import { TranslateModule } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
-import { AuthenticationService } from 'src/app/auth/services/authentication.service';
+
 
 @Component({
   selector: 'app-cf-endpoint-doc',
   templateUrl: './cf-endpoint-doc.component.html',
-  styleUrls: ['./cf-endpoint-doc.component.scss']
+  styleUrls: ['./cf-endpoint-doc.component.scss'],
+  imports: [CommonModule, MatSelectModule, TranslateModule]
 })
 export class CfEndpointDocComponent implements OnInit {
-  showClientsId: boolean;
-  showClientSecret: boolean;
+  showClientsId: boolean | undefined;
+  showClientSecret: boolean | undefined;
   _onDestroy = new Subject<void>();
   clientsId = 'Wltcy9uYW1laW';
   clientSecret = 'Y2FsaG9zdDo0';
   @ViewChild('cashflowDocSection') cashflowDocSection!: ElementRef;
   @ViewChild('authenticationDocSection') authenticationDocSection!: ElementRef;
-  @Input() fromAutoPilotCashflowComplete: boolean;
+  @Input() fromAutoPilotCashflowComplete: boolean | undefined;
   
-  constructor(private matStepper: MatStepper, private authService: AuthenticationService) { }
+  constructor(private matStepper: MatStepper) { }
 
   ngOnInit() {
     this.showClientsId = false;
     this.showClientSecret = false;
     // Fetch ClientId and ClientSecret from the service
-    this.authService.GetClientId().pipe(takeUntil(this._onDestroy)).subscribe({
-      next: (res: any) => { 
-        this.clientsId = res.clientId ?? '--';
-      },
-      error: (err) => {
-      },
-    });
-    this.authService.GetClientSecret().pipe(takeUntil(this._onDestroy)).subscribe({
-      next: (res: any) => {  
-        this.clientSecret = res.clientSecret ?? '--';
-      },
-      error: (err) => {
-      },
-    });
+    // this.authService.GetClientId().pipe(takeUntil(this._onDestroy)).subscribe({
+    //   next: (res: any) => { 
+        this.clientsId = "f382d1a797204fffbf6560a6d4a6b98f";
+    //   },
+    //   error: (err: any) => {
+    //   },
+    // });
+    // this.authService.GetClientSecret().pipe(takeUntil(this._onDestroy)).subscribe({
+    //   next: (res: any) => {  
+        this.clientSecret = "8391da2e1e274dde9199d3ec131ca488";
+    //   },
+    //   error: (err) => {
+    //   },
+    // });
   }
   focusOnAuthSection() {
     this.scrollToSection(this.authenticationDocSection);

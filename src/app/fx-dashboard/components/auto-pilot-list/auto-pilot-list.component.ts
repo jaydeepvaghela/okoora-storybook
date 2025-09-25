@@ -194,7 +194,7 @@ export class AutoPilotListComponent {
   }
 
   redirectToExposureTable(id: string) {
-    this.router.navigate([localStorage.getItem('subSite') ? localStorage.getItem('subSite') + `${AppPages.Automations}` : `${AppPages.Automations}`])
+    this.router.navigate(['/automation'])
     // set the current rule ID in the observable when having converts tab 
     if (this.tabindex === 1) {
       this._connectorService.setCurrentRuleIdSubject(id);
@@ -205,6 +205,7 @@ export class AutoPilotListComponent {
     // If rule is provided, handle edit for that rule, otherwise fallback
     this._connectorService.openEditCashflowRules(true);
   }
+
 
   getAutomationTableData() {
     this.showLoader = true;
