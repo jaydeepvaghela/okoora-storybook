@@ -25,6 +25,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { HedgeAllDrawerComponent } from '../../risk-dashboard/components/hedging-proposal/components/hedge-all-drawer/hedge-all-drawer.component';
 import { QuickHedgeDrawerComponent } from '../../risk-dashboard/components/hedging-proposal/components/quick-hedge-drawer/quick-hedge-drawer.component';
+import { ErpConnectionDialogComponent } from '../components/erp-connection-dialog/erp-connection-dialog.component';
 @Component({
   selector: 'app-new-header',
   templateUrl: './new-header.component.html',
@@ -32,8 +33,11 @@ import { QuickHedgeDrawerComponent } from '../../risk-dashboard/components/hedgi
   imports:[CommonModule,LanguageDropdownComponent,FormsModule,MatMenuModule,MatIconModule,MatDrawer,HedgeAllDrawerComponent,QuickHedgeDrawerComponent]
 })
 export class NewHeaderComponent {
+  /**
+   * If true, hides the header actions (Deposit, Send payment, Convert, Lock Rate, ERP Connection) for use in Storybook WalletDropdown story.
+   */
+  @Input() hideHeaderActions = false;
   @Output() openSidebar = new EventEmitter();
-  @Input() hideElements: boolean = false;
   maxFlaglocalStorage!: boolean;
   maxSiteName!: string | null;
   maxLogo: boolean = false;
@@ -695,7 +699,7 @@ export class NewHeaderComponent {
   }
 
   // onERPConnection() {
-  //   if (JSON.parse(localStorage.getItem('user')!)?.isERPConnected == 1) return;
+  //   // if (JSON.parse(localStorage.getItem('user')!)?.isERPConnected == 1) return;
   //   this.dialog.open(ErpConnectionDialogComponent, {
   //     width: '608px',
   //     maxWidth: '95vw',

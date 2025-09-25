@@ -39,7 +39,7 @@
         <button class="btn-add-wallet" (click)="addWalletModal()">Add new wallet</button>
       </div>
     </mat-menu>
-    <div class="header-actions" id="depositTourStep" *ngIf="hideElements">
+    <div class="header-actions" id="depositTourStep" *ngIf="!hideHeaderActions">
       <button class="h-btns driver-btn-active" (click)="openAddMoney()" id="depositTourStep">
         <img src="images/fx-dashboard/plus-icn.svg" class="main-img" alt="Deposit">
         <img src="images/fx-dashboard/plus-hover.svg" class="hover-img" alt="Deposit">
@@ -71,7 +71,7 @@
       </button>
     </div>
   </div>
-  <div class="header-right" *ngIf="hideElements">
+  <div class="header-right" *ngIf="!hideHeaderActions">
     <a href="https://currencysimplified.com/" target="_blank" class="btn-help">
       <img src="images/fx-dashboard/help-icn.svg" alt="Help">
     </a>
