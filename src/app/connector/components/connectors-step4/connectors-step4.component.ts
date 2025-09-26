@@ -127,7 +127,9 @@ export class ConnectorsStep4Component implements AfterViewChecked {
           this.exposuteTypeFromAPI = list?.exposureType;
           this._connectorService.setSelectedExposureType(this.exposuteTypeFromAPI);
           this.updateDataSource(list);
-          this.rulesData = list || null;
+          this.rulesData = list;
+          console.log(this.rulesData);
+          
           this.loading = false;
         },
         error: (error) => {
