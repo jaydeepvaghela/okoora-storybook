@@ -1,5 +1,5 @@
 @import "../../../../assets/scss/variable";
- @import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
 
 ::ng-deep {
     .connectors-step4 {
@@ -7,7 +7,7 @@
         margin: 0 auto;
 
         .step-header {
-            background-image: url("/assets/images/connector/exposure-list-header-bg.svg");
+            background-image: url("../../../../assets/images/connector/exposure-list-header-bg.svg");
             background-size: contain;
             background-repeat: no-repeat;
             background-position: top center;

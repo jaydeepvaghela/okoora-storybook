@@ -32,7 +32,7 @@ import { NgbPaginationModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstra
   selector: 'app-connectors-step4',
   templateUrl: './connectors-step4.component.html',
   styleUrls: ['./connectors-step4.component.scss'],
-  imports:[MatSlideToggleModule,MatTabsModule,CommonModule, TranslateModule, NgbTooltipModule, MatTableModule, MatSelectModule, NgbPaginationModule, FormsModule, ReactiveFormsModule, ]
+  imports:[MatSlideToggleModule,MatTabsModule,CommonModule, TranslateModule, NgbTooltipModule, MatTableModule, MatSelectModule, NgbPaginationModule, FormsModule, ReactiveFormsModule]
 })
 export class ConnectorsStep4Component implements AfterViewChecked {
   dataSource: MatTableDataSource<any> | undefined;

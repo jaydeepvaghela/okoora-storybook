@@ -21,13 +21,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectSearchComponent } from '../../../shared/components/mat-select-search/mat-select-search.component';
 
 @Component({
   selector: 'app-edit-cashflow-rules-drawer',
   templateUrl: './edit-cashflow-rules-drawer.component.html',
   styleUrls: ['./edit-cashflow-rules-drawer.component.scss'],
-  imports: [CommonModule, TranslateModule, MatSelectModule, MatRadioModule, MatDatepickerModule, MatSliderModule, FormsModule, ReactiveFormsModule,MatInputModule, MatFormFieldModule ,MatTabsModule, MatSlideToggleModule, MatSelectModule, MatChipsModule, MatIconModule, 
-    require('../../../shared/components/mat-select-search/mat-select-search.component').MatSelectSearchComponent]
+  imports: [CommonModule, TranslateModule, MatSelectModule, MatRadioModule, MatDatepickerModule, MatSliderModule, FormsModule, ReactiveFormsModule,MatInputModule, MatFormFieldModule ,MatTabsModule, MatSlideToggleModule, MatSelectModule, MatChipsModule, MatIconModule, MatSelectSearchComponent],
+  
 })
 export class EditCashflowRulesDrawerComponent implements AfterViewInit {
   @ViewChild('minInput') minInput!: ElementRef<HTMLInputElement>;
