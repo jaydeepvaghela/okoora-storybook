@@ -1,32 +1,31 @@
-export const getAutomatedHedging = 
-    {
+export const getAutomatedHedging = {
     "invoiceBillResponses": {
         "allInvoices": [
             {
-                "id": "49f231d8-ea14-497b-9252-8437a50e577e",
-                "erpRecordId": "3687",
+                "id": "a41b06e9-9ce2-41e4-9665-3977ade39ae1",
+                "erpRecordId": "3702",
                 "recordType": 1,
                 "currency": "USD",
-                "total": 132.00,
+                "total": 420.00,
                 "service": null,
                 "status": 1,
                 "hedgingStatus": 6,
                 "hedgeState": 1,
                 "isMissingBeneficiary": true,
                 "isMissingCollateral": null,
-                "invoiceBillDate": "2025-07-30T00:00:00",
-                "dueDate": "2025-11-29T00:00:00",
+                "invoiceBillDate": "2025-08-05T00:00:00",
+                "dueDate": "2025-09-04T00:00:00",
                 "currencySign": "$",
                 "sellCurrency": "USD",
                 "buyCurrency": "ILS",
                 "direction": null,
                 "user": {
-                    "id": "10305",
-                    "displayName": null,
+                    "id": "10100",
+                    "displayName": "Entity C100",
                     "userType": "Customer",
                     "updatedAt": null
                 },
-                "strategyId": 162107,
+                "strategyId": 141553,
                 "collateral": null,
                 "collateralCurrency": null,
                 "missingFundsForExecution": 0.00,
@@ -38,9 +37,9 @@ export const getAutomatedHedging =
     "isMissingFunds": false,
     "isRequiredCollateral": true,
     "hedgingBalanceResponse": {
-        "totalAvailableBalance": 875051.4179,
+        "totalAvailableBalance": 22588.1409,
         "totalAvailableBalanceCurrencySign": "₪",
-        "collateralBalance": 150328.0006,
+        "collateralBalance": 129686.1030,
         "collateralBalanceCurrencySign": "₪",
         "requiredCollateral": 0.00,
         "requiredCollateralCurrencySign": "₪",
@@ -49,8 +48,9 @@ export const getAutomatedHedging =
     },
     "collateralCurrencySign": "₪",
     "missingCollateralAmount": 0.00,
-    "exposureType": "cashflow"
+    "exposureType": "invoice"
 }
+    
 
 export const ExposureList = {
     "invoiceBillResponses": {
