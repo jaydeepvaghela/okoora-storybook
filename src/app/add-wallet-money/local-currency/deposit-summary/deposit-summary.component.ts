@@ -42,6 +42,9 @@ export class DepositSummaryComponent {
     if (this.localCurrencyForm?.get('depositMethod').value == 3) {
       params.TransferAt = '';
     }
+    this.showLoader = false;
+    this.addMoneyScreenIndex++;
+    this.onScreenIndexChange.emit(this.addMoneyScreenIndex);
     // this._walletService.depositRegular(params).subscribe({
     //   next: (result: any) => {
     //     this.showLoader = false;

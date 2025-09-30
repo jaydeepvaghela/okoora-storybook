@@ -1,8 +1,8 @@
-import { Component, ViewChild, EventEmitter, Output, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, EventEmitter, Output, Input, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import moment from 'moment';
-import { Observable, of, switchMap, tap } from 'rxjs';
+import { map, Observable, of, switchMap, tap } from 'rxjs';
 import SwiperCore, { Swiper } from 'swiper';
 // import { SwiperComponent } from 'swiper/angular';
 import { DashboardService } from '../../main-dashboard/services/dashboard.service';
@@ -13,14 +13,18 @@ import { AddContactsComponent } from '../../contacts-dashboard/components/add-co
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CommonModule } from '@angular/common';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { allbeneficiaryData } from '../add-money-data/allbeneficiaryData';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { depositeFromLocal } from '../add-money-data/depositefromlocal';
 
 @Component({
   selector: 'app-local-currency',
   templateUrl: './local-currency.component.html',
   styleUrls: ['./local-currency.component.scss'],
-  imports:[FormsModule,ReactiveFormsModule,MatDatepickerModule,CommonModule,NgbTooltipModule]
+  imports: [FormsModule, ReactiveFormsModule, MatDatepickerModule, CommonModule, NgbTooltipModule],
+  providers: [provideNativeDateAdapter()]
 })
-export class LocalCurrencyComponent {
+export class LocalCurrencyComponent implements AfterViewInit {
   // @ViewChild(SwiperComponent) swiperComponent?: SwiperComponent;
   @Input() addMoneyScreenIndex!: number;
   @Input() localCurrencyForm: any;
@@ -41,34 +45,40 @@ export class LocalCurrencyComponent {
   constructor(
     private dashboardService: DashboardService,
     public dialog: MatDialog,
-    private cd : ChangeDetectorRef
-  ) { 
+    private cd: ChangeDetectorRef
+  ) {
 
-   
+
   }
 
   ngOnInit() {
     this.dashboardService.getSlidePosition().subscribe((position: number) => {
       this.isFirstSlide = position === 0;
       this.isLastSlide = position === 2;
-      // this.ownAccBeneficiary$ = this._contactsService.getOwnAccountBeneficieries({ bankCountry: 'IL' }).pipe(tap(result => {
-      //   if (result.length) {
-      //     setTimeout(() => {
-      //     }, 200);
-      //   }
-      // }));
-      this.loadBankAccountSlider();
+      this.ownAccBeneficiary$ = this.getOwnAccountBeneficieries({ bankCountry: 'IL' }).pipe(
+        tap(result => {
+          if (result.length) {
+            setTimeout(() => {
+              this.initSwiper();
+            }, 0);
+          }
+        })
+      );
     });
-
-    //  this.connectorService.getCollateralAmountFromMissingFunds$.subscribe((collateralAmount: number | null) => {
-    //   if (collateralAmount !== null) {
-    //     this.localCurrencyForm?.get('amount')?.patchValue(collateralAmount);
-    //     // this.cd.detectChanges();
-    //   }
-    // });
   }
 
-  loadBankAccountSlider() {
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.initSwiper();
+    }, 0);
+  }
+
+  initSwiper() {
+    if (this.mySwiper) {
+      this.mySwiper.destroy();
+    }
+    const container = document.querySelector('.bank-swiper-container');
+    if (!container) return; // DOM not ready
     this.mySwiper = new Swiper('.bank-swiper-container', {
       slidesPerView: 1,
       spaceBetween: 14,
@@ -78,6 +88,34 @@ export class LocalCurrencyComponent {
       }
     });
   }
+
+  //  this.connectorService.getCollateralAmountFromMissingFunds$.subscribe((collateralAmount: number | null) => {
+  //   if (collateralAmount !== null) {
+  //     this.localCurrencyForm?.get('amount')?.patchValue(collateralAmount);
+  //     // this.cd.detectChanges();
+  //   }
+  // });
+  getOwnAccountBeneficieries(filterObj: any): Observable<BenificiaryModel[]> {
+    return of(allbeneficiaryData).pipe(
+      map((result: any[]) => {
+        if (!result) return [];
+        // Ensure each object is typed as BenificiaryModel
+        const beneficiaries: BenificiaryModel[] = result.map(item => item as BenificiaryModel);
+        const filteredResult = (() => {
+          if (filterObj?.currency) {
+            return beneficiaries.filter(val => val.ownAccount == 1 && val.currency === filterObj?.currency);
+          } else if (filterObj?.bankCountry) {
+            return beneficiaries.filter(val => val.ownAccount == 1 && val.bankCountry === filterObj?.bankCountry);
+          } else {
+            return beneficiaries.filter(val => val.ownAccount == 1);
+          }
+        })();
+        return filteredResult;
+      })
+    );
+  }
+
+  // loadBankAccountSlider is replaced by initSwiper
 
   restrictZero(event: any) {
     if (event?.target?.value?.length === 0 && (event?.key === "0" || event?.key === ".")) {
@@ -96,11 +134,19 @@ export class LocalCurrencyComponent {
   }
 
   goToPreviousSlide() {
-    this.mySwiper.slidePrev();
+    if (this.mySwiper) {
+      this.mySwiper.slidePrev();
+    } else {
+      console.warn('Swiper not initialized yet');
+    }
   }
 
   goToNextSlide() {
-    this.mySwiper.slideNext();
+    if (this.mySwiper) {
+      this.mySwiper.slideNext();
+    } else {
+      console.warn('Swiper not initialized yet');
+    }
   }
 
   dateClicked() {
@@ -169,12 +215,14 @@ export class LocalCurrencyComponent {
     if (this.localCurrencyForm?.get('depositMethod').value == 3) {
       params.TransferAt = '';
     }
+    of(depositeFromLocal).subscribe(result => {
+    this.showLoader = false;
+    this.localCurrencyForm?.get('accountDetails').patchValue(result);
+    this.addMoneyScreenIndex++;
+    this.onScreenIndexChange.emit(this.addMoneyScreenIndex);
+    });
     // this._walletService.getDepositFromLocalBank(params).subscribe({
     //   next: (result: any) => {
-    //     this.showLoader = false;
-    //     this.localCurrencyForm?.get('accountDetails').patchValue(result);
-    //     this.addMoneyScreenIndex++;
-    //     this.onScreenIndexChange.emit(this.addMoneyScreenIndex);
     //   },
     //   error: (err: any) => {
     //     this.showLoader = false;
@@ -204,7 +252,7 @@ export class LocalCurrencyComponent {
     //   this.ownAccBeneficiary$ = of(updatedBeneficiaries);
     // });
     setTimeout(() => {
-      this.loadBankAccountSlider();
+      this.initSwiper();
     }, 200);
   }
 
