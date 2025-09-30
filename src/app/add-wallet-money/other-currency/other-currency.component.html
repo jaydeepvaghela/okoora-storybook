@@ -1,0 +1,282 @@
+<div class="other-currency-container loader-wrapper">
+  <div class="global-selection">
+    <label class="title-label">Choose global account</label>
+    <div class="col-12">
+      <button class="currency-select-menu selected-currency w-100" id="choose-gl-account"
+        [matMenuTriggerFor]="currencySelectMenu">
+        <div class="d-flex gap-2">
+          <div class="all-currency-flag">
+            <img *ngIf="switchedCurrency?.currency?.flag || switchedCurrency?.currency?.code"
+              [src]="switchedCurrency?.currency?.flag" [alt]="switchedCurrency?.currency?.code" />
+          </div>
+          <div class="currency-texts">
+            <span class="selected-currency-name">{{ switchedCurrency?.currency?.code }}</span>
+          </div>
+        </div>
+      </button>
+      <mat-menu #currencySelectMenu="matMenu" class="currency-select-panel" id="gl-acc-menu">
+        <div mat-menu-item class="menu-wrapper" disableRipple="true" (click)="$event.stopPropagation()">
+          <h4 class="menu-heading">Select Account</h4>
+          <input class="search-input" type="text" placeholder="Search" [formControl]="filterControl"
+            id="find-global-account" />
+          <mat-selection-list [multiple]="false" class="currencies-list" id="gl-curr-sellist">
+            <ng-container *ngFor="let activeCurrency of filteredCurrencies$ | async">
+              <ng-container *ngIf="isAffiliateEu || activeCurrency?.currency?.code !== 'ILS'">
+                <mat-list-option class="list-item" (selectedChange)="selectedCurrency = activeCurrency"
+                  [selected]="activeCurrency?.currency?.code === selectedCurrency?.currency?.code"
+                  [id]="'gl-curr-' + activeCurrency?.currency?.code">
+                  <div class="currency-wrapper">
+                    <div class="currency-flag">
+                      <img [src]="activeCurrency?.currency?.flag" [alt]="activeCurrency?.currency?.code" />
+                    </div>
+                    <div class="currency-texts">
+                      <span class="balance-label">{{ activeCurrency?.currency?.code }}</span>
+                    </div>
+                  </div>
+                  <img src="../../../images/success-point.svg" />
+                </mat-list-option>
+              </ng-container>
+            </ng-container>
+          </mat-selection-list>
+          <div class="btn-wrapper">
+            <button class="switch-btn" id="gl-curr-switch" (click)="switchCurrency();"
+              [disabled]="switchedCurrency == selectedCurrency">Switch</button>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+  </div>
+
+
+  <div class="account-details" *ngIf="ccBankAccountDetails && ccBankAccountDetails.length !== 0">
+    <label class="title">Payment Acceptance Methods</label>
+  </div>
+  <ng-container *ngFor="let ccBankAccountDetail of ccBankAccountDetails; let i = index">
+    <div>
+      <div class="account-details">
+        <label class="title">
+          {{
+            isNonIsraeliUser
+              ? (
+                  ccBankAccountDetail.paymentType === 'SWIFT'
+                    ? 'Cross border (Swift)'
+                    : (ccBankAccountDetail.paymentType === 'LOCAL' && ccBankAccountDetail?.swiftCode
+                        ? 'Local and Swift'
+                        : 'Local Bank'
+                      )
+                )
+              : (
+                  ccBankAccountDetail.paymentType === 'priority'
+                    ? 'Cross border (Swift)'
+                    : 'Local Bank'
+                )
+          }}
+        </label>
+        <img class="copy-btn" src="../../../images/copy-document.svg"
+          (click)="contentCopied('Payment Type')" id="accinfo-copy-oc_0">
+      </div>
+      <div class="details-container details-alignment">
+        <div>
+          <label>Account name</label>
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="detail-title">{{ ccBankAccountDetail?.accountName || '-' }}</h5>
+            <img class="copy-btn" src="../../../images/copy-document-default.svg"
+              (click)="contentCopied('Account name')" id="accinfo-copy-oc_1">
+          </div>
+        </div>
+        <div>
+          <label>Account number</label>
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="detail-title">{{ ccBankAccountDetail?.accountNumber || '-' }}</h5>
+            <img class="copy-btn" src="../../../images/copy-document-default.svg"
+              (click)="contentCopied('Account number')" id="accinfo-copy-oc_2">
+          </div>
+        </div>
+        <div>
+          <label>Account location</label>
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="detail-title">{{ ccBankAccountDetail?.country || '-' }}</h5>
+            <img class="copy-btn" src="../../../images/copy-document-default.svg"
+              (click)="contentCopied('Account location')" id="accinfo-copy-oc_3">
+          </div>
+        </div>
+      </div>
+      <div class="details-container details-alignment">
+        <!-- Added two new fields IBAN and SWIFT as per DV-3487 -->
+        <div *ngIf="ccBankAccountDetail?.iban">
+          <label>Iban</label>
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="detail-title">{{ ccBankAccountDetail?.iban || '-' }}</h5>
+            <img class="copy-btn" src="../../../images/copy-document-default.svg"
+              (click)="contentCopied('Iban')" id="accinfo-copy-oc_3">
+          </div>
+        </div>
+        <div *ngIf="ccBankAccountDetail?.swiftCode &&
+            (
+              ccBankAccountDetail?.accountRoutingType?.length === 0 ||
+              !hasSwiftRoutingType(ccBankAccountDetail) ||
+              (hasSwiftRoutingType(ccBankAccountDetail) && ccBankAccountDetail?.accountRoutingValue?.length === 0)
+            )"> <!-- Added check for account routing type for bic swift if present then take from that otherwise from ccBankAccountDetail?.swiftCode -->
+          <label>bic swift</label>
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="detail-title">{{ ccBankAccountDetail?.swiftCode || '-' }}</h5>
+            <img class="copy-btn"
+                src="../../../images/copy-document-default.svg"
+                (click)="contentCopied('Swift code')"
+                id="accinfo-copy-oc_3">
+          </div>
+        </div>
+        <div *ngFor="let item of ccBankAccountDetail?.accountRoutingType; let i = index">
+          <div>
+            <label>{{ item }}</label>
+            <div class="d-flex justify-content-between align-items-start">
+              <h5 class="detail-title">{{ ccBankAccountDetail?.accountRoutingValue?.[i] || '-' }}</h5>
+              <img class="copy-btn" src="../../../images/copy-document-default.svg"
+                (click)="contentCopied(item)" id="accinfo-copy-oc_3">
+            </div>
+          </div>
+        </div>
+        <div>
+          <label>Bank address</label>
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="detail-title">{{ ccBankAccountDetail?.institutionAddress || '-' }}</h5>
+            <img class="copy-btn" src="../../../images/copy-document-default.svg"
+              (click)="contentCopied('Bank address')" id="accinfo-copy-oc_7">
+          </div>
+        </div>
+        <div>
+          <label>Bank name</label>
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="detail-title">{{ ccBankAccountDetail?.institutionName || '-' }}</h5>
+            <img class="copy-btn" src="../../../images/copy-document-default.svg"
+              (click)="contentCopied('Bank name')" id="accinfo-copy-oc_7">
+          </div>
+        </div>
+
+        <div *ngIf="ccBankAccountDetail?.institutionCity">
+          <label>Bank city</label>
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="detail-title">{{ ccBankAccountDetail?.institutionCity || '-' }}</h5>
+            <img class="copy-btn" src="../../../images/copy-document-default.svg"
+              (click)="contentCopied('Bank city')" id="accinfo-copy-oc_7">
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="ccBankAccountDetails">
+    <div class="content-options">
+      <button class="generate-pdf" (click)="generatePDF()">Download as PDF</button>
+      <button class="copy-details"
+      (click)="contentCopied('Account details')">Copy details</button>
+    </div>
+    <div class="receiving-payments" *ngIf="!isNonIsraeliUser">
+      <a (click)="closeDrawer()" id="all-receiving-anchor">All receiving payments</a>
+    </div>
+  </ng-container>
+
+
+  <div class="wallet-limit-popup"
+    *ngIf="!ccBankAccountDetails && !hasFreeBankAccount && !showWalletType && !isBuyWalletSuccess && !hasErrorGlobalBankAccountError">
+    <div class="alert-limit-icon">
+      <img src="../../../images/wallet-limit-alert.svg">
+    </div>
+    <div class="limit-info">
+      <h3>You have reached your wallets limit </h3>
+      <div class="limit-options" >
+        <div class="plan-upgrade">
+          <button class="plan-upgrade-btn" id="dp-plan-upgrade-btn" (click)="upgradePlan()">Upgrade Plan</button>
+        </div>
+        <div class="buy-wallet d-block" >
+          <button class="buy-wallet-btn" (click)="showWalletType = true" id="dp-plan-buy-btn">Buy this wallet</button>
+          <div class="msg-wallet">
+            <span>Charged from Primary Currency</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wallet-limit-popup" *ngIf="!ccBankAccountDetails && hasFreeBankAccount">
+    <div class="alert-limit-icon">
+      <img src="../../../images/open-acc-icon.svg">
+    </div>
+    <div class="limit-info">
+      <h3>Open a free bank account </h3>
+      <div class="limit-options">
+        <button class="start-plan-btn" (click)="payForBankAccount(true)" id="dp-plan-start-btn">Start here</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showWalletType && !hasFreeBankAccount" class="wallet-type-section">
+    <button class="wt-back" (click)="showWalletType = false" id="back-prefer-wallet">Back</button>
+    <h3 class="wt-heading">You have reached your wallet’s limit</h3>
+    <p class="wt-detail">For receiving money in <span>“{{ switchedCurrency?.currency?.code }}”</span> you need to create
+      a wallet with this currency.</p>
+    <h4 class="wt-label">What account type do you prefer to open?</h4>
+    <div class="wt-types-container">
+      <label for="freeWallet" class="free-wallet-type" id="free-wlt-type">
+        <input id="freeWallet" type="radio" name="walletType"
+          [value]="ccBankAccountCostDetails?.depositFees[0]?.transferFeeType" [formControl]="transferFeeType">
+        <div class="wt-info">
+          <div class="radio-label">
+            <span class="heading">Free {{ switchedCurrency?.currency?.code }} wallet</span>
+            <p class="description">Wallet opens free, deposit incurs fee: {{
+              ccBankAccountCostDetails?.depositFees[0]?.percentage }}% or {{ ccBankAccountCostDetails?.currency?.sign
+              }}{{ ccBankAccountCostDetails?.depositFees[0]?.dpositCost }}, whichever's higher</p>
+          </div>
+          <div class="wallet-flag">
+            <img [src]="switchedCurrency?.currency_Flag" alt="wallet-flag">
+          </div>
+        </div>
+      </label>
+      <label for="paidWallet" class="paid-wallet-type" id="paid-wlt-type">
+        <input id="paidWallet" type="radio" name="walletType"
+          [value]="ccBankAccountCostDetails?.depositFees[1]?.transferFeeType" [formControl]="transferFeeType">
+        <div class="wt-info">
+          <div class="radio-label">
+            <span class="heading">Paid {{ switchedCurrency?.currency?.code }} wallet</span>
+            <p class="description">Buy <strong>{{ switchedCurrency?.currency?.code }} wallet</strong> for {{
+              ccBankAccountCostDetails?.currency?.sign }}{{ ccBankAccountCostDetails?.amount }} one-time
+              fee.<br />Subsequent deposits will incur a flat fee of {{ ccBankAccountCostDetails?.currency?.sign }}{{
+              ccBankAccountCostDetails?.depositFees[1]?.dpositCost }} each</p>
+          </div>
+          <div class="wallet-flag">
+            <img [src]="switchedCurrency?.currency_Flag" alt="wallet-flag">
+          </div>
+        </div>
+      </label>
+    </div>
+    <button class="wallet-select-btn" id="free-paid-wallet-sel" (click)="payForBankAccount(false)">Select {{
+      transferFeeType?.value == 1 ? '(Free wallet)' : '(Paid '+switchedCurrency?.currency?.code+' wallet)'}}</button>
+  </div>
+
+  <div *ngIf="isBuyWalletSuccess" class="buy-wallet-success">
+    <div class="success-animation">
+      <img src="images/alert-successfully-set.gif">
+    </div>
+    <p class="congrats-label success-text">Congratulations</p>
+    <h4 class="success-message success-text">Your {{ switchedCurrency?.currency?.code }} wallet is ready</h4>
+    <div class="btns-wrapper">
+      <button class="view-details" (click)="getCCBankAccount(switchedCurrency.currency?.code)"
+        id="view-details-acc-gl">View global account details</button>
+      <button class="copy-detail" id="copy-clip-acc-gl"
+        (click)="contentCopied('Bank account')" ngbTooltip="Copy" placement="top" tooltipClass="copy-content"></button>
+    </div>
+  </div>
+
+  <span *ngIf="apiErrorMessage" class="error-msg d-block text-center mt-3">{{ apiErrorMessage }}</span>
+
+  <div *ngIf="isSnackbarVisible" class="copied-snackbar">
+    <span class="copied-msg">
+      {{ coppiedItem }} copied to clipboard
+    </span>
+  </div>
+  <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+</div>
+<div class="d-none">
+  <app-bank-account-confirmation [ccBankAccountDetails]="ccBankAccountDetails" [currency]="switchedCurrency?.currency?.code"></app-bank-account-confirmation>
+</div>
+<app-footer [footerBottom]="'auto'" *ngIf="isNonIsraeliUser"></app-footer>
+
