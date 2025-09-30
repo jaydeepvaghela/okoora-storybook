@@ -3,7 +3,7 @@ import { FxErpInvoiceStep1Component } from './fx-erp-invoice-step1.component';
 import { CommonModule } from '@angular/common';
 
 export default {
-  title: 'FX Dashboard/Auto-pilot functionality/Invoice Rules Steps/Invoice Step 1',
+  title: 'FX Dashboard/Auto-pilot Functionality/Invoice Rules Steps/Invoice Step 1',
   component: FxErpInvoiceStep1Component,
   decorators: [
     moduleMetadata({

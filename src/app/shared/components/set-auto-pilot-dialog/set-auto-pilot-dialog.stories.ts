@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export default {
-  title: 'Shared/Set Auto Pilot Dialog',
+  title: 'Components/New Header/APIdeck Connection Completion Dialog',
   component: SetAutoPilotDialogComponent,
   decorators: [
     moduleMetadata({

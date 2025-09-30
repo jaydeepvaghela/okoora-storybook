@@ -91,7 +91,7 @@ const displayedColumns = [
   'id', 'tradeDate', 'dealType', 'callPutType', 'pair', 'strike', 'amount', 'isOnline', 'expiryDate', 'hedgeStatus', 'isProfit', 'canCloseDeal'
 ];
 
-// Ensure the first page loads correctly with hedge status and accordion functionality
+// Ensure the first page loads correctly with hedge status and accordion Functionality
 export const Default: Story = {
   render: (args) => {
     const dataSource = new MatTableDataSource(hedgeDealTable);

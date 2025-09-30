@@ -535,5 +535,16 @@
       }
     }
   }
-
+  .error-msgs {
+    margin: 7px 0;
+    display: block;
+    color: #dc2626;
+    font-family:$he_heebo;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  .err-image{
+    margin-right: 5px;
+  }
 }

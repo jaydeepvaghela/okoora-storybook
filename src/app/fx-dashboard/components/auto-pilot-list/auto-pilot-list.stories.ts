@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 export default {
-  title: 'FX Dashboard/Auto-pilot functionality/Listing',
+  title: 'FX Dashboard/Auto-pilot Functionality/Listing',
   component: AutoPilotListComponent,
   decorators: [
     moduleMetadata({

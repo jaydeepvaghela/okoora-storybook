@@ -282,7 +282,7 @@ export class NewBenificiaryUploadFileComponent {
     });
   }
 
-  // Retry upload functionality
+  // Retry upload Functionality
   retryUpload() {
     if (this.files.length > 0) {
       const event = { addedFiles: this.files, rejectedFiles: [] };

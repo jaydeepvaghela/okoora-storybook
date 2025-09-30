@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 export default {
-  title: 'FX Dashboard/Auto-pilot functionality/Auto-pilot setup',
+  title: 'FX Dashboard/Auto-pilot Functionality/Auto-pilot setup',
   component: FxDashboardComponent,
   decorators: [
     moduleMetadata({

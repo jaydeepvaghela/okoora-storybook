@@ -5,7 +5,7 @@ import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/materia
 import { CommonModule } from '@angular/common';
 
 export default {
-  title: 'FX Dashboard/Auto-pilot functionality/Listing',
+  title: 'FX Dashboard/Auto-pilot Functionality/Listing',
   component: ConnectorAutoProtectComponent,
   decorators: [
     moduleMetadata({

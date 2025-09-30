@@ -6,7 +6,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 export default {
-  title: 'FX Dashboard/Auto-pilot functionality/Invoice Rules Steps/Invoice Step 9',
+  title: 'FX Dashboard/Auto-pilot Functionality/Invoice Rules Steps/Invoice Step 9',
   component: FxErpInvoiceStep9Component,
   decorators: [
     moduleMetadata({

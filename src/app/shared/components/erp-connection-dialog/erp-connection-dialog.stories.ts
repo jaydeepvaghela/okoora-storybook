@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export default {
-  title: 'Shared/ERP Connection Dialog',
+  title: 'Components/New Header/APIdeck Connection Dialog',
   component: ErpConnectionDialogComponent,
   decorators: [
     moduleMetadata({

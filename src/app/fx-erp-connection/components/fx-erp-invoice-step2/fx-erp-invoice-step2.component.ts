@@ -68,7 +68,6 @@ export class FxErpInvoiceStep2Component implements OnInit {
   }
 
   erpType(type: string) {
-    debugger
     this._connectorService.setSelectedAutoPilot(type);
     const isERPConnected = JSON.parse(localStorage.getItem('user')!)['isERPConnected'];
     if (type.toLowerCase() === 'conversion') {

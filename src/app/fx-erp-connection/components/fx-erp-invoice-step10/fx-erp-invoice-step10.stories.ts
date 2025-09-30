@@ -9,7 +9,7 @@ import { LottieComponent } from 'ngx-lottie';
 import { customerSupplierList } from '../../../fx-dashboard/components/fx-dashboard-data/customer-supplier-list';
 
 export default {
-  title: 'FX Dashboard/Auto-pilot functionality/Invoice Rules Steps/Invoice Step 10',
+  title: 'FX Dashboard/Auto-pilot Functionality/Invoice Rules Steps/Invoice Step 10',
   component: FxErpInvoiceStep10Component,
   decorators: [
     moduleMetadata({
