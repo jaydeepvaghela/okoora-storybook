@@ -27,11 +27,12 @@ import { HedgeAllDrawerComponent } from '../../risk-dashboard/components/hedging
 import { QuickHedgeDrawerComponent } from '../../risk-dashboard/components/hedging-proposal/components/quick-hedge-drawer/quick-hedge-drawer.component';
 import { EditCashflowRulesDrawerComponent } from '../../connector/components/edit-cashflow-rules-drawer/edit-cashflow-rules-drawer.component';
 import { ErpConnectionDialogComponent } from '../components/erp-connection-dialog/erp-connection-dialog.component';
+import { AddWalletMoneyComponent } from '../../add-wallet-money/add-wallet-money.component';
 @Component({
   selector: 'app-new-header',
   templateUrl: './new-header.component.html',
   styleUrls: ['./new-header.component.scss'],
-  imports:[CommonModule,LanguageDropdownComponent,FormsModule,MatMenuModule,MatIconModule,MatDrawer,HedgeAllDrawerComponent,QuickHedgeDrawerComponent, EditCashflowRulesDrawerComponent]
+  imports:[CommonModule,LanguageDropdownComponent,FormsModule,MatMenuModule,MatIconModule,MatDrawer,HedgeAllDrawerComponent,QuickHedgeDrawerComponent, EditCashflowRulesDrawerComponent,AddWalletMoneyComponent]
 })
 export class NewHeaderComponent {
   /**

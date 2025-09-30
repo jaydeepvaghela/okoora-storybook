@@ -1,0 +1,23 @@
+<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="15" height="12" fill="#DADADA"/>
+<g id="Main" clip-path="url(#clip0_6711_31165)">
+<rect width="1920" height="2054" transform="translate(-411 -533)" fill="#EEF3FC"/>
+<g id="Frame 240952">
+<g clip-path="url(#clip1_6711_31165)">
+<rect x="-36" y="-169" width="936" height="410" rx="5" fill="#2947F2"/>
+<g id="left-arrow_svgrepo.com">
+<rect width="53" height="54" transform="translate(-19 -21)" fill="#111827"/>
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M7.28032 0.219668C7.5732 0.512565 7.5732 0.987435 7.28032 1.28033L3.31066 5.25H13.5C13.9142 5.25 14.25 5.58578 14.25 6C14.25 6.41423 13.9142 6.75 13.5 6.75H3.31066L7.28032 10.7197C7.5732 11.0126 7.5732 11.4875 7.28032 11.7803C6.98745 12.0732 6.51255 12.0732 6.21968 11.7803L0.969668 6.53033C0.82902 6.3897 0.75 6.1989 0.75 6C0.75 5.8011 0.82902 5.6103 0.969668 5.46968L6.21968 0.219668C6.51255 -0.0732225 6.98745 -0.0732225 7.28032 0.219668Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_6711_31165">
+<rect width="1920" height="2054" fill="white" transform="translate(-411 -533)"/>
+</clipPath>
+<clipPath id="clip1_6711_31165">
+<rect x="-36" y="-169" width="936" height="410" rx="5" fill="white"/>
+</clipPath>
+</defs>
+</svg>

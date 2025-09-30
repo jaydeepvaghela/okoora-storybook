@@ -1,0 +1,27 @@
+<svg width="29" height="23" viewBox="0 0 29 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Israel (IL)">
+<g clip-path="url(#clip0_19469_11881)">
+<g id="Clip path group">
+<mask id="mask0_19469_11881" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-1" y="0" width="31" height="23">
+<g id="a">
+<path id="Vector" d="M-0.0110474 0.61377H29.0634V22.4218H-0.0110474V0.61377Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_19469_11881)">
+<g id="Group">
+<path id="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M30.1027 22.4218H-1.05032V0.61377H30.1027V22.4218Z" fill="white"/>
+<path id="Vector_3" fill-rule="evenodd" clip-rule="evenodd" d="M30.1027 5.5205H-1.05032V2.6582H30.1027V5.5205ZM30.1027 20.4496H-1.05032V17.5873H30.1027V20.4496ZM9.52996 8.73633L14.2195 16.8973L19.0113 8.77467L9.52996 8.73633Z" fill="#0038B8"/>
+<path id="Vector_4" fill-rule="evenodd" clip-rule="evenodd" d="M13.3378 14.1499L14.228 15.662L15.1395 14.1584L13.3378 14.1499Z" fill="white"/>
+<path id="Vector_5" fill-rule="evenodd" clip-rule="evenodd" d="M9.51294 14.2694L14.2068 6.1084L18.9943 14.2353L9.51294 14.2694Z" fill="#0038B8"/>
+<path id="Vector_6" fill-rule="evenodd" clip-rule="evenodd" d="M13.3378 8.77477L14.228 7.2627L15.1395 8.77051L13.3378 8.77477ZM11.4722 12.161L10.5479 13.6944L12.2943 13.6901L11.4722 12.1567V12.161ZM10.565 9.32849L12.3198 9.34127L11.4765 10.8874L10.565 9.32849ZM17.0052 12.1823L17.8954 13.6944L16.1192 13.6731L17.0052 12.1823ZM17.8783 9.32849L16.1235 9.34127L16.9668 10.8874L17.8783 9.32849ZM13.0099 9.32849L11.8002 11.5178L13.0269 13.6603L15.2758 13.7114L16.6388 11.5178L15.3781 9.30294L13.0099 9.32849Z" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_19469_11881">
+<rect y="0.61377" width="29" height="21.75" rx="3" fill="white"/>
+</clipPath>
+</defs>
+</svg>
