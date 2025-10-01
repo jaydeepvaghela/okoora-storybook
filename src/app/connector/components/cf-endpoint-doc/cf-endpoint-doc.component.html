@@ -3,49 +3,48 @@
         <!-- <div class="go-back" (click)="redirectBack()" *ngIf="!fromAutoPilotCashflowComplete">
             <img src="images/back-arrow-left.svg" alt="back">back
         </div> -->
-        <button class="btn-exposure-tbl" (click)="redirectToExposure()">{{'ExposureTable.exposureTable' | translate}}</button>
+    <button class="btn-exposure-tbl" (click)="redirectToExposure()">Exposure table</button>
     </div>
 
     <div class="cashflow-integration-wrapper">
-        <h3 class="title">{{'ExposureTable.cashFlowIntegration' | translate}}</h3>
-        <p class="paragraph">{{'ExposureTable.cashFlowIntegrationDescOne' | translate}}
-            <br> {{'ExposureTable.cashFlowIntegrationDescTwo' | translate}}</p>
+    <h3 class="title">Cash flow integration</h3>
+        <p class="paragraph">Cash flow integration enables your system to send expected incoming and outgoing payment data to the FX360  engine.<br> This allows the platform to align hedging actions with real cash requirements, ensuring FX protection is applied only when needed.</p>
     </div>
     <div class="endpoints-header-wrapper" id="endpoint-wrapper">
         <div class="endpoints-header">
             <picture>
                 <img src="images/park-connection-icon.svg" alt="connection-icon">
             </picture>
-            <label class="title">{{'ExposureTable.endpoints' | translate}}</label>
+            <label class="title">Endpoints</label>
         </div>
         <div class="cta-options-wrapper">
-            <button (click)="focusOnAuthSection()" class="cta-btn">{{'ExposureTable.authentication' | translate}}</button>
-            <button (click)="focusOnCashflowSection()" class="cta-btn">{{'ExposureTable.createCashflow' | translate}}</button>
+            <button (click)="focusOnAuthSection()" class="cta-btn">Authentication</button>
+            <button (click)="focusOnCashflowSection()" class="cta-btn">Create cashflow</button>
         </div>
     </div>
     <!-- Authentication API documentation section -->
     <div class="authentication-doc-wrapper auth-doc-first" id="authenticationDocSection" #authenticationDocSection>
         <div class="left-doc-wrapper">
             <div class="title-wrap">
-                <h4 class="title mb-0">{{'ExposureTable.authentication' | translate}}</h4>
+                <h4 class="title mb-0">Authentication</h4>
             </div>
             <div class="params-container">
                 <div class="url-section">
                     <div class="url-title">
-                        <label class="title">{{'ExposureTable.URL' | translate}}</label>
-                        <span class="type">{{'ExposureTable.POST' | translate}}</span>
+                        <label class="title">URL</label>
+                        <span class="type">POST</span>
                     </div>
                     <a class="link"
                         href="https://okoora-stage-api2023.azurewebsites.net/api/v1.0/Authentication/Authenticate" target="_blank">https://okoora-stage-api2023.azurewebsites.net/api/v1.0/Authentication/Authenticate</a>
                 </div>
                 <div class="headers-section">
-                    <label class="title">{{'ExposureTable.headers' | translate}}</label>
+                    <label class="title">Headers</label>
                     <div class="doc-content first-row">
-                        <label class="label-head">{{'ExposureTable.contentType' | translate}}</label>
-                        <span class="span-head">{{'ExposureTable.applicationJson' | translate}}</span>
+                        <label class="label-head">Content-type</label>
+                        <span class="span-head">application/json</span>
                     </div>
                     <div class="doc-content">
-                        <label class="label-head">{{'ExposureTable.clientID' | translate}}</label>
+                        <label class="label-head">Client ID</label>
                         <div class="client-cred">
                             <div class="cred-wrapper">
                                 <span class="id-value" id="clientId">{{ showClientsId ? clientsId : maskedClientsId }}</span>
@@ -57,7 +56,7 @@
                         </div>
                     </div>
                     <div class="doc-content">
-                        <label class="label-head">{{'ExposureTable.clientSecret' | translate}}</label>
+                        <label class="label-head">Client Secret</label>
                         <div class="client-cred">
                             <div class="cred-wrapper">
                                 <span class="id-value" id="clientSecret">{{ showClientSecret ? clientSecret : maskedClientSecret }}</span>
@@ -70,30 +69,30 @@
                     </div>
                 </div>
                 <div class="parameters-section">
-                    <label class="title">{{'ExposureTable.parameters' | translate}}</label>
+                    <label class="title">Parameters</label>
                     <div class="param-wrapper">
                         <div class="doc-content first-row">
                             <div class="params">
-                                <label class="label-head">{{'ExposureTable.username' | translate}}</label>
-                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                                <label class="label-head">username</label>
+                                <span class="required-err">required</span>
                             </div>
-                            <label class="param-info">{{'ExposureTable.yourMainAccountEmailAddress' | translate}}</label>
-                        <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                            <label class="param-info">Your main account email address</label>
+                        <span class="param-type">String</span>
                         </div>
                         <div class="doc-content">
                             <div class="params">
-                                <label class="label-head">{{'ExposureTable.password' | translate}}</label>
-                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                                <label class="label-head">password</label>
+                                <span class="required-err">required</span>
                             </div>
-                            <label class="param-info">{{'ExposureTable.yourMainAccountPassword' | translate}}</label>
-                            <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                            <label class="param-info">Your main account password</label>
+                            <span class="param-type">String</span>
                         </div>
                     </div>
                 </div>
                 <div class="shell-example-section">
                     <div class="header-shell">
                         <div class="shell-left">
-                            <h3 class="title">{{'ExposureTable.exampleFromShell' | translate}}</h3>
+                            <h3 class="title">Example from shell</h3>
                             <img src="images/shell-icon.svg" alt="shell" />
                         </div>
                         <img src="images/copy-icon-w.svg" (click)="copyContent('authCode')" alt="copy" />
@@ -120,7 +119,7 @@
         </div>
         <div class="right-doc-wrapper">
             <div class="success-wrapper">
-                <label class="title">{{'ExposureTable.successResponse' | translate}}</label>
+                <label class="title">Success response</label>
                 <div class="response-content" id="authResponse">
                     &#123;
                     <br><label>&nbsp;&nbsp;&nbsp;"access_token"</label>: <span>"eyJhbGciOiJIUzI1...."</span>,
@@ -130,7 +129,7 @@
                 </div>
             </div>
             <div class="failure-wrapper">
-                <label class="title">{{'ExposureTable.errorResponses' | translate}}</label>
+                <label class="title">Error responses</label>
                 <div class="response-content">
                     <div class="res-wrapper">
                         <label>400 Bad Request</label>
@@ -156,108 +155,108 @@
     <div class="cashflow-doc-wrapper" id="cashflowDocSection" #cashflowDocSection>
         <div class="left-doc-wrapper">
             <div class="title-wrap">
-                <h4 class="title mb-0">{{'ExposureTable.createCashflow' | translate}}</h4>
+                <h4 class="title mb-0">Create cashflow</h4>
             </div>
             <div class="params-container">
                 <div class="url-section">
                     <div class="url-title">
-                        <label class="title">{{'ExposureTable.URL' | translate}}</label>
-                        <span class="type">{{'ExposureTable.POST' | translate}}</span>
+                        <label class="title">URL</label>
+                        <span class="type">POST</span>
                     </div>
                     <a class="link"
                         href="https://okoora-stage-api2023.azurewebsites.net/api/ApiDeck/Cashflow" target="_blank">https://okoora-stage-api2023.azurewebsites.net/api/ApiDeck/Cashflow</a>
                 </div>
                 <div class="headers-section">
-                    <label class="title">{{'ExposureTable.headers' | translate}}</label>
+                    <label class="title">Headers</label>
                     <div class="doc-content first-row">
-                        <label class="label-head">{{'ExposureTable.contentType' | translate}}</label>
-                        <span class="span-head">{{'ExposureTable.applicationJson' | translate}}</span>
+                        <label class="label-head">Content-type</label>
+                        <span class="span-head">application/json</span>
                     </div>
                     <div class="doc-content">
-                        <label class="label-head">{{'ExposureTable.authorization' | translate}}</label>
-                        <span class="span-head">{{'ExposureTable.bearerToken' | translate}}</span>
+                        <label class="label-head">Authorization</label>
+                        <span class="span-head">Bearer token</span>
                     </div>
                 </div>
                 <div class="parameters-section">
-                    <label class="title">{{'ExposureTable.parameters' | translate}}</label>
+                    <label class="title">Parameters</label>
                     <div class="param-wrapper">
                         <div class="doc-content first-row">
                             <div class="params">
-                                <label class="label-head">{{'ExposureTable.records' | translate}}</label>
-                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                                <label class="label-head">records</label>
+                                <span class="required-err">required</span>
                             </div>
-                            <label class="param-info">{{'ExposureTable.listOfCashFlowRecords' | translate}}</label>
-                            <span class="param-type">{{'ExposureTable.object' | translate}}</span>
+                            <label class="param-info">List of cash flow records</label>
+                            <span class="param-type">Object</span>
                         </div>
                         <div class="doc-content">
                             <div class="params">
-                                <label class="label-head">{{'ExposureTable.currency' | translate}}</label>
-                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                                <label class="label-head">Currency</label>
+                                <span class="required-err">required</span>
                             </div>
-                            <label class="param-info">{{'ExposureTable.currencyDesc' | translate}}</label>
-                            <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                            <label class="param-info">3-letter ISO currency code (e.g., USD, EUR)</label>
+                            <span class="param-type">String</span>
                         </div>
                         <div class="doc-content">
                             <div class="params">
-                                <label class="label-head">{{'ExposureTable.amount' | translate}}</label>
-                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                                <label class="label-head">Amount</label>
+                                <span class="required-err">required</span>
                             </div>
-                            <label class="param-info">{{'ExposureTable.amountDesc' | translate}}</label>
-                            <span class="param-type">{{'ExposureTable.double' | translate}}</span>
+                            <label class="param-info">Decimal number, must be positive (e.g., 120.50)</label>
+                            <span class="param-type">Double</span>
                         </div>
                         <div class="doc-content">
                             <div class="params">
-                                <label class="label-head">{{'ExposureTable.type' | translate}}</label>
-                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                                <label class="label-head">type</label>
+                                <span class="required-err">required</span>
                             </div>
-                            <label class="param-info type-wrap">{{'ExposureTable.typeDesc' | translate}}:
+                            <label class="param-info type-wrap">one of:
                                 <div class="type-dropdown">
-                                    <mat-select placeholder="{{ 'manageDeal.Select' | translate}}" panelClass="type-select-dropdown">
-                                        <mat-option value="Interest">{{ 'ExposureTable.interest' | translate }}</mat-option>
-                                        <mat-option value="FX Gain">{{ 'ExposureTable.fxGain' | translate }}</mat-option>
-                                        <mat-option value="Rent">{{ 'ExposureTable.rent' | translate }}</mat-option>
-                                        <mat-option value="Dividends">{{ 'ExposureTable.dividends' | translate }}</mat-option>
-                                        <mat-option value="Grants">{{ 'ExposureTable.grants' | translate }}</mat-option>
-                                        <mat-option value="Commissions">{{ 'ExposureTable.commissions' | translate }}</mat-option>
-                                        <mat-option value="Refund">{{ 'ExposureTable.refund' | translate }}</mat-option>
-                                        <mat-option value="Asset Sale">{{ 'ExposureTable.assetSale' | translate }}</mat-option>
-                                        <mat-option value="Salaries">{{ 'ExposureTable.salaries' | translate }}</mat-option>
-                                        <mat-option value="Taxes">{{ 'ExposureTable.taxes' | translate }}</mat-option>
-                                        <mat-option value="Bank Fees">{{ 'ExposureTable.bankFees' | translate }}</mat-option>
-                                        <mat-option value="FX Loss">{{ 'ExposureTable.fxLoss' | translate }}</mat-option>
-                                        <mat-option value="Loans">{{ 'ExposureTable.loans' | translate }}</mat-option>
-                                        <mat-option value="Marketing">{{ 'ExposureTable.marketing' | translate }}</mat-option>
-                                        <mat-option value="Travel">{{ 'ExposureTable.travel' | translate }}</mat-option>
-                                        <mat-option value="Software">{{ 'ExposureTable.software' | translate }}</mat-option>
-                                        <mat-option value="Services">{{ 'ExposureTable.services' | translate }}</mat-option>
-                                        <mat-option value="Equipment">{{ 'ExposureTable.equipment' | translate }}</mat-option>
+                                    <mat-select placeholder="Select" panelClass="type-select-dropdown">
+                                        <mat-option value="Interest">Interest</mat-option>
+                                        <mat-option value="FX Gain">FX Gain</mat-option>
+                                        <mat-option value="Rent">Rent</mat-option>
+                                        <mat-option value="Dividends">Dividends</mat-option>
+                                        <mat-option value="Grants">Grants</mat-option>
+                                        <mat-option value="Commissions">Commissions</mat-option>
+                                        <mat-option value="Refund">Refund</mat-option>
+                                        <mat-option value="Asset Sale">Asset Sale</mat-option>
+                                        <mat-option value="Salaries">Salaries</mat-option>
+                                        <mat-option value="Taxes">Taxes</mat-option>
+                                        <mat-option value="Bank Fees">Bank Fees</mat-option>
+                                        <mat-option value="FX Loss">FX Loss</mat-option>
+                                        <mat-option value="Loans">Loans</mat-option>
+                                        <mat-option value="Marketing">Marketing</mat-option>
+                                        <mat-option value="Travel">Travel</mat-option>
+                                        <mat-option value="Software">Software</mat-option>
+                                        <mat-option value="Services">Services</mat-option>
+                                        <mat-option value="Equipment">Equipment</mat-option>
                                     </mat-select>
                                 </div>
                             </label> <!-- will have mat-select -->
-                            <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                            <span class="param-type">String</span>
                         </div>
                         <div class="doc-content">
                             <div class="params">
-                                <label class="label-head">{{'ExposureTable.dueDate' | translate}}</label>
-                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                                <label class="label-head">Due date</label>
+                                <span class="required-err">required</span>
                             </div>
-                            <label class="param-info">{{'ExposureTable.dueDateDesc' | translate}}</label>
-                            <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                            <label class="param-info">in ISO 8601 format (YYYY-MM-DD), e.g., 2025-07-01</label>
+                            <span class="param-type">String</span>
                         </div>
                         <div class="doc-content">
                             <div class="params">
-                                <label class="label-head">{{'ExposureTable.direction' | translate}}</label>
-                                <span class="required-err">{{'ExposureTable.required' | translate}}</span>
+                                <label class="label-head">direction</label>
+                                <span class="required-err">required</span>
                             </div>
-                            <label class="param-info">{{'ExposureTable.directionDesc' | translate}}</label>
-                            <span class="param-type">{{'ExposureTable.string' | translate}}</span>
+                            <label class="param-info">either BUY or SELL</label>
+                            <span class="param-type">String</span>
                         </div>
                     </div>
                 </div>
                 <div class="shell-example-section">
                     <div class="header-shell">
                         <div class="shell-left">
-                            <h3 class="title">{{'ExposureTable.exampleFromShell' | translate}}</h3>
+                            <h3 class="title">Example from shell</h3>
                             <img src="images/shell-icon.svg" alt="shell" />
                         </div>
                         <img src="images/copy-icon-w.svg" (click)="copyContent('cashCode')" alt="copy" />
@@ -299,7 +298,7 @@
         </div>
         <div class="right-doc-wrapper">
             <div class="success-wrapper">
-                <label class="title">{{'ExposureTable.successResponse' | translate}}</label>
+                <label class="title">Success response</label>
                 <div class="response-content" id="cashResponse">
                     &#123;
                     <br><label>&nbsp;&nbsp;&nbsp;"status"</label>: <span>"success"</span>,
@@ -310,7 +309,7 @@
                 </div>
             </div>
             <div class="failure-wrapper">
-                <label class="title">{{'ExposureTable.errorResponses' | translate}}</label>
+                <label class="title">Error responses</label>
                 <div class="response-content">
                     <div class="res-wrapper">
                         <label>400 Bad Request - Validation Error</label>
