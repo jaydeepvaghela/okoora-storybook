@@ -1,0 +1,1085 @@
+@import "../../../assets/scss/full-screen-modal.scss";
+@import "~swiper/swiper-bundle.css";
+
+.add-money-form {
+  padding-left: 65px;
+  padding-right: 61px;
+
+  @media screen and (max-width: 1440px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.local-currency-container {
+  .form-wrap {
+    .label-group {
+      color: #4b5563;
+      font-family: "Heebo";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      margin-bottom: 8px;
+
+      @media screen and (max-width: 1440px) {
+        font-size: 14px;
+      }
+    }
+
+    .deposit-method {
+      margin-top: 44px;
+
+      @media screen and (max-width: 1440px) {
+        margin-top: 25px;
+      }
+
+      .deposit-method-icon {
+        width: 30px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .title-label {
+        color: #4b5563;
+        font-family: "Inter";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px;
+      }
+
+      .transfer-option-group {
+        margin-top: 7px;
+
+        .transfer-option {
+          display: flex;
+          align-items: center;
+          padding: 15px 15px 18px 20px;
+          border-radius: 8px;
+          cursor: pointer;
+          &.selected {
+            background-color: #f9fafb;
+          }
+          input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--dark-blue-primary);
+
+            @media screen and (max-width: 1440px) {
+              width: 15px;
+              height: 15px;
+            }
+          }
+
+          .selected {
+            color: var(--dark-blue-primary);
+            font-weight: 700;
+          }
+        }
+
+        .option-label {
+          margin-left: 8px;
+          font-family: "Inter";
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          color: #374151;
+
+          @media screen and (max-width: 1440px) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .currency-wrapper {
+      padding: 21px 18px;
+      flex-wrap: wrap;
+      &.invalid {
+        border-color: #ef4444;
+      }
+
+      .beneficiary-val {
+        margin-right: 20px;
+
+        span {
+          color: #374151;
+          font-family: "Heebo";
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 500;
+
+          @media screen and (max-width: 1440px) {
+            font-size: 14px;
+          }
+        }
+
+        img {
+          margin-right: 10px;
+          width: 25px;
+          height: 25px;
+        }
+      }
+
+      .currency-value {
+        @include flex(flex-start, flex-start, row);
+
+        @media screen and (max-width: 1440px) {
+          align-items: center;
+        }
+
+        span.above-currency-value-text {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 16px;
+          color: $dark-gray;
+
+          @media screen and (max-width: 380px) {
+            font-size: 9px;
+          }
+
+          @media only screen and (max-width: 1440px) {
+            font-size: 14px;
+          }
+
+          .text-blue {
+            color: var(--brand-primary-color);
+            font-weight: 700;
+          }
+        }
+
+        .width-input {
+          width: 220px !important;
+          font-weight: 500!important;
+          font-family: 'Inter';
+          font-size: 20px !important;
+          font-style: normal;
+
+          @media screen and (max-width: 1440px) {
+            width: 190px !important;
+            font-size: 15px !important;
+          }
+
+          @media screen and (max-width: 480px) {
+            width: 130px !important;
+            font-size: 14px;
+          }
+        }
+
+        span.currency-value-text {
+          font-size: $font-20;
+          line-height: 27px;
+          font-weight: 600;
+          color: $dialog-inner-heading-color;
+          position: relative;
+
+          @media only screen and (max-width: 1440px) {
+            font-size: $font-16;
+          }
+
+          @media only screen and (max-width: 480px) {
+            font-size: $font-16;
+          }
+        }
+
+        &::before {
+          top: 0%;
+          bottom: -6%;
+        }
+        .value {
+          padding-left: 5px;
+        }
+        .currency-symbol {
+          font-weight: 700;
+        }
+      }
+
+      &.input-currency-new {
+        .currency-value {
+          mat-select {
+            box-shadow: none;
+            padding-left: 0;
+            padding-right: 0;
+            font-size: 20px;
+
+            @media screen and (max-width: 1440px) {
+              font-size: 16px;
+            }
+          }
+        }
+
+        .country-dropdown {
+          font-size: 16px;
+          line-height: 20px;
+          color: $light-gray !important;
+          font-weight: 600;
+          // font-family: "Inter";
+          padding-right: 20px;
+
+          .currency-image {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+
+    .currency-wrapper {
+      padding: 21px 18px;
+      flex-wrap: wrap;
+      row-gap: 15px;
+
+      .upper-row-new {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .currency-value {
+          @include flex(flex-start, flex-start, column);
+
+          span.above-currency-value-text {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 16px;
+            color: $dark-gray;
+
+            @media screen and (max-width: 380px) {
+              font-size: 9px;
+            }
+
+            @media only screen and (max-width: 1440px) {
+              font-size: 14px;
+            }
+
+            .cus-dropconvert {
+              color: #01031c;
+            }
+
+            .acvt-bold-text {
+              color: var(--brand-primary-color);
+              font-family: $font-1;
+              font-size: $font-16;
+              font-weight: 700;
+              line-height: 22px;
+            }
+          }
+
+          span.currency-value-text {
+            font-size: $font-20;
+            line-height: 27px;
+            font-weight: 600;
+            color: $dialog-inner-heading-color;
+            position: relative;
+
+            @media only screen and (max-width: 1440px) {
+              font-size: $font-16;
+            }
+
+            @media only screen and (max-width: 480px) {
+              font-size: $font-16;
+            }
+          }
+
+          &::before {
+            top: 0%;
+            bottom: -6%;
+          }
+        }
+
+        &.input-currency-new {
+          .country-dropdown {
+            font-size: 16px;
+            line-height: 20px;
+            color: $light-gray !important;
+            font-weight: 600;
+            font-family: "Inter";
+            padding-right: 20px;
+
+            .currency-image {
+              margin-right: 10px;
+            }
+          }
+        }
+
+        .beneficiary-currency {
+          #beneficiary-currency {
+            @media (max-width: 359px) {
+              width: 100px;
+              min-width: 100px;
+            }
+          }
+        }
+      }
+
+      .middle-row-new {
+        display: flex;
+        align-items: center;
+
+        @media only screen and (max-width: 580px) {
+          flex-direction: column;
+          align-items: start;
+          row-gap: 10px;
+        }
+
+        .middle-row-new-left {
+          width: 35%;
+
+          @media only screen and (max-width: 580px) {
+            width: 100%;
+          }
+
+          mat-checkbox {
+            margin-top: 0;
+
+            &::ng-deep {
+              .mdc-form-field {
+                flex-direction: row-reverse;
+                display: flex;
+                align-items: center !important;
+
+                .mdc-checkbox__background {
+                  width: 15px !important;
+                  height: 15px !important;
+                }
+
+                label {
+                  padding-left: 0 !important;
+                  padding-right: 5px;
+                  font-weight: 600;
+                  font-size: $font-16;
+                  line-height: 22px;
+                  color: $dark-gray;
+
+                  @media only screen and (max-width: 1440px) {
+                    font-size: 12px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .middle-row-new-right {
+          width: 65%;
+
+          @media only screen and (max-width: 580px) {
+            width: 100%;
+          }
+
+          span {
+            font-weight: 400;
+            font-size: $font-12;
+            line-height: 16px;
+            color: var(--brand-primary-color);
+          }
+        }
+      }
+
+      .bottom-row-new {
+        display: flex;
+        column-gap: 10px;
+
+        @media only screen and (max-width: 767px) {
+          width: 100%;
+        }
+
+        @media only screen and (max-width: 580px) {
+          flex-direction: column;
+          row-gap: 10px;
+        }
+
+        .bottom-row-new-left {
+          @media only screen and (max-width: 767px) {
+            width: 100%;
+          }
+
+          span {
+            margin-bottom: 5px;
+            display: block;
+          }
+
+          .new-input {
+            input {
+              width: 100%;
+            }
+          }
+        }
+
+        .bottom-row-new-right {
+          @media only screen and (max-width: 767px) {
+            width: 100%;
+          }
+
+          span {
+            margin-bottom: 5px;
+            display: block;
+          }
+        }
+      }
+    }
+
+    .currency-wrapper {
+      padding: 0px 0px;
+      flex-wrap: wrap;
+      row-gap: 15px;
+      background: #ffffff;
+      border: 2px solid #e3e6e9;
+      border-radius: 7px;
+      height: 60px;
+
+      @media screen and (max-width: 1440px) {
+        height: 45px;
+      }
+
+      &:focus {
+        border: 2px solid var(--brand-primary-color);
+      }
+
+      .currency-value {
+        &::before {
+          content: inherit;
+        }
+      }
+    }
+
+    .currency-wrapper.color-border {
+      border: 2px solid var(--brand-primary-color);
+    }
+
+    .next-btn {
+      .next {
+        width: 100%;
+        font-family: "Heebo";
+        color: $white;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        border-radius: 100px;
+        background: var(--dark-blue-primary);
+        margin-top: 35px;
+        height: 60px;
+
+        img {
+          margin-left: 10px;
+        }
+
+        @media screen and (max-width: 1440px) {
+          margin-top: 30px;
+          height: 40px;
+          font-size: 13px;
+        }
+      }
+
+      .next.disabled {
+        color: #9ca3af;
+        background: #f3f4f6;
+        img {
+          filter: contrast(0.5);
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .page-two {
+  .bank-name-container {
+    position: relative;
+    margin-top: 80px;
+    margin-right: -61px;
+
+    @media screen and (max-width: 1440px) {
+      margin-top: 40px;
+      margin-right: -32px;
+    }
+
+    .account-list-heading {
+      @include flex(space-between, flex-start, row);
+      padding-right: 61px;
+      @media screen and (max-width: 1440px) {
+        padding-right: 32px;
+      }
+      .add-account {
+        background-color: transparent;
+        font-family: $inter;
+        font-size: $font-14;
+        line-height: 20px;
+        font-weight: 400;
+        color: var(--primary-blue);
+      }
+    }
+
+    .bank-title {
+      font-family: "Inter";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      color: #4b5563;
+      margin-bottom: 14px;
+    }
+    .swiper-pagination {
+      bottom: 0 !important;
+      width: auto;
+      position: relative;
+
+      .swiper-pagination-bullet {
+        margin: 0 3px !important;
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: var(--primary-blue);
+      }
+    }
+
+    .pages {
+      gap: 13px;
+      margin-top: 10px;
+    }
+
+    .bank-swiper-container {
+      width: 213px;
+      height: 196px;
+
+      @media screen and (max-width: 1440px) {
+        width: 260px;
+        height: 170px;
+      }
+
+      .swiper-wrapper {
+        .swiper-slide {
+          max-width: 213px;
+          &.invalid {
+            .bank-card {
+              border-color: #f87171;
+            }
+          }
+          @media screen and (max-width: 1440px) {
+            max-width: 240px;
+          }
+          .bank-card {
+            cursor: pointer;
+          }
+          &.selected {
+            .bank-card {
+              border: 1px solid var(--primary-blue);
+              box-shadow:
+                0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+              background: var(--light-blue-header-bg);
+              .card-body {
+                .switch {
+                  background-color: var(--brand-primary-color);
+
+                  &::before {
+                    right: 4px;
+                    left: auto;
+                    background-color: $white;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .bank-card {
+        height: 100%;
+
+        .card-body {
+          flex: none;
+          padding: 32px 22px 0 22px;
+
+          @media screen and (max-width: 1440px) {
+            padding: 22px 22px 0 22px;
+          }
+
+          .pay-now-card-img {
+            height: 29px;
+            width: calc(100% - 30px);
+            object-fit: scale-down;
+          }
+
+          .title {
+            color: #111827;
+            text-align: center;
+            font-family: "Manrope";
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            margin-bottom: 0;
+
+            @media screen and (max-width: 1440px) {
+              font-size: 13px;
+            }
+          }
+
+          .code {
+            color: #a3a5aa;
+            font-family: "Manrope";
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+
+            @media screen and (max-width: 1440px) {
+              font-size: 13px;
+            }
+          }
+
+          .bank-info {
+            margin-top: 16px;
+          }
+
+          .switch {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            border-radius: 50px;
+            background-color: rgba(120, 120, 128, 0.16);
+            margin-left: -22px;
+            margin-top: 10px;
+
+            @media (max-width: 1440px) {
+              height: 20px;
+              width: 40px;
+            }
+
+            @media (max-width: 479px) {
+              height: 22px;
+              width: 40px;
+              min-width: 40px;
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              background-color: $white;
+              border-radius: 50px;
+              width: 13px;
+              height: 13px;
+              top: 0;
+              bottom: 0;
+              left: 4px;
+              right: auto;
+              margin: auto 0;
+
+              @media (max-width: 1440px) {
+                height: 14px;
+                width: 14px;
+              }
+
+              @media (max-width: 479px) {
+                width: 18px;
+                height: 18px;
+              }
+            }
+          }
+
+          &[aria-selected="true"] .switch {
+            background-color: var(--brand-primary-color);
+
+            &::before {
+              right: 4px;
+              left: auto;
+              background-color: $white;
+            }
+          }
+
+          .currency-wrapper {
+            .currency-texts {
+              .balance-label {
+                color: var(--brand-primary-color);
+                font-weight: 400;
+              }
+
+              .balance {
+                color: var(--brand-primary-color);
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .selected-amount-container {
+    .amount {
+      gap: 7px;
+
+      label {
+        font-family: "Inter";
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        color: #d1d5db;
+      }
+      .edit-amount-button {
+        height: 25px;
+        width: 25px;
+        background-image: url(../../../assets/images/edit-amount.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: -39px;
+        @media screen and (max-width: 1440px) {
+          margin-left: -30px;
+        }
+      }
+      .currency-value {
+        @include flex(flex-start, center, row);
+        padding-left: 6px;
+        @media screen and (max-width: 1440px) {
+          padding-left: 0;
+          margin-left: -2px;
+        }
+        .currency-symbol {
+          font-size: 28px;
+          line-height: 40px;
+          font-weight: 700;
+          color: #d1d5db;
+
+          @media screen and (max-width: 1440px) {
+            font-size: 22px;
+          }
+
+          @media screen and (max-width: 479px) {
+            font-size: 18px;
+          }
+          &.enabled {
+            color: #030203;
+          }
+        }
+        .value {
+          input {
+            font-size: 28px;
+            line-height: 40px;
+            font-weight: 300;
+            max-width: 230px;
+            color: #030203;
+            border: 0;
+
+            @media screen and (max-width: 1440px) {
+              font-size: 22px;
+              max-width: 210px;
+            }
+
+            @media screen and (max-width: 1280px) {
+              font-size: 20px;
+              max-width: 180px;
+            }
+
+            @media screen and (max-width: 1024px) {
+              font-size: 22px;
+              max-width: 210px;
+            }
+
+            @media screen and (max-width: 479px) {
+              font-size: 18px;
+              max-width: 170px;
+            }
+
+            @media (max-width: 379px) {
+              font-size: 17px;
+              width: 135px;
+            }
+
+            &:read-only {
+              color: #d1d5db;
+            }
+          }
+        }
+      }
+    }
+
+    .amount-country {
+      gap: 10px;
+
+      span {
+        font-family: "Heebo";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+
+        @media screen and (max-width: 1440px) {
+          font-size: 16px;
+        }
+
+        @media screen and (max-width: 479px) {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .account-selection-section {
+    margin-top: 80px;
+    font-family: "Inter";
+    font-size: 14px;
+    width: 100%;
+    font-style: normal;
+    font-weight: 700;
+    color: #4b5563;
+  }
+
+  .transfer-note {
+    margin-top: 7px;
+
+    h5 {
+      font-family: "Heebo";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      color: #d1d5db;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-family: "Inter";
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px;
+      color: #9ca3af;
+      margin-bottom: 0;
+    }
+  }
+
+  .next-btn {
+    .next {
+      margin-top: 27px;
+      width: 100%;
+      padding: 19px 0;
+      font-family: "Heebo";
+      color: $white;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      border-radius: 100px;
+      background: var(--dark-blue-primary);
+
+      @media screen and (max-width: 1440px) {
+        padding: 0;
+        font-size: 13px;
+        height: 40px;
+      }
+    }
+
+    .next.disabled {
+      color: #9ca3af;
+      background: #f3f4f6;
+      img {
+        filter: contrast(0.5);
+      }
+    }
+  }
+
+  .deposit-method {
+    margin-top: 50px;
+    .title-label {
+      color: #4b5563;
+      font-family: "Inter";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 20px;
+    }
+    .tooltip-btn {
+      @include flex(center, center, row);
+      width: 30px;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 1440px) {
+      margin-top: 25px;
+    }
+  }
+
+  .depo-date-selector {
+    @include flex(flex-start, center, row);
+    border: 1px solid $light-gray;
+    border-radius: 5px;
+    padding: 17px 14px;
+    height: 60px;
+    margin-right: 0px;
+    margin-top: 8px;
+    // padding-left: 0;
+    min-width: 150px;
+
+    &.dateClickedFlag {
+      border-color: var(--brand-primary-color);
+    }
+
+    &.selectedDateError {
+      border-color: #f04853;
+
+      &.dateClickedFlag {
+        border-color: var(--brand-primary-color);
+      }
+    }
+    &.invalid {
+      border-color: #f87171;
+    }
+
+    @media only screen and (max-width: 1440px) {
+      min-width: 130px;
+      padding: 9px 6px;
+      height: 40px;
+    }
+
+    @media (min-width: 1025px) and (max-width: 1199px) {
+      margin-right: 0;
+    }
+
+    @media only screen and (max-width: 480px) {
+      margin-right: 0;
+    }
+
+    mat-datepicker-toggle {
+      &::ng-deep {
+        button.mdc-icon-button {
+          width: 21px !important;
+          height: 44px !important;
+          margin-right: 4px;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+
+    input {
+      padding: 0;
+      height: 40px;
+      border: 0;
+      width: 100%;
+
+      @media only screen and (max-width: 1440px) {
+        height: 30px;
+
+        &::-webkit-input-placeholder {
+          font-size: 14px;
+          line-height: 20px;
+          color: $black;
+        }
+
+        &:-ms-input-placeholder {
+          font-size: 14px;
+          line-height: 20px;
+          color: $black;
+        }
+
+        &::placeholder {
+          font-size: 14px;
+          line-height: 20px;
+          color: $black;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .deposit-datepicker {
+  width: 426px !important;
+  height: auto !important;
+  border-radius: 40px;
+  background-color: #f9fafb !important;
+
+  @media screen and (max-width: 1440px) {
+    font-size: 13px;
+    width: 350px !important;
+  }
+
+  @media screen and (max-width: 479px) {
+    width: 300px !important;
+  }
+  .mat-calendar-content {
+    padding: 0 24px 24px 24px;
+
+    .mat-calendar-body {
+      .mat-calendar-body-label {
+        visibility: hidden;
+      }
+    }
+
+    .mat-calendar-table-header-divider {
+      display: none;
+    }
+
+    .mat-calendar-body-cell-content {
+      // background-color: #fff;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 14px;
+      box-shadow: none;
+    }
+  }
+
+  .close-calendar-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 45px;
+    height: 40px;
+    background: url(../../../assets/images/close-wallet-icon.svg);
+  }
+}
+
+.deposit-text-alignment {
+  text-align: left;
+}
+.deposit-date-apply {
+  background-color: #1f2937;
+  width: 100%;
+  height: 50px;
+  border-radius: 50px;
+  margin: 0 42px;
+  padding: 8px 32px;
+  color: #fff;
+
+  @media screen and (max-width: 1440px) {
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+::ng-deep {
+  .deposit-method-tooltip {
+    .tooltip-inner {
+      max-width: 320px;
+      width: 320px;
+      padding: 12px;
+      font-family: $inter;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 400;
+      color: $white;
+    }
+  }
+
+  .deposit-date-tooltip {
+    cursor: pointer;
+    .tooltip-inner {
+      max-width: 229px;
+      width: 229px;
+      padding: 12px;
+      font-family: $inter;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 400;
+      color: $white;
+    }
+  }
+
+  .local-currency-container .form-wrap .currency-wrapper .currency-value {
+    .value {
+      input::placeholder {
+        font-weight: 200 !important;
+      }
+    }
+  }
+}
+
+#amountFocus {
+  &.focused {
+    border-color: var(--primary-blue);
+  }
+}

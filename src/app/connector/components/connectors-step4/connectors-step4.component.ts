@@ -122,12 +122,16 @@ export class ConnectorsStep4Component implements AfterViewChecked {
       this.loading = true;
       of(getAutomatedHedging).subscribe({
         next: (response: any) => {
+          
           // console.log('Automated Hedging Response:', response);
           const list = response;
+           this.rulesData = list;
           this.exposuteTypeFromAPI = list?.exposureType;
           this._connectorService.setSelectedExposureType(this.exposuteTypeFromAPI);
           this.updateDataSource(list);
-          this.rulesData = list || null;
+         
+          console.log(this.rulesData);
+          
           this.loading = false;
         },
         error: (error) => {
@@ -138,9 +142,9 @@ export class ConnectorsStep4Component implements AfterViewChecked {
     }
 
     // STEP 1: Use initial BehaviorSubject value
-    this._connectorService.approvedList$.pipe(takeUntil(this._onDestroy)).subscribe((list) => {
-      this.updateDataSource(list);
-    });
+    // this._connectorService.approvedList$.pipe(takeUntil(this._onDestroy)).subscribe((list) => {
+    //   this.updateDataSource(list);
+    // });
 
 
 
@@ -163,49 +167,49 @@ export class ConnectorsStep4Component implements AfterViewChecked {
     }
 
     // STEP 2: Trigger API call every 2 hours with payload
-    timer(7200000, 7200000) // call immediately and every 2 hours
-      .pipe(takeUntil(this._onDestroy))
-      .subscribe(() => {
-        this.loading = true;
-        this._connectorService.ruleResponse$
-          .pipe(take(1)) // take latest emitted value only once
-          .subscribe({
-            next: (response) => {
-              const result = response?.body;
-              const rulesData = result || [];
+    // timer(7200000, 7200000) // call immediately and every 2 hours
+    //   .pipe(takeUntil(this._onDestroy))
+    //   .subscribe(() => {
+    //     this.loading = true;
+    //     this._connectorService.ruleResponse$
+    //       .pipe(take(1)) // take latest emitted value only once
+    //       .subscribe({
+    //         next: (response) => {
+    //           const result = response?.body;
+    //           const rulesData = result || [];
 
-              const currency = rulesData?.colletralCurrency; // replace with dynamic value if needed
-              const isSync = true;
-              const collateralAmount = rulesData?.collateralAmount;
-              const importExposureType = rulesData?.rules?.[0]?.importExosureType;
+    //           const currency = rulesData?.colletralCurrency; // replace with dynamic value if needed
+    //           const isSync = true;
+    //           const collateralAmount = rulesData?.collateralAmount;
+    //           const importExposureType = rulesData?.rules?.[0]?.importExosureType;
 
-              const payload = {
-                currency,
-                isSync,
-                collateralAmount,
-                importExposureType,
-              };
-              this.loading = true;
-                of(ExposureList)
-                .pipe(takeUntil(this._onDestroy))
-                .subscribe({
-                  next: (list: any) => {
-                    const data = list;
-                    this._connectorService.setApprovedList(data); // update BehaviorSubject
-                    this.loading = false;
-                  },
-                  error: (err: any) => {
-                    // console.error('Error in listing API with payload:', err);
-                    this.loading = false;
-                  },
-                });
-            },
-            error: (err) => {
-              //  console.error('Error reading ruleResponse$:', err);
-              this.loading = false;
-            },
-          });
-      });
+    //           const payload = {
+    //             currency,
+    //             isSync,
+    //             collateralAmount,
+    //             importExposureType,
+    //           };
+    //           this.loading = true;
+    //             of(ExposureList)
+    //             .pipe(takeUntil(this._onDestroy))
+    //             .subscribe({
+    //               next: (list: any) => {
+    //                 const data = list;
+    //                 this._connectorService.setApprovedList(data); // update BehaviorSubject
+    //                 this.loading = false;
+    //               },
+    //               error: (err: any) => {
+    //                 // console.error('Error in listing API with payload:', err);
+    //                 this.loading = false;
+    //               },
+    //             });
+    //         },
+    //         error: (err) => {
+    //           //  console.error('Error reading ruleResponse$:', err);
+    //           this.loading = false;
+    //         },
+    //       });
+    //   });
   }
   getAllCurrencies() {
     this._walletService.getAllBalanceList().pipe(takeUntil(this._onDestroy)).subscribe({
@@ -280,7 +284,6 @@ export class ConnectorsStep4Component implements AfterViewChecked {
   private updateDataSource(list: any) {
     this.exposureData = list;
     //console.log('exposureData', this.exposureData);
-
     const rawInvoiceList = list?.invoiceBillResponses;
     const allInvoices = rawInvoiceList?.allInvoices || [];
     const invoiceList = rawInvoiceList ? allInvoices : [];

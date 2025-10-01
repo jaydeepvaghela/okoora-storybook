@@ -1,0 +1,36 @@
+<div class="final-deposit-container">
+  <!-- <ng-lottie [options]="options" [styles]="styles"></ng-lottie> -->
+  <div class="successfully-animation-img">
+    <img src="../../../../images/alert-successfully-set.gif" alt="successfully animation image">
+  </div>
+  <div class="response-title">
+    <label>Request to Deposit was</label>
+    <h2>Sent Successfully</h2>
+  </div>
+  <div class="deposit-description">
+    <div class="reminder-tab">
+      <div class="description">
+        <div class="gap-desc d-flex">
+          <img width="25px" height="25px" src="../../../../images/reminder-alert-icon.svg">
+          <label>Important to remember!</label>
+        </div>
+        <p class="info-reminder">There are fixed deadlines for balance updates:
+          Sunday to Thursday (excluding sabbaticals and weekdays) at: 9:00, 12:00, 14:00, 16:00</p>
+      </div>
+    </div>
+    <div class="reminder-tab">
+      <div class="description">
+        <div class="gap-desc d-flex">
+          <img width="25px" height="25px" src="../../../../images/regular-transfer-icon.svg">
+          <label>By regular transfer - at 9:00 the next day
+            <br/>Gold transfer - in the near future<br/>
+            Gold transfer after 16:00 - update the next day</label>
+        </div>
+        <p class="info-reminder">Once the update is complete the amount will be reflected under 'Your Balance'</p>
+      </div>
+    </div>
+  </div>
+  <div class="close-btn">
+    <button class="close" (click)="closeDrawer()" id="close-final-deposit-btn"> Close </button>
+  </div>
+</div>

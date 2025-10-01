@@ -1,0 +1,160 @@
+::ng-deep {
+  .final-deposit-container {
+    padding-left: 90px;
+    padding-right: 81px;
+    margin-top: -100px;
+
+    @media screen and (max-width: 1440px) {
+      padding-left: 32px;
+      padding-right: 32px;
+      margin-top: -70px;
+    }
+
+    @media (max-width: 991px) {
+      margin-top: -30px;
+    }
+
+    .successfully-animation-img {
+      width: 320px;
+      height: 320px;
+      margin: 0 auto;
+
+      @media (max-width: 1440px) {
+        width: 200px;
+        height: 200px;
+        margin-bottom: -20px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    ng-lottie > div {
+      @media screen and (max-width: 1440px) {
+        max-width: 225px !important;
+        max-height: 145px !important;
+      }
+    }
+    .response-title {
+      display: grid;
+      justify-content: center;
+      text-align: justify;
+      margin-bottom: 94px;
+
+      @media screen and (max-width: 1440px) {
+        margin-bottom: 22px;
+      }
+
+      @media (max-width: 1440px) {
+        margin-bottom: 15px;
+      }
+
+      label {
+        color: #000;
+        font-family: "Inter";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+
+        @media screen and (max-width: 1440px) {
+          font-size: 14px;
+        }
+      }
+
+      h2 {
+        color: #000;
+        font-family: "Inter";
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 700;
+        margin-bottom: 0;
+
+        @media screen and (max-width: 1440px) {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .deposit-description {
+      .reminder-tab {
+        .description {
+          .gap-desc {
+            gap: 33px;
+            align-items: center;
+
+            img {
+              @media screen and (max-width: 1440px) {
+                width: 23px;
+                height: 23px;
+              }
+            }
+          }
+          label {
+            font-family: "Heebo";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            color: #4b5563;
+            line-height: 20px;
+            margin-bottom: 11px;
+
+            @media screen and (max-width: 1440px) {
+              font-size: 14px;
+            }
+          }
+
+          .info-reminder {
+            color: #9ca3af;
+            font-family: "Inter";
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            margin-left: 58px;
+            margin-bottom: 0;
+
+            @media screen and (max-width: 1440px) {
+              font-size: 13px;
+              margin-left: 56px;
+            }
+          }
+        }
+      }
+      .reminder-tab:first-child {
+        margin-bottom: 44px;
+
+        @media screen and (max-width: 1440px) {
+          margin-bottom: 22px;
+        }
+        @media (max-width: 1440px) {
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    .close-btn {
+      .close {
+        margin-top: 27px;
+        width: 100%;
+        height: 60px;
+        font-family: "Heebo";
+        color: var(--dark-blue-primary);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        border-radius: 100px;
+        border: 1px solid #d1d5db;
+        background: #fff;
+
+        @media screen and (max-width: 1440px) {
+          height: 40px;
+          font-size: 14px;
+        }
+
+        @media (max-width: 1440px) {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

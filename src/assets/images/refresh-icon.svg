@@ -1,0 +1,32 @@
+<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="21" height="21" fill="#DADADA"/>
+<g id="Main" clip-path="url(#clip0_7324_69276)">
+<rect width="1920" height="1926" transform="translate(-1715 -410.467)" fill="#EEF3FC"/>
+<circle id="Ellipse 2324" opacity="0.05" cx="-1500.94" cy="158.164" r="691.716" transform="rotate(135 -1500.94 158.164)" fill="#2947F2"/>
+<g id="Ellipse 2325" opacity="0.05" filter="url(#filter1_f_7324_69276)">
+<circle cx="161.104" cy="465.446" r="680.089" transform="rotate(135 161.104 465.446)" fill="#05F2F2"/>
+</g>
+<g id="Frame 240964">
+<rect x="-1368.5" y="-122.237" width="1458" height="611" rx="9.5" fill="white" fill-opacity="0.6"/>
+<rect x="-1368.5" y="-122.237" width="1458" height="611" rx="9.5" stroke="white"/>
+</g>
+<g id="Chart" clip-path="url(#clip1_7324_69276)">
+<g id="Group 240459">
+<path id="Vector" d="M8.86202 3.32397L10.0464 4.50563L10.0113 4.54074M10.0113 4.54074L8.86202 5.69267M10.0113 4.54074C9.82863 4.51933 9.64268 4.50832 9.4542 4.50832C6.8378 4.50832 4.7168 6.62933 4.7168 9.24572C4.7168 10.7418 5.41027 12.0759 6.49332 12.9441M10.0464 12.7988L8.86202 13.9303L8.87961 13.9486M8.87961 13.9486C9.06792 13.9714 9.25972 13.9831 9.4542 13.9831C12.0706 13.9831 14.1916 11.8621 14.1916 9.24572C14.1916 7.74966 13.4981 6.41557 12.4151 5.54737M8.87961 13.9486L10.0464 15.1675" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter1_f_7324_69276" x="-1118.98" y="-814.643" width="2560.18" height="2560.18" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="300" result="effect1_foregroundBlur_7324_69276"/>
+</filter>
+<clipPath id="clip0_7324_69276">
+<rect width="1920" height="1926" fill="white" transform="translate(-1715 -410.467)"/>
+</clipPath>
+<clipPath id="clip1_7324_69276">
+<rect width="1415" height="479" fill="white" transform="translate(-1328 -14.1509)"/>
+</clipPath>
+</defs>
+</svg>
