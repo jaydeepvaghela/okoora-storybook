@@ -1,0 +1,128 @@
+$he_heebo: 'Heebo', sans-serif;
+
+::ng-deep {
+    .connector-missing-funds {
+        width: 100% !important;
+        max-width: 657px !important;
+        @media screen and (max-width:767px) {
+            max-width: 80vw !important;
+        }
+    }
+
+    .add-funds-container {
+        padding:86px 65px 131px 58px;
+        @media screen and (max-width:1440px) {
+            padding: 50px;
+        }
+        @media screen and (max-width:1024px) {
+            padding:40px 30px;
+        }
+        @media screen and (max-width:767px) {
+            padding:40px 20px;
+        }
+        .add-fund-inner {
+            text-align: center;
+            border-bottom: 1px dashed #B8B8B8;
+            padding: 0 0 31px;
+            margin: 0 0 28px;
+            .title {
+                color: #374151;
+                font-family: $he_heebo;
+                font-size: 28px;
+                font-weight: 700;
+                line-height: 20px;
+                margin: 0 0 33px;
+            }
+
+            .funds-icon-wrapper {
+                margin: 0 0 28px;
+            }
+
+            .add-amount-text {
+                color: #374151;
+                font-family: $he_heebo;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 25.2px;
+                margin: 0;
+            }
+            .amount-held {
+                color: #374151;
+                font-family: $he_heebo;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 21.2px;
+                margin: 0;
+            }
+            @media screen and (max-width:1024px) {
+                padding: 0 0 20px;
+                margin: 0 0 20px;
+                .title {
+                    font-size: 24px;
+                    line-height: 1.2;
+                    margin: 0 0 20px;
+                }
+
+                .funds-icon-wrapper {
+                    margin: 0 0 20px;
+                    img{
+                        max-width: 150px;
+                    }
+                }
+
+                .add-amount-text {
+                    font-size: 14px;
+                    line-height: 1.2;
+                }
+
+                .amount-held {
+                    font-size: 12px;
+                    line-height: 1.2;
+                }
+            }
+
+            @media screen and (max-width:991px) {
+                .title {
+                    font-size: 20px;
+                }
+                .funds-icon-wrapper {
+                    img{
+                        max-width: 120px;
+                    }
+                }
+            }
+
+            @media screen and (max-width:767px) {
+                .title {
+                    font-size: 16px;
+                }
+                .funds-icon-wrapper {
+                    img{
+                        max-width: 100px;
+                    }
+                }
+            }
+        }
+
+        .launch-button {
+            border-radius: 10px;
+            background: #2320E6;
+            padding: 17px 10px;
+            color: #FFF;
+            text-align: center;
+            font-family: $he_heebo;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1;
+            width: 100%;
+
+            @media screen and (max-width:1440px) {
+                padding:15px 10px;
+            }
+            @media screen and (max-width:1024px) {
+                font-size: 14px;
+            }
+        }
+    }
+
+}
