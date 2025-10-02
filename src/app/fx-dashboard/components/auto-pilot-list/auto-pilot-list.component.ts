@@ -10,7 +10,7 @@ import { DeleteConversionRuleComponent } from '../delete-conversion-rule/delete-
 import { getActiveHedgingCurrency } from '../fx-dashboard-data/active-hedging-currency';
 import { userHedgingRule } from '../fx-dashboard-data/user-hedging-rule';
 import { customerSupplierList } from '../fx-dashboard-data/customer-supplier-list';
-import { getConversionRules } from '../fx-dashboard-data/conversionRules';
+import { conversionRuleForAutoPilotList, getConversionRules } from '../fx-dashboard-data/conversionRules';
 import { ConnectorAutoProtectComponent } from '../../../connector/components/connector-auto-protect/connector-auto-protect.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
@@ -82,7 +82,7 @@ export class AutoPilotListComponent {
   }
 
   getFxConversionRulesData() {
-    of(getConversionRules)
+    of(conversionRuleForAutoPilotList)
       .pipe(takeUntil(this._onDestroy))
       .subscribe({
         next: (result: any) => {

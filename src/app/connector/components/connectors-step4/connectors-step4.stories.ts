@@ -22,6 +22,8 @@ import { MatStepper } from '@angular/material/stepper';
 import { ChangeDetectorRef } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { balanceList } from '../../../main-dashboard/dashboard-data/balanceList-data';
+import { getAutomatedHedging } from '../../connectors-data';
+import { getConversionRules } from '../../../fx-dashboard/components/fx-dashboard-data/conversionRules';
 
 // Mock Translation Loader
 
@@ -80,40 +82,13 @@ const mockRulesData = {
     unprotectedAmountCurrencySign: '$'
   },
   invoiceBillResponses: {
-    allInvoices: mockExposureData
+    allInvoices: getAutomatedHedging?.invoiceBillResponses?.allInvoices
   },
   isMissingFunds: false,
   colletralCurrency: 'USD',
   collateralAmount: 45000,
   missingCollateralAmount: 0
 };
-
-const mockConversionData = [
-  {
-    id: 'conv-rule-001',
-    ruleName: 'EUR/USD Conversion Rule',
-    buyCurrency: 'USD',
-    sellCurrency: 'EUR',
-    buyAmount: 50000,
-    sellAmount: 46300,
-    operator: 1,
-    targetRate: 1.08,
-    executedRate: 1.079,
-    executedAt: new Date('2024-10-15T10:30:00Z')
-  },
-  {
-    id: 'conv-rule-002',
-    ruleName: 'GBP Hedging Strategy',
-    buyCurrency: 'USD',
-    sellCurrency: 'GBP',
-    buyAmount: 40000,
-    sellAmount: 32000,
-    operator: 2,
-    targetRate: 1.25,
-    executedRate: 1.248,
-    executedAt: new Date('2024-10-14T14:20:00Z')
-  }
-];
 
 
 export default {
@@ -187,9 +162,6 @@ export default {
   ],
 } as Meta<ConnectorsStep4Component>;
 
-
-
-
 export const ExposuresTab: StoryObj<ConnectorsStep4Component> = {
   args: {
     selectedTab: 'exposures',
@@ -210,27 +182,13 @@ export const ConvertsTab: StoryObj<ConnectorsStep4Component> = {
     isAutoProtectEnabled: true,
     loading: false,
     isPayableProtectFilled: true,
-    conversionData: mockConversionData,
-    ruleConvertList: mockConversionData,
-    convertcollectionLength: mockConversionData.length,
+    conversionData: getConversionRules,
+    ruleConvertList: getConversionRules,
+    convertcollectionLength: getConversionRules.length,
     page: 1,
     pageSize: 10,
   },
 };
-
-export const AutoProtectDisabled: StoryObj<ConnectorsStep4Component> = {
-  args: {
-    ...ExposuresTab.args,
-    isAutoProtectEnabled: false,
-  },
-};
-
-// export const LoadingState: StoryObj<ConnectorsStep4Component> = {
-//   args: {
-//     ...ExposuresTab.args,
-//     loading: true,
-//   },
-// };
 
 export const MissingFunds: StoryObj<ConnectorsStep4Component> = {
   args: {
@@ -248,26 +206,6 @@ export const MissingFunds: StoryObj<ConnectorsStep4Component> = {
     },
   },
 };
-
-// export const NoExposureData: StoryObj<ConnectorsStep4Component> = {
-//   args: {
-   
-//     exposureData: {
-      
-//       invoiceBillResponses: { allInvoices: [] }
-//     },
-//     collectionLength: 0,
-//   },
-// };
-
-// export const NoConversionData: StoryObj<ConnectorsStep4Component> = {
-//   args: {
-    
-//     conversionData: [],
-//     ruleConvertList: [],
-//     convertcollectionLength: 0,
-//   },
-// };
 
 export const SetupIncomplete: StoryObj<ConnectorsStep4Component> = {
   args: {

@@ -60,7 +60,7 @@
         <img src="images/fx-dashboard/lock-rate-hover.svg" class="hover-img" alt="Lock rate">
         Lock Rate
       </button>
-      <button class="h-btns erp-btn" [ngClass]="isERPConnected !== 3 ? 'active' : ''">
+      <button class="h-btns erp-btn" [ngClass]="isERPConnected !== 3 ? 'active' : ''" (click)="onERPConnection()">
         <img src="images/fx-dashboard/erp-icn.svg" class="main-img" alt="ERP Connection">
         <img src="images/fx-dashboard/erp-hover.svg" class="hover-img" alt="ERP Connection">
         {{ erpConnectionLabel }}

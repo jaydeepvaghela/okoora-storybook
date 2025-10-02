@@ -81,6 +81,7 @@ export class ConnectorsStep4Component implements AfterViewChecked {
   showLatestRuleConvert: boolean = false;
   selectedRule: any = null;
   activeHedgeCurrencies: any;
+  hedgingStatus!: typeof HedgeState;
   constructor(private _connectorService: ConnectorService, public dialog: MatDialog, private headerCommService: CommonService, private stepper: MatStepper, private cdr: ChangeDetectorRef, private commonService: CommonService, private matStepper: MatStepper,
     private _fxDashboardService: FxDashboardService, private _walletService: WalletsService,
   ) {
@@ -147,7 +148,7 @@ export class ConnectorsStep4Component implements AfterViewChecked {
     // });
 
 
-
+    this.hedgingStatus = HedgeState;
 
 
     // Show warning messages for 5 seconds if present
