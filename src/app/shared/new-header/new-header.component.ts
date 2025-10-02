@@ -702,14 +702,14 @@ export class NewHeaderComponent {
     this.cd.detectChanges();
   }
 
-  // onERPConnection() {
-  //   // if (JSON.parse(localStorage.getItem('user')!)?.isERPConnected == 1) return;
-  //   this.dialog.open(ErpConnectionDialogComponent, {
-  //     width: '608px',
-  //     maxWidth: '95vw',
-  //     panelClass: 'custom-dialog-container'
-  //   });
-  // }
+  onERPConnection() {
+    // if (JSON.parse(localStorage.getItem('user')!)?.isERPConnected == 1) return;
+    this.dialog.open(ErpConnectionDialogComponent, {
+      width: '608px',
+      maxWidth: '608px',
+      panelClass: 'custom-dialog-container'
+    });
+  }
 
   // setAutoPilot() {
   //   this.dialog.open(SetAutoPilotDialogComponent, {
