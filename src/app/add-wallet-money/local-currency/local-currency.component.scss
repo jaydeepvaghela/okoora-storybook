@@ -11,6 +11,13 @@
   }
 }
 
+.error-msg {
+  color: $error-msg-text;
+  font-size: $font-12;
+  line-height: 18px;
+  font-weight: bold;
+}
+
 .local-currency-container {
   .form-wrap {
     .label-group {
