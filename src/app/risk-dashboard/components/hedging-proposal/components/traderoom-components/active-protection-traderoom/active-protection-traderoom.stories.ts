@@ -3,7 +3,7 @@ import { Meta,StoryObj,moduleMetadata  } from "@storybook/angular";
 import { MatDialogRef } from "@angular/material/dialog";
 
 const meta: Meta<ActiveProtectionTraderoomComponent> = {
-    title: "Components/Risk-Manager/Active Protection Traderoom",
+    title: "Risk Manager/Risk Manager Dashboard/Hedging Proposal/Active Protection Traderoom",
     component: ActiveProtectionTraderoomComponent,
     decorators: [
         moduleMetadata({

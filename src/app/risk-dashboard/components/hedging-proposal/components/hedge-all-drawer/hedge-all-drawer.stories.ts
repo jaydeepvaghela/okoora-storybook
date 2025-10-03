@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { HedgeAllDrawerComponent } from "./hedge-all-drawer.component";
 
 const meta: Meta<HedgeAllDrawerComponent> = {
-    title: 'Components/Risk-Manager/Hedge-All-Drawer',
+    title: 'Risk Manager/Risk Manager Dashboard/Hedging Proposal/Hedge All Drawer',
     component: HedgeAllDrawerComponent,
     argTypes: {
         multipleHedgeData:{

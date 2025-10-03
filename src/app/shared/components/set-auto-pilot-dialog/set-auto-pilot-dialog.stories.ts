@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export default {
-  title: 'Components/New Header/APIdeck Connection Completion Dialog',
+  title: 'FX Dashboard/ERP Integration/ERP Completion Dialog',
   component: SetAutoPilotDialogComponent,
   decorators: [
     moduleMetadata({

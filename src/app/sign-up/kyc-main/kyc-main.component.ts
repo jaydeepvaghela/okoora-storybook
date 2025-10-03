@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, HostListener, Inject, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
 import { KycCreatePasswordComponent, pwdConfirming } from '../kyc-create-password/kyc-create-password.component';
 import { ActivatedRoute, Router } from "@angular/router";
 import { CommonModule, DecimalPipe, DOCUMENT } from "@angular/common";

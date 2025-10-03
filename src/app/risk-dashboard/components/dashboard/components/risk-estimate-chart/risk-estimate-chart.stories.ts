@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { RiskEstimateChartComponent } from "./risk-estimate-chart.component";
 
 const meta: Meta<RiskEstimateChartComponent> = {
-    title: 'Components/Risk-Manager/Risk-estimate-chart',
+    title: 'Risk Manager/Risk Manager Dashboard/Risk Estimate Chart',
     component: RiskEstimateChartComponent,
     tags: ['autodocs'],
   render: (args: RiskEstimateChartComponent) => ({

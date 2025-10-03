@@ -4,7 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { of } from "rxjs";
 
 const meta: Meta<BreadcrumbWalletComponent> = {
-    title: 'Components/Risk-Manager/Breadcrumb-wallet',
+    title: 'Risk Manager/Risk Manager Dashboard/Breadcrumb Wallet',
     component: BreadcrumbWalletComponent,
     decorators: [
         moduleMetadata({

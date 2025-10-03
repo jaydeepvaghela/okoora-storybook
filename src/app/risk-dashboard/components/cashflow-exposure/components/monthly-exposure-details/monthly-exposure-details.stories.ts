@@ -16,7 +16,7 @@ const defaultMonthlyExposureObject = {
 };
 
 const meta: Meta<MonthlyExposureDetailsComponent> = {
-    title: 'Components/Risk-Manager/Cashflow-Exposure/Monthly-Exposure-Details',
+    title: 'Risk Manager/Cashflow Exposure/Monthly Exposure Details',
     component: MonthlyExposureDetailsComponent,
     argTypes: {
         monthlyExposureObject: {

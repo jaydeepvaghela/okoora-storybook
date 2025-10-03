@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { ExposureRateChartComponent } from "./exposure-rate-chart.component";
 
 const meta: Meta<ExposureRateChartComponent> = {
-    title: 'Components/Risk-Manager/Exposure-Rate-Chart',
+    title: 'Risk Manager/Risk Manager Dashboard/Exposure Rate Chart',
     component: ExposureRateChartComponent,
     argTypes: {
         chartSeries: {

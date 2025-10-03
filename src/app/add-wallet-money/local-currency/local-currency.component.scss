@@ -542,6 +542,10 @@
     .pages {
       gap: 13px;
       margin-top: 10px;
+
+      .prev-swiper, .next-swiper {
+        cursor: pointer;
+      }
     }
 
     .bank-swiper-container {

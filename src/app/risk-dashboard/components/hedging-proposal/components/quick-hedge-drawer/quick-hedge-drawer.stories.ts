@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { QuickHedgeDrawerComponent } from "./quick-hedge-drawer.component";
 
 const meta: Meta<QuickHedgeDrawerComponent> = {
-    title: 'Components/Risk-Manager/Quick-Hedge-Drawer',
+    title: 'Risk Manager/Risk Manager Dashboard/Hedging Proposal/Quick Hedge Drawer',
     component: QuickHedgeDrawerComponent,
     argTypes: {
         selectedQuickHedgeData: {

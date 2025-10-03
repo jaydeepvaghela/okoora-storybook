@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { CashflowExposureStep1Component } from "./cashflow-exposure-step1.component";
 
 const meta: Meta<CashflowExposureStep1Component> = {
-    title: 'Components/Risk-Manager/Cashflow-Exposure/Cashflow-Exposure-Step1',
+    title: 'Risk Manager/Cashflow Exposure/Cashflow Exposure Step 1',
     component: CashflowExposureStep1Component,
     argTypes: {
         heading: { control: 'text' },

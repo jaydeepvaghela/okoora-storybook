@@ -2,9 +2,9 @@ import { Meta, StoryObj, applicationConfig, moduleMetadata } from "@storybook/an
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
-import { importProvidersFrom, inject } from "@angular/core";
+import { importProvidersFrom } from "@angular/core";
 import { HttpClient, provideHttpClient } from "@angular/common/http";
-import { TranslateModule, TranslateLoader, TranslateService } from "@ngx-translate/core";
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 import { KycMainComponent } from "./kyc-main.component";
@@ -17,7 +17,6 @@ export enum EStepNumber {
   email = 2,
   emailConfirmation = 3,
   phone = 4,
-  //   phoneConfirmation = 5,
   createPassword = 6,
   personalDetails = 7,
   personalAddress = 8
@@ -40,6 +39,7 @@ const meta: Meta<KycMainComponentWithCustomArgs> = {
         CommonModule,
         ReactiveFormsModule,
         MatIconModule,
+        TranslateModule
       ],
       providers: [KycService]
     }),
@@ -47,14 +47,16 @@ const meta: Meta<KycMainComponentWithCustomArgs> = {
       providers: [
         provideRouter(routes, withHashLocation()),
         provideHttpClient(),
-        importProvidersFrom(CommonModule, TranslateModule.forRoot({
-          loader: {
-            provide: TranslateLoader,
-            useFactory: (createTranslateLoader),
-            deps: [HttpClient]
-          },
-          defaultLanguage: 'en',
-        }),)
+        importProvidersFrom(
+          TranslateModule.forRoot({
+            loader: {
+              provide: TranslateLoader,
+              useFactory: createTranslateLoader,
+              deps: [HttpClient]
+            },
+            defaultLanguage: 'en',
+          })
+        )
       ]
     })
   ],
@@ -83,93 +85,15 @@ export const KycMainFlow: Story = {
     const currentStep = args.initialStep || EStepNumber.typeOfBusiness;
 
     return {
-      props: {
-        ...args,
-        stepsObj: {
-          currentStep,
-          maxSteps: EStepNumber.personalAddress,
-          minSteps: EStepNumber.typeOfBusiness
-        },
-        onInit: async function (component: KycMainComponent) {
-          const translate = inject(TranslateService);
-          if (translate) {
-            await translate.use('en').toPromise();
-          }
-
-          if (component) {
-            component.stepsObj = {
-              currentStep,
-              maxSteps: EStepNumber.personalAddress,
-              minSteps: EStepNumber.typeOfBusiness
-            };
-
-            if (currentStep >= EStepNumber.email) {
-              component.kycForm.get('step_1')?.patchValue({
-                companyAcc: {
-                  isActive: true,
-                  countrySelected: 'Israel',
-                  countryCode: 'IL'
-                }
-              });
-            }
-
-            if (currentStep >= EStepNumber.emailConfirmation) {
-              component.kycForm.get('step_2')?.patchValue({
-                email: 'test@example.com',
-                agree: true
-              });
-            }
-
-            if (currentStep >= EStepNumber.phone) {
-              component.kycForm.get('step_3')?.patchValue({
-                email_code_sent: '123456',
-                email_code_user_enter: '123456'
-              });
-            }
-
-            // if (currentStep >= EStepNumber.phoneConfirmation) {
-            //   component.kycForm.get('step_4')?.patchValue({
-            //     phone_code: '972',
-            //     phone: '5551234567'
-            //   });
-            // }
-
-            if (currentStep >= EStepNumber.createPassword) {
-              component.kycForm.get('step_5')?.patchValue({
-                phone_confirmation_sent: '123456',
-                phone_confirmation_user_enter: '123456'
-              });
-            }
-
-            if (currentStep >= EStepNumber.personalDetails) {
-              component.kycForm.get('step_6')?.get('passwords')?.patchValue({
-                password: 'Password123!',
-                confirmPassword: 'Password123!'
-              });
-            }
-
-            if (currentStep >= EStepNumber.personalAddress) {
-              component.kycForm.get('step_7')?.patchValue({
-                first_name: 'John',
-                first_name_he: '',
-                last_name: 'Doe',
-                last_name_he: '',
-                id_number: '123456789',
-                birth_date: '1990-01-01',
-                applicantId: '12345'
-              });
-            }
-            if (component.triggerChangeDetection) {
-              component.triggerChangeDetection();
-            }
-          }
-        }
-      },
+      props: args,
       template: `
         <div class="kyc-story-container">
           <app-kyc-main
-            [stepsObj]="stepsObj"
-            (ngOnInit)="onInit($event)">
+            [stepsObj]="{
+              currentStep: ${currentStep},
+              maxSteps: ${EStepNumber.personalAddress},
+              minSteps: ${EStepNumber.typeOfBusiness}
+            }">
           </app-kyc-main>
         </div>
       `
@@ -204,14 +128,6 @@ export const Step4_Phone: Story = {
     initialStep: EStepNumber.phone
   }
 };
-
-// export const Step5_PhoneConfirmation: Story = {
-//   ...KycMainFlow,
-//   args: {
-//     ...KycMainFlow.args,
-//     initialStep: EStepNumber.phoneConfirmation
-//   }
-// };
 
 export const Step5_CreatePassword: Story = {
   ...KycMainFlow,

@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { AnnualExposureDetailsComponent } from "./annual-exposure-details.component";
 
 const meta: Meta<AnnualExposureDetailsComponent> = {
-    title: 'Components/Risk-Manager/Annual-Exposure-Details',
+    title: 'Risk Manager/Risk Manager Dashboard/Annual Exposure Details',
     component: AnnualExposureDetailsComponent,
     argTypes: {
         annualExposure: { control: 'number', defaultValue: 1200001.2 },
