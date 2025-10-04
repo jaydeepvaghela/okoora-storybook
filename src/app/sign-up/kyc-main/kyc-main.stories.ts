@@ -2,15 +2,15 @@ import { Meta, StoryObj, applicationConfig, moduleMetadata } from "@storybook/an
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
-import { importProvidersFrom } from "@angular/core";
-import { HttpClient, provideHttpClient } from "@angular/common/http";
-import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { inject } from "@angular/core";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { TranslateModule, TranslateLoader, TranslateService } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 import { KycMainComponent } from "./kyc-main.component";
 import { KycService } from "../services/kyc.service";
-import { provideRouter, withHashLocation } from "@angular/router";
-import { routes } from "../../app.routes";
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 export enum EStepNumber {
   typeOfBusiness = 1,
@@ -22,8 +22,9 @@ export enum EStepNumber {
   personalAddress = 8
 }
 
+// AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'i18n/', '.json');
+  return new TranslateHttpLoader(http, './i18n/', '.json');
 }
 
 interface KycMainComponentWithCustomArgs extends KycMainComponent {
@@ -39,24 +40,29 @@ const meta: Meta<KycMainComponentWithCustomArgs> = {
         CommonModule,
         ReactiveFormsModule,
         MatIconModule,
-        TranslateModule
+        HttpClientModule,
+        TranslateModule.forRoot({
+          defaultLanguage: 'en',
+          loader: {
+            provide: TranslateLoader,
+            useFactory: createTranslateLoader,
+            deps: [HttpClient]
+          }
+        })
       ],
-      providers: [KycService]
-    }),
-    applicationConfig({
       providers: [
-        provideRouter(routes, withHashLocation()),
-        provideHttpClient(),
-        importProvidersFrom(
-          TranslateModule.forRoot({
-            loader: {
-              provide: TranslateLoader,
-              useFactory: createTranslateLoader,
-              deps: [HttpClient]
+        KycService,
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({}),
+            queryParams: of({}),
+            snapshot: {
+              paramMap: { get: () => null },
+              queryParamMap: { get: () => null },
             },
-            defaultLanguage: 'en',
-          })
-        )
+          },
+        }
       ]
     })
   ],
@@ -83,7 +89,15 @@ export const KycMainFlow: Story = {
   },
   render: (args) => {
     const currentStep = args.initialStep || EStepNumber.typeOfBusiness;
-
+    // Set the language for ngx-translate in Storybook using Angular's inject()
+    try {
+      const translateService = inject(TranslateService, { optional: true });
+      if (translateService && typeof translateService.use === 'function') {
+        translateService.use('en');
+      }
+    } catch (e) {
+      // ignore if inject is not available
+    }
     return {
       props: args,
       template: `
