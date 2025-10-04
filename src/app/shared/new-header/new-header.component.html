@@ -95,9 +95,8 @@
         <div class="profile-menu">
           <div class="profile-menu-wrap">
             <div class="profile-menu-service">
-              <!-- <button class="custom-menu-item" *ngFor="let account of accounts" (click)="switchAccount(account)"
-                id="dbheader-company-{{account?.companyName}}" [class.active]="account?.selected">{{
-                account?.companyName }}</button> -->
+              <button class="custom-menu-item" 
+                [class.active]="true">Okoora User Profile</button>
               <button class="custom-menu-item logout" (click)="logout()" id="db-header-5">
                 <img class="logout-icon" src="images/fx-dashboard/logout-icn.svg" alt="Logout"> Log out
               </button>

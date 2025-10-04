@@ -266,8 +266,8 @@ export class NewHeaderComponent {
   }
 
   checkUserAffiliate() {
-    const userAffiliate = JSON.parse(localStorage.getItem('user')!)['afiiliate'];
-    this.isERPConnected = JSON.parse(localStorage.getItem('user')!)['isERPConnected'];
+    const userAffiliate = JSON.parse(localStorage.getItem('user')!)?.['afiiliate'];
+    this.isERPConnected = JSON.parse(localStorage.getItem('user')!)?.['isERPConnected'];
     this.affiliateCountry = userAffiliate?.country;
     this.erpConnectionStatus();
   }
@@ -779,7 +779,7 @@ export class NewHeaderComponent {
   GetProfileSymbol() {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     if(this.user){
-      let profileName = this.user.fullName.split(' ');
+      let profileName = this.user?.fullName?.split(' ');
       let fName =
         profileName && profileName[0]
           ? profileName[0].substring(0, 1).toUpperCase()
