@@ -56,14 +56,6 @@ const meta: Meta<FinalDepositComponent> = {
     })
   ],
   tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-    docs: {
-      description: {
-        component: 'A success confirmation component displayed after a deposit request is completed. Shows important reminders about balance update timings and transfer processing.'
-      }
-    }
-  }
 };
 
 export default meta;

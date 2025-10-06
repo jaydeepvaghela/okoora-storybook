@@ -278,5 +278,7 @@
 <div class="d-none">
   <app-bank-account-confirmation [ccBankAccountDetails]="ccBankAccountDetails" [currency]="switchedCurrency?.currency?.code"></app-bank-account-confirmation>
 </div>
-<app-footer [footerBottom]="'auto'" *ngIf="isNonIsraeliUser"></app-footer>
+<div class="position-relative">
+  <app-footer [footerBottom]="'auto'" *ngIf="isNonIsraeliUser"></app-footer>
+</div>
 

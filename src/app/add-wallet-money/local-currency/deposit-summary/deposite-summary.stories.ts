@@ -29,14 +29,6 @@ const meta: Meta<DepositSummaryComponent> = {
     })
   ],
   tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-    docs: {
-      description: {
-        component: 'A deposit summary component that displays deposit details including amount, bank information, and transfer details.'
-      }
-    }
-  }
 };
 
 export default meta;
@@ -79,6 +71,33 @@ const createFormGroup = (fb: FormBuilder, overrides = {}) => {
   });
 };
 
+// Gold Transfer story
+export const GoldTransfer: Story = {
+  render: (args) => {
+    const fb = new FormBuilder();
+    return {
+      props: {
+        ...args,
+        localCurrencyForm: createFormGroup(fb, {
+          depositMethod: '3',
+          amount: '10,000.00',
+          depositDate: null // Add this to override depositDate for gold transfer
+        }),
+        addMoneyScreenIndex: 2,
+        onScreenIndexChange: (index: number) => console.log('Screen index changed to:', index)
+      }
+    };
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Deposit summary showing a gold transfer (no deposit date required).'
+      }
+    }
+  }
+};
+
+
 // Default story - Bank Transfer
 export const BankTransfer: Story = {
   render: (args) => {
@@ -100,32 +119,6 @@ export const BankTransfer: Story = {
     }
   }
 };
-
-// Gold Transfer story
-export const GoldTransfer: Story = {
-  render: (args) => {
-    const fb = new FormBuilder();
-    return {
-      props: {
-        ...args,
-        localCurrencyForm: createFormGroup(fb, {
-          depositMethod: '3',
-          amount: '10,000.00'
-        }),
-        addMoneyScreenIndex: 2,
-        onScreenIndexChange: (index: number) => console.log('Screen index changed to:', index)
-      }
-    };
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Deposit summary showing a gold transfer (no deposit date required).'
-      }
-    }
-  }
-};
-
 
 
 // With Error Message story

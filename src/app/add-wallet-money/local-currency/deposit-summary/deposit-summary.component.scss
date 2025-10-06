@@ -4,10 +4,18 @@
 .deposit-summary-container {
   padding-left: 67px;
   padding-right: 78px;
+  max-width: 579px;
+  width: 100%;
 
   @media screen and (max-width: 1440px) {
     padding-left: 32px;
     padding-right: 32px;
+    width: 434px;
+  }
+
+
+  @media (max-width: 479px) {
+    width: 95vw;
   }
   .title-summary {
     font-family: "Inter";

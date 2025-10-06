@@ -1,6 +1,7 @@
 @import '../../../../../../assets/scss/variable';
 ::ng-deep {
-    .policy-summary-wrap{
+    .policy-summary-wrap {
+        letter-spacing: 0;
         .btn-back{
             color:#344054;
             font-family:$he_heebo;

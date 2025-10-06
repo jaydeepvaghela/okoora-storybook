@@ -4,10 +4,17 @@
 ::ng-deep .other-currency-container {
   padding-left: 65px;
   padding-right: 59px;
+  max-width: 579px;
+  width: 100%;
 
   @media screen and (max-width: 1440px) {
     padding-left: 32px;
     padding-right: 32px;
+    width: 434px;
+  }
+
+  @media (max-width: 479px) {
+    width: 95vw;
   }
 
   .global-selection {
