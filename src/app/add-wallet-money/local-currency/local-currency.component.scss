@@ -11,12 +11,12 @@
   @media screen and (max-width: 1440px) {
     padding-left: 32px;
     padding-right: 32px;
-    width: 434px;
+    max-width: 434px;
   }
 
 
   @media (max-width: 479px) {
-    width: 95vw;
+    max-width: 95vw;
   }
 }
 
@@ -1011,6 +1011,12 @@
   @media screen and (max-width: 479px) {
     width: 300px !important;
   }
+
+  .mat-calendar-table-header th {
+    font-family: $manrope;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+  }
   .mat-calendar-content {
     padding: 0 24px 24px 24px;
 
@@ -1022,6 +1028,10 @@
 
     .mat-calendar-table-header-divider {
       display: none;
+    }
+
+    .mat-calendar-body-cell {
+      font-family: $manrope;
     }
 
     .mat-calendar-body-cell-content {

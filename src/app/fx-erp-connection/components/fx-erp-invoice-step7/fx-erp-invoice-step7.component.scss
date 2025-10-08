@@ -297,6 +297,10 @@
                     padding-right: 0;
                 }
 
+                .mat-mdc-chip-remove {
+                    min-height: auto !important;
+                }
+
                 .mat-mdc-chip {
                     background-color: transparent;
                     border-radius: 40px;

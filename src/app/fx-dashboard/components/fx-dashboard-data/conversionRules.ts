@@ -1,7 +1,7 @@
 export const getConversionRules = [
     {
         "ruleId": "f7cb9206-e836-4208-8ae6-19ab6755232a",
-        "ruleName": "Conversion ABC",
+        "ruleName": "Convert ABC",
         "executedAt": "2025-08-25T15:00:21.693",
         "sellAmount": 7.1104,
         "buyAmount": 23.0000,
@@ -15,7 +15,7 @@ export const getConversionRules = [
     },
     {
         "ruleId": "ce56dd40-0a26-4afa-a89e-2a3b688a5bc1",
-        "ruleName": "Conversion XYZ",
+        "ruleName": "Convert Doe",
         "executedAt": "2025-09-10T09:00:11.26",
         "sellAmount": 30.0441,
         "buyAmount": 100.0000,
@@ -29,7 +29,7 @@ export const getConversionRules = [
     },
     {
         "ruleId": "17838dac-3ef6-4bfc-b211-30254c941023",
-        "ruleName": "Conversion PQR",
+        "ruleName": "Convert Test",
         "executedAt": "2025-08-26T09:00:11.007",
         "sellAmount": 3.7090,
         "buyAmount": 12.0000,
@@ -43,7 +43,7 @@ export const getConversionRules = [
     },
     {
         "ruleId": "686c9b8b-79d6-4f2f-83c7-37b9de09c172",
-        "ruleName": "Conversion RPX",
+        "ruleName": "Convert John",
         "executedAt": "2025-08-25T15:00:22.76",
         "sellAmount": 7.1100,
         "buyAmount": 23.0000,
@@ -57,7 +57,7 @@ export const getConversionRules = [
     },
     {
         "ruleId": "21e097c5-0104-4324-bdc1-474ad86b7838",
-        "ruleName": "Conversion OMR",
+        "ruleName": "Convert Alex",
         "executedAt": "2025-08-28T09:00:14.467",
         "sellAmount": 0.3133,
         "buyAmount": 1.0000,
@@ -75,7 +75,7 @@ export const conversionRuleForAutoPilotList = [
     {
         "id": "f7cb9206-e836-4208-8ae6-19ab6755232a",
         "accountId": "c2213112-f2ef-4202-9f6a-db147e95b6c0",
-        "ruleName": "Conversion ABC",
+        "ruleName": "Convert Zero",
         "createdAt": "2025-08-08T12:23:31.693",
         "updatedAt": "2025-08-30T17:35:01.533",
         "status": 3,
@@ -96,7 +96,7 @@ export const conversionRuleForAutoPilotList = [
     {
         "id": "ce56dd40-0a26-4afa-a89e-2a3b688a5bc1",
         "accountId": "c2213112-f2ef-4202-9f6a-db147e95b6c0",
-        "ruleName": "Conversion XYZ",
+        "ruleName": "Convert One",
         "createdAt": "2025-09-02T05:17:54.797",
         "updatedAt": "2025-09-10T08:30:00.307",
         "status": 1,
@@ -117,7 +117,7 @@ export const conversionRuleForAutoPilotList = [
     {
         "id": "17838dac-3ef6-4bfc-b211-30254c941023",
         "accountId": "c2213112-f2ef-4202-9f6a-db147e95b6c0",
-        "ruleName": "Conversion PQR",
+        "ruleName": "Convert PQR",
         "createdAt": "2025-08-08T10:19:27.173",
         "updatedAt": "2025-08-30T17:35:01.533",
         "status": 3,

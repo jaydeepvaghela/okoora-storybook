@@ -11,7 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS, NativeDateAdapter, provideNativeDateAdapter } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { getActiveHedgingCurrency } from '../fx-dashboard-data/active-hedging-currency';
 
@@ -20,7 +20,23 @@ import { getActiveHedgingCurrency } from '../fx-dashboard-data/active-hedging-cu
   templateUrl: './manage-hedge-deals-filter.component.html',
   styleUrls: ['./manage-hedge-deals-filter.component.scss'],
   imports:[MatDialogModule,CommonModule,MatCheckboxModule,MatFormFieldModule,MatDatepickerModule,MatSelectModule,MatChipsModule,MatIconModule,ReactiveFormsModule,MatDialogModule,MatFormFieldModule,MatInputModule],
-  providers:[provideNativeDateAdapter()]
+
+  providers: [
+    provideNativeDateAdapter(),
+    // Provide MAT_DATE_FORMATS so MatDatepicker has formats
+    { provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS },
+    {
+      provide: DateAdapter,
+      useClass: class TwoLetterWeekdayNativeDateAdapter extends NativeDateAdapter {
+        // return two-letter lowercase weekday names like 'su', 'mo', 'tu'
+        override getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
+          const shortNames = super.getDayOfWeekNames('short');
+          // Map Sun -> su, Mon -> mo, etc. preserve order starting from Sunday
+          return shortNames.map(name => name.substring(0, 2));
+        }
+      }
+    }
+  ]
 
 })
 export class ManageHedgeDealsFilterComponent {

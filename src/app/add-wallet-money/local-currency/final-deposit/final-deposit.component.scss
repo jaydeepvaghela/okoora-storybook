@@ -10,7 +10,7 @@
       padding-left: 32px;
       padding-right: 32px;
       margin-top: -70px;
-      width: 434px;
+      max-width: 434px;
     }
 
     @media (max-width: 991px) {
@@ -18,7 +18,7 @@
     }
 
     @media (max-width: 479px) {
-      width: 95vw;
+      max-width: 95vw;
     }
 
     .successfully-animation-img {

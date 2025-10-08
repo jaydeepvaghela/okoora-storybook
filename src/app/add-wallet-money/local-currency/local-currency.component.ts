@@ -14,7 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CommonModule } from '@angular/common';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { allbeneficiaryData } from '../add-money-data/allbeneficiaryData';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import { provideNativeDateAdapter, NativeDateAdapter, DateAdapter, MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS } from '@angular/material/core';
 import { depositeFromLocal } from '../add-money-data/depositefromlocal';
 
 @Component({
@@ -22,7 +22,21 @@ import { depositeFromLocal } from '../add-money-data/depositefromlocal';
   templateUrl: './local-currency.component.html',
   styleUrls: ['./local-currency.component.scss'],
   imports: [FormsModule, ReactiveFormsModule, MatDatepickerModule, CommonModule, NgbTooltipModule],
-  providers: [provideNativeDateAdapter()]
+  providers: [
+    // Provide MAT_DATE_FORMATS so MatDatepicker has formats
+    { provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS },
+    {
+      provide: DateAdapter,
+      useClass: class TwoLetterWeekdayNativeDateAdapter extends NativeDateAdapter {
+        // return two-letter lowercase weekday names like 'su', 'mo', 'tu'
+        override getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
+          const shortNames = super.getDayOfWeekNames('short');
+          // Map Sun -> su, Mon -> mo, etc. preserve order starting from Sunday
+          return shortNames.map(name => name.substring(0, 2));
+        }
+      }
+    }
+  ]
 })
 export class LocalCurrencyComponent implements AfterViewInit {
   // @ViewChild(SwiperComponent) swiperComponent?: SwiperComponent;

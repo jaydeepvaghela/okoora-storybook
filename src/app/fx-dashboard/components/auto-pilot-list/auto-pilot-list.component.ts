@@ -228,30 +228,44 @@ export class AutoPilotListComponent {
   }
   changeStatus(id: any, status?: any) {
     this.showLoader = true;
-    if (status === 1) {
-      // this._connectorService.disableRuleStatus(id).subscribe({
-      //   next: (res: any) => {
-      this.showLoader = false;
-      this.getFxConversionRulesData();
-      //   },
-      //   error: (err: any) => {
-      //     console.error('Error changing status:', err);
-      //     this.showLoader = false;
-      //   }
-      // });
-      return;
-    } else if (status === 2) {
-      // this._connectorService.enableRuleStatus(id).subscribe({
-      //   next: (res: any) => {
-      this.showLoader = false;
-      this.getFxConversionRulesData();
-      //   },
-      //   error: (err: any) => {
-      //     console.error('Error changing status:', err);
-      //     this.showLoader = false;
-      //   }
-      // });
+    // Determine the new status: if currently active (1) -> disable (2), otherwise activate (1)
+    const newStatus = status === 1 ? 2 : 1;
+
+    // Update local data immediately so UI reflects the change optimistically
+    if (this.conversionData && Array.isArray(this.conversionData)) {
+      this.conversionData = this.conversionData.map((rule: any) => {
+        if (rule.id === id) {
+          return {
+            ...rule,
+            status: newStatus,
+            isPaused: newStatus !== 1
+          };
+        }
+        return rule;
+      });
     }
+
+    if (this.automationTableData && Array.isArray(this.automationTableData)) {
+      this.automationTableData = this.automationTableData.map((rule: any) => {
+        if (rule.id === id) {
+          return {
+            ...rule,
+            status: newStatus,
+            isPaused: newStatus !== 1
+          };
+        }
+        return rule;
+      });
+    }
+
+    // TODO: call backend to persist status change (enable/disable)
+    // Example:
+    // if (newStatus === 2) { this._connectorService.disableRuleStatus(id).subscribe(...)
+    // } else { this._connectorService.enableRuleStatus(id).subscribe(...)
+    // }
+
+    // Refresh or hide loader after optimistic update
+    this.showLoader = false;
   }
   deleteRule(id: any) {
     const dialogRef = this.dialog.open(DeleteConversionRuleComponent, {

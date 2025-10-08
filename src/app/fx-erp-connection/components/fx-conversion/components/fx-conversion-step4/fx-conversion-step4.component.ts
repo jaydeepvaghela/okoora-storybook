@@ -2,21 +2,19 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, AbstractControl, ValidationErrors, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepper } from '@angular/material/stepper';
-import { CustomDateAdapter, MATERIAL_DATEPICKER_FORMATS } from '../../../../../risk-dashboard/components/cashflow-exposure/components/cashflow-exposure-details/cashflow-exposure-details.component';
 
 @Component({
   selector: 'app-fx-conversion-step4',
   templateUrl: './fx-conversion-step4.component.html',
   styleUrls: ['./fx-conversion-step4.component.scss'],
   imports: [CommonModule, ReactiveFormsModule, MatRadioModule, MatCheckboxModule, MatDatepickerModule],
-   providers: [
-      { provide: DateAdapter, useClass: CustomDateAdapter, deps: [MAT_DATE_LOCALE] },
-      { provide: MAT_DATE_FORMATS, useValue: MATERIAL_DATEPICKER_FORMATS },
-    ],
+  providers: [
+    provideNativeDateAdapter()
+  ]
 })
 export class FxConversionStep4Component implements OnInit {
   @Input() stepper!: MatStepper;

@@ -49,8 +49,8 @@ const createFormGroup = (fb: FormBuilder, overrides = {}) => {
     },
     accountDetails: {
       id: '1',
-      bankNickName: 'Okoora Main Account',
-      fullName: 'Okoora Technologies Ltd.',
+      bankNickName: 'Test Account',
+      fullName: 'XYZ Technologies Ltd.',
       name: 'Bank Leumi',
       code: '10',
       branch: '900',

@@ -1,7 +1,8 @@
 @import "../../../../assets/scss/variable";
 ::ng-deep {
   .fx-erp-stepper {
-
+    padding: 26px 26px 22px 15px; 
+    background: #fff;
     .mat-horizontal-stepper-header-container {
       display: none;
     }

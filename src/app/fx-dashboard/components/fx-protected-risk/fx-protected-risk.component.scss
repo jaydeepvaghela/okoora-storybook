@@ -1,6 +1,10 @@
 @import "../../../../assets/scss/variable";
 
 ::ng-deep {
+    .cdk-overlay-pane:has(.month-select-fx-p) {
+        position: absolute !important;
+    }
+
     .protected-exposure-card {
         border-radius: 10px;
         border: 1px solid #D6DFFA;
@@ -357,7 +361,7 @@
         }
     }
 
-    .month-select-panel {
+    .month-select-fx-p {
         padding: 28px 31px 16px !important;
         top: 0;
         right: 0;

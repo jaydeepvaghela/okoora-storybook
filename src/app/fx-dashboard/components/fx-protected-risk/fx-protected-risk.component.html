@@ -2,7 +2,7 @@
     <div class="card-header">
         <div class="title">Protected vs. Exposure</div>
          <mat-select *ngIf="selectedTab === 0" [(value)]="selectedMonth"
-            class="month-select" panelClass="month-select-panel"
+            class="month-select" panelClass="month-select-fx-p"
             (selectionChange)="onMonthChange()">
                 <mat-option *ngFor="let month of next12Months" [value]="month.value">
                     {{ month.label }}

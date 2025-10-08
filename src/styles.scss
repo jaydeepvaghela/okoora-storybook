@@ -119,6 +119,10 @@ button{
   background-color: transparent !important;
 }
 
+.mat-calendar-body-selected {
+  background-color: var(--brand-primary-color) !important;
+}
+
 .mat-mdc-checkbox
   .mdc-checkbox
   .mdc-checkbox__native-control:enabled
@@ -196,6 +200,16 @@ button{
 
 .mat-mdc-checkbox .mdc-form-field {
   align-items: flex-start !important;
+}
+
+@media screen and (max-width: 1440px) {
+    .mat-mdc-tab.mdc-tab {
+      height: 38px !important;
+    }
+}
+
+.mat-mdc-chip-remove {
+  min-height: auto !important;
 }
 
 .mat-mdc-menu-panel {

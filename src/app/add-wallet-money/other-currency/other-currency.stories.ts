@@ -169,13 +169,3 @@ export const WalletTypeSelection: Story = {
     showLoader: false
   }
 };
-
-// Story showing successful wallet purchase
-export const WalletPurchaseSuccess: Story = {
-  args: {
-    isBuyWalletSuccess: true,
-    switchedCurrency: mockActiveCurrency,
-    isNonIsraeliUser: true,
-    showLoader: false
-  }
-};

@@ -273,12 +273,15 @@
       {{ coppiedItem }} copied to clipboard
     </span>
   </div>
+  <div class="position-relative">
+    <div class="footer footer-auto">
+      <p class="footer-text">By using these payment services, you agree to T&Cs <a href="https://www.airwallex.com/terms/okoora-connected-account-terms" target="_blank">here</a></p>
+    </div>
+  </div>
   <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
 </div>
 <div class="d-none">
   <app-bank-account-confirmation [ccBankAccountDetails]="ccBankAccountDetails" [currency]="switchedCurrency?.currency?.code"></app-bank-account-confirmation>
 </div>
-<div class="position-relative">
-  <app-footer [footerBottom]="'auto'" *ngIf="isNonIsraeliUser"></app-footer>
-</div>
+
 
