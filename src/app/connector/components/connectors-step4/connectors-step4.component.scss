@@ -1075,12 +1075,9 @@
                                     font-weight: 700;
                                     line-height: 16px;
 
-                                    .mat-mdc-select-value-text {
+                                    .mat-mdc-select-value-text, .mat-mdc-select-placeholder {
                                         color: #111827;
-                                    }
-
-                                    .mat-mdc-select-placeholder {
-                                        color: #111827;
+                                        letter-spacing: 0;
                                     }
                                 }
 

@@ -8,13 +8,6 @@
       <button class="add-btn" (click)="setNewRule()">
         <img src="images/connector/table_plus.svg" alt="Plus Icon" class="icon" /> </button>
     </div>
-    <!-- <div class="rule-warning-wrap" *ngIf="matchedConvertRule?.status == 3 && showMatchedConvertRule && selectedTab == 'converts'">
-      <img src="images/fx-erp/convert-want-icn.svg" alt="info" />
-      <div class="rule-desc">
-        <h4 class="title">Automation Rule Expired</h4>
-        <p class="desc"> “{{matchedConvertRule?.ruleName}}” has reached its end date and will no longer run.</p>
-      </div>
-    </div> -->
 
     <div class="rule-warning-wrap" *ngIf="latestRuleConvert && showLatestRuleConvert && selectedTab == 'converts'">
       <img src="images/fx-erp/convert-want-icn.svg" alt="info" />

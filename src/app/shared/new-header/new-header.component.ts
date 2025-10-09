@@ -39,6 +39,8 @@ export class NewHeaderComponent {
    * If true, hides the header actions (Deposit, Send payment, Convert, Lock Rate, ERP Connection) for use in Storybook WalletDropdown story.
    */
   @Input() hideHeaderActions = false;
+  @Input() isERPConnected: number | null = null;
+  @Input() erpConnectionLabel: string = '';
   @Output() openSidebar = new EventEmitter();
   maxFlaglocalStorage!: boolean;
   maxSiteName!: string | null;
@@ -73,13 +75,11 @@ export class NewHeaderComponent {
   bacdropSourceSubscription!: Subscription;
   userProfileData: any;
   userProfile$!: Observable<any>;
-  isERPConnected: any;
-  erpConnectionLabel!: string;
+  // isERPConnected and erpConnectionLabel received via @Input()
   subscription!: Subscription;
   activeWallet!: WalletBalanceListModal;
   user: any;
   unsubscribe$ = new Subject<void>();
-
 
   constructor(
     private dialog: MatDialog,
@@ -381,11 +381,12 @@ export class NewHeaderComponent {
 
   logout() {
     localStorage.setItem('isLoggedInUser', 'false');
-    this.router.navigate(['/login']);
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 1500);
   }
 
   onMakeDeposit() {
-    // Trigger the header method from this component
     this.headerCommService.triggerHeaderMethod();
   }
 

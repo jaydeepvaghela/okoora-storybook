@@ -81,8 +81,10 @@ button{
   background-color: transparent;
   border: none;
 }
+
 .sb-show-main.sb-main-padded{
     padding: 0;
+    background: none !important;
 }
 
 .mdc-list-item.mdc-list-item--with-one-line .mdc-list-item__end {
@@ -372,4 +374,49 @@ button{
     border-bottom: 1px solid var(--brand-primary-color) !important;
     top: 5px !important;
     left: 4px !important;
+}
+
+.mat-mdc-radio-button
+  .mdc-radio
+  .mdc-radio__native-control:enabled:checked
+  + .mdc-radio__background
+  .mdc-radio__outer-circle {
+  background: $white !important;
+  border: 1px solid $white !important;
+}
+ 
+.mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__inner-circle {
+  background: linear-gradient(190.53deg, var(--brand-primary-color) 2.35%, #2320e6 99.12%) !important;
+  box-shadow: 0px 4px 10px #b4b6bb !important;
+  border-color: transparent !important;
+  border-width: 0;
+}
+ 
+.mat-mdc-radio-button
+  .mdc-radio
+  .mdc-radio__native-control:enabled:not(:checked)
+  + .mdc-radio__background
+  .mdc-radio__outer-circle {
+  background: $white !important;
+  border: 1.5px solid #d9d9d9 !important;
+}
+ 
+.pick-invoice-direction-container {
+  .mat-mdc-radio-button
+    .mdc-radio
+    .mdc-radio__native-control:enabled:not(:checked)
+    + .mdc-radio__background
+    .mdc-radio__outer-circle {
+    background: $white !important;
+    border: 1px solid #6b7280 !important;
+  }
+ 
+  .mat-mdc-radio-button
+    .mdc-radio
+    .mdc-radio__native-control:enabled:checked
+    + .mdc-radio__background
+    .mdc-radio__outer-circle {
+    background: #ffffff !important;
+    border: 1px solid #000 !important;
+  }
 }

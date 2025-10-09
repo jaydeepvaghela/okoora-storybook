@@ -76,9 +76,6 @@ const meta: Meta<CloseDealComponent> = {
       ]
     })
   ],
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {}, // Remove data from args
 };
 export default meta;

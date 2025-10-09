@@ -4,6 +4,9 @@
     .close-deal-sec {
         padding: 43px 48px 24px 63px;
         font-family: $he_heebo;
+        max-width: 506px;
+        width: 100%;
+        position: relative;
 
         @media screen and (max-width:1024px) {
             padding:25px;
