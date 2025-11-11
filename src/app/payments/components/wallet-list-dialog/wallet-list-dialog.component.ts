@@ -34,6 +34,7 @@ export class WalletListDialogComponent {
     this.walletCurrencies = this.data?.walletList;
     this.subSite = localStorage.getItem('subSite');
     this.changeSearch();
+    console.log('walletCurrencies', this.data.selectedWallet);
   }
 
   private _filter(value: string): any[] {

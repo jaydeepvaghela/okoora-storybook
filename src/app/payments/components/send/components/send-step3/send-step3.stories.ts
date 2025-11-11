@@ -407,10 +407,10 @@ const mockActiveCurrency: any = [
             "flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png",
             "currencyName": null
         },
-        "wallet_Amount": -3125.23,
+        "wallet_Amount": 3125.23,
         "wallet_Credit": null,
         "wallet_IsBaseCurency": true,
-        "wallet_Available": -3125.23,
+        "wallet_Available": 3125.23,
         "wallet_Flag": "https://okoora-stage-api2023.azurewebsites.net/Images/Flags/ILS.png",
         "wallet_Collateral": 31093.46,
         "wallet_CreditCollateral": null,

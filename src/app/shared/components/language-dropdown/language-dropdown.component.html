@@ -1,0 +1,17 @@
+<div class="lang-wrapper">
+    <button type="button" class="drop-down-btn lang-btn" id="dropdownForm2" (click)="toggleDropdown()">
+        <img src="images/fx-dashboard/new-globe-icn.svg" alt="language icon">
+    </button>
+    <div class="side-nav-wrapper language-wrapper animated fadeIn py-2 px-2" *ngIf="isOpen">
+        <ul class="list-style-none d-flex w-100 p-0 m-0 flex-column">
+            <li [ngClass]="!isNonIsraeliUsers ? 'mb-2':''">
+                <button class="btn-1 px-3 drop-down-btn w-100" [ngClass]="{'alter': language !== 'he'}"
+                    (click)="useLanguage('en')" id="lang-list-1">English</button>
+            </li>
+            <li [hidden]="isNonIsraeliUsers">
+                <button class="btn-1 px-3 drop-down-btn w-100"  [ngClass]="{'alter': language !== 'en'}"
+                    (click)="useLanguage('he')" id="lang-list-2">עברית</button>
+            </li>
+        </ul>
+    </div>
+</div>

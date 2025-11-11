@@ -6187,7 +6187,7 @@ export const AccountTransactionsData = [
         "currencyBalance": {
             "eurBalance": 5.82,
             "usdBalance": 94125.28,
-            "ilsBalance": -3125.23,
+            "ilsBalance": 3125.23,
             "gbpBalance": -2.0,
             "aedBalance": 0.0,
             "audBalance": 98045.66,
@@ -6247,7 +6247,7 @@ export const AccountTransactionsData = [
         },
         "profieLoss": null,
         "moneyReceived": {
-            "readyToUse": -3125.23,
+            "readyToUse": 3125.23,
             "exchangeRate": 3.3833,
             "amount": 100.0,
             "currency": {
@@ -6297,7 +6297,7 @@ export const AccountTransactionsData = [
         "currencyBalance": {
             "eurBalance": 5.82,
             "usdBalance": 94159.84,
-            "ilsBalance": -3125.23,
+            "ilsBalance": 3125.23,
             "gbpBalance": -2.0,
             "aedBalance": 0.0,
             "audBalance": 98045.66,
@@ -6357,7 +6357,7 @@ export const AccountTransactionsData = [
         },
         "profieLoss": null,
         "moneyReceived": {
-            "readyToUse": -3125.23,
+            "readyToUse": 3125.23,
             "exchangeRate": 3.3904,
             "amount": 100.0,
             "currency": {
@@ -6464,7 +6464,7 @@ export const AccountTransactionsData = [
         "currencyBalance": {
             "eurBalance": 5.82,
             "usdBalance": 94189.33,
-            "ilsBalance": -3125.23,
+            "ilsBalance": 3125.23,
             "gbpBalance": -2.0,
             "aedBalance": 0.0,
             "audBalance": 98045.66,
@@ -6558,7 +6558,7 @@ export const AccountTransactionsData = [
         "currencyBalance": {
             "eurBalance": 17.0,
             "usdBalance": 94177.34,
-            "ilsBalance": -3125.23,
+            "ilsBalance": 3125.23,
             "gbpBalance": -2.0,
             "aedBalance": 0.0,
             "audBalance": 98097.49,
@@ -6618,7 +6618,7 @@ export const AccountTransactionsData = [
         },
         "profieLoss": null,
         "moneyReceived": {
-            "readyToUse": -3125.23,
+            "readyToUse": 3125.23,
             "exchangeRate": 2.2706,
             "amount": 100.0,
             "currency": {
@@ -6668,7 +6668,7 @@ export const AccountTransactionsData = [
         "currencyBalance": {
             "eurBalance": 17.0,
             "usdBalance": 94177.34,
-            "ilsBalance": -3125.23,
+            "ilsBalance": 3125.23,
             "gbpBalance": -2.0,
             "aedBalance": 0.0,
             "audBalance": 98149.32,
@@ -6728,7 +6728,7 @@ export const AccountTransactionsData = [
         },
         "profieLoss": null,
         "moneyReceived": {
-            "readyToUse": -3125.23,
+            "readyToUse": 3125.23,
             "exchangeRate": 2.2706,
             "amount": 100.0,
             "currency": {
@@ -6778,7 +6778,7 @@ export const AccountTransactionsData = [
         "currencyBalance": {
             "eurBalance": 17.0,
             "usdBalance": 94177.34,
-            "ilsBalance": -3125.23,
+            "ilsBalance": 3125.23,
             "gbpBalance": -2.0,
             "aedBalance": 0.0,
             "audBalance": 98045.66,
@@ -6838,7 +6838,7 @@ export const AccountTransactionsData = [
         },
         "profieLoss": null,
         "moneyReceived": {
-            "readyToUse": -3125.23,
+            "readyToUse": 3125.23,
             "exchangeRate": 2.2706,
             "amount": 100.0,
             "currency": {

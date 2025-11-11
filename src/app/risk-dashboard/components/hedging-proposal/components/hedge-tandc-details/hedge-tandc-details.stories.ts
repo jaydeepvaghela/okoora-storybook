@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/materia
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 const meta: Meta<HedgeTandcDetailsComponent> = {
-    title: 'Components/Risk-Manager/hedge-tandc-details',
+    title: 'Risk Manager/Risk Manager Dashboard/Hedge Terms With Condition',
     component: HedgeTandcDetailsComponent,
     argTypes: {
         disclosureContent: {

@@ -1,0 +1,356 @@
+@import '../../../../assets/scss/variable';
+@import '../../../../assets/scss/mixins';
+
+.deposit-summary-container {
+  padding-left: 67px;
+  padding-right: 78px;
+  max-width: 579px;
+  width: 100%;
+
+  @media screen and (max-width: 1440px) {
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: 434px;
+  }
+
+
+  @media (max-width: 479px) {
+    max-width: 95vw;
+  }
+  .title-summary {
+    font-family: "Inter";
+    font-size: 26px;
+    line-height: 16px;
+    color: #6b7280;
+    font-weight: 700;
+    margin-bottom: 40px;
+    line-height: 16px;
+
+    @media screen and (max-width: 1440px) {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 479px) {
+      font-size: 18px;
+    }
+  }
+
+  .request-deposit {
+    h5 {
+      font-family: "Heebo";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      color: #4b5563;
+      line-height: 20px;
+      margin-bottom: 0;
+      @media screen and (max-width: 1440px) {
+        font-size: 14px;
+      }
+    }
+
+    .deposit-amount {
+      label {
+        font-family: "Inter";
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        color: #d1d5db;
+        line-height: 40px;
+
+        @media screen and (max-width: 1440px) {
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+
+      .amount-country {
+        gap: 10px;
+
+        span {
+          font-family: "Heebo";
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 500;
+
+          @media screen and (max-width: 1440px) {
+            font-size: 16px;
+          }
+
+          @media screen and (max-width: 479px) {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .dashed-line {
+      border: 1px dashed #d1d5db;
+      display: flex;
+      margin: 16px 0;
+    }
+  }
+
+  .request-gold {
+    h5 {
+      font-family: "Heebo";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      color: #4b5563;
+      margin-bottom: 0;
+      line-height: 20px;
+
+      @media screen and (max-width: 1440px) {
+        font-size: 14px;
+        line-height: 12px;
+      }
+    }
+
+    .amount-tick {
+      img {
+        width: 26px;
+        height: 26px;
+
+        @media screen and (max-width: 1440px) {
+          width: 22px;
+          height: 22px;
+        }
+
+        @media screen and (max-width: 479px) {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .deposit-gold {
+      label {
+        font-family: "Heebo";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        color: #9ca3af;
+        line-height: 16px;
+
+        @media screen and (max-width: 1440px) {
+          font-size: 13px;
+        }
+      }
+    }
+
+    .dashed-line {
+      border: 1px dashed #d1d5db;
+      display: flex;
+      margin: 16px 0;
+    }
+  }
+
+  .deposit-date {
+    h5 {
+      font-family: "Heebo";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      color: #4b5563;
+      margin-bottom: 0;
+      line-height: 20px;
+
+      @media screen and (max-width: 1440px) {
+        font-size: 14px;
+      }
+    }
+
+    .deposit-amount {
+      label {
+        font-family: "Inter";
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        color: #d1d5db;
+        line-height: 40px;
+
+        @media screen and (max-width: 1440px) {
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+    }
+
+    .dashed-line {
+      border: 1px dashed #d1d5db;
+      display: flex;
+      margin: 16px 0;
+    }
+  }
+
+  .bank-detail {
+    margin-top: 29px;
+    margin-bottom: 41px;
+    @media screen and (max-width: 1440px) {
+      margin-top: 22px;
+      margin-bottom: 32px;
+    }
+    h5 {
+      font-family: "Heebo";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      color: #4b5563;
+      margin-bottom: 0;
+
+      @media screen and (max-width: 1440px) {
+        font-size: 14px;
+      }
+    }
+
+    .deposit-amount {
+      label {
+        font-family: "Inter";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        color: #9ca3af;
+      }
+    }
+
+    .dashed-line {
+      border: 1px dashed #d1d5db;
+      display: flex;
+      margin-top: 30px;
+    }
+
+    .detail-row {
+      @include flex(flex-start, flex-start, row);
+      img.icon-label {
+        width: 20px;
+        height: 20px;
+      }
+      .row-text {
+        padding-left: 10px;
+        @include flex(flex-start, flex-start, column);
+        .label {
+          color: #4B5563;
+          font-family: 'Heebo';
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 20px;
+          @media screen and (max-width: 1440px) {
+            font-size: 15px;
+            line-height: 18px;
+          }
+        }
+        .value {
+          color: #6B7280;
+          font-family: $inter;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          @media screen and (max-width: 1440px) {
+            font-size: 13px;
+            line-height: 18px;
+          }
+        }
+        .text-wrapper {
+          @include flex(flex-start, flex-start, row);
+          .value {
+            padding-right: 13px;
+          }
+          .copy-btn {
+            width: 16px;
+            height: 18px;
+            background-image: url(../../../../assets/images/copy-icon-dark-blue.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-top: -4px;
+          }
+        }
+      }
+    }
+    .down-arrow {
+      width: 15px;
+      height: 28px;
+      margin-top: 8px;
+      margin-bottom: 29px;
+      text-align: left;
+      @media screen and (max-width: 1440px) {
+        margin-bottom: 20px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .footer-note {
+    text-align: center;
+    margin-bottom: 0;
+    font-family: 'Heebo';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #6B7280;
+  }
+
+  .next-btn {
+    .next {
+      margin-top: 21px;
+      width: 100%;
+      padding: 20px 0;
+      font-family: "Heebo";
+      color: #fff;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      border-radius: 100px;
+      background: var(--dark-blue-primary);
+
+      @media screen and (max-width: 1440px) {
+        padding: 0;
+        margin-top: 14px;
+        font-size: 13px;
+        height: 40px;
+      }
+    }
+
+    .next:disabled {
+      color: #9ca3af;
+      background: #f3f4f6;
+      img {
+        filter: contrast(0.5);
+      }
+    }
+  }
+}
+
+.copied-snackbar {
+  border-radius: 5px;
+  background: rgba(17, 24, 39, 0.5);
+  padding: 16px 30px 16px 50px;
+  margin: 0 70px;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: 42%;
+  @media screen and (max-width: 1440px) {
+    padding: 8px 8px 8px 8px;
+    margin: 0 48px;
+  }
+
+  .copied-msg {
+    font-family: "Inter";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    color: #fff;
+  }
+}
+
+.error-msg {
+  color: $error-msg-text;
+  font-size: $font-12;
+  line-height: 18px;
+  font-weight: bold;
+}

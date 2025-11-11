@@ -1,0 +1,212 @@
+@import "../../../../assets/scss/variable";
+
+::ng-deep {
+  .fx-notification-drawer {
+    border-radius: 20px;
+  }
+
+  .notification-container {
+    padding: 43px 16px 16px 33px;
+    background-color: #fff;
+
+    @media screen and (max-width:1440px) {
+      padding: 20px;
+    }
+
+    .notification-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 0 0 7px;
+
+      &-title {
+        .title {
+          margin: 0 0 3px;
+          color: $black;
+          font-family: $inter;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 120%;
+
+          @media screen and (max-width:767px) {
+            font-size: 16px;
+          }
+        }
+
+        .desc {
+          color: #6B7280;
+          font-family: $he_heebo;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+          margin: 0;
+
+          @media screen and (max-width:767px) {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .close-menu {
+        position: absolute;
+        top: 19px;
+        right: 23px;
+        padding: 0;
+        width: auto;
+        height: auto;
+
+        &:hover {
+          background-color: transparent;
+        }
+
+        @media screen and (max-width:767px) {
+          top: 10px;
+          right: 10px;
+        }
+      }
+    }
+
+    .notification-filter {
+      display: flex;
+      align-items: center;
+      margin: 37px 0 0;
+      padding: 12px 16px;
+      gap: 8px;
+
+      @media screen and (max-width:1440px) {
+        margin: 20px 0 0;
+      }
+
+      @media screen and (max-width:767px) {
+        padding: 10px 12px;
+        margin: 10px 0 0;
+      }
+
+      .label {
+        color: #1A1F36;
+        font-family: $inter;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+      }
+
+      .mat-mdc-select.notification-select {
+        width: auto;
+        min-width: 56px;
+        .mat-mdc-select-trigger {
+          .mat-mdc-select-value {
+            .mat-mdc-select-value-text {
+              .mat-mdc-select-min-line {
+                color: #9EA0AA;
+                font-family: $inter;
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 18px;
+              }
+            }
+          }
+
+          .mat-mdc-select-arrow-wrapper {
+            .mat-mdc-select-arrow {
+              background: url(../../../../assets/images/fx-dashboard/down-arrow.svg) center no-repeat;
+              background-size: contain;
+              width: 10px;
+              height: 100%;
+              position: relative;
+
+              svg {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .notification-list {
+      .notification-item {
+        padding: 16px;
+        border-bottom: 1px solid #E4E8EE;
+        display: flex;
+        gap: 16px;
+        max-width: 440px;
+
+        @media screen and (max-width:767px) {
+          padding: 10px 12px;
+          gap: 10px;
+        }
+
+        .notification-icon {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 7px;
+          color: white;
+
+          &.fx-alert-icon {
+            background: radial-gradient(77.78% 77.78% at 50% 50%, #FFD21D 0%, #FFF4C6 100%);
+          }
+
+          &.opportunity-icon {
+            background: radial-gradient(77.78% 77.78% at 50% 50%, #4F85FA 0%, #9DD3FF 100%);
+          }
+
+          &.new-idea-icon {
+            background: radial-gradient(77.78% 77.78% at 50% 50%, #47DB02 0%, #A8FF80 100%);
+          }
+        }
+
+        .notification-content {
+          .notification-title {
+            color: #1A1F36;
+            font-family: $he_heebo;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 20px;
+          }
+
+          .notification-text {
+            color: #1A1F36;
+            font-family: $he_heebo;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 20px;
+          }
+
+          .notification-time {
+            margin: 8px 0 0 -6px;
+            color: #A5ACB8;
+            font-family: $he_heebo;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 18px;
+
+            @media screen and (max-width:767px) {
+              margin: 6px 0 0 -4px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .notification-select-panel {
+    top: 0;
+    right: 0;
+
+    .mat-mdc-option {
+      padding: 5px;
+      min-height: auto;
+
+      .mdc-list-item__primary-text {
+        color: #000;
+        font-family: $he_heebo;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+      }
+    }
+  }
+}

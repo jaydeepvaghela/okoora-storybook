@@ -1,0 +1,17 @@
+<div class="add-funds-container">
+  <div class="add-fund-inner">
+    <h2 class="title">Add Funds to Proceed</h2>
+
+    <div class="funds-icon-wrapper">
+      <img src="images/connector/add-fund-image.svg" alt="Money Icon" class="funds-icon" />
+    </div>
+
+    <p class="add-amount-text">Add {{missingFundsData?.collateralCurrencySign}}{{missingFundsData?.missingCollateralAmount}} to
+      Start Protection</p>   
+
+    <!-- <p class="add-amount-text">Add $4,940.00 to Start Protection</p> -->
+    <p class="amount-held">This amount will be held, not spent.</p>
+  </div>
+
+  <button class="launch-button" (click)="addMoney()">Add Funds to Launch</button>
+</div>

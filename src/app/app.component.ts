@@ -1,12 +1,15 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./risk-dashboard/components/header/header.component";
 import { SidebarComponent } from "./risk-dashboard/components/sidebar/sidebar.component";
 import { CommonModule } from '@angular/common';
+import { of, take } from 'rxjs';
+import { user } from './contacts-dashboard/components/contacts-data/userData';
+import { NewHeaderComponent } from './shared/new-header/new-header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, SidebarComponent, CommonModule],
+  imports: [RouterOutlet, NewHeaderComponent, SidebarComponent, CommonModule],
   templateUrl:'app.component.html',
   styleUrl:'app.component.scss',
 })
@@ -15,6 +18,7 @@ export class AppComponent {
   @Input() ShowDashboard: boolean = false;
   @Input() Showhedging: boolean = false;
   @Input() showCashflowExposure: boolean = false;
+  @Input() selectedTheme: string = '';
   isLoggedInUser!: string | null;
   
   constructor(private router: Router) {}
@@ -27,7 +31,26 @@ export class AppComponent {
     if (!this.isLoggedInUser) {
       this.router.navigate(['/login']);
     } else {
-      this.router.navigate(['/main-dashboard']);
+      of(user).pipe(take(1)).subscribe((res: any) => {
+        localStorage.setItem('user', JSON.stringify(res)); 
+      });
+      this.router.navigate(['/fx-dashboard']);
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedTheme']) {
+      this.applyTheme(changes['selectedTheme'].currentValue);
+    }
+  }
+
+  private applyTheme(theme: string) {
+    const root = document.documentElement;
+
+    root.classList.remove('theme-max', 'theme-wrap', 'theme-default');
+
+    if (theme) {
+      root.classList.add(theme);
     }
   }
 

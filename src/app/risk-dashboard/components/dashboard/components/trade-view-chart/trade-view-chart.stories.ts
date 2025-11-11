@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { TradeViewChartComponent } from "./trade-view-chart.component";
 
 const meta: Meta<TradeViewChartComponent> = {
-    title: 'Components/Risk-Manager/Trade-View-Chart',
+    title: 'Risk Manager/Risk Manager Dashboard/Trade View Chart',
     component: TradeViewChartComponent,
     argTypes: {
         firstCurrency: {

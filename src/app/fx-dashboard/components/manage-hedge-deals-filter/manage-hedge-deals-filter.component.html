@@ -1,0 +1,152 @@
+<div class="deals-filters-container">
+  <div class="header">
+    <h2 class="title">Deals filters</h2>
+  </div>
+  <button type="button" class="close-btn" (click)="closeFilters()">
+    <img src="images/fx-erp/erp-close-icn.svg" alt="close-icon" />
+  </button>
+  <div class="filter-input-wrap">
+    <form *ngIf="dealsFilterForm && dealsFilterForm.controls && (dealsFilterForm.controls | keyvalue).length" [formGroup]="dealsFilterForm">
+      <!-- Deal Type -->
+      <div class="deal-type">
+        <div class="title">Deal type</div>
+        <div class="deal-wrap">
+          <mat-checkbox class="deal-type-box"
+            *ngFor="let dt of dealTypes"
+            [checked]="dealsFilterForm.value.dealType.includes(dt.value)"
+            (change)="onDealTypeCheckboxChange($event, dt.value)">
+            {{ dt.label }}
+          </mat-checkbox>
+        </div>
+      </div>
+      <hr>
+       <!-- Trade Date -->
+      <div class="date-range trade">
+        <div class="title">Trade date</div>
+        <div class="date-wrap">
+          <mat-form-field>
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="tradeFromPicker" formControlName="tradeDateFrom">
+            <mat-datepicker-toggle id="custom-calender-id" matIconSuffix [for]="tradeFromPicker"></mat-datepicker-toggle>
+            <mat-datepicker #tradeFromPicker [calendarHeaderComponent]="customCalendarHeader" panelClass="payment-dashboard-calendar">
+              <mat-datepicker-actions>
+                <button class="payment-calendar-apply-date-pc" id="paymentCalenderApplyDate" matDatepickerApply>Apply</button>
+                <button class="payment-calendar-close-date-pc" id="paymentCalenderCloseDate" matDatepickerCancel><img src="../../../../images/close-wallet-icon.svg"></button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+
+          <span class="date-separator">
+            <img src="../../../../images/fx-dashboard/right-arrow.svg">
+          </span>
+
+          <mat-form-field>
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="tradeToPicker" formControlName="tradeDateTo">
+            <mat-datepicker-toggle id="custom-calender-id" matIconSuffix [for]="tradeToPicker"></mat-datepicker-toggle>
+            <mat-datepicker #tradeToPicker [calendarHeaderComponent]="customCalendarHeader" panelClass="payment-dashboard-calendar">
+              <mat-datepicker-actions>
+                <button class="payment-calendar-apply-date-pc" id="paymentCalenderApplyDate" matDatepickerApply>Apply</button>
+                <button class="payment-calendar-close-date-pc" id="paymentCalenderCloseDate" matDatepickerCancel><img src="../../../../images/close-wallet-icon.svg"></button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Expiry Date -->
+      <div class="date-range">
+        <div class="title">Expiry date</div>
+        <div class="date-wrap">
+          <mat-form-field>
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="expiryFromPicker" formControlName="expiryDateFrom">
+            <mat-datepicker-toggle id="custom-calender-id" matIconSuffix [for]="expiryFromPicker"></mat-datepicker-toggle>
+            <mat-datepicker #expiryFromPicker [calendarHeaderComponent]="customCalendarHeader" panelClass="payment-dashboard-calendar">
+              <mat-datepicker-actions>
+                <button class="payment-calendar-apply-date-pc" id="paymentCalenderApplyDate" matDatepickerApply>Apply</button>
+                <button class="payment-calendar-close-date-pc" id="paymentCalenderCloseDate" matDatepickerCancel><img src="../../../../images/close-wallet-icon.svg"></button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+
+          <span class="date-separator"><img src="../../../../images/fx-dashboard/right-arrow.svg"></span>
+
+          <mat-form-field>
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="expiryToPicker" formControlName="expiryDateTo">
+            <mat-datepicker-toggle id="custom-calender-id" matIconSuffix [for]="expiryToPicker"></mat-datepicker-toggle>
+            <mat-datepicker #expiryToPicker [calendarHeaderComponent]="customCalendarHeader" panelClass="payment-dashboard-calendar">
+              <mat-datepicker-actions>
+                <button class="payment-calendar-apply-date-pc" id="paymentCalenderApplyDate" matDatepickerApply>Apply</button>
+                <button class="payment-calendar-close-date-pc" id="paymentCalenderCloseDate" matDatepickerCancel><img src="../../../../images/close-wallet-icon.svg"></button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <hr>
+      <!-- Currencies -->
+      <div class="currency-sec">
+        <div class="title">Currencies</div>
+        <div class="subtitle">You can select one or more</div>
+        <!-- <mat-select class="currency-select" placeholder="Select" multiple formControlName="currencies"
+          panelClass="curr-panel">
+          <mat-option *ngFor="let currency of walletList" [value]="currency">
+            {{ currency?.currency?.code }}
+          </mat-option>
+        </mat-select> -->
+        <mat-select #invoiceCurrencySelect id="invoice-currency" multiple formControlName="currencies"
+          placeholder="Select" class="currency-search-input" placeholder="Select currencies"
+          panelClass="currency-filter-dropdown">
+          <mat-select-trigger>
+            <mat-chip-set>
+              <mat-chip *ngFor="let code of dealsFilterForm.value.currencies" [removable]="true">
+                {{ code }}
+                <mat-icon matChipRemove id="cancelCurrencyTFDid" (click)="removeCurrency(code)">cancel</mat-icon>
+              </mat-chip>
+              <!-- <mat-chip *ngIf="dealsFilterForm.value.currencies.length > 5" class="more-chip">
+                ...
+              </mat-chip> -->
+            </mat-chip-set>
+          </mat-select-trigger>
+
+          <div class="mat_option_wrap">
+            <p class="select-currency">Select currencies</p>
+            <mat-option *ngFor="let currency of filteredCurrencies | async" [value]="currency?.currency?.code" id="{{ currency?.currency?.code }}">
+              <span class="currency" id="currencyCode">{{ currency?.currency?.code }}</span>
+              <img class="currency-flag" id="flag" [src]="currency?.flag" [alt]="currency?.currency?.code" />
+            </mat-option>
+          </div>
+          <div class="select-footer">
+            <button class="set-btn" id="setBtn" (click)="invoiceCurrencySelect.close()">
+              Select 
+            </button>
+          </div>
+        </mat-select>
+      </div>
+      <hr>
+      <!-- Hedge Status -->
+      <div class="hedge-status-wrap">
+        <div class="hedge-info">
+          <div class="title">Hedge status</div>
+          <div class="subtitle">You can select one or more</div>
+        </div>
+        <div class="status-option">
+          <mat-checkbox class="status-box"
+            *ngFor="let hs of hedgeStatuses"
+            [checked]="dealsFilterForm.value.hedgeStatus.includes(hs.value)"
+            (change)="onHedgeStatusChange($event, hs.value)">
+            {{ hs.label }}
+          </mat-checkbox>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button class="btn-clear" type="button" (click)="clearAll()">Clear all</button>
+        <button class="btn-save" type="button" (click)="applyFilters()">Save View</button>
+      </div>
+    </form>
+  </div>
+</div>

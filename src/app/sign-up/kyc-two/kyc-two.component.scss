@@ -6,8 +6,8 @@
     }
     
     .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background{
-        border-color: #2947F2 !important;
-        background-color: #2947F2 !important;
+        border-color: var(--light-blue) !important;
+        background-color: var(--light-blue) !important;
     }
     
     .mat-ripple,.mdc-checkbox__ripple{

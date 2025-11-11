@@ -159,7 +159,7 @@
 
                 .mdc-linear-progress__bar-inner {
                     border-top-width: 3px;
-                    border-color: #1D4ED8;
+                    border-color: var(--primary-blue);
                     left: 0;
                 }
             }
@@ -185,7 +185,7 @@
                     width: 13px;
                     height: 13px;
                     border-radius: 50%;
-                    border: 2px solid #1D4ED8;
+                    border: 2px solid var(--primary-blue);
                     background-color: $white;
                     content: "";
                     position: absolute;
@@ -197,7 +197,7 @@
                 }
 
                 &.activeMenu {
-                    color: #1D4ED8;
+                    color: var(--primary-blue);
                     font-weight: 700;
 
                     &:before {
@@ -206,7 +206,7 @@
                 }
 
                 &.visited {
-                    color: #1D4ED8;
+                    color: var(--primary-blue);
                 }
 
             }

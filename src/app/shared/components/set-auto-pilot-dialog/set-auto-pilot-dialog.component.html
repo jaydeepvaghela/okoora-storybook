@@ -1,0 +1,45 @@
+<div class="setErp-wrap">
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <button mat-dialog-close class="close-btn" (click)="closeModal()">
+            <img src="images/fx-dashboard/celebrate-close-icn.svg">
+        </button>
+        <div class="banner-content">
+            <h2 class="title">You're all set!</h2>
+        </div>
+        <img src="images/fx-dashboard/celebrate-icn.png" class="celebrate-icn">
+    </div>
+
+    <!-- Main Content -->
+    <div class="auto-pilot-content">
+        <p class="desc">
+            <strong>Activate Auto-Pilot to save time and protect your cash flow, automatically.</strong>
+            With Auto-Pilot, you can:
+        </p>
+
+        <div class="features">
+            <div class="feature">
+                <img class="icon" src="../../../../images/fx-dashboard/shield-outline.svg" alt="lock">
+                <h3 class="title">Automatically protect your invoices and bills</h3>
+            </div>
+            <div class="feature">
+                <img class="icon" src="../../../../images/fx-dashboard/flow-arrow-fill.svg" alt="lock">
+                <h3 class="title">Set up smart<br> currency conversions</h3>
+            </div>
+            <div class="feature">
+                <img class="icon" src="../../../../images/fx-dashboard/heart-outline-rounded.svg" alt="lock">
+                <h3 class="title">Just monitor<br> we handle the rest.</h3>
+            </div>
+        </div>
+
+        <p class="footer-note">
+            Start today, or stay manual. You’re always in control
+        </p>
+
+        <div class="actions">
+            <button class="btn-set" (click)="setAutoPilot()">Set
+                Auto-Pilot</button>
+            <button mat-dialog-close (click)="closeModal()" class="cancel">Not now</button>
+        </div>
+    </div>
+</div>

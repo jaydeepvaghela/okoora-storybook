@@ -1,0 +1,152 @@
+<div class="fx-rules-container loader-wrapper">
+    <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+    <div class="fx-rules-wrapper">
+        <div class="auto-switch" *ngIf="tabindex === 0">
+            <span class="auto-label">{{ isAutomatedHedging ? 'Pause' : 'Play' }} automations </span>
+            <mat-slide-toggle id="toggle-auto-protect" [checked]="isAutomatedHedging"
+                (change)="onAutoProtectToggle($event)"></mat-slide-toggle>
+        </div>
+        <mat-tab-group [(selectedIndex)]="tabindex">
+            <mat-tab label="Exposures">
+                <div class="card-wrap" *ngIf="automationTableData && automationTableData.length > 0">
+                    <div class="rule-card" *ngFor="let rule of automationTableData">
+                        <div class="rule-icon">
+                            <img src="images/fx-dashboard/invoice-list-icn.svg" alt="Icon" />
+                        </div>
+                        <div class="rule-content">
+                            <div class="rule-inner">
+                                <h3 class="rule-title">{{rule.ruleType == 'Invoice' ? 'Invoices & Bills' : 'Cashflow'}}
+                                </h3>
+                                <div class="detail-wrap" *ngIf="rule.ruleType == 'Invoice'">
+                                    <div class="rule-detail"><strong>Currencies:</strong> {{
+                                        rule.invoiceBillCurrencies?.slice(0,
+                                        3).join(' | ') }}
+                                        <span *ngIf="rule.invoiceBillCurrencies?.length > 2" class="tag"
+                                            matTooltipPosition="above"
+                                            [matTooltip]="rule.invoiceBillCurrencies.slice(3).join(' | ')">+{{rule.invoiceBillCurrencies?.length
+                                            - 3}}</span>
+                                    </div>
+                                    <div class="rule-detail"><strong>Amount range:</strong>
+                                      <span *ngIf="rule.invoiceBillMinExposureAmount && rule.invoiceBillMaxExposureAmount">
+                                        ${{rule.invoiceBillMinExposureAmount | number:'1.0-0'}} -
+                                        ${{rule.invoiceBillMaxExposureAmount | number:'1.0-0'}}
+                                      </span>
+                                       <span *ngIf="!rule.invoiceBillMinExposureAmount && !rule.invoiceBillMaxExposureAmount">
+                                        --
+                                      </span>
+                                    </div>
+                                    <div class="rule-detail"><strong>Terms due date:</strong>
+                                        {{rule.invoiceBillMaxDuePeriod}}</div>
+                                    <div class="rule-detail">
+                                        <strong>Excluded vendors:</strong>
+                                        {{ rule.invoiceBillBlacklist?.length > 0 ? rule.invoiceBillBlacklist?.slice(0,
+                                        2).join(' , ') : '--'}}
+                                        <span *ngIf="rule.invoiceBillBlacklist?.length > 2" class="tag"
+                                            [matTooltip]="rule.invoiceBillBlacklist.slice(2).join(' | ')"
+                                            matTooltipPosition="above">
+                                            +{{ rule.invoiceBillBlacklist.length - 2 }}
+                                        </span>
+                                    </div>
+
+                                    <div class="rule-detail"><strong>Invoices type:</strong>
+                                        {{directionTypeMap[rule.directionType]}}</div>
+                                </div>
+                                <div class="detail-wrap" *ngIf="rule.ruleType == 'Cashflow'">
+                                    <div class="rule-detail"><strong>Currencies:</strong> {{
+                                        rule.cashflowCurrencies?.slice(0,
+                                        3).join(' | ') }}
+                                        <span *ngIf="rule.cashflowCurrencies?.length > 2" class="tag"
+                                            matTooltipPosition="above"
+                                            [matTooltip]="rule.cashflowCurrencies.slice(3).join(' | ')">+{{rule.cashflowCurrencies?.length
+                                            - 3}}</span>
+                                    </div>
+                                    <div class="rule-detail"><strong>Amount range:</strong>
+                                        <span *ngIf="rule.cashflowMinExposureAmount && rule.cashflowMaxExposureAmount">
+                                          ${{rule.cashflowMinExposureAmount | number:'1.0-0'}} -
+                                          ${{rule.cashflowMaxExposureAmount | number:'1.0-0'}}
+                                        </span>
+                                        <span *ngIf="!rule.cashflowMinExposureAmount && !rule.cashflowMaxExposureAmount">
+                                          --
+                                        </span>
+                                    </div>
+                                    <div class="rule-detail"><strong>Terms due date:</strong>
+                                        {{rule.cashflowMaxDuePeriod}}
+                                    </div>
+                                    <div class="rule-detail">
+                                        <strong>Excluded vendors:</strong>
+                                        -
+                                    </div>
+
+                                    <div class="rule-detail"><strong>Invoices type:</strong>
+                                        {{directionTypeMap[rule.directionType]}}</div>
+                                </div>
+                            </div>
+                            <div class="rule-actions">
+                                <button class="action-btn" (click)="editRule()"><img
+                                        src="images/fx-dashboard/edit-icn.svg" alt="Icon" /></button>
+                                <button class="action-btn" (click)="redirectToExposureTable('')"><img
+                                        src="images/fx-dashboard/redirect-icn.svg" alt="Icon" /></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Converts" *ngIf="isIsraeliUser">
+                <div class="card-wrap" *ngIf="conversionData && conversionData.length > 0">
+                    <ng-container *ngFor="let rule of conversionData">
+                        <div class="rule-card convert-card">
+                            <div class="rule-icon" [ngClass]="ruleStatus(rule?.status)">
+                                <img src="images/fx-dashboard/blue-convert-icn.svg" *ngIf="rule.status !== 3 && rule.status !== 5" alt="Icon" />
+                                <img src="images/fx-dashboard/red-convert-icn.svg" *ngIf="rule.status == 3" alt="Icon" />
+                                <img src="images/fx-dashboard/yellow-convert-icn.svg" *ngIf="rule.status == 5" alt="Icon" />
+                            </div>
+                            <div class="rule-content">
+                                <div class="rule-inner" [ngClass]="[ruleStatus(rule?.status), getRuleInnerClasses(rule)]">
+                                    <h3 class="rule-title"><span class="title-name">{{rule.ruleName}}</span> <span *ngIf="rule?.status == 3" class="expired-tag">Expired</span> <span *ngIf="rule?.status == 5" class="pending-tag">Pending</span></h3>
+                                    <div class="detail-wrap">
+                                        <div class="rule-detail"><strong>Start date:</strong> {{rule.startDate |
+                                            date:'dd/MM/yyyy'}}</div>
+                                        <div class="rule-detail"><strong>Currencies:</strong> {{rule.buyCurrency}} |
+                                            {{rule.sellCurrency}}</div>
+                                        <div class="rule-detail"><strong>If rate:</strong> {{rule.operator == 1 ? '>' :
+                                            rule.operator == 2 ? '<' : '-' }} {{rule.targetRate}}</div>
+                                                <div class="rule-detail"><strong>Amount to convert:</strong>
+                                                    <div class="amount-sec">
+                                                        <ng-container
+                                                            *ngIf="rule.buyAmount"><span class="val">{{rule.buyCurrency}} {{rule.buyAmount |
+                                                            number:'1.0-0'}}</span><span class="ctag">Buy</span></ng-container>
+                                                        <ng-container
+                                                            *ngIf="rule.sellAmount"><span class="val">{{rule.sellCurrency}} {{rule.sellAmount |
+                                                            number:'1.0-0'}}</span><span
+                                                                class="ctag">Sell</span></ng-container>
+                                                    </div>
+                                                </div>
+                                                <div class="rule-detail"><strong>Frequency:</strong>
+                                                     {{ getFrequencyLabel(rule.executionFrequency) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="rule-actions">
+                                        <button class="action-btn" (click)="changeStatus(rule.id,rule.status)" [ngClass]="ruleStatus(rule?.status)">
+                                            <img *ngIf="rule.status == 1" src="images/fx-dashboard/pause-icn.svg"
+                                                alt="Pause Icon" />
+                                            <img *ngIf="rule.status !== 1" src="images/fx-dashboard/play-icn.svg"
+                                                alt="Play Icon" />
+                                        </button>
+                                        <button class="action-btn" [ngClass]="rule?.status == 3 ? 'automation--expired' : ''" (click)="redirectToExposureTable(rule?.id)"><img
+                                                src="images/fx-dashboard/redirect-icn.svg" alt="Icon" /></button>
+                                        <button class="action-btn" *ngIf="rule.status !== 4"
+                                            (click)="deleteRule(rule.id)"><img
+                                                src="images/fx-dashboard/tabler_trash.svg" alt="Icon" /></button>
+                                    </div>
+                                </div>
+                            </div>
+                    </ng-container>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+
+    <button class="add-btn" (click)="addNewAutomation()"><img src="images/fx-dashboard/add-icn.svg">Add
+        new</button>
+</div>

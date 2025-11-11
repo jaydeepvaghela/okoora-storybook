@@ -56,7 +56,7 @@
         $title-font-size: 12px;
         $title-font-weight: bold;
         $value-font-size: 18px;
-        $color: #2947f2;
+        $color: var(--light-blue);
 
         // Define container styles
         $container-margin: 20px;
@@ -169,7 +169,7 @@
             }
             
             .traderoom-connect-title {
-              color: #2947F2;
+              color: var(--light-blue);
               font-family: 'Manrope';
               font-size: 14px;
               font-weight: 400;
@@ -297,7 +297,7 @@
       justify-content: space-between;
     }
     .bg-blue {
-      background-color: #2947f2;
+      background-color: var(--light-blue);
       .lock-rate-modal-left-inner {
         width: 100% !important;
         padding: 10px;
@@ -390,7 +390,7 @@
 
       .title {
         font-weight: 600;
-        color: #2947f2;
+        color: var(--light-blue);
         font-size: 33px;
         line-height: 41px;
         margin-bottom: 0em;
@@ -505,7 +505,7 @@
     }
     .lock-rate-modal-right-inner {
       display: flex;
-      background: #2947f2;
+      background: var(--light-blue);
       justify-content: flex-end;
       width: 45%;
       .img-hedge {
@@ -556,7 +556,7 @@
         border-radius: 48px;
         border: 1px solid #c9d1f9;
         background: #f5f7fa;
-        color: #2947f2;
+        color: var(--light-blue);
         font-family: "Manrope";
         font-size: 12px;
         font-weight: 600;
@@ -564,8 +564,8 @@
         letter-spacing: 0.36px;
 
         &:hover {
-          border: 1px solid #2947f2;
-          background: #2947f2;
+          border: 1px solid var(--light-blue);
+          background: var(--light-blue);
           color: $white;
         }
 
@@ -589,8 +589,8 @@
         justify-content: center;
         gap: 10px;
         flex-shrink: 0;
-        border: 1px solid #2947f2;
-        background: #2947f2;
+        border: 1px solid var(--light-blue);
+        background: var(--light-blue);
         color: $white;
         font-family: "Manrope";
         font-size: 12px;
@@ -600,7 +600,7 @@
         &:hover {
           border: 1px solid #c9d1f9;
           background: #f5f7fa;
-          color: #2947f2;
+          color: var(--light-blue);
         }
 
         @media screen and (max-width: 540px) {

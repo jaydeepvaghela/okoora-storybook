@@ -1,0 +1,19 @@
+<div class="auto-protect-modal">
+  <button class="close-button" matDialogClose>
+    <img src="images/connector/auto-protect-close.svg" class="auto-close">
+  </button>
+  <div class="header-sec">
+    <h3 class="title" *ngIf="!this.autoProtect">Turn Off Auto-Protect?</h3>
+    <h3 class="title" *ngIf="this.autoProtect">Auto-Protect Activated</h3>
+    <div class="desc">
+      <p *ngIf="!this.autoProtect">Future payments won’t be covered and could be exposed to currency fluctuations.</p>
+      <p *ngIf="this.autoProtect">You’re all set! Upcoming payments will now be automatically protected from market
+        volatility.</p>
+    </div>
+  </div>
+  <div class="btn-sec">
+    <button class="cancel-button" matDialogClose>No, cancel</button>
+    <button class="confirm-button off" *ngIf="!this.autoProtect" (click)="confirm(false)">Yes, turn off</button>
+    <button class="confirm-button" *ngIf="this.autoProtect" (click)="confirm(true)">Yes, turn on</button>
+  </div>
+</div>

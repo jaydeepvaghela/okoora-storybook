@@ -315,6 +315,10 @@
             background-color: var(--content-wrapper-bg-color);
             color: #4B4B55;
             cursor: not-allowed;
+            filter: grayscale(1);
+            opacity: 0.5;
+            pointer-events: none;
+            font-family: $manrope;
           }
         }
       }

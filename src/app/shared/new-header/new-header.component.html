@@ -1,0 +1,142 @@
+<header class="okoora-header">
+  <div class="header-left">
+    <button class="navbar-toggler" (click)="openMenu()" type="button" id="db-header-7">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="wallet-balance" [matMenuTriggerFor]="walletListMenu" *ngIf="selectedWallet">
+      <div class="currency-icon">
+        <img [src]="selectedWallet?.wallet_Currency?.flag" alt="{{ selectedWallet?.wallet_Currency?.code }} icon">
+      </div>
+      <div class="wallet-value">
+        <div class="wallet-amount">
+          {{selectedWallet?.wallet_Currency?.sign}}{{selectedWallet?.wallet_Amount | number:'1.0-2'}}
+        </div>
+        <!-- <span class="wallet-label" (click)="walletDetails();$event.stopPropagation()">Wallet details</span> -->
+      </div>
+      <img src="images/fx-dashboard/wallet-drop-icn.svg" class="wallet-arrow" alt="Wallet dropdown">
+    </div>
+    <mat-menu #walletListMenu="matMenu" class="wallet-header-list-menu">
+      <div class="wallet-list-inner" matMenuContent>
+        <div class="search-bar" (click)="$event.stopPropagation()">
+          <input type="text" placeholder="Search" class="search-input" [(ngModel)]="searchTerm">
+          <img src="images/fx-dashboard/search-wallet.svg" alt="Search">
+        </div>
+        <div class="wallet-list">
+          <div class="wallet-item" *ngFor="let wallet of filteredWalletList; let i = index"
+            [class.selected]="i === selectedWalletIndex" (click)="onWalletClick($event, i, wallet)">
+            <div class="wallet-inner-item">
+              <div class="wallet-icon">
+                <img [src]="wallet.wallet_Currency.flag" alt="{{ wallet.wallet_Currency.code }} icon">
+                <span class="wallet-name">{{ wallet.wallet_Currency.code }}</span>
+              </div>
+              <span class="wallet-balance">{{ wallet.wallet_Currency.sign }}
+                <strong>{{ wallet.wallet_Amount | number:'1.0-2' }}</strong>
+              </span>
+            </div>
+            <div class="border-line"></div>
+          </div>
+        </div>
+        <button class="btn-add-wallet" (click)="addWalletModal()">Add new wallet</button>
+      </div>
+    </mat-menu>
+    <div class="header-actions" id="depositTourStep" *ngIf="!hideHeaderActions">
+      <button class="h-btns driver-btn-active" (click)="openAddMoney()" id="depositTourStep">
+        <img src="images/fx-dashboard/plus-icn.svg" class="main-img" alt="Deposit">
+        <img src="images/fx-dashboard/plus-hover.svg" class="hover-img" alt="Deposit">
+        Deposit
+      </button>
+      <button class="h-btns" (click)="createSinglePayment()">
+        <img src="images/fx-dashboard/send-icn.svg" class="main-img" alt="Send payment">
+        <img src="images/fx-dashboard/send-hover.svg" class="hover-img" alt="Send payment">
+        Send payment
+      </button>
+      <button class="h-btns" (click)="exchangeNow()">
+        <img src="images/fx-dashboard/convert-icn.svg" class="main-img" alt="Convert">
+        <img src="images/fx-dashboard/convert-hover.svg" class="hover-img" alt="Convert">
+        Convert
+      </button>
+      <button class="h-btns" (click)="CreateLockRateDialog()">
+        <img src="images/fx-dashboard/lock-rate-icn.svg" class="main-img" alt="Lock rate">
+        <img src="images/fx-dashboard/lock-rate-hover.svg" class="hover-img" alt="Lock rate">
+        Lock Rate
+      </button>
+      <button class="h-btns erp-btn" [ngClass]="isERPConnected !== 3 ? 'active' : ''" (click)="onERPConnection()">
+        <img src="images/fx-dashboard/erp-icn.svg" class="main-img" alt="ERP Connection">
+        <img src="images/fx-dashboard/erp-hover.svg" class="hover-img" alt="ERP Connection">
+        {{ erpConnectionLabel }}
+        <span class="erp-status">
+          <img alt="ERP Status" *ngIf="isERPConnected === 1" src="images/fx-dashboard/erp-connected.svg">
+          <img alt="ERP Status" *ngIf="isERPConnected === 2" src="images/fx-dashboard/erp-disconnected.svg">
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="header-right" *ngIf="!hideHeaderActions">
+    <a href="https://currencysimplified.com/" target="_blank" class="btn-help">
+      <img src="images/fx-dashboard/help-icn.svg" alt="Help">
+    </a>
+    <app-language-dropdown></app-language-dropdown>
+    <button class="btn-market-place" *ngIf="router.url != (subSite ? '/' + subSite + 'activate' : '/activate')"
+      class="header-btn market-place"
+      routerLinkActive="button-active">
+      <img src="images/fx-dashboard/market-icn.svg" alt="Market-place">
+    </button>
+
+    <div class="header-profile">
+      <div class="profile-inner">
+        <span class="user-name">{{GetProfileSymbol()}}</span>
+        <button [matMenuTriggerFor]="profileMenu" class="expand-user" id="db-header-4">
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu #accountsMenu="matMenu" class="header-menu-panel">
+        </mat-menu>
+      </div>
+      <mat-menu #profileMenu="matMenu" class="user-menu">
+        <div class="profile-menu">
+          <div class="profile-menu-wrap">
+            <div class="profile-menu-service">
+              <button class="custom-menu-item" 
+                [class.active]="true">Okoora User Profile</button>
+              <button class="custom-menu-item logout" (click)="logout()" id="db-header-5">
+                <img class="logout-icon" src="images/fx-dashboard/logout-icn.svg" alt="Logout"> Log out
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+  </div>
+</header>
+<mat-drawer #eventDrawer class="add-wallet-drawer" mode="side" position="end" id="db-header-15">
+  <div class="close-back-white">
+    <button class="close" (click)="eventDrawerClose()" id="db-header-16">
+      <img src="../../../images/close-wallet-icon.svg">
+    </button>
+  </div>
+  <app-add-wallet-money *ngIf="eventDrawer.opened" (onCloseClick)="eventDrawerClose()"></app-add-wallet-money>
+</mat-drawer>
+<!-- <mat-drawer #manageApiDrawer class="manage-api-drawer" mode="side" position="end">
+  <app-manage-api-key *ngIf="isManageApiDrawerOpened"></app-manage-api-key>
+</mat-drawer>
+<mat-drawer #riskManagerDrawer class="manage-risk-drawer" mode="side" position="end">
+  <app-risk-manager-faq *ngIf="riskManagerDrawer.opened"></app-risk-manager-faq>
+</mat-drawer> -->
+<mat-drawer #quickHedgeDrawer mode="side" position="end" class="drawer-hedge-quick" [opened]="false">
+  <app-quick-hedge-drawer (closeDrawer)="closeQuickHedgeDrawer()"></app-quick-hedge-drawer>
+</mat-drawer>
+<mat-drawer #hedgeAllDrawer mode="side" position="end" class="drawer-hedge-all" [opened]="false">
+  <app-hedge-all-drawer (closeDrawer)="closeHedgeAllDrawer()"></app-hedge-all-drawer>
+</mat-drawer>
+
+<!-- <mat-drawer #notificationDrawer mode="side" position="end" class="fx-notification-drawer">
+  <app-fx-notification-drawer *ngIf="notificationDrawer.opened"></app-fx-notification-drawer>
+</mat-drawer> -->
+<mat-drawer #editCashflowRulesDrawer mode="side" position="end" class="edit-cashflow-rules-drawer">
+  <app-edit-cashflow-rules-drawer *ngIf="editCashflowRulesDrawer.opened"></app-edit-cashflow-rules-drawer>
+</mat-drawer>
+<!-- <mat-drawer #openInfoERPDrawer mode="side" position="end" class="open-info-ERPDrawer">
+  <app-erplisting-info *ngIf="openInfoERPDrawer.opened"></app-erplisting-info>
+</mat-drawer>
+<mat-drawer #editFxConversionDrawer mode="side" position="end" class="fx-conversion-drawer">
+  <app-edit-fx-conversion-drawer *ngIf="editFxConversionDrawer.opened"></app-edit-fx-conversion-drawer>
+</mat-drawer> -->

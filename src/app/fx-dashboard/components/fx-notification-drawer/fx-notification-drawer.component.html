@@ -1,0 +1,49 @@
+<div class="notification-container">
+  <!-- Header -->
+  <div class="notification-header">
+    <div class="notification-header-title">
+      <h2 class="title">Smart Cash Alert Notification</h2>
+      <p class="desc">Personal insight on your cash</p>
+    </div>
+    <button aria-label="Close notification panel" class="close-menu" (click)="closeNotificationDrawer()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Filter -->
+  <div class="notification-filter">
+    <span class="label">Notifications</span>
+    <mat-select value="All" panelClass="notification-select-panel" class="notification-select">
+      <mat-option value="All">All</mat-option>
+    </mat-select>
+  </div>
+
+  <!-- Notification List -->
+  <div class="notification-list">
+    <div class="notification-item" *ngFor="let notification of notifications">
+      <div class="notification-icon" [ngClass]="{
+            'fx-alert-icon': notification.type === 'Fx alert',
+            'opportunity-icon': notification.type === 'Opportunity',
+            'new-idea-icon': notification.type === 'New idea'
+          }">
+        <div class="notification-icon" [ngClass]="{
+            'fx-alert-icon': notification.type === 'Fx alert',
+            'opportunity-icon': notification.type === 'Opportunity',
+            'new-idea-icon': notification.type === 'New idea'
+          }">
+          <img [src]="
+            notification.type === 'Fx alert' ? 'assets/images/fx-alert-icon.gif' :
+            notification.type === 'Opportunity' ? 'assets/images/fx-opportunity-icon.svg' :
+            notification.type === 'New idea' ? 'assets/images/fx-idea-icon.svg' :
+            ''
+          " alt="{{ notification.type }}" width="24" height="24" />
+        </div>
+      </div>
+      <div class="notification-content">
+        <div class="notification-title">{{ notification.type }}</div>
+        <div class="notification-text">{{ notification.text }}</div>
+        <div class="notification-time">{{ notification.time }}</div>
+      </div>
+    </div>
+  </div>
+</div>

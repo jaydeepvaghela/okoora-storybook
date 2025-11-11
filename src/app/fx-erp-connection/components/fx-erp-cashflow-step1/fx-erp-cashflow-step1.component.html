@@ -1,0 +1,39 @@
+<div class="cashflow-container">
+  <div class="left-panel">
+    <div class="info-sec">
+      <h2 class="title">Getting started</h2>
+      <p class="desc">Stay in control. Protect your FX<br> with ease</p>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="top-row">
+      <button class="back-btn" type="button" (click)="onBack()">Back</button>
+      <ul class="stepper-steps">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="label-with-tooltip">
+        <img src="/assets/images/fx-erp/erp-invoice-icn.svg" alt="invoice" />
+        <span class="label">Cash flow</span>
+      </div>
+
+      <h3 class="title">Define Auto-Pilot rules</h3>
+      <img src="/assets/images/fx-erp/erp-auto-pilot-cashflow.svg" class="erp-preview" alt="ERP preview" />
+      <div class="steps">
+        <p class="step-title">Step 1: How to define your rules</p>
+        <ul>
+          <li><span>1. Select invoice currencies</span> for all incoming and outgoing invoices.</li>
+          <li><span>2. Set amount range</span> invoices in this range (e.g., $1,000–$25,000) will be protected</li>
+          <li><span>3. Select due term</span> only those invoices (e.g., Net 30/60/90) will be protected</li>
+        </ul>
+      </div>
+      <button class="connect-btn" (click)="onNext()">Define rules</button>
+    </div>
+  </div>
+</div>

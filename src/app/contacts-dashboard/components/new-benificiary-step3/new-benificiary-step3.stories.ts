@@ -5,13 +5,18 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Countries, getAllCurrencies } from '../../../main-dashboard/dashboard-data/all-currency-data';
 import { paymentReason } from '../contacts-data/payments-reason.data';
 import { provideHttpClient, HttpClient } from '@angular/common/http';
 import { importProvidersFrom, inject } from '@angular/core';
 import { provideRouter, withHashLocation } from '@angular/router';
 import { routes } from '../../../app.routes';
-import { createTranslateLoader } from '../../../sign-up/kyc-main/kyc-main.stories';
+
+// AoT requires an exported function for factories
+function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './i18n/', '.json');
+}
 
 export default {
   title: 'Contacts/Beneficiary/Step 3: Transaction Details',
@@ -22,6 +27,14 @@ export default {
         CommonModule,
         ReactiveFormsModule,
         MatSelectModule,
+        TranslateModule.forRoot({
+                  defaultLanguage: 'en',
+                  loader: {
+                    provide: TranslateLoader,
+                    useFactory: createTranslateLoader,
+                    deps: [HttpClient]
+                  }
+                })
       ],
     }),
     applicationConfig({
@@ -30,14 +43,6 @@ export default {
         provideHttpClient(),
         importProvidersFrom(
           CommonModule,
-          TranslateModule.forRoot({
-            loader: {
-              provide: TranslateLoader,
-              useFactory: createTranslateLoader,
-              deps: [HttpClient],
-            },
-            defaultLanguage: 'en',
-          })
         )
       ]
     })

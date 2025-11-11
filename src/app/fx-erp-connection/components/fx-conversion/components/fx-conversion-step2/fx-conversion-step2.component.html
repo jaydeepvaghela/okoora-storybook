@@ -1,0 +1,257 @@
+<div class="set-conversion-step2-container loader-wrapper">
+  <!-- Left Panel -->
+  <div class="left-panel">
+    <div class="info-sec">
+      <h2 class="title">Amount & <br>Currencies <br> pairs</h2>
+      <p class="desc">Stay in control. Protect your FX <br>with ease</p>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <!-- Back/Close -->
+    <div class="top-row">
+      <button class="back-btn" type="button" (click)="previous()">Back</button>
+      <ul class="stepper-steps">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <div class="label-with-tooltip">
+        <img src="/images/fx-erp/erp-invoice-icn.svg" alt="convert" />
+        <span>Convert</span>
+      </div>
+
+      <div class="conversion-info">
+        <h3 class="heading">Set your currency conversion rule</h3>
+        <p class="subheading">
+          This rule will automatically convert your funds based on timing and conditions you'll set next
+        </p>
+      </div>
+      <!-- Mode Selection -->
+      <div class="conversion-actions">
+        <button class="btn buy-sell-currency" [class.active]="mode === 'buy'" (click)="selectBuy('buy')" type="button">
+          Buy currency
+        </button>
+        <img src="images/uil_exchange.svg" alt="exchange" class="exchange-icon" />
+        <button class="btn buy-sell-currency" [class.active]="mode === 'sell'" (click)="selectSell('sell')" type="button">
+          Sell currency
+        </button>
+      </div>
+
+      <form [formGroup]="fxConversionForm" class="conversion-form">
+        <!-- Buy Panel -->
+        <div class="buy-sell-input-wrapper buy-currency-wrapper" [class.disabled]="mode !== 'buy'"
+          [class.focused]="isFirstInputFocused">
+          <label class="input-label">I want to buy</label>
+          <div class="you-send-text-feild" [ngClass]="{ 'has-error': buyAmountErrors.length > 0 && !isSwitchingMode }">
+            <div class="currancy-amoutn-left">
+              <ng-container *ngIf="mode === 'buy'; else showAutoCalculated">
+                <label class="send-amout-feild">
+                  <span class="currency-sign">{{ firstSign || firstDefaultSign }}</span>
+                  <input #buyInput type="text" id="BuyAmount" formControlName="BuyAmount" appSeparator dynamicInputWidth
+                    placeholder="0" [disabled]="mode !== 'buy'" (focus)="isFirstInputFocused = true"
+                    (blur)="isFirstInputFocused = false" (keydown)="restrictInvalidInput($event, 'BuyAmount'); preventDecimal($event)" 
+                    (input)="validateAmount($event)"/>
+                </label>
+              </ng-container>
+
+              <ng-template #showAutoCalculated>
+                <span class="auto-calculated">
+                  Auto-calculated
+                  <img
+                    src="images/information-circle.svg"
+                    alt="info"
+                    style="cursor: pointer;"
+                    ngbTooltip="We’ll calculate it using the rate when the rule runs"
+                    placement="top"
+                    tooltipClass="auto-calculated-tooltip--rm"
+                  />
+                </span>
+              </ng-template>
+            </div>
+
+            <div class="select-flag-dropdown">
+              <mat-select class="form-control" panelClass="select-curr-dropdown" placeholder="Select Currency"
+                formControlName="buyCurrency" (selectionChange)="firstSelectExchangeCurrency($event)">
+                <mat-select-trigger>
+                  <ng-container *ngFor="let currency of (filteredFirstCurrencies$ | async) || []">
+                    <span *ngIf="currency?.wallet_Currency?.code === fxConversionForm?.value?.buyCurrency">
+                      <div class="select-item d-flex align-items-center"
+                        id="trigger-{{ currency.wallet_Currency.code }}">
+                        <img width="20px" class="currencyActive-image" [src]="currency.wallet_Flag"
+                          [alt]="currency.wallet_Currency.code + ' flag'" onerror="this.style.display='none'" />
+                        {{ currency.wallet_Currency.code }}
+                      </div>
+                    </span>
+                  </ng-container>
+                </mat-select-trigger>
+
+                <div class="search-inpt-popup">
+                  <div class="search-input-wrapper">
+                    <input class="filter-input" appOnlyLetters type="text" placeholder="Search"
+                      (keyup)="searchFromFirstInput($event)" id="search-first" (keydown)="preventDecimal($event)"/>
+                    <img src="images/search-input-icon.svg" class="search-icon" alt="search" />
+                  </div>
+
+                  <div class="currancy-flag-list">
+                    <mat-option *ngFor="let currency of (filteredFirstCurrencies$ | async) || [];"
+                      [value]="currency.wallet_Currency.code" class="currency-options"
+                      id="opt-first-{{ currency.wallet_Currency.code }}">
+                      <div class="select-item d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                          <img width="30px" class="currency-image" [src]="currency.wallet_Flag"
+                            [alt]="currency.wallet_Currency.code + ' flag'" onerror="this.style.display='none'" />
+                          <span class="currency-name">{{ currency.wallet_Currency?.code }}</span>
+                        </div>
+
+                        <label class="currency-balance">
+                          <span class="sign">{{ currency.wallet_Currency?.sign }}</span><span class="amount">{{ currency.wallet_Amount | number:'1.2-2' }}</span>
+                        </label>
+                      </div>
+                    </mat-option>
+
+                    <div *ngIf="(filteredFirstCurrencies$ | async)?.length === 0" class="no-results">
+                      No currencies found
+                    </div>
+                  </div>
+                  <div class="add-new-wallet-cta">
+                    <button class="add-new-wallet" (click)="addNewWallet()" type="button">Add New Wallet</button>
+                  </div>
+                </div>
+              </mat-select>
+
+              <span class="currency-balance">
+                Balance: {{ firstSign || firstDefaultSign }}{{ totalFirstCurrency | number:'1.2-2' }}
+              </span>
+            </div>
+          </div>
+          <div *ngFor="let errMsg of buyAmountErrors" class="error-msgs">
+            <img class="err-image" src="images/red-warning-icon.svg" alt="warning">
+            {{ errMsg }}
+          </div>
+        </div>
+        <!-- Sell Panel -->
+        <div class="buy-sell-input-wrapper sell-currency-wrapper" [class.disabled]="mode !== 'sell'"
+          [class.focused]="isSecondInputFocused">
+          <label class="input-label">I want to sell</label>
+          <div class="you-send-text-feild" [ngClass]="{ 'has-error': sellAmountErrors.length > 0 && !isSwitchingMode }">
+            <div class="currancy-amoutn-left">
+              <ng-container *ngIf="mode === 'sell'; else showAutoCalculated">
+                <label class="send-amout-feild">
+                  <span class="currency-sign">{{ secondSign || secondDefaultSign }}</span>
+                  <input  #sellInput type="text" appSeparator formControlName="SellAmount" id="SellAmount"
+                    (keydown)="restrictInvalidInput($event, 'BuyAmount')" (input)="validateAmount($event); onSellAmountInput()"
+                    (focus)="isSecondInputFocused = true" (blur)="isSecondInputFocused = false;" placeholder="0"
+                    dynamicInputWidth [disabled]="mode !== 'sell'" (keydown)="preventDecimal($event)"/>
+                </label>
+              </ng-container>
+              <ng-template #showAutoCalculated>
+                <span class="auto-calculated">
+                  Auto-calculated
+                  <img
+                    src="images/information-circle.svg"
+                    alt="info"
+                    style="cursor: pointer;"
+                    ngbTooltip="We’ll calculate it using the rate when the rule runs"
+                    placement="top"
+                    tooltipClass="auto-calculated-tooltip--rm"
+                  />
+                </span>
+              </ng-template>
+            </div>
+
+            <div class="select-flag-dropdown">
+              <mat-select class="form-control" panelClass="select-curr-dropdown" placeholder="Select Currency"
+                formControlName="sellCurrency" (selectionChange)="secondSelectExchangeCurrency($event)"
+                >
+
+                <mat-select-trigger>
+                  <ng-container *ngFor="let currency of (filteredSecondCurrencies$ | async) || []">
+                    <span *ngIf="currency?.wallet_Currency?.code === fxConversionForm?.value?.sellCurrency">
+                      <div class="select-item d-flex align-items-center"
+                        id="trigger-{{ currency.wallet_Currency.code }}">
+                        <img width="20px" class="currencyActive-image" [src]="currency.wallet_Flag"
+                          [alt]="currency.wallet_Currency.code + ' flag'" onerror="this.style.display='none'" />
+                        {{ currency.wallet_Currency.code }}
+                      </div>
+                    </span>
+                  </ng-container>
+                </mat-select-trigger>
+
+                <div class="search-inpt-popup">
+                  <div class="search-input-wrapper">
+                    <input class="filter-input" appOnlyLetters type="text" placeholder="Search"
+                      (keyup)="searchFromSecondInput($event)" id="search-second" (keydown)="preventDecimal($event)"/>
+                    <img src="images/search-input-icon.svg" class="search-icon" alt="search" />
+                  </div>
+
+                  <div class="currancy-flag-list">
+                    <mat-option *ngFor="let currency of (filteredSecondCurrencies$ | async) || [];"
+                      [value]="currency.wallet_Currency.code" class="currency-options"
+                      id="opt-second-{{ currency.wallet_Currency.code }}">
+                      <div class="select-item d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                          <img width="30px" class="currency-image" [src]="currency.wallet_Flag"
+                            [alt]="currency.wallet_Currency.code + ' flag'" onerror="this.style.display='none'" />
+                          <span class="currency-name">{{ currency.wallet_Currency?.code }}</span>
+                        </div>
+                        <label class="currency-balance">
+                          <span class="sign">{{ currency.wallet_Currency?.sign }}</span><span class="amount">{{ currency.wallet_Amount | number:'1.2-2' }}</span> </label>
+                      </div>
+                    </mat-option>
+                    <div *ngIf="(filteredSecondCurrencies$ | async)?.length === 0" class="no-results">
+                      No currencies found
+                    </div>
+                  </div>
+
+                  <div class="add-new-wallet-cta">
+                    <button class="add-new-wallet" (click)="addNewWallet()" type="button">Add New Wallet</button>
+                  </div>
+                </div>
+              </mat-select>
+
+              <span class="currency-balance">
+                Balance: {{ secondSign || secondDefaultSign }}{{ totalSecondCurrency | number:'1.2-2' }}
+              </span>
+            </div>
+          </div>
+          <div *ngFor="let errMsg of sellAmountErrors" class="error-msgs">
+            <img class="err-image" src="images/red-warning-icon.svg" alt="warning">
+            {{ errMsg }}
+          </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="fx-form-actions" [ngClass]="{'notification-action': showNotification}">
+          <div class="green-note-wrapper" *ngIf="showNotification && !spotRateError">
+            <img src="images/green-note-icon.svg" alt="check" />
+            <p class="notification-text">
+              You'll
+              <span *ngIf="mode === 'buy'">buy {{ notificationAmount | number:'1.2-2' }} {{ notificationBuyCurrency
+                }}</span>
+              <span *ngIf="mode === 'sell'">sell {{ notificationAmount | number:'1.2-2' }} {{ notificationBuyCurrency
+                }}</span>
+              and pay with {{ notificationPayCurrency }}
+            </p>
+          </div>
+          <div class="error-msgs" *ngIf="spotRateError">
+            <img class="err-image" src="images/red-warning-icon.svg" alt="warning">
+            The requested currency pair '{{notificationBuyCurrency}}/{{notificationPayCurrency}}' does not exist.
+          </div>
+          <button type="button" class="btn w-100 fx-exchange-btn" [class.processing]="processing" (click)="continueToNextStep()">
+            Continue
+          </button>
+        </div>
+        <span class="note-text">
+          <img src="images/fx-erp/hint-icn.svg" alt="lock" />
+          You can edit the amount a currencies, after setting the rule </span>
+      </form>
+    </div>
+  </div>
+</div>

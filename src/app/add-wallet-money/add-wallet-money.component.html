@@ -1,0 +1,36 @@
+<div class="add-money-container">
+  <div [hidden]="addMoneyScreenIndex != 0 && addMoneyScreenIndex != 1">
+    <div class="title-main">
+      <h3 class="add-money-title"><b>Add Money</b> (Bank Transfer)</h3>
+      <label class="add-money-subtitle">Transfer funds from your bank account</label>
+    </div>
+    <div *ngIf="isEuAccount" class="other-currency-wrapper eu-account">
+      <app-other-currency (onCloseClick)="eventDrawerClose()"></app-other-currency>
+    </div>
+    <mat-tab-group *ngIf="!isEuAccount" class="sidetab-group" id="deposit-tabs-grp">
+      <mat-tab label="Local Currency" class="side-tabs" id="dp-local-curr-tab">
+        <ng-template matTabContent>
+          <app-local-currency [localCurrencyForm]="localCurrencyForm" [addMoneyScreenIndex]="addMoneyScreenIndex"
+            (onScreenIndexChange)="addMoneyScreenIndex = $event"></app-local-currency>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Other Currencies" class="side-tabs" id="dp-other-curr-tab">
+        <ng-template matTabContent>
+          <app-other-currency (onCloseClick)="eventDrawerClose()"></app-other-currency>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div *ngIf="addMoneyScreenIndex == 2">
+    <app-deposit-summary [localCurrencyForm]="localCurrencyForm" [addMoneyScreenIndex]="addMoneyScreenIndex"
+      (onScreenIndexChange)="addMoneyScreenIndex = $event"></app-deposit-summary>
+  </div>
+  <div *ngIf="addMoneyScreenIndex == 3">
+    <app-final-deposit (onCloseClick)="eventDrawerClose()"></app-final-deposit>
+  </div>
+</div>
+<div class="back-deposit" *ngIf="addMoneyScreenIndex == 1 || addMoneyScreenIndex == 2">
+  <button class="back-btn" (click)="addMoneyScreenIndex = addMoneyScreenIndex-1" id="back-deposit-wlt">
+    <img src="../../../images/back-arrow-global.svg" alt="back arrow">
+  </button>
+</div>

@@ -1,0 +1,105 @@
+<div class="choose-pilot-container">
+  <!-- Left Panel -->
+  <div class="left-panel">
+    <div class="info-sec">
+      <h2 class="title">Choose Your <br />Auto-Pilot</h2>
+      <p class="desc">Pick what you want to protect. <br />We'll handle the rest.</p>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <!-- back / close -->
+    <div class="top-row">
+      <button class="back-btn" type="button" (click)="onBack()">Back</button>
+    </div>
+    <div class="select-option-wrap">
+      <h3 class="title">
+        <img class="sheild" src="images/fx-erp/sheild-icn.gif" alt="shield">
+        Select an auto-pilot for:
+      </h3>
+      <!-- Option Cards -->
+      <div class="option-card" (click)="erpType(ERPType.Invoice.toLowerCase())" [ngClass]="{'selected-type': selectedAutoPilot?.toLowerCase() == 'invoice' , 'disabled': walletList.length == 0}">
+        <div class="card-inner">
+          <img src="images/fx-erp/erp-invoice-icn.svg" class="type-icn" alt="icon" />
+          <div class="card-info">
+            <h4 class="title">Invoices & Bills</h4>
+            <p class="desc">Protect supplier or client invoices — so you can focus on business, not exchange rates.
+            </p>
+            <p class="error-msg" *ngIf="walletList && walletList.length == 0">Main currency not supported</p>
+          </div>
+        </div>
+        <div class="tooltip-wrapper">
+          <img src="images/fx-erp/erp_info.svg" [ngbTooltip]="invoiceTT" placement="left"
+            tooltipClass="fx-dash-tooltip--rm" alt="info" />
+        </div>
+      </div>
+      <ng-template #invoiceTT>
+        Protects your exposure every month using options that reset every 30 days. You only pay a premium when a hedge is actually executed.
+      </ng-template>
+      <ng-template #cashflowTT>
+        Protects your exposure every month using options that reset every 30 days. You only pay a premium when a hedge is actually executed.
+      </ng-template>
+      <ng-template #conversionTT>
+        Protects your exposure every month using options that reset every 30 days. You only pay a premium when a hedge is actually executed.
+      </ng-template>
+      <ng-template #customTT>
+        Protects your exposure every month using options that reset every 30 days. You only pay a premium when a hedge is actually executed.
+      </ng-template>
+
+      <div class="option-card" (click)="erpType(ERPType.CashFlow.toLowerCase());" [ngClass]="{'selected-type': selectedAutoPilot?.toLowerCase() == 'cashflow', 'disabled': walletList.length == 0}">
+        <div class="card-inner">
+          <img src="images/fx-erp/erp-cashflow-icn.svg" class="type-icn" alt="icon" />
+          <div class="card-info">
+            <h4 class="title">Cash Flow</h4>
+            <p class="desc">Automate protections based on your forecast — so your budget stays stable.</p>
+            <p class="error-msg" *ngIf="walletList && walletList.length == 0">Main currency not supported</p>
+          </div>
+        </div>
+        <div class="tooltip-wrapper">
+          <img src="images/fx-erp/erp_info.svg" [ngbTooltip]="cashflowTT" placement="left"
+            tooltipClass="fx-dash-tooltip--rm"  alt="info" />
+        </div>
+      </div>
+
+      <!-- Conversion module card -->
+      <div class="option-card" *ngIf="showConversion" (click)="erpType(erpOptionType.Conversion.toLowerCase());" [ngClass]="{'selected-type': selectedAutoPilot?.toLowerCase() == 'conversion', 'disabled': walletList.length == 0}">
+        <div class="card-inner">
+          <img src="images/fx-erp/erp-cashflow-icn.svg" class="type-icn" alt="icon" />
+          <div class="card-info">
+            <h4 class="title">Conversions</h4>
+            <p class="desc">Automate protections based on your forecast — so your budget stays stable.</p>
+             <p class="error-msg" *ngIf="walletList && walletList.length == 0">Main currency not supported</p>
+          </div>
+        </div>
+        <div class="tooltip-wrapper">
+          <img src="images/fx-erp/erp_info.svg" [ngbTooltip]="conversionTT" placement="left"
+            tooltipClass="fx-dash-tooltip--rm"  alt="info" />
+        </div>
+      </div>
+
+      <div class="option-card disabled">
+        <div class="card-inner">
+          <img src="images/fx-erp/erp-cashflow-icn.svg" class="type-icn" alt="icon" />
+          <div class="card-info">
+            <h4 class="title">Custom Automation</h4>
+            <p class="desc">Design your own finance workflows, to work exactly the way your business needs.</p>
+           
+          </div>
+        </div>
+        <div class="tooltip-wrapper">
+          <img src="images/fx-erp/erp_info.svg" [ngbTooltip]="customTT" placement="left"
+            tooltipClass="fx-dash-tooltip--rm"  alt="info" />
+        </div>
+      </div>
+      <!-- Tip Box -->
+      <div class="tip-box">
+        <img src="images/fx-erp/erp_info.svg" alt="info" />
+        <div class="info">
+          <h4 class="title">Pro tip</h4>
+          <p class="desc">Most businesses start with invoices — you can always add more later.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

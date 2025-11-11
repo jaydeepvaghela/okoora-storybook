@@ -1,0 +1,204 @@
+<div class="manage-hedge-sec loader-wrapper">
+  <button mat-dialog-close class="close-btn">
+    <img src="images/fx-erp/erp-close-icn.svg" alt="close-icon" />
+  </button>
+  <div class="manage-hedge-wrap">
+    <h2 class="title">Manage deals</h2>
+    <div class="manage-hedge-header">
+      <div class="header-left">
+        <button class="filter-btn" (click)="openFilter()">
+          Filter <img src="images/fx-dashboard/filter-icon.svg">
+        </button>
+        <div class="search-wrap">
+          <input type="text" class="search-input" placeholder="Search" [(ngModel)]="searchText"
+          (input)="applyFilter($event)" />
+          <button class="search-btn"><img src="images/fx-dashboard/search-icn.svg"></button>
+        </div>
+        <!-- <mat-menu #filterMenu="matMenu" class="hedge-filter-menu">
+          <ul>
+            <li>
+              <div class="info">
+                <h3 class="title">Single Payment</h3>
+                <p class="desc">For one-time, transaction.</p>
+              </div>
+              <img src="images/fx-dashboard/plane-icn.svg">
+            </li>
+            <li>
+              <div class="info">
+                <h3 class="title">Mass Payment</h3>
+                <p class="desc">For salaries, or multi vendors.</p>
+              </div>
+              <img src="images/fx-dashboard/users-icn.svg">
+            </li>
+            <li>
+              <div class="info">
+                <h3 class="title">Future Payment</h3>
+                <p class="desc">Schedule payments, your rate.</p>
+              </div>
+              <img src="images/fx-dashboard/calendar-icn.svg">
+            </li>
+          </ul>
+        </mat-menu> -->
+      </div>
+      <div class="header-right">
+        <!-- <div class="expiry-date">
+          <span class="ex-label">Expiry date</span>
+          <div class="date-range-field">
+            <input matInput [matDatepicker]="picker" placeholder="06/09/25">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
+        </div> -->
+
+        <button color="primary" [disabled]="!dataSource?.filteredData?.length" class="export-btn" (click)="exportData()">Export</button>
+      </div>
+    </div>
+    <div class="hedge-table tableScroll table-responsive">
+      <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let row">{{row?.mainHedgeDealDto?.id | safeValue}}</td>
+        </ng-container>
+        <ng-container matColumnDef="tradeDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Trade date</th>
+          <td mat-cell *matCellDef="let row">{{row?.mainHedgeDealDto?.tradeDate | date:'dd/MM/yy' | safeValue}}</td>
+        </ng-container>
+        <ng-container matColumnDef="dealType">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Deal type</th>
+          <td mat-cell *matCellDef="let row">{{ getDealTypeName(row?.mainHedgeDealDto?.dealType) | safeValue}}</td>
+        </ng-container>
+        <ng-container matColumnDef="callPutType">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Put/Call</th>
+          <td mat-cell *matCellDef="let row">{{ getPutCall(row?.hedgeDeals)}}</td>
+        </ng-container>
+        <ng-container matColumnDef="pair">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Currencies</th>
+          <td mat-cell *matCellDef="let row">{{ formatCurrencyPair(row?.mainHedgeDealDto?.pair) | safeValue}}</td>
+        </ng-container>
+        <ng-container matColumnDef="strike">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Strike</th>
+          <td mat-cell *matCellDef="let row">{{giveOnlyDecimal(row?.mainHedgeDealDto?.strike) | safeValue}}</td>
+        </ng-container>
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+          <td mat-cell *matCellDef="let row">{{row?.mainHedgeDealDto?.currencySign}}{{row?.mainHedgeDealDto?.amount| number:'1.4-4' | safeValue}}</td>
+        </ng-container>
+        <ng-container matColumnDef="isOnline">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Online/Offline</th>
+          <td mat-cell *matCellDef="let row"><span [ngClass]="row?.mainHedgeDealDto?.isOnline ? 'online' : 'offline' ">
+              {{row?.mainHedgeDealDto?.isOnline ? onLineOffline.Online : onLineOffline.Offline | safeValue}}</span></td>
+        </ng-container>
+        <ng-container matColumnDef="expiryDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Expiry date</th>
+          <td mat-cell *matCellDef="let row">{{row?.mainHedgeDealDto?.expiryDate | date:'dd/MM/yy' | safeValue}}</td>
+        </ng-container>
+        <ng-container matColumnDef="hedgeStatus">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Hedge status</th>
+          <td mat-cell *matCellDef="let row"><span
+              [ngClass]="row?.mainHedgeDealDto?.dealStatus === dealStatusType.Open ? 'open' : 'close'">{{getDealStatusName(row?.mainHedgeDealDto?.dealStatus)
+              | safeValue}}</span></td>
+        </ng-container>
+        <ng-container matColumnDef="isProfit">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>P/L</th>
+          <td mat-cell *matCellDef="let row">
+            <ng-container [ngSwitch]="row?.mainHedgeDealDto?.isProfit">
+              <img *ngSwitchCase="true" src="images/fx-dashboard/profitable-icn.svg" alt="profit">
+              <img *ngSwitchCase="false" src="images/fx-dashboard/loss-potential-icn.svg" alt="loss">
+              <span *ngSwitchDefault>{{ row?.mainHedgeDealDto?.isProfit | safeValue }}</span>
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="canCloseDeal">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let row">
+            <button *ngIf="row?.mainHedgeDealDto?.canCloseDeal" class="close-deal"
+              (click)="closeDeal(row); $event.stopPropagation()">Close deal</button>
+            <button *ngIf="row?.hedgeDeals?.length" class="acord-btn" aria-label="expand row"
+              id="expandTbl_PO_{{row?.mainHedgeDealDto?.id}}"
+              (click)="(expandedElement = expandedElement === row ? null : row); $event.stopPropagation()"><img
+                src="images/fx-dashboard/hedge-down-arrow.svg" alt=""></button>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+            <div class="element-detail" *ngIf="element?.hedgeDeals?.length"
+              [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <app-manage-deals-subtable [hedgeDeals]=element?.hedgeDeals></app-manage-deals-subtable>
+            </div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"
+          [class.expanded-row]="expandedElement === row"
+          [ngClass]="row.mainHedgeDealDto?.isOnline == false ? 'offlinedeal' : ''"
+          (click)="expandedElement = expandedElement === row ? null : row" id="expandedRow_PO_{{row.id}}"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+      </table>
+    </div>
+    <div class="no-deal-sec" *ngIf="(hedgingData?.length == 0 || dataSource?.filteredData?.length == 0) && !showLoader">
+      <div class="no-deal-wrap">
+        <div class="deal-img">
+          <img src="images/fx-dashboard/no-deal-img.gif">
+        </div>
+        <h4 class="title">No deals yet</h4>
+        <p class="desc">Your deals will appear here for tracking and management.</p>
+        <button [matMenuTriggerFor]="dealMenu" class="create-deal-btn">
+          Create <img src="images/fx-dashboard/w-plus.svg">
+        </button>
+      </div>
+      <mat-menu #dealMenu="matMenu" class="deal-menu">
+        <ul class="menu-link">
+          <li><button (click)="createSinglePayment()"><img src="images/fx-dashboard/g-plane.svg"> Create Payment</button></li>
+          <li><button (click)="exchangeNow()"><img src="images/fx-dashboard/g-convert.svg"> Create Convert</button></li>
+        </ul>
+      </mat-menu>
+
+    </div>
+    <div class="accounting-page-list" *ngIf="((dataSource?.filteredData?.length !== 0)) && !showLoader">
+      <h3 class="total-entries">Total deals: {{hedgingData?.length}}</h3>
+      <div class="manage-pagination">
+        <div class="page-select">
+          <span class="show-label">Show</span>
+          <mat-select class="filter-status" [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange()">
+            <mat-option [value]="10">10</mat-option>
+            <mat-option [value]="20">20</mat-option>
+            <mat-option [value]="50">50</mat-option>
+            <mat-option [value]="100">100</mat-option>
+          </mat-select>
+        </div>
+        <div class="accounting-pagination-wrapper">
+          <ngb-pagination [collectionSize]="hedgingData?.length || 0" [(page)]="page" [pageSize]="pageSize"
+            aria-label="Custom pagination" [maxSize]="5" [boundaryLinks]="true" (pageChange)="pageChanged($event)">
+            <ng-template ngbPaginationFirst>
+              <div class="first-page">
+                <img src="images/first-page-transaction-paginator.svg">
+              </div>
+            </ng-template>
+            <ng-template ngbPaginationLast>
+              <div class="last-page">
+                <img src="images/last-page-transaction-paginator.svg">
+              </div>
+            </ng-template>
+            <ng-template ngbPaginationPrevious>
+              <div class="prev-page">
+                <img src="images/prev-page-transaction-paginator.svg">
+              </div>
+            </ng-template>
+            <ng-template ngbPaginationNext>
+              <div class="next-page">
+                <img src="images/next-page-transaction-paginator.svg">
+              </div>
+            </ng-template>
+            <ng-template ngbPaginationEllipsis>
+              <div class="ellipsed-page">...</div>
+            </ng-template>
+            <ng-template ngbPaginationNumber let-page>
+              <div>{{ page }}</div>
+            </ng-template>
+          </ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+</div>

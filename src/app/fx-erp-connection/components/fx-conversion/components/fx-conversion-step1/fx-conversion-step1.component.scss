@@ -1,0 +1,356 @@
+@import "../../../../../../assets/scss/variable";
+
+.set-convertion-step1-container {
+  display: flex;
+  gap: 21px;
+  height: calc(100vh - 48px);
+  max-height: 918px;
+  font-family: $he_heebo;
+  // overflow: hidden;
+
+  @media screen and (max-width: 1440px) {
+    max-height: calc(100vh - 50px);
+  }
+
+  @media screen and (min-width: 768px) and (orientation: portrait) {
+    max-height: 46vh;
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .left-panel {
+    display: flex;
+    align-items: center;
+    background: url(../../../../../../assets/images/fx-erp/fx-erp-step-left-bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-position: center;
+    width: 100%;
+    max-width: 484px;
+    border-radius: 10px;
+
+    @media screen and (max-width: 1199px) {
+      max-width: 350px;
+    }
+
+    @media screen and (max-width: 991px) {
+      max-width: 250px;
+    }
+
+    @media screen and (max-width: 767px) {
+      max-width: 100%;
+      max-height: max-content;
+    }
+
+    .info-sec {
+      padding: 0 20px 0 89px;
+
+      @media screen and (max-width: 1199px) {
+        padding: 0 40px;
+      }
+
+      @media screen and (max-width: 991px) {
+        padding: 0 30px;
+      }
+
+      @media screen and (max-width: 767px) {
+        padding: 30px;
+      }
+
+      .title {
+        color: #fff;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 72px;
+        letter-spacing: -1.2px;
+        margin: 0;
+
+        @media screen and (max-width:1440px) {
+            font-size: 50px;
+            line-height: 1.2;
+          }
+
+          @media screen and (max-width: 1199px) {
+            font-size: 40px;
+          }
+
+          @media screen and (max-width:1024px) {
+            font-size: 30px;
+          }
+
+          @media screen and (max-width:991px) {
+            font-size: 25px;
+          }
+
+          @media screen and (max-width:767px) {
+            font-size: 20px;
+
+            br {
+              display: none;
+            }
+          }
+
+          @media screen and (max-width:580px) {
+            font-size: 18px;
+          }
+      }
+
+      .desc {
+          color: #05F2F2;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 30px;
+          margin: 0;
+
+          @media screen and (max-width: 1199px) {
+            font-size: 18px;
+            line-height: 1.2;
+          }
+
+          @media screen and (max-width:1024px) {
+            font-size: 16px;
+          }
+
+          @media screen and (max-width:991px) {
+            font-size: 14px;
+          }
+
+          @media screen and (max-width:767px) {
+            font-size: 12px;
+            br{
+              display: none;
+            }
+          }
+        }
+    }
+  }
+
+  .right-panel {
+    flex: 2;
+    background-image: url(../../../../../../assets/images/fx-erp/fx-erp-step-right-bg1.svg);
+    background-position: right bottom;
+    padding: 38px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    overflow-y: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    overflow-y: auto;
+    @media screen and (max-width: 1440px) {
+      padding: 30px 10px;
+    }
+
+    @media screen and (max-width: 1199px) {
+      padding: 20px 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding: 0;
+      overflow-y: auto;
+    }
+
+    .back-btn {
+      color: #4b5563;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      padding: 12px 20px;
+      cursor: pointer;
+      margin-bottom: 25px;
+
+      @media screen and (max-width:1440px) {
+        margin: 0;
+        padding: 0;
+      }
+
+      @media screen and (max-width: 767px) {
+        padding: 15px 0px;
+        margin-bottom: 0;
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      width: fit-content;
+      margin: 0 auto;
+
+      @media screen and (max-width:1440px) {
+        margin: 20px auto;
+      }
+
+      @media screen and (max-width: 767px) {
+        margin: 0 auto;
+      }
+
+      .label-with-tooltip {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          width: 20px;
+        }
+
+        span {
+          color: #7687ab;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.5;
+        }
+      }
+
+      .heading {
+        color: #111827;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28.8px;
+        margin-bottom: 0;
+
+        @media screen and (max-width:1440px) {
+          font-size: 18px;
+          line-height: 1.2;
+        }
+
+        @media screen and (max-width:991px) {
+          font-size: 16px;
+        }
+      }
+
+      .erp-preview {
+        width: 100%;
+        max-width: 640px;
+        height: 129px;
+        object-fit: cover;
+        margin: 38px 0 35px;
+        border-radius: 8px;
+
+        @media screen and (max-width: 1440px) {
+          margin: 15px 0;
+        }
+
+        @media screen and (max-width: 1080px) {
+          max-width: 520px;
+        }
+
+        @media screen and (max-width: 991px) {
+          max-width: 450px;
+        }
+
+        @media screen and (max-width: 767px) {
+          margin: 10px 0;
+        }
+      }
+
+      .steps {
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin:0 0 22px;
+          padding: 0 0 0 10px;
+
+          @media screen and (max-width: 1366px) {
+            gap: 2px;
+            margin: 0;
+            padding: 0;
+          }
+
+          li {
+            color: #6B7280;
+            font-size: 16px;
+            font-weight: 400;
+            line-height:33px;
+            strong{
+              font-weight: 600;
+              color:#374151;
+            }
+            @media screen and (max-width: 767px) {
+              font-size: 14px;
+              line-height: 1.5;
+            }
+          }
+        }
+
+        h3 {
+          color: var(--color-light-prime);
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 28px;
+          margin-bottom: 2px;
+
+          @media screen and (max-width:1440px) {
+            font-size: 16px;
+            line-height: 1.2;
+          }
+
+          @media screen and (max-width:767px) {
+            font-size: 14px;
+          }
+        }
+
+        p {
+          color: #000;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          margin-bottom: 28px;
+
+          @media screen and (max-width: 1440px) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+
+      .connect-btn {
+        display: flex;
+        width: 176px;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 40px;
+        background: var(--color-light-prime);
+        color: #ffffff;
+        margin: 14px auto;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+
+        @media screen and (max-width:1440px) {
+          margin: 10px auto;
+        }
+
+        @media screen and (max-width:767px) {
+          font-size: 14px;
+          width: max-content;
+        }
+      }
+
+      .disclaimer {
+        display: flex;
+        align-items: start;
+        gap: 4px;
+        color: #6B7280;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        margin: 0 auto;
+
+        img {
+          width: 15px;
+          height: auto;
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+}

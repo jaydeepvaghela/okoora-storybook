@@ -2,8 +2,9 @@
 
 ::ng-deep {
   .adv-policy-questions-wrapper {
+    letter-spacing: 0;
     .heading {
-      color: #2947f2;
+      color: var(--light-blue);
       font-family: $he_heebo;
       font-size: 30px;
       font-weight: 700;
@@ -90,7 +91,7 @@
               border-width: 8px;
               border-radius: 20px;
               // border-radius: 50%;
-              border-color: #175cd3;
+              border-color: var(--highlight-prime);
               left: 0;
             }
           }
@@ -120,7 +121,7 @@
           max-width: 630px;
           margin:36px auto 43px;
           .sub-text {
-            color: #175cd3;
+            color: var(--highlight-prime);
             font-family: $he_heebo;
             font-size: 14px;
             font-weight: 700;
@@ -270,7 +271,7 @@
               }
 
               .mdc-radio__native-control:checked + .mdc-radio__background .mdc-radio__outer-circle {
-                border: 1px solid #175cd3 !important;
+                border: 1px solid var(--highlight-prime) !important;
               }
 
               .mdc-radio__background {
@@ -471,7 +472,7 @@
             padding: 10px;
             gap: 10px;
             border-radius: 40px;
-            background: #2947f2;
+            background: var(--light-blue);
             box-shadow: 0px 9px 24px 0px rgba(0, 62, 255, 0.4);
             color: $white;
             font-family: $he_heebo;

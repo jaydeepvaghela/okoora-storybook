@@ -1,0 +1,37 @@
+<div class="fx-erp-stepper">
+  <button mat-dialog-close class="close-btn" (click)="closeDrawer()">
+    <img src="images/fx-erp/erp-close-icn.svg" alt="close-icon" />
+  </button>
+  
+<div [hidden]="selectedType === 'conversion'">
+  <mat-stepper #stepper class="form-stepper" [selectedIndex]="selectedStepIndex">
+    <mat-progress-bar #formStepperProgress [hidden]="true"> --</mat-progress-bar>
+    <mat-step *ngFor="let step of [].constructor(11)"></mat-step>
+  </mat-stepper>
+
+  <ng-container [ngSwitch]="stepper.selectedIndex">
+    <app-fx-erp-invoice-step1 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexZero"></app-fx-erp-invoice-step1>
+    <app-fx-erp-invoice-step2 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexOne" [autoPilotForm]="autoPilotForm" [walletList]="walletList"></app-fx-erp-invoice-step2>
+    <app-fx-erp-invoice-step3 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexTwo"></app-fx-erp-invoice-step3>
+    <!-- <app-fx-erp-invoice-step4 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexThree"></app-fx-erp-invoice-step4> -->
+    <app-fx-erp-invoice-step5 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexThree"></app-fx-erp-invoice-step5>
+    <app-fx-erp-invoice-step6 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexFour" [autoPilotForm]="autoPilotForm"></app-fx-erp-invoice-step6>
+    <app-fx-erp-invoice-step7 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexFive" [autoPilotForm]="autoPilotForm"
+     [walletList]="walletList"></app-fx-erp-invoice-step7>
+    <app-fx-erp-invoice-step8 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexSix" [autoPilotForm]="autoPilotForm"></app-fx-erp-invoice-step8>
+    <app-fx-erp-invoice-step9 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexSeven" [autoPilotForm]="autoPilotForm"></app-fx-erp-invoice-step9>
+    <app-fx-erp-invoice-step10 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexEight" [autoPilotForm]="autoPilotForm" [erpCustomerSuppliersList]="erpCustomerSuppliersList"
+     [walletList]="walletList"></app-fx-erp-invoice-step10>
+    <app-fx-erp-invoice-step11 [stepper]="formStepper" *ngSwitchCase="inVoiceSteps.IndexNine"
+    [walletList]="walletList"></app-fx-erp-invoice-step11>
+    <app-fx-erp-invoice-step12 *ngSwitchCase="inVoiceSteps.IndexTen"></app-fx-erp-invoice-step12>
+  </ng-container>
+</div>
+
+
+  <div [hidden]="selectedType !== 'conversion'">
+    <app-fx-conversion-steppers (backToErp)="handleBackToErp()" *ngIf="selectedType == 'conversion'"></app-fx-conversion-steppers>
+  </div>
+
+</div>
+

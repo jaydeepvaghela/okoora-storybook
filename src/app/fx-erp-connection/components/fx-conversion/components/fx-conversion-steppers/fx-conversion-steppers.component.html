@@ -1,0 +1,22 @@
+<div class="fx-conversion-stepper">
+    <mat-stepper #stepper class="form-stepper" [selectedIndex]="selectedStepIndex">
+        <mat-progress-bar #formStepperProgress [hidden]="true"> --</mat-progress-bar>
+        <mat-step *ngFor="let step of [].constructor(6)"></mat-step>
+    </mat-stepper>
+    <ng-container [ngSwitch]="stepper.selectedIndex">
+        <app-fx-conversion-step1 (backToErp)="onBackClick()" [stepper]="formStepper"
+            *ngSwitchCase="conversionSteps.IndexZero" [fxConversionForm]="fxConversionForm"></app-fx-conversion-step1>
+        <app-fx-conversion-step2 [stepper]="formStepper"
+            *ngSwitchCase="conversionSteps.IndexOne" [fxConversionForm]="fxConversionForm" [mode]="fxMode" (modeChanged)="fxMode = $event"></app-fx-conversion-step2>
+        <app-fx-conversion-step3 [stepper]="formStepper"
+            *ngSwitchCase="conversionSteps.IndexTwo" [fxConversionForm]="fxConversionForm"
+            (currencyPairValue)="currencyPairValue($event)"
+            (currentSpotRateValue)="currentSpotRateValue($event)"></app-fx-conversion-step3>
+        <app-fx-conversion-step4 [stepper]="formStepper"
+            *ngSwitchCase="conversionSteps.IndexThree" [fxConversionForm]="fxConversionForm"></app-fx-conversion-step4>
+        <app-fx-conversion-step5 [stepper]="formStepper"
+            *ngSwitchCase="conversionSteps.IndexFour" [fxConversionForm]="fxConversionForm"></app-fx-conversion-step5>
+        <app-fx-conversion-step6 [stepper]="formStepper" [fxConversionForm]="fxConversionForm"
+            *ngSwitchCase="conversionSteps.IndexFive" [currencyPair]="currencyPair" [currentRate]="currentRate"></app-fx-conversion-step6>
+    </ng-container>
+</div>

@@ -12,29 +12,43 @@ import { provideAnimations } from "@angular/platform-browser/animations";
 function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'i18n/', '.json');
 }
+
 const meta: Meta<AppComponent> = {
-    title: 'Components/Layout',
-    component: AppComponent,
-    decorators: [
-        applicationConfig({
-            providers: [
-                provideRouter(routes, withHashLocation()),
-                provideHttpClient(),
-                provideAnimations(),
-                importProvidersFrom(CommonModule, TranslateModule.forRoot({
-                    loader: {
-                      provide: TranslateLoader,
-                      useFactory: (createTranslateLoader),
-                      deps: [HttpClient]
-                    },
-                    defaultLanguage: 'en',
-                  }),)
-            ],
-        }),
-    ],
+  title: 'Components/Layout',
+  component: AppComponent,
+  decorators: [
+    applicationConfig({
+      providers: [
+        provideRouter(routes, withHashLocation()),
+        provideHttpClient(),
+        provideAnimations(),
+        importProvidersFrom(CommonModule, TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: (createTranslateLoader),
+            deps: [HttpClient]
+          },
+          defaultLanguage: 'en',
+        })),
+      ],
+    }),
+  ],
+  argTypes: {
+    selectedTheme: {
+      control: { type: 'select' },
+      options: ['theme-default', 'theme-max', 'theme-wrap'], // dropdown in Storybook
+    },
+  },
+  args: {
+    selectedTheme: 'theme-default', // default
+  },
 };
 export default meta;
+
 type Story = StoryObj<AppComponent>;
 
 export const Default: Story = {
+  args: {
+    selectedTheme: "theme-default"
+  }
 };

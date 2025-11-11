@@ -30,6 +30,7 @@ import { MatInputModule } from '@angular/material/input';
 import { getAllBeneficieryByAccount } from '../../../payments-data/all-beneficiaries-data';
 import { WalletListDialogComponent } from '../../wallet-list-dialog/wallet-list-dialog.component';
 import { MassPaymentComponent } from '../../mass-payment-components/mass-payment/mass-payment.component';
+import { AddContactsComponent } from '../../../../contacts-dashboard/components/add-contacts/add-contacts.component';
 
 @Component({
   selector: 'app-single-payment-send-step1',
@@ -307,6 +308,11 @@ export class SinglePaymentSendStep1Component {
     this.clickBeneficiary = true
   }
   createBenificiaryDialog() {
+    const dialogRef = this.dialog.open(AddContactsComponent, {
+      width: '100vw',
+      maxWidth: '100vw',
+      disableClose: true,
+    });
   }
 
   getBeneficiary(beneficiary: any) {

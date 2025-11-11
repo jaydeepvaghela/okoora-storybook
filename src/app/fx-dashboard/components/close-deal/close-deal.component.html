@@ -1,0 +1,49 @@
+<div class="close-deal-sec loader-wrapper">
+    <button mat-dialog-close class="close-btn">
+        <img src="images/fx-erp/erp-close-icn.svg" alt="close-icon" />
+    </button>
+    <div class="popup-header">
+        <h2>Close Hedge Deal</h2>
+        <p>Lock in the current rate to close your hedge at its final value.</p>
+    </div>
+    <div class="popup-content">
+        <div class="deal-details">
+            <div class="deal-row"><div class="label">Trade date</div><div class="value">{{dealList?.mainHedgeDealDto?.tradeDate | date:'dd/MM/yyyy'}}</div></div>
+            <div class="deal-row"><div class="label">Deal type</div><div class="value">{{ getDealTypeName(dealList?.mainHedgeDealDto?.dealType) | safeValue}}</div></div>
+            <div class="deal-row"><div class="label">Put/Call</div><div class="value">{{getPutCall(dealList?.hedgeDeals) | safeValue}}</div></div>
+            <div class="deal-row"><div class="label">Currencies</div><div class="value">{{ formatCurrencyPair(dealList?.mainHedgeDealDto?.pair) | safeValue}}</div></div>
+            <div class="deal-row"><div class="label">Strike</div><div class="value">{{giveOnlyDecimal(dealList?.mainHedgeDealDto?.strike) | safeValue}}</div></div>
+            <div class="deal-row"><div class="label">Amount</div><div class="value">{{dealList?.mainHedgeDealDto?.currencySign}}{{dealList?.mainHedgeDealDto?.amount| number:'1.4-4' | safeValue}}</div></div>
+            <div class="deal-row"><div class="label">Online/Offline</div><div class="value">{{dealList?.mainHedgeDealDto?.isOnline ? onLineOffline.Online : onLineOffline.Offline | safeValue}}</div></div>
+            <div class="deal-row"><div class="label">Expiry date</div><div class="value">{{dealList?.mainHedgeDealDto?.expiryDate | date:'dd/MM/yy' | safeValue}}</div></div>
+            <div class="deal-row">
+                <div class="label">Profit/Loss</div>
+                <div class="value" [ngClass]="{
+                      'profit': totalPL > 0,
+                      'loss': totalPL < 0
+                    }">
+                    {{ totalPL }}
+                </div>
+        </div>
+        <div class="deal-terms">
+            <h3>Close deal terms</h3>
+            <div class="terms-text">
+                <p>You are about to initiate a Close Deal.<br>
+                This action will immediately execute a new Transaction that fully closes the original one executed under Auto Pilot.<br>
+                Partial Close Deals are not supported. This action is final, irrevocable, and based on the current Company Rate.<br>
+                By clicking Confirm, you expressly authorize the execution of this Close Deal.<br>
+                For more information, please refer to the <a href="https://okoora.com/terms-of-service/" target="_blank">Okoora Customer Agreement</a>.</p>
+            </div>
+        </div>
+        <div class="popup-actions">
+            <button class="confirm-btn" (click)="CloseDeal()">Confirm &amp; Close deal</button>
+            <div class="offer-expiry">Offer expired after 
+                <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>.
+                A new one is now available</div>
+        </div>
+    </div>
+    <div *ngIf="errorMessage" class="close-deal-error" style="color: #e53935;text-align: center;">
+        {{ errorMessage }}
+    </div>
+    <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+</div>

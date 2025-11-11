@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { MomentumIndicatorChartComponent } from "./momentum-indicator-chart.component";
 
 const meta: Meta<MomentumIndicatorChartComponent> = {
-    title: 'Components/Risk-Manager/Momentum-indicator-chart',
+    title: 'Risk Manager/Risk Manager Dashboard/Momentum Indicator Chart',
     component: MomentumIndicatorChartComponent,
     argTypes:{
         currencyPair:{

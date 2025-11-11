@@ -1,0 +1,225 @@
+@import "../../../../assets/scss/variable";
+
+.setErp-wrap {
+    font-family: $he_heebo;
+    padding: 8px 7px;
+    max-width: 608px;
+
+    .top-banner {
+        background: url(../../../../assets/images/fx-dashboard/celebrate-banner.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        background-position: center;
+        border-radius: 8px 8px 0 0;
+
+        .close-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0;
+            border-radius: 0 8px 0 8px;
+        }
+
+        .celebrate-icn {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            margin: auto;
+
+            @media screen and (max-width:1024px) {
+                width: 50px;
+                height: auto;
+                bottom: 10px;
+            }
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 54px 0 126px;
+            margin: auto;
+
+            .title {
+                color: var(--primary-blue);
+                font-size: 44px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 120%;
+                margin: 0;
+
+                @media screen and (max-width:1440px) {
+                    font-size: 35px;
+                }
+
+                @media screen and (max-width:1024px) {
+                    font-size: 30px;
+                }
+
+                @media screen and (max-width:580px) {
+                    font-size: 25px;
+                }
+            }
+
+            @media screen and (max-width:1024px) {
+                padding: 40px 0 100px;
+            }
+        }
+    }
+
+    .auto-pilot-content {
+        margin: 25px 0 0;
+        padding: 0 46px;
+
+        @media screen and (max-width:991px) {
+            margin: 20px 0 0;
+            padding: 0 20px;
+        }
+
+        @media screen and (max-width:580px) {
+            margin: 10px 0 0;
+            padding: 0 10px;
+        }
+
+        .desc {
+            max-width: 478px;
+            margin: auto;
+            color: #4B5563;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            text-align: center;
+
+            strong {
+                margin: 0 0 10px;
+                display: block;
+            }
+
+            @media screen and (max-width:580px) {
+                font-size: 12px;
+                line-height: 1.2;
+            }
+        }
+
+        .features {
+            margin: 48px 0 28px;
+            display: flex;
+            align-items: center;
+            gap: 41px;
+            padding: 0 0 32px;
+            border-bottom: 1px dashed #989898;
+
+            @media screen and (max-width:991px) {
+                margin: 30px 0 20px;
+                gap: 20px;
+                padding: 0 0 20px;
+            }
+
+            @media screen and (max-width:580px) {
+                margin: 20px 0;
+                padding: 0 0 10px;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .feature {
+                max-width: 164px;
+
+                .icon {
+                    margin: 0 0 10px;
+
+                    @media screen and (max-width:580px) {
+                        margin: 0 0 5px;
+                    }
+                }
+
+                .title {
+                    color: #4B5563;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    margin: 0;
+
+                    @media screen and (max-width:580px) {
+                        font-size: 12px;
+                        line-height: 1.2;
+
+                        br {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer-note {
+            color: #4B5563;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            margin: 0 0 15px;
+            text-align: center;
+
+            @media screen and (max-width:580px) {
+                font-size: 12px;
+                line-height: 1.2;
+                margin: 0 0 10px;
+            }
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+
+            .btn-set {
+                max-width: 212px;
+                width: 100%;
+                margin: auto;
+                padding: 15px 10px;
+                border-radius: 40px;
+                background: var(--color-light-prime);
+                color: #FFF;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 24px;
+
+                @media screen and (max-width:991px) {
+                    max-width: 150px;
+                    padding: 10px;
+                }
+
+                @media screen and (max-width:580px) {
+                    font-size: 14px;
+                    line-height: 1.2;
+                }
+            }
+
+            .cancel {
+                padding: 0;
+                color: #888;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 18px;
+                width: max-content;
+                margin: 0 auto 16px;
+
+                @media screen and (max-width:580px) {
+                    font-size: 14px;
+                    line-height: 1.2;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .setErp-dialog-container {
+        .mat-mdc-dialog-container .mdc-dialog__surface {
+            border-radius: 10px;
+        }
+    }
+}

@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { AdvancedPolicyStep2Component } from "./advanced-policy-step2.component";
 
 const meta: Meta<AdvancedPolicyStep2Component> = {
-    title: 'Components/Risk-Manager/Advanced-Policy/Step2',
+    title: 'Risk Manager/Advanced Policy Steps/Step 2',
     component: AdvancedPolicyStep2Component,
     argTypes: {
         selectedMainStepprIndex: {

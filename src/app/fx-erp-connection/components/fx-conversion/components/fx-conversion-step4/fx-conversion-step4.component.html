@@ -1,0 +1,108 @@
+<div class="choose-freq-container">
+  <!-- ░░ LEFT PANEL ░░ -->
+  <div class="left-panel">
+    <div class="info-sec">
+      <h2 class="title">Choose<br />frequency</h2>
+      <p class="desc">Stay in control. Protect your FX<br />with ease.</p>
+    </div>
+  </div>
+
+  <!-- ░░ RIGHT PANEL ░░ -->
+  <div class="right-panel">
+    <div class="top-row">
+      <button class="back-btn" type="button" (click)="previous()">Back</button>
+      <ul class="stepper-steps">
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="content">
+      <div class="label-with-tooltip">
+        <img src="/images/fx-erp/erp-invoice-icn.svg" alt="convert" />
+        <span>Convert</span>
+      </div>
+
+      <h3 class="heading">Choose rule frequency</h3>
+      <p class="description">How often should thus rule run</p>
+      <form [formGroup]="fxConversionForm" class="frequency-form">
+        <div class="radio-group-wrapper">
+          <mat-radio-group formControlName="executionFrequency" class="button-radio-group" appearance="legacy">
+            <mat-radio-button class="button-radio" value="1">One-time only</mat-radio-button>
+            <mat-radio-button class="button-radio" value="2">Daily</mat-radio-button>
+            <mat-radio-button class="button-radio" value="3">Weekly</mat-radio-button>
+            <mat-radio-button class="button-radio" value="4">Monthly</mat-radio-button>
+          </mat-radio-group>
+          <div *ngIf="hasError('executionFrequency')" class="error-msgs">
+            <img class="err-image" src="images/red-warning-icon.svg" alt="warning">
+            Please select how often the rule should run.
+          </div>
+        </div>
+        
+        <div class="date-wrap">
+          <div class="title">Start date</div>
+          <div class="date-field" [ngClass]="{'date-field-error': fxConversionForm.get('StartDate')?.invalid && fxConversionForm.get('StartDate')?.touched}">  
+            <input matInput [matDatepicker]="startPicker" placeholder="dd/mm/yyyy" formControlName="StartDate" [matDatepickerFilter]="startDateFilter"/>
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker xPosition="end" yPosition="below"></mat-datepicker>
+          </div>
+          <div class="error-msgs"
+            *ngIf="fxConversionForm.get('StartDate')?.touched && fxConversionForm.get('StartDate')?.hasError('required')">
+            <img class="err-image" src="images/red-warning-icon.svg" alt="warning">
+            Start date is required.
+          </div>
+          <div class="error-msgs"
+            *ngIf="fxConversionForm.get('StartDate')?.touched && fxConversionForm.get('StartDate')?.hasError('pastDate')">
+            <img class="err-image" src="images/red-warning-icon.svg" alt="warning">
+            Start date can’t be in the past. pick today or a future date.
+          </div>
+        </div>
+        <div class="set-date checkbox-field">
+          <mat-checkbox formControlName="SetEndDate"
+          (change)="setEndDate()">Set an end date</mat-checkbox>
+        </div>
+        <div class="date-wrap" *ngIf="fxConversionForm.get('SetEndDate')?.value">
+          <div class="title">End date <span>(Optional)</span></div>
+          <div class="date-field" [ngClass]="{'date-field-error': fxConversionForm.get('Expiry')?.invalid && fxConversionForm.get('Expiry')?.touched}">
+            <input matInput [matDatepicker]="endPicker" [min]="minEndDate" placeholder="dd/mm/yyyy" formControlName="Expiry" [matDatepickerFilter]="endDateFilter"/>
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker xPosition="end" yPosition="below"></mat-datepicker>
+          </div>
+          <!-- <div class="error-msgs"
+            *ngIf="fxConversionForm.get('Expiry')?.touched && fxConversionForm.get('Expiry')?.hasError('required')">
+            <img class="err-image" src="images/red-warning-icon.svg" alt="warning">
+            End date is required.
+          </div> -->
+          <div class="error-msgs"
+            *ngIf="
+              fxConversionForm.get('SetEndDate')?.value &&
+              fxConversionForm.get('Expiry')?.touched &&
+              fxConversionForm.get('Expiry')?.hasError('endBeforeStart')
+            ">
+            <img class="err-image" src="images/red-warning-icon.svg" alt="warning">
+            End date must be after the start date.
+          </div>
+
+        </div>
+      </form>
+      <!-- Schedule Preview -->
+      <div class="schedule-preview" *ngIf="fxConversionForm.get('StartDate')?.value">
+        <img src="/images/fx-erp/erp_info.svg" alt="info">
+        <div class="preview-text">
+          <div class="title">Schedule Preview</div>
+          <div class="desc">Start on {{ fxConversionForm.get('StartDate')?.value | date:'MMMM d, y'}}</div>
+        </div>
+      </div>
+      <div class="tracking-info">
+        <div class="title">Trading Window:</div>
+        <p class="desc">
+          Your trade rules are monitored during active market hours. If conditions are met, the trade executes. If not, it’s skipped for the day.
+        </p>
+      </div>
+      <button class="continue-btn" type="button" (click)="onNext()">Continue</button>
+    </div>
+  </div>
+</div>

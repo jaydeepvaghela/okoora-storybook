@@ -1,0 +1,133 @@
+<form [formGroup]="autoPilotForm">
+    <div class="exclude-vendors-container loader-wrapper">
+        <!-- ░░ LEFT PANEL ░░ -->
+        <div class="left-panel">
+            <div class="info-sec" *ngIf="!isLoading ; else reviewSection">
+                <h2 class="title">
+                    Exclude <br />contacts
+                </h2>
+
+                <p class="desc">
+                    Choose who not to protect — <br />you're in full control.
+                </p>
+            </div>
+            <ng-template #reviewSection>
+                <div class="info-sec">
+                    <h2 class="title">
+                        Finish &<br />Review
+                    </h2>
+                    <p class="desc">Stay in control. Protect your FX with ease</p>
+                </div>
+            </ng-template>
+        </div>
+
+        <!-- ░░ RIGHT PANEL ░░ -->
+        <div class="right-panel" [class.load]="isLoading">
+            <!-- back / close -->
+            <div class="top-row" *ngIf="!isLoading">
+                <button class="back-btn" type="button" (click)="onBack()">Back</button>
+                <ul class="stepper-steps">
+                    <li class="active"></li>
+                    <li class="active"></li>
+                    <li class="active"></li>
+                    <li class="active"></li>
+                    <li class="active"></li>
+                </ul>
+            </div>
+            <!-- main copy & form -->
+            <div class="content" *ngIf="!isLoading">
+                <!-- <div class="label">
+                <img src="images/fx-erp/erp-invoice-icn.svg" alt="invoice" />
+                <span>Invoices / bills</span>
+            </div> -->
+
+                <h3 class="heading">Exclude contacts from protection</h3>
+                <p class="description">
+                    Pick contacts you want to exclude from auto-protection. <br />Transactions from these contacts will
+                    not be included
+                    in your hedge automation.
+                </p>
+
+                <picture>
+                    <img src="images/fx-erp/erp-exclude-vendor-img.svg" class="erp-preview" alt="vendor-icon" />
+                </picture>
+                <div class="label-hint">
+                    <label class="selectbox-label">Contacts to exclude</label>
+                    <div class="select-hint">
+                        <span>You can select one or more</span>
+                    </div>
+                </div>
+                <div class="contact-filter-menu">
+                    <mat-select #vendorSelect class="exclude-contacts-search-input" id="exclude-contacts"
+                        panelClass="exclude-contacts-filter-dropdown" placeholder="Select contacts" multiple
+                        formControlName="InvoiceBillBlacklist">
+                        <mat-select-trigger>
+                            <mat-chip-set>
+                                <mat-chip *ngFor="let vendor of autoPilotForm.get('InvoiceBillBlacklist')?.value"
+                                    [removable]="true" (removed)="removeExcludedVendor(vendor)"
+                                    id="currencyChip{{vendor?.name}}">
+                                    {{ vendor.name }}
+                                    <mat-icon matChipRemove id="cancelCurrencyTFDid">cancel</mat-icon>
+                                </mat-chip>
+                            </mat-chip-set>
+                        </mat-select-trigger>
+
+                        <ng-container>
+                            <div class="search-field">
+                                <mat-select-search *ngIf="excludeContactFilterCnt" id="materialSearch"
+                                    [placeholderLabel]="Searchbeneficiaries" [formControl]="excludeContactFilterCnt"
+                                    [noEntriesFoundLabel]="''"></mat-select-search>
+                            </div>
+                            <ng-container *ngIf="filteredCustomerSuppliersList.length > 0; else noDataBlock">
+                                <div class="mat_option_wrap">
+                                    <mat-option *ngFor="let blacklistData of filteredCustomerSuppliersList"
+                                        [value]="blacklistData" id="{{ blacklistData }}">
+                                        <span class="contact-name" id="currencyCode">{{ blacklistData?.name }}</span>
+                                    </mat-option>
+                                </div>
+                                <div class="select-footer">
+                                    <button class="set-btn" id="setBtn" (click)="vendorSelect.close()">
+                                        Select ({{ autoPilotForm.get('InvoiceBillBlacklist')?.value?.length ?? 0 }})
+                                    </button>
+                                </div>
+
+                            </ng-container>
+                            <ng-template #noDataBlock>
+                                <mat-option disabled class="no-data-option" disableRipple>
+                                    No contacts found
+                                </mat-option>
+                            </ng-template>
+                        </ng-container>
+                    </mat-select>
+                </div>
+
+
+                <!-- Tip Box -->
+                <div class="tip-box">
+                    <img src="images/fx-erp/erp_info.svg" alt="info" />
+                    <div class="info">
+                        <h3 class="title">Pro tip</h3>
+                        <span class="desc">You can update this anytime. <br />Excluded contacts' transactions will stay
+                            unprotected.</span>
+                    </div>
+                </div>
+
+                <button class="continue-btn" type="button" (click)="onNext()">Continue</button>
+                <p class="erp-initiated"><img src="images/fx-erp/database-import-outline.svg" alt="info" /> Upon Continue, the ERP import will be initiated.</p>
+            </div>
+            <div class="loader-section" *ngIf="isLoading">
+                <div class="load-inner">
+                    <div class="count">
+                        <ng-container>
+                            <ng-lottie [options]="options" [styles]="styles"></ng-lottie>
+                        </ng-container>
+                    </div>
+                    <div class="load-label">Loading data...</div>
+                    <div class="note"><img src="images/fx-erp/load-note-icn.svg" alt="info" /> Please don’t
+                        close this window while we are creating the automation</div>
+                </div>
+            </div>
+        </div>
+        <!-- <app-page-loader classes="bg-white section-loader" *ngIf="isLoading"></app-page-loader> -->
+    </div>
+</form>

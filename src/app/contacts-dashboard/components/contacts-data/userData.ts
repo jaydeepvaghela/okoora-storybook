@@ -1,7 +1,7 @@
 export const user = {
     id: 4166,
     accountId: "c2213112-f2ef-4202-9f6a-db147e95b6c0",
-    fullName: "dsfs dfgdfg",
+    fullName: "Okoora User Profile",
     stampId: "f5253dc2-f00a-43af-a6db-3cc8fca41974",
     company: "kecccgim",
     type: "Business",
@@ -48,7 +48,7 @@ export const user = {
     isAuthorizedForWebApi: false,
     sourceAccount: null,
     isAutomatedHedging: true,
-    isPayableProtectFilled: true,
+    isPayableProtectFilled: false,
     isERPConnected: 1,
     exposureType: "invoice"
   };

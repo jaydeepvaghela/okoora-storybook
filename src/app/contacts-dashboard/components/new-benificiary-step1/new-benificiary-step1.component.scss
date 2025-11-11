@@ -116,7 +116,7 @@
                     align-items: center;
                     gap: 10px;
                     border-radius: 50px;
-                    background:#1D4ED8;
+                    background:var(--primary-blue);
                     color:$white;
                     font-family:$he_heebo;
                     font-size: 14px;
@@ -136,7 +136,7 @@
                     justify-content: center;
                     align-items: center;
                     gap: 10px;
-                    color:#1D4ED8;
+                    color:var(--primary-blue);
                     font-family:$he_heebo;
                     font-size: 14px;
                     font-weight: 400;
@@ -147,8 +147,8 @@
                     background-color: #E6EFFD;
                     &:hover{
                         color: $white;
-                        background-color: #1D4ED8;
-                        border-color: #1D4ED8;
+                        background-color: var(--primary-blue);
+                        border-color: var(--primary-blue);
                     }
                 }
             }

@@ -4,7 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { of } from "rxjs";
 
 const meta: Meta<DashboardComponent> = {
-    title: 'Components/Risk-Manager/Dashboard',
+    title: 'Risk Manager/Risk Manager Dashboard',
     component: DashboardComponent,
     decorators: [
         moduleMetadata({

@@ -1,0 +1,109 @@
+$he_heebo : 'Heebo',
+sans-serif;
+
+::ng-deep {
+    .cdk-global-scrollblock {
+        top: 0 !important;
+    }
+    .convert-delete-panel{
+        .mat-mdc-dialog-container{
+            .mdc-dialog__surface{
+                border-radius: 8px;
+            }
+        } 
+    }
+
+    .convert-delete-modal {
+        padding: 32px 40px;
+        max-width: 465px;
+        position: relative;
+        // margin: auto;
+        .close-button {
+            padding: 0;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            border: none;
+        }
+
+        .header-sec {
+            text-align: center;
+            .title {
+                color: #374151;
+                font-family: $he_heebo;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: normal;
+                margin: 0 0 8px;
+            }
+
+            .desc {
+                max-width: 294px;
+                margin: auto;
+                p {
+                    color: #6B7280;
+                    text-align: center;
+                    font-family: $he_heebo;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 16px;
+                    margin: 0;
+                }
+            }
+        }
+        .btn-sec {
+            margin: 37px 0 0;
+            display: flex;
+            gap: 24px;
+            align-items: center;
+
+            .cancel-button {
+                padding: 14px 20px;
+                width: 100%;
+                border-radius: 58px;
+                border: 1px solid #9CA3AF;
+                background: #FFF;
+                color:#4F4F4F;
+                font-family:$he_heebo;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 1;
+            }
+            .confirm-button {
+                padding: 15px 20px;
+                width: 100%;
+                border-radius: 58px;
+                background: #DC2626;
+                color:#F5F5F5;
+                font-family:$he_heebo;
+                font-size: 14px;
+                font-weight: 800;
+                line-height: 1;
+            }
+        }
+        @media screen and (max-width:767px) {
+            padding: 30px 15px;
+            .header-sec{
+                .title{
+                    font-size: 18px;
+                }
+                .desc{
+                    p{
+                        font-size: 12px;
+                        line-height: 18px;
+                    }
+                }
+            }
+            .btn-sec{
+                gap: 10px;
+                margin: 20px 0 0;
+                .cancel-button{
+                    padding: 12px 10px;
+                }
+                .confirm-button{
+                    padding: 13px 10px;
+                }
+            }
+        }
+    }
+}

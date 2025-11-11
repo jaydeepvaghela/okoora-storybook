@@ -1,0 +1,119 @@
+<div class="review-container loader-wrapper">
+  <div class="left-panel">
+    <div class="info-sec">
+      <h1 class="title">Finish &<br />Review</h1>
+      <p class="desc">Stay in control. Protect your FX with ease</p>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="top-row">
+      <button class="back-btn" type="button" (click)="onBack()">Back</button>
+      <ul class="stepper-steps">
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+        <li class="active"></li>
+      </ul>
+    </div>
+    <section class="review-section loader-wrapper">
+      <div class="header">
+        <div class="review-h-info">
+          <h1 class="title">Final Review Before Activation</h1>
+          <p class="desc">Review your auto-protection setup before going live.</p>
+        </div>
+      </div>
+
+      <!-- Invoice/Bills Section -->
+      <div class="rules-review-wrap">
+        <div class="rules-section">
+          <!-- <h2 class="type-title">Invoices/bills rules</h2> -->
+          <div class="rule-item-wrap">
+
+            <div class="rule-item">
+              <p class="rule-label">ERP transaction type</p>
+              <p class="rule-value">{{ directionTypeMap[summaryData?.[0]?.directionType] }}</p>
+            </div>
+
+            <div class="rule-item">
+              <p class="rule-label">Set amount range</p>
+              <p class="rule-value">
+              <ng-container
+              *ngIf="summaryData?.[0]?.invoiceBillMinExposureAmount && summaryData?.[0]?.invoiceBillMaxExposureAmount; else noData">
+              {{ ('$' + (summaryData[0].invoiceBillMinExposureAmount | number)) }} - {{ ('$' +
+              (summaryData[0].invoiceBillMaxExposureAmount | number)) }}
+            </ng-container>
+            <ng-template #noData>—</ng-template>
+              </p>
+            </div>
+
+            <div class="rule-item">
+              <p class="rule-label">Due date</p>
+              <p class="rule-value">  {{ summaryData?.[0]?.invoiceBillMaxDuePeriod || '1 Year' }}</p>
+            </div>
+
+            <div class="rule-item">
+              <p class="rule-label">Select currency</p>
+              <p class="rule-value">
+                  <ng-container *ngIf="summaryData?.[0]?.invoiceBillCurrencies?.length; else noCurrency">
+                    <ng-container
+                *ngIf="summaryData[0].invoiceBillCurrencies.length === walletList?.length; else someCurrencies">
+                All currencies <img class="all-currency-info" [ngbTooltip]="exposureCountryTooltip" placement="right"
+                  tooltipClass="exposure-tooltip--rm" src="images/connector/currency-list-info.svg" alt=""/>
+              </ng-container>
+              <ng-template #someCurrencies>
+                {{ summaryData[0].invoiceBillCurrencies.join(', ') }}
+              </ng-template>
+            </ng-container>
+            <ng-template #noCurrency>All currencies <img class="all-currency-info" [ngbTooltip]="exposureCountryTooltip" placement="right"
+                tooltipClass="exposure-tooltip--rm"
+                src="images/connector/currency-list-info.svg" alt=""/></ng-template>
+            <ng-template #exposureCountryTooltip>
+              {{ walletList.join(', ') }}
+            </ng-template>
+              </p>
+            </div>
+
+            <div class="rule-item">
+              <p class="rule-label">Exclude contacts</p>
+              <p class="rule-value">
+                <span class="contact-list">
+              {{ firstTwoNames }}<ng-container *ngIf="remainingCount > 0">...</ng-container>
+            </span>
+            <span class="contact-count" *ngIf="remainingCount > 0">+{{ remainingCount }}</span>
+         
+              </p>
+            </div>
+
+          </div>
+        </div>
+        <div class="invoice-count-wrap">
+          <span class="count">{{rulesData?.invoiceCount}}</span> Invoices & <span class="count">{{rulesData?.billCount}}</span> Bills extracted from your REP
+        </div>
+        <!-- Confirmation -->
+        <div class="confirmation-review">
+          <h6 class="title">Confirm & Launch Protection</h6>
+          <p class="desc">
+            Once confirmed, we’ll deduct  <strong>{{ rulesData?.collateralAmount != null ? (
+          (rulesData?.collateralCurrencySign != null ? rulesData?.collateralCurrencySign : '') +
+          (rulesData.collateralAmount | number:'1.0-0')): '-' }}</strong> from your wallet as collateral to activate your hedge.
+          </p>
+        </div>
+
+        <div class="review-btns">
+          <button class="btn-confirm" (click)="confirmSummary()">{{ isInvoiceType ? 'Confirm' : 'Confirm'}}</button>
+        </div>
+
+         <div class="confirmation-wrap ">
+      <mat-checkbox class="error" [(ngModel)]="checkboxChecked"
+        [ngClass]="{ 'error': showCheckboxError && !checkboxChecked }">
+        I agree to auto hedge and to the <a class="link"  href="https://okoora.com/terms-of-service/" target="_blank">Terms of Use</a>
+      </mat-checkbox>
+    </div>
+
+      </div>
+    </section>
+  </div>
+    <!-- <app-page-loader classes="bg-white section-loader" *ngIf="isLoading"></app-page-loader> -->
+</div>

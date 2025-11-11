@@ -46,7 +46,7 @@
         .actual-hedging {
           width: 8px;
           height: 8px;
-          background-color: #2947F2;
+          background-color: var(--light-blue);
         }
       }
       @media screen and (max-width:1280px) {
@@ -210,9 +210,9 @@
                 border-color: #A3B0FA;
               }
               &.item-fund{
-                border-color:#003EFF;
+                border-color:var(--shade-detail-prime);
                 .amount{
-                  color:#003EFF
+                  color:var(--shade-detail-prime)
                 }
               }
             }
@@ -220,7 +220,7 @@
 
             .hedge-button {
               border-radius: 5px;
-              background-color:#003EFF;
+              background-color:var(--shade-detail-prime);
               color:$white;
               font-family:$he_heebo;
               font-size: 12px;
@@ -255,7 +255,7 @@
               justify-content: center;
               align-items: center;
               &:hover{
-                background-color:#003EFF;
+                background-color:var(--shade-detail-prime);
                 color:$white;
               }
             }

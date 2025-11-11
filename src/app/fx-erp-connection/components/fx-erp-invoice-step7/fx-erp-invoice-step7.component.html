@@ -1,0 +1,100 @@
+<form [formGroup]="autoPilotForm">
+<div class="invoices-currencies-container">
+    <!-- ░░ LEFT PANEL ░░ -->
+    <div class="left-panel">
+        <div class="info-sec">
+            <h2 class="title">
+                Choose  <br />currencies
+            </h2>
+            <p class="desc">
+                Stay in control. Protect your FX <br /> with ease
+            </p>
+        </div>
+    </div>
+
+    <!-- ░░ RIGHT PANEL ░░ -->
+    <div class="right-panel">
+        <!-- back / close -->
+        <div class="top-row">
+            <button class="back-btn" type="button" (click)="onBack()">Back</button>
+            <ul class="stepper-steps">
+                <li class="active"></li>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <!-- main copy & form -->
+        <div class="content">
+            <!-- <div class="label">
+                <img src="images/fx-erp/erp-invoice-icn.svg" alt="invoice" />
+                <span>Invoices / bills</span>
+            </div> -->
+
+            <h3 class="heading">Which currencies do you want to protect?</h3>
+            <p class="description">
+                Choose the currencies you'd like us to monitor and protect.
+                <br />(Example: USD, EUR, GBP… You can select multiple)
+            </p>
+
+            <picture>
+                <img src="images/fx-erp/currency-erp-img.svg" class="erp-preview" alt="currency-icon" />
+            </picture>
+            <div class="currency-wrap">
+                <div class="main-curr-wrap">
+                    <div class="title">
+                        Main currency
+                    </div>
+                    <div class="curr-sec">
+                        <img [src]="mainCurrencyWallet?.wallet_Currency?.flag"> {{mainCurrencyWallet?.wallet_Currency?.code}}
+                    </div>
+                </div>
+                <div class="sub-curr">
+                    <div class="label-hint">
+                        <label class="selectbox-label">Currencies to protect</label>
+                    </div>
+                    <mat-form-field appearance="fill" class="currency-filter-menu">
+                        <mat-select class="currency-search-input" panelClass="currency-filter-dropdown"
+                            placeholder="Choose currencies" multiple formControlName="InvoiceBillCurrencies"
+                            #vendorCurrencySelect>
+                            <!-- Selected chips shown here -->
+                            <mat-select-trigger>
+                                <mat-chip-set>
+                                    <mat-chip *ngFor="let selected of autoPilotForm.get('InvoiceBillCurrencies')?.value" [removable]="true"
+                                        (removed)="removeCurrency(selected)">
+                                        {{ selected.currency.code }}
+                                        <mat-icon matChipRemove>cancel</mat-icon>
+                                    </mat-chip>
+                                </mat-chip-set>
+                            </mat-select-trigger>
+        
+                            <!-- Dropdown options -->
+                            <mat-option *ngFor="let activeHedgingCurrency of walletList"
+                                [value]="activeHedgingCurrency">
+                                <div class="currency-option d-flex justify-content-between align-items-center">
+                                    <span class="currency">{{ activeHedgingCurrency.currency.code }}</span>
+                                    <img class="currency-flag" [src]="activeHedgingCurrency.currency.flag"
+                                        alt="{{ activeHedgingCurrency.currency.code }} flag" />
+                                </div>
+                            </mat-option>
+                        </mat-select>
+        
+                    </mat-form-field>
+                    <span class="pre-txt">You can select one or more</span>
+                </div>
+            </div>
+            <!-- Tip Box -->
+            <div class="tip-box">
+                <img src="images/fx-erp/erp_info.svg" alt="info" />
+                <div class="info">
+                    <h3 class="title">Pro tip</h3>
+                    <span class="desc">Start with key currencies now — add or adjust anytime</span>
+                </div>
+            </div>
+
+            <button class="continue-btn" type="button" (click)="onNext()">Continue</button>
+        </div>
+    </div>
+</div>
+</form>

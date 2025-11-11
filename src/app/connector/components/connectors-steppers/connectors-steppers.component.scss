@@ -1,0 +1,15 @@
+::ng-deep {
+    .connectors-stepper {
+        background-color: #F2F4F7;
+
+        .mat-stepper-horizontal {
+            background-color: transparent;
+
+            .mat-horizontal-stepper-wrapper {
+                .mat-horizontal-stepper-header-container {
+                    display: none !important;
+                }
+            }
+        }
+    }
+}

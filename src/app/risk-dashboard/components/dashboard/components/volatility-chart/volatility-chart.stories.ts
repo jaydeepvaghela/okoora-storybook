@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { VolatilityChartComponent } from "./volatility-chart.component";
 
 const meta: Meta<VolatilityChartComponent> = {
-    title: 'Components/Risk-Manager/Volatility-Chart',
+    title: 'Risk Manager/Risk Manager Dashboard/Volatility Chart',
     component: VolatilityChartComponent,
     argTypes:{
         currentIndicatorValue:{

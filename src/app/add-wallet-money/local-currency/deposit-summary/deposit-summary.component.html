@@ -1,0 +1,78 @@
+<div class="deposit-summary-container loader-wrapper">
+  <h3 class="title-summary">Deposit Summary</h3>
+  <div class="request-deposit">
+    <h5>Request to Deposit</h5>
+    <div class="deposit-amount d-flex justify-content-between">
+      <label>₪{{ getCleanAmount(localCurrencyForm?.get('amount').value) | number:'1.2-2' }}</label>
+      <div class="amount-country d-flex align-items-center">
+        <img width="25px" height="25px" src="../../../../images/ils-flag.svg">
+        <span>{{localCurrencyForm?.get('currency').value}}</span>
+      </div>
+    </div>
+    <span class="dashed-line"></span>
+  </div>
+  <div class="request-gold">
+    <h5>{{localCurrencyForm?.get('depositMethod').value == '3' ? 'Gold Transfer' : 'Bank Transfer In ILS'}}</h5>
+    <div class="deposit-gold d-flex justify-content-between align-items-center">
+      <label>Balance updates daily during business hours.</label>
+      <div class="amount-tick">
+        <img src="../../../../images/verified-tick.svg">
+      </div>
+    </div>
+    <span class="dashed-line"></span>
+  </div>
+  <div class="deposit-date">
+    <h5>Deposit Date</h5>
+    <div class="deposit-amount">
+      <label *ngIf="localCurrencyForm?.get('depositDate')?.value">{{localCurrencyForm?.get('depositDate').value |
+        date:'dd/MM/yyyy'}}</label>
+      <label *ngIf="!localCurrencyForm?.get('depositDate')?.value">-</label>
+    </div>
+    <span class="dashed-line"></span>
+  </div>
+  <div class="bank-detail">
+    <div class="detail-row">
+      <img class="icon-label" src="../../../../images/right-green-icon.svg" alt="yes-icon">
+      <div class="row-text">
+        <span class="label">From: {{localCurrencyForm?.get('bankAccount').value?.bankName}}</span>
+        <span class="value">{{localCurrencyForm?.get('bankAccount').value?.bankNumber}}/{{localCurrencyForm?.get('bankAccount').value?.accountNumber}}</span>
+      </div>
+    </div>
+    <div class="down-arrow">
+      <img src="../../../../images/doted-arrow-down.svg" alt="arrow-down">
+    </div>
+    <div class="detail-row">
+      <img class="icon-label" src="../../../../images/clock-icon-dark.svg" alt="yes-icon">
+      <div class="row-text">
+        <span class="label">To: {{localCurrencyForm?.get('accountDetails').value?.bankNickName}}</span>
+        <span class="label my-2">{{localCurrencyForm?.get('accountDetails').value?.fullName}}</span>
+        <div class="text-wrapper">
+          <span class="value">({{localCurrencyForm?.get('accountDetails').value?.name}}, {{localCurrencyForm?.get('accountDetails').value?.branch}}, {{localCurrencyForm?.get('accountDetails').value?.accountNumber}}) {{localCurrencyForm?.get('accountDetails').value?.iban}}</span>
+          <button class="copy-btn" id="ds-bank-details-copy" (click)="contentCopied('Account details')"></button>
+        </div>
+      </div>
+    </div>
+    <span class="dashed-line"></span>
+    <!-- <h5>Bank Details</h5>
+    <div class="deposit-amount">
+      <label>({{localCurrencyForm?.get('accountDetails').value?.name}},
+        {{localCurrencyForm?.get('accountDetails').value?.code}},
+        {{localCurrencyForm?.get('accountDetails').value?.accountNumber}})
+        {{localCurrencyForm?.get('accountDetails').value?.iban}}</label>
+    </div>
+    <span class="dashed-line"></span> -->
+  </div>
+  <p class="footer-note">Before you click “add Money” Please make a deposit</p>
+  <span *ngIf="errorMessage" class="error-msg">{{errorMessage}}</span>
+  <div class="next-btn">
+    <button class="next" (click)="onNextClick()" id="ds-next-add-money"> Add Money <span>(₪{{
+        getCleanAmount(localCurrencyForm?.get('amount').value) | number:'1.2-2' }}) </span><img
+        src="../../../../images/next-btn-arrow.svg"></button>
+  </div>
+  <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+  <div *ngIf="isSnackbarVisible" class="copied-snackbar">
+    <span class="copied-msg">
+      {{ coppiedItem }} copied to clipboard
+    </span>
+  </div>
+</div>

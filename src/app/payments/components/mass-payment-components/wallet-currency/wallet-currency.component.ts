@@ -24,6 +24,10 @@ export class WalletCurrencyComponent {
 
   constructor(private cd: ChangeDetectorRef, private _walletService: WalletsService, public dialog: MatDialog, public dialogRef: MatDialogRef<MassPaymentComponent>) {}
 
+  ngOnInit(): void { 
+    console.log('selectedWallet', this.selectedWallet?.wallet_Currency?.code);
+  }
+  
   openWalletListDialog() {
     const dialogRef = this.dialog.open(WalletListDialogComponent, {
       width: '562px',

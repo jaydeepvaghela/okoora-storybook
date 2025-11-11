@@ -1,6 +1,6 @@
 @import "../assets/scss/variable";
 .layout {
-    padding: 117px 0 0 240px;
+    padding: 117px 0 0 124px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -14,8 +14,9 @@
         padding: 42px 4.31% 42px 2.8%;
         background-color: #f5f7fa;
         width: 100%;
-        min-height: calc(100vh - 74px);
+        min-height: calc(100vh - 95px);
         z-index: 1;
+        border-radius: 20px;
 
         &:has(.auth-section) {
             padding: 0;
@@ -24,9 +25,9 @@
             background-color: #eef3fc;
             padding-right: 2.8%;
         }
-        @media screen and (max-width:1440px) {
+        @media screen and (min-width:1025px) {
             padding: 28px 2.8% 80px;
-            min-height: calc(100vh - 58px);
+            min-height: calc(100vh - 95px);
         }
 
         @media screen and (max-width:420px) {
@@ -35,7 +36,7 @@
         }
 
         &.authenticate-user {
-            @media screen and (max-width: 1440px) {
+            @media screen and (min-width: 1025px) {
                 padding: 28px 2.8% 80px 2.8% !important;
                 min-height: calc(100vh - $navbar-height-lg);
             }
@@ -47,14 +48,14 @@
             }
         }
     }
-    @media screen and (max-width:1440px) {
+    @media screen and (min-width:1025px) {
         padding:93px 0 0 124px;
     }
     @media screen and (max-width:1024px) {
-        padding:87px 0 0 200px;
+        padding:87px 0 0 124px;
     }
     @media screen and (max-width:930px) {
-        padding:118px 0 0 200px;
+        padding:118px 0 0 124px;
     }
     @media screen and (max-width:767px) {
         padding:100px 0 0 0;

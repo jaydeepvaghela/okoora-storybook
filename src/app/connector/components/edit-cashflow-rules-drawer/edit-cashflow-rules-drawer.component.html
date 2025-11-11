@@ -1,0 +1,386 @@
+<section class="edit-cashflow-rules-drawer">
+    <div class="invoice-cashflow-rules-wrapper loader-wrapper">
+        <button class="close-btn" (click)="closeDrawer()">
+            <img src="images/connector/close-modal.svg" alt="close icon" />
+        </button>
+        <h3 class="set-rule-title">Set your rules</h3>
+        <div class="set-rule-wrapper">
+            <mat-tab-group>
+                <mat-tab label="Invoices & Bills">
+                    <div class="rules-wrapper">
+                        <form [formGroup]="connectorForm">
+                            <div class="rules-form-inner">
+                                <div class="rule-item connect-type-row">
+                                    <div class="rule-item-header">
+                                        <img src="/images/connector/invoice-edit-icn.svg" alt="range" />
+                                        <div class="rule-item-info">
+                                            <p class="title">Invoices & Bills</p>
+                                            <p class="desc">Make sure the right payments are always covered. </p>
+                                        </div>
+                                    </div>
+                                    <div class="rule-item-control">
+                                        <div class="connect-type-wrap">
+                                            <mat-radio-group class="radio-column" aria-label="Invoice type"
+                                                formControlName="directionType">
+                                                <mat-radio-button [value]="1">Incoming invoices</mat-radio-button>
+                                                <mat-radio-button [value]="2">Bills</mat-radio-button>
+                                                <mat-radio-button [value]="3">Both</mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rule-item amount-row">
+                                    <div class="rule-item-header">
+                                        <img src="/images/connector/set-range-icn.svg" alt="range" />
+                                        <div class="rule-item-info">
+                                            <p class="title">Set amount range</p>
+                                            <p class="desc">Define the range of amounts for the selected invoice type.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="rule-item-control">
+                                        <!-- Slider -->
+                                        <mat-slider class="slider-width" [min]="minLimit" [max]="maxLimit"
+                                            [step]="step">
+                                            <input matSliderStartThumb formControlName="InvoiceBillMinExposureAmount"
+                                                name="minThumb" />
+                                            <input matSliderEndThumb formControlName="InvoiceBillMaxExposureAmount"
+                                                name="maxThumb" />
+                                        </mat-slider>
+                                        <div class="amount-range">
+                                            <div class="amount-field">
+                                                <h5 class="input-label">From</h5>
+                                                <input #minInput class="form-control"
+                                                    (input)="onMinChange($any($event.target).value)"
+                                                    [value]="formatAmount(min)" appOnlyNumbers type="text"
+                                                    placeholder="$500" formControlName="InvoiceBillMinExposureAmount" />
+                                            </div>
+                                            <div class="amount-field">
+                                                <h5 class="input-label">To</h5>
+                                                <input class="form-control" #maxInput
+                                                    (input)="onMaxChange($any($event.target).value)"
+                                                    [value]="formatAmount(max)" appOnlyNumbers type="text"
+                                                    placeholder="$10,000"
+                                                    formControlName="InvoiceBillMaxExposureAmount" />
+                                            </div>
+                                        </div>
+                                        <div *ngFor="let error of validationErrors" class="error-msg">
+                                            {{ error }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rule-item date-row">
+                                    <div class="rule-item-header">
+                                        <img src="/images/connector/due-date-icn.svg" alt="due-date" />
+                                        <div class="rule-item-info">
+                                            <p class="title">Due date</p>
+                                            <p class="desc">Select the due date for the invoice or bill.</p>
+                                        </div>
+                                    </div>
+                                    <div class="rule-item-control">
+                                        <div class="due-date-select">
+                                            <mat-form-field class="control-field" appearance="fill">
+                                                <mat-select placeholder="Select"
+                                                    formControlName="InvoiceBillMaxDuePeriod"
+                                                    (selectionChange)="updateActivateAccountAboutBusiness()"
+                                                    panelClass="due-date-select-dropdown">
+                                                    <p class="select-due">Select due date</p>
+                                                    <mat-option *ngFor="let dueDate of dueDateTypes" [value]="dueDate">
+                                                        {{ dueDate }}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rule-item currency-row">
+                                    <div class="rule-item-header">
+                                        <img src="/images/connector/set-currency-icn.svg" alt="currency" />
+                                        <div class="rule-item-info">
+                                            <p class="title">Select currency</p>
+                                            <p class="desc">Choose the currency for the invoice or bill.</p>
+                                        </div>
+                                    </div>
+                                    <div class="rule-item-control">
+                                        <div class="currency-filter-menu">
+                                            <mat-select #invoiceCurrencySelect id="invoice-currency" multiple
+                                                formControlName="InvoiceBillCurrencies" placeholder="Select"
+                                                class="currency-search-input" placeholder="Select currencies"
+                                                panelClass="currency-filter-dropdown">
+                                                <mat-select-trigger>
+                                                    <mat-chip-set>
+                                                        <mat-chip *ngFor="let currency of currencies | slice:0:5"
+                                                            [removable]="true" (removed)="onCurrencyRemoved(currency)"
+                                                            id="currencyChip{{ currency?.currency?.code }}">
+                                                            {{ currency?.currency?.code }}
+                                                            <mat-icon matChipRemove
+                                                                id="cancelCurrencyTFDid">Cancel</mat-icon>
+                                                        </mat-chip>
+
+                                                        <mat-chip *ngIf="currencies.length > 5" class="more-chip">
+                                                            ...
+                                                        </mat-chip>
+                                                    </mat-chip-set>
+                                                </mat-select-trigger>
+
+                                                <div class="mat_option_wrap">
+                                                    <p class="select-currency">Select currencies</p>
+                                                    <mat-option *ngFor="let currency of filteredCurrencies | async"
+                                                        [value]="currency" id="{{ currency }}">
+                                                        <span class="currency" id="currencyCode">{{
+                                                            currency?.currency?.code
+                                                            }}</span>
+                                                        <img class="currency-flag" id="flag" [src]="currency?.flag"
+                                                            [alt]="currency?.currency?.code" />
+                                                    </mat-option>
+                                                </div>
+                                                <div class="select-footer">
+                                                    <button class="set-btn" id="setBtn"
+                                                        (click)="invoiceCurrencySelect.close()">
+                                                        Select <ng-container *ngIf="walletList?.length">({{
+                                                            connectorForm.get('InvoiceBillCurrencies')?.value?.length ??
+                                                            0
+                                                            }})</ng-container>
+                                                    </button>
+                                                </div>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rule-item benef-row">
+                                    <div class="rule-item-header">
+                                        <img src="/images/connector/exclude-contact-icn.svg" alt="contacts" />
+                                        <div class="rule-item-info">
+                                            <p class="title">Exclude beneficiaries</p>
+                                            <p class="desc">Don't hedge invoices from selected contacts</p>
+                                        </div>
+                                    </div>
+                                    <div class="rule-item-control">
+                                        <div class="contact-filter-menu">
+                                            <mat-select #benificiarySelect id="exclude-contacts" multiple
+                                                formControlName="InvoiceBillBlacklist" placeholder="Select"
+                                                class="exclude-contacts-search-input"
+                                                panelClass="exclude-contacts-filter-dropdown">
+                                                <mat-select-trigger>
+                                                    <mat-chip-set>
+                                                        <mat-chip
+                                                            *ngFor="let data of connectorForm.get('InvoiceBillBlacklist')?.value"
+                                                            [removable]="true" (removed)="onExcludeContactRemoved(data)"
+                                                            id="currencyChip{{data?.name}}">
+                                                            {{data?.name }}
+                                                            <mat-icon matChipRemove
+                                                                id="cancelCurrencyTFDid">Cancel</mat-icon>
+                                                        </mat-chip>
+                                                    </mat-chip-set>
+                                                </mat-select-trigger>
+                                                <ng-container *ngIf="(excludeContactData$ | async) as contactList">
+                                                    <div class="search-field">
+                                                        <mat-select-search id="materialSearch"
+                                                            [placeholderLabel]="Searchbeneficiaries"
+                                                            [formControl]="excludeContactFilterCnt"></mat-select-search>
+                                                    </div>
+                                                    <ng-container *ngIf="contactList.length > 0; else noDataBlock">
+                                                        <div class="mat_option_wrap">
+                                                            <mat-option *ngFor="let data of excludeContactData$ | async"
+                                                                [value]="data" id="{{ data?.name }}">
+                                                                <span class="contact-name" id="currencyCode">{{
+                                                                    data?.name
+                                                                    }}</span>
+                                                            </mat-option>
+                                                        </div>
+                                                        <div class="select-footer">
+                                                            <button class="set-btn" id="setBtn"
+                                                                (click)="benificiarySelect.close()">
+                                                                Select <ng-container *ngIf="ERPcontactsList?.length">({{
+                                                                    connectorForm.get('InvoiceBillBlacklist')?.value?.length
+                                                                    ?? 0
+                                                                    }})</ng-container>
+                                                            </button>
+                                                        </div>
+                                                    </ng-container>
+
+                                                    <!-- No data block -->
+                                                    <ng-template #noDataBlock>
+                                                        <mat-option disabled class="no-data-option" disableRipple>
+                                                            No contacts found
+                                                        </mat-option>
+                                                    </ng-template>
+
+                                                </ng-container>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rules-btns">
+                                <button class="next-btn" [class.disable]="validationErrors.length > 0"
+                                    (click)="confirmRulesSummary('invoice')"> Save rules </button>
+                            </div>
+                        </form>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Cash Flow" *ngIf="importExosureType == 'cashflow' || (!isPayableProtectFilled)">
+                    <div class="rules-wrapper">
+                        <div class="rules-wrapper">
+                            <form [formGroup]="connectorForm">
+                                <div class="rules-form-inner">
+                                    <div class="rule-item connect-type-row">
+                                        <div class="rule-item-header">
+                                            <img src="/images/connector/invoice-edit-icn.svg" alt="range" />
+                                            <div class="rule-item-info">
+                                                <p class="title">Invoices & Bills</p>
+                                                <p class="desc">Make sure the right payments are always covered.</p>
+                                            </div>
+                                        </div>
+                                        <div class="rule-item-control">
+                                            <div class="connect-type-wrap">
+                                                <mat-radio-group class="radio-column" aria-label="Invoice type"
+                                                    formControlName="directionType">
+                                                    <mat-radio-button [value]="1">Incoming invoices</mat-radio-button>
+                                                    <mat-radio-button [value]="2">Bills</mat-radio-button>
+                                                    <mat-radio-button [value]="3">Both</mat-radio-button>
+                                                </mat-radio-group>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="rule-item amount-row">
+                                        <div class="rule-item-header">
+                                            <img src="/images/connector/set-range-icn.svg" alt="range" />
+                                            <div class="rule-item-info">
+                                                <p class="title">Set amount range</p>
+                                                <p class="desc">Set min/max amounts of invoices/bills to hedge</p>
+                                            </div>
+                                        </div>
+                                        <div class="rule-item-control">
+                                            <!-- Slider -->
+                                            <mat-slider class="slider-width" [min]="minLimit" [max]="maxLimit"
+                                                [step]="step">
+                                                <input matSliderStartThumb formControlName="CashflowMinExposureAmount"
+                                                    name="minThumb" />
+                                                <input matSliderEndThumb formControlName="CashflowMaxExposureAmount"
+                                                    name="maxThumb" />
+                                            </mat-slider>
+                                            <div class="amount-range">
+                                                <div class="amount-field">
+                                                    <h5 class="input-label">From</h5>
+                                                    <input #minCInput class="form-control" appOnlyNumbers type="text"
+                                                        placeholder="$500"
+                                                        (input)="onMinCChange($any($event.target).value)"
+                                                        [value]="formatAmount(minC)"
+                                                        formControlName="CashflowMinExposureAmount" />
+                                                </div>
+                                                <div class="amount-field">
+                                                    <h5 class="input-label">To</h5>
+                                                    <input #minCInput class="form-control" appOnlyNumbers type="text"
+                                                        (input)="onMaxCChange($any($event.target).value)"
+                                                        [value]="formatAmount(maxC)" placeholder="$10,000"
+                                                        formControlName="CashflowMaxExposureAmount" />
+                                                </div>
+                                            </div>
+                                            <div *ngFor="let error of validationCErrors" class="error-msg">
+                                                {{ error }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="rule-item date-row">
+                                        <div class="rule-item-header">
+                                            <img src="/images/connector/due-date-icn.svg" alt="due-date" />
+                                            <div class="rule-item-info">
+                                                <p class="title">Due date</p>
+                                                <p class="desc">Exposure due date</p>
+                                            </div>
+                                        </div>
+                                        <div class="rule-item-control">
+                                            <div class="due-date-select">
+                                                <mat-form-field class="control-field" appearance="fill">
+                                                    <mat-select placeholder="Select"
+                                                        formControlName="CashflowMaxDuePeriod"
+                                                        (selectionChange)="updateActivateAccountAboutBusiness()"
+                                                        panelClass="due-date-select-dropdown">
+                                                        <p class="select-due">Select due date</p>
+                                                        <mat-option *ngFor="let dueDate of dueDateTypes"
+                                                            [value]="dueDate">
+                                                            {{ dueDate }}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="rule-item currency-row">
+                                        <div class="rule-item-header">
+                                            <img src="/images/connector/set-currency-icn.svg" alt="currency" />
+                                            <div class="rule-item-info">
+                                                <p class="title">Select currency</p>
+                                                <p class="desc">Select your invoices/bills currencies</p>
+                                            </div>
+                                        </div>
+                                        <div class="rule-item-control">
+                                            <div class="currency-filter-menu">
+                                                <mat-select #cashflowCurrencySelect id="cashflow-currency" multiple
+                                                    formControlName="CashflowCurrencies" placeholder="Select"
+                                                    class="currency-search-input" panelClass="currency-filter-dropdown">
+                                                    <mat-select-trigger>
+
+
+                                                        <mat-chip-set>
+                                                            <mat-chip
+                                                                *ngFor="let currency of cashflowCurrencies | slice:0:5"
+                                                                [removable]="true"
+                                                                (removed)="onCashFlowCurrencyRemoved(currency)"
+                                                                id="currencyChip{{ currency?.currency?.code }}">
+                                                                {{ currency?.currency?.code }}
+                                                                <mat-icon matChipRemove
+                                                                    id="cancelCurrencyTFDid">Cancel</mat-icon>
+                                                            </mat-chip>
+
+                                                            <mat-chip *ngIf="cashflowCurrencies.length > 5"
+                                                                class="more-chip">
+                                                                ...
+                                                            </mat-chip>
+                                                        </mat-chip-set>
+                                                    </mat-select-trigger>
+                                                    <div class="mat_option_wrap">
+                                                        <p class="select-currency">Select currencies</p>
+                                                        <mat-option
+                                                            *ngFor="let currency of cashFlowFilteredCurrencies$ | async"
+                                                            [value]="currency" id="{{ currency }}">
+                                                            <span class="currency" id="currencyCode">{{
+                                                                currency?.currency?.code
+                                                                }}</span>
+                                                            <img class="currency-flag" id="flag" [src]="currency?.flag"
+                                                                [alt]="currency?.currency?.code" />
+                                                        </mat-option>
+                                                    </div>
+                                                    <div class="select-footer">
+                                                        <button class="set-btn" id="setBtn"
+                                                            (click)="cashflowCurrencySelect.close()">
+                                                            Select <ng-container *ngIf="walletList?.length">({{
+                                                                connectorForm.get('CashflowCurrencies')?.value?.length
+                                                                ?? 0
+                                                                }})</ng-container>
+                                                        </button>
+                                                    </div>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rules-btns">
+                                    <button class="next-btn" [class.disable]="validationCErrors.length > 0"
+                                        (click)="confirmRulesSummary('cashflow')"> Save rules </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <!-- <app-page-loader classes="bg-white section-loader" *ngIf="loading"></app-page-loader> -->
+    </div>
+</section>

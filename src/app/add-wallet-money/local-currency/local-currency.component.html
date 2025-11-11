@@ -1,0 +1,179 @@
+<form class="add-money-form pb-0 d-block loader-wrapper" [formGroup]="localCurrencyForm">
+  <div class="col-12 local-currency-container page-one" [hidden]="addMoneyScreenIndex !== 0">
+    <div class="form-wrap">
+      <label class="label-group"> Set an amount </label>
+      <div class="currency-wrapper" id="amountFocus"
+        [class.invalid]="(!localCurrencyForm?.get('amount')?.value || !validAmount()) && showValidationError">
+        <div class="currency-value">
+          <span class="currency-symbol">₪</span>
+          <span class="value">
+            <input type="text" class="width-input" #focusInput id="beneficiaryAmount-field" placeholder="10,000" appSeparator
+              formControlName="amount" (input)="onAmountChange($event)" (focus)="onInputFocus($event)" (blur)="onInputBlur()" (keypress)="onKeyPress($event)" 
+              (keydown)="restrictZero($event)"/>
+          </span>
+        </div>
+        <div class="country-dropdown beneficiary-currency beneficiary-val">
+          <span><img class="currencyActive-image" src="../../../flags/ILS.svg" alt="currency_flag" />ILS</span>
+        </div>
+      </div>
+      <span *ngIf="!localCurrencyForm?.get('amount')?.value && showValidationError" class="error-msg">Please set an
+        amount</span>
+      <span *ngIf="localCurrencyForm?.get('amount')?.value && !validAmount() && showValidationError" class="error-msg">Amount must be greater than 1</span>
+      <div class="deposit-method">
+        <div class="d-flex align-items-center">
+          <label class="title-label">Select deposit method</label>
+            <div class="deposit-method-icon" id="local-curr-id-1" placement="top" container="body" tooltipClass="deposit-method-tooltip" [ngbTooltip]="depositMethodTooltip" triggers="hover">
+              <img src="../../../images/info-image.svg">
+            </div>
+        </div>
+        <ng-template #depositMethodTooltip>
+          <div class="deposit-text-alignment">
+            <b>Gold Transfer:</b>
+            <p>Balance will be updated on the current business day, subject to business hours </p>
+            <b>Bank transfer in ILS:</b>
+            <p>Balance will be updated on next business day</p>
+            <!-- <b>Bank transfer in foreign currency</b>
+            <p>Balance will be updated on next business day</p> -->
+          </div>
+        </ng-template>
+        <div class="transfer-option-group">
+          <label class="transfer-option" for="goldTransfer"
+            [class.selected]="localCurrencyForm?.get('depositMethod')?.value == '3'">
+            <input id="goldTransfer" type="radio" name="depositMethod" formControlName="depositMethod" value="3"
+              (change)="onRadioChange($event)">
+            <span class="option-label" [class.selected]="localCurrencyForm?.get('depositMethod')?.value == '3'">Gold
+              Transfer</span>
+          </label>
+          <label class="transfer-option" for="bankTransfer"
+            [class.selected]="localCurrencyForm?.get('depositMethod')?.value == '2'">
+            <input id="bankTransfer" type="radio" name="depositMethod" formControlName="depositMethod" value="2"
+              (change)="onRadioChange($event)">
+            <span class="option-label" [class.selected]="localCurrencyForm?.get('depositMethod')?.value == '2'">Bank
+              Transfer In ILS</span>
+          </label>
+        </div>
+        <span *ngIf="!localCurrencyForm?.get('depositMethod')?.value && showValidationError" class="error-msg">Please
+          select a deposit method</span>
+      </div>
+      <div class="next-btn">
+        <button class="next" (click)="onNextClick()" id="local-curr-id-2"
+          [class.disabled]="!localCurrencyForm?.get('amount')?.value || !validAmount() || !localCurrencyForm?.get('depositMethod')?.value">
+          Next <img src="../../../images/next-btn-arrow.svg"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="local-currency-container page-two" [hidden]="addMoneyScreenIndex !== 1">
+    <div class="selected-amount-container d-flex justify-content-between">
+      <div class="amount d-flex align-items-center">
+        <button mat-icon-button class="edit-amount-button" id="local-curr-id-3" (click)="backToPreviousScreen()"></button>
+        <div class="currency-value">
+          <span class="currency-symbol" [class.enabled]="isAmountEditable">₪</span>
+          <span class="value">
+            <input type="text" class="width-input" formControlName="amount" (input)="onAmountChange($event)"
+              [readOnly]="!isAmountEditable" appFormatAmount id="local-curr-id-4" />
+          </span>
+        </div>
+      </div>
+      <div class="amount-country d-flex align-items-center">
+        <img width="25px" height="25px" src="../../../images/ILSflag.svg" id="local-curr-id-5">
+        <span>ILS</span>
+      </div>
+    </div>
+    <span *ngIf="!localCurrencyForm?.get('amount')?.value && showValidationError" class="error-msg">Please set an
+      amount</span>
+    <span *ngIf="localCurrencyForm?.get('amount')?.value && !validAmount() && showValidationError" class="error-msg">Amount must be greater than 1</span>
+    <div class="transfer-note">
+      <h5>{{ localCurrencyForm?.get('depositMethod')?.value == '3' ? 'Gold Transfer' : 'Bank Transfer In ILS' }}</h5>
+      <p>Balance updates daily during business hours.</p>
+    </div>
+    <div class="bank-name-container">
+      <div class="account-list-heading">
+        <label class="bank-title">Select bank account</label>
+        <button class="add-account" (click)="addAccount()" id="local-curr-id-6">+ Add</button>
+      </div>
+      <ng-container *ngIf="ownAccBeneficiary$ | async as ownBeneficiaries">
+        <ng-container *ngIf="ownBeneficiaries?.length else noBeneficiaries">
+          <div class="bank-swiper-container">
+            <div class="swiper-wrapper">
+              <ng-container *ngFor="let ownBeneficiary of ownBeneficiaries; index as i">
+                <div class="swiper-slide"
+                  [class.selected]="localCurrencyForm?.get('bankAccount')?.value == ownBeneficiary"
+                  [class.invalid]="!localCurrencyForm?.get('bankAccount')?.value && showValidationError"
+                  (click)="selectBankAccount(ownBeneficiary)" id="local-curr-id-7.{{i}}">
+                  <div class="card bank-card">
+                    <div class="card-body">
+                      <div class="text-center">
+                        <img class="pay-now-card-img" [src]="ownBeneficiary?.bankFlag" alt="pay-now" />
+                        <div class="bank-info">
+                          <h4 class="title">{{ ownBeneficiary?.bankName }}</h4>
+                          <label class="code">{{ ownBeneficiary?.bankNumber }}/{{ ownBeneficiary?.accountNumber
+                            }}</label>
+                        </div>
+                        <span class="switch" id="lc-bank-id-{{i}}"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="pages d-flex align-items-center justify-content-center">
+            <div class="prev-swiper">
+              <img class="prev-btn-swiper" [ngClass]="{
+                'disable-btn-swiper': isFirstSlide,
+                'next-btn-swiper': !isLastSlide && !isFirstSlide,
+                'previous-btn-swiper': (!isLastSlide && !isFirstSlide) || isLastSlide
+              }" (click)="goToPreviousSlide()" src="../../../images/prev-slide-deposit-blue.svg" id="local-curr-id-8" />
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="next-swiper">
+              <img class="next-btn-swiper" [ngClass]="{ 'disable-btn-swiper': isLastSlide }" (click)="goToNextSlide()"
+                src="../../../images/next-slide-deposit-blue.svg" id="local-curr-id-9"/>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+      <ng-template #noBeneficiaries>
+        <span class="error-msg">Bank accounts are not available</span>
+      </ng-template>
+      <span *ngIf="!localCurrencyForm?.get('bankAccount')?.value && showValidationError"
+        class="error-msg d-block text-center">Please select a bank account</span>
+    </div>
+    <div *ngIf="localCurrencyForm?.get('depositMethod')?.value == '2'" class="deposit-method">
+      <div class="d-flex align-items-center">
+        <label class="title-label">Report Deposit Date</label>
+        <div placement="top" tooltipClass="deposit-date-tooltip" id="local-curr-id-10" class="tooltip-btn" [ngbTooltip]="reportDateTooltip" triggers="hover" container="body">
+          <img src="../../../images/info-image.svg">
+        </div>
+        <ng-template #reportDateTooltip>
+          <label>Select the date you made the deposit to Ofakim bank account</label>
+        </ng-template>
+      </div>
+      <div class="form-group">
+        <div class="depo-date-selector"
+          [class.invalid]="!localCurrencyForm?.get('depositDate')?.value && showValidationError">
+          <input type="text" matInput placeholder="dd/mm/yyyy" [matDatepicker]="picker" formControlName="depositDate"
+            [min]="minDate" [readonly]="true" id="local-curr-id-11">
+          <mat-datepicker-toggle (click)="dateClicked()" matIconSuffix [for]="picker" id="local-curr-id-12"></mat-datepicker-toggle>
+          <mat-datepicker (click)="dateClicked()" id="local-curr-id-13" #picker [calendarHeaderComponent]="customCalendarHeader"
+            panelClass="deposit-datepicker">
+            <mat-datepicker-actions>
+              <button class="deposit-date-apply" id="local-curr-id-14" matDateRangePickerApply>Apply</button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </div>
+        <span *ngIf="!localCurrencyForm?.get('depositDate')?.value && showValidationError" class="error-msg">Please
+          select a valid date</span>
+      </div>
+    </div>
+    <span *ngIf="errorMessage" class="error-msg">{{errorMessage}}</span>
+    <div class="next-btn">
+      <button class="next" (click)="getDeposit();" id="local-curr-id-15"
+        [class.disabled]="!localCurrencyForm?.get('amount')?.value || !validAmount() || !localCurrencyForm?.get('depositMethod')?.value || !localCurrencyForm?.get('bankAccount')?.value || (localCurrencyForm?.get('depositMethod')?.value == '2' && !localCurrencyForm?.get('depositDate')?.value)">
+        Add Money <span>(₪{{ getCleanAmount(localCurrencyForm?.get('amount')?.value) | number:'1.2-2' }}) </span><img
+          src="../../../images/next-btn-arrow.svg"></button>
+    </div>
+  </div>
+  <!-- <app-page-loader classes="bg-white section-loader" *ngIf="showLoader"></app-page-loader> -->
+</form>

@@ -8,19 +8,24 @@
     </div>
     <div class="side-bar-wrapper">
       <div class="logo">
-        <img src="images/okoora-logo.svg" class="main-logo" alt="Logo" />
+        <img src="images/abcm-logo-icon.svg" class="main-logo" alt="Logo" />
         <img src="images/logo-abcm-small.svg" class="small-logo" alt="Logo" />
       </div>
       <div class="menu-list">
         <div class="first-divider"></div>
         <!-- Navigation -->
-        <a class="menu-item active" routerLinkActive="active" [routerLink]="['/main-dashboard']">
+        <a class="menu-item active" routerLinkActive="active" [routerLink]="['/fx-dashboard']">
           <i class="icon-dashboard"></i> <span class="menu-text">Dashboard</span></a>
+        <a class="menu-item" routerLinkActive="active" [routerLink]="['/main-dashboard']">
+          <i class="icon-dashboard"></i> <span class="menu-text">Old Dashboard</span></a>
         <a class="menu-item" routerLinkActive="active" [routerLink]="['/payments']">
           <i class="icon-payments"></i> <span class="menu-text">Payments</span></a>
         <a class="menu-item"><i class="icon-funds"></i> <span class="menu-text">Received Funds</span></a>
+        <a class="menu-item" routerLinkActive="active" [routerLink]="['/automation']">
+          <i class="automation"></i> <span class="menu-text">Automations</span>
+        </a>
         <a class="menu-item"><i class="icon-purchases"></i> <span class="menu-text">Purchases</span></a>
-        <a class="menu-item active" routerLinkActive="active" [routerLink]="['/cashflow']">
+        <a class="menu-item" routerLinkActive="active" [routerLink]="['/cashflow']">
           <i class="icon-risk"></i> <span class="menu-text">Risk Manager</span> <span class="new-badge">New</span>
         </a>
         <div class="second-divider"></div>
@@ -28,7 +33,7 @@
           <mat-expansion-panel class="shadow-none mb-3 reports-expansion-panel">
             <mat-expansion-panel-header id="navReportsExpansion" class="header-reports">
               <mat-panel-title class="panel-item">
-                <i class="icon-reports"></i> <span class="menu-text">Reports</span>
+                <i class="icon-reports"></i> <span class="menu-text grey-text">Reports</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-panel-description class="sub-tabs-reports">
@@ -42,11 +47,12 @@
             </mat-panel-description>
           </mat-expansion-panel>
         </mat-accordion>
-        <a class="menu-item"><i class="icon-alerts"></i> <span class="menu-text">Alerts</span></a>
-        <a class="menu-item" routerLinkActive="active" [routerLink]="['/contacts']"><i class="icon-contacts"></i> <span class="menu-text">Contacts</span></a>
-        <a class="menu-item"><i class="icon-help"></i> <span class="menu-text">Help</span></a>
+        <a class="menu-item"><i class="icon-alerts"></i> <span class="menu-text grey-text">Alerts</span></a>
+        <a class="menu-item" routerLinkActive="active" [routerLink]="['/contacts']"><i class="icon-contacts"></i> <span
+            class="menu-text grey-text">Contacts</span></a>
+        <a class="menu-item"><i class="icon-help"></i> <span class="menu-text grey-text">Help</span></a>
         <a class="menu-item marketplace">
-          <i class="market-place"></i> <span class="menu-text">Marketplace</span>
+          <i class="market-place"></i> <span class="menu-text grey-text">Marketplace</span>
         </a>
         <button id="downloadApp" class="download-app">
           Download App

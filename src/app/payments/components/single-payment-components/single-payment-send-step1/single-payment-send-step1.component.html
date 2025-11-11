@@ -99,7 +99,7 @@
             <label class="send-feild" id="open_lblBeneficiary_single_payment" > You Send to <span (click)="openBeneficiary() "
                     class="change-beneficiary-list-name" mat-button [matMenuTriggerFor]="beneficiaryMenu">{{beneficiaryDetails?.bankAccountHolderName}}</span></label>
             <div class="you-send-text-feild"
-                [ngStyle]="{'border': (amount_error && !sendAmount) || (sendValidAmountError && sendAmount) ? '1px solid #DC2626' : '1px solid #3B82F6' }">
+                [ngStyle]="{'border': (amount_error && !sendAmount) || (sendValidAmountError && sendAmount) ? '1px solid #DC2626' : '1px solid var(--border-color-prime)' }">
 
                 <div class="currancy-amoutn-left">
                     <strong

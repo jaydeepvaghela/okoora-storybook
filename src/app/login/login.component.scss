@@ -191,6 +191,10 @@
             @include flex(space-between, center, row);
             padding: 0 20px 0 10px;  
             margin-bottom: 20px;
+
+            .mdc-checkbox ~ label {
+              padding-left: 4px !important;
+            }
   
             .forgot-password {
               color: $white;

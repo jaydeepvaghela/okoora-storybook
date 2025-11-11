@@ -20,7 +20,7 @@ const MockRouter = {
 
 // AoT requires an exported function for factories
 function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './i18n/', '.json');
 }
 
 type Story = StoryObj<NewPayerSummaryStepComponent>;

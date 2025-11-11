@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/angular";
 import { HedgingProposalComponent } from "./hedging-proposal.component";
 
 const meta: Meta<HedgingProposalComponent> = {
-    title: 'Components/Risk-Manager/Hedging-Proposal',
+    title: 'Risk Manager/Risk Manager Dashboard/Hedging Proposal',
     component: HedgingProposalComponent,
     argTypes: {
         hedgeDetails: {

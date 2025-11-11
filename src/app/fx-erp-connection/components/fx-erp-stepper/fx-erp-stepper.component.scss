@@ -1,0 +1,63 @@
+@import "../../../../assets/scss/variable";
+::ng-deep {
+  .fx-erp-stepper {
+    padding: 26px 26px 22px 15px; 
+    background: #fff;
+    .mat-horizontal-stepper-header-container {
+      display: none;
+    }
+
+    .mat-horizontal-content-container {
+      padding: 0;
+      background-color: transparent;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 36px;
+      right: 37px;
+      padding: 0;
+      background-color: transparent;
+      z-index: 1;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding: 20px;
+    }
+  }
+
+  .fx-erp-dialog {
+    @media (min-width: 768px) and (orientation: portrait) {
+      height: 50vh !important;
+      max-height: 100% !important;
+    }
+
+    .mat-mdc-dialog-container {
+      .mdc-dialog__surface {
+        border-radius: 20px;
+        // background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(27px);
+      }
+    }
+  }
+
+  .exposure-tooltip--rm {
+    --bs-tooltip-bg: #000;
+    --bs-tooltip-arrow-width: 11px;
+    --bs-tooltip-arrow-height: 7px;
+    --bs-tooltip-opacity: 1;
+    --bs-tooltip-max-width: 103px;
+
+    .tooltip-inner {
+      color: #fff;
+      box-shadow: none;
+      font-size: 12px;
+      font-family: $he_heebo;
+      font-weight: 400;
+      line-height: 20px;
+      border-radius: 5px;
+      padding: 6px 8px;
+      text-align: justify;
+    }
+  }
+}

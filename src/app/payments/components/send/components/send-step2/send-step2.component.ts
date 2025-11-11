@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SendStep3Component } from '../send-step3/send-step3.component';
+import { AddContactsComponent } from '../../../../../contacts-dashboard/components/add-contacts/add-contacts.component';
 
 @Component({
   selector: 'app-send-step2',
@@ -281,7 +282,11 @@ export class SendStep2Component implements OnInit {
   }
 
   createBenificiaryDialog() {
-
+    const dialogRef = this.dialog.open(AddContactsComponent, {
+      width: '100vw',
+      maxWidth: '100vw',
+      disableClose: true,
+    });
   }
 
   dateChanged(ev: any) {

@@ -1,0 +1,15 @@
+<div class="convert-delete-modal">
+  <button class="close-button" matDialogClose>
+    <img src="images/connector/auto-protect-close.svg" class="auto-close">
+  </button>
+  <div class="header-sec">
+    <h3 class="title">Are you sure you want to delete?</h3>
+    <div class="desc">
+      <p>Deleting this rule is permanent. This action cannot be undone.</p>
+    </div>
+  </div>
+  <div class="btn-sec">
+    <button class="cancel-button" matDialogClose>No, cancel</button>
+    <button class="confirm-button" (click)="confirm(true)">Yes, Delete</button>
+  </div>
+</div>
